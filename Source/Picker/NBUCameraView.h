@@ -1,0 +1,182 @@
+//
+//  NBUCameraView.h
+//  NBUKit
+//
+//  Created by 利辺羅 on 2012/10/15.
+//  Copyright (c) 2012年 CyberAgent Inc. All rights reserved.
+//
+
+#import "ActiveView.h"
+
+@protocol UIButton;
+
+/// NBUCameraView blocks.
+typedef void (^NBUCapturePictureResultBlock)(UIImage * image,
+                                             NSError * error);
+typedef void (^NBUSavePictureResultBlock)(UIImage * image,
+                                          NSDictionary * metadata,
+                                          NSURL * url,
+                                          NSError * error);
+typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
+                                            NSInteger mode);
+
+/**
+ Fully customizable camera view based on AVFoundation.
+ 
+ - Set target resolution.
+ - Customizable controls/buttons and layout.
+ - Supports flash, focus, exposure and white balance settings.
+ - Can automatically save to device's Camera Roll/custom albums.
+ - Can be used with any UIViewController, so it can be embedded in a UITabView, pushed to a UINavigationController, presented modally, etc.
+ - Works with simulator.
+ */
+@interface NBUCameraView : ActiveView
+
+/// @name Configurable Properties
+
+/// The minimum desired resolution.
+///
+/// If not set full camera resolution will be used but to improve performance
+/// you could set a lower resolution.
+/// @note The captured image may not exactly match the targetResolution.
+@property (nonatomic)                   CGSize targetResolution;
+
+/// The optional block to be called immediately after capturing the picture.
+@property (nonatomic, strong)           NBUCapturePictureResultBlock captureResultBlock;
+
+/// Whether to save the pictures to the the library. Default `NO`.
+@property (nonatomic)                   BOOL savePicturesToLibrary;
+
+/// If set along savePicturesToLibrary the assets will be added to a given album.
+/// @note A new album may be created if necessary.
+@property (nonatomic, strong)           NSString * targetLibraryAlbumName;
+
+/// The optional block to be called if savePicturesToLibrary is enabled.
+/// @note This block has some delay over captureResultBlock.
+@property (nonatomic, strong)           NBUSavePictureResultBlock saveResultBlock;
+
+/// Whether the view should compensate device orientation changes. Default `NO`.
+/// @note Set to `YES` when inside view controllers that rotate.
+@property (nonatomic)                   BOOL shouldAutoAdjustOrientation;
+
+/// Programatically force the view to rotate.
+/// @param orientation The desired interface orientation.
+- (void)adjustToInterfaceOrientation:(UIInterfaceOrientation)orientation;
+
+/// @name Capture Devices and Modes
+
+/// The available devices' uniqueID's (ex. Front, Back camera).
+@property (strong, nonatomic, readonly) NSArray * availableDevices;
+
+/// The current device's available capture presets and resolutions.
+@property (nonatomic, strong)           NSDictionary * availableResolutions;
+
+/// The current device's available AVCaptureFlashMode modes.
+@property (strong, nonatomic, readonly) NSArray * availableFlashModes;
+
+/// The current device's available AVCaptureFocusMode modes.
+@property (strong, nonatomic, readonly) NSArray * availableFocusModes;
+
+/// The current device's available AVCaptureExposureMode modes.
+@property (strong, nonatomic, readonly) NSArray * availableExposureModes;
+
+/// The current device's available AVCaptureWhiteBalanceMode modes.
+@property (strong, nonatomic, readonly) NSArray * availableWhiteBalanceModes;
+
+/// @name Customizing the UI Controls
+
+/// Whether to hide disabled controls. Default `NO`.
+@property (nonatomic)                   BOOL showDisabledControls;
+
+/// The block to be used to configure the shootButton.
+@property (nonatomic, strong)           NBUButtonConfigurationBlock shootButtonConfigurationBlock;
+
+/// The block to be used to configure the toggleCameraButton.
+@property (nonatomic, strong)           NBUButtonConfigurationBlock toggleCameraButtonConfigurationBlock;
+
+/// The block to be used to configure the flashButton.
+@property (nonatomic, strong)           NBUButtonConfigurationBlock flashButtonConfigurationBlock;
+
+/// The block to be used to configure the focusButton.
+@property (nonatomic, strong)           NBUButtonConfigurationBlock focusButtonConfigurationBlock;
+
+/// The block to be used to configure the exposureButton.
+@property (nonatomic, strong)           NBUButtonConfigurationBlock exposureButtonConfigurationBlock;
+
+/// The block to be used to configure the whiteBalanceButton.
+@property (nonatomic, strong)           NBUButtonConfigurationBlock whiteBalanceButtonConfigurationBlock;
+
+/// @name Actions
+
+/// Take a picture and execure the resultBlock.
+/// @param sender The sender object.
+- (IBAction)takePicture:(id)sender;
+
+/// Switch between front and back cameras (if available).
+///
+/// Configures toggleCameraButton using toggleCameraButtonConfigurationBlock when available.
+/// @param sender The sender object.
+- (IBAction)toggleCamera:(id)sender;
+
+/// Change the flash mode (if available).
+///
+/// Configures flashButton using flashButtonConfigurationBlock when available.
+/// @param sender The sender object.
+- (IBAction)toggleFlashMode:(id)sender;
+
+/// Change the focus mode (if available).
+///
+/// Configures focusButton using focusButtonConfigurationBlock when available.
+/// @param sender The sender object.
+- (IBAction)toggleFocusMode:(id)sender;
+
+/// Change the exposure mode (if available).
+///
+/// Configures exposureButton using exposureButtonConfigurationBlock when available.
+/// @param sender The sender object.
+- (IBAction)toggleExposureMode:(id)sender;
+
+/// Change the white balance mode (if available).
+///
+/// Configures whiteBalanceButton using whiteBalanceButtonConfigurationBlock when available.
+/// @param sender The sender object.
+- (IBAction)toggleWhiteBalanceMode:(id)sender;
+
+/// @name Creating UI Configuration Blocks
+
+/// Create a NBUButtonConfigurationBlock that sets the title of a
+/// button using `[NSString stringWithFormat:format, mode]`.
+/// @param format A string format for a NSInteger. Ex. `@"Flash: %d"`.
+- (NBUButtonConfigurationBlock)buttonConfigurationBlockWithTitleFormat:(NSString *)format;
+
+/// Create a NBUButtonConfigurationBlock that sets the title from an array of titles
+/// using the mode as index.
+/// @param titles The possible titles. One for each mode.
+- (NBUButtonConfigurationBlock)buttonConfigurationBlockWithTitleFrom:(NSArray *)titles;
+
+/// @name UI Outlets
+
+/// The button to takePicture:.
+@property (assign, nonatomic) IBOutlet id<UIButton> shootButton;
+
+/// The optional button to toggleCamera:.
+@property (assign, nonatomic) IBOutlet id<UIButton> toggleCameraButton;
+
+/// The optional button to toggleFlashMode:.
+@property (assign, nonatomic) IBOutlet id<UIButton> flashButton;
+
+/// The optional button to toggleFocusMode:.
+@property (assign, nonatomic) IBOutlet id<UIButton> focusButton;
+
+/// The optional button to toggleExposureMode:.
+@property (assign, nonatomic) IBOutlet id<UIButton> exposureButton;
+
+/// The optional button to toggleWhiteBalanceMode:.
+@property (assign, nonatomic) IBOutlet id<UIButton> whiteBalanceButton;
+
+/// The optional UIImageView to be used to display the last taken picture.
+/// @note Check the NBUKitDemo project for other ways to customize displaying the last taken pictures.
+@property (assign, nonatomic) IBOutlet UIImageView * lastPictureImageView;
+
+@end
+

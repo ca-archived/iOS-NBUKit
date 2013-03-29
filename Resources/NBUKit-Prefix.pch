@@ -1,0 +1,119 @@
+//
+// Prefix header for all source files of the 'NBUKit' target in the 'NBUKit' project
+//
+
+#ifdef __OBJC__
+
+//#define __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED __IPHONE_4_0
+//
+//#import <Availability.h>
+//
+//#define __AVAILABILITY_TOO_NEW __attribute__((deprecated("TOO NEW!"))) __attribute__((weak_import))
+//
+//#ifndef __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED
+//#define __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED __IPHONE_OS_VERSION_MIN_REQUIRED
+//#endif
+//
+//#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_OS_VERSION_MIN_REQUIRED
+//#error You cannot ask for a soft max version which is less than the deployment target
+//#endif
+//
+//#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_2_0
+//#undef __AVAILABILITY_INTERNAL__IPHONE_2_0
+//#define __AVAILABILITY_INTERNAL__IPHONE_2_0 __AVAILABILITY_TOO_NEW
+//#endif
+//
+//#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_2_1
+//#undef __AVAILABILITY_INTERNAL__IPHONE_2_1
+//#define __AVAILABILITY_INTERNAL__IPHONE_2_1 __AVAILABILITY_TOO_NEW
+//#endif
+//
+//#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_2_2
+//#undef __AVAILABILITY_INTERNAL__IPHONE_2_2
+//#define __AVAILABILITY_INTERNAL__IPHONE_2_2 __AVAILABILITY_TOO_NEW
+//#endif
+//
+//#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_3_0
+//#undef __AVAILABILITY_INTERNAL__IPHONE_3_0
+//#define __AVAILABILITY_INTERNAL__IPHONE_3_0 __AVAILABILITY_TOO_NEW
+//#endif
+//
+//#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_3_1
+//#undef __AVAILABILITY_INTERNAL__IPHONE_3_1
+//#define __AVAILABILITY_INTERNAL__IPHONE_3_1 __AVAILABILITY_TOO_NEW
+//#endif
+//
+//#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_3_2
+//#undef __AVAILABILITY_INTERNAL__IPHONE_3_2
+//#define __AVAILABILITY_INTERNAL__IPHONE_3_2 __AVAILABILITY_TOO_NEW
+//#endif
+//
+//#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_4_0
+//#undef __AVAILABILITY_INTERNAL__IPHONE_4_0
+//#define __AVAILABILITY_INTERNAL__IPHONE_4_0 __AVAILABILITY_TOO_NEW
+//#endif
+//
+//#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_4_1
+//#undef __AVAILABILITY_INTERNAL__IPHONE_4_1
+//#define __AVAILABILITY_INTERNAL__IPHONE_4_1 __AVAILABILITY_TOO_NEW
+//#endif
+//
+//#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_4_2
+//#undef __AVAILABILITY_INTERNAL__IPHONE_4_2
+//#define __AVAILABILITY_INTERNAL__IPHONE_4_2 __AVAILABILITY_TOO_NEW
+//#endif
+//
+//#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_4_3
+//#undef __AVAILABILITY_INTERNAL__IPHONE_4_3
+//#define __AVAILABILITY_INTERNAL__IPHONE_4_3 __AVAILABILITY_TOO_NEW
+//#endif
+//
+//#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_5_0
+//#undef __AVAILABILITY_INTERNAL__IPHONE_5_0
+//#define __AVAILABILITY_INTERNAL__IPHONE_5_0 __AVAILABILITY_TOO_NEW
+//#endif
+//
+//#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_5_1
+//#undef __AVAILABILITY_INTERNAL__IPHONE_5_1
+//#define __AVAILABILITY_INTERNAL__IPHONE_5_1 __AVAILABILITY_TOO_NEW
+//#endif
+//
+//#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_6_0
+//#undef __AVAILABILITY_INTERNAL__IPHONE_6_0
+//#define __AVAILABILITY_INTERNAL__IPHONE_6_0 __AVAILABILITY_TOO_NEW
+//#endif
+//
+//#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_6_1
+//#undef __AVAILABILITY_INTERNAL__IPHONE_6_1
+//#define __AVAILABILITY_INTERNAL__IPHONE_6_1 __AVAILABILITY_TOO_NEW
+//#endif
+
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import "NBUKit.h"
+
+    // Localization
+    #undef  NSLocalizedString
+    #define NSLocalizedString(key, comment) \
+            [NSBundle localizedStringForKey:key value:nil table:@"NBUKit" backupBundle:NBUKit.resourcesBundle]
+
+    // Default module
+    #define NBUKIT_MODULE       NBUKIT_MODULE_GENERAL
+
+    // Custom log macros
+    #define NBUKIT_LOG_LEVEL    [NBULog kitLogLevelForModule:NBUKIT_MODULE]
+    #undef NBULogError
+    #define NBULogError(frmt, ...)  LOG_OBJC_MAYBE(LOG_ASYNC_ERROR,   NBUKIT_LOG_LEVEL, LOG_FLAG_ERROR,     NBUKIT_LOG_CONTEXT + NBUKIT_MODULE, frmt, ##__VA_ARGS__)
+    #undef NBULogWarn
+    #define NBULogWarn(frmt, ...)   LOG_OBJC_MAYBE(LOG_ASYNC_WARN,    NBUKIT_LOG_LEVEL, LOG_FLAG_WARN,      NBUKIT_LOG_CONTEXT + NBUKIT_MODULE, frmt, ##__VA_ARGS__)
+    #undef NBULogInfo
+    #define NBULogInfo(frmt, ...)   LOG_OBJC_MAYBE(LOG_ASYNC_INFO,    NBUKIT_LOG_LEVEL, LOG_FLAG_INFO,      NBUKIT_LOG_CONTEXT + NBUKIT_MODULE, frmt, ##__VA_ARGS__)
+    #undef NBULogVerbose
+    #define NBULogVerbose(frmt, ...)LOG_OBJC_MAYBE(LOG_ASYNC_VERBOSE, NBUKIT_LOG_LEVEL, LOG_FLAG_VERBOSE,   NBUKIT_LOG_CONTEXT + NBUKIT_MODULE, frmt, ##__VA_ARGS__)
+
+//    #if ! __has_feature(objc_arc)
+//    #warning This file must be compiled with ARC. Use -fobjc-arc flag (or convert project to ARC).
+//    #endif
+
+#endif
+

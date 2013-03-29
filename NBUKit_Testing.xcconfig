@@ -1,0 +1,32 @@
+//
+//  NBUKit_Testing.xcconfig
+//  NBUKit
+//
+//  Created by エルネスト 利辺羅 on 12/07/25.
+//  Copyright (c) 2012年 CyberAgent Inc. All rights reserved.
+//
+
+//////////////////////////////////////////////////////////////////////////
+//              *** YOU DON'T NEED TO MODIFY THIS FILE ***              //
+// You can change these values directly in your Target's Build Settings //
+//////////////////////////////////////////////////////////////////////////
+
+/////////////
+// TESTING //
+/////////////
+
+// Use the NBUCore configuration
+#include "../NBUCore/NBUCore_Testing.xcconfig"
+
+////////////
+// COMMON //
+////////////
+
+// Linker
+LINK_FLAGS = -ObjC -all_load
+LINK_GPUIMAGE = -l GPUImage -framework CoreMedia -framework CoreVideo -framework OpenGLES -framework AVFoundation -framework QuartzCore
+LINK_NBUKIT = -framework NBUKit -framework UIKit -framework Foundation -framework CoreGraphics -framework MessageUI -framework AssetsLibrary -framework CoreLocation -weak_framework CoreImage -framework CoreData -framework Security -framework MobileCoreServices -framework MediaPlayer -framework AudioToolbox $(LINK_GPUIMAGE)
+
+// *** Add other necesasary links in your target's build settings (ex. $(inherited) $(LINK_TESTFLIGHT)) ***
+OTHER_LDFLAGS = $(LINK_FLAGS) $(LINK_NBUKIT) -L"$DEPENDENCIES_BUILD_DIR"
+
