@@ -2,8 +2,20 @@
 //  NBUAssetsGroupView.m
 //  NBUKit
 //
-//  Created by 利辺羅 on 2012/08/17.
-//  Copyright (c) 2012年 CyberAgent Inc. All rights reserved.
+//  Created by Ernesto Rivera on 2012/08/17.
+//  Copyright (c) 2012 CyberAgent Inc.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 #import "NBUAssetsGroupView.h"
@@ -36,8 +48,10 @@ static UIImage * _noContentsImage;
     // Localization
     if ([_editableView isKindOfClass:[UILabel class]])
     {
-        ((UILabel *)_editableView).text  = NSLocalizedString(@"editable",
-                                                             @"NBUAssetsGroupView EditableLabel");
+        ((UILabel *)_editableView).text  = NSLocalizedStringWithDefaultValue(@"NBUAssetsGroupView Editable label",
+                                                                             nil, nil,
+                                                                             @"editable",
+                                                                             @"NBUAssetsGroupView Editable label");
     }
     
     static dispatch_once_t onceToken;
@@ -52,8 +66,10 @@ static UIImage * _noContentsImage;
     
     // Update UI
     _nameLabel.text = self.object.name;
-    _countLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d images",
-                                                                    @"AssetsGroupView NumberOfImages"),
+    _countLabel.text = [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"NBUAssetsGroupView Number of images",
+                                                                                    nil, nil,
+                                                                                    @"%d images",
+                                                                                    @"NBUAssetsGroupView Number of images"),
                         self.assetsGroup.imageAssetsCount];
     _posterImageView.image = self.object.posterImage ? self.object.posterImage : _noContentsImage;
     _editableView.hidden = !self.object.editable;

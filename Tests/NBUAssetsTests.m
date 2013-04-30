@@ -2,8 +2,20 @@
 //  NBUAssetsTests.m
 //  NBUKit
 //
-//  Created by 利辺羅 on 2013/02/20.
-//  Copyright (c) 2013年 CyberAgent Inc. All rights reserved.
+//  Created by Ernesto Rivera on 2013/02/20.
+//  Copyright (c) 2013 CyberAgent Inc.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 #import "NBUAssetsTests.h"
@@ -15,41 +27,6 @@ static NSMutableArray * _assetURLs;
 + (void)initialize
 {
     _assetURLs = [NSMutableArray array];
-}
-
-- (void)setUp
-{
-    [super setUp];
-    
-    // Set-up code here.
-}
-
-- (void)tearDown
-{
-    // Tear-down code here.
-    [DDLog flushLog];
-    
-    [super tearDown];
-}
-
-- (void)waitBlockUntilFinished:(void(^)(BOOL * finished))block
-{
-    BOOL finished = NO;
-    
-    block(&finished);
-    
-    while (CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0, true) && !finished){};
-}
-
-- (UIImage *)imageNamed:(NSString *)name
-{
-    NSBundle * bundle = [NSBundle bundleForClass:[self class]];
-    NSString * imagePath = [bundle pathForResource:name
-                                            ofType:nil];
-    UIImage * testImage = [UIImage imageWithContentsOfFile:imagePath];
-    STAssertNotNil(testImage, @"Test image couldn't be read");
-    
-    return testImage;
 }
 
 #pragma mark - NBUAssetsLibrary
@@ -72,7 +49,7 @@ static NSMutableArray * _assetURLs;
     }];
 }
 
-- (void)test0SaveImageToCameraRollAndAddToAssetsGroup
+- (void)test1SaveImageToCameraRollAndAddToAssetsGroup
 {
     [self waitBlockUntilFinished:^(BOOL * finished)
      {
@@ -91,7 +68,7 @@ static NSMutableArray * _assetURLs;
      }];
 }
 
-- (void)test1RetrieveAsset
+- (void)test2RetrieveAsset
 {
     STAssertTrue(_assetURLs.count >= 1, @"No assetURLs defined");
     
@@ -109,7 +86,7 @@ static NSMutableArray * _assetURLs;
      }];
 }
 
-- (void)test1RetrieveAssetWithInvalidURL
+- (void)test3RetrieveAssetWithInvalidURL
 {
     [self waitBlockUntilFinished:^(BOOL * finished)
      {
@@ -125,7 +102,7 @@ static NSMutableArray * _assetURLs;
      }];
 }
 
-- (void)test1RetrieveMultipleAssets
+- (void)test4RetrieveMultipleAssets
 {
     STAssertTrue(_assetURLs.count >= 2, @"Not enough assetURLs defined: %@", _assetURLs);
     

@@ -2,8 +2,20 @@
 //  NBUAssetsGroupViewController.m
 //  NBUKit
 //
-//  Created by 利辺羅 on 2012/08/01.
-//  Copyright (c) 2012年 CyberAgent Inc. All rights reserved.
+//  Created by Ernesto Rivera on 2012/08/01.
+//  Copyright (c) 2012 CyberAgent Inc.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 #import "NBUAssetsGroupViewController.h"
@@ -28,10 +40,12 @@
 @synthesize reverseOrder = _reverseOrder;
 @synthesize loadSize = _loadSize;
 @synthesize loading = _loading;
-@synthesize singleImageMode = _singleImageMode;
+@synthesize selectionCountLimit = _selectionCountLimit;
+@synthesize clearsSelectionOnViewWillAppear = _clearsSelectionOnViewWillAppear;
 @synthesize selectionChangedBlock = _selectionChangedBlock;
 @synthesize assets = _assets;
 @synthesize gridView = _gridView;
+@synthesize continueButton = _continueButton;
 
 // TODO: Remove
 - (void)setScrollOffset
@@ -60,8 +74,10 @@
     [_gridView startObservingScrollViewDidScroll];
     
     // Localization
-    [_gridView setNoContentsViewText:NSLocalizedString(@"No images",
-                                                       @"NBUAssetsGroupViewController NoImagesLabel")];
+    [_gridView setNoContentsViewText:NSLocalizedStringWithDefaultValue(@"NBUAssetsGroupViewController NoImagesLabel",
+                                                                       nil, nil,
+                                                                       @"No images",
+                                                                       @"NBUAssetsGroupViewController NoImagesLabel")];
 }
 
 - (void)objectUpdated:(NSDictionary *)userInfo
@@ -146,6 +162,17 @@
 {
     _selectedAssets = [NSMutableArray arrayWithArray:selectedAssets];
     
+    // Discard assets beyond the selection count limit
+    if ((_selectionCountLimit > 0) &&
+        (_selectedAssets.count > _selectionCountLimit))
+    {
+        [_selectedAssets removeObjectsInRange:NSMakeRange(_selectionCountLimit,
+                                                          _selectedAssets.count - _selectionCountLimit)];
+    }
+    
+    // Update the continue button
+    _continueButton.enabled = _selectedAssets.count > 0;
+    
     // Update current visible views
     for (NBUAssetThumbnailView * view in _gridView.currentViews)
     {
@@ -165,7 +192,7 @@
                                                object:nil];
     
     // Clear selection if in single selection mode
-    if (_singleImageMode)
+    if (_clearsSelectionOnViewWillAppear)
     {
         self.selectedAssets = nil;
     }
@@ -188,16 +215,30 @@
     if (![assetView isKindOfClass:[NBUAssetThumbnailView class]])
         return;
     
+    // Selected
     if (assetView.selected)
     {
+        // Prefent further selections?
+        if ((_selectionCountLimit > 0) &&
+            (_selectedAssets.count >= _selectionCountLimit))
+        {
+            assetView.selected = NO;
+            return;
+        }
+        
         NBULogVerbose(@"Asset %p selected", assetView.asset);
         [_selectedAssets addObject:assetView.asset];
     }
+    
+    // Deselected
     else
     {
         NBULogVerbose(@"Asset %p deselected", assetView.asset);
         [_selectedAssets removeObject:assetView.asset];
     }
+    
+    // Update the continue button
+    _continueButton.enabled = _selectedAssets.count > 0;
     
     // Call the selection changed block
     if (_selectionChangedBlock) _selectionChangedBlock();

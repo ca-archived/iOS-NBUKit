@@ -3,8 +3,8 @@
 #  CopyNBUKitResources.sh
 #  NBUKit
 #
-#  Created by 利辺羅 on 2013/01/17.
-#  Copyright (c) 2013年 CyberAgent Inc. All rights reserved.
+#  Created by Ernesto Rivera on 2013/01/17.
+#  Copyright (c) 2013 CyberAgent Inc. All rights reserved.
 
 # Copy NBUKit.framework resources to NBUKitResources.bundle
 echo "Copy NBUKit.framework resources..."

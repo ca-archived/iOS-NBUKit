@@ -2,8 +2,20 @@
 //  NBUImagePickerController.m
 //  NBUKit
 //
-//  Created by 利辺羅 on 2012/11/12.
-//  Copyright (c) 2012年 CyberAgent Inc. All rights reserved.
+//  Created by Ernesto Rivera on 2012/11/12.
+//  Copyright (c) 2012 CyberAgent Inc.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 #import "NBUImagePickerController.h"
@@ -12,15 +24,12 @@
 #undef  NBUKIT_MODULE
 #define NBUKIT_MODULE   NBUKIT_MODULE_CAMERA_ASSETS
 
-NSString * const NBUImagePickerOriginalImageKey     = @"NBUImagePickerOriginalImageKey";
-NSString * const NBUImagePickerOriginalImageURLKey  = @"NBUImagePickerOriginalImageURLKey";
-NSString * const NBUImagePickerEditedImageKey       = @"NBUImagePickerEditedImageKey";
-NSString * const NBUImagePickerEditedImageURLKey    = @"NBUImagePickerEditedImageURLKey";
-
 @implementation NBUImagePickerController
 {
-    BOOL _mediaInfoMode;
-    NSMutableArray * _mediaInfo;
+    BOOL _returnMediaInfoMode;
+    BOOL _singleImageMode;
+    NSMutableArray * _mediaInfos;
+    NSMutableDictionary * _previousSelectedAssetPaths;
 }
 
 @synthesize options = _options;
@@ -36,9 +45,9 @@ NSString * const NBUImagePickerEditedImageURLKey    = @"NBUImagePickerEditedImag
                                         nibName:(NSString *)nibName
                                     resultBlock:(NBUImagePickerResultBlock)resultBlock
 {
-    NBUImagePickerController * controller = [[NSBundle loadNibNamed:nibName ? nibName : @"NBUImagePickerController"
-                                                              owner:nil
-                                                            options:nil] objectAtIndex:0];
+    NBUImagePickerController * controller = [NSBundle loadNibNamed:nibName ? nibName : @"NBUImagePickerController"
+                                                             owner:nil
+                                                           options:nil][0];
     controller.resultBlock = resultBlock;
     controller.options = options;
     controller.modalPresentationStyle = UIModalPresentationFormSheet;
@@ -68,15 +77,23 @@ NSString * const NBUImagePickerEditedImageURLKey    = @"NBUImagePickerEditedImag
     }
     
     // Otherwise use a prompt
+    NSString * cancel = NSLocalizedStringWithDefaultValue(@"NBUImagePickerController Cancel prompt actionSheet",
+                                                          nil, nil,
+                                                          @"Cancel",
+                                                          @"NBUImagePickerController Cancel prompt actionSheet");
+    NSString * takePicture = NSLocalizedStringWithDefaultValue(@"NBUImagePickerController Take picture actionSheet",
+                                                               nil, nil,
+                                                               @"Take a picture",
+                                                               @"NBUImagePickerController Take picture actionSheet");
+    NSString * chooseImage = NSLocalizedStringWithDefaultValue(@"NBUImagePickerController Choose image actionSheet",
+                                                               nil, nil,
+                                                               @"Choose an image",
+                                                               @"NBUImagePickerController Choose image actionSheet");
     NBUActionSheet * actionSheet = [[NBUActionSheet alloc] initWithTitle:nil
                                                                 delegate:nil
-                                                       cancelButtonTitle:NSLocalizedString(@"Cancel",
-                                                                                           @"Picker actionSheet")
+                                                       cancelButtonTitle:cancel
                                                   destructiveButtonTitle:nil
-                                                       otherButtonTitles:NSLocalizedString(@"Take a picture",
-                                                                                           @"Picker actionSheet"),
-                                    NSLocalizedString(@"Choose a picture",
-                                                      @"Picker actionSheet"), nil];
+                                                       otherButtonTitles:takePicture, chooseImage, nil];
     actionSheet.selectedButtonBlock = ^(NSInteger buttonIndex)
     {
         self.rootViewController = buttonIndex == 0 ? _cameraController : _libraryController;
@@ -110,23 +127,6 @@ NSString * const NBUImagePickerEditedImageURLKey    = @"NBUImagePickerEditedImag
     }
 }
 
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-    
-    // Localization
-    _cameraController.navigationItem.title = NSLocalizedString(@"Camera",
-                                                               @"Picker CameraTitle");
-    _libraryController.navigationItem.title = NSLocalizedString(@"Loading...",
-                                                                @"Picker LibraryLoadingTitle");
-    _editController.navigationItem.title = NSLocalizedString(@"Edit",
-                                                             @"Picker EditTitle");
-    _editController.navigationItem.rightBarButtonItem.title = NSLocalizedString(@"Apply",
-                                                                                @"Picker EditApplyButton");
-    _confirmController.navigationItem.title = NSLocalizedString(@"Confirm",
-                                                                @"Picker ConfirmTitle");
-}
-
 - (BOOL)shouldAutorotate
 {
     return [self.topViewController shouldAutorotate];
@@ -144,58 +144,9 @@ NSString * const NBUImagePickerEditedImageURLKey    = @"NBUImagePickerEditedImag
 
 #pragma mark - Images and Media Info
 
-- (NSArray *)currentMediaInfo
+- (NSMutableArray *)currentMediaInfos
 {
-    return _mediaInfo;
-}
-
-- (void)addMediaInfo:(NSDictionary *)mediaInfo
-             atIndex:(NSUInteger)index
-{
-    if (index >= _mediaInfo.count)
-    {
-        _mediaInfo[index] = [NSMutableDictionary dictionaryWithDictionary:mediaInfo];
-    }
-    else
-    {
-        [(NSMutableDictionary *)_mediaInfo[index] addEntriesFromDictionary:mediaInfo];
-    }
-}
-
-- (UIImage *)originalImageAtIndex:(NSUInteger)index
-{
-    return _mediaInfo[index][NBUImagePickerOriginalImageKey];
-}
-
-- (void)setOriginalImage:(UIImage *)image
-                 atIndex:(NSUInteger)index
-{
-    [self addMediaInfo:@{ NBUImagePickerOriginalImageKey : image }
-               atIndex:index];
-}
-
-- (UIImage *)editedImageAtIndex:(NSUInteger)index
-{
-    UIImage * editedImage = _mediaInfo[index][NBUImagePickerEditedImageKey];
-    
-    return editedImage ? editedImage : [self originalImageAtIndex:index];
-}
-
-- (void)setEditedImage:(UIImage *)image
-               atIndex:(NSUInteger)index
-{
-    [self addMediaInfo:@{ NBUImagePickerEditedImageKey : image }
-               atIndex:index];
-}
-
-- (BOOL)imageAtIndexIsTakenFromCamera:(NSUInteger)index
-{
-    return !_mediaInfo[index][NBUImagePickerOriginalImageURLKey];
-}
-
-- (BOOL)imageAtIndexIsEdited:(NSUInteger)index
-{
-    return _mediaInfo[index][NBUImagePickerEditedImageKey] != nil;
+    return _mediaInfos;
 }
 
 #pragma mark - Customization
@@ -211,8 +162,10 @@ NSString * const NBUImagePickerEditedImageURLKey    = @"NBUImagePickerEditedImag
     _options = options;
     
     // NBUImagePickerResultBlock mode
-    _mediaInfoMode = (_options & NBUImagePickerOptionReturnMediaInfo) == NBUImagePickerOptionReturnMediaInfo;
-    _mediaInfo = [NSMutableArray array];
+    _returnMediaInfoMode = (_options & NBUImagePickerOptionReturnMediaInfo) == NBUImagePickerOptionReturnMediaInfo;
+    _singleImageMode = (options & NBUImagePickerOptionMultipleImages) != NBUImagePickerOptionMultipleImages;
+    _mediaInfos = [NSMutableArray array];
+    _previousSelectedAssetPaths = [NSMutableDictionary dictionary];
     
     // Configure camera controller
     [self configureCameraController:options];
@@ -231,6 +184,44 @@ NSString * const NBUImagePickerEditedImageURLKey    = @"NBUImagePickerEditedImag
     
     // Configure the root controller
     [self configureRootController:options];
+}
+
+- (IBAction)goToNextStep:(id)sender
+{
+    [self prepareToGoToNextStep];
+    
+    // *** Override to customize the flow ***
+    
+    // Edit?
+    if (_editController &&
+        (self.topViewController == _cameraController ||
+         self.topViewController == _assetsGroupController))
+    {
+        [self editImages];
+        return;
+    }
+    
+    // Confirm?
+    if (_confirmController &&
+        self.topViewController != _confirmController)
+    {
+        [self confirmImages];
+        return;
+    }
+    
+    // Else just finish the picker
+    [self finishPicker:self];
+}
+
+- (void)prepareToGoToNextStep
+{
+    // *** Override if you need to take some actions before going to the next step ***
+    
+    // First refresh media infos if nedeed
+    if (self.topViewController == _editController)
+    {
+        _mediaInfos = _editController.editedMediaInfos;
+    }
 }
 
 - (void)finishConfiguringControllers:(NBUImagePickerOptions)options
@@ -269,26 +260,39 @@ NSString * const NBUImagePickerEditedImageURLKey    = @"NBUImagePickerEditedImag
         _cameraController = nil;
         _libraryController.navigationItem.rightBarButtonItem = nil;
         _assetsGroupController.navigationItem.rightBarButtonItem = nil;
+        return;
     }
-    // Customize camera controller
-    else
+    
+    // Configure controller
+    _cameraController.navigationItem.title = NSLocalizedStringWithDefaultValue(@"NBUImagePickerController CameraTitle",
+                                                                               nil, nil,
+                                                                               @"Camera",
+                                                                               @"NBUImagePickerController CameraTitle");
+    _cameraController.supportedInterfaceOrientations = UIInterfaceOrientationMaskPortrait;
+    _cameraController.singlePictureMode = _singleImageMode;
+    
+    __unsafe_unretained NBUImagePickerController * weakSelf = self;
+    BOOL singleImageMode = _singleImageMode;
+    _cameraController.captureResultBlock = ^(UIImage * image,
+                                             NSError * error)
     {
-        _cameraController.supportedInterfaceOrientations = UIInterfaceOrientationMaskPortrait;
-        _cameraController.singlePictureMode = !(options & NBUImagePickerOptionMultipleImages);
-        
-        __unsafe_unretained NBUImagePickerController * weakSelf = self;
-        _cameraController.captureResultBlock = ^(UIImage * image,
-                                                 NSError * error)
+        if (!error && image)
         {
-            if (!error)
+            NBUMediaInfo * mediaInfo = [NBUMediaInfo mediaInfoWithOriginalImage:image];
+            
+            if (singleImageMode)
             {
-                [weakSelf setOriginalImage:image
-                                   atIndex:0];
-                
-                [weakSelf editImageAtIndex:0];
+                weakSelf.currentMediaInfos[0] = mediaInfo;
             }
-        };
-    }
+            else
+            {
+                [weakSelf.currentMediaInfos insertObject:mediaInfo
+                                                 atIndex:0];
+            }
+            
+            [weakSelf goToNextStep:weakSelf];
+        }
+    };
 }
 
 #pragma mark - Library controller
@@ -303,39 +307,119 @@ NSString * const NBUImagePickerEditedImageURLKey    = @"NBUImagePickerEditedImag
         _libraryController = nil;
         _assetsGroupController = nil;
         _cameraController.navigationItem.rightBarButtonItem = nil;
+        return;
     }
-    else
+    
+    // Customize
+    _libraryController.navigationItem.title = NSLocalizedStringWithDefaultValue(@"NBUImagePickerController LibraryLoadingTitle",
+                                                                                nil, nil,
+                                                                                @"Loading...",
+                                                                                @"NBUImagePickerController LibraryLoadingTitle");
+    _libraryController.customBackButtonTitle = NSLocalizedStringWithDefaultValue(@"NBUImagePickerController libraryController.customBackButtonTitle",
+                                                                                 nil, nil,
+                                                                                 @"Albums",
+                                                                                 @"NBUImagePickerController libraryController.customBackButtonTitle");
+    _libraryController.assetsGroupController = _assetsGroupController;
+    
+    [self configureAssetsGroupController:options];
+}
+
+- (void)configureAssetsGroupController:(NBUImagePickerOptions)options
+{
+    // Customize assets group controller
+    _assetsGroupController.navigationItem.leftBarButtonItem = nil; // Allow back button
+    _assetsGroupController.customBackButtonTitle = NSLocalizedStringWithDefaultValue(@"NBUImagePickerController assetsGroupController.customBackButtonTitle",
+                                                                                     nil, nil,
+                                                                                     @"Library",
+                                                                                     @"NBUImagePickerController assetsGroupController.customBackButtonTitle");
+    
+    // Single image mode
+    if (_singleImageMode)
     {
-        [_libraryController setCustomBackButtonTitle:NSLocalizedString(@"Albums", @"BackButtonTitle")];
+        _assetsGroupController.selectionCountLimit = 1;
+        _assetsGroupController.clearsSelectionOnViewWillAppear = YES;
         
         __unsafe_unretained NBUImagePickerController * weakSelf = self;
-        _libraryController.groupControllerBlock = ^UIViewController *(NBUAssetsGroup * assetsGroup)
-        {
-            weakSelf.assetsGroupController.assetsGroup = assetsGroup;
-            return weakSelf.assetsGroupController;
-        };
-        
-        // Customize assets group controller
-        _assetsGroupController.navigationItem.leftBarButtonItem = nil; // Allow back button
-        _assetsGroupController.singleImageMode = !(options & NBUImagePickerOptionMultipleImages);
         _assetsGroupController.selectionChangedBlock = ^()
         {
             NSArray * selectedAssets = weakSelf.assetsGroupController.selectedAssets;
             if (selectedAssets.count > 0)
             {
-                UIImage * image = ((NBUAsset *)selectedAssets[0]).fullResolutionImage;
-                
-                [weakSelf addMediaInfo:@
-                 {
-                     NBUImagePickerOriginalImageKey     : image,
-                     NBUImagePickerOriginalImageURLKey  : ((NBUAsset *)selectedAssets[0]).URL
-                 }
-                               atIndex:0];
-                
-                [weakSelf editImageAtIndex:0];
+                [weakSelf finishAssetsSelection];
             }
         };
     }
+    
+    // Multiple images mode
+    else
+    {
+        UIBarButtonItem * continueButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringWithDefaultValue(@"NBUImagePickerController assetsGroupController.continueButton",
+                                                                                                                    nil, nil,
+                                                                                                                    @"Continue",
+                                                                                                                    @"NBUImagePickerController assetsGroupController.continueButton")
+                                                                            style:UIBarButtonItemStyleDone
+                                                                           target:self
+                                                                           action:@selector(finishAssetsSelection)];
+        _assetsGroupController.continueButton = continueButton;
+        _assetsGroupController.navigationItem.rightBarButtonItem = continueButton;
+    }
+}
+
+- (void)finishAssetsSelection
+{
+    NSArray * selectedAssets = _assetsGroupController.selectedAssets;
+    
+    // Remove no longer selected assets
+    NBUAsset * asset;
+    NSString * path;
+    NBUMediaInfo * mediaInfo;
+    BOOL stillSelected;
+    for (NSString * previouslySelectedAssetPath in _previousSelectedAssetPaths.allKeys)
+    {
+        stillSelected = NO;
+        for (asset in selectedAssets)
+        {
+            path = asset.URL.absoluteString;
+            if ([previouslySelectedAssetPath isEqualToString:path])
+            {
+                stillSelected = YES;
+                break;
+            }
+        }
+        
+        if (!stillSelected)
+        {
+            mediaInfo = _previousSelectedAssetPaths[previouslySelectedAssetPath];
+            [_mediaInfos removeObject:mediaInfo];
+            [_previousSelectedAssetPaths removeObjectForKey:previouslySelectedAssetPath];
+        }
+    }
+    
+    // Add newly selected assets
+    for (asset in selectedAssets)
+    {
+        path = asset.URL.absoluteString;
+        if (!_previousSelectedAssetPaths[path])
+        {
+            mediaInfo = [NBUMediaInfo mediaInfoWithAttributes:
+                         @{
+                          NBUMediaInfoOriginalAssetKey       : asset,
+                          NBUMediaInfoOriginalMediaURLKey    : asset.URL
+                         }];
+            
+            if (_singleImageMode)
+            {
+                _mediaInfos[0] = mediaInfo;
+            }
+            else
+            {
+                [_mediaInfos addObject:mediaInfo];
+                _previousSelectedAssetPaths[path] = mediaInfo;
+            }
+        }
+    }
+
+    [self goToNextStep:self];
 }
 
 #pragma mark - Edit controller
@@ -346,6 +430,7 @@ NSString * const NBUImagePickerEditedImageURLKey    = @"NBUImagePickerEditedImag
         (options & NBUImagePickerOptionDisableFilters))
     {
         NBULogVerbose(@"Options: Edit disabled");
+        
         _editController = nil;
         return;
     }
@@ -358,65 +443,63 @@ NSString * const NBUImagePickerEditedImageURLKey    = @"NBUImagePickerEditedImag
     _editController.workingSize = CGSizeMake(450.0 * scale,
                                              450.0 * scale);
     
-    // Set result block
-    __unsafe_unretained NBUImagePickerController * weakSelf = self;
-    _editController.resultBlock = ^(UIImage * editedImage)
+    // UI customization
+    _editController.navigationItem.rightBarButtonItem.title = NSLocalizedStringWithDefaultValue(@"NBUImagePickerController editController rightBarButtonItem.title",
+                                                                                                nil, nil,
+                                                                                                @"Next",
+                                                                                                @"NBUImagePickerController editController rightBarButtonItem.title");
+    if (_singleImageMode)
     {
-        // Register edited image
-        [weakSelf setEditedImage:editedImage
-                         atIndex:0];
-        
-        [weakSelf confirmOrFinishWithImageAtIndex:0];
-    };
+        _editController.navigationItem.titleView = nil;
+        _editController.updatesTitle = NO;
+        _editController.navigationItem.title = NSLocalizedStringWithDefaultValue(@"NBUImagePickerController editController title",
+                                                                                 nil, nil,
+                                                                                 @"Edit",
+                                                                                 @"NBUImagePickerController editController title");
+    }
 }
 
-- (void)editImageAtIndex:(NSUInteger)index
+- (void)editImages
 {
-    // No edit?
-    if (!_editController)
+    NBULogInfo(@"%@: %@", THIS_METHOD, _mediaInfos);
+    
+    // Configure the edit controller
+    _editController.mediaInfos = _mediaInfos;
+    
+    // Prepare its view if needed
+    if (!_editController.isViewLoaded &&
+        !_editController.nibName)
     {
-        [self confirmOrFinishWithImageAtIndex:index];
-    }
-    else
-    {
-        // Configure the edit controller
-        _editController.image = [self originalImageAtIndex:index];
-        
-        // Prepare its view if needed
-        if (!_editController.isViewLoaded &&
-            !_editController.nibName)
+        // No filters?
+        if (_options & NBUImagePickerOptionDisableFilters)
         {
-            // No filters?
-            if (_options & NBUImagePickerOptionDisableFilters)
-            {
-                [NSBundle loadNibNamed:@"NBUCropViewController"
-                                 owner:_editController
-                               options:nil];
-            }
-            
-            // No crop?
-            else if (_options & NBUImagePickerOptionDisableCrop)
-            {
-                [NSBundle loadNibNamed:@"NBUPresetFilterViewController"
-                                 owner:_editController
-                               options:nil];
-            }
-            
-            // Use both
-            else
-            {
-                [NSBundle loadNibNamed:@"NBUEditImageViewController"
-                                 owner:_editController
-                               options:nil];
-            }
-            
-            // Manually call viewDidLoad
-            [_editController viewDidLoad];
+            [NSBundle loadNibNamed:@"NBUCropViewController"
+                             owner:_editController
+                           options:nil];
         }
         
-        [self pushViewController:_editController
-                        animated:YES];
+        // No crop?
+        else if (_options & NBUImagePickerOptionDisableCrop)
+        {
+            [NSBundle loadNibNamed:@"NBUPresetFilterViewController"
+                             owner:_editController
+                           options:nil];
+        }
+        
+        // Use both
+        else
+        {
+            [NSBundle loadNibNamed:@"NBUEditImageViewController"
+                             owner:_editController
+                           options:nil];
+        }
+        
+        // Manually call viewDidLoad
+        [_editController viewDidLoad];
     }
+    
+    [self pushViewController:_editController
+                    animated:YES];
 }
 
 #pragma mark - Confirm controller
@@ -426,42 +509,41 @@ NSString * const NBUImagePickerEditedImageURLKey    = @"NBUImagePickerEditedImag
     if (options & NBUImagePickerOptionDisableConfirmation)
     {
         NBULogVerbose(@"Options: Confirmation disabled");
+        
         _confirmController = nil;
+        return;
     }
+    
+    // Configure controller
+    _confirmController.navigationItem.title = NSLocalizedStringWithDefaultValue(@"NBUImagePickerController confirmController title",
+                                                                                nil, nil,
+                                                                                @"Confirm",
+                                                                                @"NBUImagePickerController confirmController title");
+    _confirmController.updatesTitle = NO;
 }
 
-- (void)confirmOrFinishWithImageAtIndex:(NSUInteger)index
+- (void)confirmImages
 {
-    // No confirmation?
-    if (!_confirmController)
-    {
-        [self finishPicker:self];
-    }
-    else
-    {
-        _confirmController.imageView.image = [self editedImageAtIndex:index];
-        [self pushViewController:_confirmController
-                        animated:YES];
-    }
+    _confirmController.objectArray = _mediaInfos;
+    
+    [self pushViewController:_confirmController
+                    animated:YES];
 }
 
 #pragma mark - Actions
 
 - (IBAction)toggleSource:(id)sender
 {
-    if (self.rootViewController != _cameraController)
+    if (self.topViewController == _cameraController)
     {
-        self.rootViewController = _cameraController;
+        self.topViewController = _libraryController;
     }
     else
     {
-        self.rootViewController = _libraryController;
+        self.topViewController = _cameraController;
     }
     
-    // Force orientation refresh
-    UIViewController * controller = [UIViewController new];
-    [self presentModalViewController:controller animated:NO];
-    [self dismissModalViewControllerAnimated:NO];
+    [self refreshOrientation];
 }
 
 - (IBAction)finishPicker:(id)sender
@@ -469,22 +551,26 @@ NSString * const NBUImagePickerEditedImageURLKey    = @"NBUImagePickerEditedImag
     // Save images?
     BOOL saveTaken = (_options & NBUImagePickerOptionSaveTakenImages) == NBUImagePickerOptionSaveTakenImages;
     BOOL saveEdited = (_options & NBUImagePickerOptionSaveEditedImages) == NBUImagePickerOptionSaveEditedImages;
-    if (_options & NBUImagePickerOptionSaveTakenImages || _options & NBUImagePickerOptionSaveEditedImages)
+    if (saveTaken || saveEdited)
     {
-        for (NSUInteger index = 0; index < _mediaInfo.count; index++)
+        BOOL sourceIsCamera;
+        BOOL imageIsEdited;
+        for (NSUInteger index = 0; index < _mediaInfos.count; index++)
         {
-            if ((saveTaken && [self imageAtIndexIsTakenFromCamera:index]) ||
-                (saveEdited && [self imageAtIndexIsEdited:index]))
+            sourceIsCamera = ((NBUMediaInfo *)_mediaInfos[index]).source == NBUMediaInfoSourceCamera;
+            imageIsEdited = ((NBUMediaInfo *)_mediaInfos[index]).edited;
+            if ((saveTaken && sourceIsCamera) ||
+                (saveEdited && imageIsEdited))
             {
-                [[NBUAssetsLibrary sharedLibrary] saveImageToCameraRoll:[self editedImageAtIndex:index]
-                                                               metadata:nil // _mediaInfo[index] (seems give problems)
+                [[NBUAssetsLibrary sharedLibrary] saveImageToCameraRoll:((NBUMediaInfo *)_mediaInfos[index]).editedImage
+                                                               metadata:nil
                                                addToAssetsGroupWithName:_targetLibraryAlbumName
                                                             resultBlock:^(NSURL * assetURL,
                                                                           NSError * error)
                  {
-                     if (assetURL)
+                     if (!error && assetURL)
                      {
-                         _mediaInfo[index][NBUImagePickerEditedImageURLKey] = assetURL;
+                         ((NBUMediaInfo *)_mediaInfos[index]).attributes[NBUMediaInfoEditedMediaURLKey] = assetURL;
                      }
                  }];
             }
@@ -492,13 +578,13 @@ NSString * const NBUImagePickerEditedImageURLKey    = @"NBUImagePickerEditedImag
     }
     
     // Prepare result
-    NSMutableArray * result = _mediaInfo;
-    if (!_mediaInfoMode)
+    NSMutableArray * result = _mediaInfos;
+    if (!_returnMediaInfoMode)
     {
-        result = [NSMutableArray arrayWithCapacity:_mediaInfo.count];
-        for (NSUInteger index = 0; index < _mediaInfo.count; index++)
+        result = [NSMutableArray arrayWithCapacity:_mediaInfos.count];
+        for (NSUInteger index = 0; index < _mediaInfos.count; index++)
         {
-            [result addObject:[self editedImageAtIndex:index++]];
+            [result addObject:((NBUMediaInfo *)_mediaInfos[index++]).editedImage];
         }
     }
     
@@ -531,13 +617,6 @@ NSString * const NBUImagePickerEditedImageURLKey    = @"NBUImagePickerEditedImag
         [self dismissModalViewControllerAnimated:YES];
     }
 }
-
-@end
-
-
-@implementation NBUImagePickerConfirmController
-
-@synthesize imageView = _imageView;
 
 @end
 

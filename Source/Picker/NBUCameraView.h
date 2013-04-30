@@ -2,8 +2,20 @@
 //  NBUCameraView.h
 //  NBUKit
 //
-//  Created by 利辺羅 on 2012/10/15.
-//  Copyright (c) 2012年 CyberAgent Inc. All rights reserved.
+//  Created by Ernesto Rivera on 2012/10/15.
+//  Copyright (c) 2012 CyberAgent Inc.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 #import "ActiveView.h"
@@ -35,14 +47,13 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 /// @name Configurable Properties
 
 /// The minimum desired resolution.
-///
-/// If not set full camera resolution will be used but to improve performance
+/// @discussion If not set full camera resolution will be used but to improve performance
 /// you could set a lower resolution.
 /// @note The captured image may not exactly match the targetResolution.
 @property (nonatomic)                   CGSize targetResolution;
 
 /// The optional block to be called immediately after capturing the picture.
-@property (nonatomic, strong)           NBUCapturePictureResultBlock captureResultBlock;
+@property (nonatomic, copy)             NBUCapturePictureResultBlock captureResultBlock;
 
 /// Whether to save the pictures to the the library. Default `NO`.
 @property (nonatomic)                   BOOL savePicturesToLibrary;
@@ -53,15 +64,15 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 
 /// The optional block to be called if savePicturesToLibrary is enabled.
 /// @note This block has some delay over captureResultBlock.
-@property (nonatomic, strong)           NBUSavePictureResultBlock saveResultBlock;
+@property (nonatomic, copy)             NBUSavePictureResultBlock saveResultBlock;
 
 /// Whether the view should compensate device orientation changes. Default `NO`.
-/// @note Set to `YES` when inside view controllers that rotate.
-@property (nonatomic)                   BOOL shouldAutoAdjustOrientation;
+/// @note Set to `YES` when inside view controllers that support rotation.
+@property (nonatomic)                   BOOL shouldAutoRotateView;
 
 /// Programatically force the view to rotate.
 /// @param orientation The desired interface orientation.
-- (void)adjustToInterfaceOrientation:(UIInterfaceOrientation)orientation;
+- (void)setInterfaceOrientation:(UIInterfaceOrientation)orientation;
 
 /// @name Capture Devices and Modes
 
@@ -89,22 +100,22 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 @property (nonatomic)                   BOOL showDisabledControls;
 
 /// The block to be used to configure the shootButton.
-@property (nonatomic, strong)           NBUButtonConfigurationBlock shootButtonConfigurationBlock;
+@property (nonatomic, copy)             NBUButtonConfigurationBlock shootButtonConfigurationBlock;
 
 /// The block to be used to configure the toggleCameraButton.
-@property (nonatomic, strong)           NBUButtonConfigurationBlock toggleCameraButtonConfigurationBlock;
+@property (nonatomic, copy)             NBUButtonConfigurationBlock toggleCameraButtonConfigurationBlock;
 
 /// The block to be used to configure the flashButton.
-@property (nonatomic, strong)           NBUButtonConfigurationBlock flashButtonConfigurationBlock;
+@property (nonatomic, copy)             NBUButtonConfigurationBlock flashButtonConfigurationBlock;
 
 /// The block to be used to configure the focusButton.
-@property (nonatomic, strong)           NBUButtonConfigurationBlock focusButtonConfigurationBlock;
+@property (nonatomic, copy)             NBUButtonConfigurationBlock focusButtonConfigurationBlock;
 
 /// The block to be used to configure the exposureButton.
-@property (nonatomic, strong)           NBUButtonConfigurationBlock exposureButtonConfigurationBlock;
+@property (nonatomic, copy)             NBUButtonConfigurationBlock exposureButtonConfigurationBlock;
 
 /// The block to be used to configure the whiteBalanceButton.
-@property (nonatomic, strong)           NBUButtonConfigurationBlock whiteBalanceButtonConfigurationBlock;
+@property (nonatomic, copy)             NBUButtonConfigurationBlock whiteBalanceButtonConfigurationBlock;
 
 /// @name Actions
 
@@ -113,32 +124,27 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 - (IBAction)takePicture:(id)sender;
 
 /// Switch between front and back cameras (if available).
-///
-/// Configures toggleCameraButton using toggleCameraButtonConfigurationBlock when available.
+/// @discussion Configures toggleCameraButton using toggleCameraButtonConfigurationBlock when available.
 /// @param sender The sender object.
 - (IBAction)toggleCamera:(id)sender;
 
 /// Change the flash mode (if available).
-///
-/// Configures flashButton using flashButtonConfigurationBlock when available.
+/// @discussion Configures flashButton using flashButtonConfigurationBlock when available.
 /// @param sender The sender object.
 - (IBAction)toggleFlashMode:(id)sender;
 
 /// Change the focus mode (if available).
-///
-/// Configures focusButton using focusButtonConfigurationBlock when available.
+/// @discussion Configures focusButton using focusButtonConfigurationBlock when available.
 /// @param sender The sender object.
 - (IBAction)toggleFocusMode:(id)sender;
 
 /// Change the exposure mode (if available).
-///
-/// Configures exposureButton using exposureButtonConfigurationBlock when available.
+/// @discussion Configures exposureButton using exposureButtonConfigurationBlock when available.
 /// @param sender The sender object.
 - (IBAction)toggleExposureMode:(id)sender;
 
 /// Change the white balance mode (if available).
-///
-/// Configures whiteBalanceButton using whiteBalanceButtonConfigurationBlock when available.
+/// @discussion Configures whiteBalanceButton using whiteBalanceButtonConfigurationBlock when available.
 /// @param sender The sender object.
 - (IBAction)toggleWhiteBalanceMode:(id)sender;
 

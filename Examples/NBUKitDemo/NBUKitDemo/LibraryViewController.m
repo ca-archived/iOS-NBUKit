@@ -2,8 +2,20 @@
 //  LibraryViewController.m
 //  NBUKitDemo
 //
-//  Created by 利辺羅 on 2012/11/09.
-//  Copyright (c) 2012年 CyberAgent Inc. All rights reserved.
+//  Created by Ernesto Rivera on 2012/11/09.
+//  Copyright (c) 2012 CyberAgent Inc.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 #import "LibraryViewController.h"
@@ -30,16 +42,9 @@
     self.objectTableView.nibNameForViews = @"CustomAssetsGroupView";
     
     // Customization
-    [self setCustomBackButtonTitle:@"Albums"];
-    self.groupControllerBlock = ^UIViewController *(NBUAssetsGroup * group)
-    {
-        // *** The controller to be pushed when tapping on an assets group ***
-        AssetsGroupViewController * controller = [[AssetsGroupViewController alloc] initWithNibName:@"NBUAssetsGroupViewController"
-                                                                                             bundle:nil];
-        controller.assetsGroup = group;
-        
-        return controller;
-    };
+    self.customBackButtonTitle = @"Albums";
+    self.assetsGroupController = [[AssetsGroupViewController alloc] initWithNibName:@"NBUAssetsGroupViewController"
+                                                                             bundle:nil];
 }
 
 #pragma mark - Handling access authorization

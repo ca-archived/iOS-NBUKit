@@ -2,27 +2,25 @@
 //  NBUSaveToUserDefaultsAndKeychainTests.m
 //  NBUKit
 //
-//  Created by 利辺羅 on 2012/09/21.
-//  Copyright (c) 2012年 CyberAgent Inc. All rights reserved.
+//  Created by Ernesto Rivera on 2012/09/21.
+//  Copyright (c) 2012 CyberAgent Inc.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 #import "NBUSaveToUserDefaultsAndKeychainTests.h"
 
 @implementation NBUSaveToUserDefaultsAndKeychainTests
-
-- (void)setUp
-{
-    [super setUp];
-    
-    // Set-up code here.
-}
-
-- (void)tearDown
-{
-    // Tear-down code here.
-    
-    [super tearDown];
-}
 
 - (NSString *)createString
 {
@@ -65,7 +63,7 @@
 
 #pragma mark - Normal save
 
-- (void)testSaveReadAndDeleteString
+- (void)test0SaveReadAndDeleteString
 {
     // Save
     NSString * original = [self createString];
@@ -84,7 +82,7 @@
     STAssertNil(saved, @"Object was not deleted");
 }
 
-- (void)testSaveReadAndDeleteArray
+- (void)test1SaveReadAndDeleteArray
 {
     // Save
     NSArray * original = [self createArray];
@@ -103,7 +101,7 @@
     STAssertNil(saved, @"Object was not deleted");
 }
 
-- (void)testSaveReadAndDeleteDictionary
+- (void)test2SaveReadAndDeleteDictionary
 {
     // Save
     NSDictionary * original = [self createDictionary];
@@ -122,7 +120,7 @@
     STAssertNil(saved, @"Object was not deleted");
 }
 
-- (void)testSaveReadAndDeleteData
+- (void)test3SaveReadAndDeleteData
 {
     // Save
     NSData * original = [self createData];
@@ -141,7 +139,7 @@
     STAssertNil(saved, @"Object was not deleted");
 }
 
-- (void)testSaveReadAndDeleteObjectTree
+- (void)test4SaveReadAndDeleteObjectTree
 {
     // Save
     id original = [self createObjectTree];
@@ -162,7 +160,7 @@
 
 #pragma mark - Secure save
 
-- (void)testSecureSaveReadAndDeleteString
+- (void)test5SecureSaveReadAndDeleteString
 {
     // Save
     NSString * original = [self createString];
@@ -181,7 +179,7 @@
     STAssertNil(saved, @"Object was not deleted");
 }
 
-- (void)TODOtestSecureSaveReadAndDeleteArray
+- (void)TODOtest6SecureSaveReadAndDeleteArray
 {
     // Save
     NSArray * original = [self createArray];
@@ -200,7 +198,7 @@
     STAssertNil(saved, @"Object was not deleted");
 }
 
-- (void)TODOtestSecureSaveReadAndDeleteDictionary
+- (void)TODOtest7SecureSaveReadAndDeleteDictionary
 {
     // Save
     NSDictionary * original = [self createDictionary];
@@ -219,7 +217,7 @@
     STAssertNil(saved, @"Object was not deleted");
 }
 
-- (void)TODOtestSecureSaveReadAndDeleteData
+- (void)TODOtest8SecureSaveReadAndDeleteData
 {
     // Save
     NSData * original = [self createData];
@@ -238,7 +236,7 @@
     STAssertNil(saved, @"Object was not deleted");
 }
 
-- (void)TODOtestSecureSaveReadAndDeleteObjectTree
+- (void)TODOtest9SecureSaveReadAndDeleteObjectTree
 {
     // Save
     id original = [self createObjectTree];

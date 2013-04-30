@@ -2,8 +2,20 @@
 //  NBUCameraViewController.h
 //  NBUKit
 //
-//  Created by 利辺羅 on 2012/11/12.
-//  Copyright (c) 2012年 CyberAgent Inc. All rights reserved.
+//  Created by Ernesto Rivera on 2012/11/12.
+//  Copyright (c) 2012 CyberAgent Inc.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 #import "NBUViewController.h"
@@ -26,7 +38,7 @@
 @property (nonatomic)                   CGSize targetResolution;
 
 /// Property passed to cameraView's [NBUCameraView captureResultBlock].
-@property (nonatomic, strong)           NBUCapturePictureResultBlock captureResultBlock;
+@property (nonatomic, copy)             NBUCapturePictureResultBlock captureResultBlock;
 
 /// Whether to save the pictures to the the library. Default `NO`.
 @property (nonatomic)                   BOOL savePicturesToLibrary;
@@ -36,8 +48,7 @@
 @property (nonatomic, strong)           NSString * targetLibraryAlbumName;
 
 /// Whether to use single picture mode. Default `NO`.
-///
-/// In this mode [NBUCameraView lastPictureImageView] will be removed.
+/// @discussion In this mode [NBUCameraView lastPictureImageView] will be removed.
 @property (nonatomic)                   BOOL singlePictureMode;
 
 /// Whether Volume Up and Volume Down buttons should be used to take pictures. Default `YES` for iOS5+.

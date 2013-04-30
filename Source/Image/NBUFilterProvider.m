@@ -2,8 +2,20 @@
 //  NBUFilterProvider.m
 //  NBUKit
 //
-//  Created by エルネスト 利辺羅 on 12/05/03.
-//  Copyright (c) 2012年 CyberAgent Inc. All rights reserved.
+//  Created by Ernesto Rivera on 12/05/03.
+//  Copyright (c) 2012 CyberAgent Inc.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 // Define module
@@ -14,8 +26,29 @@
 #import "NBUGPUImageFilterProvider.h"
 #import "NBUCoreImageFilterProvider.h"
 
+// Built-in filter types
+NSString * const NBUFilterTypeNone              = @"NBUFilterTypeNone";
+NSString * const NBUFilterTypeContrast          = @"NBUFilterTypeContrast";
+NSString * const NBUFilterTypeBrightness        = @"NBUFilterTypeBrightness";
+NSString * const NBUFilterTypeSaturation        = @"NBUFilterTypeSaturation";
+NSString * const NBUFilterTypeExposure          = @"NBUFilterTypeExposure";
+NSString * const NBUFilterTypeSharpen           = @"NBUFilterTypeSharpen";
+NSString * const NBUFilterTypeGamma             = @"NBUFilterTypeGamma";
+NSString * const NBUFilterTypeAuto              = @"NBUFilterTypeAuto";
+NSString * const NBUFilterTypeMonochrome        = @"NBUFilterTypeMonochrome";
+NSString * const NBUFilterTypeMultiplyBlend     = @"NBUFilterTypeMultiplyBlend";
+NSString * const NBUFilterTypeAdditiveBlend     = @"NBUFilterTypeAdditiveBlend";
+NSString * const NBUFilterTypeAlphaBlend        = @"NBUFilterTypeAlphaBlend";
+NSString * const NBUFilterTypeSourceOver        = @"NBUFilterTypeSourceOver";
+NSString * const NBUFilterTypeACV               = @"NBUFilterTypeACV";
+NSString * const NBUFilterTypeFisheye           = @"NBUFilterTypeFisheye";
+NSString * const NBUFilterTypeMaskBlur          = @"NBUFilterTypeMaskBlur";
+NSString * const NBUFilterTypeGroup             = @"NBUFilterTypeGroup";
+
+// Static variables
 static NSMutableArray * _providers;
 static NSArray * _availableFilterTypes;
+static NSDictionary * _localizedFilterNames;
 
 @implementation NBUFilterProvider
 
@@ -39,6 +72,86 @@ static NSArray * _availableFilterTypes;
     
     // Reset available filters
     _availableFilterTypes = nil;
+}
+
++ (NSString *)localizedNameForFilterWithType:(NSString *)type
+{
+    if (!_localizedFilterNames)
+    {
+        // Read the localized filter names
+        _localizedFilterNames = @
+        {
+            NBUFilterTypeNone           : NSLocalizedStringWithDefaultValue(@"NBUFilterProvider None filter",
+                                                                            nil, nil,
+                                                                            @"None",
+                                                                            @"NBUFilterProvider None filter"),
+            NBUFilterTypeContrast       : NSLocalizedStringWithDefaultValue(@"NBUFilterProvider Contrast filter",
+                                                                            nil, nil,
+                                                                            @"Contrast",
+                                                                            @"NBUFilterProvider Contrast filter"),
+            NBUFilterTypeBrightness     : NSLocalizedStringWithDefaultValue(@"NBUFilterProvider Brightness filter",
+                                                                            nil, nil,
+                                                                            @"Brightness",
+                                                                            @"NBUFilterProvider Brightness filter"),
+            NBUFilterTypeSaturation     : NSLocalizedStringWithDefaultValue(@"NBUFilterProvider Saturation filter",
+                                                                            nil, nil,
+                                                                            @"Saturation",
+                                                                            @"NBUFilterProvider Saturation filter"),
+            NBUFilterTypeExposure       : NSLocalizedStringWithDefaultValue(@"NBUFilterProvider Exposure filter",
+                                                                            nil, nil,
+                                                                            @"Exposure",
+                                                                            @"NBUFilterProvider Exposure filter"),
+            NBUFilterTypeSharpen        : NSLocalizedStringWithDefaultValue(@"NBUFilterProvider Sharpen filter",
+                                                                            nil, nil,
+                                                                            @"Sharpen",
+                                                                            @"NBUFilterProvider Sharpen filter"),
+            NBUFilterTypeGamma          : NSLocalizedStringWithDefaultValue(@"NBUFilterProvider filter",
+                                                                            nil, nil,
+                                                                            @"Gamma",
+                                                                            @"NBUFilterProvider filter"),
+            NBUFilterTypeAuto           : NSLocalizedStringWithDefaultValue(@"NBUFilterProvider Auto filter",
+                                                                            nil, nil,
+                                                                            @"Auto",
+                                                                            @"NBUFilterProvider Auto filter"),
+            NBUFilterTypeMonochrome     : NSLocalizedStringWithDefaultValue(@"NBUFilterProvider Monochrome filter",
+                                                                            nil, nil,
+                                                                            @"Monochrome",
+                                                                            @"NBUFilterProvider Monochrome filter"),
+            NBUFilterTypeMultiplyBlend  : NSLocalizedStringWithDefaultValue(@"NBUFilterProvider Multiply blend filter",
+                                                                            nil, nil,
+                                                                            @"Multiply blend",
+                                                                            @"NBUFilterProvider Multiply blend filter"),
+            NBUFilterTypeAdditiveBlend  : NSLocalizedStringWithDefaultValue(@"NBUFilterProvider Additive blend filter",
+                                                                            nil, nil,
+                                                                            @"Additive blend",
+                                                                            @"NBUFilterProvider Additive blend filter"),
+            NBUFilterTypeAlphaBlend     : NSLocalizedStringWithDefaultValue(@"NBUFilterProvider Alpha blend filter",
+                                                                            nil, nil,
+                                                                            @"Alpha blend",
+                                                                            @"NBUFilterProvider Alpha blend filter"),
+            NBUFilterTypeSourceOver     : NSLocalizedStringWithDefaultValue(@"NBUFilterProvider Source over filter",
+                                                                            nil, nil,
+                                                                            @"Source over",
+                                                                            @"NBUFilterProvider Source over filter"),
+            NBUFilterTypeACV            : NSLocalizedStringWithDefaultValue(@"NBUFilterProvider Curve adjustement filter",
+                                                                            nil, nil,
+                                                                            @"Curve adjustement",
+                                                                            @"NBUFilterProvider Curve adjustement filter"),
+            NBUFilterTypeFisheye        : NSLocalizedStringWithDefaultValue(@"NBUFilterProvider Fisheye filter",
+                                                                            nil, nil,
+                                                                            @"Fisheye",
+                                                                            @"NBUFilterProvider Fisheye filter"),
+            NBUFilterTypeMaskBlur       : NSLocalizedStringWithDefaultValue(@"NBUFilterProvider Mask blur filter",
+                                                                            nil, nil,
+                                                                            @"Mask blur",
+                                                                            @"NBUFilterProvider Mask blur filter"),
+            NBUFilterTypeGroup          : NSLocalizedStringWithDefaultValue(@"NBUFilterProvider Filter group filter",
+                                                                            nil, nil,
+                                                                            @"Filter group",
+                                                                            @"NBUFilterProvider Filter group filter")
+        };
+    }
+    return _localizedFilterNames[type];
 }
 
 #pragma mark - NBUFilterProvider protocol
@@ -73,7 +186,7 @@ static NSArray * _availableFilterTypes;
     // Handle the "None" filter
     if ([type isEqualToString:NBUFilterTypeNone])
     {
-        return [NBUFilter filterWithName:name
+        return [NBUFilter filterWithName:name ? name : [self localizedNameForFilterWithType:type]
                                     type:type
                                   values:nil
                            defaultValues:nil
@@ -88,7 +201,7 @@ static NSArray * _availableFilterTypes;
     {
         if ([[provider availableFilterTypes] containsObject:type])
         {
-            return [provider filterWithName:name
+            return [provider filterWithName:name ? name : [self localizedNameForFilterWithType:type]
                                        type:type
                                      values:values];
         }

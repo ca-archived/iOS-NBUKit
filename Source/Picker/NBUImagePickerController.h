@@ -2,27 +2,33 @@
 //  NBUImagePickerController.h
 //  NBUKit
 //
-//  Created by 利辺羅 on 2012/11/12.
-//  Copyright (c) 2012年 CyberAgent Inc. All rights reserved.
+//  Created by Ernesto Rivera on 2012/11/12.
+//  Copyright (c) 2012 CyberAgent Inc.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
-@class NBUImagePickerConfirmController;
+@class NBUCameraViewController, NBUAssetsLibraryViewController, NBUAssetsGroupViewController, NBUEditMultiImageViewController, NBUGalleryViewController;
 
 /// Picker result block.
-typedef void (^NBUImagePickerResultBlock)(NSArray * imagesOrMediaInfo);
-
-/// Media Info keys.
-extern NSString * const NBUImagePickerOriginalImageKey;
-extern NSString * const NBUImagePickerOriginalImageURLKey;
-extern NSString * const NBUImagePickerEditedImageKey;
-extern NSString * const NBUImagePickerEditedImageURLKey;
+typedef void (^NBUImagePickerResultBlock)(NSArray * imagesOrMediaInfos);
 
 /// Picker configuration options.
 enum
 {
     // Single or multiple images
     NBUImagePickerOptionSingleImage             = 0 << 0,
-    NBUImagePickerOptionMultipleImages          = 1 << 0,   // TODO: Multiple images
+    NBUImagePickerOptionMultipleImages          = 1 << 0,
     
     // NBUImagePickerResultBlock mode
     NBUImagePickerOptionReturnImages            = 0 << 2,   // The result will be an array of UIImage objects
@@ -67,6 +73,7 @@ typedef NSUInteger NBUImagePickerOptions;
  - Many configuration options.
  - Can return and array of edited images or dictionaries (media info) with both original and edite
  images in addition to other metadata.
+ - Completly customize the picker flow by overriding the goToNextStep method.
  
  @note Should be initialized from a Nib file.
  */
@@ -104,7 +111,7 @@ typedef NSUInteger NBUImagePickerOptions;
 @property (readonly, nonatomic)         NBUImagePickerOptions options;
 
 /// The result block to be called upon picker completion.
-@property (strong, nonatomic, readonly) NBUImagePickerResultBlock resultBlock;
+@property (nonatomic, copy, readonly)   NBUImagePickerResultBlock resultBlock;
 
 /// The library album to be used to save resulting images.
 /// @discussion To enable saving adding a save images option has to be set in options.
@@ -112,61 +119,14 @@ typedef NSUInteger NBUImagePickerOptions;
 
 /// @name Methods to Override As Needed
 
-/// Override to further configure the picker's NBUCameraViewController instance.
-/// @param options The picker configuration options.
-- (void)configureCameraController:(NBUImagePickerOptions)options;
-
-/// Override to further configure the picker's NBUAssetsLibraryViewController instance.
-/// @param options The picker configuration options.
-- (void)configureLibraryController:(NBUImagePickerOptions)options;
-
-/// Override to further configure the picker's NBUEditImageViewController instance.
-/// @param options The picker configuration options.
-- (void)configureEditController:(NBUImagePickerOptions)options;
-
-/// Override to further configure the picker's NBUImagePickerConfirmController instance.
-/// @param options The picker configuration options.
-- (void)configureConfirmController:(NBUImagePickerOptions)options;
-
 /// Override to configure custom controllers.
 /// @param options The picker configuration options.
 - (void)finishConfiguringControllers:(NBUImagePickerOptions)options;
 
-/// Override to manually set the controller that should be shown first.
-/// @param options The picker configuration options.
-- (void)configureRootController:(NBUImagePickerOptions)options;
+/// @name Handling the Current Media Infos
 
-/// @name Handling the Current Media Info
-
-/// The current array of media info.
-- (NSArray *)currentMediaInfo;
-
-/// Add a new media info entry.
-/// @param mediaInfo The media info dictionary to be added.
-/// @param index The target media info position.
-- (void)addMediaInfo:(NSDictionary *)mediaInfo
-             atIndex:(NSUInteger)index;
-
-/// Set the original image for a given media info.
-/// @param image The UIImage to be set as the original image.
-/// @param index The target media info position.
-- (void)setOriginalImage:(UIImage *)image
-                 atIndex:(NSUInteger)index;
-
-/// Get the original image for a given media info.
-/// @param index The target media info position.
-- (UIImage *)originalImageAtIndex:(NSUInteger)index;
-
-/// Set the edited image for a given media info.
-/// @discussion If the image was not edited it returns the original image instead.
-/// @param image The UIImage to be set as the edited image.
-/// @param index The target media info position.
-- (void)setEditedImage:(UIImage *)image
-               atIndex:(NSUInteger)index;
-
-/// Set the edited image for a given media info.
-/// @param index The target media info position.
-- (UIImage *)editedImageAtIndex:(NSUInteger)index;
+/// The current array of NBUMediaInfo objects.
+- (NSMutableArray *)currentMediaInfos;
 
 /// @name Outlets
 
@@ -180,10 +140,10 @@ typedef NSUInteger NBUImagePickerOptions;
 @property (strong, nonatomic) IBOutlet  NBUAssetsGroupViewController * assetsGroupController;
 
 /// The edit (cropping and filters) controller.
-@property (strong, nonatomic) IBOutlet  NBUEditImageViewController * editController;
+@property (strong, nonatomic) IBOutlet  NBUEditMultiImageViewController * editController;
 
 /// The picker confirmation controller.
-@property (strong, nonatomic) IBOutlet  NBUImagePickerConfirmController * confirmController;
+@property (strong, nonatomic) IBOutlet  NBUGalleryViewController * confirmController;
 
 /// @name Actions
 
@@ -191,22 +151,28 @@ typedef NSUInteger NBUImagePickerOptions;
 /// @param sender The sender object.
 - (IBAction)toggleSource:(id)sender;
 
+/// @name Methods to Override if Needed
+
+/// Action to be called to go to the next step of the picker.
+/// @discussion Override to modify the picker flow.
+/// @param sender The sender object.
+- (IBAction)goToNextStep:(id)sender;
+
+/// Method called by goToNextStep before pushing the next view controller.
+/// @discussion Override it to finalize the previous task.
+- (void)prepareToGoToNextStep;
+
+/// The edit images step.
+/// @discussion By default configures and pushes the editController.
+- (void)editImages;
+
+/// The confirm selection step.
+/// @discussion By default configures and pushes the confirmController.
+- (void)confirmImages;
+
 /// Finish the picker.
 /// @param sender The sender object.
 - (IBAction)finishPicker:(id)sender;
-
-@end
-
-
-/**
- Simple controller to preview picked images.
- */
-@interface NBUImagePickerConfirmController : UIViewController
-
-/// @name Outlets
-
-/// The preview UIImageView.
-@property (assign, nonatomic) IBOutlet UIImageView * imageView;
 
 @end
 

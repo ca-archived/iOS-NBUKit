@@ -2,8 +2,20 @@
 //  NBUPresetFilterView.m
 //  NBUKit
 //
-//  Created by 利辺羅 on 2012/08/13.
-//  Copyright (c) 2012年 CyberAgent Inc. All rights reserved.
+//  Created by Ernesto Rivera on 2012/08/13.
+//  Copyright (c) 2012 CyberAgent Inc.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 #import "NBUPresetFilterView.h"
@@ -46,8 +58,10 @@
     [super awakeFromNib];
     
     // Localization
-    [_filterSlideView setNoContentsViewText:NSLocalizedString(@"No filters available",
-                                                              @"NBUPresetFilterView NoFiltersAvailable")];
+    [_filterSlideView setNoContentsViewText:NSLocalizedStringWithDefaultValue(@"NBUPresetFilterView NoFiltersAvailable",
+                                                                              nil, nil,
+                                                                              @"No filters available",
+                                                                              @"NBUPresetFilterView NoFiltersAvailable")];
 }
 
 - (void)dealloc
@@ -108,11 +122,8 @@
     
     // Set the thumbnails
     NSArray * thumbnailViews = _filterSlideView.currentViews;
-    CGSize thumbnailSize = ((NBUFilterThumbnailView *)[thumbnailViews objectAtIndex:0]).imageView.size;
-    CGFloat scale = [UIScreen mainScreen].scale;
-    thumbnailSize = CGSizeMake(thumbnailSize.width * scale,
-                               thumbnailSize.height * scale);
-    _thumbnailImage = [image imageCroppedToFill:thumbnailSize];
+    CGSize thumbnailSize = ((NBUFilterThumbnailView *)thumbnailViews[0]).imageView.size;
+    _thumbnailImage = [image thumbnailWithSize:thumbnailSize];
     NBULogInfo(@"Thumbnail image size: %@ orientation: %d",
               NSStringFromCGSize(_thumbnailImage.size), _thumbnailImage.imageOrientation);
     for (NBUFilterThumbnailView * view in thumbnailViews)
@@ -235,7 +246,7 @@
     }
     
     // Cache result if needed
-    UIImage * cachedImage = [_cachedFilteredImages objectAtIndex:_currentFilterIndex];
+    UIImage * cachedImage = _cachedFilteredImages[_currentFilterIndex];
     if ((id)cachedImage == [NSNull null])
     {
         _activityView.hidden = NO;
@@ -244,8 +255,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             UIImage * image = [NBUFilterProvider applyFilters:@[_currentFilter]
                                                       toImage:_workingImage];
-            [_cachedFilteredImages replaceObjectAtIndex:_currentFilterIndex
-                                             withObject:image];
+            _cachedFilteredImages[_currentFilterIndex] = image;
             _editingImageView.image = image;
             _activityView.hidden = YES;
         });

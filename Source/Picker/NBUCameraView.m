@@ -2,8 +2,20 @@
 //  NBUCameraView.m
 //  NBUKit
 //
-//  Created by 利辺羅 on 2012/10/15.
-//  Copyright (c) 2012年 CyberAgent Inc. All rights reserved.
+//  Created by Ernesto Rivera on 2012/10/15.
+//  Copyright (c) 2012 CyberAgent Inc.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 #import "NBUCameraView.h"
@@ -42,7 +54,7 @@
 @synthesize saveResultBlock = _saveResultBlock;
 @synthesize savePicturesToLibrary = _savePicturesToLibrary;
 @synthesize targetLibraryAlbumName = _targetLibraryAlbumName;
-@synthesize shouldAutoAdjustOrientation = _shouldAutoAdjustOrientation;
+@synthesize shouldAutoRotateView = _shouldAutoRotateView;
 @synthesize availableDevices = _availableDevices;
 @synthesize availableResolutions = _availableResolutions;
 @synthesize availableFlashModes = _availableFlashModes;
@@ -89,11 +101,23 @@
     mockView.frame = self.bounds;
     [self addSubview:mockView];
 #endif
+    
+    // First orientation update
+    [self setDeviceOrientation:[UIDevice currentDevice].orientation];
+    
+    // Observe orientation changes
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(deviceOrientationChanged:)
+                                                 name:UIDeviceOrientationDidChangeNotification
+                                               object:nil];
 }
 
 - (void)dealloc
 {
-    self.shouldAutoAdjustOrientation = NO;
+    // Stop observing
+    [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewWillAppear
@@ -171,7 +195,7 @@
     NBULogVerbose(@"Capture session: {\n%@} stopped running", _captureSession);
 }
 
-#pragma mark - Rotation
+#pragma mark - Handle orientation changes
 
 - (void)setFrame:(CGRect)frame
 {
@@ -181,117 +205,79 @@
 //    _previewLayer.frame = self.layer.bounds;
 }
 
-- (void)setShouldAutoAdjustOrientation:(BOOL)shouldAutoAdjustOrientation
-{
-    if (_shouldAutoAdjustOrientation == shouldAutoAdjustOrientation)
-        return;
-    
-    _shouldAutoAdjustOrientation = shouldAutoAdjustOrientation;
-    
-    if (shouldAutoAdjustOrientation)
-    {
-        // Observe orientation changes
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(deviceOrientationChanged:)
-                                                     name:UIDeviceOrientationDidChangeNotification
-                                                   object:nil];
-        
-        // First rotation
-        [self adjustToInterfaceOrientation:[UIDevice currentDevice].orientation];
-    }
-    else
-    {
-        // Stop observing
-        [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                        name:UIDeviceOrientationDidChangeNotification
-                                                      object:nil];
-    }
-}
-
 - (void)deviceOrientationChanged:(NSNotification *)notification
 {
-    /*
-     UIInterfaceOrientationPortrait           = UIDeviceOrientationPortrait,
-     UIInterfaceOrientationPortraitUpsideDown = UIDeviceOrientationPortraitUpsideDown,
-     UIInterfaceOrientationLandscapeLeft      = UIDeviceOrientationLandscapeRight,
-     UIInterfaceOrientationLandscapeRight     = UIDeviceOrientationLandscapeLeft
-     */
-    
-    UIInterfaceOrientation orientation = [UIDevice currentDevice].orientation;
-    
-    // We may need to switch left<-> right
-    if (orientation == UIDeviceOrientationLandscapeLeft)
-        orientation = UIInterfaceOrientationLandscapeRight;
-    else if (orientation == UIDeviceOrientationLandscapeRight)
-        orientation = UIInterfaceOrientationLandscapeLeft;
-    
-    /*
-     UIInterfaceOrientationMaskPortrait = (1 << UIInterfaceOrientationPortrait),
-     UIInterfaceOrientationMaskLandscapeLeft = (1 << UIInterfaceOrientationLandscapeLeft),
-     UIInterfaceOrientationMaskLandscapeRight = (1 << UIInterfaceOrientationLandscapeRight),
-     UIInterfaceOrientationMaskPortraitUpsideDown = (1 << UIInterfaceOrientationPortraitUpsideDown)
-     */
-    
-    // Not supported by the view controller?
-    if ([self.viewController respondsToSelector:@selector(supportedInterfaceOrientations)] &&
-        !(self.viewController.supportedInterfaceOrientations & (1 << orientation)))
-        return;
-    
-    [self adjustToInterfaceOrientation:orientation];
+    [self setDeviceOrientation:[UIDevice currentDevice].orientation];
 }
 
-- (void)adjustToInterfaceOrientation:(UIInterfaceOrientation)orientation
+- (void)setDeviceOrientation:(UIDeviceOrientation)orientation
 {
-    // Angle to rotate
-    CGFloat angle;
-    switch (orientation)
+    if (UIDeviceOrientationIsValidInterfaceOrientation(orientation))
     {
-        case UIInterfaceOrientationLandscapeRight:
-            angle = - M_PI / 2.0;
-            break;
-        case UIInterfaceOrientationLandscapeLeft:
-            angle = M_PI / 2.0;
-            break;
-        case UIInterfaceOrientationPortraitUpsideDown:
-            angle = M_PI;
-            break;
-        default:
-            angle = 0;
-            break;
+        [self setInterfaceOrientation:UIInterfaceOrientationFromValidDeviceOrientation(orientation)];
     }
+}
+
+- (void)setInterfaceOrientation:(UIInterfaceOrientation)orientation
+{
+    // Update video orientation
+    _videoConnection.videoOrientation = (AVCaptureVideoOrientation)UIInterfaceOrientationFromValidDeviceOrientation(orientation);
     
-    // Flip height and width?
-    if (UIInterfaceOrientationIsLandscape(orientation))
+    // Also rotate view?
+    if (_shouldAutoRotateView)
     {
-        _previewLayer.bounds = CGRectMake(0.0,
-                                          0.0,
-                                          self.layer.bounds.size.height,
-                                          self.layer.bounds.size.width);
+        // Angle to rotate
+        CGFloat angle;
+        switch (orientation)
+        {
+            case UIInterfaceOrientationLandscapeRight:
+                angle = - M_PI / 2.0;
+                break;
+            case UIInterfaceOrientationLandscapeLeft:
+                angle = M_PI / 2.0;
+                break;
+            case UIInterfaceOrientationPortraitUpsideDown:
+                angle = M_PI;
+                break;
+            case UIInterfaceOrientationPortrait:
+            default:
+                angle = 0;
+                break;
+        }
+        
+        // Flip height and width?
+        if (UIInterfaceOrientationIsLandscape(orientation))
+        {
+            _previewLayer.bounds = CGRectMake(0.0,
+                                              0.0,
+                                              self.layer.bounds.size.height,
+                                              self.layer.bounds.size.width);
+        }
+        // Just resize for portrait
+        else
+        {
+            _previewLayer.bounds = CGRectMake(0.0,
+                                              0.0,
+                                              self.layer.bounds.size.width,
+                                              self.layer.bounds.size.height);
+        }
+        
+        // Rotate
+        _previewLayer.transform = CATransform3DRotate(CATransform3DIdentity,
+                                                      angle,
+                                                      0.0, 0.0, 1.0);
+        
+        // Reposition
+        _previewLayer.position = CGPointMake(self.layer.bounds.size.width / 2.0,
+                                             self.layer.bounds.size.height / 2.0);
+        
+        NBULogVerbose(@"%@ anchorPoint: %@ position: %@ frame: %@ bounds: %@",
+                      THIS_METHOD,
+                      NSStringFromCGPoint(_previewLayer.anchorPoint),
+                      NSStringFromCGPoint(_previewLayer.position),
+                      NSStringFromCGRect(_previewLayer.frame),
+                      NSStringFromCGRect(_previewLayer.bounds));
     }
-    // Just resize for portrait
-    else
-    {
-        _previewLayer.bounds = CGRectMake(0.0,
-                                          0.0,
-                                          self.layer.bounds.size.width,
-                                          self.layer.bounds.size.height);
-    }
-    
-    // Rotate
-    _previewLayer.transform = CATransform3DRotate(CATransform3DIdentity,
-                                                  angle,
-                                                  0.0, 0.0, 1.0);
-    
-    // Reposition
-    _previewLayer.position = CGPointMake(self.layer.bounds.size.width / 2.0,
-                                         self.layer.bounds.size.height / 2.0);
-    
-    NBULogVerbose(@"%@ anchorPoint: %@ position: %@ frame: %@ bounds: %@",
-                  THIS_METHOD,
-                  NSStringFromCGPoint(_previewLayer.anchorPoint),
-                  NSStringFromCGPoint(_previewLayer.position),
-                  NSStringFromCGRect(_previewLayer.frame),
-                  NSStringFromCGRect(_previewLayer.bounds));
 }
 
 #pragma mark - Properties
@@ -316,44 +302,44 @@
     // Available flash modes
     [tmp removeAllObjects];
     if ([_currentDevice isFlashModeSupported:AVCaptureFlashModeOff])
-        [tmp addObject:[NSNumber numberWithInteger:AVCaptureFlashModeOff]];
+        [tmp addObject:@(AVCaptureFlashModeOff)];
     if ([_currentDevice isFlashModeSupported:AVCaptureFlashModeOn])
-        [tmp addObject:[NSNumber numberWithInteger:AVCaptureFlashModeOn]];
+        [tmp addObject:@(AVCaptureFlashModeOn)];
     if ([_currentDevice isFlashModeSupported:AVCaptureFlashModeAuto])
-        [tmp addObject:[NSNumber numberWithInteger:AVCaptureFlashModeAuto]];
+        [tmp addObject:@(AVCaptureFlashModeAuto)];
     _availableFlashModes = [NSArray arrayWithArray:tmp];
     NBULogVerbose(@"availableFlashModes: %@", _availableFlashModes);
     
     // Available focus modes
     [tmp removeAllObjects];
     if ([_currentDevice isFocusModeSupported:AVCaptureFocusModeLocked])
-        [tmp addObject:[NSNumber numberWithInteger:AVCaptureFocusModeLocked]];
+        [tmp addObject:@(AVCaptureFocusModeLocked)];
     if ([_currentDevice isFocusModeSupported:AVCaptureFocusModeAutoFocus])
-        [tmp addObject:[NSNumber numberWithInteger:AVCaptureFocusModeAutoFocus]];
+        [tmp addObject:@(AVCaptureFocusModeAutoFocus)];
     if ([_currentDevice isFocusModeSupported:AVCaptureFocusModeContinuousAutoFocus])
-        [tmp addObject:[NSNumber numberWithInteger:AVCaptureFocusModeContinuousAutoFocus]];
+        [tmp addObject:@(AVCaptureFocusModeContinuousAutoFocus)];
     _availableFocusModes = [NSArray arrayWithArray:tmp];
     NBULogVerbose(@"availableFocusModes: %@", _availableFocusModes);
     
     // Available exposure modes
     [tmp removeAllObjects];
     if ([_currentDevice isExposureModeSupported:AVCaptureExposureModeLocked])
-        [tmp addObject:[NSNumber numberWithInteger:AVCaptureExposureModeLocked]];
+        [tmp addObject:@(AVCaptureExposureModeLocked)];
     if ([_currentDevice isExposureModeSupported:AVCaptureExposureModeAutoExpose])
-        [tmp addObject:[NSNumber numberWithInteger:AVCaptureExposureModeAutoExpose]];
+        [tmp addObject:@(AVCaptureExposureModeAutoExpose)];
     if ([_currentDevice isExposureModeSupported:AVCaptureExposureModeContinuousAutoExposure])
-        [tmp addObject:[NSNumber numberWithInteger:AVCaptureExposureModeContinuousAutoExposure]];
+        [tmp addObject:@(AVCaptureExposureModeContinuousAutoExposure)];
     _availableExposureModes = [NSArray arrayWithArray:tmp];
     NBULogVerbose(@"availableExposureModes: %@", _availableExposureModes);
     
     // Available exposure modes
     [tmp removeAllObjects];
     if ([_currentDevice isWhiteBalanceModeSupported:AVCaptureWhiteBalanceModeLocked])
-        [tmp addObject:[NSNumber numberWithInteger:AVCaptureWhiteBalanceModeLocked]];
+        [tmp addObject:@(AVCaptureWhiteBalanceModeLocked)];
     if ([_currentDevice isWhiteBalanceModeSupported:AVCaptureWhiteBalanceModeAutoWhiteBalance])
-        [tmp addObject:[NSNumber numberWithInteger:AVCaptureWhiteBalanceModeAutoWhiteBalance]];
+        [tmp addObject:@(AVCaptureWhiteBalanceModeAutoWhiteBalance)];
     if ([_currentDevice isWhiteBalanceModeSupported:AVCaptureWhiteBalanceModeContinuousAutoWhiteBalance])
-        [tmp addObject:[NSNumber numberWithInteger:AVCaptureWhiteBalanceModeContinuousAutoWhiteBalance]];
+        [tmp addObject:@(AVCaptureWhiteBalanceModeContinuousAutoWhiteBalance)];
     _availableWhiteBalanceModes = [NSArray arrayWithArray:tmp];
     NBULogVerbose(@"availableWhiteBalanceModes: %@", _availableWhiteBalanceModes);
     
@@ -414,7 +400,7 @@
 {
     return ^(id<UIButton> button, NSInteger mode)
     {
-        button.title = [titles objectAtIndex:mode];
+        button.title = titles[mode];
     };
 }
 
@@ -492,7 +478,7 @@
     CGSize resolution;
     for (preset in resolutions)
     {
-        resolution = [(NSValue *)[resolutions objectForKey:preset] CGSizeValue];
+        resolution = [(NSValue *)resolutions[preset] CGSizeValue];
         if (resolution.width >= target.width &&
             resolution.height >= target.height)
         {
@@ -542,8 +528,7 @@
     {
         if ([_currentDevice supportsAVCaptureSessionPreset:preset])
         {
-            [availableResolutions setObject:[possibleResolutions objectForKey:preset]
-                                     forKey:preset];
+            availableResolutions[preset] = possibleResolutions[preset];
         }
     }
     NBULogVerbose(@"Available resolutions for %@: %@", _currentDevice, availableResolutions);
@@ -562,14 +547,6 @@
     _shootButton.enabled = NO;
     [self flashHighlightMask];
     self.window.userInteractionEnabled = NO;
-    
-    // Update video orientation
-    AVCaptureVideoOrientation orientation = [UIDevice currentDevice].orientation;
-    if (orientation == UIDeviceOrientationLandscapeLeft)
-		orientation = AVCaptureVideoOrientationLandscapeRight;
-	else if (orientation == UIDeviceOrientationLandscapeRight)
-		orientation = AVCaptureVideoOrientationLandscapeLeft;
-    _videoConnection.videoOrientation = [UIDevice currentDevice].orientation;
     
     // Get the image
     [_captureOutput captureStillImageAsynchronouslyFromConnection:_videoConnection
@@ -613,12 +590,7 @@
                                 // Update last picture view
                                 if (_lastPictureImageView)
                                 {
-                                    // Retina display?
-                                    CGFloat scale = [UIScreen mainScreen].scale;
-                                    
-                                    _lastPictureImageView.image = [image imageCroppedToFill:
-                                                                   CGSizeMake(_lastPictureImageView.size.width * scale,
-                                                                              _lastPictureImageView.size.height * scale)];
+                                    _lastPictureImageView.image = [image thumbnailWithSize:_lastPictureImageView.size];
                                 }
                             });
              
@@ -659,12 +631,7 @@
     // Update last picture view
     if (_lastPictureImageView)
     {
-        // Retina display?
-        CGFloat scale = [UIScreen mainScreen].scale;
-        
-        _lastPictureImageView.image = [_mockImage imageCroppedToFill:
-                                       CGSizeMake(_lastPictureImageView.size.width * scale,
-                                                  _lastPictureImageView.size.height * scale)];
+        _lastPictureImageView.image = [_mockImage thumbnailWithSize:_lastPictureImageView.size];
     }
     
     // No need to save image?
@@ -709,7 +676,7 @@
 
 - (void)toggleFlashMode:(id)sender
 {
-    NSNumber * mode = [NSNumber numberWithInteger:_currentDevice.flashMode];
+    NSNumber * mode = @(_currentDevice.flashMode);
     [self updateDeviceConfigurationWithBlock:^{
         _currentDevice.flashMode = [[_availableFlashModes objectAfter:mode
                                                                  wrap:YES] integerValue];
@@ -720,7 +687,7 @@
 
 - (void)toggleFocusMode:(id)sender
 {
-    NSNumber * mode = [NSNumber numberWithInteger:_currentDevice.focusMode];
+    NSNumber * mode = @(_currentDevice.focusMode);
     [self updateDeviceConfigurationWithBlock:^{
         _currentDevice.focusMode = [[_availableFocusModes objectAfter:mode
                                                                  wrap:YES] integerValue];
@@ -731,7 +698,7 @@
 
 - (void)toggleExposureMode:(id)sender
 {
-    NSNumber * mode = [NSNumber numberWithInteger:_currentDevice.exposureMode];
+    NSNumber * mode = @(_currentDevice.exposureMode);
     [self updateDeviceConfigurationWithBlock:^{
         _currentDevice.exposureMode = [[_availableExposureModes objectAfter:mode
                                                                        wrap:YES] integerValue];
@@ -742,7 +709,7 @@
 
 - (void)toggleWhiteBalanceMode:(id)sender
 {
-    NSNumber * mode = [NSNumber numberWithInteger:_currentDevice.whiteBalanceMode];
+    NSNumber * mode = @(_currentDevice.whiteBalanceMode);
     [self updateDeviceConfigurationWithBlock:^{
         _currentDevice.whiteBalanceMode = [[_availableWhiteBalanceModes objectAfter:mode
                                                                                wrap:YES] integerValue];

@@ -2,8 +2,20 @@
 //  NBURotatingViews.m
 //  NBUKit
 //
-//  Created by 利辺羅 on 2013/02/28.
-//  Copyright (c) 2013年 CyberAgent Inc. All rights reserved.
+//  Created by Ernesto Rivera on 2013/02/28.
+//  Copyright (c) 2013 CyberAgent Inc.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 #import "NBURotatingViews.h"
@@ -12,8 +24,28 @@
 
 @implementation NBURotatingView
 
-@synthesize supportedInterfaceOrientations = _supportedInterfaceOrientations;
 @synthesize animated = _animated;
+@synthesize supportedInterfaceOrientations = _supportedInterfaceOrientations;
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self)
+    {
+        [self commonInit];
+    }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self)
+    {
+        [self commonInit];
+    }
+    return self;
+}
 
 - (void)commonInit
 {
@@ -24,9 +56,8 @@
                                        UIInterfaceOrientationMaskPortraitUpsideDown);
     
     // First rotation
-    [self rotateToOrientation:[UIDevice currentDevice].orientation
-                     animated:NO
-                        force:NO];
+    [self setDeviceOrientation:[UIDevice currentDevice].orientation
+                      animated:NO];
     
     // Observe orientation changes
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
@@ -36,91 +67,57 @@
                                                object:nil];
 }
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self)
-    {
-        [self commonInit];
-    }
-    return self;
-}
-
-- (id)initWithCoder:(NSCoder *)coder
-{
-    self = [super initWithCoder:coder];
-    if (self)
-    {
-        [self commonInit];
-    }
-    return self;
-}
-
 - (void)dealloc
 {
     // Stop observing
     [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UIDeviceOrientationDidChangeNotification
-                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)deviceOrientationChanged:(NSNotification *)notification
 {
-    UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;;
-    
-    [self rotateToOrientation:orientation
-                     animated:_animated
-                        force:NO];
+    [self setDeviceOrientation:[UIDevice currentDevice].orientation
+                      animated:YES];
 }
 
-- (void)rotateToOrientation:(UIDeviceOrientation)orientation
-                   animated:(BOOL)animated
-                      force:(BOOL)force
+- (void)setDeviceOrientation:(UIDeviceOrientation)orientation
+                    animated:(BOOL)animated
 {
-    /*
-     UIInterfaceOrientationMaskPortrait = (1 << UIInterfaceOrientationPortrait),
-     UIInterfaceOrientationMaskLandscapeLeft = (1 << UIInterfaceOrientationLandscapeLeft),
-     UIInterfaceOrientationMaskLandscapeRight = (1 << UIInterfaceOrientationLandscapeRight),
-     UIInterfaceOrientationMaskPortraitUpsideDown = (1 << UIInterfaceOrientationPortraitUpsideDown)
-     */
-    
-    // Skip if not supported
-    if (!force &&
-        !(_supportedInterfaceOrientations & (1 << orientation)))
+    if (UIDeviceOrientationIsValidInterfaceOrientation(orientation))
     {
-        return;
+        [self setInterfaceOrientation:UIInterfaceOrientationFromValidDeviceOrientation(orientation)
+                             animated:_animated];
     }
+}
+
+- (void)setInterfaceOrientation:(UIInterfaceOrientation)orientation
+                       animated:(BOOL)animated
+{
+    // Skip if not supported
+    if (!UIInterfaceOrientationIsSupportedByInterfaceOrientationMask(orientation, _supportedInterfaceOrientations))
+        return;
     
     [UIView animateWithDuration:animated ? kAnimationDuration : 0.0
                      animations:^
      {
          switch (orientation)
          {
-             case UIDeviceOrientationPortrait:
+             case UIInterfaceOrientationPortrait:
                  self.transform = CGAffineTransformIdentity;
                  break;
-             case UIDeviceOrientationLandscapeRight:
+             case UIInterfaceOrientationLandscapeLeft:
                  self.transform = CGAffineTransformMakeRotation(- M_PI / 2.0);
                  break;
-             case UIDeviceOrientationLandscapeLeft:
+             case UIInterfaceOrientationLandscapeRight:
                  self.transform = CGAffineTransformMakeRotation(M_PI / 2.0);
                  break;
-             case UIDeviceOrientationPortraitUpsideDown:
+             case UIInterfaceOrientationPortraitUpsideDown:
                  self.transform = CGAffineTransformMakeRotation(M_PI);
                  break;
              default:
                  break;
          }
      }];
-}
-
-- (void)rotateToOrientation:(UIDeviceOrientation)orientation
-                   animated:(BOOL)animated
-{
-    [self rotateToOrientation:orientation
-                     animated:animated
-                        force:NO];
 }
 
 @end
@@ -128,29 +125,8 @@
 
 @implementation NBURotatingImageView
 
-@synthesize supportedInterfaceOrientations = _supportedInterfaceOrientations;
 @synthesize animated = _animated;
-
-- (void)commonInit
-{
-    _animated = YES;
-    _supportedInterfaceOrientations = (UIInterfaceOrientationMaskPortrait |
-                                       UIInterfaceOrientationMaskLandscapeRight |
-                                       UIInterfaceOrientationMaskLandscapeLeft |
-                                       UIInterfaceOrientationMaskPortraitUpsideDown);
-    
-    // First rotation
-    [self rotateToOrientation:[UIDevice currentDevice].orientation
-                     animated:NO
-                        force:NO];
-    
-    // Observe library changes
-    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(deviceOrientationChanged:)
-                                                 name:UIDeviceOrientationDidChangeNotification
-                                               object:nil];
-}
+@synthesize supportedInterfaceOrientations = _supportedInterfaceOrientations;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -172,71 +148,77 @@
     return self;
 }
 
+- (void)commonInit
+{
+    _animated = YES;
+    _supportedInterfaceOrientations = (UIInterfaceOrientationMaskPortrait |
+                                       UIInterfaceOrientationMaskLandscapeRight |
+                                       UIInterfaceOrientationMaskLandscapeLeft |
+                                       UIInterfaceOrientationMaskPortraitUpsideDown);
+    
+    // First rotation
+    [self setDeviceOrientation:[UIDevice currentDevice].orientation
+                      animated:NO];
+    
+    // Observe orientation changes
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(deviceOrientationChanged:)
+                                                 name:UIDeviceOrientationDidChangeNotification
+                                               object:nil];
+}
+
 - (void)dealloc
 {
     // Stop observing
     [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UIDeviceOrientationDidChangeNotification
-                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)deviceOrientationChanged:(NSNotification *)notification
 {
-    UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;;
-    
-    [self rotateToOrientation:orientation
-                     animated:_animated
-                        force:NO];
+    [self setDeviceOrientation:[UIDevice currentDevice].orientation
+                      animated:YES];
 }
 
-- (void)rotateToOrientation:(UIDeviceOrientation)orientation
-                   animated:(BOOL)animated
-                      force:(BOOL)force
+- (void)setDeviceOrientation:(UIDeviceOrientation)orientation
+                    animated:(BOOL)animated
 {
-    /*
-     UIInterfaceOrientationMaskPortrait = (1 << UIInterfaceOrientationPortrait),
-     UIInterfaceOrientationMaskLandscapeLeft = (1 << UIInterfaceOrientationLandscapeLeft),
-     UIInterfaceOrientationMaskLandscapeRight = (1 << UIInterfaceOrientationLandscapeRight),
-     UIInterfaceOrientationMaskPortraitUpsideDown = (1 << UIInterfaceOrientationPortraitUpsideDown)
-     */
-    
-    // Skip if not supported
-    if (!force &&
-        !(_supportedInterfaceOrientations & (1 << orientation)))
+    if (UIDeviceOrientationIsValidInterfaceOrientation(orientation))
     {
-        return;
+        [self setInterfaceOrientation:UIInterfaceOrientationFromValidDeviceOrientation(orientation)
+                             animated:_animated];
     }
+}
+
+- (void)setInterfaceOrientation:(UIInterfaceOrientation)orientation
+                       animated:(BOOL)animated
+{
+    // Skip if not supported
+    if (!UIInterfaceOrientationIsSupportedByInterfaceOrientationMask(orientation, _supportedInterfaceOrientations))
+        return;
     
     [UIView animateWithDuration:animated ? kAnimationDuration : 0.0
                      animations:^
      {
          switch (orientation)
          {
-             case UIDeviceOrientationPortrait:
+             case UIInterfaceOrientationPortrait:
                  self.transform = CGAffineTransformIdentity;
                  break;
-             case UIDeviceOrientationLandscapeRight:
+             case UIInterfaceOrientationLandscapeLeft:
                  self.transform = CGAffineTransformMakeRotation(- M_PI / 2.0);
                  break;
-             case UIDeviceOrientationLandscapeLeft:
+             case UIInterfaceOrientationLandscapeRight:
                  self.transform = CGAffineTransformMakeRotation(M_PI / 2.0);
                  break;
-             case UIDeviceOrientationPortraitUpsideDown:
+             case UIInterfaceOrientationPortraitUpsideDown:
                  self.transform = CGAffineTransformMakeRotation(M_PI);
                  break;
              default:
                  break;
          }
      }];
-}
-
-- (void)rotateToOrientation:(UIDeviceOrientation)orientation
-                   animated:(BOOL)animated
-{
-    [self rotateToOrientation:orientation
-                     animated:animated
-                        force:NO];
 }
 
 @end
@@ -244,29 +226,8 @@
 
 @implementation NBURotatingButton
 
-@synthesize supportedInterfaceOrientations = _supportedInterfaceOrientations;
 @synthesize animated = _animated;
-
-- (void)commonInit
-{
-    _animated = YES;
-    _supportedInterfaceOrientations = (UIInterfaceOrientationMaskPortrait |
-                                       UIInterfaceOrientationMaskLandscapeRight |
-                                       UIInterfaceOrientationMaskLandscapeLeft |
-                                       UIInterfaceOrientationMaskPortraitUpsideDown);
-    
-    // First rotation
-    [self rotateToOrientation:[UIDevice currentDevice].orientation
-                     animated:NO
-                        force:NO];
-    
-    // Observe library changes
-    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(deviceOrientationChanged:)
-                                                 name:UIDeviceOrientationDidChangeNotification
-                                               object:nil];
-}
+@synthesize supportedInterfaceOrientations = _supportedInterfaceOrientations;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -288,71 +249,77 @@
     return self;
 }
 
+- (void)commonInit
+{
+    _animated = YES;
+    _supportedInterfaceOrientations = (UIInterfaceOrientationMaskPortrait |
+                                       UIInterfaceOrientationMaskLandscapeRight |
+                                       UIInterfaceOrientationMaskLandscapeLeft |
+                                       UIInterfaceOrientationMaskPortraitUpsideDown);
+    
+    // First rotation
+    [self setDeviceOrientation:[UIDevice currentDevice].orientation
+                      animated:NO];
+    
+    // Observe orientation changes
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(deviceOrientationChanged:)
+                                                 name:UIDeviceOrientationDidChangeNotification
+                                               object:nil];
+}
+
 - (void)dealloc
 {
     // Stop observing
     [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UIDeviceOrientationDidChangeNotification
-                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)deviceOrientationChanged:(NSNotification *)notification
 {
-    UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;;
-    
-    [self rotateToOrientation:orientation
-                          animated:_animated
-                             force:NO];
+    [self setDeviceOrientation:[UIDevice currentDevice].orientation
+                      animated:YES];
 }
 
-- (void)rotateToOrientation:(UIDeviceOrientation)orientation
-                   animated:(BOOL)animated
-                      force:(BOOL)force
+- (void)setDeviceOrientation:(UIDeviceOrientation)orientation
+                    animated:(BOOL)animated
 {
-    /*
-     UIInterfaceOrientationMaskPortrait = (1 << UIInterfaceOrientationPortrait),
-     UIInterfaceOrientationMaskLandscapeLeft = (1 << UIInterfaceOrientationLandscapeLeft),
-     UIInterfaceOrientationMaskLandscapeRight = (1 << UIInterfaceOrientationLandscapeRight),
-     UIInterfaceOrientationMaskPortraitUpsideDown = (1 << UIInterfaceOrientationPortraitUpsideDown)
-     */
-    
-    // Skip if not supported
-    if (!force &&
-        !(_supportedInterfaceOrientations & (1 << orientation)))
+    if (UIDeviceOrientationIsValidInterfaceOrientation(orientation))
     {
-        return;
+        [self setInterfaceOrientation:UIInterfaceOrientationFromValidDeviceOrientation(orientation)
+                             animated:_animated];
     }
+}
+
+- (void)setInterfaceOrientation:(UIInterfaceOrientation)orientation
+                       animated:(BOOL)animated
+{
+    // Skip if not supported
+    if (!UIInterfaceOrientationIsSupportedByInterfaceOrientationMask(orientation, _supportedInterfaceOrientations))
+        return;
     
     [UIView animateWithDuration:animated ? kAnimationDuration : 0.0
                      animations:^
      {
          switch (orientation)
          {
-             case UIDeviceOrientationPortrait:
+             case UIInterfaceOrientationPortrait:
                  self.transform = CGAffineTransformIdentity;
                  break;
-             case UIDeviceOrientationLandscapeRight:
+             case UIInterfaceOrientationLandscapeLeft:
                  self.transform = CGAffineTransformMakeRotation(- M_PI / 2.0);
                  break;
-             case UIDeviceOrientationLandscapeLeft:
+             case UIInterfaceOrientationLandscapeRight:
                  self.transform = CGAffineTransformMakeRotation(M_PI / 2.0);
                  break;
-             case UIDeviceOrientationPortraitUpsideDown:
+             case UIInterfaceOrientationPortraitUpsideDown:
                  self.transform = CGAffineTransformMakeRotation(M_PI);
                  break;
              default:
                  break;
          }
      }];
-}
-
-- (void)rotateToOrientation:(UIDeviceOrientation)orientation
-                   animated:(BOOL)animated
-{
-    [self rotateToOrientation:orientation
-                     animated:animated
-                        force:NO];
 }
 
 @end

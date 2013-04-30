@@ -2,8 +2,20 @@
 //  NBUFilter.m
 //  NBUKit
 //
-//  Created by 利辺羅 on 2012/08/16.
-//  Copyright (c) 2012年 CyberAgent Inc. All rights reserved.
+//  Created by Ernesto Rivera on 2012/08/16.
+//  Copyright (c) 2012 CyberAgent Inc.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 #import "NBUFilter.h"
@@ -11,24 +23,6 @@
 // Define module
 #undef  NBUKIT_MODULE
 #define NBUKIT_MODULE   NBUKIT_MODULE_IMAGE
-
-// Built-in filter types
-NSString * const NBUFilterTypeNone              = @"NBUFilterTypeNone";
-NSString * const NBUFilterTypeContrast          = @"NBUFilterTypeContrast";
-NSString * const NBUFilterTypeBrightness        = @"NBUFilterTypeBrightness";
-NSString * const NBUFilterTypeSaturation        = @"NBUFilterTypeSaturation";
-NSString * const NBUFilterTypeExposure          = @"NBUFilterTypeExposure";
-NSString * const NBUFilterTypeSharpen           = @"NBUFilterTypeSharpen";
-NSString * const NBUFilterTypeGamma             = @"NBUFilterTypeGamma";
-NSString * const NBUFilterTypeAuto              = @"NBUFilterTypeAuto";
-NSString * const NBUFilterTypeMonochrome        = @"NBUFilterTypeMonochrome";
-NSString * const NBUFilterTypeMultiplyBlend     = @"NBUFilterTypeMultiplyBlend";
-NSString * const NBUFilterTypeAdditiveBlend     = @"NBUFilterTypeAdditiveBlend";
-NSString * const NBUFilterTypeAlphaBlend        = @"NBUFilterTypeAlphaBlend";
-NSString * const NBUFilterTypeSourceOver        = @"NBUFilterTypeSourceOver";
-NSString * const NBUFilterTypeACV               = @"NBUFilterTypeACV";
-NSString * const NBUFilterTypeFisheye           = @"NBUFilterTypeFisheye";
-NSString * const NBUFilterTypeMaskBlur          = @"NBUFilterTypeMaskBlur";
 
 // Attributes' keys
 NSString * const NBUFilterValuesDescriptionKey  = @"descriptions";
@@ -175,8 +169,7 @@ configureFilterBlock:(NBUConfigureFilterBlock)block
     NSMutableArray * values = ([_values isKindOfClass:[NSMutableArray class]] ?
                                _values :
                                [NSMutableArray arrayWithArray:self.values]);
-    [values replaceObjectAtIndex:index
-                      withObject:value];
+    values[index] = value;
     _values = values;
 }
 

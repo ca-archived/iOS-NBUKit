@@ -1,0 +1,134 @@
+//
+// Prefix header for all source files of the 'NBUCoreDemo' target in the 'NBUCoreDemo' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_4_0
+#warning "This project uses features only available in iOS SDK 4.0 and later."
+#endif
+
+#ifdef __OBJC__
+
+//#define __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED __IPHONE_4_3
+//
+//#import <Availability.h>
+//
+//#define __AVAILABILITY_TOO_NEW __attribute__((deprecated("TOO NEW!"))) __attribute__((weak_import))
+//
+//#ifndef __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED
+//#define __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED __IPHONE_OS_VERSION_MIN_REQUIRED
+//#endif
+//
+//#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_OS_VERSION_MIN_REQUIRED
+//#error You cannot ask for a soft max version which is less than the deployment target
+//#endif
+//
+//#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_2_0
+//#undef __AVAILABILITY_INTERNAL__IPHONE_2_0
+//#define __AVAILABILITY_INTERNAL__IPHONE_2_0 __AVAILABILITY_TOO_NEW
+//#endif
+//
+//#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_2_1
+//#undef __AVAILABILITY_INTERNAL__IPHONE_2_1
+//#define __AVAILABILITY_INTERNAL__IPHONE_2_1 __AVAILABILITY_TOO_NEW
+//#endif
+//
+//#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_2_2
+//#undef __AVAILABILITY_INTERNAL__IPHONE_2_2
+//#define __AVAILABILITY_INTERNAL__IPHONE_2_2 __AVAILABILITY_TOO_NEW
+//#endif
+//
+//#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_3_0
+//#undef __AVAILABILITY_INTERNAL__IPHONE_3_0
+//#define __AVAILABILITY_INTERNAL__IPHONE_3_0 __AVAILABILITY_TOO_NEW
+//#endif
+//
+//#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_3_1
+//#undef __AVAILABILITY_INTERNAL__IPHONE_3_1
+//#define __AVAILABILITY_INTERNAL__IPHONE_3_1 __AVAILABILITY_TOO_NEW
+//#endif
+//
+//#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_3_2
+//#undef __AVAILABILITY_INTERNAL__IPHONE_3_2
+//#define __AVAILABILITY_INTERNAL__IPHONE_3_2 __AVAILABILITY_TOO_NEW
+//#endif
+//
+//#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_4_0
+//#undef __AVAILABILITY_INTERNAL__IPHONE_4_0
+//#define __AVAILABILITY_INTERNAL__IPHONE_4_0 __AVAILABILITY_TOO_NEW
+//#endif
+//
+//#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_4_1
+//#undef __AVAILABILITY_INTERNAL__IPHONE_4_1
+//#define __AVAILABILITY_INTERNAL__IPHONE_4_1 __AVAILABILITY_TOO_NEW
+//#endif
+//
+//#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_4_2
+//#undef __AVAILABILITY_INTERNAL__IPHONE_4_2
+//#define __AVAILABILITY_INTERNAL__IPHONE_4_2 __AVAILABILITY_TOO_NEW
+//#endif
+//
+//#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_4_3
+//#undef __AVAILABILITY_INTERNAL__IPHONE_4_3
+//#define __AVAILABILITY_INTERNAL__IPHONE_4_3 __AVAILABILITY_TOO_NEW
+//#endif
+//
+//#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_5_0
+//#undef __AVAILABILITY_INTERNAL__IPHONE_5_0
+//#define __AVAILABILITY_INTERNAL__IPHONE_5_0 __AVAILABILITY_TOO_NEW
+//#endif
+//
+//#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_5_1
+//#undef __AVAILABILITY_INTERNAL__IPHONE_5_1
+//#define __AVAILABILITY_INTERNAL__IPHONE_5_1 __AVAILABILITY_TOO_NEW
+//#endif
+//
+//#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_6_0
+//#undef __AVAILABILITY_INTERNAL__IPHONE_6_0
+//#define __AVAILABILITY_INTERNAL__IPHONE_6_0 __AVAILABILITY_TOO_NEW
+//#endif
+//
+//#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_6_1
+//#undef __AVAILABILITY_INTERNAL__IPHONE_6_1
+//#define __AVAILABILITY_INTERNAL__IPHONE_6_1 __AVAILABILITY_TOO_NEW
+//#endif
+
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import "NBUCore.h"
+
+    // Production settings
+    #define	ProductionConfigurationName         @"Production"
+    #define	ProductionConnectionServer          @"cyberagent.co.jp"
+    #define ProductionConnectionAPIServer       @"api.cyberagent.co.jp"
+    #define ProductionConnectionProtocol        @"https"
+    #define	ProductionConnectionToken           @"9324982-1-0029384"
+    #define ProductionAnotherGlobalParameter    @[@"Anything that you can save", @"to NSUserDefaults"]
+
+    // Settings for DEBUG and TESTING
+    #ifndef PRODUCTION
+
+        #import "MyConfigurationPicker.h"
+
+        #define	ConfigurationName			MyConfigurationPicker.currentConfigurationName
+        #define	ConnectionServer			MyConfigurationPicker.server
+        #define ConnectionAPIServer         MyConfigurationPicker.apiServer
+        #define ConnectionProtocol          MyConfigurationPicker.protocol
+        #define	ConnectionToken             MyConfigurationPicker.token
+        #define AnotherGlobalParameter      MyConfigurationPicker.anotherParameter
+
+    // Settings for PRODUCTION
+    #else
+
+        #define	ConfigurationName			ProductionConfigurationName
+        #define	ConnectionServer			ProductionConnectionServer
+        #define ConnectionAPIServer         ProductionConnectionAPIServer
+        #define ConnectionProtocol          ProductionConnectionProtocol
+        #define	ConnectionToken             ProductionConnectionToken
+        #define AnotherGlobalParameter      ProductionAnotherGlobalParameter
+
+    #endif
+
+#endif
+

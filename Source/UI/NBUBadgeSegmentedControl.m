@@ -2,8 +2,20 @@
 //  NBUBadgeSegmentedControl.m
 //  NBUKit
 //
-//  Created by エルネスト 利辺羅 on 12/04/20.
-//  Copyright (c) 2012年 CyberAgent Inc. All rights reserved.
+//  Created by Ernesto Rivera on 12/04/20.
+//  Copyright (c) 2012 CyberAgent Inc.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 #import "NBUBadgeSegmentedControl.h"
@@ -43,9 +55,9 @@
     NBUBadgeView * badge;
     for (NSUInteger i = 0; i < self.numberOfSegments; i++)
     {
-        badge = [[NSBundle loadNibNamed:@"NBUBadgeView"
-                                  owner:nil
-                                options:nil] objectAtIndex:0];
+        badge = [NSBundle loadNibNamed:@"NBUBadgeView"
+                                 owner:nil
+                               options:nil][0];
         badge.value = nil;
         [_badges addObject:badge];
     }
@@ -63,7 +75,7 @@ forSegmentAtIndex:(NSUInteger)index
     }
     
     // Configure
-    NBUBadgeView * badgeView = [_badges objectAtIndex:index];
+    NBUBadgeView * badgeView = _badges[index];
     badgeView.value = badge;
     
     // If empty we finished
@@ -92,7 +104,7 @@ forSegmentAtIndex:(NSUInteger)index
         return nil;
     }
     
-    NBUBadgeView * badgeView = [_badges objectAtIndex:index];
+    NBUBadgeView * badgeView = _badges[index];
     
     return badgeView.value;
 }

@@ -2,8 +2,20 @@
 //  NBUCropView.m
 //  NBUKit
 //
-//  Created by エルネスト 利辺羅 on 12/04/16.
-//  Copyright (c) 2012年 CyberAgent Inc. All rights reserved.
+//  Created by Ernesto Rivera on 12/04/16.
+//  Copyright (c) 2012 CyberAgent Inc.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 #import <QuartzCore/QuartzCore.h>
@@ -63,27 +75,36 @@
     if (!_image)
         return nil;
     
+    // Let viewToCrop process the image
     UIImage * image = _viewToCrop.image;
     
+    // Calculate the crop rect
+    CGRect cropRect = self.currentCropRect;
+    
+    return [image imageCroppedToRect:cropRect];
+}
+
+- (CGRect)currentCropRect
+{
     // UI crop area
-    CGRect cropArea = [_viewToCrop convertRect:CGRectMake(_cropOrigin.x + _scrollView.origin.x,
+    CGRect cropRect = [_viewToCrop convertRect:CGRectMake(_cropOrigin.x + _scrollView.origin.x,
                                                           _cropOrigin.y + _scrollView.origin.y,
                                                           _cropGuideSize.width,
                                                           _cropGuideSize.height)
                                       fromView:self];
     
-    NBULogInfo(@"Crop %@ from %@)",
-              NSStringFromCGRect(cropArea),
-              NSStringFromCGRect(_viewToCrop.bounds));
-    
     // The image crop area
-    CGFloat factor = image.size.width / _viewToCrop.bounds.size.width;
-    cropArea = CGRectMake(cropArea.origin.x * factor,
-                          cropArea.origin.y * factor,
-                          cropArea.size.width * factor,
-                          cropArea.size.height * factor);
+    CGFloat factor = _image.size.width / _viewToCrop.bounds.size.width;
+    cropRect = CGRectMake(cropRect.origin.x * factor,
+                          cropRect.origin.y * factor,
+                          cropRect.size.width * factor,
+                          cropRect.size.height * factor);
     
-    return [image imageCroppedToRect:cropArea];
+    NBULogInfo(@"currentCropRect %@ from %@)",
+               NSStringFromCGRect(cropRect),
+               NSStringFromCGSize(_image.size));
+    
+    return cropRect;
 }
 
 #pragma mark - Subviews
@@ -117,9 +138,11 @@
     return _scrollView;
 }
 
-- (UIView *)cropGuideView
+- (void)setCropGuideSize:(CGSize)cropGuideSize
 {
-    // Create a crop guide view if nil and cropSize is set
+    _cropGuideSize = cropGuideSize;
+    
+    // Create a default crop guide view if nil and cropSize is set
     if (!_cropGuideView &&
         !CGSizeEqualToSize(_cropGuideSize, CGSizeZero))
     {
@@ -127,25 +150,30 @@
                                                                              0.0,
                                                                              _cropGuideSize.width,
                                                                              _cropGuideSize.height)];
-        _cropGuideView.opaque = NO;
-        [self addSubview:_cropGuideView];
     }
-    return _cropGuideView;
 }
 
 - (void)setCropGuideView:(UIView *)cropGuideView
 {
+    // Remove previous
+    [_cropGuideView removeFromSuperview];
+    
     _cropGuideView = cropGuideView;
     
+    if (!cropGuideView)
+        return;
+    
     // Configure it
-    _cropGuideView.autoresizingMask = (UIViewAutoresizingFlexibleTopMargin |
+    cropGuideView.autoresizingMask = (UIViewAutoresizingFlexibleTopMargin |
                                        UIViewAutoresizingFlexibleBottomMargin);
-    _cropGuideView.userInteractionEnabled = NO;
+    cropGuideView.userInteractionEnabled = NO;
+    cropGuideView.opaque = NO;
+    [self addSubview:cropGuideView];
     
     // Set cropSize if not set
     if (CGSizeEqualToSize(_cropGuideSize, CGSizeZero))
     {
-        _cropGuideSize = _cropGuideView.size;
+        _cropGuideSize = cropGuideView.size;
     }
 }
 
@@ -172,7 +200,7 @@
     _scrollView.zoomScale = 1.0;
     
     // Adjust the crop guide view
-    self.cropGuideView.center = _scrollView.center;
+    _cropGuideView.center = _scrollView.center;
     
     // Configure the viewToCrop
     _cropOrigin = CGPointMake((_scrollView.bounds.size.width - _cropGuideSize.width) / 2.0,
@@ -204,10 +232,10 @@
                             animated:NO];
     
     NBULogVerbose(@"layoutSubviews viewToCrop: %@ cropGuideView: %@ cropOrigin/size: %@/%@",
-               NSStringFromCGRect(_viewToCrop.frame),
-               NSStringFromCGRect(_cropGuideView.frame),
-               NSStringFromCGPoint(_cropOrigin),
-               NSStringFromCGSize(_cropGuideSize));
+                  NSStringFromCGRect(_viewToCrop.frame),
+                  NSStringFromCGRect(_cropGuideView.frame),
+                  NSStringFromCGPoint(_cropOrigin),
+                  NSStringFromCGSize(_cropGuideSize));
 }
 
 #pragma mark - ScrollView management/delegate

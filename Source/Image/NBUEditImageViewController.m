@@ -2,8 +2,20 @@
 //  NBUEditImageViewController.m
 //  NBUKit
 //
-//  Created by 利辺羅 on 2012/11/30.
-//  Copyright (c) 2012年 CyberAgent Inc. All rights reserved.
+//  Created by Ernesto Rivera on 2012/11/30.
+//  Copyright (c) 2012 CyberAgent Inc.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 #import "NBUEditImageViewController.h"
@@ -15,7 +27,9 @@
 @implementation NBUEditImageViewController
 
 @dynamic image;
+@synthesize mediaInfo = _mediaInfo;
 @synthesize resultBlock = _resultBlock;
+@synthesize cropTargetSize = _cropTargetSize;
 @synthesize cropGuideSize = _cropGuideSize;
 @synthesize maximumScaleFactor = _maximumScaleFactor;
 @synthesize filters = _filters;
@@ -75,16 +89,16 @@
         if (NO && SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
         {
             _filters = @[
-                         [NBUFilterProvider filterWithName:NSLocalizedString(@"Reset", @"Filter name")
+                         [NBUFilterProvider filterWithName:nil
                                                       type:NBUFilterTypeNone
                                                     values:nil],
-                         [NBUFilterProvider filterWithName:NSLocalizedString(@"Gamma", @"Filter name")
+                         [NBUFilterProvider filterWithName:nil
                                                       type:NBUFilterTypeGamma
                                                     values:nil],
-                         [NBUFilterProvider filterWithName:NSLocalizedString(@"Saturation", @"Filter name")
+                         [NBUFilterProvider filterWithName:nil
                                                       type:NBUFilterTypeSaturation
                                                     values:nil],
-                         [NBUFilterProvider filterWithName:NSLocalizedString(@"Auto", @"Filter name")
+                         [NBUFilterProvider filterWithName:nil
                                                       type:NBUFilterTypeAuto
                                                     values:nil]
                          ];
@@ -94,16 +108,16 @@
         else
         {
             _filters = @[
-                         [NBUFilterProvider filterWithName:NSLocalizedString(@"Reset", @"Filter name")
+                         [NBUFilterProvider filterWithName:nil
                                                       type:NBUFilterTypeNone
                                                     values:nil],
-                         [NBUFilterProvider filterWithName:NSLocalizedString(@"Gamma", @"Filter name")
+                         [NBUFilterProvider filterWithName:nil
                                                       type:NBUFilterTypeGamma
                                                     values:nil],
-                         [NBUFilterProvider filterWithName:NSLocalizedString(@"Saturation", @"Filter name")
+                         [NBUFilterProvider filterWithName:nil
                                                       type:NBUFilterTypeSaturation
                                                     values:nil],
-                         [NBUFilterProvider filterWithName:NSLocalizedString(@"Sharpen", @"Filter name")
+                         [NBUFilterProvider filterWithName:nil
                                                       type:NBUFilterTypeSharpen
                                                     values:nil]
                          ];
@@ -136,18 +150,72 @@
     NBULogVerbose(@"Processing image...");
     
     // Get the resulting image from cropView if present
+    UIImage * image;
     if (_cropView)
     {
-        return _cropView.image;
+        image = _cropView.image;
     }
     
     // Or from filterView
     else
     {
-        return _filterView.image;
+        image = _filterView.image;
     }
     
-    NBULogVerbose(@"...Processing Done");
+    // Set to target size?
+    if (!CGSizeEqualToSize(_cropTargetSize, CGSizeZero))
+    {
+        image = [image imageDonwsizedToFill:_cropTargetSize];
+    }
+    
+    NBULogInfo(@"Processed image with size: %@", NSStringFromCGSize(image.size));
+    
+    return image;
+}
+
+- (void)setMediaInfo:(NBUMediaInfo *)mediaInfo
+{
+    NBULogInfo(@"%@ %@", THIS_METHOD, mediaInfo);
+    
+    _mediaInfo = mediaInfo;
+    
+    self.object = mediaInfo.originalImage;
+    
+    // Restore state
+    NBUFilter * filter = mediaInfo.attributes[NBUMediaInfoFiltersKey];
+    if (filter)
+    {
+        _filterView.currentFilter = filter;
+    }
+}
+
+- (NBUMediaInfo *)mediaInfo
+{
+    // Add metadata
+    if (_cropView)
+    {
+        _mediaInfo.attributes[NBUMediaInfoCropRectKey] = [NSValue valueWithCGRect:_cropView.currentCropRect];
+    }
+    if (_filterView)
+    {
+        NBUFilter * currentFilter = _filterView.currentFilter;
+        if (currentFilter)
+            _mediaInfo.attributes[NBUMediaInfoFiltersKey] = currentFilter;
+    }
+    
+    return _mediaInfo;
+}
+
+- (NBUMediaInfo *)editedMediaInfo
+{
+    // Try to refresh the edited image
+    UIImage * editedImage = self.editedImage;
+    if (editedImage)
+    {
+        _mediaInfo.editedImage = editedImage;
+    }
+    
+    return self.mediaInfo;
 }
 
 - (void)reset:(id)sender

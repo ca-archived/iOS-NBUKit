@@ -17,7 +17,7 @@ typedef void (^ButtonBlock)();
    BOOL hadToRaiseVolume;
    
    BOOL _isStealingVolumeButtons;
-   BOOL _stoppedStealingBecauseOfBackground;
+   BOOL _suspended;
    UIView *_volumeView;
 }
 

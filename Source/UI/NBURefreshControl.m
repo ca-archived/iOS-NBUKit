@@ -2,8 +2,20 @@
 //  NBURefreshControl.m
 //  NBUKit
 //
-//  Created by 利辺羅 on 2012/09/11.
-//  Copyright (c) 2012年 CyberAgent Inc. All rights reserved.
+//  Created by Ernesto Rivera on 2012/09/11.
+//  Copyright (c) 2012 CyberAgent Inc.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 #import "NBURefreshControl.h"
@@ -129,7 +141,7 @@
     // Offset changed
     if ([keyPath isEqualToString:@"contentOffset"])
     {
-        CGPoint oldOffset = [(NSValue *)[change objectForKey:NSKeyValueChangeOldKey] CGPointValue];
+        CGPoint oldOffset = [(NSValue *)change[NSKeyValueChangeOldKey] CGPointValue];
         
         // No changes? Do nothing
         if (_scrollView.contentOffset.y == oldOffset.y)
@@ -187,24 +199,30 @@
     {
         case NBURefreshStatusIdle:
         {
-            self.statusLabel.text = message ? message : NSLocalizedString(@"Drag to refresh",
-                                                                          @"NBURefreshControl");
+            self.statusLabel.text = message ? message : NSLocalizedStringWithDefaultValue(@"NBURefreshControl Drag to refresh",
+                                                                                          nil, nil,
+                                                                                          @"Drag to refresh",
+                                                                                          @"NBURefreshControl Drag to refresh");
             _idleView.hidden = NO;
             _loadingView.hidden = YES;
             break;
         }
         case NBURefreshStatusLoading:
         {
-            self.statusLabel.text = message ? message : NSLocalizedString(@"Reloading...",
-                                                                          @"NBURefreshControl");
+            self.statusLabel.text = message ? message : NSLocalizedStringWithDefaultValue(@"NBURefreshControl Reloading",
+                                                                                          nil, nil,
+                                                                                          @"Reloading...",
+                                                                                          @"NBURefreshControl Reloading");
             _idleView.hidden = YES;
             _loadingView.hidden = NO;
             break;
         }
         case NBURefreshStatusUpdated:
         {
-            self.statusLabel.text = message ? message : NSLocalizedString(@"Update completed",
-                                                                          @"NBURefreshControl");
+            self.statusLabel.text = message ? message : NSLocalizedStringWithDefaultValue(@"NBURefreshControl Updated",
+                                                                                          nil, nil,
+                                                                                          @"Updated",
+                                                                                          @"NBURefreshControl Updated");
             self.lastUpdateDate = [NSDate date];
             _idleView.hidden = YES;
             _loadingView.hidden = YES;
@@ -214,8 +232,10 @@
         default:
         {
             _status = NBURefreshStatusError;
-            self.statusLabel.text = message ? message : NSLocalizedString(@"Update error",
-                                                                          @"NBURefreshControl");
+            self.statusLabel.text = message ? message : NSLocalizedStringWithDefaultValue(@"NBURefreshControl Error",
+                                                                                          nil, nil,
+                                                                                          @"Update error",
+                                                                                          @"NBURefreshControl Error");
             _idleView.hidden = YES;
             _loadingView.hidden = YES;
             [self hideAfterDelay:2.0];
@@ -258,10 +278,21 @@
 - (void)setLastUpdateDate:(NSDate *)lastUpdateDate
 {
     _lastUpdateDate = lastUpdateDate;
-    _lastUpdateLabel.text = (lastUpdateDate ?
-                             [NSString stringWithFormat:NSLocalizedString(@"Last updated %@", @"NBURefreshControl"),
-                              [self.dateFormatter stringFromDate:lastUpdateDate]] :
-                             NSLocalizedString(@"Last update date unknown", @"NBURefreshControl"));
+    if (lastUpdateDate)
+    {
+        _lastUpdateLabel.text = [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"NBURefreshControl last updated",
+                                                                                             nil, nil,
+                                                                                             @"Last updated %@",
+                                                                                             @"NBURefreshControl last updated"),
+                                 [self.dateFormatter stringFromDate:lastUpdateDate]];
+    }
+    else
+    {
+        _lastUpdateLabel.text = NSLocalizedStringWithDefaultValue(@"NBURefreshControl last update unknown",
+                                                                  nil, nil,
+                                                                  @"Last update date unknown",
+                                                                  @"NBURefreshControl last update unknown");
+    }
 }
 
 - (NSDateFormatter *)dateFormatter

@@ -1,9 +1,21 @@
 //
 //  ObjectArrayView.h
-//  NBUBase
+//  NBUCompatibility
 //
-//  Created by エルネスト 利辺羅 on 12/02/29.
-//  Copyright (c) 2012年 CyberAgent Inc. All rights reserved.
+//  Created by Ernesto Rivera on 12/02/29.
+//  Copyright (c) 2012 CyberAgent Inc.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 #import "ObjectView.h"
@@ -30,11 +42,10 @@
 /// @name Managing the Array of Objects
 
 /// The associated array of objects.
-@property (strong, nonatomic, setter = setObject:, getter = object) NSArray * objectArray;
+@property (strong, nonatomic, setter=setObject:, getter=object) NSArray * objectArray;
 
 /// Add a new object.
-///
-/// The view layout will be automatically adjusted.
+/// @discussion The view layout will be automatically adjusted.
 /// @param object The new object.
 - (void)addObject:(id)object;
 
@@ -66,8 +77,7 @@
 /// @name Show/Hide Objects' Views
 
 /// Objects whose views should be hidden.
-///
-/// By default no objects are hidden.
+/// @discussion By default no objects are hidden.
 @property (strong, nonatomic, readonly)     NSArray * hiddenObjects;
 
 /// Hide/Show an object's corresponding view.
@@ -108,8 +118,7 @@
 /// @name Objects' View Setup
 
 /// Populate the objectArray with the objectArrayView subviews.
-///
-/// You would normally call this method after loading the ObjectArrayView from a Nib by
+/// @discussion You would normally call this method after loading the ObjectArrayView from a Nib by
 /// overriding awakeFromNib, UIView's initWithCoder, or UIViewController's viewDidLoad methods.
 - (void)populateObjectArrayWithSubviews;
 

@@ -1,9 +1,21 @@
 //
 //  ObjectSlideView.m
-//  NBUBase
+//  NBUCompatibility
 //
-//  Created by エルネスト 利辺羅 on 11/12/27.
-//  Copyright (c) 2011年 CyberAgent Inc. All rights reserved.
+//  Created by Ernesto Rivera on 11/12/27.
+//  Copyright (c) 2011 CyberAgent Inc.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 #import "ObjectSlideView.h"
@@ -355,122 +367,128 @@
                         options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionAllowUserInteraction
                      animations:^{
                          
-                         // Remove hidden views
-                         NSMutableArray * visibleViews = [NSMutableArray arrayWithArray:_views];
-                         NSUInteger index;
-                         UIView * view;
-                         for (id object in self.hiddenObjects)
-                         {
-                             index = [self.objectArray indexOfObject:object];
-                             view = [_views objectAtIndex:index];
-                             view.hidden = YES;
-                             [visibleViews removeObject:view];
-                         }
-                         
-                         // Is there a target
-                         BOOL hasTargetSize = !CGSizeEqualToSize(self.targetObjectViewSize, CGSizeZero);
-                         
-                         // Calculate margins, number of views per page and the current view
-                         NSUInteger currentView = (NSUInteger)_pageControl.currentPage * _nVisibleViews;
-                         CGSize availableSize = CGSizeMake(self.bounds.size.width,
-                                                           self.bounds.size.height - (2 * self.margin.height));
-                         if(self.margin.width == 0.0)
-                         {
-                             self.margin = CGSizeMake(MIN(kImageMargin, availableSize.width - availableSize.height),
-                                                      self.margin.height);
-                         }
-                         _nViews = visibleViews.count + ((self.hasMoreObjects && self.loadMoreView)? 1 : 0);
-                         if (hasTargetSize)
-                         {
-                             _nVisibleViews = floor(availableSize.width / (self.targetObjectViewSize.width + self.margin.width));
-                         }
-                         else
-                         {
-                             _nVisibleViews = floor(availableSize.width / (availableSize.height + self.margin.width));
-                         }
-                         _nVisibleViews = MIN(_nVisibleViews, _nViews);
-                         _nVisibleViews = MAX(_nVisibleViews, 1);
-                         
-                         // If the frame is too small hide page control
-                         _pageControl.alpha = (availableSize.height < kMinimumHeightToShowPageControl) ? 0.0 : 1.0;
-                         
-                         // Adjust scrollView avoiding changing the current page
-                         CGRect frame;
-                         if (_centerViews)
-                         {
-                             frame = CGRectMake(0.0,
-                                                self.margin.height,
-                                                hasTargetSize ? _nVisibleViews * (self.targetObjectViewSize.width + self.margin.width):
-                                                                _nVisibleViews * (availableSize.height + self.margin.width),
-                                                hasTargetSize ? self.targetObjectViewSize.height :
-                                                                availableSize.height);
-                             frame.origin.x = (self.frame.size.width - frame.size.width) / 2.0;
-                         }
-                         else
-                         {
-                             frame = CGRectMake(0.0,
-                                                self.margin.height,
-                                                availableSize.width,
-                                                hasTargetSize ? self.targetObjectViewSize.height :
-                                                                availableSize.height);
-                         }
-                         _dontUpdatePageControl = YES;
-                         _scrollView.frame = frame;
-                         
-                         // Adjust views' frames
-                         frame = CGRectMake(_centerViews ? self.margin.width / 2.0:
-                                                           self.margin.width,
-                                            0.0,
-                                            hasTargetSize ? self.targetObjectViewSize.width :
-                                                            frame.size.height,
-                                            hasTargetSize ? self.targetObjectViewSize.height :
-                                                            frame.size.height);
-                         for (view in visibleViews)
-                         {
-                             view.frame = frame;
-                             
-                             // Prepare next frame
-                             frame.origin.x += frame.size.width + self.margin.width;
-                         }
-                         
-                         // Load more view
-                         if (self.hasMoreObjects && self.loadMoreView)
-                         {
-                             if (self.loadMoreView.superview != self)
-                             {
-                                 [self addSubview:self.loadMoreView];
-                             }
-                             self.loadMoreView.frame = frame;
-                             frame.origin.x += frame.size.width + self.margin.width;
-                         }
-                         else
-                         {
-                             [self.loadMoreView removeFromSuperview];
-                         }
-                         
-                         // Adjust page control and scroll view keeping the current image
-                         _pageControl.numberOfPages = ceil(_nViews * 1.0 / _nVisibleViews);
-                         _pageControl.currentPage = _pageControl.numberOfPages; // Needed for a UIKit bug
-                         _pageControl.currentPage = currentView / _nVisibleViews;
-                         
-                         _scrollView.contentSize = CGSizeMake(_centerViews ? frame.origin.x - (self.margin.width / 2.0) :
-                                                                             frame.origin.x,
-                                                              frame.size.height);
-
-                         RKLogTrace(@"content width %f current page %d frame width %f",
-                                    _scrollView.contentSize.width, _pageControl.currentPage, _scrollView.frame.size.width);
-                         
-                         float offsetX = _scrollView.frame.size.width * _pageControl.currentPage;
-                         if (offsetX + _scrollView.frame.size.width > _scrollView.contentSize.width)
-                         {
-                             offsetX = _scrollView.contentSize.width - _scrollView.frame.size.width;
-                         }
-                         
-                         _scrollView.contentOffset = CGPointMake(offsetX,
-                                                                 0.0);
+                         [self _layoutSubviews];
                      }
                      completion:NULL
      ];
+}
+
+- (void)_layoutSubviews
+{
+    // Remove hidden views
+    NSMutableArray * visibleViews = [NSMutableArray arrayWithArray:_views];
+    NSUInteger index;
+    UIView * view;
+    for (id object in self.hiddenObjects)
+    {
+        index = [self.objectArray indexOfObject:object];
+        view = [_views objectAtIndex:index];
+        view.hidden = YES;
+        [visibleViews removeObject:view];
+    }
+    
+    // Is there a target
+    BOOL hasTargetSize = !CGSizeEqualToSize(self.targetObjectViewSize, CGSizeZero);
+    
+    // Calculate margins, number of views per page and the current view
+    NSUInteger currentView = (NSUInteger)_pageControl.currentPage * _nVisibleViews;
+    CGSize availableSize = CGSizeMake(self.bounds.size.width,
+                                      self.bounds.size.height - (2 * self.margin.height));
+    if(self.margin.width == 0.0)
+    {
+        self.margin = CGSizeMake(MIN(kImageMargin, availableSize.width - availableSize.height),
+                                 self.margin.height);
+    }
+    _nViews = visibleViews.count + ((self.hasMoreObjects && self.loadMoreView)? 1 : 0);
+    if (hasTargetSize)
+    {
+        _nVisibleViews = floor(availableSize.width / (self.targetObjectViewSize.width + self.margin.width));
+    }
+    else
+    {
+        _nVisibleViews = floor(availableSize.width / (availableSize.height + self.margin.width));
+    }
+    _nVisibleViews = MIN(_nVisibleViews, _nViews);
+    _nVisibleViews = MAX(_nVisibleViews, 1);
+    
+    // If the frame is too small hide page control
+    _pageControl.alpha = (availableSize.height < kMinimumHeightToShowPageControl) ? 0.0 : 1.0;
+    
+    // Adjust scrollView avoiding changing the current page
+    CGRect frame;
+    if (_centerViews)
+    {
+        frame = CGRectMake(0.0,
+                           self.margin.height,
+                           hasTargetSize ? _nVisibleViews * (self.targetObjectViewSize.width + self.margin.width):
+                           _nVisibleViews * (availableSize.height + self.margin.width),
+                           hasTargetSize ? self.targetObjectViewSize.height :
+                           availableSize.height);
+        frame.origin.x = (self.frame.size.width - frame.size.width) / 2.0;
+    }
+    else
+    {
+        frame = CGRectMake(0.0,
+                           self.margin.height,
+                           availableSize.width,
+                           hasTargetSize ? self.targetObjectViewSize.height :
+                           availableSize.height);
+    }
+    _dontUpdatePageControl = YES;
+    _scrollView.frame = frame;
+    
+    // Adjust views' frames
+    frame = CGRectMake(_centerViews ? self.margin.width / 2.0:
+                       self.margin.width,
+                       0.0,
+                       hasTargetSize ? self.targetObjectViewSize.width :
+                       frame.size.height,
+                       hasTargetSize ? self.targetObjectViewSize.height :
+                       frame.size.height);
+    for (view in visibleViews)
+    {
+        view.frame = frame;
+        
+        // Prepare next frame
+        frame.origin.x += frame.size.width + self.margin.width;
+    }
+    
+    // Load more view
+    if (self.hasMoreObjects && self.loadMoreView)
+    {
+        if (self.loadMoreView.superview != self)
+        {
+            [self addSubview:self.loadMoreView];
+        }
+        self.loadMoreView.frame = frame;
+        frame.origin.x += frame.size.width + self.margin.width;
+    }
+    else
+    {
+        [self.loadMoreView removeFromSuperview];
+    }
+    
+    // Adjust page control and scroll view keeping the current image
+    _pageControl.numberOfPages = ceil(_nViews * 1.0 / _nVisibleViews);
+    _pageControl.currentPage = _pageControl.numberOfPages; // Needed for a UIKit bug
+    _pageControl.currentPage = currentView / _nVisibleViews;
+    
+    _scrollView.contentSize = CGSizeMake(_centerViews ? frame.origin.x - (self.margin.width / 2.0) :
+                                         frame.origin.x,
+                                         frame.size.height);
+    
+    RKLogTrace(@"content width %f current page %d frame width %f",
+               _scrollView.contentSize.width, _pageControl.currentPage, _scrollView.frame.size.width);
+    
+    CGFloat offsetX = _scrollView.frame.size.width * _pageControl.currentPage;
+    if (offsetX > 0.0 &&
+        offsetX + _scrollView.frame.size.width > _scrollView.contentSize.width)
+    {
+        offsetX = _scrollView.contentSize.width - _scrollView.frame.size.width;
+    }
+    
+    _scrollView.contentOffset = CGPointMake(offsetX,
+                                            0.0);
 }
 
 @end

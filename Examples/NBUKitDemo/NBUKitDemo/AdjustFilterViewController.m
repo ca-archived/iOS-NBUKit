@@ -2,8 +2,20 @@
 //  AdjustFilterViewController.m
 //  NBUKitDemo
 //
-//  Created by 利辺羅 on 2013/02/22.
-//  Copyright (c) 2013年 CyberAgent Inc. All rights reserved.
+//  Created by Ernesto Rivera on 2013/02/22.
+//  Copyright (c) 2013 CyberAgent Inc.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 #import "AdjustFilterViewController.h"
@@ -315,9 +327,9 @@
     }
     else
     {
-        cell = [[NSBundle loadNibNamed:@"AdjustFilterSaveCell"
-                                 owner:nil
-                               options:nil] objectAtIndex:0];
+        cell = [NSBundle loadNibNamed:@"AdjustFilterSaveCell"
+                                owner:nil
+                              options:nil][0];
     }
     return cell;
 }
@@ -344,9 +356,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 + (AdjustFilterTitleCell *)titleCellForForFilter:(NBUFilter *)filter
 {
-    AdjustFilterTitleCell * cell = [[NSBundle loadNibNamed:@"AdjustFilterTitleCell"
-                                                     owner:nil
-                                                   options:nil] objectAtIndex:0];
+    AdjustFilterTitleCell * cell = [NSBundle loadNibNamed:@"AdjustFilterTitleCell"
+                                                    owner:nil
+                                                  options:nil][0];
     cell.filter = filter;
     
     return cell;
@@ -380,9 +392,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
         return nil;
     }
     
-    AdjustFilterValueCell * cell = [[NSBundle loadNibNamed:nibName
-                                                     owner:nil
-                                                   options:nil] objectAtIndex:0];
+    AdjustFilterValueCell * cell = [NSBundle loadNibNamed:nibName
+                                                    owner:nil
+                                                  options:nil][0];
     [cell setIndex:index
             filter:filter];
     

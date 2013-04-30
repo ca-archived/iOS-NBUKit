@@ -2,8 +2,20 @@
 //  PickerTestsViewController.m
 //  NBUKitDemo
 //
-//  Created by 利辺羅 on 2012/11/13.
-//  Copyright (c) 2012年 CyberAgent Inc. All rights reserved.
+//  Created by Ernesto Rivera on 2012/11/13.
+//  Copyright (c) 2012 CyberAgent Inc.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 #import "PickerTestsViewController.h"
@@ -12,34 +24,34 @@
 {
     NBUImagePickerOptions _options;
 }
-@synthesize imageView = _imageView;
+@synthesize slideView = _slideView;
 
 - (IBAction)startPicker:(id)sender
 {
     // *** If we were using fixed options we could retain the picker ***
     [NBUImagePickerController startPickerWithTarget:self
-                                            options:(_options |
-                                                     NBUImagePickerOptionSaveTakenOrEditedImages |
-                                                     NBUImagePickerOptionReturnMediaInfo)
+                                            options:(_options | NBUImagePickerOptionReturnMediaInfo)
                                             nibName:nil
-                                        resultBlock:^(NSArray * mediaInfo)
+                                        resultBlock:^(NSArray * mediaInfos)
     {
-        NBULogInfo(@"Picker finished with media info: %@", mediaInfo);
+        NBULogInfo(@"Picker finished with media info: %@", mediaInfos);
         
-        if (mediaInfo.count > 0)
+        if (mediaInfos.count > 0)
         {
-            UIImage * image = mediaInfo[0][NBUImagePickerEditedImageKey];
-            if (!image)
-            {
-                image = mediaInfo[0][NBUImagePickerOriginalImageKey];
-            }
-            
-            _imageView.image = image;
+            _slideView.objectArray = mediaInfos;
         }
     }];
 }
 
 #pragma mark - Handle UI -> options
+
+- (IBAction)toggleMultiImageMode:(UISwitch *)sender
+{
+    _options |= NBUImagePickerOptionMultipleImages;
+    if (!sender.on)
+        _options ^= NBUImagePickerOptionMultipleImages;
+    NBULogVerbose(@"Options: %x", _options);
+}
 
 - (IBAction)segmentControlChanged:(UISegmentedControl *)sender
 {
@@ -103,6 +115,22 @@
     _options |= NBUImagePickerOptionDisableConfirmation;
     if (!sender.selected)
         _options ^= NBUImagePickerOptionDisableConfirmation;
+    NBULogVerbose(@"Options: %x", _options);
+}
+
+- (IBAction)toggleSaveTakenImages:(UISwitch *)sender
+{
+    _options |= NBUImagePickerOptionSaveTakenImages;
+    if (!sender.on)
+        _options ^= NBUImagePickerOptionSaveTakenImages;
+    NBULogVerbose(@"Options: %x", _options);
+}
+
+- (IBAction)toggleSaveEditedImages:(UISwitch *)sender
+{
+    _options |= NBUImagePickerOptionSaveEditedImages;
+    if (!sender.on)
+        _options ^= NBUImagePickerOptionSaveEditedImages;
     NBULogVerbose(@"Options: %x", _options);
 }
 

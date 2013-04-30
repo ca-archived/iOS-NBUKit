@@ -2,8 +2,20 @@
 //  NBUAsset.m
 //  NBUKit
 //
-//  Created by 利辺羅 on 2012/08/01.
-//  Copyright (c) 2012年 CyberAgent Inc. All rights reserved.
+//  Created by Ernesto Rivera on 2012/08/01.
+//  Copyright (c) 2012 CyberAgent Inc.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 #import "NBUAsset.h"
@@ -57,6 +69,10 @@
 - (ALAsset *)ALAsset { return nil; }
 
 - (UIImage *)thumbnailImage { return nil; }
+
+- (UIImage *)fullScreenImage { return nil; }
+
+- (UIImage *)fullResolutionImage { return nil; }
 
 @end
 
@@ -262,7 +278,7 @@
     // "In iOS 5 and later, this method returns a fully cropped, rotated, and adjusted image—exactly as a user would see in Photos or in the image picker."
     UIImage * image = [UIImage imageWithCGImage:self.defaultRepresentation.fullScreenImage
                                           scale:self.defaultRepresentation.scale
-                                    orientation:SYSTEM_VERSION_LESS_THAN(@"5.0") ? self.defaultRepresentation.orientation : UIImageOrientationUp];
+                                    orientation:SYSTEM_VERSION_LESS_THAN(@"5.0") ? (UIImageOrientation)self.defaultRepresentation.orientation : UIImageOrientationUp];
     NBULogVerbose(@"fullScreenImage with size: %@ orientation %d",
                NSStringFromCGSize(image.size), image.imageOrientation);
     return image;
@@ -273,7 +289,7 @@
     // "This method returns the biggest, best representation available, unadjusted in any way."
     UIImage * image = [UIImage imageWithCGImage:self.defaultRepresentation.fullResolutionImage
                                           scale:self.defaultRepresentation.scale
-                                    orientation:self.defaultRepresentation.orientation];
+                                    orientation:(UIImageOrientation)self.defaultRepresentation.orientation];
     NBULogVerbose(@"fullResolutionImage with size: %@ orientation %d",
                NSStringFromCGSize(image.size), image.imageOrientation);
     return image;
@@ -292,9 +308,7 @@ static CGSize _thumbnailSize;
 
 + (void)initialize
 {
-    CGFloat scale = [UIScreen mainScreen].scale;
-    _thumbnailSize = CGSizeMake(100.0 * scale,
-                                100.0 * scale);
+    _thumbnailSize = CGSizeMake(100.0, 100.0);
 }
 
 - (id)initWithFileURL:(NSURL *)fileURL
@@ -304,7 +318,7 @@ static CGSize _thumbnailSize;
     {
         _URL = fileURL;
         _type = NBUAssetTypeImage; // For now
-        _thumbnailImage = [self.fullScreenImage imageCroppedToFill:_thumbnailSize];
+        _thumbnailImage = [self.fullScreenImage thumbnailWithSize:_thumbnailSize];
     }
     return self;
 }

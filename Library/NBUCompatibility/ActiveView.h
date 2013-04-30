@@ -1,9 +1,21 @@
 //
 //  ActiveView.h
-//  NBUBase
+//  NBUCompatibility
 //
-//  Created by エルネスト 利辺羅 on 12/03/05.
-//  Copyright (c) 2012年 CyberAgent Inc. All rights reserved.
+//  Created by Ernesto Rivera on 12/03/05.
+//  Copyright (c) 2012 CyberAgent Inc.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 #import "NBUView.h"
@@ -48,16 +60,15 @@ extern NSString * const ActiveViewSwipedNotification;
 
 /// A boolean to indicated whether the view is "empty" or not
 /// When empty noContentsView will be automatically shown
-@property (nonatomic, getter = isEmpty)             BOOL empty;
+@property (nonatomic, getter=isEmpty)             BOOL empty;
 
 /// The view's original size as loaded from its Nib file.
-///
-/// This is the minimum size that to be returned by the view for sizeThatFits:.
+/// @discussion This is the minimum size that to be returned by the view for sizeThatFits:.
 @property (nonatomic, readonly)                     CGSize originalSize;
 
 /// A boolean that indicates whether the view should animate its changes.
 /// The default value is NO.
-@property (nonatomic, getter = isAnimated)          BOOL animated;
+@property (nonatomic, getter=isAnimated)          BOOL animated;
 
 /// A boolean to indicate whether the view should recognize single taps.
 /// When set to YES a UITapGestureRecognizer that triggers the tapped: method will be set up.
@@ -102,32 +113,27 @@ extern NSString * const ActiveViewSwipedNotification;
 /// @name Methods/Actions
 
 /// Called when recognizeTap is enabled.
-///
-/// Subclasses should override this method and call super at the beginning.
+/// @discussion Subclasses should override this method and call super at the beginning.
 /// @param sender Will usually an internal UITapGestureRecognizer.
 - (IBAction)tapped:(id)sender;
 
 /// Called when recognizeDoubleTap is enabled.
-///
-/// Subclasses should override this method and call super at the beginning.
+/// @discussion Subclasses should override this method and call super at the beginning.
 /// @param sender Will usually an internal UITapGestureRecognizer.
 - (IBAction)doubleTapped:(id)sender;
 
 /// Called when swipes are enabled.
-///
-/// By default a white mask and a delete button will be shown.
+/// @discussion By default a white mask and a delete button will be shown.
 /// Subclasses should override this method and call super at the beginning if needed.
 /// @param sender Will usually an internal UIGestureRecognizer.
 - (IBAction)swiped:(id)sender;
 
 /// Send notification asking trigger view's resize.
-///
-/// Observers (usually a ScrollViewController) should trigger sizeToFit messsages.
+/// @discussion Observers (usually a ScrollViewController) should trigger sizeToFit messsages.
 - (void)postSizeThatFitsChangedNotification;
 
 /// Send notification asking to scroll to make this view visible.
-///
-/// Observers (usually a ScrollViewController) should scroll to this view.
+/// @discussion Observers (usually a ScrollViewController) should scroll to this view.
 - (void)postScrollToVisibleNotification;
 
 @end
@@ -140,13 +146,11 @@ extern NSString * const ActiveViewSwipedNotification;
 @interface ActiveLabel : UILabel
 
 /// The view's original size as loaded from its Nib file.
-///
-/// This is the minimum size that to be returned by the view for sizeThatFits:.
+/// @discussion This is the minimum size that to be returned by the view for sizeThatFits:.
 @property (nonatomic, readonly)                     CGSize originalSize;
 
 /// The maximum size that this view should get
-///
-/// The default value is (CGFLOAT_MAX, CGFLOAT_MAX).
+/// @discussion The default value is (CGFLOAT_MAX, CGFLOAT_MAX).
 @property (nonatomic)                               CGSize maxSize;
 
 @end

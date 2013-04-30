@@ -1,0 +1,82 @@
+//
+//  NBUCore_Testing.xcconfig
+//  NBUCore
+//
+//  Created by Ernesto Rivera on 12/07/25.
+//  Copyright (c) 2012 CyberAgent Inc.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
+//
+
+//////////////////////////////////////////////////////////////////////////
+//              *** YOU DON'T NEED TO MODIFY THIS FILE ***              //
+// You can change these values directly in your Target's Build Settings //
+//////////////////////////////////////////////////////////////////////////
+
+/////////////
+// TESTING //
+/////////////
+
+// Default preprocessor macros that can be used with "#ifdef TESTING"
+GCC_PREPROCESSOR_DEFINITIONS = TESTING=1
+
+// Bundle ID
+// *** In your Info.Plist set the "Bundle Identifier" to ${BUNDLEID} ***
+BUNDLEID = jp.co.cyberagent.nbu.${PRODUCT_NAME:rfc1034identifier}-ota
+
+// Display name for device's home screen
+// *** In your Info.Plist set the "Bundle display name" to ${DISPLAYNAME} ***
+DISPLAYNAME = ${PRODUCT_NAME}-ota
+
+// Compatibility with custom configurations (ex. Release_stg)
+// *** Override if necessary in your target's build settings ***
+DEPENDENCIES_BUILD_DIR = $(BUILD_DIR)/Release$(EFFECTIVE_PLATFORM_NAME)
+
+// Code Sign Identities
+CODE_SIGN_IDENTITY[sdk=iphoneos*] = iPhone Distribution
+
+// Keep debugging symbols
+ONLY_ACTIVE_ARCH = NO
+DEPLOYMENT_POSTPROCESSING = NO
+COPY_PHASE_STRIP = NO
+STRIP_INSTALLED_PRODUCT = NO
+
+////////////
+// COMMON //
+////////////
+
+// Deployment targets: iPhone/iPad, iOS4.x+
+TARGETED_DEVICE_FAMILY = 1,2
+IPHONEOS_DEPLOYMENT_TARGET[sdk=iphoneos*] = 4.0
+IPHONEOS_DEPLOYMENT_TARGET[sdk=iphoneos6.*] = 4.3
+IPHONEOS_DEPLOYMENT_TARGET[sdk=iphonesimulator*] = 4.3
+
+// Architectures
+ARCHS[sdk=iphoneos*] = armv6 armv7
+ARCHS[sdk=iphoneos6.*] = $(ARCHS_STANDARD_32_BIT)
+ARCHS[sdk=iphonesimulator*] = i386
+
+// Base SDK: Latest
+SDKROOT = iphoneos
+
+// Warnings
+CLANG_WARN_CONSTANT_CONVERSION = YES
+CLANG_WARN_ENUM_CONVERSION = YES
+CLANG_WARN_INT_CONVERSION = YES
+CLANG_WARN__DUPLICATE_METHOD_MATCH = YES
+
+// Paths
+ALWAYS_SEARCH_USER_PATHS = NO
+FRAMEWORK_SEARCH_PATHS = "$DEPENDENCIES_BUILD_DIR"
+HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/../../Headers" "$(BUILT_PRODUCTS_DIR)/include" "$(BUILT_PRODUCTS_DIR)/usr/local/lib/include" "$(BUILT_PRODUCTS_DIR)/usr/local/include"
+
