@@ -19,6 +19,7 @@
 //
 
 #import "NBUGalleryViewController.h"
+#import "NBUKitPrivate.h"
 
 // Private category
 @interface NBUGalleryViewController (Private) <UIScrollViewDelegate>

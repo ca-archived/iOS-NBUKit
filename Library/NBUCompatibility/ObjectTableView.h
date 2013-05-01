@@ -18,6 +18,8 @@
 //  limitations under the License.
 //
 
+#import "ObjectArrayView.h"
+
 /**
  A UITableView to present an array of objects.
  

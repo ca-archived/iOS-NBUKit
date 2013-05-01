@@ -19,6 +19,7 @@
 //
 
 #import "NBUEditMultiImageViewController.h"
+#import "NBUKitPrivate.h"
 
 @implementation NBUEditMultiImageViewController
 

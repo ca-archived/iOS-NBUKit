@@ -19,6 +19,7 @@
 //
 
 #import "NBUGPUImageFilterProvider.h"
+#import "NBUKitPrivate.h"
 #import <GPUImage/GPUImage.h>
 
 // Define module

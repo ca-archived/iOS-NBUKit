@@ -19,6 +19,7 @@
 //
 
 #import "NBUObjectView.h"
+#import "NBUKit.h"
 
 /**
  Customizable ObjectView used to present a NBUAssetsGroupView object.

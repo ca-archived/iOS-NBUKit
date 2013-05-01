@@ -7,9 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface LoremIpsum : NSObject {
-  NSArray* _words;
-}
+@interface LoremIpsum : NSObject
 
 - (NSString*) words:(NSUInteger)count;
 - (NSString*) sentences:(NSUInteger)count;

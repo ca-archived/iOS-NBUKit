@@ -20,6 +20,7 @@
 
 #ifndef RESTKIT
 
+#import "NBUKitPrivate.h"
 #define RKLogError      NBULogError
 #define RKLogWarning    NBULogWarn
 #define RKLogInfo       NBULogInfo

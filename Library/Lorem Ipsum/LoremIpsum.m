@@ -7,1061 +7,1059 @@
 
 #import "LoremIpsum.h"
 
-@interface LoremIpsum ()
-- (NSString*) randomWord;
-@end
-
 @implementation LoremIpsum
-
-- (id) init {
-  if ((self = [super init]))  {
-    NSMutableArray* wordsArray = [[NSMutableArray alloc] initWithCapacity:1000];
-    [wordsArray addObject:@"lorem"];
-    [wordsArray addObject:@"ipsum"];
-    [wordsArray addObject:@"dolor"];
-    [wordsArray addObject:@"sit"];
-    [wordsArray addObject:@"amet"];
-    [wordsArray addObject:@"consectetuer"];
-    [wordsArray addObject:@"adipiscing"];
-    [wordsArray addObject:@"elit"];
-    [wordsArray addObject:@"integer"];
-    [wordsArray addObject:@"in"];
-    [wordsArray addObject:@"mi"];
-    [wordsArray addObject:@"a"];
-    [wordsArray addObject:@"mauris"];
-    [wordsArray addObject:@"ornare"];
-    [wordsArray addObject:@"sagittis"];
-    [wordsArray addObject:@"suspendisse"];
-    [wordsArray addObject:@"potenti"];
-    [wordsArray addObject:@"suspendisse"];
-    [wordsArray addObject:@"dapibus"];
-    [wordsArray addObject:@"dignissim"];
-    [wordsArray addObject:@"dolor"];
-    [wordsArray addObject:@"nam"];
-    [wordsArray addObject:@"sapien"];
-    [wordsArray addObject:@"tellus"];
-    [wordsArray addObject:@"tempus"];
-    [wordsArray addObject:@"et"];
-    [wordsArray addObject:@"tempus"];
-    [wordsArray addObject:@"ac"];
-    [wordsArray addObject:@"tincidunt"];
-    [wordsArray addObject:@"in"];
-    [wordsArray addObject:@"arcu"];
-    [wordsArray addObject:@"duis"];
-    [wordsArray addObject:@"dictum"];
-    [wordsArray addObject:@"proin"];
-    [wordsArray addObject:@"magna"];
-    [wordsArray addObject:@"nulla"];
-    [wordsArray addObject:@"pellentesque"];
-    [wordsArray addObject:@"non"];
-    [wordsArray addObject:@"commodo"];
-    [wordsArray addObject:@"et"];
-    [wordsArray addObject:@"iaculis"];
-    [wordsArray addObject:@"sit"];
-    [wordsArray addObject:@"amet"];
-    [wordsArray addObject:@"mi"];
-    [wordsArray addObject:@"mauris"];
-    [wordsArray addObject:@"condimentum"];
-    [wordsArray addObject:@"massa"];
-    [wordsArray addObject:@"ut"];
-    [wordsArray addObject:@"metus"];
-    [wordsArray addObject:@"donec"];
-    [wordsArray addObject:@"viverra"];
-    [wordsArray addObject:@"sapien"];
-    [wordsArray addObject:@"mattis"];
-    [wordsArray addObject:@"rutrum"];
-    [wordsArray addObject:@"tristique"];
-    [wordsArray addObject:@"lacus"];
-    [wordsArray addObject:@"eros"];
-    [wordsArray addObject:@"semper"];
-    [wordsArray addObject:@"tellus"];
-    [wordsArray addObject:@"et"];
-    [wordsArray addObject:@"molestie"];
-    [wordsArray addObject:@"nisi"];
-    [wordsArray addObject:@"sapien"];
-    [wordsArray addObject:@"eu"];
-    [wordsArray addObject:@"massa"];
-    [wordsArray addObject:@"vestibulum"];
-    [wordsArray addObject:@"ante"];
-    [wordsArray addObject:@"ipsum"];
-    [wordsArray addObject:@"primis"];
-    [wordsArray addObject:@"in"];
-    [wordsArray addObject:@"faucibus"];
-    [wordsArray addObject:@"orci"];
-    [wordsArray addObject:@"luctus"];
-    [wordsArray addObject:@"et"];
-    [wordsArray addObject:@"ultrices"];
-    [wordsArray addObject:@"posuere"];
-    [wordsArray addObject:@"cubilia"];
-    [wordsArray addObject:@"curae;"];
-    [wordsArray addObject:@"fusce"];
-    [wordsArray addObject:@"erat"];
-    [wordsArray addObject:@"tortor"];
-    [wordsArray addObject:@"mollis"];
-    [wordsArray addObject:@"ut"];
-    [wordsArray addObject:@"accumsan"];
-    [wordsArray addObject:@"ut"];
-    [wordsArray addObject:@"lacinia"];
-    [wordsArray addObject:@"gravida"];
-    [wordsArray addObject:@"libero"];
-    [wordsArray addObject:@"curabitur"];
-    [wordsArray addObject:@"massa"];
-    [wordsArray addObject:@"felis"];
-    [wordsArray addObject:@"accumsan"];
-    [wordsArray addObject:@"feugiat"];
-    [wordsArray addObject:@"convallis"];
-    [wordsArray addObject:@"sit"];
-    [wordsArray addObject:@"amet"];
-    [wordsArray addObject:@"porta"];
-    [wordsArray addObject:@"vel"];
-    [wordsArray addObject:@"neque"];
-    [wordsArray addObject:@"duis"];
-    [wordsArray addObject:@"et"];
-    [wordsArray addObject:@"ligula"];
-    [wordsArray addObject:@"non"];
-    [wordsArray addObject:@"elit"];
-    [wordsArray addObject:@"ultricies"];
-    [wordsArray addObject:@"rutrum"];
-    [wordsArray addObject:@"suspendisse"];
-    [wordsArray addObject:@"tempor"];
-    [wordsArray addObject:@"quisque"];
-    [wordsArray addObject:@"posuere"];
-    [wordsArray addObject:@"malesuada"];
-    [wordsArray addObject:@"velit"];
-    [wordsArray addObject:@"sed"];
-    [wordsArray addObject:@"pellentesque"];
-    [wordsArray addObject:@"mi"];
-    [wordsArray addObject:@"a"];
-    [wordsArray addObject:@"purus"];
-    [wordsArray addObject:@"integer"];
-    [wordsArray addObject:@"imperdiet"];
-    [wordsArray addObject:@"orci"];
-    [wordsArray addObject:@"a"];
-    [wordsArray addObject:@"eleifend"];
-    [wordsArray addObject:@"mollis"];
-    [wordsArray addObject:@"velit"];
-    [wordsArray addObject:@"nulla"];
-    [wordsArray addObject:@"iaculis"];
-    [wordsArray addObject:@"arcu"];
-    [wordsArray addObject:@"eu"];
-    [wordsArray addObject:@"rutrum"];
-    [wordsArray addObject:@"magna"];
-    [wordsArray addObject:@"quam"];
-    [wordsArray addObject:@"sed"];
-    [wordsArray addObject:@"elit"];
-    [wordsArray addObject:@"nullam"];
-    [wordsArray addObject:@"egestas"];
-    [wordsArray addObject:@"integer"];
-    [wordsArray addObject:@"interdum"];
-    [wordsArray addObject:@"purus"];
-    [wordsArray addObject:@"nec"];
-    [wordsArray addObject:@"mauris"];
-    [wordsArray addObject:@"vestibulum"];
-    [wordsArray addObject:@"ac"];
-    [wordsArray addObject:@"mi"];
-    [wordsArray addObject:@"in"];
-    [wordsArray addObject:@"nunc"];
-    [wordsArray addObject:@"suscipit"];
-    [wordsArray addObject:@"dapibus"];
-    [wordsArray addObject:@"duis"];
-    [wordsArray addObject:@"consectetuer"];
-    [wordsArray addObject:@"ipsum"];
-    [wordsArray addObject:@"et"];
-    [wordsArray addObject:@"pharetra"];
-    [wordsArray addObject:@"sollicitudin"];
-    [wordsArray addObject:@"metus"];
-    [wordsArray addObject:@"turpis"];
-    [wordsArray addObject:@"facilisis"];
-    [wordsArray addObject:@"magna"];
-    [wordsArray addObject:@"vitae"];
-    [wordsArray addObject:@"dictum"];
-    [wordsArray addObject:@"ligula"];
-    [wordsArray addObject:@"nulla"];
-    [wordsArray addObject:@"nec"];
-    [wordsArray addObject:@"mi"];
-    [wordsArray addObject:@"nunc"];
-    [wordsArray addObject:@"ante"];
-    [wordsArray addObject:@"urna"];
-    [wordsArray addObject:@"gravida"];
-    [wordsArray addObject:@"sit"];
-    [wordsArray addObject:@"amet"];
-    [wordsArray addObject:@"congue"];
-    [wordsArray addObject:@"et"];
-    [wordsArray addObject:@"accumsan"];
-    [wordsArray addObject:@"vitae"];
-    [wordsArray addObject:@"magna"];
-    [wordsArray addObject:@"praesent"];
-    [wordsArray addObject:@"luctus"];
-    [wordsArray addObject:@"nullam"];
-    [wordsArray addObject:@"in"];
-    [wordsArray addObject:@"velit"];
-    [wordsArray addObject:@"praesent"];
-    [wordsArray addObject:@"est"];
-    [wordsArray addObject:@"curabitur"];
-    [wordsArray addObject:@"turpis"];
-    [wordsArray addObject:@"class"];
-    [wordsArray addObject:@"aptent"];
-    [wordsArray addObject:@"taciti"];
-    [wordsArray addObject:@"sociosqu"];
-    [wordsArray addObject:@"ad"];
-    [wordsArray addObject:@"litora"];
-    [wordsArray addObject:@"torquent"];
-    [wordsArray addObject:@"per"];
-    [wordsArray addObject:@"conubia"];
-    [wordsArray addObject:@"nostra"];
-    [wordsArray addObject:@"per"];
-    [wordsArray addObject:@"inceptos"];
-    [wordsArray addObject:@"hymenaeos"];
-    [wordsArray addObject:@"cras"];
-    [wordsArray addObject:@"consectetuer"];
-    [wordsArray addObject:@"nibh"];
-    [wordsArray addObject:@"in"];
-    [wordsArray addObject:@"lacinia"];
-    [wordsArray addObject:@"ornare"];
-    [wordsArray addObject:@"turpis"];
-    [wordsArray addObject:@"sem"];
-    [wordsArray addObject:@"tempor"];
-    [wordsArray addObject:@"massa"];
-    [wordsArray addObject:@"sagittis"];
-    [wordsArray addObject:@"feugiat"];
-    [wordsArray addObject:@"mauris"];
-    [wordsArray addObject:@"nibh"];
-    [wordsArray addObject:@"non"];
-    [wordsArray addObject:@"tellus"];
-    [wordsArray addObject:@"phasellus"];
-    [wordsArray addObject:@"mi"];
-    [wordsArray addObject:@"fusce"];
-    [wordsArray addObject:@"enim"];
-    [wordsArray addObject:@"mauris"];
-    [wordsArray addObject:@"ultrices"];
-    [wordsArray addObject:@"turpis"];
-    [wordsArray addObject:@"eu"];
-    [wordsArray addObject:@"adipiscing"];
-    [wordsArray addObject:@"viverra"];
-    [wordsArray addObject:@"justo"];
-    [wordsArray addObject:@"libero"];
-    [wordsArray addObject:@"ullamcorper"];
-    [wordsArray addObject:@"massa"];
-    [wordsArray addObject:@"id"];
-    [wordsArray addObject:@"ultrices"];
-    [wordsArray addObject:@"velit"];
-    [wordsArray addObject:@"est"];
-    [wordsArray addObject:@"quis"];
-    [wordsArray addObject:@"tortor"];
-    [wordsArray addObject:@"quisque"];
-    [wordsArray addObject:@"condimentum"];
-    [wordsArray addObject:@"lacus"];
-    [wordsArray addObject:@"volutpat"];
-    [wordsArray addObject:@"nonummy"];
-    [wordsArray addObject:@"accumsan"];
-    [wordsArray addObject:@"est"];
-    [wordsArray addObject:@"nunc"];
-    [wordsArray addObject:@"imperdiet"];
-    [wordsArray addObject:@"magna"];
-    [wordsArray addObject:@"vulputate"];
-    [wordsArray addObject:@"aliquet"];
-    [wordsArray addObject:@"nisi"];
-    [wordsArray addObject:@"risus"];
-    [wordsArray addObject:@"at"];
-    [wordsArray addObject:@"est"];
-    [wordsArray addObject:@"aliquam"];
-    [wordsArray addObject:@"imperdiet"];
-    [wordsArray addObject:@"gravida"];
-    [wordsArray addObject:@"tortor"];
-    [wordsArray addObject:@"praesent"];
-    [wordsArray addObject:@"interdum"];
-    [wordsArray addObject:@"accumsan"];
-    [wordsArray addObject:@"ante"];
-    [wordsArray addObject:@"vivamus"];
-    [wordsArray addObject:@"est"];
-    [wordsArray addObject:@"ligula"];
-    [wordsArray addObject:@"consequat"];
-    [wordsArray addObject:@"sed"];
-    [wordsArray addObject:@"pulvinar"];
-    [wordsArray addObject:@"eu"];
-    [wordsArray addObject:@"consequat"];
-    [wordsArray addObject:@"vitae"];
-    [wordsArray addObject:@"eros"];
-    [wordsArray addObject:@"nulla"];
-    [wordsArray addObject:@"elit"];
-    [wordsArray addObject:@"nunc"];
-    [wordsArray addObject:@"congue"];
-    [wordsArray addObject:@"eget"];
-    [wordsArray addObject:@"scelerisque"];
-    [wordsArray addObject:@"a"];
-    [wordsArray addObject:@"tempor"];
-    [wordsArray addObject:@"ac"];
-    [wordsArray addObject:@"nisi"];
-    [wordsArray addObject:@"morbi"];
-    [wordsArray addObject:@"facilisis"];
-    [wordsArray addObject:@"pellentesque"];
-    [wordsArray addObject:@"habitant"];
-    [wordsArray addObject:@"morbi"];
-    [wordsArray addObject:@"tristique"];
-    [wordsArray addObject:@"senectus"];
-    [wordsArray addObject:@"et"];
-    [wordsArray addObject:@"netus"];
-    [wordsArray addObject:@"et"];
-    [wordsArray addObject:@"malesuada"];
-    [wordsArray addObject:@"fames"];
-    [wordsArray addObject:@"ac"];
-    [wordsArray addObject:@"turpis"];
-    [wordsArray addObject:@"egestas"];
-    [wordsArray addObject:@"in"];
-    [wordsArray addObject:@"hac"];
-    [wordsArray addObject:@"habitasse"];
-    [wordsArray addObject:@"platea"];
-    [wordsArray addObject:@"dictumst"];
-    [wordsArray addObject:@"suspendisse"];
-    [wordsArray addObject:@"vel"];
-    [wordsArray addObject:@"lorem"];
-    [wordsArray addObject:@"ut"];
-    [wordsArray addObject:@"ligula"];
-    [wordsArray addObject:@"tempor"];
-    [wordsArray addObject:@"consequat"];
-    [wordsArray addObject:@"quisque"];
-    [wordsArray addObject:@"consectetuer"];
-    [wordsArray addObject:@"nisl"];
-    [wordsArray addObject:@"eget"];
-    [wordsArray addObject:@"elit"];
-    [wordsArray addObject:@"proin"];
-    [wordsArray addObject:@"quis"];
-    [wordsArray addObject:@"mauris"];
-    [wordsArray addObject:@"ac"];
-    [wordsArray addObject:@"orci"];
-    [wordsArray addObject:@"accumsan"];
-    [wordsArray addObject:@"suscipit"];
-    [wordsArray addObject:@"sed"];
-    [wordsArray addObject:@"ipsum"];
-    [wordsArray addObject:@"sed"];
-    [wordsArray addObject:@"vel"];
-    [wordsArray addObject:@"libero"];
-    [wordsArray addObject:@"nec"];
-    [wordsArray addObject:@"elit"];
-    [wordsArray addObject:@"feugiat"];
-    [wordsArray addObject:@"blandit"];
-    [wordsArray addObject:@"vestibulum"];
-    [wordsArray addObject:@"purus"];
-    [wordsArray addObject:@"nulla"];
-    [wordsArray addObject:@"accumsan"];
-    [wordsArray addObject:@"et"];
-    [wordsArray addObject:@"volutpat"];
-    [wordsArray addObject:@"at"];
-    [wordsArray addObject:@"pellentesque"];
-    [wordsArray addObject:@"vel"];
-    [wordsArray addObject:@"urna"];
-    [wordsArray addObject:@"suspendisse"];
-    [wordsArray addObject:@"nonummy"];
-    [wordsArray addObject:@"aliquam"];
-    [wordsArray addObject:@"pulvinar"];
-    [wordsArray addObject:@"libero"];
-    [wordsArray addObject:@"donec"];
-    [wordsArray addObject:@"vulputate"];
-    [wordsArray addObject:@"orci"];
-    [wordsArray addObject:@"ornare"];
-    [wordsArray addObject:@"bibendum"];
-    [wordsArray addObject:@"condimentum"];
-    [wordsArray addObject:@"lorem"];
-    [wordsArray addObject:@"elit"];
-    [wordsArray addObject:@"dignissim"];
-    [wordsArray addObject:@"sapien"];
-    [wordsArray addObject:@"ut"];
-    [wordsArray addObject:@"aliquam"];
-    [wordsArray addObject:@"nibh"];
-    [wordsArray addObject:@"augue"];
-    [wordsArray addObject:@"in"];
-    [wordsArray addObject:@"turpis"];
-    [wordsArray addObject:@"phasellus"];
-    [wordsArray addObject:@"ac"];
-    [wordsArray addObject:@"eros"];
-    [wordsArray addObject:@"praesent"];
-    [wordsArray addObject:@"luctus"];
-    [wordsArray addObject:@"lorem"];
-    [wordsArray addObject:@"a"];
-    [wordsArray addObject:@"mollis"];
-    [wordsArray addObject:@"lacinia"];
-    [wordsArray addObject:@"leo"];
-    [wordsArray addObject:@"turpis"];
-    [wordsArray addObject:@"commodo"];
-    [wordsArray addObject:@"sem"];
-    [wordsArray addObject:@"in"];
-    [wordsArray addObject:@"lacinia"];
-    [wordsArray addObject:@"mi"];
-    [wordsArray addObject:@"quam"];
-    [wordsArray addObject:@"et"];
-    [wordsArray addObject:@"quam"];
-    [wordsArray addObject:@"curabitur"];
-    [wordsArray addObject:@"a"];
-    [wordsArray addObject:@"libero"];
-    [wordsArray addObject:@"vel"];
-    [wordsArray addObject:@"tellus"];
-    [wordsArray addObject:@"mattis"];
-    [wordsArray addObject:@"imperdiet"];
-    [wordsArray addObject:@"in"];
-    [wordsArray addObject:@"congue"];
-    [wordsArray addObject:@"neque"];
-    [wordsArray addObject:@"ut"];
-    [wordsArray addObject:@"scelerisque"];
-    [wordsArray addObject:@"bibendum"];
-    [wordsArray addObject:@"libero"];
-    [wordsArray addObject:@"lacus"];
-    [wordsArray addObject:@"ullamcorper"];
-    [wordsArray addObject:@"sapien"];
-    [wordsArray addObject:@"quis"];
-    [wordsArray addObject:@"aliquet"];
-    [wordsArray addObject:@"massa"];
-    [wordsArray addObject:@"velit"];
-    [wordsArray addObject:@"vel"];
-    [wordsArray addObject:@"orci"];
-    [wordsArray addObject:@"fusce"];
-    [wordsArray addObject:@"in"];
-    [wordsArray addObject:@"nulla"];
-    [wordsArray addObject:@"quis"];
-    [wordsArray addObject:@"est"];
-    [wordsArray addObject:@"cursus"];
-    [wordsArray addObject:@"gravida"];
-    [wordsArray addObject:@"in"];
-    [wordsArray addObject:@"nibh"];
-    [wordsArray addObject:@"lorem"];
-    [wordsArray addObject:@"ipsum"];
-    [wordsArray addObject:@"dolor"];
-    [wordsArray addObject:@"sit"];
-    [wordsArray addObject:@"amet"];
-    [wordsArray addObject:@"consectetuer"];
-    [wordsArray addObject:@"adipiscing"];
-    [wordsArray addObject:@"elit"];
-    [wordsArray addObject:@"integer"];
-    [wordsArray addObject:@"fermentum"];
-    [wordsArray addObject:@"pretium"];
-    [wordsArray addObject:@"massa"];
-    [wordsArray addObject:@"morbi"];
-    [wordsArray addObject:@"feugiat"];
-    [wordsArray addObject:@"iaculis"];
-    [wordsArray addObject:@"nunc"];
-    [wordsArray addObject:@"aenean"];
-    [wordsArray addObject:@"aliquam"];
-    [wordsArray addObject:@"pretium"];
-    [wordsArray addObject:@"orci"];
-    [wordsArray addObject:@"cum"];
-    [wordsArray addObject:@"sociis"];
-    [wordsArray addObject:@"natoque"];
-    [wordsArray addObject:@"penatibus"];
-    [wordsArray addObject:@"et"];
-    [wordsArray addObject:@"magnis"];
-    [wordsArray addObject:@"dis"];
-    [wordsArray addObject:@"parturient"];
-    [wordsArray addObject:@"montes"];
-    [wordsArray addObject:@"nascetur"];
-    [wordsArray addObject:@"ridiculus"];
-    [wordsArray addObject:@"mus"];
-    [wordsArray addObject:@"vivamus"];
-    [wordsArray addObject:@"quis"];
-    [wordsArray addObject:@"tellus"];
-    [wordsArray addObject:@"vel"];
-    [wordsArray addObject:@"quam"];
-    [wordsArray addObject:@"varius"];
-    [wordsArray addObject:@"bibendum"];
-    [wordsArray addObject:@"fusce"];
-    [wordsArray addObject:@"est"];
-    [wordsArray addObject:@"metus"];
-    [wordsArray addObject:@"feugiat"];
-    [wordsArray addObject:@"at"];
-    [wordsArray addObject:@"porttitor"];
-    [wordsArray addObject:@"et"];
-    [wordsArray addObject:@"cursus"];
-    [wordsArray addObject:@"quis"];
-    [wordsArray addObject:@"pede"];
-    [wordsArray addObject:@"nam"];
-    [wordsArray addObject:@"ut"];
-    [wordsArray addObject:@"augue"];
-    [wordsArray addObject:@"nulla"];
-    [wordsArray addObject:@"posuere"];
-    [wordsArray addObject:@"phasellus"];
-    [wordsArray addObject:@"at"];
-    [wordsArray addObject:@"dolor"];
-    [wordsArray addObject:@"a"];
-    [wordsArray addObject:@"enim"];
-    [wordsArray addObject:@"cursus"];
-    [wordsArray addObject:@"vestibulum"];
-    [wordsArray addObject:@"duis"];
-    [wordsArray addObject:@"id"];
-    [wordsArray addObject:@"nisi"];
-    [wordsArray addObject:@"duis"];
-    [wordsArray addObject:@"semper"];
-    [wordsArray addObject:@"tellus"];
-    [wordsArray addObject:@"ac"];
-    [wordsArray addObject:@"nulla"];
-    [wordsArray addObject:@"vestibulum"];
-    [wordsArray addObject:@"scelerisque"];
-    [wordsArray addObject:@"lobortis"];
-    [wordsArray addObject:@"dolor"];
-    [wordsArray addObject:@"aenean"];
-    [wordsArray addObject:@"a"];
-    [wordsArray addObject:@"felis"];
-    [wordsArray addObject:@"aliquam"];
-    [wordsArray addObject:@"erat"];
-    [wordsArray addObject:@"volutpat"];
-    [wordsArray addObject:@"donec"];
-    [wordsArray addObject:@"a"];
-    [wordsArray addObject:@"magna"];
-    [wordsArray addObject:@"vitae"];
-    [wordsArray addObject:@"pede"];
-    [wordsArray addObject:@"sagittis"];
-    [wordsArray addObject:@"lacinia"];
-    [wordsArray addObject:@"cras"];
-    [wordsArray addObject:@"vestibulum"];
-    [wordsArray addObject:@"diam"];
-    [wordsArray addObject:@"ut"];
-    [wordsArray addObject:@"arcu"];
-    [wordsArray addObject:@"mauris"];
-    [wordsArray addObject:@"a"];
-    [wordsArray addObject:@"nunc"];
-    [wordsArray addObject:@"duis"];
-    [wordsArray addObject:@"sollicitudin"];
-    [wordsArray addObject:@"erat"];
-    [wordsArray addObject:@"sit"];
-    [wordsArray addObject:@"amet"];
-    [wordsArray addObject:@"turpis"];
-    [wordsArray addObject:@"proin"];
-    [wordsArray addObject:@"at"];
-    [wordsArray addObject:@"libero"];
-    [wordsArray addObject:@"eu"];
-    [wordsArray addObject:@"diam"];
-    [wordsArray addObject:@"lobortis"];
-    [wordsArray addObject:@"fermentum"];
-    [wordsArray addObject:@"nunc"];
-    [wordsArray addObject:@"lorem"];
-    [wordsArray addObject:@"turpis"];
-    [wordsArray addObject:@"imperdiet"];
-    [wordsArray addObject:@"id"];
-    [wordsArray addObject:@"gravida"];
-    [wordsArray addObject:@"eget"];
-    [wordsArray addObject:@"aliquet"];
-    [wordsArray addObject:@"sed"];
-    [wordsArray addObject:@"purus"];
-    [wordsArray addObject:@"ut"];
-    [wordsArray addObject:@"vehicula"];
-    [wordsArray addObject:@"laoreet"];
-    [wordsArray addObject:@"ante"];
-    [wordsArray addObject:@"mauris"];
-    [wordsArray addObject:@"eu"];
-    [wordsArray addObject:@"nunc"];
-    [wordsArray addObject:@"sed"];
-    [wordsArray addObject:@"sit"];
-    [wordsArray addObject:@"amet"];
-    [wordsArray addObject:@"elit"];
-    [wordsArray addObject:@"nec"];
-    [wordsArray addObject:@"ipsum"];
-    [wordsArray addObject:@"aliquam"];
-    [wordsArray addObject:@"egestas"];
-    [wordsArray addObject:@"donec"];
-    [wordsArray addObject:@"non"];
-    [wordsArray addObject:@"nibh"];
-    [wordsArray addObject:@"cras"];
-    [wordsArray addObject:@"sodales"];
-    [wordsArray addObject:@"pretium"];
-    [wordsArray addObject:@"massa"];
-    [wordsArray addObject:@"praesent"];
-    [wordsArray addObject:@"hendrerit"];
-    [wordsArray addObject:@"est"];
-    [wordsArray addObject:@"et"];
-    [wordsArray addObject:@"risus"];
-    [wordsArray addObject:@"vivamus"];
-    [wordsArray addObject:@"eget"];
-    [wordsArray addObject:@"pede"];
-    [wordsArray addObject:@"curabitur"];
-    [wordsArray addObject:@"tristique"];
-    [wordsArray addObject:@"scelerisque"];
-    [wordsArray addObject:@"dui"];
-    [wordsArray addObject:@"nullam"];
-    [wordsArray addObject:@"ullamcorper"];
-    [wordsArray addObject:@"vivamus"];
-    [wordsArray addObject:@"venenatis"];
-    [wordsArray addObject:@"velit"];
-    [wordsArray addObject:@"eget"];
-    [wordsArray addObject:@"enim"];
-    [wordsArray addObject:@"nunc"];
-    [wordsArray addObject:@"eu"];
-    [wordsArray addObject:@"nunc"];
-    [wordsArray addObject:@"eget"];
-    [wordsArray addObject:@"felis"];
-    [wordsArray addObject:@"malesuada"];
-    [wordsArray addObject:@"fermentum"];
-    [wordsArray addObject:@"quisque"];
-    [wordsArray addObject:@"magna"];
-    [wordsArray addObject:@"mauris"];
-    [wordsArray addObject:@"ligula"];
-    [wordsArray addObject:@"felis"];
-    [wordsArray addObject:@"luctus"];
-    [wordsArray addObject:@"a"];
-    [wordsArray addObject:@"aliquet"];
-    [wordsArray addObject:@"nec"];
-    [wordsArray addObject:@"vulputate"];
-    [wordsArray addObject:@"eget"];
-    [wordsArray addObject:@"magna"];
-    [wordsArray addObject:@"quisque"];
-    [wordsArray addObject:@"placerat"];
-    [wordsArray addObject:@"diam"];
-    [wordsArray addObject:@"sed"];
-    [wordsArray addObject:@"arcu"];
-    [wordsArray addObject:@"praesent"];
-    [wordsArray addObject:@"sollicitudin"];
-    [wordsArray addObject:@"aliquam"];
-    [wordsArray addObject:@"non"];
-    [wordsArray addObject:@"sapien"];
-    [wordsArray addObject:@"quisque"];
-    [wordsArray addObject:@"id"];
-    [wordsArray addObject:@"augue"];
-    [wordsArray addObject:@"class"];
-    [wordsArray addObject:@"aptent"];
-    [wordsArray addObject:@"taciti"];
-    [wordsArray addObject:@"sociosqu"];
-    [wordsArray addObject:@"ad"];
-    [wordsArray addObject:@"litora"];
-    [wordsArray addObject:@"torquent"];
-    [wordsArray addObject:@"per"];
-    [wordsArray addObject:@"conubia"];
-    [wordsArray addObject:@"nostra"];
-    [wordsArray addObject:@"per"];
-    [wordsArray addObject:@"inceptos"];
-    [wordsArray addObject:@"hymenaeos"];
-    [wordsArray addObject:@"etiam"];
-    [wordsArray addObject:@"lacus"];
-    [wordsArray addObject:@"lectus"];
-    [wordsArray addObject:@"mollis"];
-    [wordsArray addObject:@"quis"];
-    [wordsArray addObject:@"mattis"];
-    [wordsArray addObject:@"nec"];
-    [wordsArray addObject:@"commodo"];
-    [wordsArray addObject:@"facilisis"];
-    [wordsArray addObject:@"nibh"];
-    [wordsArray addObject:@"sed"];
-    [wordsArray addObject:@"sodales"];
-    [wordsArray addObject:@"sapien"];
-    [wordsArray addObject:@"ac"];
-    [wordsArray addObject:@"ante"];
-    [wordsArray addObject:@"duis"];
-    [wordsArray addObject:@"eget"];
-    [wordsArray addObject:@"lectus"];
-    [wordsArray addObject:@"in"];
-    [wordsArray addObject:@"nibh"];
-    [wordsArray addObject:@"lacinia"];
-    [wordsArray addObject:@"auctor"];
-    [wordsArray addObject:@"fusce"];
-    [wordsArray addObject:@"interdum"];
-    [wordsArray addObject:@"lectus"];
-    [wordsArray addObject:@"non"];
-    [wordsArray addObject:@"dui"];
-    [wordsArray addObject:@"integer"];
-    [wordsArray addObject:@"accumsan"];
-    [wordsArray addObject:@"quisque"];
-    [wordsArray addObject:@"quam"];
-    [wordsArray addObject:@"curabitur"];
-    [wordsArray addObject:@"scelerisque"];
-    [wordsArray addObject:@"imperdiet"];
-    [wordsArray addObject:@"nisl"];
-    [wordsArray addObject:@"suspendisse"];
-    [wordsArray addObject:@"potenti"];
-    [wordsArray addObject:@"nam"];
-    [wordsArray addObject:@"massa"];
-    [wordsArray addObject:@"leo"];
-    [wordsArray addObject:@"iaculis"];
-    [wordsArray addObject:@"sed"];
-    [wordsArray addObject:@"accumsan"];
-    [wordsArray addObject:@"id"];
-    [wordsArray addObject:@"ultrices"];
-    [wordsArray addObject:@"nec"];
-    [wordsArray addObject:@"velit"];
-    [wordsArray addObject:@"suspendisse"];
-    [wordsArray addObject:@"potenti"];
-    [wordsArray addObject:@"mauris"];
-    [wordsArray addObject:@"bibendum"];
-    [wordsArray addObject:@"turpis"];
-    [wordsArray addObject:@"ac"];
-    [wordsArray addObject:@"viverra"];
-    [wordsArray addObject:@"sollicitudin"];
-    [wordsArray addObject:@"metus"];
-    [wordsArray addObject:@"massa"];
-    [wordsArray addObject:@"interdum"];
-    [wordsArray addObject:@"orci"];
-    [wordsArray addObject:@"non"];
-    [wordsArray addObject:@"imperdiet"];
-    [wordsArray addObject:@"orci"];
-    [wordsArray addObject:@"ante"];
-    [wordsArray addObject:@"at"];
-    [wordsArray addObject:@"ipsum"];
-    [wordsArray addObject:@"etiam"];
-    [wordsArray addObject:@"eget"];
-    [wordsArray addObject:@"magna"];
-    [wordsArray addObject:@"mauris"];
-    [wordsArray addObject:@"at"];
-    [wordsArray addObject:@"tortor"];
-    [wordsArray addObject:@"eu"];
-    [wordsArray addObject:@"lectus"];
-    [wordsArray addObject:@"tempor"];
-    [wordsArray addObject:@"tincidunt"];
-    [wordsArray addObject:@"phasellus"];
-    [wordsArray addObject:@"justo"];
-    [wordsArray addObject:@"purus"];
-    [wordsArray addObject:@"pharetra"];
-    [wordsArray addObject:@"ut"];
-    [wordsArray addObject:@"ultricies"];
-    [wordsArray addObject:@"nec"];
-    [wordsArray addObject:@"consequat"];
-    [wordsArray addObject:@"vel"];
-    [wordsArray addObject:@"nisi"];
-    [wordsArray addObject:@"fusce"];
-    [wordsArray addObject:@"vitae"];
-    [wordsArray addObject:@"velit"];
-    [wordsArray addObject:@"at"];
-    [wordsArray addObject:@"libero"];
-    [wordsArray addObject:@"sollicitudin"];
-    [wordsArray addObject:@"sodales"];
-    [wordsArray addObject:@"aenean"];
-    [wordsArray addObject:@"mi"];
-    [wordsArray addObject:@"libero"];
-    [wordsArray addObject:@"ultrices"];
-    [wordsArray addObject:@"id"];
-    [wordsArray addObject:@"suscipit"];
-    [wordsArray addObject:@"vitae"];
-    [wordsArray addObject:@"dapibus"];
-    [wordsArray addObject:@"eu"];
-    [wordsArray addObject:@"metus"];
-    [wordsArray addObject:@"aenean"];
-    [wordsArray addObject:@"vestibulum"];
-    [wordsArray addObject:@"nibh"];
-    [wordsArray addObject:@"ac"];
-    [wordsArray addObject:@"massa"];
-    [wordsArray addObject:@"vivamus"];
-    [wordsArray addObject:@"vestibulum"];
-    [wordsArray addObject:@"libero"];
-    [wordsArray addObject:@"vitae"];
-    [wordsArray addObject:@"purus"];
-    [wordsArray addObject:@"in"];
-    [wordsArray addObject:@"hac"];
-    [wordsArray addObject:@"habitasse"];
-    [wordsArray addObject:@"platea"];
-    [wordsArray addObject:@"dictumst"];
-    [wordsArray addObject:@"curabitur"];
-    [wordsArray addObject:@"blandit"];
-    [wordsArray addObject:@"nunc"];
-    [wordsArray addObject:@"non"];
-    [wordsArray addObject:@"arcu"];
-    [wordsArray addObject:@"ut"];
-    [wordsArray addObject:@"nec"];
-    [wordsArray addObject:@"nibh"];
-    [wordsArray addObject:@"morbi"];
-    [wordsArray addObject:@"quis"];
-    [wordsArray addObject:@"leo"];
-    [wordsArray addObject:@"vel"];
-    [wordsArray addObject:@"magna"];
-    [wordsArray addObject:@"commodo"];
-    [wordsArray addObject:@"rhoncus"];
-    [wordsArray addObject:@"donec"];
-    [wordsArray addObject:@"congue"];
-    [wordsArray addObject:@"leo"];
-    [wordsArray addObject:@"eu"];
-    [wordsArray addObject:@"lacus"];
-    [wordsArray addObject:@"pellentesque"];
-    [wordsArray addObject:@"at"];
-    [wordsArray addObject:@"erat"];
-    [wordsArray addObject:@"id"];
-    [wordsArray addObject:@"mi"];
-    [wordsArray addObject:@"consequat"];
-    [wordsArray addObject:@"congue"];
-    [wordsArray addObject:@"praesent"];
-    [wordsArray addObject:@"a"];
-    [wordsArray addObject:@"nisl"];
-    [wordsArray addObject:@"ut"];
-    [wordsArray addObject:@"diam"];
-    [wordsArray addObject:@"interdum"];
-    [wordsArray addObject:@"molestie"];
-    [wordsArray addObject:@"fusce"];
-    [wordsArray addObject:@"suscipit"];
-    [wordsArray addObject:@"rhoncus"];
-    [wordsArray addObject:@"sem"];
-    [wordsArray addObject:@"donec"];
-    [wordsArray addObject:@"pretium"];
-    [wordsArray addObject:@"aliquam"];
-    [wordsArray addObject:@"molestie"];
-    [wordsArray addObject:@"vivamus"];
-    [wordsArray addObject:@"et"];
-    [wordsArray addObject:@"justo"];
-    [wordsArray addObject:@"at"];
-    [wordsArray addObject:@"augue"];
-    [wordsArray addObject:@"aliquet"];
-    [wordsArray addObject:@"dapibus"];
-    [wordsArray addObject:@"pellentesque"];
-    [wordsArray addObject:@"felis"];
-    [wordsArray addObject:@"morbi"];
-    [wordsArray addObject:@"semper"];
-    [wordsArray addObject:@"in"];
-    [wordsArray addObject:@"venenatis"];
-    [wordsArray addObject:@"imperdiet"];
-    [wordsArray addObject:@"neque"];
-    [wordsArray addObject:@"donec"];
-    [wordsArray addObject:@"auctor"];
-    [wordsArray addObject:@"molestie"];
-    [wordsArray addObject:@"augue"];
-    [wordsArray addObject:@"nulla"];
-    [wordsArray addObject:@"id"];
-    [wordsArray addObject:@"arcu"];
-    [wordsArray addObject:@"sit"];
-    [wordsArray addObject:@"amet"];
-    [wordsArray addObject:@"dui"];
-    [wordsArray addObject:@"lacinia"];
-    [wordsArray addObject:@"convallis"];
-    [wordsArray addObject:@"proin"];
-    [wordsArray addObject:@"tincidunt"];
-    [wordsArray addObject:@"proin"];
-    [wordsArray addObject:@"a"];
-    [wordsArray addObject:@"ante"];
-    [wordsArray addObject:@"nunc"];
-    [wordsArray addObject:@"imperdiet"];
-    [wordsArray addObject:@"augue"];
-    [wordsArray addObject:@"nullam"];
-    [wordsArray addObject:@"sit"];
-    [wordsArray addObject:@"amet"];
-    [wordsArray addObject:@"arcu"];
-    [wordsArray addObject:@"quisque"];
-    [wordsArray addObject:@"laoreet"];
-    [wordsArray addObject:@"viverra"];
-    [wordsArray addObject:@"felis"];
-    [wordsArray addObject:@"lorem"];
-    [wordsArray addObject:@"ipsum"];
-    [wordsArray addObject:@"dolor"];
-    [wordsArray addObject:@"sit"];
-    [wordsArray addObject:@"amet"];
-    [wordsArray addObject:@"consectetuer"];
-    [wordsArray addObject:@"adipiscing"];
-    [wordsArray addObject:@"elit"];
-    [wordsArray addObject:@"in"];
-    [wordsArray addObject:@"hac"];
-    [wordsArray addObject:@"habitasse"];
-    [wordsArray addObject:@"platea"];
-    [wordsArray addObject:@"dictumst"];
-    [wordsArray addObject:@"pellentesque"];
-    [wordsArray addObject:@"habitant"];
-    [wordsArray addObject:@"morbi"];
-    [wordsArray addObject:@"tristique"];
-    [wordsArray addObject:@"senectus"];
-    [wordsArray addObject:@"et"];
-    [wordsArray addObject:@"netus"];
-    [wordsArray addObject:@"et"];
-    [wordsArray addObject:@"malesuada"];
-    [wordsArray addObject:@"fames"];
-    [wordsArray addObject:@"ac"];
-    [wordsArray addObject:@"turpis"];
-    [wordsArray addObject:@"egestas"];
-    [wordsArray addObject:@"class"];
-    [wordsArray addObject:@"aptent"];
-    [wordsArray addObject:@"taciti"];
-    [wordsArray addObject:@"sociosqu"];
-    [wordsArray addObject:@"ad"];
-    [wordsArray addObject:@"litora"];
-    [wordsArray addObject:@"torquent"];
-    [wordsArray addObject:@"per"];
-    [wordsArray addObject:@"conubia"];
-    [wordsArray addObject:@"nostra"];
-    [wordsArray addObject:@"per"];
-    [wordsArray addObject:@"inceptos"];
-    [wordsArray addObject:@"hymenaeos"];
-    [wordsArray addObject:@"nullam"];
-    [wordsArray addObject:@"nibh"];
-    [wordsArray addObject:@"sapien"];
-    [wordsArray addObject:@"volutpat"];
-    [wordsArray addObject:@"ut"];
-    [wordsArray addObject:@"placerat"];
-    [wordsArray addObject:@"quis"];
-    [wordsArray addObject:@"ornare"];
-    [wordsArray addObject:@"at"];
-    [wordsArray addObject:@"lorem"];
-    [wordsArray addObject:@"class"];
-    [wordsArray addObject:@"aptent"];
-    [wordsArray addObject:@"taciti"];
-    [wordsArray addObject:@"sociosqu"];
-    [wordsArray addObject:@"ad"];
-    [wordsArray addObject:@"litora"];
-    [wordsArray addObject:@"torquent"];
-    [wordsArray addObject:@"per"];
-    [wordsArray addObject:@"conubia"];
-    [wordsArray addObject:@"nostra"];
-    [wordsArray addObject:@"per"];
-    [wordsArray addObject:@"inceptos"];
-    [wordsArray addObject:@"hymenaeos"];
-    [wordsArray addObject:@"morbi"];
-    [wordsArray addObject:@"dictum"];
-    [wordsArray addObject:@"massa"];
-    [wordsArray addObject:@"id"];
-    [wordsArray addObject:@"libero"];
-    [wordsArray addObject:@"ut"];
-    [wordsArray addObject:@"neque"];
-    [wordsArray addObject:@"phasellus"];
-    [wordsArray addObject:@"tincidunt"];
-    [wordsArray addObject:@"nibh"];
-    [wordsArray addObject:@"ut"];
-    [wordsArray addObject:@"tincidunt"];
-    [wordsArray addObject:@"lacinia"];
-    [wordsArray addObject:@"lacus"];
-    [wordsArray addObject:@"nulla"];
-    [wordsArray addObject:@"aliquam"];
-    [wordsArray addObject:@"mi"];
-    [wordsArray addObject:@"a"];
-    [wordsArray addObject:@"interdum"];
-    [wordsArray addObject:@"dui"];
-    [wordsArray addObject:@"augue"];
-    [wordsArray addObject:@"non"];
-    [wordsArray addObject:@"pede"];
-    [wordsArray addObject:@"duis"];
-    [wordsArray addObject:@"nunc"];
-    [wordsArray addObject:@"magna"];
-    [wordsArray addObject:@"vulputate"];
-    [wordsArray addObject:@"a"];
-    [wordsArray addObject:@"porta"];
-    [wordsArray addObject:@"at"];
-    [wordsArray addObject:@"tincidunt"];
-    [wordsArray addObject:@"a"];
-    [wordsArray addObject:@"nulla"];
-    [wordsArray addObject:@"praesent"];
-    [wordsArray addObject:@"facilisis"];
-    [wordsArray addObject:@"suspendisse"];
-    [wordsArray addObject:@"sodales"];
-    [wordsArray addObject:@"feugiat"];
-    [wordsArray addObject:@"purus"];
-    [wordsArray addObject:@"cras"];
-    [wordsArray addObject:@"et"];
-    [wordsArray addObject:@"justo"];
-    [wordsArray addObject:@"a"];
-    [wordsArray addObject:@"mauris"];
-    [wordsArray addObject:@"mollis"];
-    [wordsArray addObject:@"imperdiet"];
-    [wordsArray addObject:@"morbi"];
-    [wordsArray addObject:@"erat"];
-    [wordsArray addObject:@"mi"];
-    [wordsArray addObject:@"ultrices"];
-    [wordsArray addObject:@"eget"];
-    [wordsArray addObject:@"aliquam"];
-    [wordsArray addObject:@"elementum"];
-    [wordsArray addObject:@"iaculis"];
-    [wordsArray addObject:@"id"];
-    [wordsArray addObject:@"velit"];
-    [wordsArray addObject:@"in"];
-    [wordsArray addObject:@"scelerisque"];
-    [wordsArray addObject:@"enim"];
-    [wordsArray addObject:@"sit"];
-    [wordsArray addObject:@"amet"];
-    [wordsArray addObject:@"turpis"];
-    [wordsArray addObject:@"sed"];
-    [wordsArray addObject:@"aliquam"];
-    [wordsArray addObject:@"odio"];
-    [wordsArray addObject:@"nonummy"];
-    [wordsArray addObject:@"ullamcorper"];
-    [wordsArray addObject:@"mollis"];
-    [wordsArray addObject:@"lacus"];
-    [wordsArray addObject:@"nibh"];
-    [wordsArray addObject:@"tempor"];
-    [wordsArray addObject:@"dolor"];
-    [wordsArray addObject:@"sit"];
-    [wordsArray addObject:@"amet"];
-    [wordsArray addObject:@"varius"];
-    [wordsArray addObject:@"sem"];
-    [wordsArray addObject:@"neque"];
-    [wordsArray addObject:@"ac"];
-    [wordsArray addObject:@"dui"];
-    [wordsArray addObject:@"nunc"];
-    [wordsArray addObject:@"et"];
-    [wordsArray addObject:@"est"];
-    [wordsArray addObject:@"eu"];
-    [wordsArray addObject:@"massa"];
-    [wordsArray addObject:@"eleifend"];
-    [wordsArray addObject:@"mollis"];
-    [wordsArray addObject:@"mauris"];
-    [wordsArray addObject:@"aliquet"];
-    [wordsArray addObject:@"orci"];
-    [wordsArray addObject:@"quis"];
-    [wordsArray addObject:@"tellus"];
-    [wordsArray addObject:@"ut"];
-    [wordsArray addObject:@"mattis"];
-    [wordsArray addObject:@"praesent"];
-    [wordsArray addObject:@"mollis"];
-    [wordsArray addObject:@"consectetuer"];
-    [wordsArray addObject:@"quam"];
-    [wordsArray addObject:@"nulla"];
-    [wordsArray addObject:@"nulla"];
-    [wordsArray addObject:@"nunc"];
-    [wordsArray addObject:@"accumsan"];
-    [wordsArray addObject:@"nunc"];
-    [wordsArray addObject:@"sit"];
-    [wordsArray addObject:@"amet"];
-    [wordsArray addObject:@"scelerisque"];
-    [wordsArray addObject:@"porttitor"];
-    [wordsArray addObject:@"nibh"];
-    [wordsArray addObject:@"pede"];
-    [wordsArray addObject:@"lacinia"];
-    [wordsArray addObject:@"justo"];
-    [wordsArray addObject:@"tristique"];
-    [wordsArray addObject:@"mattis"];
-    [wordsArray addObject:@"purus"];
-    [wordsArray addObject:@"eros"];
-    [wordsArray addObject:@"non"];
-    [wordsArray addObject:@"velit"];
-    [wordsArray addObject:@"aenean"];
-    [wordsArray addObject:@"sagittis"];
-    [wordsArray addObject:@"commodo"];
-    [wordsArray addObject:@"erat"];
-    [wordsArray addObject:@"aliquam"];
-    [wordsArray addObject:@"id"];
-    [wordsArray addObject:@"lacus"];
-    [wordsArray addObject:@"morbi"];
-    [wordsArray addObject:@"vulputate"];
-    [wordsArray addObject:@"vestibulum"];
-    [wordsArray addObject:@"elit"];
-    _words = [wordsArray copy];
-    [wordsArray release];
-  }
-  return self;
+{
+    NSArray* _words;
 }
 
-- (void) dealloc {
-  [_words release];
-  [super dealloc];
+- (id) init
+{
+    if ((self = [super init]))
+    {
+        _words = @[@"lorem",
+                   @"ipsum",
+                   @"dolor",
+                   @"sit",
+                   @"amet",
+                   @"consectetuer",
+                   @"adipiscing",
+                   @"elit",
+                   @"integer",
+                   @"in",
+                   @"mi",
+                   @"a",
+                   @"mauris",
+                   @"ornare",
+                   @"sagittis",
+                   @"suspendisse",
+                   @"potenti",
+                   @"suspendisse",
+                   @"dapibus",
+                   @"dignissim",
+                   @"dolor",
+                   @"nam",
+                   @"sapien",
+                   @"tellus",
+                   @"tempus",
+                   @"et",
+                   @"tempus",
+                   @"ac",
+                   @"tincidunt",
+                   @"in",
+                   @"arcu",
+                   @"duis",
+                   @"dictum",
+                   @"proin",
+                   @"magna",
+                   @"nulla",
+                   @"pellentesque",
+                   @"non",
+                   @"commodo",
+                   @"et",
+                   @"iaculis",
+                   @"sit",
+                   @"amet",
+                   @"mi",
+                   @"mauris",
+                   @"condimentum",
+                   @"massa",
+                   @"ut",
+                   @"metus",
+                   @"donec",
+                   @"viverra",
+                   @"sapien",
+                   @"mattis",
+                   @"rutrum",
+                   @"tristique",
+                   @"lacus",
+                   @"eros",
+                   @"semper",
+                   @"tellus",
+                   @"et",
+                   @"molestie",
+                   @"nisi",
+                   @"sapien",
+                   @"eu",
+                   @"massa",
+                   @"vestibulum",
+                   @"ante",
+                   @"ipsum",
+                   @"primis",
+                   @"in",
+                   @"faucibus",
+                   @"orci",
+                   @"luctus",
+                   @"et",
+                   @"ultrices",
+                   @"posuere",
+                   @"cubilia",
+                   @"curae;",
+                   @"fusce",
+                   @"erat",
+                   @"tortor",
+                   @"mollis",
+                   @"ut",
+                   @"accumsan",
+                   @"ut",
+                   @"lacinia",
+                   @"gravida",
+                   @"libero",
+                   @"curabitur",
+                   @"massa",
+                   @"felis",
+                   @"accumsan",
+                   @"feugiat",
+                   @"convallis",
+                   @"sit",
+                   @"amet",
+                   @"porta",
+                   @"vel",
+                   @"neque",
+                   @"duis",
+                   @"et",
+                   @"ligula",
+                   @"non",
+                   @"elit",
+                   @"ultricies",
+                   @"rutrum",
+                   @"suspendisse",
+                   @"tempor",
+                   @"quisque",
+                   @"posuere",
+                   @"malesuada",
+                   @"velit",
+                   @"sed",
+                   @"pellentesque",
+                   @"mi",
+                   @"a",
+                   @"purus",
+                   @"integer",
+                   @"imperdiet",
+                   @"orci",
+                   @"a",
+                   @"eleifend",
+                   @"mollis",
+                   @"velit",
+                   @"nulla",
+                   @"iaculis",
+                   @"arcu",
+                   @"eu",
+                   @"rutrum",
+                   @"magna",
+                   @"quam",
+                   @"sed",
+                   @"elit",
+                   @"nullam",
+                   @"egestas",
+                   @"integer",
+                   @"interdum",
+                   @"purus",
+                   @"nec",
+                   @"mauris",
+                   @"vestibulum",
+                   @"ac",
+                   @"mi",
+                   @"in",
+                   @"nunc",
+                   @"suscipit",
+                   @"dapibus",
+                   @"duis",
+                   @"consectetuer",
+                   @"ipsum",
+                   @"et",
+                   @"pharetra",
+                   @"sollicitudin",
+                   @"metus",
+                   @"turpis",
+                   @"facilisis",
+                   @"magna",
+                   @"vitae",
+                   @"dictum",
+                   @"ligula",
+                   @"nulla",
+                   @"nec",
+                   @"mi",
+                   @"nunc",
+                   @"ante",
+                   @"urna",
+                   @"gravida",
+                   @"sit",
+                   @"amet",
+                   @"congue",
+                   @"et",
+                   @"accumsan",
+                   @"vitae",
+                   @"magna",
+                   @"praesent",
+                   @"luctus",
+                   @"nullam",
+                   @"in",
+                   @"velit",
+                   @"praesent",
+                   @"est",
+                   @"curabitur",
+                   @"turpis",
+                   @"class",
+                   @"aptent",
+                   @"taciti",
+                   @"sociosqu",
+                   @"ad",
+                   @"litora",
+                   @"torquent",
+                   @"per",
+                   @"conubia",
+                   @"nostra",
+                   @"per",
+                   @"inceptos",
+                   @"hymenaeos",
+                   @"cras",
+                   @"consectetuer",
+                   @"nibh",
+                   @"in",
+                   @"lacinia",
+                   @"ornare",
+                   @"turpis",
+                   @"sem",
+                   @"tempor",
+                   @"massa",
+                   @"sagittis",
+                   @"feugiat",
+                   @"mauris",
+                   @"nibh",
+                   @"non",
+                   @"tellus",
+                   @"phasellus",
+                   @"mi",
+                   @"fusce",
+                   @"enim",
+                   @"mauris",
+                   @"ultrices",
+                   @"turpis",
+                   @"eu",
+                   @"adipiscing",
+                   @"viverra",
+                   @"justo",
+                   @"libero",
+                   @"ullamcorper",
+                   @"massa",
+                   @"id",
+                   @"ultrices",
+                   @"velit",
+                   @"est",
+                   @"quis",
+                   @"tortor",
+                   @"quisque",
+                   @"condimentum",
+                   @"lacus",
+                   @"volutpat",
+                   @"nonummy",
+                   @"accumsan",
+                   @"est",
+                   @"nunc",
+                   @"imperdiet",
+                   @"magna",
+                   @"vulputate",
+                   @"aliquet",
+                   @"nisi",
+                   @"risus",
+                   @"at",
+                   @"est",
+                   @"aliquam",
+                   @"imperdiet",
+                   @"gravida",
+                   @"tortor",
+                   @"praesent",
+                   @"interdum",
+                   @"accumsan",
+                   @"ante",
+                   @"vivamus",
+                   @"est",
+                   @"ligula",
+                   @"consequat",
+                   @"sed",
+                   @"pulvinar",
+                   @"eu",
+                   @"consequat",
+                   @"vitae",
+                   @"eros",
+                   @"nulla",
+                   @"elit",
+                   @"nunc",
+                   @"congue",
+                   @"eget",
+                   @"scelerisque",
+                   @"a",
+                   @"tempor",
+                   @"ac",
+                   @"nisi",
+                   @"morbi",
+                   @"facilisis",
+                   @"pellentesque",
+                   @"habitant",
+                   @"morbi",
+                   @"tristique",
+                   @"senectus",
+                   @"et",
+                   @"netus",
+                   @"et",
+                   @"malesuada",
+                   @"fames",
+                   @"ac",
+                   @"turpis",
+                   @"egestas",
+                   @"in",
+                   @"hac",
+                   @"habitasse",
+                   @"platea",
+                   @"dictumst",
+                   @"suspendisse",
+                   @"vel",
+                   @"lorem",
+                   @"ut",
+                   @"ligula",
+                   @"tempor",
+                   @"consequat",
+                   @"quisque",
+                   @"consectetuer",
+                   @"nisl",
+                   @"eget",
+                   @"elit",
+                   @"proin",
+                   @"quis",
+                   @"mauris",
+                   @"ac",
+                   @"orci",
+                   @"accumsan",
+                   @"suscipit",
+                   @"sed",
+                   @"ipsum",
+                   @"sed",
+                   @"vel",
+                   @"libero",
+                   @"nec",
+                   @"elit",
+                   @"feugiat",
+                   @"blandit",
+                   @"vestibulum",
+                   @"purus",
+                   @"nulla",
+                   @"accumsan",
+                   @"et",
+                   @"volutpat",
+                   @"at",
+                   @"pellentesque",
+                   @"vel",
+                   @"urna",
+                   @"suspendisse",
+                   @"nonummy",
+                   @"aliquam",
+                   @"pulvinar",
+                   @"libero",
+                   @"donec",
+                   @"vulputate",
+                   @"orci",
+                   @"ornare",
+                   @"bibendum",
+                   @"condimentum",
+                   @"lorem",
+                   @"elit",
+                   @"dignissim",
+                   @"sapien",
+                   @"ut",
+                   @"aliquam",
+                   @"nibh",
+                   @"augue",
+                   @"in",
+                   @"turpis",
+                   @"phasellus",
+                   @"ac",
+                   @"eros",
+                   @"praesent",
+                   @"luctus",
+                   @"lorem",
+                   @"a",
+                   @"mollis",
+                   @"lacinia",
+                   @"leo",
+                   @"turpis",
+                   @"commodo",
+                   @"sem",
+                   @"in",
+                   @"lacinia",
+                   @"mi",
+                   @"quam",
+                   @"et",
+                   @"quam",
+                   @"curabitur",
+                   @"a",
+                   @"libero",
+                   @"vel",
+                   @"tellus",
+                   @"mattis",
+                   @"imperdiet",
+                   @"in",
+                   @"congue",
+                   @"neque",
+                   @"ut",
+                   @"scelerisque",
+                   @"bibendum",
+                   @"libero",
+                   @"lacus",
+                   @"ullamcorper",
+                   @"sapien",
+                   @"quis",
+                   @"aliquet",
+                   @"massa",
+                   @"velit",
+                   @"vel",
+                   @"orci",
+                   @"fusce",
+                   @"in",
+                   @"nulla",
+                   @"quis",
+                   @"est",
+                   @"cursus",
+                   @"gravida",
+                   @"in",
+                   @"nibh",
+                   @"lorem",
+                   @"ipsum",
+                   @"dolor",
+                   @"sit",
+                   @"amet",
+                   @"consectetuer",
+                   @"adipiscing",
+                   @"elit",
+                   @"integer",
+                   @"fermentum",
+                   @"pretium",
+                   @"massa",
+                   @"morbi",
+                   @"feugiat",
+                   @"iaculis",
+                   @"nunc",
+                   @"aenean",
+                   @"aliquam",
+                   @"pretium",
+                   @"orci",
+                   @"cum",
+                   @"sociis",
+                   @"natoque",
+                   @"penatibus",
+                   @"et",
+                   @"magnis",
+                   @"dis",
+                   @"parturient",
+                   @"montes",
+                   @"nascetur",
+                   @"ridiculus",
+                   @"mus",
+                   @"vivamus",
+                   @"quis",
+                   @"tellus",
+                   @"vel",
+                   @"quam",
+                   @"varius",
+                   @"bibendum",
+                   @"fusce",
+                   @"est",
+                   @"metus",
+                   @"feugiat",
+                   @"at",
+                   @"porttitor",
+                   @"et",
+                   @"cursus",
+                   @"quis",
+                   @"pede",
+                   @"nam",
+                   @"ut",
+                   @"augue",
+                   @"nulla",
+                   @"posuere",
+                   @"phasellus",
+                   @"at",
+                   @"dolor",
+                   @"a",
+                   @"enim",
+                   @"cursus",
+                   @"vestibulum",
+                   @"duis",
+                   @"id",
+                   @"nisi",
+                   @"duis",
+                   @"semper",
+                   @"tellus",
+                   @"ac",
+                   @"nulla",
+                   @"vestibulum",
+                   @"scelerisque",
+                   @"lobortis",
+                   @"dolor",
+                   @"aenean",
+                   @"a",
+                   @"felis",
+                   @"aliquam",
+                   @"erat",
+                   @"volutpat",
+                   @"donec",
+                   @"a",
+                   @"magna",
+                   @"vitae",
+                   @"pede",
+                   @"sagittis",
+                   @"lacinia",
+                   @"cras",
+                   @"vestibulum",
+                   @"diam",
+                   @"ut",
+                   @"arcu",
+                   @"mauris",
+                   @"a",
+                   @"nunc",
+                   @"duis",
+                   @"sollicitudin",
+                   @"erat",
+                   @"sit",
+                   @"amet",
+                   @"turpis",
+                   @"proin",
+                   @"at",
+                   @"libero",
+                   @"eu",
+                   @"diam",
+                   @"lobortis",
+                   @"fermentum",
+                   @"nunc",
+                   @"lorem",
+                   @"turpis",
+                   @"imperdiet",
+                   @"id",
+                   @"gravida",
+                   @"eget",
+                   @"aliquet",
+                   @"sed",
+                   @"purus",
+                   @"ut",
+                   @"vehicula",
+                   @"laoreet",
+                   @"ante",
+                   @"mauris",
+                   @"eu",
+                   @"nunc",
+                   @"sed",
+                   @"sit",
+                   @"amet",
+                   @"elit",
+                   @"nec",
+                   @"ipsum",
+                   @"aliquam",
+                   @"egestas",
+                   @"donec",
+                   @"non",
+                   @"nibh",
+                   @"cras",
+                   @"sodales",
+                   @"pretium",
+                   @"massa",
+                   @"praesent",
+                   @"hendrerit",
+                   @"est",
+                   @"et",
+                   @"risus",
+                   @"vivamus",
+                   @"eget",
+                   @"pede",
+                   @"curabitur",
+                   @"tristique",
+                   @"scelerisque",
+                   @"dui",
+                   @"nullam",
+                   @"ullamcorper",
+                   @"vivamus",
+                   @"venenatis",
+                   @"velit",
+                   @"eget",
+                   @"enim",
+                   @"nunc",
+                   @"eu",
+                   @"nunc",
+                   @"eget",
+                   @"felis",
+                   @"malesuada",
+                   @"fermentum",
+                   @"quisque",
+                   @"magna",
+                   @"mauris",
+                   @"ligula",
+                   @"felis",
+                   @"luctus",
+                   @"a",
+                   @"aliquet",
+                   @"nec",
+                   @"vulputate",
+                   @"eget",
+                   @"magna",
+                   @"quisque",
+                   @"placerat",
+                   @"diam",
+                   @"sed",
+                   @"arcu",
+                   @"praesent",
+                   @"sollicitudin",
+                   @"aliquam",
+                   @"non",
+                   @"sapien",
+                   @"quisque",
+                   @"id",
+                   @"augue",
+                   @"class",
+                   @"aptent",
+                   @"taciti",
+                   @"sociosqu",
+                   @"ad",
+                   @"litora",
+                   @"torquent",
+                   @"per",
+                   @"conubia",
+                   @"nostra",
+                   @"per",
+                   @"inceptos",
+                   @"hymenaeos",
+                   @"etiam",
+                   @"lacus",
+                   @"lectus",
+                   @"mollis",
+                   @"quis",
+                   @"mattis",
+                   @"nec",
+                   @"commodo",
+                   @"facilisis",
+                   @"nibh",
+                   @"sed",
+                   @"sodales",
+                   @"sapien",
+                   @"ac",
+                   @"ante",
+                   @"duis",
+                   @"eget",
+                   @"lectus",
+                   @"in",
+                   @"nibh",
+                   @"lacinia",
+                   @"auctor",
+                   @"fusce",
+                   @"interdum",
+                   @"lectus",
+                   @"non",
+                   @"dui",
+                   @"integer",
+                   @"accumsan",
+                   @"quisque",
+                   @"quam",
+                   @"curabitur",
+                   @"scelerisque",
+                   @"imperdiet",
+                   @"nisl",
+                   @"suspendisse",
+                   @"potenti",
+                   @"nam",
+                   @"massa",
+                   @"leo",
+                   @"iaculis",
+                   @"sed",
+                   @"accumsan",
+                   @"id",
+                   @"ultrices",
+                   @"nec",
+                   @"velit",
+                   @"suspendisse",
+                   @"potenti",
+                   @"mauris",
+                   @"bibendum",
+                   @"turpis",
+                   @"ac",
+                   @"viverra",
+                   @"sollicitudin",
+                   @"metus",
+                   @"massa",
+                   @"interdum",
+                   @"orci",
+                   @"non",
+                   @"imperdiet",
+                   @"orci",
+                   @"ante",
+                   @"at",
+                   @"ipsum",
+                   @"etiam",
+                   @"eget",
+                   @"magna",
+                   @"mauris",
+                   @"at",
+                   @"tortor",
+                   @"eu",
+                   @"lectus",
+                   @"tempor",
+                   @"tincidunt",
+                   @"phasellus",
+                   @"justo",
+                   @"purus",
+                   @"pharetra",
+                   @"ut",
+                   @"ultricies",
+                   @"nec",
+                   @"consequat",
+                   @"vel",
+                   @"nisi",
+                   @"fusce",
+                   @"vitae",
+                   @"velit",
+                   @"at",
+                   @"libero",
+                   @"sollicitudin",
+                   @"sodales",
+                   @"aenean",
+                   @"mi",
+                   @"libero",
+                   @"ultrices",
+                   @"id",
+                   @"suscipit",
+                   @"vitae",
+                   @"dapibus",
+                   @"eu",
+                   @"metus",
+                   @"aenean",
+                   @"vestibulum",
+                   @"nibh",
+                   @"ac",
+                   @"massa",
+                   @"vivamus",
+                   @"vestibulum",
+                   @"libero",
+                   @"vitae",
+                   @"purus",
+                   @"in",
+                   @"hac",
+                   @"habitasse",
+                   @"platea",
+                   @"dictumst",
+                   @"curabitur",
+                   @"blandit",
+                   @"nunc",
+                   @"non",
+                   @"arcu",
+                   @"ut",
+                   @"nec",
+                   @"nibh",
+                   @"morbi",
+                   @"quis",
+                   @"leo",
+                   @"vel",
+                   @"magna",
+                   @"commodo",
+                   @"rhoncus",
+                   @"donec",
+                   @"congue",
+                   @"leo",
+                   @"eu",
+                   @"lacus",
+                   @"pellentesque",
+                   @"at",
+                   @"erat",
+                   @"id",
+                   @"mi",
+                   @"consequat",
+                   @"congue",
+                   @"praesent",
+                   @"a",
+                   @"nisl",
+                   @"ut",
+                   @"diam",
+                   @"interdum",
+                   @"molestie",
+                   @"fusce",
+                   @"suscipit",
+                   @"rhoncus",
+                   @"sem",
+                   @"donec",
+                   @"pretium",
+                   @"aliquam",
+                   @"molestie",
+                   @"vivamus",
+                   @"et",
+                   @"justo",
+                   @"at",
+                   @"augue",
+                   @"aliquet",
+                   @"dapibus",
+                   @"pellentesque",
+                   @"felis",
+                   @"morbi",
+                   @"semper",
+                   @"in",
+                   @"venenatis",
+                   @"imperdiet",
+                   @"neque",
+                   @"donec",
+                   @"auctor",
+                   @"molestie",
+                   @"augue",
+                   @"nulla",
+                   @"id",
+                   @"arcu",
+                   @"sit",
+                   @"amet",
+                   @"dui",
+                   @"lacinia",
+                   @"convallis",
+                   @"proin",
+                   @"tincidunt",
+                   @"proin",
+                   @"a",
+                   @"ante",
+                   @"nunc",
+                   @"imperdiet",
+                   @"augue",
+                   @"nullam",
+                   @"sit",
+                   @"amet",
+                   @"arcu",
+                   @"quisque",
+                   @"laoreet",
+                   @"viverra",
+                   @"felis",
+                   @"lorem",
+                   @"ipsum",
+                   @"dolor",
+                   @"sit",
+                   @"amet",
+                   @"consectetuer",
+                   @"adipiscing",
+                   @"elit",
+                   @"in",
+                   @"hac",
+                   @"habitasse",
+                   @"platea",
+                   @"dictumst",
+                   @"pellentesque",
+                   @"habitant",
+                   @"morbi",
+                   @"tristique",
+                   @"senectus",
+                   @"et",
+                   @"netus",
+                   @"et",
+                   @"malesuada",
+                   @"fames",
+                   @"ac",
+                   @"turpis",
+                   @"egestas",
+                   @"class",
+                   @"aptent",
+                   @"taciti",
+                   @"sociosqu",
+                   @"ad",
+                   @"litora",
+                   @"torquent",
+                   @"per",
+                   @"conubia",
+                   @"nostra",
+                   @"per",
+                   @"inceptos",
+                   @"hymenaeos",
+                   @"nullam",
+                   @"nibh",
+                   @"sapien",
+                   @"volutpat",
+                   @"ut",
+                   @"placerat",
+                   @"quis",
+                   @"ornare",
+                   @"at",
+                   @"lorem",
+                   @"class",
+                   @"aptent",
+                   @"taciti",
+                   @"sociosqu",
+                   @"ad",
+                   @"litora",
+                   @"torquent",
+                   @"per",
+                   @"conubia",
+                   @"nostra",
+                   @"per",
+                   @"inceptos",
+                   @"hymenaeos",
+                   @"morbi",
+                   @"dictum",
+                   @"massa",
+                   @"id",
+                   @"libero",
+                   @"ut",
+                   @"neque",
+                   @"phasellus",
+                   @"tincidunt",
+                   @"nibh",
+                   @"ut",
+                   @"tincidunt",
+                   @"lacinia",
+                   @"lacus",
+                   @"nulla",
+                   @"aliquam",
+                   @"mi",
+                   @"a",
+                   @"interdum",
+                   @"dui",
+                   @"augue",
+                   @"non",
+                   @"pede",
+                   @"duis",
+                   @"nunc",
+                   @"magna",
+                   @"vulputate",
+                   @"a",
+                   @"porta",
+                   @"at",
+                   @"tincidunt",
+                   @"a",
+                   @"nulla",
+                   @"praesent",
+                   @"facilisis",
+                   @"suspendisse",
+                   @"sodales",
+                   @"feugiat",
+                   @"purus",
+                   @"cras",
+                   @"et",
+                   @"justo",
+                   @"a",
+                   @"mauris",
+                   @"mollis",
+                   @"imperdiet",
+                   @"morbi",
+                   @"erat",
+                   @"mi",
+                   @"ultrices",
+                   @"eget",
+                   @"aliquam",
+                   @"elementum",
+                   @"iaculis",
+                   @"id",
+                   @"velit",
+                   @"in",
+                   @"scelerisque",
+                   @"enim",
+                   @"sit",
+                   @"amet",
+                   @"turpis",
+                   @"sed",
+                   @"aliquam",
+                   @"odio",
+                   @"nonummy",
+                   @"ullamcorper",
+                   @"mollis",
+                   @"lacus",
+                   @"nibh",
+                   @"tempor",
+                   @"dolor",
+                   @"sit",
+                   @"amet",
+                   @"varius",
+                   @"sem",
+                   @"neque",
+                   @"ac",
+                   @"dui",
+                   @"nunc",
+                   @"et",
+                   @"est",
+                   @"eu",
+                   @"massa",
+                   @"eleifend",
+                   @"mollis",
+                   @"mauris",
+                   @"aliquet",
+                   @"orci",
+                   @"quis",
+                   @"tellus",
+                   @"ut",
+                   @"mattis",
+                   @"praesent",
+                   @"mollis",
+                   @"consectetuer",
+                   @"quam",
+                   @"nulla",
+                   @"nulla",
+                   @"nunc",
+                   @"accumsan",
+                   @"nunc",
+                   @"sit",
+                   @"amet",
+                   @"scelerisque",
+                   @"porttitor",
+                   @"nibh",
+                   @"pede",
+                   @"lacinia",
+                   @"justo",
+                   @"tristique",
+                   @"mattis",
+                   @"purus",
+                   @"eros",
+                   @"non",
+                   @"velit",
+                   @"aenean",
+                   @"sagittis",
+                   @"commodo",
+                   @"erat",
+                   @"aliquam",
+                   @"id",
+                   @"lacus",
+                   @"morbi",
+                   @"vulputate",
+                   @"vestibulum",
+                   @"elit"];
+    }
+    return self;
 }
 
 #pragma mark -
 
-- (NSString*) randomWord {
-  int randomIndex = random() % [_words count];
-  return [_words objectAtIndex:randomIndex];
+- (NSString*) randomWord
+{
+    int randomIndex = random() % [_words count];
+    return [_words objectAtIndex:randomIndex];
 }
 
 #pragma mark -
 
-- (NSString*) words:(NSUInteger)count {
-  if (count==0) return @"";
-  
-  NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
-  NSString* collectedWords = [self randomWord];
-  for (NSUInteger i=0; i<count; i++) {
-    collectedWords = [collectedWords stringByAppendingString:@" "];
-    collectedWords = [collectedWords stringByAppendingString:[self randomWord]];
-  }
-  
-  NSString* words = [collectedWords copy];
-  [pool release];
-  
-  return [words autorelease];
+- (NSString*) words:(NSUInteger)count
+{
+    if (count==0) return @"";
+    
+    NSString * words;
+    @autoreleasepool
+    {
+        NSString * collectedWords = [self randomWord];
+        for (NSUInteger i=0; i<count; i++) {
+            collectedWords = [collectedWords stringByAppendingString:@" "];
+            collectedWords = [collectedWords stringByAppendingString:[self randomWord]];
+        }
+        
+        words = [collectedWords copy];
+    }
+    
+    return words;
 }
 
-- (NSString*) sentences:(NSUInteger)count {
+- (NSString*) sentences:(NSUInteger)count
+{
     NSMutableString *result = [NSMutableString string];
-    for (NSUInteger i = 0; i < count; i++) {
+    for (NSUInteger i = 0; i < count; i++)
+    {
         long numberOfWords = random() % 10 + 10; //range from 10-20 words
         NSMutableString *sentence = [[self words:numberOfWords] mutableCopy];
         NSString *firstChar = [sentence substringWithRange:NSMakeRange(0, 1)];
         firstChar = [firstChar uppercaseString];
         [sentence replaceCharactersInRange:NSMakeRange(0, 1) withString:firstChar];
         [result appendString:sentence];
-        [sentence release];
         
         if (i+1 == count) { //last sentence
             [result appendString:@"."];

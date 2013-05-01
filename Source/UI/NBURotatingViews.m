@@ -19,6 +19,7 @@
 //
 
 #import "NBURotatingViews.h"
+#import "NBUKitPrivate.h"
 
 #define kAnimationDuration 0.3
 

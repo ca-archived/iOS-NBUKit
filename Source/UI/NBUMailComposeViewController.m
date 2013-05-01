@@ -19,6 +19,7 @@
 //
 
 #import "NBUMailComposeViewController.h"
+#import "NBUKitPrivate.h"
 #import "NSDictionary+RKAdditions.h"
 
 // Define module

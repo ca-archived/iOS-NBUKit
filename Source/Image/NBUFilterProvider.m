@@ -18,13 +18,12 @@
 //  limitations under the License.
 //
 
+#import "NBUFilterProvider.h"
+#import "NBUKitPrivate.h"
+
 // Define module
 #undef  NBUKIT_MODULE
 #define NBUKIT_MODULE   NBUKIT_MODULE_IMAGE
-
-#import "NBUFilterProvider.h"
-#import "NBUGPUImageFilterProvider.h"
-#import "NBUCoreImageFilterProvider.h"
 
 // Built-in filter types
 NSString * const NBUFilterTypeNone              = @"NBUFilterTypeNone";
