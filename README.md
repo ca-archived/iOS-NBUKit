@@ -2,7 +2,7 @@ iOS NBUKit
 ==========  
 [日本語](https://github.com/icb-cost-01/iOS-NBUKit/blob/master/README.jp.md)
 
-_Latest version 1.8.0_
+_Latest version 1.8.1_
 
 All-native static framework to create custom AVFoundation camera UI, interact with AssetLibrary and visually crop/apply filters to images.  
 __*Includes [NBUCore](https://github.com/icb-cost-01/iOS-NBUCore).*__
