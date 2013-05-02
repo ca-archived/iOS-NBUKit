@@ -1576,8 +1576,8 @@
 				);
 				"ARCHS[sdk=iphoneos6.*]" = "$(ARCHS_STANDARD_32_BIT)";
 				"ARCHS[sdk=iphonesimulator*]" = i386;
-				DYLIB_COMPATIBILITY_VERSION = 1.8.1;
-				DYLIB_CURRENT_VERSION = 1.8.1;
+				DYLIB_COMPATIBILITY_VERSION = 1.9.0a1;
+				DYLIB_CURRENT_VERSION = 1.9.0a1;
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				HEADER_SEARCH_PATHS = (
 					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
@@ -1601,8 +1601,8 @@
 				);
 				"ARCHS[sdk=iphoneos6.*]" = "$(ARCHS_STANDARD_32_BIT)";
 				"ARCHS[sdk=iphonesimulator*]" = i386;
-				DYLIB_COMPATIBILITY_VERSION = 1.8.1;
-				DYLIB_CURRENT_VERSION = 1.8.1;
+				DYLIB_COMPATIBILITY_VERSION = 1.9.0a1;
+				DYLIB_CURRENT_VERSION = 1.9.0a1;
 				HEADER_SEARCH_PATHS = (
 					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
 					"\"$(BUILT_PRODUCTS_DIR)/include\"",

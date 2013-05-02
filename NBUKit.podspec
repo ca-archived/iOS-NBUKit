@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name          = "NBUKit"
-    s.version       = "1.8.1"
+    s.version       = "1.9.0a1"
     s.summary       = "Customizable image editing, filters, picker and other UIKit subclasses."
     s.homepage      = "http://cyberagent.github.io/iOS-NBUKit/"
     s.license       = { :type => 'Apache License, Version 2.0', :file => 'LICENSE' }
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
     s.requires_arc  = true
     s.preserve_paths = "README.*", "NOTICE"
     
-    s.dependency 'NBUCore', "~> #{s.version}"
+    s.dependency 'NBUCore', '~> 1.8.1'
     s.dependency 'GPUImage'
     
     s.subspec 'NBUCompatibility' do |sc|
