@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
     s.source        = { :git => "https://github.com/CyberAgent/iOS-NBUKit.git", :tag => "#{s.version}" }
     s.platform      = :ios
     s.source_files  = 'Source/**/*.{h,m}'
-    s.resources     = ["Resources/**/*.{png,strings,acv}", "Source/**/*.{xib}"]
+    s.resources     = ["Resources/*.{png,lproj}", "Resources/filters", "Source/**/*.{xib}"]
     s.frameworks  = 'AssetsLibrary', 'CoreLocation', 'MessageUI', 'CoreData'
     s.weak_frameworks = 'CoreImage'
     s.requires_arc  = true
