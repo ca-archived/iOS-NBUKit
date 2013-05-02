@@ -287,7 +287,7 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
     }
     else if ([type isEqualToString:NBUFilterTypeMaskBlur])
     {
-        defaultValues                           = @[@"NBUKitResources.bundle/Filters/frame.png", @(1.0)];
+        defaultValues                           = @[@"filters/frame.png", @(1.0)];
         identityValues                          = @[@""];
         attributes                              = @{NBUFilterValuesDescriptionKey   : @[@"Alpha mask",
                                                                                         @"Blur size"],
@@ -333,7 +333,7 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
     }
     else if ([type isEqualToString:NBUFilterTypeMultiplyBlend])
     {
-        defaultValues                           = @[@"NBUKitResources.bundle/Filters/mask.png"];
+        defaultValues                           = @[@"filters/mask.png"];
         identityValues                          = @[@""];
         attributes                              = @{NBUFilterValuesDescriptionKey   : @[@"Second image"],
                                                     NBUFilterValuesTypeKey          : @[NBUFilterValuesTypeImage]};
@@ -365,7 +365,7 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
     }
     else if ([type isEqualToString:NBUFilterTypeAdditiveBlend])
     {
-        defaultValues                           = @[@"NBUKitResources.bundle/Filters/frame.png"];
+        defaultValues                           = @[@"filters/frame.png"];
         identityValues                          = @[@""];
         attributes                              = @{NBUFilterValuesDescriptionKey   : @[@"Second image"],
                                                     NBUFilterValuesTypeKey          : @[NBUFilterValuesTypeImage]};
@@ -397,7 +397,7 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
     }
     else if ([type isEqualToString:NBUFilterTypeAlphaBlend])
     {
-        defaultValues                           = @[@"NBUKitResources.bundle/Filters/frame.png", @(0.5)];
+        defaultValues                           = @[@"filters/frame.png", @(0.5)];
         identityValues                          = nil;
         attributes                              = @{NBUFilterValuesDescriptionKey   : @[@"Second image",
                                                                                         @"Mix"],
@@ -435,7 +435,7 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
     }
     else if ([type isEqualToString:NBUFilterTypeSourceOver])
     {
-        defaultValues                           = @[@"NBUKitResources.bundle/Filters/frame.png"];
+        defaultValues                           = @[@"filters/frame.png"];
         identityValues                          = @[@""];
         attributes                              = @{NBUFilterValuesDescriptionKey   : @[@"Second image"],
                                                     NBUFilterValuesTypeKey          : @[NBUFilterValuesTypeImage]};
@@ -467,7 +467,7 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
     }
     else if ([type isEqualToString:NBUFilterTypeACV])
     {
-        defaultValues                           = @[@"NBUKitResources.bundle/Filters/sample.acv"];
+        defaultValues                           = @[@"filters/sample.acv"];
         identityValues                          = @[@""];
         attributes                              = @{NBUFilterValuesDescriptionKey   : @[@"ACV file"],
                                                     NBUFilterValuesTypeKey          : @[NBUFilterValuesTypeFile]};
