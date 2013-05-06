@@ -39,7 +39,6 @@ Customizable views and controllers to modify images (filters and cropping).
 Filters from CoreImage and [GPUImage](https://github.com/BradLarson/GPUImage) but could be extended to
 other libraries as well.
 
-![NBUEdit](https://github.com/CyberAgent/iOS-NBUKit/wiki/Edit1.png)
 ![NBUEdit](https://github.com/CyberAgent/iOS-NBUKit/wiki/Edit2.png)
 ![NBUEdit](https://github.com/CyberAgent/iOS-NBUKit/wiki/Edit3.png)
 
