@@ -1,0 +1,588 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>NBUActionSheet Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">NBUKit </a></h1>
+				<a id="developerHome" href="../index.html">CyberAgent Inc</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">NBUActionSheet Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/cancelButtonBlock">&nbsp;&nbsp;&nbsp;&nbsp;cancelButtonBlock</option>
+	
+	<option value="//api/name/selectedButtonBlock">&nbsp;&nbsp;&nbsp;&nbsp;selectedButtonBlock</option>
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/initWithTitle:cancelButtonTitle:destructiveButtonTitle:otherButtonTitles:selectedButtonBlock:cancelButtonBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithTitle:cancelButtonTitle:destructiveButtonTitle:otherButtonTitles:selectedButtonBlock:cancelButtonBlock:</option>
+	
+	<option value="//api/name/showFrom:">&nbsp;&nbsp;&nbsp;&nbsp;- showFrom:</option>
+	
+	<option value="//api/name/showFromView:">&nbsp;&nbsp;&nbsp;&nbsp;- showFromView:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Creating and Configuring an Action Sheet">Creating and Configuring an Action Sheet</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Showing the Action Sheet">Showing the Action Sheet</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cancelButtonBlock">cancelButtonBlock</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/selectedButtonBlock">selectedButtonBlock</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithTitle:cancelButtonTitle:destructiveButtonTitle:otherButtonTitles:selectedButtonBlock:cancelButtonBlock:">initWithTitle:cancelButtonTitle:destructiveButtonTitle:otherButtonTitles:selectedButtonBlock:cancelButtonBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/showFrom:">showFrom:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/showFromView:">showFromView:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="NBUActionSheet Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">NBUActionSheet Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">UIActionSheet</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">NBUActionSheet.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Block-based UIActionSheet subclass.</p>
+
+<ul>
+<li>Set selection and cancel actions as blocks.</li>
+<li>Flexible show methods that work with different devices and orientations.</li>
+</ul>
+<blockquote><p>%note%<br/>
+<strong>Note:</strong> The delegate parameter will be ignored.</p></blockquote>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						<a title="Creating and Configuring an Action Sheet" name="task_Creating and Configuring an Action Sheet"></a>
+						<h3 class="subsubtitle task-title">Creating and Configuring an Action Sheet</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithTitle:cancelButtonTitle:destructiveButtonTitle:otherButtonTitles:selectedButtonBlock:cancelButtonBlock:">&ndash;&nbsp;initWithTitle:cancelButtonTitle:destructiveButtonTitle:otherButtonTitles:selectedButtonBlock:cancelButtonBlock:</a></code>
+		<span class="tooltip"><p>Initialize an action sheet.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/selectedButtonBlock">&nbsp;&nbsp;selectedButtonBlock</a></code>
+		<span class="tooltip"><p>The optional block to be called if a non-cancel button is selected.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cancelButtonBlock">&nbsp;&nbsp;cancelButtonBlock</a></code>
+		<span class="tooltip"><p>The optional block to be called if the cancel button is selected.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Showing the Action Sheet" name="task_Showing the Action Sheet"></a>
+						<h3 class="subsubtitle task-title">Showing the Action Sheet</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/showFromView:">&ndash;&nbsp;showFromView:</a></code>
+		<span class="tooltip"><p>Show from a given view.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/showFrom:">&ndash;&nbsp;showFrom:</a></code>
+		<span class="tooltip"><p>Show from a view or from a view controller.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/cancelButtonBlock" title="cancelButtonBlock"></a>
+	<h3 class="subsubtitle method-title">cancelButtonBlock</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The optional block to be called if the cancel button is selected.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NBUActionSheetCancelButtonBlock cancelButtonBlock</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUActionSheet.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/selectedButtonBlock" title="selectedButtonBlock"></a>
+	<h3 class="subsubtitle method-title">selectedButtonBlock</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The optional block to be called if a non-cancel button is selected.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NBUActionSheetSelectedButtonBlock selectedButtonBlock</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<blockquote><p>%note%<br/>
+<strong>Note:</strong> The cancel button index is ignored.</p></blockquote>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUActionSheet.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithTitle:cancelButtonTitle:destructiveButtonTitle:otherButtonTitles:selectedButtonBlock:cancelButtonBlock:" title="initWithTitle:cancelButtonTitle:destructiveButtonTitle:otherButtonTitles:selectedButtonBlock:cancelButtonBlock:"></a>
+	<h3 class="subsubtitle method-title">initWithTitle:cancelButtonTitle:destructiveButtonTitle:otherButtonTitles:selectedButtonBlock:cancelButtonBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Initialize an action sheet.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithTitle:(NSString *)<em>title</em> cancelButtonTitle:(NSString *)<em>cancelButtonTitle</em> destructiveButtonTitle:(NSString *)<em>destructiveButtonTitle</em> otherButtonTitles:(NSArray *)<em>otherButtonTitles</em> selectedButtonBlock:(NBUActionSheetSelectedButtonBlock)<em>selectedButtonBlock</em> cancelButtonBlock:(NBUActionSheetCancelButtonBlock)<em>cancelButtonBlock</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>title</em></dt>
+			<dd><p>An optional title.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>cancelButtonTitle</em></dt>
+			<dd><p>An optional cancel button title. Ignored on non-iPad devices.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>destructiveButtonTitle</em></dt>
+			<dd><p>The destructive button title.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>otherButtonTitles</em></dt>
+			<dd><p>Optional additional buttons.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>selectedButtonBlock</em></dt>
+			<dd><p>The block to be called when the user chooses a non-cancel<br/>
+button.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>cancelButtonBlock</em></dt>
+			<dd><p>The optional block to be called if the user cancels the<br/>
+action sheet.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUActionSheet.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/showFrom:" title="showFrom:"></a>
+	<h3 class="subsubtitle method-title">showFrom:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Show from a view or from a view controller.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)showFrom:(id)<em>target</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>target</em></dt>
+			<dd><p>A UIView or UIViewController object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUActionSheet.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/showFromView:" title="showFromView:"></a>
+	<h3 class="subsubtitle method-title">showFromView:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Show from a given view.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)showFromView:(UIView *)<em>view</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>view</em></dt>
+			<dd><p>The target view.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUActionSheet.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 CyberAgent Inc. All rights reserved. (Last updated: 2013-04-30)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

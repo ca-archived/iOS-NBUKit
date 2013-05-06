@@ -1,0 +1,1377 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>NBUImagePickerController Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">NBUKit </a></h1>
+				<a id="developerHome" href="../index.html">CyberAgent Inc</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">NBUImagePickerController Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/assetsGroupController">&nbsp;&nbsp;&nbsp;&nbsp;assetsGroupController</option>
+	
+	<option value="//api/name/cameraController">&nbsp;&nbsp;&nbsp;&nbsp;cameraController</option>
+	
+	<option value="//api/name/confirmController">&nbsp;&nbsp;&nbsp;&nbsp;confirmController</option>
+	
+	<option value="//api/name/editController">&nbsp;&nbsp;&nbsp;&nbsp;editController</option>
+	
+	<option value="//api/name/libraryController">&nbsp;&nbsp;&nbsp;&nbsp;libraryController</option>
+	
+	<option value="//api/name/options">&nbsp;&nbsp;&nbsp;&nbsp;options</option>
+	
+	<option value="//api/name/resultBlock">&nbsp;&nbsp;&nbsp;&nbsp;resultBlock</option>
+	
+	<option value="//api/name/targetLibraryAlbumName">&nbsp;&nbsp;&nbsp;&nbsp;targetLibraryAlbumName</option>
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/pickerWithOptions:nibName:resultBlock:">&nbsp;&nbsp;&nbsp;&nbsp;+ pickerWithOptions:nibName:resultBlock:</option>
+	
+	<option value="//api/name/startPickerWithTarget:options:nibName:resultBlock:">&nbsp;&nbsp;&nbsp;&nbsp;+ startPickerWithTarget:options:nibName:resultBlock:</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/confirmImages">&nbsp;&nbsp;&nbsp;&nbsp;- confirmImages</option>
+	
+	<option value="//api/name/currentMediaInfos">&nbsp;&nbsp;&nbsp;&nbsp;- currentMediaInfos</option>
+	
+	<option value="//api/name/editImages">&nbsp;&nbsp;&nbsp;&nbsp;- editImages</option>
+	
+	<option value="//api/name/finishConfiguringControllers:">&nbsp;&nbsp;&nbsp;&nbsp;- finishConfiguringControllers:</option>
+	
+	<option value="//api/name/finishPicker:">&nbsp;&nbsp;&nbsp;&nbsp;- finishPicker:</option>
+	
+	<option value="//api/name/goToNextStep:">&nbsp;&nbsp;&nbsp;&nbsp;- goToNextStep:</option>
+	
+	<option value="//api/name/prepareToGoToNextStep">&nbsp;&nbsp;&nbsp;&nbsp;- prepareToGoToNextStep</option>
+	
+	<option value="//api/name/startPickerWithTarget:">&nbsp;&nbsp;&nbsp;&nbsp;- startPickerWithTarget:</option>
+	
+	<option value="//api/name/toggleSource:">&nbsp;&nbsp;&nbsp;&nbsp;- toggleSource:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Creating and Starting the Picker">Creating and Starting the Picker</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Properties">Properties</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Methods to Override As Needed">Methods to Override As Needed</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Handling the Current Media Infos">Handling the Current Media Infos</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Outlets">Outlets</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Actions">Actions</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Methods to Override if Needed">Methods to Override if Needed</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/assetsGroupController">assetsGroupController</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cameraController">cameraController</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/confirmController">confirmController</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/editController">editController</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/libraryController">libraryController</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/options">options</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/resultBlock">resultBlock</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/targetLibraryAlbumName">targetLibraryAlbumName</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pickerWithOptions:nibName:resultBlock:">pickerWithOptions:nibName:resultBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/startPickerWithTarget:options:nibName:resultBlock:">startPickerWithTarget:options:nibName:resultBlock:</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/confirmImages">confirmImages</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/currentMediaInfos">currentMediaInfos</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/editImages">editImages</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/finishConfiguringControllers:">finishConfiguringControllers:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/finishPicker:">finishPicker:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/goToNextStep:">goToNextStep:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/prepareToGoToNextStep">prepareToGoToNextStep</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/startPickerWithTarget:">startPickerWithTarget:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/toggleSource:">toggleSource:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="NBUImagePickerController Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">NBUImagePickerController Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">UINavigationController</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">NBUImagePickerController.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>An AVFondation and AssetsLibrary-based image picker.</p>
+
+<ul>
+<li>Combines <a href="../Classes/NBUCameraViewController.html">NBUCameraViewController</a>, <a href="../Classes/NBUAssetsLibraryViewController.html">NBUAssetsLibraryViewController</a> and <a href="../Classes/NBUAssetsGroupViewController.html">NBUAssetsGroupViewController</a>.</li>
+<li>Fully customizable.</li>
+<li>Only one modal controller.</li>
+<li>Many configuration <a href="#//api/name/options">options</a>.</li>
+<li>Can return and array of edited images or dictionaries (media info) with both original and edite<br/>
+images in addition to other metadata.</li>
+<li>Completly customize the picker flow by overriding the goToNextStep method.</li>
+</ul>
+<blockquote><p>%note%<br/>
+<strong>Note:</strong> Should be initialized from a Nib file.</p></blockquote>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						<a title="Creating and Starting the Picker" name="task_Creating and Starting the Picker"></a>
+						<h3 class="subsubtitle task-title">Creating and Starting the Picker</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/startPickerWithTarget:options:nibName:resultBlock:">+&nbsp;startPickerWithTarget:options:nibName:resultBlock:</a></code>
+		<span class="tooltip"><p>Create, configure and start an image picker.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pickerWithOptions:nibName:resultBlock:">+&nbsp;pickerWithOptions:nibName:resultBlock:</a></code>
+		<span class="tooltip"><p>Create an image picker specifying a custom Nib file.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/startPickerWithTarget:">&ndash;&nbsp;startPickerWithTarget:</a></code>
+		<span class="tooltip"><p>Start the image picker.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Properties" name="task_Properties"></a>
+						<h3 class="subsubtitle task-title">Properties</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/options">&nbsp;&nbsp;options</a></code>
+		<span class="tooltip"><p>The picker options.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/resultBlock">&nbsp;&nbsp;resultBlock</a></code>
+		<span class="tooltip"><p>The result block to be called upon picker completion.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/targetLibraryAlbumName">&nbsp;&nbsp;targetLibraryAlbumName</a></code>
+		<span class="tooltip"><p>The library album to be used to save resulting images.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Methods to Override As Needed" name="task_Methods to Override As Needed"></a>
+						<h3 class="subsubtitle task-title">Methods to Override As Needed</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/finishConfiguringControllers:">&ndash;&nbsp;finishConfiguringControllers:</a></code>
+		<span class="tooltip"><p>Override to configure custom controllers.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Handling the Current Media Infos" name="task_Handling the Current Media Infos"></a>
+						<h3 class="subsubtitle task-title">Handling the Current Media Infos</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/currentMediaInfos">&ndash;&nbsp;currentMediaInfos</a></code>
+		<span class="tooltip"><p>The current array of <a href="../Classes/NBUMediaInfo.html">NBUMediaInfo</a> objects.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Outlets" name="task_Outlets"></a>
+						<h3 class="subsubtitle task-title">Outlets</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cameraController">&nbsp;&nbsp;cameraController</a></code>
+		<span class="tooltip"><p>The camera view controller.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/libraryController">&nbsp;&nbsp;libraryController</a></code>
+		<span class="tooltip"><p>The assets library controller.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/assetsGroupController">&nbsp;&nbsp;assetsGroupController</a></code>
+		<span class="tooltip"><p>The assets group controller.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/editController">&nbsp;&nbsp;editController</a></code>
+		<span class="tooltip"><p>The edit (cropping and filters) controller.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/confirmController">&nbsp;&nbsp;confirmController</a></code>
+		<span class="tooltip"><p>The picker confirmation controller.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Actions" name="task_Actions"></a>
+						<h3 class="subsubtitle task-title">Actions</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/toggleSource:">&ndash;&nbsp;toggleSource:</a></code>
+		<span class="tooltip"><p>Toggle between camera and library sources.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Methods to Override if Needed" name="task_Methods to Override if Needed"></a>
+						<h3 class="subsubtitle task-title">Methods to Override if Needed</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/goToNextStep:">&ndash;&nbsp;goToNextStep:</a></code>
+		<span class="tooltip"><p>Action to be called to go to the next step of the picker.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/prepareToGoToNextStep">&ndash;&nbsp;prepareToGoToNextStep</a></code>
+		<span class="tooltip"><p>Method called by goToNextStep before pushing the next view controller.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/editImages">&ndash;&nbsp;editImages</a></code>
+		<span class="tooltip"><p>The edit images step.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/confirmImages">&ndash;&nbsp;confirmImages</a></code>
+		<span class="tooltip"><p>The confirm selection step.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/finishPicker:">&ndash;&nbsp;finishPicker:</a></code>
+		<span class="tooltip"><p>Finish the picker.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/assetsGroupController" title="assetsGroupController"></a>
+	<h3 class="subsubtitle method-title">assetsGroupController</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The assets group controller.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) IBOutlet NBUAssetsGroupViewController *assetsGroupController</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUImagePickerController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cameraController" title="cameraController"></a>
+	<h3 class="subsubtitle method-title">cameraController</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The camera view controller.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) IBOutlet NBUCameraViewController *cameraController</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUImagePickerController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/confirmController" title="confirmController"></a>
+	<h3 class="subsubtitle method-title">confirmController</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The picker confirmation controller.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) IBOutlet NBUGalleryViewController *confirmController</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUImagePickerController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/editController" title="editController"></a>
+	<h3 class="subsubtitle method-title">editController</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The edit (cropping and filters) controller.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) IBOutlet NBUEditMultiImageViewController *editController</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUImagePickerController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/libraryController" title="libraryController"></a>
+	<h3 class="subsubtitle method-title">libraryController</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The assets library controller.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) IBOutlet NBUAssetsLibraryViewController *libraryController</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUImagePickerController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/options" title="options"></a>
+	<h3 class="subsubtitle method-title">options</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The picker options.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic) NBUImagePickerOptions options</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUImagePickerController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/resultBlock" title="resultBlock"></a>
+	<h3 class="subsubtitle method-title">resultBlock</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The result block to be called upon picker completion.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NBUImagePickerResultBlock resultBlock</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUImagePickerController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/targetLibraryAlbumName" title="targetLibraryAlbumName"></a>
+	<h3 class="subsubtitle method-title">targetLibraryAlbumName</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The library album to be used to save resulting images.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSString *targetLibraryAlbumName</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>To enable saving adding a save images option has to be set in <a href="#//api/name/options">options</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUImagePickerController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/pickerWithOptions:nibName:resultBlock:" title="pickerWithOptions:nibName:resultBlock:"></a>
+	<h3 class="subsubtitle method-title">pickerWithOptions:nibName:resultBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create an image picker specifying a custom Nib file.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (NBUImagePickerController *)pickerWithOptions:(NBUImagePickerOptions)<em>options</em> nibName:(NSString *)<em>nibName</em> resultBlock:(NBUImagePickerResultBlock)<em>resultBlock</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>options</em></dt>
+			<dd><p>The picker configuration <a href="#//api/name/options">options</a>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>nibName</em></dt>
+			<dd><p>The name of the Nib file to be loaded.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>resultBlock</em></dt>
+			<dd><p>The block to be called when the picker finishes. When cancelled images is <code>nil</code>.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A ready to use image picker that can be used multiple times.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUImagePickerController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/startPickerWithTarget:options:nibName:resultBlock:" title="startPickerWithTarget:options:nibName:resultBlock:"></a>
+	<h3 class="subsubtitle method-title">startPickerWithTarget:options:nibName:resultBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create, configure and start an image picker.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)startPickerWithTarget:(id)<em>target</em> options:(NBUImagePickerOptions)<em>options</em> nibName:(NSString *)<em>nibName</em> resultBlock:(NBUImagePickerResultBlock)<em>resultBlock</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>target</em></dt>
+			<dd><p>A controller or view to be used to present the picker.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>options</em></dt>
+			<dd><p>The picker configuration <a href="#//api/name/options">options</a>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>nibName</em></dt>
+			<dd><p>An optional Nib file to be used to instantiate the picker.<br/>
+The picker should be the first object in the Nib.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>resultBlock</em></dt>
+			<dd><p>The block to be called when the picker finishes. When cancelled images is <code>nil</code>.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUImagePickerController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/confirmImages" title="confirmImages"></a>
+	<h3 class="subsubtitle method-title">confirmImages</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The confirm selection step.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)confirmImages</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>By default configures and pushes the <a href="#//api/name/confirmController">confirmController</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUImagePickerController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/currentMediaInfos" title="currentMediaInfos"></a>
+	<h3 class="subsubtitle method-title">currentMediaInfos</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The current array of <a href="../Classes/NBUMediaInfo.html">NBUMediaInfo</a> objects.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSMutableArray *)currentMediaInfos</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUImagePickerController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/editImages" title="editImages"></a>
+	<h3 class="subsubtitle method-title">editImages</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The edit images step.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)editImages</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>By default configures and pushes the <a href="#//api/name/editController">editController</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUImagePickerController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/finishConfiguringControllers:" title="finishConfiguringControllers:"></a>
+	<h3 class="subsubtitle method-title">finishConfiguringControllers:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Override to configure custom controllers.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)finishConfiguringControllers:(NBUImagePickerOptions)<em>options</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>options</em></dt>
+			<dd><p>The picker configuration <a href="#//api/name/options">options</a>.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUImagePickerController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/finishPicker:" title="finishPicker:"></a>
+	<h3 class="subsubtitle method-title">finishPicker:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Finish the picker.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (IBAction)finishPicker:(id)<em>sender</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sender</em></dt>
+			<dd><p>The sender object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUImagePickerController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/goToNextStep:" title="goToNextStep:"></a>
+	<h3 class="subsubtitle method-title">goToNextStep:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Action to be called to go to the next step of the picker.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (IBAction)goToNextStep:(id)<em>sender</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sender</em></dt>
+			<dd><p>The sender object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Override to modify the picker flow.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUImagePickerController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/prepareToGoToNextStep" title="prepareToGoToNextStep"></a>
+	<h3 class="subsubtitle method-title">prepareToGoToNextStep</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Method called by goToNextStep before pushing the next view controller.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)prepareToGoToNextStep</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Override it to finalize the previous task.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUImagePickerController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/startPickerWithTarget:" title="startPickerWithTarget:"></a>
+	<h3 class="subsubtitle method-title">startPickerWithTarget:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Start the image picker.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)startPickerWithTarget:(id)<em>target</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>target</em></dt>
+			<dd><p>A controller or view to be used to present the picker.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUImagePickerController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/toggleSource:" title="toggleSource:"></a>
+	<h3 class="subsubtitle method-title">toggleSource:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Toggle between camera and library sources.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (IBAction)toggleSource:(id)<em>sender</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sender</em></dt>
+			<dd><p>The sender object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUImagePickerController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 CyberAgent Inc. All rights reserved. (Last updated: 2013-04-30)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

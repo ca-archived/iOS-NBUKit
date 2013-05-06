@@ -1,0 +1,20 @@
+<?xml version="1.0" standalone="no"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:docset="http://developer.apple.com/rss/docset_extensions" xml:lang="en">
+    <id>http://cyberagent.github.io/iOS-NBUKit/publish/NBUKit.atom/20130430183459</id>
+    <title type="text">NBUKit</title>
+    <rights>Copyright © 2013 CyberAgent Inc. All rights reserved.</rights>
+    <link rel="self" href="http://cyberagent.github.io/iOS-NBUKit/publish/NBUKit.atom"></link>
+    <docset:publisherName>CyberAgent Inc</docset:publisherName>
+    <docset:publisherID>jp.co.cyberagent.nbu.documentation</docset:publisherID>
+    <updated>2013-04-30T18:34:59+09:00</updated>
+    <entry>
+        <id>tag:cyberagent.github.io,2013-04-30:jp.co.cyberagent.nbu.NBUKit/1.8.0</id>
+        <title type="text">NBUKit Documentation</title>
+        <updated>2013-04-30T18:34:59+09:00</updated>
+        <content type="text">NBUKit Documentation (v1.8.0)</content>
+        <link rel="enclosure" type="application/octet-stream" href="http://cyberagent.github.io/iOS-NBUKit/publish/NBUKit.xar" length="595246"></link>
+        <docset:identifier>jp.co.cyberagent.nbu.NBUKit</docset:identifier>
+        <docset:version>1.8.0</docset:version>
+        <docset:minimumXcodeVersion>4.5.0</docset:minimumXcodeVersion>
+    </entry>
+</feed>

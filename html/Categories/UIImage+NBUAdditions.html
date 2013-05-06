@@ -1,0 +1,921 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>UIImage(NBUAdditions) Category Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">NBUKit </a></h1>
+				<a id="developerHome" href="../index.html">CyberAgent Inc</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">UIImage(NBUAdditions) Category Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/imageWithContentsOfFileURL:">&nbsp;&nbsp;&nbsp;&nbsp;+ imageWithContentsOfFileURL:</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/imageCroppedToFill:">&nbsp;&nbsp;&nbsp;&nbsp;- imageCroppedToFill:</option>
+	
+	<option value="//api/name/imageCroppedToRect:">&nbsp;&nbsp;&nbsp;&nbsp;- imageCroppedToRect:</option>
+	
+	<option value="//api/name/imageDonwsizedToFill:">&nbsp;&nbsp;&nbsp;&nbsp;- imageDonwsizedToFill:</option>
+	
+	<option value="//api/name/imageDonwsizedToFit:">&nbsp;&nbsp;&nbsp;&nbsp;- imageDonwsizedToFit:</option>
+	
+	<option value="//api/name/imageDownsizedByFactor:">&nbsp;&nbsp;&nbsp;&nbsp;- imageDownsizedByFactor:</option>
+	
+	<option value="//api/name/imageFlattened">&nbsp;&nbsp;&nbsp;&nbsp;- imageFlattened</option>
+	
+	<option value="//api/name/imageWithOrientationUp">&nbsp;&nbsp;&nbsp;&nbsp;- imageWithOrientationUp</option>
+	
+	<option value="//api/name/thumbnailWithSize:">&nbsp;&nbsp;&nbsp;&nbsp;- thumbnailWithSize:</option>
+	
+	<option value="//api/name/writeToFile:">&nbsp;&nbsp;&nbsp;&nbsp;- writeToFile:</option>
+	
+	<option value="//api/name/writeToTemporaryDirectory">&nbsp;&nbsp;&nbsp;&nbsp;- writeToTemporaryDirectory</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Adjusting Orientation">Adjusting Orientation</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Resize and Cropping">Resize and Cropping</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Saving and Loading From Disk">Saving and Loading From Disk</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/imageWithContentsOfFileURL:">imageWithContentsOfFileURL:</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/imageCroppedToFill:">imageCroppedToFill:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/imageCroppedToRect:">imageCroppedToRect:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/imageDonwsizedToFill:">imageDonwsizedToFill:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/imageDonwsizedToFit:">imageDonwsizedToFit:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/imageDownsizedByFactor:">imageDownsizedByFactor:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/imageFlattened">imageFlattened</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/imageWithOrientationUp">imageWithOrientationUp</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/thumbnailWithSize:">thumbnailWithSize:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/writeToFile:">writeToFile:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/writeToTemporaryDirectory">writeToTemporaryDirectory</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="UIImage(NBUAdditions) Category Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">UIImage(NBUAdditions) Category Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">UIImage+NBUAdditions.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>NBUCore additions to UIImage to handle cropping, resizes and image flattening.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						<a title="Adjusting Orientation" name="task_Adjusting Orientation"></a>
+						<h3 class="subsubtitle task-title">Adjusting Orientation</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/imageWithOrientationUp">&ndash;&nbsp;imageWithOrientationUp</a></code>
+		<span class="tooltip"><p>Force an image to be orientated Up.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Resize and Cropping" name="task_Resize and Cropping"></a>
+						<h3 class="subsubtitle task-title">Resize and Cropping</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/imageCroppedToRect:">&ndash;&nbsp;imageCroppedToRect:</a></code>
+		<span class="tooltip"><p>Crop an image to a given area.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/imageCroppedToFill:">&ndash;&nbsp;imageCroppedToFill:</a></code>
+		<span class="tooltip"><p>Downsize and crop an image in a way to <strong>fill</strong> a target pixel size.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/imageDonwsizedToFill:">&ndash;&nbsp;imageDonwsizedToFill:</a></code>
+		<span class="tooltip"><p>Downsize an image to <strong>fill</strong> a target pixel size.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/imageDonwsizedToFit:">&ndash;&nbsp;imageDonwsizedToFit:</a></code>
+		<span class="tooltip"><p>Downsize an image to <strong>fit</strong> a target pixel size.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/imageDownsizedByFactor:">&ndash;&nbsp;imageDownsizedByFactor:</a></code>
+		<span class="tooltip"><p>Downsize an image by a given factor.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/imageFlattened">&ndash;&nbsp;imageFlattened</a></code>
+		<span class="tooltip"><p>Flatten an image to make sure it has a CGImage backing.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/thumbnailWithSize:">&ndash;&nbsp;thumbnailWithSize:</a></code>
+		<span class="tooltip"><p>Create and return a thumbanil image of a given size.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Saving and Loading From Disk" name="task_Saving and Loading From Disk"></a>
+						<h3 class="subsubtitle task-title">Saving and Loading From Disk</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/writeToFile:">&ndash;&nbsp;writeToFile:</a></code>
+		<span class="tooltip"><p>Write image as JPEG with compression 0.8 to a given path.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/writeToTemporaryDirectory">&ndash;&nbsp;writeToTemporaryDirectory</a></code>
+		<span class="tooltip"><p>Write image to the temporary directory.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/imageWithContentsOfFileURL:">+&nbsp;imageWithContentsOfFileURL:</a></code>
+		<span class="tooltip"><p>Read an image from a given file NSURL.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/imageWithContentsOfFileURL:" title="imageWithContentsOfFileURL:"></a>
+	<h3 class="subsubtitle method-title">imageWithContentsOfFileURL:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Read an image from a given file NSURL.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (UIImage *)imageWithContentsOfFileURL:(NSURL *)<em>fileURL</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>fileURL</em></dt>
+			<dd><p>A file NSURL.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UIImage+NBUAdditions.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/imageCroppedToFill:" title="imageCroppedToFill:"></a>
+	<h3 class="subsubtitle method-title">imageCroppedToFill:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Downsize and crop an image in a way to <strong>fill</strong> a target pixel size.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (UIImage *)imageCroppedToFill:(CGSize)<em>size</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>size</em></dt>
+			<dd><p>The target size in pixels.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<blockquote><p>%note%<br/>
+<strong>Note:</strong> The resulting image is downsized to fill and areas outside the target area are discarded.</p></blockquote>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UIImage+NBUAdditions.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/imageCroppedToRect:" title="imageCroppedToRect:"></a>
+	<h3 class="subsubtitle method-title">imageCroppedToRect:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Crop an image to a given area.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (UIImage *)imageCroppedToRect:(CGRect)<em>cropArea</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>cropArea</em></dt>
+			<dd><p>The reference area in image coordinates.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UIImage+NBUAdditions.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/imageDonwsizedToFill:" title="imageDonwsizedToFill:"></a>
+	<h3 class="subsubtitle method-title">imageDonwsizedToFill:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Downsize an image to <strong>fill</strong> a target pixel size.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (UIImage *)imageDonwsizedToFill:(CGSize)<em>size</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>size</em></dt>
+			<dd><p>The target size in pixels.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<blockquote><p>%note%<br/>
+<strong>Note:</strong> The resulting image is not cropped.</p></blockquote>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UIImage+NBUAdditions.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/imageDonwsizedToFit:" title="imageDonwsizedToFit:"></a>
+	<h3 class="subsubtitle method-title">imageDonwsizedToFit:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Downsize an image to <strong>fit</strong> a target pixel size.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (UIImage *)imageDonwsizedToFit:(CGSize)<em>size</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>size</em></dt>
+			<dd><p>The target size in pixels.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<blockquote><p>%note%<br/>
+<strong>Note:</strong> The resulting image is not cropped.</p></blockquote>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UIImage+NBUAdditions.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/imageDownsizedByFactor:" title="imageDownsizedByFactor:"></a>
+	<h3 class="subsubtitle method-title">imageDownsizedByFactor:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Downsize an image by a given factor.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (UIImage *)imageDownsizedByFactor:(CGFloat)<em>factor</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>factor</em></dt>
+			<dd><p>The factor used to downsize where 1.0 is no downsize.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<blockquote><p>%note%<br/>
+<strong>Note:</strong> If factor is bigger or equal to 1.0 then the original image is returned.</p></blockquote>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UIImage+NBUAdditions.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/imageFlattened" title="imageFlattened"></a>
+	<h3 class="subsubtitle method-title">imageFlattened</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Flatten an image to make sure it has a CGImage backing.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (UIImage *)imageFlattened</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UIImage+NBUAdditions.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/imageWithOrientationUp" title="imageWithOrientationUp"></a>
+	<h3 class="subsubtitle method-title">imageWithOrientationUp</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Force an image to be orientated Up.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (UIImage *)imageWithOrientationUp</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UIImage+NBUAdditions.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/thumbnailWithSize:" title="thumbnailWithSize:"></a>
+	<h3 class="subsubtitle method-title">thumbnailWithSize:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create and return a thumbanil image of a given size.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (UIImage *)thumbnailWithSize:(CGSize)<em>size</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>size</em></dt>
+			<dd><p>The target size in points. Takea into account retina screens.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UIImage+NBUAdditions.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/writeToFile:" title="writeToFile:"></a>
+	<h3 class="subsubtitle method-title">writeToFile:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Write image as JPEG with compression 0.8 to a given path.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSURL *)writeToFile:(NSString *)<em>path</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>path</em></dt>
+			<dd><p>The complete target path including the desired file name and extension.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>On success a valid NSURL or <code>nil</code> on failure.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UIImage+NBUAdditions.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/writeToTemporaryDirectory" title="writeToTemporaryDirectory"></a>
+	<h3 class="subsubtitle method-title">writeToTemporaryDirectory</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Write image to the temporary directory.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSURL *)writeToTemporaryDirectory</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>On success a valid NSURL or <code>nil</code> on failure.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UIImage+NBUAdditions.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 CyberAgent Inc. All rights reserved. (Last updated: 2013-04-30)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

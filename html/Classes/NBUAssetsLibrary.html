@@ -1,0 +1,1644 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>NBUAssetsLibrary Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">NBUKit </a></h1>
+				<a id="developerHome" href="../index.html">CyberAgent Inc</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">NBUAssetsLibrary Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/ALAssetsLibrary">&nbsp;&nbsp;&nbsp;&nbsp;ALAssetsLibrary</option>
+	
+	<option value="//api/name/restrictedAccess">&nbsp;&nbsp;&nbsp;&nbsp;restrictedAccess</option>
+	
+	<option value="//api/name/userDeniedAccess">&nbsp;&nbsp;&nbsp;&nbsp;userDeniedAccess</option>
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/setSharedLibrary:">&nbsp;&nbsp;&nbsp;&nbsp;+ setSharedLibrary:</option>
+	
+	<option value="//api/name/sharedLibrary">&nbsp;&nbsp;&nbsp;&nbsp;+ sharedLibrary</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/albumGroupsWithResultBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- albumGroupsWithResultBlock:</option>
+	
+	<option value="//api/name/allAssetsWithResultBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- allAssetsWithResultBlock:</option>
+	
+	<option value="//api/name/allGroupsWithResultBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- allGroupsWithResultBlock:</option>
+	
+	<option value="//api/name/allImageAssetsWithResultBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- allImageAssetsWithResultBlock:</option>
+	
+	<option value="//api/name/allVideoAssetsWithResultBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- allVideoAssetsWithResultBlock:</option>
+	
+	<option value="//api/name/assetForURL:resultBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- assetForURL:resultBlock:</option>
+	
+	<option value="//api/name/assetsForURLs:resultBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- assetsForURLs:resultBlock:</option>
+	
+	<option value="//api/name/cameraRollGroupWithResultBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- cameraRollGroupWithResultBlock:</option>
+	
+	<option value="//api/name/createAlbumGroupWithName:resultBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- createAlbumGroupWithName:resultBlock:</option>
+	
+	<option value="//api/name/directoryGroupsWithResultBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- directoryGroupsWithResultBlock:</option>
+	
+	<option value="//api/name/groupForURL:resultBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- groupForURL:resultBlock:</option>
+	
+	<option value="//api/name/groupWithName:resultBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- groupWithName:resultBlock:</option>
+	
+	<option value="//api/name/photoLibraryGroupWithResultBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- photoLibraryGroupWithResultBlock:</option>
+	
+	<option value="//api/name/photoStreamGroupWithResultBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- photoStreamGroupWithResultBlock:</option>
+	
+	<option value="//api/name/registerDirectoryGroupforURL:name:">&nbsp;&nbsp;&nbsp;&nbsp;- registerDirectoryGroupforURL:name:</option>
+	
+	<option value="//api/name/saveImageToCameraRoll:metadata:addToAssetsGroupWithName:resultBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- saveImageToCameraRoll:metadata:addToAssetsGroupWithName:resultBlock:</option>
+	
+	<option value="//api/name/saveImageToCameraRoll:metadata:resultBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- saveImageToCameraRoll:metadata:resultBlock:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Shared Assets Library">Shared Assets Library</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Properties">Properties</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Access Permissions">Access Permissions</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Asset Groups">Asset Groups</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Retrieve Assets">Retrieve Assets</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Save Assets">Save Assets</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/ALAssetsLibrary">ALAssetsLibrary</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/restrictedAccess">restrictedAccess</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/userDeniedAccess">userDeniedAccess</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setSharedLibrary:">setSharedLibrary:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedLibrary">sharedLibrary</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/albumGroupsWithResultBlock:">albumGroupsWithResultBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/allAssetsWithResultBlock:">allAssetsWithResultBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/allGroupsWithResultBlock:">allGroupsWithResultBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/allImageAssetsWithResultBlock:">allImageAssetsWithResultBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/allVideoAssetsWithResultBlock:">allVideoAssetsWithResultBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/assetForURL:resultBlock:">assetForURL:resultBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/assetsForURLs:resultBlock:">assetsForURLs:resultBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cameraRollGroupWithResultBlock:">cameraRollGroupWithResultBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createAlbumGroupWithName:resultBlock:">createAlbumGroupWithName:resultBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/directoryGroupsWithResultBlock:">directoryGroupsWithResultBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/groupForURL:resultBlock:">groupForURL:resultBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/groupWithName:resultBlock:">groupWithName:resultBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/photoLibraryGroupWithResultBlock:">photoLibraryGroupWithResultBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/photoStreamGroupWithResultBlock:">photoStreamGroupWithResultBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/registerDirectoryGroupforURL:name:">registerDirectoryGroupforURL:name:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/saveImageToCameraRoll:metadata:addToAssetsGroupWithName:resultBlock:">saveImageToCameraRoll:metadata:addToAssetsGroupWithName:resultBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/saveImageToCameraRoll:metadata:resultBlock:">saveImageToCameraRoll:metadata:resultBlock:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="NBUAssetsLibrary Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">NBUAssetsLibrary Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">NBUAssetsLibrary.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Wrapper to ease acces to the device <a href="#//api/name/ALAssetsLibrary">ALAssetsLibrary</a> media library.</p>
+
+<ul>
+<li>Asynchronous and fully block-based.</li>
+<li>Groups and assets are always valid.</li>
+<li>Groups and images can be retrieved by URL even on iOS4.</li>
+<li>Read and write access on iOS5+.</li>
+<li>Create albums, add assets to a given album on iOS5+.</li>
+<li>Detect permission restrictions on iOS6+.</li>
+</ul>
+
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						<a title="Shared Assets Library" name="task_Shared Assets Library"></a>
+						<h3 class="subsubtitle task-title">Shared Assets Library</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sharedLibrary">+&nbsp;sharedLibrary</a></code>
+		<span class="tooltip"><p>Return a shared NBUAssetsLibrary singleton object.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setSharedLibrary:">+&nbsp;setSharedLibrary:</a></code>
+		<span class="tooltip"><p>Set the shared library singleton object.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Properties" name="task_Properties"></a>
+						<h3 class="subsubtitle task-title">Properties</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/ALAssetsLibrary">&nbsp;&nbsp;ALAssetsLibrary</a></code>
+		<span class="tooltip"><p>Associated ALAssetsLibrary.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/registerDirectoryGroupforURL:name:">&ndash;&nbsp;registerDirectoryGroupforURL:name:</a></code>
+		<span class="tooltip"><p>Register a local directory to automatically create and present a <a href="../Classes/NBUAssetsGroup.html">NBUAssetsGroup</a>.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Access Permissions" name="task_Access Permissions"></a>
+						<h3 class="subsubtitle task-title">Access Permissions</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/userDeniedAccess">&nbsp;&nbsp;userDeniedAccess</a></code>
+		<span class="tooltip"><p>Whether the user has actively denied access to the library.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/restrictedAccess">&nbsp;&nbsp;restrictedAccess</a></code>
+		<span class="tooltip"><p>Whether parental controls have denied access to the library.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Asset Groups" name="task_Asset Groups"></a>
+						<h3 class="subsubtitle task-title">Asset Groups</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/directoryGroupsWithResultBlock:">&ndash;&nbsp;directoryGroupsWithResultBlock:</a></code>
+		<span class="tooltip"><p>Retrieve all the groups that are associated to local directories.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cameraRollGroupWithResultBlock:">&ndash;&nbsp;cameraRollGroupWithResultBlock:</a></code>
+		<span class="tooltip"><p>The group with all Camera Roll assets (ALAssetsGroupSavedPhotos).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/photoStreamGroupWithResultBlock:">&ndash;&nbsp;photoStreamGroupWithResultBlock:</a></code>
+		<span class="tooltip"><p>The PhotoStream group with all Camera Roll assets (ALAssetsGroupPhotoStream).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/photoLibraryGroupWithResultBlock:">&ndash;&nbsp;photoLibraryGroupWithResultBlock:</a></code>
+		<span class="tooltip"><p>The group with all iTunes synced assets (ALAssetsGroupLibrary).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/albumGroupsWithResultBlock:">&ndash;&nbsp;albumGroupsWithResultBlock:</a></code>
+		<span class="tooltip"><p>Album groups to mimic the device library (Camera Roll, PhotoStream, Photo Library and Albums).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/allGroupsWithResultBlock:">&ndash;&nbsp;allGroupsWithResultBlock:</a></code>
+		<span class="tooltip"><p>Retrieve all directory and AssetsLibrary assets groups in that order.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/groupForURL:resultBlock:">&ndash;&nbsp;groupForURL:resultBlock:</a></code>
+		<span class="tooltip"><p>Retrieve the group of assets that correspons to a given URL.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/groupWithName:resultBlock:">&ndash;&nbsp;groupWithName:resultBlock:</a></code>
+		<span class="tooltip"><p>Retrieve a group by its name.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/createAlbumGroupWithName:resultBlock:">&ndash;&nbsp;createAlbumGroupWithName:resultBlock:</a></code>
+		<span class="tooltip"><p>Create a new group album (iOS5+). Returns an error if name already exists.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Retrieve Assets" name="task_Retrieve Assets"></a>
+						<h3 class="subsubtitle task-title">Retrieve Assets</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/allAssetsWithResultBlock:">&ndash;&nbsp;allAssetsWithResultBlock:</a></code>
+		<span class="tooltip"><p>Returns all assets in Camera Roll + Photo library.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/allImageAssetsWithResultBlock:">&ndash;&nbsp;allImageAssetsWithResultBlock:</a></code>
+		<span class="tooltip"><p>Returns all image assets in Camera Roll + Photo library.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/allVideoAssetsWithResultBlock:">&ndash;&nbsp;allVideoAssetsWithResultBlock:</a></code>
+		<span class="tooltip"><p>Returns all video assets in Camera Roll + Photo library.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/assetForURL:resultBlock:">&ndash;&nbsp;assetForURL:resultBlock:</a></code>
+		<span class="tooltip"><p>Retrieve the asset that corresponds to a given URL.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/assetsForURLs:resultBlock:">&ndash;&nbsp;assetsForURLs:resultBlock:</a></code>
+		<span class="tooltip"><p>Retrieve the assets that corresponds to the given URLs.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Save Assets" name="task_Save Assets"></a>
+						<h3 class="subsubtitle task-title">Save Assets</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/saveImageToCameraRoll:metadata:resultBlock:">&ndash;&nbsp;saveImageToCameraRoll:metadata:resultBlock:</a></code>
+		<span class="tooltip"><p>Save an image to the Camera Roll.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/saveImageToCameraRoll:metadata:addToAssetsGroupWithName:resultBlock:">&ndash;&nbsp;saveImageToCameraRoll:metadata:addToAssetsGroupWithName:resultBlock:</a></code>
+		<span class="tooltip"><p>Save an image to the Camera Roll and add to a given group (iOS5+).</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/ALAssetsLibrary" title="ALAssetsLibrary"></a>
+	<h3 class="subsubtitle method-title">ALAssetsLibrary</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Associated ALAssetsLibrary.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic, readonly) *ALAssetsLibrary</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsLibrary.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/restrictedAccess" title="restrictedAccess"></a>
+	<h3 class="subsubtitle method-title">restrictedAccess</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Whether parental controls have denied access to the library.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL restrictedAccess</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsLibrary.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/userDeniedAccess" title="userDeniedAccess"></a>
+	<h3 class="subsubtitle method-title">userDeniedAccess</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Whether the user has actively denied access to the library.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL userDeniedAccess</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsLibrary.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/setSharedLibrary:" title="setSharedLibrary:"></a>
+	<h3 class="subsubtitle method-title">setSharedLibrary:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Set the shared library singleton object.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)setSharedLibrary:(NBUAssetsLibrary *)<em>library</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>library</em></dt>
+			<dd><p>The new shared library. Use nil to release the current object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsLibrary.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sharedLibrary" title="sharedLibrary"></a>
+	<h3 class="subsubtitle method-title">sharedLibrary</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Return a shared NBUAssetsLibrary singleton object.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (NBUAssetsLibrary *)sharedLibrary</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsLibrary.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/albumGroupsWithResultBlock:" title="albumGroupsWithResultBlock:"></a>
+	<h3 class="subsubtitle method-title">albumGroupsWithResultBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Album groups to mimic the device library (Camera Roll, PhotoStream, Photo Library and Albums).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)albumGroupsWithResultBlock:(NBUAssetsGroupsResultBlock)<em>resultBlock</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>resultBlock</em></dt>
+			<dd><p>The block to be called asynchronously with the results.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsLibrary.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/allAssetsWithResultBlock:" title="allAssetsWithResultBlock:"></a>
+	<h3 class="subsubtitle method-title">allAssetsWithResultBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns all assets in Camera Roll + Photo library.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)allAssetsWithResultBlock:(NBUAssetsResultBlock)<em>resultBlock</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>resultBlock</em></dt>
+			<dd><p>The block to be called asynchronously with the results.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsLibrary.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/allGroupsWithResultBlock:" title="allGroupsWithResultBlock:"></a>
+	<h3 class="subsubtitle method-title">allGroupsWithResultBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieve all directory and AssetsLibrary assets groups in that order.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)allGroupsWithResultBlock:(NBUAssetsGroupsResultBlock)<em>resultBlock</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>resultBlock</em></dt>
+			<dd><p>The block to be called asynchronously with the results.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsLibrary.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/allImageAssetsWithResultBlock:" title="allImageAssetsWithResultBlock:"></a>
+	<h3 class="subsubtitle method-title">allImageAssetsWithResultBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns all image assets in Camera Roll + Photo library.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)allImageAssetsWithResultBlock:(NBUAssetsResultBlock)<em>resultBlock</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>resultBlock</em></dt>
+			<dd><p>The block to be called asynchronously with the results.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsLibrary.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/allVideoAssetsWithResultBlock:" title="allVideoAssetsWithResultBlock:"></a>
+	<h3 class="subsubtitle method-title">allVideoAssetsWithResultBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns all video assets in Camera Roll + Photo library.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)allVideoAssetsWithResultBlock:(NBUAssetsResultBlock)<em>resultBlock</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>resultBlock</em></dt>
+			<dd><p>The block to be called asynchronously with the results.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsLibrary.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/assetForURL:resultBlock:" title="assetForURL:resultBlock:"></a>
+	<h3 class="subsubtitle method-title">assetForURL:resultBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieve the asset that corresponds to a given URL.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)assetForURL:(NSURL *)<em>assetURL</em> resultBlock:(NBUAssetResultBlock)<em>resultBlock</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>assetURL</em></dt>
+			<dd><p>A NSURL.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>resultBlock</em></dt>
+			<dd><p>The block to be called asynchronously with the results.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<blockquote><p>%warning%<br/>
+<strong>Warning:</strong> Make sure the URL does correspond to an image asset.</p></blockquote>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsLibrary.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/assetsForURLs:resultBlock:" title="assetsForURLs:resultBlock:"></a>
+	<h3 class="subsubtitle method-title">assetsForURLs:resultBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieve the assets that corresponds to the given URLs.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)assetsForURLs:(NSArray *)<em>assetURLs</em> resultBlock:(NBUAssetsResultBlock)<em>resultBlock</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>assetURLs</em></dt>
+			<dd><p>An array of asset NSURL&rsquo;s.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>resultBlock</em></dt>
+			<dd><p>The block to be called asynchronously with the results.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<blockquote><p>%warning%<br/>
+<strong>Warning:</strong> Make sure the URL does correspond to asset.</p></blockquote>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsLibrary.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cameraRollGroupWithResultBlock:" title="cameraRollGroupWithResultBlock:"></a>
+	<h3 class="subsubtitle method-title">cameraRollGroupWithResultBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The group with all Camera Roll assets (ALAssetsGroupSavedPhotos).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)cameraRollGroupWithResultBlock:(NBUAssetsGroupResultBlock)<em>resultBlock</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>resultBlock</em></dt>
+			<dd><p>The block to be called asynchronously with the results.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsLibrary.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/createAlbumGroupWithName:resultBlock:" title="createAlbumGroupWithName:resultBlock:"></a>
+	<h3 class="subsubtitle method-title">createAlbumGroupWithName:resultBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create a new group album (iOS5+). Returns an error if name already exists.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)createAlbumGroupWithName:(NSString *)<em>name</em> resultBlock:(NBUAssetsGroupResultBlock)<em>resultBlock</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>The desired group name.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>resultBlock</em></dt>
+			<dd><p>The block to be called asynchronously with the results.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsLibrary.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/directoryGroupsWithResultBlock:" title="directoryGroupsWithResultBlock:"></a>
+	<h3 class="subsubtitle method-title">directoryGroupsWithResultBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieve all the groups that are associated to local directories.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)directoryGroupsWithResultBlock:(NBUAssetsGroupsResultBlock)<em>resultBlock</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>resultBlock</em></dt>
+			<dd><p>The block to be called asynchronously with the results.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Directories' URLs should first be registered using <a href="#//api/name/registerDirectoryGroupforURL:name:">registerDirectoryGroupforURL:name:</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsLibrary.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/groupForURL:resultBlock:" title="groupForURL:resultBlock:"></a>
+	<h3 class="subsubtitle method-title">groupForURL:resultBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieve the group of assets that correspons to a given URL.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)groupForURL:(NSURL *)<em>groupURL</em> resultBlock:(NBUAssetsGroupResultBlock)<em>resultBlock</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>groupURL</em></dt>
+			<dd><p>A NSURL</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>resultBlock</em></dt>
+			<dd><p>The block to be called asynchronously with the results.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<blockquote><p>%note%<br/>
+<strong>Note:</strong> Also works in iOS4.</p></blockquote>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsLibrary.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/groupWithName:resultBlock:" title="groupWithName:resultBlock:"></a>
+	<h3 class="subsubtitle method-title">groupWithName:resultBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieve a group by its name.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)groupWithName:(NSString *)<em>name</em> resultBlock:(NBUAssetsGroupResultBlock)<em>resultBlock</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>The name of the group.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>resultBlock</em></dt>
+			<dd><p>The block to be called asynchronously with the results.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsLibrary.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/photoLibraryGroupWithResultBlock:" title="photoLibraryGroupWithResultBlock:"></a>
+	<h3 class="subsubtitle method-title">photoLibraryGroupWithResultBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The group with all iTunes synced assets (ALAssetsGroupLibrary).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)photoLibraryGroupWithResultBlock:(NBUAssetsGroupResultBlock)<em>resultBlock</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>resultBlock</em></dt>
+			<dd><p>The block to be called asynchronously with the results.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsLibrary.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/photoStreamGroupWithResultBlock:" title="photoStreamGroupWithResultBlock:"></a>
+	<h3 class="subsubtitle method-title">photoStreamGroupWithResultBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The PhotoStream group with all Camera Roll assets (ALAssetsGroupPhotoStream).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)photoStreamGroupWithResultBlock:(NBUAssetsGroupResultBlock)<em>resultBlock</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>resultBlock</em></dt>
+			<dd><p>The block to be called asynchronously with the results.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsLibrary.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/registerDirectoryGroupforURL:name:" title="registerDirectoryGroupforURL:name:"></a>
+	<h3 class="subsubtitle method-title">registerDirectoryGroupforURL:name:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Register a local directory to automatically create and present a <a href="../Classes/NBUAssetsGroup.html">NBUAssetsGroup</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)registerDirectoryGroupforURL:(NSURL *)<em>directoryURL</em> name:(NSString *)<em>name</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>directoryURL</em></dt>
+			<dd><p>The target directory&rsquo;s URL.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>The optional name to be used for the <a href="../Classes/NBUAssetsGroup.html">NBUAssetsGroup</a>.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The library will use <a href="../Classes/NBUAssetsGroup.html#//api/name/groupForDirectoryURL:name:">[NBUAssetsGroup groupForDirectoryURL:name:]</a> to create the group.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsLibrary.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/saveImageToCameraRoll:metadata:addToAssetsGroupWithName:resultBlock:" title="saveImageToCameraRoll:metadata:addToAssetsGroupWithName:resultBlock:"></a>
+	<h3 class="subsubtitle method-title">saveImageToCameraRoll:metadata:addToAssetsGroupWithName:resultBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Save an image to the Camera Roll and add to a given group (iOS5+).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)saveImageToCameraRoll:(UIImage *)<em>image</em> metadata:(NSDictionary *)<em>metadata</em> addToAssetsGroupWithName:(NSString *)<em>name</em> resultBlock:(NBUAssetURLResultBlock)<em>resultBlock</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>image</em></dt>
+			<dd><p>The image to save.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>metadata</em></dt>
+			<dd><p>Optional metadata dictionary.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>The target album&rsquo;s name. If an album with that name is not found a<br/>
+new one may be created.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>resultBlock</em></dt>
+			<dd><p>The block to be called asynchronously with the results.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsLibrary.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/saveImageToCameraRoll:metadata:resultBlock:" title="saveImageToCameraRoll:metadata:resultBlock:"></a>
+	<h3 class="subsubtitle method-title">saveImageToCameraRoll:metadata:resultBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Save an image to the Camera Roll.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)saveImageToCameraRoll:(UIImage *)<em>image</em> metadata:(NSDictionary *)<em>metadata</em> resultBlock:(NBUAssetURLResultBlock)<em>resultBlock</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>image</em></dt>
+			<dd><p>The image to save.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>metadata</em></dt>
+			<dd><p>Optional metadata dictionary.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>resultBlock</em></dt>
+			<dd><p>The block to be called asynchronously with the results.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsLibrary.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 CyberAgent Inc. All rights reserved. (Last updated: 2013-04-30)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

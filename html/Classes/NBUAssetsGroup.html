@@ -1,0 +1,1148 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>NBUAssetsGroup Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">NBUKit </a></h1>
+				<a id="developerHome" href="../index.html">CyberAgent Inc</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">NBUAssetsGroup Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/ALAssetsGroup">&nbsp;&nbsp;&nbsp;&nbsp;ALAssetsGroup</option>
+	
+	<option value="//api/name/URL">&nbsp;&nbsp;&nbsp;&nbsp;URL</option>
+	
+	<option value="//api/name/assetsCount">&nbsp;&nbsp;&nbsp;&nbsp;assetsCount</option>
+	
+	<option value="//api/name/editable">&nbsp;&nbsp;&nbsp;&nbsp;editable</option>
+	
+	<option value="//api/name/imageAssetsCount">&nbsp;&nbsp;&nbsp;&nbsp;imageAssetsCount</option>
+	
+	<option value="//api/name/name">&nbsp;&nbsp;&nbsp;&nbsp;name</option>
+	
+	<option value="//api/name/posterImage">&nbsp;&nbsp;&nbsp;&nbsp;posterImage</option>
+	
+	<option value="//api/name/type">&nbsp;&nbsp;&nbsp;&nbsp;type</option>
+	
+	<option value="//api/name/videoAssetsCount">&nbsp;&nbsp;&nbsp;&nbsp;videoAssetsCount</option>
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/groupForALAssetsGroup:">&nbsp;&nbsp;&nbsp;&nbsp;+ groupForALAssetsGroup:</option>
+	
+	<option value="//api/name/groupForDirectoryURL:name:">&nbsp;&nbsp;&nbsp;&nbsp;+ groupForDirectoryURL:name:</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/addAsset:">&nbsp;&nbsp;&nbsp;&nbsp;- addAsset:</option>
+	
+	<option value="//api/name/addAssetWithURL:resultBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- addAssetWithURL:resultBlock:</option>
+	
+	<option value="//api/name/assetsWithTypes:atIndexes:reverseOrder:incrementalLoadSize:resultBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- assetsWithTypes:atIndexes:reverseOrder:incrementalLoadSize:resultBlock:</option>
+	
+	<option value="//api/name/stopLoadingAssets">&nbsp;&nbsp;&nbsp;&nbsp;- stopLoadingAssets</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Initializers">Initializers</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Properties">Properties</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Accessing Assets">Accessing Assets</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Retrieving Assets">Retrieving Assets</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Adding Assets">Adding Assets</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/ALAssetsGroup">ALAssetsGroup</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/URL">URL</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/assetsCount">assetsCount</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/editable">editable</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/imageAssetsCount">imageAssetsCount</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/name">name</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/posterImage">posterImage</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/type">type</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/videoAssetsCount">videoAssetsCount</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/groupForALAssetsGroup:">groupForALAssetsGroup:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/groupForDirectoryURL:name:">groupForDirectoryURL:name:</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addAsset:">addAsset:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addAssetWithURL:resultBlock:">addAssetWithURL:resultBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/assetsWithTypes:atIndexes:reverseOrder:incrementalLoadSize:resultBlock:">assetsWithTypes:atIndexes:reverseOrder:incrementalLoadSize:resultBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/stopLoadingAssets">stopLoadingAssets</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="NBUAssetsGroup Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">NBUAssetsGroup Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">NBUAssetsGroup.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Wrapper to ease acces to an <a href="#//api/name/ALAssetsGroup">ALAssetsGroup</a> assets group.</p>
+
+<ul>
+<li>Unlike <a href="#//api/name/ALAssetsGroup">ALAssetsGroup</a> objects, NBUAssetsGroup is always valid.</li>
+<li>Observes ALAssetsLibraryChangedNotification to reload its associated<br/>
+<a href="#//api/name/ALAssetsGroup">ALAssetsGroup</a> if needed.</li>
+<li>Lazily loads <a href="#//api/name/posterImage">posterImage</a> and assets' count only when needed.</li>
+<li>Leverages iOS4 compatibility by creating a NSURL:<br/>
+<code>assets-library://group/?id=&lt;ALAssetsGroupPropertyPersistentID&gt;</code>.</li>
+</ul>
+<blockquote><p>%note%<br/>
+<strong>Note:</strong> You usually retrieve assets groups using NBUAssetTypesLibrary methods.</p></blockquote>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						<a title="Initializers" name="task_Initializers"></a>
+						<h3 class="subsubtitle task-title">Initializers</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/groupForALAssetsGroup:">+&nbsp;groupForALAssetsGroup:</a></code>
+		<span class="tooltip"><p>Creates and initializes a NBUAssetsGroup associated to a <a href="#//api/name/ALAssetsGroup">ALAssetsGroup</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/groupForDirectoryURL:name:">+&nbsp;groupForDirectoryURL:name:</a></code>
+		<span class="tooltip"><p>Creates and initializes a NBUAssetsGroup associated to a local directory.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Properties" name="task_Properties"></a>
+						<h3 class="subsubtitle task-title">Properties</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/type">&nbsp;&nbsp;type</a></code>
+		<span class="tooltip"><p>The NBUAssetsGroupType of the group.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/name">&nbsp;&nbsp;name</a></code>
+		<span class="tooltip"><p>The group&rsquo;s name.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/URL">&nbsp;&nbsp;URL</a></code>
+		<span class="tooltip"><p>The associated NSURL.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/editable">&nbsp;&nbsp;editable</a></code>
+		<span class="tooltip"><p>Whether the group is editable or not.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/posterImage">&nbsp;&nbsp;posterImage</a></code>
+		<span class="tooltip"><p>A thumbnail-sized poster image.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/ALAssetsGroup">&nbsp;&nbsp;ALAssetsGroup</a></code>
+		<span class="tooltip"><p>The associated ALAssetsGroup.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Accessing Assets" name="task_Accessing Assets"></a>
+						<h3 class="subsubtitle task-title">Accessing Assets</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/assetsCount">&nbsp;&nbsp;assetsCount</a></code>
+		<span class="tooltip"><p>The total number of assets.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/imageAssetsCount">&nbsp;&nbsp;imageAssetsCount</a></code>
+		<span class="tooltip"><p>The total number of image assets.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/videoAssetsCount">&nbsp;&nbsp;videoAssetsCount</a></code>
+		<span class="tooltip"><p>The total number of video assets.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Retrieving Assets" name="task_Retrieving Assets"></a>
+						<h3 class="subsubtitle task-title">Retrieving Assets</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/assetsWithTypes:atIndexes:reverseOrder:incrementalLoadSize:resultBlock:">&ndash;&nbsp;assetsWithTypes:atIndexes:reverseOrder:incrementalLoadSize:resultBlock:</a></code>
+		<span class="tooltip"><p>Returns the assets matching an ALAssetsFilter.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/stopLoadingAssets">&ndash;&nbsp;stopLoadingAssets</a></code>
+		<span class="tooltip"><p>Ask the group to abort retrieving assets, and thus stop calling the resultBlock.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Adding Assets" name="task_Adding Assets"></a>
+						<h3 class="subsubtitle task-title">Adding Assets</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addAsset:">&ndash;&nbsp;addAsset:</a></code>
+		<span class="tooltip"><p>Add a <a href="../Classes/NBUAsset.html">NBUAsset</a> object to this group.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addAssetWithURL:resultBlock:">&ndash;&nbsp;addAssetWithURL:resultBlock:</a></code>
+		<span class="tooltip"><p>Asynchronously add a <a href="../Classes/NBUAsset.html">NBUAsset</a> to the group.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/ALAssetsGroup" title="ALAssetsGroup"></a>
+	<h3 class="subsubtitle method-title">ALAssetsGroup</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The associated ALAssetsGroup.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic, readonly) *ALAssetsGroup</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/URL" title="URL"></a>
+	<h3 class="subsubtitle method-title">URL</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The associated NSURL.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSURL *URL</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<blockquote><p>%note%<br/>
+<strong>Note:</strong> For iOS4 the ALAssetsGroupPropertyPersistentID is converted to a NSURL.</p></blockquote>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/assetsCount" title="assetsCount"></a>
+	<h3 class="subsubtitle method-title">assetsCount</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The total number of assets.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSUInteger assetsCount</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/editable" title="editable"></a>
+	<h3 class="subsubtitle method-title">editable</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Whether the group is editable or not.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, getter=isEditable) BOOL editable</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/imageAssetsCount" title="imageAssetsCount"></a>
+	<h3 class="subsubtitle method-title">imageAssetsCount</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The total number of image assets.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSUInteger imageAssetsCount</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/name" title="name"></a>
+	<h3 class="subsubtitle method-title">name</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The group&rsquo;s name.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *name</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/posterImage" title="posterImage"></a>
+	<h3 class="subsubtitle method-title">posterImage</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>A thumbnail-sized poster image.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) UIImage *posterImage</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/type" title="type"></a>
+	<h3 class="subsubtitle method-title">type</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The NBUAssetsGroupType of the group.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NBUAssetsGroupType type</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/videoAssetsCount" title="videoAssetsCount"></a>
+	<h3 class="subsubtitle method-title">videoAssetsCount</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The total number of video assets.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSUInteger videoAssetsCount</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/groupForALAssetsGroup:" title="groupForALAssetsGroup:"></a>
+	<h3 class="subsubtitle method-title">groupForALAssetsGroup:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates and initializes a NBUAssetsGroup associated to a <a href="#//api/name/ALAssetsGroup">ALAssetsGroup</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (NBUAssetsGroup *)groupForALAssetsGroup:(ALAssetsGroup *)<em>ALAssetsGroup</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>ALAssetsGroup</em></dt>
+			<dd><p>The associated <a href="#//api/name/ALAssetsGroup">ALAssetsGroup</a>.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/groupForDirectoryURL:name:" title="groupForDirectoryURL:name:"></a>
+	<h3 class="subsubtitle method-title">groupForDirectoryURL:name:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates and initializes a NBUAssetsGroup associated to a local directory.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (NBUAssetsGroup *)groupForDirectoryURL:(NSURL *)<em>directoryURL</em> name:(NSString *)<em>name</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>directoryURL</em></dt>
+			<dd><p>The target directory&rsquo;s <a href="#//api/name/URL">URL</a>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>The optional <a href="#//api/name/name">name</a> to be used for the NBUAssetsGroup.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Use <a href="../Classes/NBUAssetsLibrary.html#//api/name/registerDirectoryGroupforURL:name:">[NBUAssetsLibrary registerDirectoryGroupforURL:name:]</a> to let the<br/>
+assets library automatically create and display the assets group for you.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/addAsset:" title="addAsset:"></a>
+	<h3 class="subsubtitle method-title">addAsset:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add a <a href="../Classes/NBUAsset.html">NBUAsset</a> object to this group.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)addAsset:(NBUAsset *)<em>asset</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>asset</em></dt>
+			<dd><p>The asset to be added.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<blockquote><p>%note%<br/>
+<strong>Note:</strong> Only works on iOS5+.</p></blockquote>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/addAssetWithURL:resultBlock:" title="addAssetWithURL:resultBlock:"></a>
+	<h3 class="subsubtitle method-title">addAssetWithURL:resultBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Asynchronously add a <a href="../Classes/NBUAsset.html">NBUAsset</a> to the group.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)addAssetWithURL:(NSURL *)<em>assetURL</em> resultBlock:(void ( ^ ) ( BOOL success ))<em>resultBlock</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>assetURL</em></dt>
+			<dd><p>The <a href="#//api/name/URL">URL</a> of the asset to be added.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>resultBlock</em></dt>
+			<dd><p>An optional block to be called to inform whether the asset<br/>
+was added to the group.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<blockquote><p>%note%<br/>
+<strong>Note:</strong> Will only work on iOS5+.</p></blockquote>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/assetsWithTypes:atIndexes:reverseOrder:incrementalLoadSize:resultBlock:" title="assetsWithTypes:atIndexes:reverseOrder:incrementalLoadSize:resultBlock:"></a>
+	<h3 class="subsubtitle method-title">assetsWithTypes:atIndexes:reverseOrder:incrementalLoadSize:resultBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the assets matching an ALAssetsFilter.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)assetsWithTypes:(NBUAssetType)<em>types</em> atIndexes:(NSIndexSet *)<em>indexSet</em> reverseOrder:(BOOL)<em>reverseOrder</em> incrementalLoadSize:(NSUInteger)<em>loadSize</em> resultBlock:(NBUAssetsResultBlock)<em>resultBlock</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>types</em></dt>
+			<dd><p>The desired <a href="#//api/name/type">type</a> mask of assets to retrieve.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>indexSet</em></dt>
+			<dd><p>The index of the desired assets. Pass <code>nil</code> to get all the assets.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>reverseOrder</em></dt>
+			<dd><p>Set to <code>YES</code> to get newer to older assets.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>loadSize</em></dt>
+			<dd><p>If different to zero the resultBlock will be called after loading another<br/>
+loadSize number of assets.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>resultBlock</em></dt>
+			<dd><p>The block to be called asynchronously with the results.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/stopLoadingAssets" title="stopLoadingAssets"></a>
+	<h3 class="subsubtitle method-title">stopLoadingAssets</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Ask the group to abort retrieving assets, and thus stop calling the resultBlock.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)stopLoadingAssets</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUAssetsGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 CyberAgent Inc. All rights reserved. (Last updated: 2013-04-30)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,1259 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>ScrollViewController Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">NBUKit </a></h1>
+				<a id="developerHome" href="../index.html">CyberAgent Inc</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">ScrollViewController Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/activeField">&nbsp;&nbsp;&nbsp;&nbsp;activeField</option>
+	
+	<option value="//api/name/analyticsDelegate">&nbsp;&nbsp;&nbsp;&nbsp;analyticsDelegate</option>
+	
+	<option value="//api/name/analyticsTag">&nbsp;&nbsp;&nbsp;&nbsp;analyticsTag</option>
+	
+	<option value="//api/name/animated">&nbsp;&nbsp;&nbsp;&nbsp;animated</option>
+	
+	<option value="//api/name/contentView">&nbsp;&nbsp;&nbsp;&nbsp;contentView</option>
+	
+	<option value="//api/name/customBackButtonTitle">&nbsp;&nbsp;&nbsp;&nbsp;customBackButtonTitle</option>
+	
+	<option value="//api/name/hidesBarsOnScroll">&nbsp;&nbsp;&nbsp;&nbsp;hidesBarsOnScroll</option>
+	
+	<option value="//api/name/scrollView">&nbsp;&nbsp;&nbsp;&nbsp;scrollView</option>
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/setCustomBackButtonTitle:">&nbsp;&nbsp;&nbsp;&nbsp;+ setCustomBackButtonTitle:</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/clearPrompt">&nbsp;&nbsp;&nbsp;&nbsp;- clearPrompt</option>
+	
+	<option value="//api/name/findAnalyticsTag">&nbsp;&nbsp;&nbsp;&nbsp;- findAnalyticsTag</option>
+	
+	<option value="//api/name/hideKeyboard:">&nbsp;&nbsp;&nbsp;&nbsp;- hideKeyboard:</option>
+	
+	<option value="//api/name/keyboardDidHide:">&nbsp;&nbsp;&nbsp;&nbsp;- keyboardDidHide:</option>
+	
+	<option value="//api/name/keyboardWillShow:">&nbsp;&nbsp;&nbsp;&nbsp;- keyboardWillShow:</option>
+	
+	<option value="//api/name/postScrollVieEndNotification">&nbsp;&nbsp;&nbsp;&nbsp;- postScrollVieEndNotification</option>
+	
+	<option value="//api/name/postScrollViewContentOffsetChangedNotification">&nbsp;&nbsp;&nbsp;&nbsp;- postScrollViewContentOffsetChangedNotification</option>
+	
+	<option value="//api/name/resetScrollViewOffset">&nbsp;&nbsp;&nbsp;&nbsp;- resetScrollViewOffset</option>
+	
+	<option value="//api/name/scrollViewToVisible:topMargin:bottomMargin:">&nbsp;&nbsp;&nbsp;&nbsp;- scrollViewToVisible:topMargin:bottomMargin:</option>
+	
+	<option value="//api/name/setPrompt:autoClear:">&nbsp;&nbsp;&nbsp;&nbsp;- setPrompt:autoClear:</option>
+	
+	<option value="//api/name/sizeToFitContentView:">&nbsp;&nbsp;&nbsp;&nbsp;- sizeToFitContentView:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Outlets">Outlets</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Configurable Properties">Configurable Properties</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Managing the Prompt">Managing the Prompt</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Methods/Actions">Methods/Actions</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/activeField">activeField</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/analyticsDelegate">analyticsDelegate</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/analyticsTag">analyticsTag</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/animated">animated</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/contentView">contentView</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/customBackButtonTitle">customBackButtonTitle</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/hidesBarsOnScroll">hidesBarsOnScroll</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/scrollView">scrollView</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setCustomBackButtonTitle:">setCustomBackButtonTitle:</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/clearPrompt">clearPrompt</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/findAnalyticsTag">findAnalyticsTag</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/hideKeyboard:">hideKeyboard:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/keyboardDidHide:">keyboardDidHide:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/keyboardWillShow:">keyboardWillShow:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postScrollVieEndNotification">postScrollVieEndNotification</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postScrollViewContentOffsetChangedNotification">postScrollViewContentOffsetChangedNotification</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/resetScrollViewOffset">resetScrollViewOffset</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/scrollViewToVisible:topMargin:bottomMargin:">scrollViewToVisible:topMargin:bottomMargin:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setPrompt:autoClear:">setPrompt:autoClear:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sizeToFitContentView:">sizeToFitContentView:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="ScrollViewController Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">ScrollViewController Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value"><a href="../Classes/NBUViewController.html">NBUViewController</a> : UIViewController</td>
+</tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">UIScrollViewDelegate</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">ScrollViewController.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Base UIViewController with many convenience methods.</p>
+
+<ul>
+<li>Manage UIScrollView contentSize on viewWillAppear.</li>
+<li>Create a UIScrollView if necessary.</li>
+<li>Automatically SizeToFit <a href="#//api/name/contentView">contentView</a>.</li>
+<li>Manage hiding the keyboard.</li>
+<li>Autohide prompt messages.</li>
+<li>Hide/show UINavigationBar and UITabBar on scroll.</li>
+<li>Customize buck button titles.</li>
+</ul>
+<blockquote><p>%note%<br/>
+<strong>Note:</strong> Can be initialized from a Nib file or programatically.</p></blockquote>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						<a title="Outlets" name="task_Outlets"></a>
+						<h3 class="subsubtitle task-title">Outlets</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/scrollView">&nbsp;&nbsp;scrollView</a></code>
+		<span class="tooltip"><p>Managed UIScrollView (may be the controller&rsquo;s view or a subview of that view).</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/resetScrollViewOffset">&ndash;&nbsp;resetScrollViewOffset</a></code>
+		<span class="tooltip"><p>Force scroll to top.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/contentView">&nbsp;&nbsp;contentView</a></code>
+		<span class="tooltip"><p>The view that is used to adjust the scrollview contentSize.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/analyticsDelegate">&nbsp;&nbsp;analyticsDelegate</a></code>
+		<span class="tooltip"><p>The AnalyticsDelegate.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Configurable Properties" name="task_Configurable Properties"></a>
+						<h3 class="subsubtitle task-title">Configurable Properties</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/animated">&nbsp;&nbsp;animated</a></code>
+		<span class="tooltip"><p>A boolean that indicates whether the controller should animate its <a href="#//api/name/contentView">contentView</a>. Default <code>NO</code>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/activeField">&nbsp;&nbsp;activeField</a></code>
+		<span class="tooltip"><p>The currently active field.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/customBackButtonTitle">&nbsp;&nbsp;customBackButtonTitle</a></code>
+		<span class="tooltip"><p>Empty or nil string will force to use the system default back button.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/analyticsTag">&nbsp;&nbsp;analyticsTag</a></code>
+		<span class="tooltip"><p>A NSString to be used for analytics tracking</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/hidesBarsOnScroll">&nbsp;&nbsp;hidesBarsOnScroll</a></code>
+		<span class="tooltip"><p>Whether to hide or not navigation and tab bars on scroll. Default <code>NO</code>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Managing the Prompt" name="task_Managing the Prompt"></a>
+						<h3 class="subsubtitle task-title">Managing the Prompt</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setPrompt:autoClear:">&ndash;&nbsp;setPrompt:autoClear:</a></code>
+		<span class="tooltip"><p>Display a short message over the UINavigationBar</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/clearPrompt">&ndash;&nbsp;clearPrompt</a></code>
+		<span class="tooltip"><p>Force to clear the prompt immediatly</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Methods/Actions" name="task_Methods/Actions"></a>
+						<h3 class="subsubtitle task-title">Methods/Actions</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setCustomBackButtonTitle:">+&nbsp;setCustomBackButtonTitle:</a></code>
+		<span class="tooltip"><p>Set a custom back button title for all ScrollViewController and subclasses instances.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/postScrollViewContentOffsetChangedNotification">&ndash;&nbsp;postScrollViewContentOffsetChangedNotification</a></code>
+		<span class="tooltip"><p>Notify listeners (usually ImageLoadingView subviews) that the <a href="#//api/name/scrollView">scrollView</a> offset has changed</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/postScrollVieEndNotification">&ndash;&nbsp;postScrollVieEndNotification</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sizeToFitContentView:">&ndash;&nbsp;sizeToFitContentView:</a></code>
+		<span class="tooltip"><p>Adjust contentView&rsquo;s size and scrollview&rsquo;s contentsize.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/hideKeyboard:">&ndash;&nbsp;hideKeyboard:</a></code>
+		<span class="tooltip"><p>Force to hide the keyboard.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/keyboardWillShow:">&ndash;&nbsp;keyboardWillShow:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/keyboardDidHide:">&ndash;&nbsp;keyboardDidHide:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/scrollViewToVisible:topMargin:bottomMargin:">&ndash;&nbsp;scrollViewToVisible:topMargin:bottomMargin:</a></code>
+		<span class="tooltip"><p>Scroll <a href="#//api/name/scrollView">scrollView</a> to make view visible.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/findAnalyticsTag">&ndash;&nbsp;findAnalyticsTag</a></code>
+		
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/activeField" title="activeField"></a>
+	<h3 class="subsubtitle method-title">activeField</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The currently active field.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) UIView *activeField</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ScrollViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/analyticsDelegate" title="analyticsDelegate"></a>
+	<h3 class="subsubtitle method-title">analyticsDelegate</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The AnalyticsDelegate.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) IBOutlet id&lt;AnalyticsDelegate&gt; analyticsDelegate</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ScrollViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/analyticsTag" title="analyticsTag"></a>
+	<h3 class="subsubtitle method-title">analyticsTag</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>A NSString to be used for analytics tracking</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *analyticsTag</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ScrollViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/animated" title="animated"></a>
+	<h3 class="subsubtitle method-title">animated</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>A boolean that indicates whether the controller should animate its <a href="#//api/name/contentView">contentView</a>. Default <code>NO</code>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, getter=isAnimated) BOOL animated</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ScrollViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/contentView" title="contentView"></a>
+	<h3 class="subsubtitle method-title">contentView</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The view that is used to adjust the scrollview contentSize.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) IBOutlet UIView *contentView</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>If not set it will be scrollview&rsquo;s first subview.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ScrollViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/customBackButtonTitle" title="customBackButtonTitle"></a>
+	<h3 class="subsubtitle method-title">customBackButtonTitle</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Empty or nil string will force to use the system default back button.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *customBackButtonTitle</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ScrollViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/hidesBarsOnScroll" title="hidesBarsOnScroll"></a>
+	<h3 class="subsubtitle method-title">hidesBarsOnScroll</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Whether to hide or not navigation and tab bars on scroll. Default <code>NO</code>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL hidesBarsOnScroll</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ScrollViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/scrollView" title="scrollView"></a>
+	<h3 class="subsubtitle method-title">scrollView</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Managed UIScrollView (may be the controller&rsquo;s view or a subview of that view).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) IBOutlet UIScrollView *scrollView</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ScrollViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/setCustomBackButtonTitle:" title="setCustomBackButtonTitle:"></a>
+	<h3 class="subsubtitle method-title">setCustomBackButtonTitle:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Set a custom back button title for all ScrollViewController and subclasses instances.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)setCustomBackButtonTitle:(NSString *)<em>title</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>title</em></dt>
+			<dd><p>The custom title to be used.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<blockquote><p>%note%<br/>
+<strong>Note:</strong> Can be overriden per instance by setting the <a href="#//api/name/customBackButtonTitle">customBackButtonTitle</a> to an empty string.</p></blockquote>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ScrollViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/clearPrompt" title="clearPrompt"></a>
+	<h3 class="subsubtitle method-title">clearPrompt</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Force to clear the prompt immediatly</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)clearPrompt</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ScrollViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/findAnalyticsTag" title="findAnalyticsTag"></a>
+	<h3 class="subsubtitle method-title">findAnalyticsTag</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)findAnalyticsTag</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/hideKeyboard:" title="hideKeyboard:"></a>
+	<h3 class="subsubtitle method-title">hideKeyboard:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Force to hide the keyboard.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (IBAction)hideKeyboard:(id)<em>sender</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sender</em></dt>
+			<dd><p>The sender object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<blockquote><p>%note%<br/>
+<strong>Note:</strong> In most cases the controller will hide it automatically</p></blockquote>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ScrollViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/keyboardDidHide:" title="keyboardDidHide:"></a>
+	<h3 class="subsubtitle method-title">keyboardDidHide:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)keyboardDidHide:(NSNotification *)<em>notification</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/keyboardWillShow:" title="keyboardWillShow:"></a>
+	<h3 class="subsubtitle method-title">keyboardWillShow:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)keyboardWillShow:(NSNotification *)<em>notification</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/postScrollVieEndNotification" title="postScrollVieEndNotification"></a>
+	<h3 class="subsubtitle method-title">postScrollVieEndNotification</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)postScrollVieEndNotification</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/postScrollViewContentOffsetChangedNotification" title="postScrollViewContentOffsetChangedNotification"></a>
+	<h3 class="subsubtitle method-title">postScrollViewContentOffsetChangedNotification</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Notify listeners (usually ImageLoadingView subviews) that the <a href="#//api/name/scrollView">scrollView</a> offset has changed</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)postScrollViewContentOffsetChangedNotification</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ScrollViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/resetScrollViewOffset" title="resetScrollViewOffset"></a>
+	<h3 class="subsubtitle method-title">resetScrollViewOffset</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Force scroll to top.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)resetScrollViewOffset</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ScrollViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/scrollViewToVisible:topMargin:bottomMargin:" title="scrollViewToVisible:topMargin:bottomMargin:"></a>
+	<h3 class="subsubtitle method-title">scrollViewToVisible:topMargin:bottomMargin:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Scroll <a href="#//api/name/scrollView">scrollView</a> to make view visible.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)scrollViewToVisible:(UIView *)<em>view</em> topMargin:(CGFloat)<em>topMargin</em> bottomMargin:(CGFloat)<em>bottomMargin</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>view</em></dt>
+			<dd><p>The view to be scrolled to visible.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>topMargin</em></dt>
+			<dd><p>The space to be left above the view.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>bottomMargin</em></dt>
+			<dd><p>The space to be left below the view.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<blockquote><p>%note%<br/>
+<strong>Note:</strong> <a href="../Classes/ActiveView.html">ActiveView</a> instances can easily use the <a href="../Classes/ActiveView.html#//api/name/postScrollToVisibleNotification">[ActiveView postScrollToVisibleNotification]</a> to achieve the same result.</p></blockquote>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ScrollViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setPrompt:autoClear:" title="setPrompt:autoClear:"></a>
+	<h3 class="subsubtitle method-title">setPrompt:autoClear:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Display a short message over the UINavigationBar</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setPrompt:(NSString *)<em>prompt</em> autoClear:(BOOL)<em>yesOrNo</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>prompt</em></dt>
+			<dd><p>The NSString to be shown.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>yesOrNo</em></dt>
+			<dd><p>Whether to clear the prompt automatically after 3 seconds</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ScrollViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sizeToFitContentView:" title="sizeToFitContentView:"></a>
+	<h3 class="subsubtitle method-title">sizeToFitContentView:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adjust contentView&rsquo;s size and scrollview&rsquo;s contentsize.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (IBAction)sizeToFitContentView:(id)<em>sender</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sender</em></dt>
+			<dd><p>The sender object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ScrollViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 CyberAgent Inc. All rights reserved. (Last updated: 2013-04-30)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

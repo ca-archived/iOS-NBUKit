@@ -1,0 +1,736 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>ObjectTableView Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">NBUKit </a></h1>
+				<a id="developerHome" href="../index.html">CyberAgent Inc</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">ObjectTableView Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/doesNotResize">&nbsp;&nbsp;&nbsp;&nbsp;doesNotResize</option>
+	
+	<option value="//api/name/footerView">&nbsp;&nbsp;&nbsp;&nbsp;footerView</option>
+	
+	<option value="//api/name/headerView">&nbsp;&nbsp;&nbsp;&nbsp;headerView</option>
+	
+	<option value="//api/name/loadMoreView">&nbsp;&nbsp;&nbsp;&nbsp;loadMoreView</option>
+	
+	<option value="//api/name/loadMoreViewSection">&nbsp;&nbsp;&nbsp;&nbsp;loadMoreViewSection</option>
+	
+	<option value="//api/name/objectArraySection">&nbsp;&nbsp;&nbsp;&nbsp;objectArraySection</option>
+	
+	<option value="//api/name/tableView">&nbsp;&nbsp;&nbsp;&nbsp;tableView</option>
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/forceRefreshTableView">&nbsp;&nbsp;&nbsp;&nbsp;- forceRefreshTableView</option>
+	
+	<option value="//api/name/getCellContentView:">&nbsp;&nbsp;&nbsp;&nbsp;- getCellContentView:</option>
+	
+	<option value="//api/name/resetRowHeights">&nbsp;&nbsp;&nbsp;&nbsp;- resetRowHeights</option>
+	
+	<option value="//api/name/scrollToRowAtIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- scrollToRowAtIndex:</option>
+	
+	<option value="//api/name/setRowHeight:atIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- setRowHeight:atIndex:</option>
+	
+	<option value="//api/name/setRowHeight:forObject:">&nbsp;&nbsp;&nbsp;&nbsp;- setRowHeight:forObject:</option>
+	
+	<option value="//api/name/toggleObjectAtIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- toggleObjectAtIndex:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Other Properties">Other Properties</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Managing row heights (You can also use targetObjectViewSize&apos;s height)">Managing row heights (You can also use targetObjectViewSize&apos;s height)</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/doesNotResize">doesNotResize</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/footerView">footerView</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/headerView">headerView</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loadMoreView">loadMoreView</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loadMoreViewSection">loadMoreViewSection</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/objectArraySection">objectArraySection</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/tableView">tableView</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/forceRefreshTableView">forceRefreshTableView</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getCellContentView:">getCellContentView:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/resetRowHeights">resetRowHeights</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/scrollToRowAtIndex:">scrollToRowAtIndex:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setRowHeight:atIndex:">setRowHeight:atIndex:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setRowHeight:forObject:">setRowHeight:forObject:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/toggleObjectAtIndex:">toggleObjectAtIndex:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="ObjectTableView Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">ObjectTableView Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value"><a href="../Classes/ObjectArrayView.html">ObjectArrayView</a> : <a href="../Classes/ObjectView.html">ObjectView</a> : <a href="../Classes/ActiveView.html">ActiveView</a> : <a href="../Classes/NBUView.html">NBUView</a> : UIView</td>
+</tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">UITableViewDataSource<br />UITableViewDelegate</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">ObjectTableView.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>A UITableView to present an array of objects.</p>
+
+<ul>
+<li>Handle all delegate methods.</li>
+<li>Use section 0 for objects and section 1 for the <a href="#//api/name/loadMoreView">loadMoreView</a>.</li>
+<li>By default sizeToFitObjectViews = YES.</li>
+<li>If set, only targetObjectViewSize&rsquo;s height is used to adjust cell&rsquo;s size.</li>
+</ul>
+<blockquote><p>%note%<br/>
+<strong>Note:</strong> Only supports initialization from a Nib file.</p></blockquote>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/tableView">&nbsp;&nbsp;tableView</a></code>
+		<span class="tooltip"><p>Underlying UITableView</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/headerView">&nbsp;&nbsp;headerView</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/footerView">&nbsp;&nbsp;footerView</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/loadMoreView">&nbsp;&nbsp;loadMoreView</a></code>
+		<span class="tooltip"><p>&ldquo;More objects&rdquo; load view</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Other Properties" name="task_Other Properties"></a>
+						<h3 class="subsubtitle task-title">Other Properties</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/objectArraySection">&nbsp;&nbsp;objectArraySection</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/loadMoreViewSection">&nbsp;&nbsp;loadMoreViewSection</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/doesNotResize">&nbsp;&nbsp;doesNotResize</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Managing row heights (You can also use targetObjectViewSize&apos;s height)" name="task_Managing row heights (You can also use targetObjectViewSize&apos;s height)"></a>
+						<h3 class="subsubtitle task-title">Managing row heights (You can also use targetObjectViewSize&apos;s height)</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setRowHeight:forObject:">&ndash;&nbsp;setRowHeight:forObject:</a></code>
+		<span class="tooltip"><p>Use negative values to clear height.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setRowHeight:atIndex:">&ndash;&nbsp;setRowHeight:atIndex:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/toggleObjectAtIndex:">&ndash;&nbsp;toggleObjectAtIndex:</a></code>
+		<span class="tooltip"><p>Toggle between 0.0 and default.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/resetRowHeights">&ndash;&nbsp;resetRowHeights</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getCellContentView:">&ndash;&nbsp;getCellContentView:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/scrollToRowAtIndex:">&ndash;&nbsp;scrollToRowAtIndex:</a></code>
+		<span class="tooltip"><p>Managing scroll.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/forceRefreshTableView">&ndash;&nbsp;forceRefreshTableView</a></code>
+		
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/doesNotResize" title="doesNotResize"></a>
+	<h3 class="subsubtitle method-title">doesNotResize</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL doesNotResize</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/footerView" title="footerView"></a>
+	<h3 class="subsubtitle method-title">footerView</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) IBOutlet UIView *footerView</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/headerView" title="headerView"></a>
+	<h3 class="subsubtitle method-title">headerView</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) IBOutlet UIView *headerView</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/loadMoreView" title="loadMoreView"></a>
+	<h3 class="subsubtitle method-title">loadMoreView</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>&ldquo;More objects&rdquo; load view</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) IBOutlet UITableViewCell *loadMoreView</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ObjectTableView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/loadMoreViewSection" title="loadMoreViewSection"></a>
+	<h3 class="subsubtitle method-title">loadMoreViewSection</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSUInteger loadMoreViewSection</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/objectArraySection" title="objectArraySection"></a>
+	<h3 class="subsubtitle method-title">objectArraySection</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSUInteger objectArraySection</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/tableView" title="tableView"></a>
+	<h3 class="subsubtitle method-title">tableView</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Underlying UITableView</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic, readonly) UITableView *tableView</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ObjectTableView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/forceRefreshTableView" title="forceRefreshTableView"></a>
+	<h3 class="subsubtitle method-title">forceRefreshTableView</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)forceRefreshTableView</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getCellContentView:" title="getCellContentView:"></a>
+	<h3 class="subsubtitle method-title">getCellContentView:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (id)getCellContentView:(NSInteger)<em>index</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/resetRowHeights" title="resetRowHeights"></a>
+	<h3 class="subsubtitle method-title">resetRowHeights</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)resetRowHeights</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/scrollToRowAtIndex:" title="scrollToRowAtIndex:"></a>
+	<h3 class="subsubtitle method-title">scrollToRowAtIndex:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Managing scroll.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)scrollToRowAtIndex:(NSUInteger)<em>index</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ObjectTableView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setRowHeight:atIndex:" title="setRowHeight:atIndex:"></a>
+	<h3 class="subsubtitle method-title">setRowHeight:atIndex:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)setRowHeight:(CGFloat)<em>height</em> atIndex:(NSUInteger)<em>index</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setRowHeight:forObject:" title="setRowHeight:forObject:"></a>
+	<h3 class="subsubtitle method-title">setRowHeight:forObject:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Use negative values to clear height.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setRowHeight:(CGFloat)<em>height</em> forObject:(id)<em>object</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ObjectTableView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/toggleObjectAtIndex:" title="toggleObjectAtIndex:"></a>
+	<h3 class="subsubtitle method-title">toggleObjectAtIndex:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Toggle between 0.0 and default.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)toggleObjectAtIndex:(NSUInteger)<em>index</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ObjectTableView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 CyberAgent Inc. All rights reserved. (Last updated: 2013-04-30)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

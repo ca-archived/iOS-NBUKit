@@ -1,0 +1,2128 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>NBUCameraView Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">NBUKit </a></h1>
+				<a id="developerHome" href="../index.html">CyberAgent Inc</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">NBUCameraView Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/availableDevices">&nbsp;&nbsp;&nbsp;&nbsp;availableDevices</option>
+	
+	<option value="//api/name/availableExposureModes">&nbsp;&nbsp;&nbsp;&nbsp;availableExposureModes</option>
+	
+	<option value="//api/name/availableFlashModes">&nbsp;&nbsp;&nbsp;&nbsp;availableFlashModes</option>
+	
+	<option value="//api/name/availableFocusModes">&nbsp;&nbsp;&nbsp;&nbsp;availableFocusModes</option>
+	
+	<option value="//api/name/availableResolutions">&nbsp;&nbsp;&nbsp;&nbsp;availableResolutions</option>
+	
+	<option value="//api/name/availableWhiteBalanceModes">&nbsp;&nbsp;&nbsp;&nbsp;availableWhiteBalanceModes</option>
+	
+	<option value="//api/name/captureResultBlock">&nbsp;&nbsp;&nbsp;&nbsp;captureResultBlock</option>
+	
+	<option value="//api/name/exposureButton">&nbsp;&nbsp;&nbsp;&nbsp;exposureButton</option>
+	
+	<option value="//api/name/exposureButtonConfigurationBlock">&nbsp;&nbsp;&nbsp;&nbsp;exposureButtonConfigurationBlock</option>
+	
+	<option value="//api/name/flashButton">&nbsp;&nbsp;&nbsp;&nbsp;flashButton</option>
+	
+	<option value="//api/name/flashButtonConfigurationBlock">&nbsp;&nbsp;&nbsp;&nbsp;flashButtonConfigurationBlock</option>
+	
+	<option value="//api/name/focusButton">&nbsp;&nbsp;&nbsp;&nbsp;focusButton</option>
+	
+	<option value="//api/name/focusButtonConfigurationBlock">&nbsp;&nbsp;&nbsp;&nbsp;focusButtonConfigurationBlock</option>
+	
+	<option value="//api/name/lastPictureImageView">&nbsp;&nbsp;&nbsp;&nbsp;lastPictureImageView</option>
+	
+	<option value="//api/name/savePicturesToLibrary">&nbsp;&nbsp;&nbsp;&nbsp;savePicturesToLibrary</option>
+	
+	<option value="//api/name/saveResultBlock">&nbsp;&nbsp;&nbsp;&nbsp;saveResultBlock</option>
+	
+	<option value="//api/name/shootButton">&nbsp;&nbsp;&nbsp;&nbsp;shootButton</option>
+	
+	<option value="//api/name/shootButtonConfigurationBlock">&nbsp;&nbsp;&nbsp;&nbsp;shootButtonConfigurationBlock</option>
+	
+	<option value="//api/name/shouldAutoRotateView">&nbsp;&nbsp;&nbsp;&nbsp;shouldAutoRotateView</option>
+	
+	<option value="//api/name/showDisabledControls">&nbsp;&nbsp;&nbsp;&nbsp;showDisabledControls</option>
+	
+	<option value="//api/name/targetLibraryAlbumName">&nbsp;&nbsp;&nbsp;&nbsp;targetLibraryAlbumName</option>
+	
+	<option value="//api/name/targetResolution">&nbsp;&nbsp;&nbsp;&nbsp;targetResolution</option>
+	
+	<option value="//api/name/toggleCameraButton">&nbsp;&nbsp;&nbsp;&nbsp;toggleCameraButton</option>
+	
+	<option value="//api/name/toggleCameraButtonConfigurationBlock">&nbsp;&nbsp;&nbsp;&nbsp;toggleCameraButtonConfigurationBlock</option>
+	
+	<option value="//api/name/whiteBalanceButton">&nbsp;&nbsp;&nbsp;&nbsp;whiteBalanceButton</option>
+	
+	<option value="//api/name/whiteBalanceButtonConfigurationBlock">&nbsp;&nbsp;&nbsp;&nbsp;whiteBalanceButtonConfigurationBlock</option>
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/buttonConfigurationBlockWithTitleFormat:">&nbsp;&nbsp;&nbsp;&nbsp;- buttonConfigurationBlockWithTitleFormat:</option>
+	
+	<option value="//api/name/buttonConfigurationBlockWithTitleFrom:">&nbsp;&nbsp;&nbsp;&nbsp;- buttonConfigurationBlockWithTitleFrom:</option>
+	
+	<option value="//api/name/setInterfaceOrientation:">&nbsp;&nbsp;&nbsp;&nbsp;- setInterfaceOrientation:</option>
+	
+	<option value="//api/name/takePicture:">&nbsp;&nbsp;&nbsp;&nbsp;- takePicture:</option>
+	
+	<option value="//api/name/toggleCamera:">&nbsp;&nbsp;&nbsp;&nbsp;- toggleCamera:</option>
+	
+	<option value="//api/name/toggleExposureMode:">&nbsp;&nbsp;&nbsp;&nbsp;- toggleExposureMode:</option>
+	
+	<option value="//api/name/toggleFlashMode:">&nbsp;&nbsp;&nbsp;&nbsp;- toggleFlashMode:</option>
+	
+	<option value="//api/name/toggleFocusMode:">&nbsp;&nbsp;&nbsp;&nbsp;- toggleFocusMode:</option>
+	
+	<option value="//api/name/toggleWhiteBalanceMode:">&nbsp;&nbsp;&nbsp;&nbsp;- toggleWhiteBalanceMode:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Configurable Properties">Configurable Properties</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Capture Devices and Modes">Capture Devices and Modes</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Customizing the UI Controls">Customizing the UI Controls</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Actions">Actions</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Creating UI Configuration Blocks">Creating UI Configuration Blocks</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_UI Outlets">UI Outlets</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/availableDevices">availableDevices</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/availableExposureModes">availableExposureModes</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/availableFlashModes">availableFlashModes</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/availableFocusModes">availableFocusModes</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/availableResolutions">availableResolutions</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/availableWhiteBalanceModes">availableWhiteBalanceModes</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/captureResultBlock">captureResultBlock</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/exposureButton">exposureButton</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/exposureButtonConfigurationBlock">exposureButtonConfigurationBlock</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/flashButton">flashButton</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/flashButtonConfigurationBlock">flashButtonConfigurationBlock</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/focusButton">focusButton</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/focusButtonConfigurationBlock">focusButtonConfigurationBlock</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/lastPictureImageView">lastPictureImageView</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/savePicturesToLibrary">savePicturesToLibrary</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/saveResultBlock">saveResultBlock</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/shootButton">shootButton</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/shootButtonConfigurationBlock">shootButtonConfigurationBlock</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/shouldAutoRotateView">shouldAutoRotateView</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/showDisabledControls">showDisabledControls</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/targetLibraryAlbumName">targetLibraryAlbumName</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/targetResolution">targetResolution</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/toggleCameraButton">toggleCameraButton</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/toggleCameraButtonConfigurationBlock">toggleCameraButtonConfigurationBlock</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/whiteBalanceButton">whiteBalanceButton</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/whiteBalanceButtonConfigurationBlock">whiteBalanceButtonConfigurationBlock</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/buttonConfigurationBlockWithTitleFormat:">buttonConfigurationBlockWithTitleFormat:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/buttonConfigurationBlockWithTitleFrom:">buttonConfigurationBlockWithTitleFrom:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setInterfaceOrientation:">setInterfaceOrientation:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/takePicture:">takePicture:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/toggleCamera:">toggleCamera:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/toggleExposureMode:">toggleExposureMode:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/toggleFlashMode:">toggleFlashMode:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/toggleFocusMode:">toggleFocusMode:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/toggleWhiteBalanceMode:">toggleWhiteBalanceMode:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="NBUCameraView Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">NBUCameraView Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value"><a href="../Classes/ActiveView.html">ActiveView</a> : <a href="../Classes/NBUView.html">NBUView</a> : UIView</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">NBUCameraView.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Fully customizable camera view based on AVFoundation.</p>
+
+<ul>
+<li>Set target resolution.</li>
+<li>Customizable controls/buttons and layout.</li>
+<li>Supports flash, focus, exposure and white balance settings.</li>
+<li>Can automatically save to device&rsquo;s Camera Roll/custom albums.</li>
+<li>Can be used with any UIViewController, so it can be embedded in a UITabView, pushed to a UINavigationController, presented modally, etc.</li>
+<li>Works with simulator.</li>
+</ul>
+
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						<a title="Configurable Properties" name="task_Configurable Properties"></a>
+						<h3 class="subsubtitle task-title">Configurable Properties</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/targetResolution">&nbsp;&nbsp;targetResolution</a></code>
+		<span class="tooltip"><p>The minimum desired resolution.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/captureResultBlock">&nbsp;&nbsp;captureResultBlock</a></code>
+		<span class="tooltip"><p>The optional block to be called immediately after capturing the picture.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/savePicturesToLibrary">&nbsp;&nbsp;savePicturesToLibrary</a></code>
+		<span class="tooltip"><p>Whether to save the pictures to the the library. Default <code>NO</code>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/targetLibraryAlbumName">&nbsp;&nbsp;targetLibraryAlbumName</a></code>
+		<span class="tooltip"><p>If set along <a href="#//api/name/savePicturesToLibrary">savePicturesToLibrary</a> the assets will be added to a given album.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/saveResultBlock">&nbsp;&nbsp;saveResultBlock</a></code>
+		<span class="tooltip"><p>The optional block to be called if <a href="#//api/name/savePicturesToLibrary">savePicturesToLibrary</a> is enabled.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/shouldAutoRotateView">&nbsp;&nbsp;shouldAutoRotateView</a></code>
+		<span class="tooltip"><p>Whether the view should compensate device orientation changes. Default <code>NO</code>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setInterfaceOrientation:">&ndash;&nbsp;setInterfaceOrientation:</a></code>
+		<span class="tooltip"><p>Programatically force the view to rotate.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Capture Devices and Modes" name="task_Capture Devices and Modes"></a>
+						<h3 class="subsubtitle task-title">Capture Devices and Modes</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/availableDevices">&nbsp;&nbsp;availableDevices</a></code>
+		<span class="tooltip"><p>The available devices' uniqueID&rsquo;s (ex. Front, Back camera).</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/availableResolutions">&nbsp;&nbsp;availableResolutions</a></code>
+		<span class="tooltip"><p>The current device&rsquo;s available capture presets and resolutions.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/availableFlashModes">&nbsp;&nbsp;availableFlashModes</a></code>
+		<span class="tooltip"><p>The current device&rsquo;s available AVCaptureFlashMode modes.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/availableFocusModes">&nbsp;&nbsp;availableFocusModes</a></code>
+		<span class="tooltip"><p>The current device&rsquo;s available AVCaptureFocusMode modes.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/availableExposureModes">&nbsp;&nbsp;availableExposureModes</a></code>
+		<span class="tooltip"><p>The current device&rsquo;s available AVCaptureExposureMode modes.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/availableWhiteBalanceModes">&nbsp;&nbsp;availableWhiteBalanceModes</a></code>
+		<span class="tooltip"><p>The current device&rsquo;s available AVCaptureWhiteBalanceMode modes.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Customizing the UI Controls" name="task_Customizing the UI Controls"></a>
+						<h3 class="subsubtitle task-title">Customizing the UI Controls</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/showDisabledControls">&nbsp;&nbsp;showDisabledControls</a></code>
+		<span class="tooltip"><p>Whether to hide disabled controls. Default <code>NO</code>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/shootButtonConfigurationBlock">&nbsp;&nbsp;shootButtonConfigurationBlock</a></code>
+		<span class="tooltip"><p>The block to be used to configure the <a href="#//api/name/shootButton">shootButton</a>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/toggleCameraButtonConfigurationBlock">&nbsp;&nbsp;toggleCameraButtonConfigurationBlock</a></code>
+		<span class="tooltip"><p>The block to be used to configure the <a href="#//api/name/toggleCameraButton">toggleCameraButton</a>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/flashButtonConfigurationBlock">&nbsp;&nbsp;flashButtonConfigurationBlock</a></code>
+		<span class="tooltip"><p>The block to be used to configure the <a href="#//api/name/flashButton">flashButton</a>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/focusButtonConfigurationBlock">&nbsp;&nbsp;focusButtonConfigurationBlock</a></code>
+		<span class="tooltip"><p>The block to be used to configure the <a href="#//api/name/focusButton">focusButton</a>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/exposureButtonConfigurationBlock">&nbsp;&nbsp;exposureButtonConfigurationBlock</a></code>
+		<span class="tooltip"><p>The block to be used to configure the <a href="#//api/name/exposureButton">exposureButton</a>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/whiteBalanceButtonConfigurationBlock">&nbsp;&nbsp;whiteBalanceButtonConfigurationBlock</a></code>
+		<span class="tooltip"><p>The block to be used to configure the <a href="#//api/name/whiteBalanceButton">whiteBalanceButton</a>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Actions" name="task_Actions"></a>
+						<h3 class="subsubtitle task-title">Actions</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/takePicture:">&ndash;&nbsp;takePicture:</a></code>
+		<span class="tooltip"><p>Take a picture and execure the resultBlock.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/toggleCamera:">&ndash;&nbsp;toggleCamera:</a></code>
+		<span class="tooltip"><p>Switch between front and back cameras (if available).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/toggleFlashMode:">&ndash;&nbsp;toggleFlashMode:</a></code>
+		<span class="tooltip"><p>Change the flash mode (if available).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/toggleFocusMode:">&ndash;&nbsp;toggleFocusMode:</a></code>
+		<span class="tooltip"><p>Change the focus mode (if available).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/toggleExposureMode:">&ndash;&nbsp;toggleExposureMode:</a></code>
+		<span class="tooltip"><p>Change the exposure mode (if available).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/toggleWhiteBalanceMode:">&ndash;&nbsp;toggleWhiteBalanceMode:</a></code>
+		<span class="tooltip"><p>Change the white balance mode (if available).</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Creating UI Configuration Blocks" name="task_Creating UI Configuration Blocks"></a>
+						<h3 class="subsubtitle task-title">Creating UI Configuration Blocks</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/buttonConfigurationBlockWithTitleFormat:">&ndash;&nbsp;buttonConfigurationBlockWithTitleFormat:</a></code>
+		<span class="tooltip"><p>Create a NBUButtonConfigurationBlock that sets the title of a<br/>
+button using <code>[NSString stringWithFormat:format, mode]</code>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/buttonConfigurationBlockWithTitleFrom:">&ndash;&nbsp;buttonConfigurationBlockWithTitleFrom:</a></code>
+		<span class="tooltip"><p>Create a NBUButtonConfigurationBlock that sets the title from an array of titles<br/>
+using the mode as index.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="UI Outlets" name="task_UI Outlets"></a>
+						<h3 class="subsubtitle task-title">UI Outlets</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/shootButton">&nbsp;&nbsp;shootButton</a></code>
+		<span class="tooltip"><p>The button to <a href="#//api/name/takePicture:">takePicture:</a>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/toggleCameraButton">&nbsp;&nbsp;toggleCameraButton</a></code>
+		<span class="tooltip"><p>The optional button to <a href="#//api/name/toggleCamera:">toggleCamera:</a>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/flashButton">&nbsp;&nbsp;flashButton</a></code>
+		<span class="tooltip"><p>The optional button to <a href="#//api/name/toggleFlashMode:">toggleFlashMode:</a>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/focusButton">&nbsp;&nbsp;focusButton</a></code>
+		<span class="tooltip"><p>The optional button to <a href="#//api/name/toggleFocusMode:">toggleFocusMode:</a>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/exposureButton">&nbsp;&nbsp;exposureButton</a></code>
+		<span class="tooltip"><p>The optional button to <a href="#//api/name/toggleExposureMode:">toggleExposureMode:</a>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/whiteBalanceButton">&nbsp;&nbsp;whiteBalanceButton</a></code>
+		<span class="tooltip"><p>The optional button to <a href="#//api/name/toggleWhiteBalanceMode:">toggleWhiteBalanceMode:</a>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/lastPictureImageView">&nbsp;&nbsp;lastPictureImageView</a></code>
+		<span class="tooltip"><p>The optional <a href="../Protocols/UIImageView.html">UIImageView</a> to be used to display the last taken picture.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/availableDevices" title="availableDevices"></a>
+	<h3 class="subsubtitle method-title">availableDevices</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The available devices' uniqueID&rsquo;s (ex. Front, Back camera).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic, readonly) NSArray *availableDevices</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/availableExposureModes" title="availableExposureModes"></a>
+	<h3 class="subsubtitle method-title">availableExposureModes</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The current device&rsquo;s available AVCaptureExposureMode modes.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic, readonly) NSArray *availableExposureModes</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/availableFlashModes" title="availableFlashModes"></a>
+	<h3 class="subsubtitle method-title">availableFlashModes</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The current device&rsquo;s available AVCaptureFlashMode modes.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic, readonly) NSArray *availableFlashModes</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/availableFocusModes" title="availableFocusModes"></a>
+	<h3 class="subsubtitle method-title">availableFocusModes</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The current device&rsquo;s available AVCaptureFocusMode modes.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic, readonly) NSArray *availableFocusModes</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/availableResolutions" title="availableResolutions"></a>
+	<h3 class="subsubtitle method-title">availableResolutions</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The current device&rsquo;s available capture presets and resolutions.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSDictionary *availableResolutions</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/availableWhiteBalanceModes" title="availableWhiteBalanceModes"></a>
+	<h3 class="subsubtitle method-title">availableWhiteBalanceModes</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The current device&rsquo;s available AVCaptureWhiteBalanceMode modes.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic, readonly) NSArray *availableWhiteBalanceModes</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/captureResultBlock" title="captureResultBlock"></a>
+	<h3 class="subsubtitle method-title">captureResultBlock</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The optional block to be called immediately after capturing the picture.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NBUCapturePictureResultBlock captureResultBlock</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/exposureButton" title="exposureButton"></a>
+	<h3 class="subsubtitle method-title">exposureButton</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The optional button to <a href="#//api/name/toggleExposureMode:">toggleExposureMode:</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) IBOutlet id&lt;UIButton&gt; exposureButton</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/exposureButtonConfigurationBlock" title="exposureButtonConfigurationBlock"></a>
+	<h3 class="subsubtitle method-title">exposureButtonConfigurationBlock</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The block to be used to configure the <a href="#//api/name/exposureButton">exposureButton</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NBUButtonConfigurationBlock exposureButtonConfigurationBlock</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/flashButton" title="flashButton"></a>
+	<h3 class="subsubtitle method-title">flashButton</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The optional button to <a href="#//api/name/toggleFlashMode:">toggleFlashMode:</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) IBOutlet id&lt;UIButton&gt; flashButton</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/flashButtonConfigurationBlock" title="flashButtonConfigurationBlock"></a>
+	<h3 class="subsubtitle method-title">flashButtonConfigurationBlock</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The block to be used to configure the <a href="#//api/name/flashButton">flashButton</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NBUButtonConfigurationBlock flashButtonConfigurationBlock</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/focusButton" title="focusButton"></a>
+	<h3 class="subsubtitle method-title">focusButton</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The optional button to <a href="#//api/name/toggleFocusMode:">toggleFocusMode:</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) IBOutlet id&lt;UIButton&gt; focusButton</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/focusButtonConfigurationBlock" title="focusButtonConfigurationBlock"></a>
+	<h3 class="subsubtitle method-title">focusButtonConfigurationBlock</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The block to be used to configure the <a href="#//api/name/focusButton">focusButton</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NBUButtonConfigurationBlock focusButtonConfigurationBlock</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/lastPictureImageView" title="lastPictureImageView"></a>
+	<h3 class="subsubtitle method-title">lastPictureImageView</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The optional <a href="../Protocols/UIImageView.html">UIImageView</a> to be used to display the last taken picture.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) IBOutlet UIImageView *lastPictureImageView</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<blockquote><p>%note%<br/>
+<strong>Note:</strong> Check the NBUKitDemo project for other ways to customize displaying the last taken pictures.</p></blockquote>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/savePicturesToLibrary" title="savePicturesToLibrary"></a>
+	<h3 class="subsubtitle method-title">savePicturesToLibrary</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Whether to save the pictures to the the library. Default <code>NO</code>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL savePicturesToLibrary</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/saveResultBlock" title="saveResultBlock"></a>
+	<h3 class="subsubtitle method-title">saveResultBlock</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The optional block to be called if <a href="#//api/name/savePicturesToLibrary">savePicturesToLibrary</a> is enabled.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NBUSavePictureResultBlock saveResultBlock</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<blockquote><p>%note%<br/>
+<strong>Note:</strong> This block has some delay over <a href="#//api/name/captureResultBlock">captureResultBlock</a>.</p></blockquote>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/shootButton" title="shootButton"></a>
+	<h3 class="subsubtitle method-title">shootButton</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The button to <a href="#//api/name/takePicture:">takePicture:</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) IBOutlet id&lt;UIButton&gt; shootButton</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/shootButtonConfigurationBlock" title="shootButtonConfigurationBlock"></a>
+	<h3 class="subsubtitle method-title">shootButtonConfigurationBlock</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The block to be used to configure the <a href="#//api/name/shootButton">shootButton</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NBUButtonConfigurationBlock shootButtonConfigurationBlock</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/shouldAutoRotateView" title="shouldAutoRotateView"></a>
+	<h3 class="subsubtitle method-title">shouldAutoRotateView</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Whether the view should compensate device orientation changes. Default <code>NO</code>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL shouldAutoRotateView</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<blockquote><p>%note%<br/>
+<strong>Note:</strong> Set to <code>YES</code> when inside view controllers that support rotation.</p></blockquote>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/showDisabledControls" title="showDisabledControls"></a>
+	<h3 class="subsubtitle method-title">showDisabledControls</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Whether to hide disabled controls. Default <code>NO</code>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL showDisabledControls</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/targetLibraryAlbumName" title="targetLibraryAlbumName"></a>
+	<h3 class="subsubtitle method-title">targetLibraryAlbumName</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>If set along <a href="#//api/name/savePicturesToLibrary">savePicturesToLibrary</a> the assets will be added to a given album.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *targetLibraryAlbumName</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<blockquote><p>%note%<br/>
+<strong>Note:</strong> A new album may be created if necessary.</p></blockquote>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/targetResolution" title="targetResolution"></a>
+	<h3 class="subsubtitle method-title">targetResolution</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The minimum desired resolution.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) CGSize targetResolution</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>If not set full camera resolution will be used but to improve performance<br/>
+you could set a lower resolution.</p><blockquote><p>%note%<br/>
+<strong>Note:</strong> The captured image may not exactly match the targetResolution.</p></blockquote>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/toggleCameraButton" title="toggleCameraButton"></a>
+	<h3 class="subsubtitle method-title">toggleCameraButton</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The optional button to <a href="#//api/name/toggleCamera:">toggleCamera:</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) IBOutlet id&lt;UIButton&gt; toggleCameraButton</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/toggleCameraButtonConfigurationBlock" title="toggleCameraButtonConfigurationBlock"></a>
+	<h3 class="subsubtitle method-title">toggleCameraButtonConfigurationBlock</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The block to be used to configure the <a href="#//api/name/toggleCameraButton">toggleCameraButton</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NBUButtonConfigurationBlock toggleCameraButtonConfigurationBlock</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/whiteBalanceButton" title="whiteBalanceButton"></a>
+	<h3 class="subsubtitle method-title">whiteBalanceButton</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The optional button to <a href="#//api/name/toggleWhiteBalanceMode:">toggleWhiteBalanceMode:</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) IBOutlet id&lt;UIButton&gt; whiteBalanceButton</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/whiteBalanceButtonConfigurationBlock" title="whiteBalanceButtonConfigurationBlock"></a>
+	<h3 class="subsubtitle method-title">whiteBalanceButtonConfigurationBlock</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The block to be used to configure the <a href="#//api/name/whiteBalanceButton">whiteBalanceButton</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NBUButtonConfigurationBlock whiteBalanceButtonConfigurationBlock</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/buttonConfigurationBlockWithTitleFormat:" title="buttonConfigurationBlockWithTitleFormat:"></a>
+	<h3 class="subsubtitle method-title">buttonConfigurationBlockWithTitleFormat:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create a NBUButtonConfigurationBlock that sets the title of a<br/>
+button using <code>[NSString stringWithFormat:format, mode]</code>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NBUButtonConfigurationBlock)buttonConfigurationBlockWithTitleFormat:(NSString *)<em>format</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>format</em></dt>
+			<dd><p>A string format for a NSInteger. Ex. <code>@"Flash: %d"</code>.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/buttonConfigurationBlockWithTitleFrom:" title="buttonConfigurationBlockWithTitleFrom:"></a>
+	<h3 class="subsubtitle method-title">buttonConfigurationBlockWithTitleFrom:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create a NBUButtonConfigurationBlock that sets the title from an array of titles<br/>
+using the mode as index.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NBUButtonConfigurationBlock)buttonConfigurationBlockWithTitleFrom:(NSArray *)<em>titles</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>titles</em></dt>
+			<dd><p>The possible titles. One for each mode.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setInterfaceOrientation:" title="setInterfaceOrientation:"></a>
+	<h3 class="subsubtitle method-title">setInterfaceOrientation:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Programatically force the view to rotate.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setInterfaceOrientation:(UIInterfaceOrientation)<em>orientation</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>orientation</em></dt>
+			<dd><p>The desired interface orientation.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/takePicture:" title="takePicture:"></a>
+	<h3 class="subsubtitle method-title">takePicture:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Take a picture and execure the resultBlock.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (IBAction)takePicture:(id)<em>sender</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sender</em></dt>
+			<dd><p>The sender object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/toggleCamera:" title="toggleCamera:"></a>
+	<h3 class="subsubtitle method-title">toggleCamera:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Switch between front and back cameras (if available).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (IBAction)toggleCamera:(id)<em>sender</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sender</em></dt>
+			<dd><p>The sender object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Configures <a href="#//api/name/toggleCameraButton">toggleCameraButton</a> using <a href="#//api/name/toggleCameraButtonConfigurationBlock">toggleCameraButtonConfigurationBlock</a> when available.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/toggleExposureMode:" title="toggleExposureMode:"></a>
+	<h3 class="subsubtitle method-title">toggleExposureMode:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Change the exposure mode (if available).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (IBAction)toggleExposureMode:(id)<em>sender</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sender</em></dt>
+			<dd><p>The sender object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Configures <a href="#//api/name/exposureButton">exposureButton</a> using <a href="#//api/name/exposureButtonConfigurationBlock">exposureButtonConfigurationBlock</a> when available.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/toggleFlashMode:" title="toggleFlashMode:"></a>
+	<h3 class="subsubtitle method-title">toggleFlashMode:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Change the flash mode (if available).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (IBAction)toggleFlashMode:(id)<em>sender</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sender</em></dt>
+			<dd><p>The sender object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Configures <a href="#//api/name/flashButton">flashButton</a> using <a href="#//api/name/flashButtonConfigurationBlock">flashButtonConfigurationBlock</a> when available.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/toggleFocusMode:" title="toggleFocusMode:"></a>
+	<h3 class="subsubtitle method-title">toggleFocusMode:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Change the focus mode (if available).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (IBAction)toggleFocusMode:(id)<em>sender</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sender</em></dt>
+			<dd><p>The sender object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Configures <a href="#//api/name/focusButton">focusButton</a> using <a href="#//api/name/focusButtonConfigurationBlock">focusButtonConfigurationBlock</a> when available.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/toggleWhiteBalanceMode:" title="toggleWhiteBalanceMode:"></a>
+	<h3 class="subsubtitle method-title">toggleWhiteBalanceMode:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Change the white balance mode (if available).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (IBAction)toggleWhiteBalanceMode:(id)<em>sender</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sender</em></dt>
+			<dd><p>The sender object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Configures <a href="#//api/name/whiteBalanceButton">whiteBalanceButton</a> using <a href="#//api/name/whiteBalanceButtonConfigurationBlock">whiteBalanceButtonConfigurationBlock</a> when available.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 CyberAgent Inc. All rights reserved. (Last updated: 2013-04-30)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

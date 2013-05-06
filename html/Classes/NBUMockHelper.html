@@ -1,0 +1,905 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>NBUMockHelper Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">NBUKit </a></h1>
+				<a id="developerHome" href="../index.html">CyberAgent Inc</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">NBUMockHelper Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/managedObjectContext">&nbsp;&nbsp;&nbsp;&nbsp;managedObjectContext</option>
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/mockTextWithLenght:">&nbsp;&nbsp;&nbsp;&nbsp;+ mockTextWithLenght:</option>
+	
+	<option value="//api/name/setSharedHelper:">&nbsp;&nbsp;&nbsp;&nbsp;+ setSharedHelper:</option>
+	
+	<option value="//api/name/sharedHelper">&nbsp;&nbsp;&nbsp;&nbsp;+ sharedHelper</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/generate:mockObjects:">&nbsp;&nbsp;&nbsp;&nbsp;- generate:mockObjects:</option>
+	
+	<option value="//api/name/generateFrom:to:mockObjects:">&nbsp;&nbsp;&nbsp;&nbsp;- generateFrom:to:mockObjects:</option>
+	
+	<option value="//api/name/generateMockObject:">&nbsp;&nbsp;&nbsp;&nbsp;- generateMockObject:</option>
+	
+	<option value="//api/name/setConfigurationBlock:forClassNamed:">&nbsp;&nbsp;&nbsp;&nbsp;- setConfigurationBlock:forClassNamed:</option>
+	
+	<option value="//api/name/setConfigurationBlock:forEntityNamed:">&nbsp;&nbsp;&nbsp;&nbsp;- setConfigurationBlock:forEntityNamed:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Configure the Helper">Configure the Helper</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Configure the Helper for CoreData Objects">Configure the Helper for CoreData Objects</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Using the Helper">Using the Helper</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Utilities">Utilities</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/managedObjectContext">managedObjectContext</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/mockTextWithLenght:">mockTextWithLenght:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setSharedHelper:">setSharedHelper:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedHelper">sharedHelper</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/generate:mockObjects:">generate:mockObjects:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/generateFrom:to:mockObjects:">generateFrom:to:mockObjects:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/generateMockObject:">generateMockObject:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setConfigurationBlock:forClassNamed:">setConfigurationBlock:forClassNamed:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setConfigurationBlock:forEntityNamed:">setConfigurationBlock:forEntityNamed:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="NBUMockHelper Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">NBUMockHelper Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">NBUMockHelper.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>A block-configurable generator of mock objects for fast prototyping.</p>
+
+<p>Supports generation of general and CoreData mock objects.</p>
+
+<p>Sample usage:</p>
+
+<pre><code> NBUMockHelper * mockHelper = [NBUMockHelper sharedHelper];  
+
+ // Generate from 4 to 10 NSObject's  
+ NSLog(@"%@", [mockHelper generateFrom:4  
+                                    to:10  
+                           mockObjects:@"NSObject"]);  
+
+ // Generate 5 NSMutableString and configure them wiht a configuration block  
+
+ [mockHelper setConfigurationBlock:   
+    ^(NSMutableString * string, int recursivityLevel) // Modified from ^(id object, int recursivityLevel) to avoid castings  
+     {  
+         // Set a random string  
+         [string setString:[NSString stringWithFormat:@"String #%d", (arc4random() % 100)]];  
+     }  
+                     forClassNamed:@"NSMutableString"];  
+
+ NSLog(@"%@", [mockHelper generate:5  
+                       mockObjects:@"NSMutableString"]);  
+</code></pre>
+
+<p>Prints:</p>
+
+<pre><code> (  
+     "&lt;NSObject: 0x8e64c70&gt;",  
+     "&lt;NSObject: 0x8e631d0&gt;",  
+     "&lt;NSObject: 0x8e63aa0&gt;",  
+     "&lt;NSObject: 0x8e67590&gt;",  
+     "&lt;NSObject: 0x8e675a0&gt;",  
+     "&lt;NSObject: 0x8e642f0&gt;",  
+     "&lt;NSObject: 0x8e67ec0&gt;",  
+     "&lt;NSObject: 0x8e67ed0&gt;",  
+     "&lt;NSObject: 0x8e67ee0&gt;",  
+     "&lt;NSObject: 0x8e63c60&gt;"  
+ )  
+
+ (  
+     "String #79",  
+     "String #62",  
+     "String #43",  
+     "String #86",  
+     "String #80"  
+ )
+</code></pre>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sharedHelper">+&nbsp;sharedHelper</a></code>
+		<span class="tooltip"><p>Return a shared NBUMockHelper singleton object.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setSharedHelper:">+&nbsp;setSharedHelper:</a></code>
+		<span class="tooltip"><p>Set the shared NBUMockHelper singleton object.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Configure the Helper" name="task_Configure the Helper"></a>
+						<h3 class="subsubtitle task-title">Configure the Helper</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setConfigurationBlock:forClassNamed:">&ndash;&nbsp;setConfigurationBlock:forClassNamed:</a></code>
+		<span class="tooltip"><p>Sets a block to be used to configure newly created blocks of a given class.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Configure the Helper for CoreData Objects" name="task_Configure the Helper for CoreData Objects"></a>
+						<h3 class="subsubtitle task-title">Configure the Helper for CoreData Objects</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/managedObjectContext">&nbsp;&nbsp;managedObjectContext</a></code>
+		<span class="tooltip"><p>The NSManagedObjectContext to be used to create new CoreData mock objects.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setConfigurationBlock:forEntityNamed:">&ndash;&nbsp;setConfigurationBlock:forEntityNamed:</a></code>
+		<span class="tooltip"><p>Sets a block to be used to configure newly created blocks of a given CoreData entity.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Using the Helper" name="task_Using the Helper"></a>
+						<h3 class="subsubtitle task-title">Using the Helper</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/generateMockObject:">&ndash;&nbsp;generateMockObject:</a></code>
+		<span class="tooltip"><p>Generate one mock object of a given class or CoreData entity.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/generate:mockObjects:">&ndash;&nbsp;generate:mockObjects:</a></code>
+		<span class="tooltip"><p>Generate several mock objects of a given class or CoreData entity.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/generateFrom:to:mockObjects:">&ndash;&nbsp;generateFrom:to:mockObjects:</a></code>
+		<span class="tooltip"><p>Generate several mock objects of a given class or CoreData entity.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Utilities" name="task_Utilities"></a>
+						<h3 class="subsubtitle task-title">Utilities</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/mockTextWithLenght:">+&nbsp;mockTextWithLenght:</a></code>
+		<span class="tooltip"><p>Generate <em>Lorem Impsum</em> mock text of a given lenght.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/managedObjectContext" title="managedObjectContext"></a>
+	<h3 class="subsubtitle method-title">managedObjectContext</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The NSManagedObjectContext to be used to create new CoreData mock objects.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUMockHelper.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/mockTextWithLenght:" title="mockTextWithLenght:"></a>
+	<h3 class="subsubtitle method-title">mockTextWithLenght:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Generate <em>Lorem Impsum</em> mock text of a given lenght.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (NSString *)mockTextWithLenght:(NSUInteger)<em>length</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>length</em></dt>
+			<dd><p>The desired mock text lenght.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUMockHelper.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setSharedHelper:" title="setSharedHelper:"></a>
+	<h3 class="subsubtitle method-title">setSharedHelper:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Set the shared NBUMockHelper singleton object.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)setSharedHelper:(NBUMockHelper *)<em>helper</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>helper</em></dt>
+			<dd><p>The new shared helper. Use nil to release the current object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUMockHelper.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sharedHelper" title="sharedHelper"></a>
+	<h3 class="subsubtitle method-title">sharedHelper</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Return a shared NBUMockHelper singleton object.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (NBUMockHelper *)sharedHelper</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUMockHelper.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/generate:mockObjects:" title="generate:mockObjects:"></a>
+	<h3 class="subsubtitle method-title">generate:mockObjects:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Generate several mock objects of a given class or CoreData entity.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSArray *)generate:(NSUInteger)<em>count</em> mockObjects:(NSString *)<em>nameOfClassOrEntity</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>count</em></dt>
+			<dd><p>The number of mock objects to be created.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>nameOfClassOrEntity</em></dt>
+			<dd><p>The name of the class or CoreData entity.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUMockHelper.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/generateFrom:to:mockObjects:" title="generateFrom:to:mockObjects:"></a>
+	<h3 class="subsubtitle method-title">generateFrom:to:mockObjects:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Generate several mock objects of a given class or CoreData entity.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSArray *)generateFrom:(NSUInteger)<em>minCount</em> to:(NSUInteger)<em>maxCount</em> mockObjects:(NSString *)<em>nameOfClassOrEntity</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>minCount</em></dt>
+			<dd><p>The minimum number of mock objects to be created.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>maxCount</em></dt>
+			<dd><p>The maximum number of mock objects to be created.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>nameOfClassOrEntity</em></dt>
+			<dd><p>The name of the class or CoreData entity.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUMockHelper.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/generateMockObject:" title="generateMockObject:"></a>
+	<h3 class="subsubtitle method-title">generateMockObject:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Generate one mock object of a given class or CoreData entity.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)generateMockObject:(NSString *)<em>nameOfClassOrEntity</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>nameOfClassOrEntity</em></dt>
+			<dd><p>The name of the class or CoreData entity.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUMockHelper.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setConfigurationBlock:forClassNamed:" title="setConfigurationBlock:forClassNamed:"></a>
+	<h3 class="subsubtitle method-title">setConfigurationBlock:forClassNamed:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sets a block to be used to configure newly created blocks of a given class.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setConfigurationBlock:(NBUMockObjectConfigurationBlock)<em>block</em> forClassNamed:(NSString *)<em>name</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>The block that receives the new object of a given class and a recursivityLevel integer to<br/>
+avoid infinity loops.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>The name of the class of the target mock object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<blockquote><p>%note%<br/>
+<strong>Note:</strong> The recursivityLevel is not yet used.</p></blockquote>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUMockHelper.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setConfigurationBlock:forEntityNamed:" title="setConfigurationBlock:forEntityNamed:"></a>
+	<h3 class="subsubtitle method-title">setConfigurationBlock:forEntityNamed:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sets a block to be used to configure newly created blocks of a given CoreData entity.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setConfigurationBlock:(NBUMockObjectConfigurationBlock)<em>block</em> forEntityNamed:(NSString *)<em>name</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>The block that receives the new managed object of a given antity and a recursivityLevel integer to<br/>
+avoid infinity loops.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>The name of the CoreData entity of the target mock object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<blockquote><p>%note%<br/>
+<strong>Note:</strong> The recursivityLevel is not yet used.</p></blockquote>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUMockHelper.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 CyberAgent Inc. All rights reserved. (Last updated: 2013-04-30)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

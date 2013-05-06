@@ -1,0 +1,865 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>NBULog Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">NBUKit </a></h1>
+				<a id="developerHome" href="../index.html">CyberAgent Inc</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">NBULog Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/addASLLogger">&nbsp;&nbsp;&nbsp;&nbsp;+ addASLLogger</option>
+	
+	<option value="//api/name/addDashboardLogger">&nbsp;&nbsp;&nbsp;&nbsp;+ addDashboardLogger</option>
+	
+	<option value="//api/name/addFileLogger">&nbsp;&nbsp;&nbsp;&nbsp;+ addFileLogger</option>
+	
+	<option value="//api/name/addTTYLogger">&nbsp;&nbsp;&nbsp;&nbsp;+ addTTYLogger</option>
+	
+	<option value="//api/name/appLogLevelForModule:">&nbsp;&nbsp;&nbsp;&nbsp;+ appLogLevelForModule:</option>
+	
+	<option value="//api/name/kitLogLevelForModule:">&nbsp;&nbsp;&nbsp;&nbsp;+ kitLogLevelForModule:</option>
+	
+	<option value="//api/name/setAppLogLevel:">&nbsp;&nbsp;&nbsp;&nbsp;+ setAppLogLevel:</option>
+	
+	<option value="//api/name/setAppLogLevel:forModule:">&nbsp;&nbsp;&nbsp;&nbsp;+ setAppLogLevel:forModule:</option>
+	
+	<option value="//api/name/setKitLogLevel:">&nbsp;&nbsp;&nbsp;&nbsp;+ setKitLogLevel:</option>
+	
+	<option value="//api/name/setKitLogLevel:forModule:">&nbsp;&nbsp;&nbsp;&nbsp;+ setKitLogLevel:forModule:</option>
+	
+	
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Adjusting App Log Levels">Adjusting App Log Levels</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Adding Loggers">Adding Loggers</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_NBUKit Methods">NBUKit Methods</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addASLLogger">addASLLogger</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addDashboardLogger">addDashboardLogger</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addFileLogger">addFileLogger</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addTTYLogger">addTTYLogger</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/appLogLevelForModule:">appLogLevelForModule:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/kitLogLevelForModule:">kitLogLevelForModule:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setAppLogLevel:">setAppLogLevel:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setAppLogLevel:forModule:">setAppLogLevel:forModule:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setKitLogLevel:">setKitLogLevel:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setKitLogLevel:forModule:">setKitLogLevel:forModule:</a></span></li>
+	
+</ul></li>
+
+
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="NBULog Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">NBULog Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">NBULog.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>DDLog wrapper. Use it to set/get App log levels for debug or testing builds.</p>
+
+<p>Default configuration (can be dynamically changed):</p>
+
+<ul>
+<li>AppLogLevel: <code>LOG_LEVEL_VERBOSE</code> for <code>DEBUG</code>, <code>LOG_LEVEL_INFO</code> otherwise.</li>
+<li>Loggers: DDTTYLogger for <code>DEBUG</code>, DDFileLogger otherwise.</li>
+</ul>
+
+
+<p>Manually add <a href="../Classes/NBUDashboardLogger.html">NBUDashboardLogger</a> or DDASLLogger if desired.</p>
+
+<p>To add other modules just create a NBULog category.</p>
+
+<p>NBULog category used to set/get <a href="../Classes/NBUKit.html">NBUKit</a> log levels.</p>
+
+<p>Default configuration (can be dynamically changed):</p>
+
+<ul>
+<li>Log level: <code>LOG_LEVEL_INFO</code> for <code>DEBUG</code>, <code>LOG_LEVEL_WARN</code> otherwise.</li>
+</ul>
+
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						<a title="Adjusting App Log Levels" name="task_Adjusting App Log Levels"></a>
+						<h3 class="subsubtitle task-title">Adjusting App Log Levels</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/appLogLevelForModule:">+&nbsp;appLogLevelForModule:</a></code>
+		<span class="tooltip"><p>Get the current App log level for a given module.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setAppLogLevel:forModule:">+&nbsp;setAppLogLevel:forModule:</a></code>
+		<span class="tooltip"><p>Dynamically set the App log level for a given module.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setAppLogLevel:">+&nbsp;setAppLogLevel:</a></code>
+		<span class="tooltip"><p>Dynamically set the App log level for all modules at once.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Adding Loggers" name="task_Adding Loggers"></a>
+						<h3 class="subsubtitle task-title">Adding Loggers</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addDashboardLogger">+&nbsp;addDashboardLogger</a></code>
+		<span class="tooltip"><p>Configure and add a <a href="../Classes/NBUDashboardLogger.html">NBUDashboardLogger</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addASLLogger">+&nbsp;addASLLogger</a></code>
+		<span class="tooltip"><p>Configure and add a DDASLLogger (Apple System Log). Not needed in most cases.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addTTYLogger">+&nbsp;addTTYLogger</a></code>
+		<span class="tooltip"><p>Configure and add a DDTTYLogger (Apple System Log and Xcode console). Not needed in most cases.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addFileLogger">+&nbsp;addFileLogger</a></code>
+		<span class="tooltip"><p>Configure and add a DDFileLogger (log to a file).</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="NBUKit Methods" name="task_NBUKit Methods"></a>
+						<h3 class="subsubtitle task-title">NBUKit Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/kitLogLevelForModule:">+&nbsp;kitLogLevelForModule:</a></code>
+		<span class="tooltip"><p>Get the current <a href="../Classes/NBUKit.html">NBUKit</a> log level for a given module.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setKitLogLevel:forModule:">+&nbsp;setKitLogLevel:forModule:</a></code>
+		<span class="tooltip"><p>Dynamically set the <a href="../Classes/NBUKit.html">NBUKit</a> log level for a given module.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setKitLogLevel:">+&nbsp;setKitLogLevel:</a></code>
+		<span class="tooltip"><p>Dynamically set the <a href="../Classes/NBUKit.html">NBUKit</a> log level for all modules at once.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/addASLLogger" title="addASLLogger"></a>
+	<h3 class="subsubtitle method-title">addASLLogger</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Configure and add a DDASLLogger (Apple System Log). Not needed in most cases.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)addASLLogger</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<blockquote><p>%note%<br/>
+<strong>Note:</strong> To be used for testing builds only.</p></blockquote>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBULog.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/addDashboardLogger" title="addDashboardLogger"></a>
+	<h3 class="subsubtitle method-title">addDashboardLogger</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Configure and add a <a href="../Classes/NBUDashboardLogger.html">NBUDashboardLogger</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)addDashboardLogger</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<blockquote><p>%note%<br/>
+<strong>Note:</strong> To be used for testing builds only.</p></blockquote>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBULog.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/addFileLogger" title="addFileLogger"></a>
+	<h3 class="subsubtitle method-title">addFileLogger</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Configure and add a DDFileLogger (log to a file).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)addFileLogger</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<blockquote><p>%note%<br/>
+<strong>Note:</strong> Added by default for non debug builds.</p></blockquote>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBULog.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/addTTYLogger" title="addTTYLogger"></a>
+	<h3 class="subsubtitle method-title">addTTYLogger</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Configure and add a DDTTYLogger (Apple System Log and Xcode console). Not needed in most cases.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)addTTYLogger</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<blockquote><p>%note%<br/>
+<strong>Note:</strong> To be used for testing builds only.</p></blockquote>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBULog.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/appLogLevelForModule:" title="appLogLevelForModule:"></a>
+	<h3 class="subsubtitle method-title">appLogLevelForModule:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get the current App log level for a given module.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (int)appLogLevelForModule:(int)<em>APP_MODULE_XXX</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>APP_MODULE_XXX</em></dt>
+			<dd><p>The target module.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBULog.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/kitLogLevelForModule:" title="kitLogLevelForModule:"></a>
+	<h3 class="subsubtitle method-title">kitLogLevelForModule:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get the current <a href="../Classes/NBUKit.html">NBUKit</a> log level for a given module.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (int)kitLogLevelForModule:(int)<em>NBUKIT_MODULE_XXX</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>NBUKIT_MODULE_XXX</em></dt>
+			<dd><p>The target module.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBULog+NBUKit.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setAppLogLevel:" title="setAppLogLevel:"></a>
+	<h3 class="subsubtitle method-title">setAppLogLevel:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Dynamically set the App log level for all modules at once.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)setAppLogLevel:(int)<em>LOG_LEVEL_XXX</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>LOG_LEVEL_XXX</em></dt>
+			<dd><p>The desired log level.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBULog.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setAppLogLevel:forModule:" title="setAppLogLevel:forModule:"></a>
+	<h3 class="subsubtitle method-title">setAppLogLevel:forModule:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Dynamically set the App log level for a given module.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)setAppLogLevel:(int)<em>LOG_LEVEL_XXX</em> forModule:(int)<em>APP_MODULE_XXX</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>LOG_LEVEL_XXX</em></dt>
+			<dd><p>The desired log level.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>APP_MODULE_XXX</em></dt>
+			<dd><p>The target module.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBULog.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setKitLogLevel:" title="setKitLogLevel:"></a>
+	<h3 class="subsubtitle method-title">setKitLogLevel:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Dynamically set the <a href="../Classes/NBUKit.html">NBUKit</a> log level for all modules at once.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)setKitLogLevel:(int)<em>LOG_LEVEL_XXX</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>LOG_LEVEL_XXX</em></dt>
+			<dd><p>The desired log level.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBULog+NBUKit.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setKitLogLevel:forModule:" title="setKitLogLevel:forModule:"></a>
+	<h3 class="subsubtitle method-title">setKitLogLevel:forModule:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Dynamically set the <a href="../Classes/NBUKit.html">NBUKit</a> log level for a given module.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)setKitLogLevel:(int)<em>LOG_LEVEL_XXX</em> forModule:(int)<em>NBUKIT_MODULE_XXX</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>LOG_LEVEL_XXX</em></dt>
+			<dd><p>The desired log level.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>NBUKIT_MODULE_XXX</em></dt>
+			<dd><p>The target module.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBULog+NBUKit.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 CyberAgent Inc. All rights reserved. (Last updated: 2013-04-30)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

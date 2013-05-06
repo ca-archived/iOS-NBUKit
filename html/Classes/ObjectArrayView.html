@@ -1,0 +1,1510 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>ObjectArrayView Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">NBUKit </a></h1>
+				<a id="developerHome" href="../index.html">CyberAgent Inc</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">ObjectArrayView Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/delegate">&nbsp;&nbsp;&nbsp;&nbsp;delegate</option>
+	
+	<option value="//api/name/hasMoreObjects">&nbsp;&nbsp;&nbsp;&nbsp;hasMoreObjects</option>
+	
+	<option value="//api/name/hiddenObjects">&nbsp;&nbsp;&nbsp;&nbsp;hiddenObjects</option>
+	
+	<option value="//api/name/loadMoreView">&nbsp;&nbsp;&nbsp;&nbsp;loadMoreView</option>
+	
+	<option value="//api/name/loadMoreViewOnTop">&nbsp;&nbsp;&nbsp;&nbsp;loadMoreViewOnTop</option>
+	
+	<option value="//api/name/margin">&nbsp;&nbsp;&nbsp;&nbsp;margin</option>
+	
+	<option value="//api/name/nibNameForViews">&nbsp;&nbsp;&nbsp;&nbsp;nibNameForViews</option>
+	
+	<option value="//api/name/objectArray">&nbsp;&nbsp;&nbsp;&nbsp;objectArray</option>
+	
+	<option value="//api/name/sizeToFitObjectViews">&nbsp;&nbsp;&nbsp;&nbsp;sizeToFitObjectViews</option>
+	
+	<option value="//api/name/targetObjectViewSize">&nbsp;&nbsp;&nbsp;&nbsp;targetObjectViewSize</option>
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/addObject:">&nbsp;&nbsp;&nbsp;&nbsp;- addObject:</option>
+	
+	<option value="//api/name/addObjectIfNotPresent:">&nbsp;&nbsp;&nbsp;&nbsp;- addObjectIfNotPresent:</option>
+	
+	<option value="//api/name/adjustViewSize:">&nbsp;&nbsp;&nbsp;&nbsp;- adjustViewSize:</option>
+	
+	<option value="//api/name/insertObject:atIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- insertObject:atIndex:</option>
+	
+	<option value="//api/name/loadMoreObjects:">&nbsp;&nbsp;&nbsp;&nbsp;- loadMoreObjects:</option>
+	
+	<option value="//api/name/populateObjectArrayWithSubviews">&nbsp;&nbsp;&nbsp;&nbsp;- populateObjectArrayWithSubviews</option>
+	
+	<option value="//api/name/removeObject:">&nbsp;&nbsp;&nbsp;&nbsp;- removeObject:</option>
+	
+	<option value="//api/name/removeObjectAtIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- removeObjectAtIndex:</option>
+	
+	<option value="//api/name/replaceObjectAtIndex:withObject:">&nbsp;&nbsp;&nbsp;&nbsp;- replaceObjectAtIndex:withObject:</option>
+	
+	<option value="//api/name/setObject:hidden:">&nbsp;&nbsp;&nbsp;&nbsp;- setObject:hidden:</option>
+	
+	<option value="//api/name/setObjectAtIndex:hidden:">&nbsp;&nbsp;&nbsp;&nbsp;- setObjectAtIndex:hidden:</option>
+	
+	<option value="//api/name/viewForObject:">&nbsp;&nbsp;&nbsp;&nbsp;- viewForObject:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Managing the Array of Objects">Managing the Array of Objects</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Show/Hide Objects&apos; Views">Show/Hide Objects&apos; Views</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Managing Objects&apos; Views">Managing Objects&apos; Views</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_&quot;More objects&quot; Support">&quot;More objects&quot; Support</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Objects&apos; View Setup">Objects&apos; View Setup</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/delegate">delegate</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/hasMoreObjects">hasMoreObjects</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/hiddenObjects">hiddenObjects</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loadMoreView">loadMoreView</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loadMoreViewOnTop">loadMoreViewOnTop</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/margin">margin</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/nibNameForViews">nibNameForViews</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/objectArray">objectArray</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sizeToFitObjectViews">sizeToFitObjectViews</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/targetObjectViewSize">targetObjectViewSize</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addObject:">addObject:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addObjectIfNotPresent:">addObjectIfNotPresent:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/adjustViewSize:">adjustViewSize:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/insertObject:atIndex:">insertObject:atIndex:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loadMoreObjects:">loadMoreObjects:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/populateObjectArrayWithSubviews">populateObjectArrayWithSubviews</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeObject:">removeObject:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeObjectAtIndex:">removeObjectAtIndex:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/replaceObjectAtIndex:withObject:">replaceObjectAtIndex:withObject:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setObject:hidden:">setObject:hidden:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setObjectAtIndex:hidden:">setObjectAtIndex:hidden:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/viewForObject:">viewForObject:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="ObjectArrayView Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">ObjectArrayView Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value"><a href="../Classes/ObjectView.html">ObjectView</a> : <a href="../Classes/ActiveView.html">ActiveView</a> : <a href="../Classes/NBUView.html">NBUView</a> : UIView</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">ObjectArrayView.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Abstract class to display an array of objects.</p>
+
+<p>An ObjectArrayView displays objects of its <a href="#//api/name/objectArray">objectArray</a> creating corresponding views with its<br/>
+<a href="#//api/name/viewForObject:">viewForObject:</a> method.</p>
+
+<p>It can contain a mix of different kind of objects (CoreData objects, NSObjects, UIImages, UIViews, etc.)<br/>
+while trying to choose the best strategy to display each of them.</p>
+
+<p>Each <a href="#//api/name/objectArray">object</a> of the <a href="#//api/name/objectArray">objectArray</a> is presented thorugh the method <a href="#//api/name/viewForObject:">viewForObject:</a>, unless an<br/>
+<a href="../Protocols/ObjectArrayViewDelegate.html">ObjectArrayViewDelegate</a> is used to create and/or configure views. The <a href="#//api/name/delegate">delegate</a> is required to provide<br/>
+&ldquo;load more objects&rdquo; support.</p><blockquote><p>%note%<br/>
+<strong>Note:</strong> As it is an abstract class use on of the subclasses: <a href="../Classes/ObjectGridView.html">ObjectGridView</a>, <a href="../Classes/ObjectTableView.html">ObjectTableView</a> or <a href="../Classes/ObjectSlideView.html">ObjectSlideView</a>.</p></blockquote>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						<a title="Managing the Array of Objects" name="task_Managing the Array of Objects"></a>
+						<h3 class="subsubtitle task-title">Managing the Array of Objects</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/objectArray">&nbsp;&nbsp;objectArray</a></code>
+		<span class="tooltip"><p>The associated array of objects.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addObject:">&ndash;&nbsp;addObject:</a></code>
+		<span class="tooltip"><p>Add a new <a href="#//api/name/objectArray">object</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addObjectIfNotPresent:">&ndash;&nbsp;addObjectIfNotPresent:</a></code>
+		<span class="tooltip"><p>Add a new <a href="#//api/name/objectArray">object</a> if not already present.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/removeObject:">&ndash;&nbsp;removeObject:</a></code>
+		<span class="tooltip"><p>Delete an <a href="#//api/name/objectArray">object</a> from the <a href="#//api/name/objectArray">objectArray</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/insertObject:atIndex:">&ndash;&nbsp;insertObject:atIndex:</a></code>
+		<span class="tooltip"><p>Insert an <a href="#//api/name/objectArray">object</a> to the <a href="#//api/name/objectArray">objectArray</a> at the given index.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/removeObjectAtIndex:">&ndash;&nbsp;removeObjectAtIndex:</a></code>
+		<span class="tooltip"><p>Insert an <a href="#//api/name/objectArray">object</a> to the <a href="#//api/name/objectArray">objectArray</a> at the given index.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/replaceObjectAtIndex:withObject:">&ndash;&nbsp;replaceObjectAtIndex:withObject:</a></code>
+		<span class="tooltip"><p>Replace an <a href="#//api/name/objectArray">object</a> of the <a href="#//api/name/objectArray">objectArray</a> at a given index by a new one.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Show/Hide Objects&apos; Views" name="task_Show/Hide Objects&apos; Views"></a>
+						<h3 class="subsubtitle task-title">Show/Hide Objects&apos; Views</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/hiddenObjects">&nbsp;&nbsp;hiddenObjects</a></code>
+		<span class="tooltip"><p>Objects whose views should be hidden.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setObject:hidden:">&ndash;&nbsp;setObject:hidden:</a></code>
+		<span class="tooltip"><p>Hide/Show an object&rsquo;s corresponding view.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setObjectAtIndex:hidden:">&ndash;&nbsp;setObjectAtIndex:hidden:</a></code>
+		<span class="tooltip"><p>Hide/Show an object&rsquo;s corresponding view.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Managing Objects&apos; Views" name="task_Managing Objects&apos; Views"></a>
+						<h3 class="subsubtitle task-title">Managing Objects&apos; Views</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/delegate">&nbsp;&nbsp;delegate</a></code>
+		<span class="tooltip"><p>A delegate to help load, configure and/or provide &ldquo;load more objects&rdquo; support.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/nibNameForViews">&nbsp;&nbsp;nibNameForViews</a></code>
+		<span class="tooltip"><p>When set, a <a href="#//api/name/delegate">delegate</a> is no longer needed to create views.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="&quot;More objects&quot; Support" name="task_&quot;More objects&quot; Support"></a>
+						<h3 class="subsubtitle task-title">&quot;More objects&quot; Support</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/hasMoreObjects">&nbsp;&nbsp;hasMoreObjects</a></code>
+		<span class="tooltip"><p>A boolean indicating whether or not there are more objects to load.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/loadMoreView">&nbsp;&nbsp;loadMoreView</a></code>
+		<span class="tooltip"><p>A view shown when there are unloaded objects.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/loadMoreViewOnTop">&nbsp;&nbsp;loadMoreViewOnTop</a></code>
+		<span class="tooltip"><p>Whether or not to place the <a href="#//api/name/loadMoreView">loadMoreView</a> on top.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/loadMoreObjects:">&ndash;&nbsp;loadMoreObjects:</a></code>
+		<span class="tooltip"><p>Trigger loading more objects.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Objects&apos; View Setup" name="task_Objects&apos; View Setup"></a>
+						<h3 class="subsubtitle task-title">Objects&apos; View Setup</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/populateObjectArrayWithSubviews">&ndash;&nbsp;populateObjectArrayWithSubviews</a></code>
+		<span class="tooltip"><p>Populate the <a href="#//api/name/objectArray">objectArray</a> with the objectArrayView subviews.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/viewForObject:">&ndash;&nbsp;viewForObject:</a></code>
+		<span class="tooltip"><p>Create a view corresponding to a given <a href="#//api/name/objectArray">object</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/adjustViewSize:">&ndash;&nbsp;adjustViewSize:</a></code>
+		<span class="tooltip"><p>Resize a given view to the size that best fits it if <a href="#//api/name/sizeToFitObjectViews">sizeToFitObjectViews</a> is set.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sizeToFitObjectViews">&nbsp;&nbsp;sizeToFitObjectViews</a></code>
+		<span class="tooltip"><p>Ask objectViews to adjust their size. Default NO.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/targetObjectViewSize">&nbsp;&nbsp;targetObjectViewSize</a></code>
+		<span class="tooltip"><p>Size to be applied to views. A CGSizeZero size means no resize.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/margin">&nbsp;&nbsp;margin</a></code>
+		<span class="tooltip"><p>The margin to separate vies from each other. Default no margin.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/delegate" title="delegate"></a>
+	<h3 class="subsubtitle method-title">delegate</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>A delegate to help load, configure and/or provide &ldquo;load more objects&rdquo; support.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) IBOutlet id&lt;ObjectArrayViewDelegate&gt; delegate</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ObjectArrayView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/hasMoreObjects" title="hasMoreObjects"></a>
+	<h3 class="subsubtitle method-title">hasMoreObjects</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>A boolean indicating whether or not there are more objects to load.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL hasMoreObjects</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ObjectArrayView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/hiddenObjects" title="hiddenObjects"></a>
+	<h3 class="subsubtitle method-title">hiddenObjects</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Objects whose views should be hidden.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic, readonly) NSArray *hiddenObjects</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>By default no objects are hidden.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ObjectArrayView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/loadMoreView" title="loadMoreView"></a>
+	<h3 class="subsubtitle method-title">loadMoreView</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>A view shown when there are unloaded objects.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) IBOutlet UIView *loadMoreView</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ObjectArrayView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/loadMoreViewOnTop" title="loadMoreViewOnTop"></a>
+	<h3 class="subsubtitle method-title">loadMoreViewOnTop</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Whether or not to place the <a href="#//api/name/loadMoreView">loadMoreView</a> on top.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL loadMoreViewOnTop</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ObjectArrayView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/margin" title="margin"></a>
+	<h3 class="subsubtitle method-title">margin</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The margin to separate vies from each other. Default no margin.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) CGSize margin</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ObjectArrayView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/nibNameForViews" title="nibNameForViews"></a>
+	<h3 class="subsubtitle method-title">nibNameForViews</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>When set, a <a href="#//api/name/delegate">delegate</a> is no longer needed to create views.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *nibNameForViews</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ObjectArrayView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/objectArray" title="objectArray"></a>
+	<h3 class="subsubtitle method-title">objectArray</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The associated array of objects.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic, setter=setObject:, getter=object) NSArray *objectArray</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ObjectArrayView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sizeToFitObjectViews" title="sizeToFitObjectViews"></a>
+	<h3 class="subsubtitle method-title">sizeToFitObjectViews</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Ask objectViews to adjust their size. Default NO.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL sizeToFitObjectViews</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ObjectArrayView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/targetObjectViewSize" title="targetObjectViewSize"></a>
+	<h3 class="subsubtitle method-title">targetObjectViewSize</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Size to be applied to views. A CGSizeZero size means no resize.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) CGSize targetObjectViewSize</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ObjectArrayView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/addObject:" title="addObject:"></a>
+	<h3 class="subsubtitle method-title">addObject:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add a new <a href="#//api/name/objectArray">object</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)addObject:(id)<em>object</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>object</em></dt>
+			<dd><p>The new <a href="#//api/name/objectArray">object</a>.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The view layout will be automatically adjusted.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ObjectArrayView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/addObjectIfNotPresent:" title="addObjectIfNotPresent:"></a>
+	<h3 class="subsubtitle method-title">addObjectIfNotPresent:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add a new <a href="#//api/name/objectArray">object</a> if not already present.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)addObjectIfNotPresent:(id)<em>object</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>object</em></dt>
+			<dd><p>The new <a href="#//api/name/objectArray">object</a>.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<blockquote><p>%note%<br/>
+<strong>Note:</strong> Duplicated objects risk to share a single UIView representation resulting in empty spaces in the ObjectArrayView.</p></blockquote>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ObjectArrayView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/adjustViewSize:" title="adjustViewSize:"></a>
+	<h3 class="subsubtitle method-title">adjustViewSize:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Resize a given view to the size that best fits it if <a href="#//api/name/sizeToFitObjectViews">sizeToFitObjectViews</a> is set.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)adjustViewSize:(UIView *)<em>view</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>view</em></dt>
+			<dd><p>The view to be adjusted.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ObjectArrayView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/insertObject:atIndex:" title="insertObject:atIndex:"></a>
+	<h3 class="subsubtitle method-title">insertObject:atIndex:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Insert an <a href="#//api/name/objectArray">object</a> to the <a href="#//api/name/objectArray">objectArray</a> at the given index.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)insertObject:(id)<em>object</em> atIndex:(NSUInteger)<em>index</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>object</em></dt>
+			<dd><p>The <a href="#//api/name/objectArray">object</a> to insert.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>index</em></dt>
+			<dd><p>The index to where the <a href="#//api/name/objectArray">object</a> should be inserted.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ObjectArrayView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/loadMoreObjects:" title="loadMoreObjects:"></a>
+	<h3 class="subsubtitle method-title">loadMoreObjects:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Trigger loading more objects.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (IBAction)loadMoreObjects:(id)<em>sender</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sender</em></dt>
+			<dd><p>The sender <a href="#//api/name/objectArray">object</a>.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ObjectArrayView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/populateObjectArrayWithSubviews" title="populateObjectArrayWithSubviews"></a>
+	<h3 class="subsubtitle method-title">populateObjectArrayWithSubviews</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Populate the <a href="#//api/name/objectArray">objectArray</a> with the objectArrayView subviews.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)populateObjectArrayWithSubviews</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>You would normally call this method after loading the ObjectArrayView from a Nib by<br/>
+overriding awakeFromNib, UIView&rsquo;s initWithCoder, or UIViewController&rsquo;s viewDidLoad methods.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ObjectArrayView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/removeObject:" title="removeObject:"></a>
+	<h3 class="subsubtitle method-title">removeObject:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Delete an <a href="#//api/name/objectArray">object</a> from the <a href="#//api/name/objectArray">objectArray</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)removeObject:(id)<em>object</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>object</em></dt>
+			<dd><p>The <a href="#//api/name/objectArray">object</a> to delete.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ObjectArrayView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/removeObjectAtIndex:" title="removeObjectAtIndex:"></a>
+	<h3 class="subsubtitle method-title">removeObjectAtIndex:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Insert an <a href="#//api/name/objectArray">object</a> to the <a href="#//api/name/objectArray">objectArray</a> at the given index.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)removeObjectAtIndex:(NSUInteger)<em>index</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>index</em></dt>
+			<dd><p>The index corresponding to the <a href="#//api/name/objectArray">object</a> to remove.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ObjectArrayView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/replaceObjectAtIndex:withObject:" title="replaceObjectAtIndex:withObject:"></a>
+	<h3 class="subsubtitle method-title">replaceObjectAtIndex:withObject:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Replace an <a href="#//api/name/objectArray">object</a> of the <a href="#//api/name/objectArray">objectArray</a> at a given index by a new one.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)replaceObjectAtIndex:(NSUInteger)<em>index</em> withObject:(id)<em>object</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>index</em></dt>
+			<dd><p>The index corresponding to the <a href="#//api/name/objectArray">object</a> to replace.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>object</em></dt>
+			<dd><p>The new <a href="#//api/name/objectArray">object</a>.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ObjectArrayView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setObject:hidden:" title="setObject:hidden:"></a>
+	<h3 class="subsubtitle method-title">setObject:hidden:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Hide/Show an object&rsquo;s corresponding view.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setObject:(id)<em>object</em> hidden:(BOOL)<em>yesOrNo</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>object</em></dt>
+			<dd><p>The <a href="#//api/name/objectArray">object</a> whose view should be hidden/shown.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>yesOrNo</em></dt>
+			<dd><p>Whether to hide or not the corresponding view.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ObjectArrayView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setObjectAtIndex:hidden:" title="setObjectAtIndex:hidden:"></a>
+	<h3 class="subsubtitle method-title">setObjectAtIndex:hidden:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Hide/Show an object&rsquo;s corresponding view.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setObjectAtIndex:(NSUInteger)<em>index</em> hidden:(BOOL)<em>yesOrNo</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>index</em></dt>
+			<dd><p>The index of the <a href="#//api/name/objectArray">object</a> whose view should be hidden/shown.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>yesOrNo</em></dt>
+			<dd><p>Whether to hide or not the corresponding view.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ObjectArrayView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/viewForObject:" title="viewForObject:"></a>
+	<h3 class="subsubtitle method-title">viewForObject:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create a view corresponding to a given <a href="#//api/name/objectArray">object</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (UIView *)viewForObject:(id)<em>object</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>object</em></dt>
+			<dd><p>An <a href="#//api/name/objectArray">objectArray</a> <a href="#//api/name/objectArray">object</a>.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ObjectArrayView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 CyberAgent Inc. All rights reserved. (Last updated: 2013-04-30)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,2052 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>NBUGalleryViewController Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">NBUKit </a></h1>
+				<a id="developerHome" href="../index.html">CyberAgent Inc</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">NBUGalleryViewController Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/captionLabel">&nbsp;&nbsp;&nbsp;&nbsp;captionLabel</option>
+	
+	<option value="//api/name/currentIndex">&nbsp;&nbsp;&nbsp;&nbsp;currentIndex</option>
+	
+	<option value="//api/name/fullscreen">&nbsp;&nbsp;&nbsp;&nbsp;fullscreen</option>
+	
+	<option value="//api/name/imageLoader">&nbsp;&nbsp;&nbsp;&nbsp;imageLoader</option>
+	
+	<option value="//api/name/imagePreloadCount">&nbsp;&nbsp;&nbsp;&nbsp;imagePreloadCount</option>
+	
+	<option value="//api/name/navigationBarStyle">&nbsp;&nbsp;&nbsp;&nbsp;navigationBarStyle</option>
+	
+	<option value="//api/name/nextButton">&nbsp;&nbsp;&nbsp;&nbsp;nextButton</option>
+	
+	<option value="//api/name/nibNameForThumbnails">&nbsp;&nbsp;&nbsp;&nbsp;nibNameForThumbnails</option>
+	
+	<option value="//api/name/nibNameForViews">&nbsp;&nbsp;&nbsp;&nbsp;nibNameForViews</option>
+	
+	<option value="//api/name/objectArray">&nbsp;&nbsp;&nbsp;&nbsp;objectArray</option>
+	
+	<option value="//api/name/pageControl">&nbsp;&nbsp;&nbsp;&nbsp;pageControl</option>
+	
+	<option value="//api/name/previousButton">&nbsp;&nbsp;&nbsp;&nbsp;previousButton</option>
+	
+	<option value="//api/name/showThumbnailsView">&nbsp;&nbsp;&nbsp;&nbsp;showThumbnailsView</option>
+	
+	<option value="//api/name/spaceBetweenViews">&nbsp;&nbsp;&nbsp;&nbsp;spaceBetweenViews</option>
+	
+	<option value="//api/name/startingIndex">&nbsp;&nbsp;&nbsp;&nbsp;startingIndex</option>
+	
+	<option value="//api/name/statusBarStyle">&nbsp;&nbsp;&nbsp;&nbsp;statusBarStyle</option>
+	
+	<option value="//api/name/thumbnailMargin">&nbsp;&nbsp;&nbsp;&nbsp;thumbnailMargin</option>
+	
+	<option value="//api/name/thumbnailSize">&nbsp;&nbsp;&nbsp;&nbsp;thumbnailSize</option>
+	
+	<option value="//api/name/thumbnailsGridView">&nbsp;&nbsp;&nbsp;&nbsp;thumbnailsGridView</option>
+	
+	<option value="//api/name/toggleThumbnailsViewButton">&nbsp;&nbsp;&nbsp;&nbsp;toggleThumbnailsViewButton</option>
+	
+	<option value="//api/name/updatesBars">&nbsp;&nbsp;&nbsp;&nbsp;updatesBars</option>
+	
+	<option value="//api/name/updatesTitle">&nbsp;&nbsp;&nbsp;&nbsp;updatesTitle</option>
+	
+	<option value="//api/name/viewsToHide">&nbsp;&nbsp;&nbsp;&nbsp;viewsToHide</option>
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/goToNext:">&nbsp;&nbsp;&nbsp;&nbsp;- goToNext:</option>
+	
+	<option value="//api/name/goToPrevious:">&nbsp;&nbsp;&nbsp;&nbsp;- goToPrevious:</option>
+	
+	<option value="//api/name/pageControlWasTapped:">&nbsp;&nbsp;&nbsp;&nbsp;- pageControlWasTapped:</option>
+	
+	<option value="//api/name/reloadGallery">&nbsp;&nbsp;&nbsp;&nbsp;- reloadGallery</option>
+	
+	<option value="//api/name/setCurrentIndex:animated:">&nbsp;&nbsp;&nbsp;&nbsp;- setCurrentIndex:animated:</option>
+	
+	<option value="//api/name/setFullscreen:animated:">&nbsp;&nbsp;&nbsp;&nbsp;- setFullscreen:animated:</option>
+	
+	<option value="//api/name/setShowThumbnailsView:animated:">&nbsp;&nbsp;&nbsp;&nbsp;- setShowThumbnailsView:animated:</option>
+	
+	<option value="//api/name/thumbnailWasTapped:">&nbsp;&nbsp;&nbsp;&nbsp;- thumbnailWasTapped:</option>
+	
+	<option value="//api/name/toggleFullscreen:">&nbsp;&nbsp;&nbsp;&nbsp;- toggleFullscreen:</option>
+	
+	<option value="//api/name/toggleThumbnailsView:">&nbsp;&nbsp;&nbsp;&nbsp;- toggleThumbnailsView:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Managing Image Loading">Managing Image Loading</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Managing the Current Image">Managing the Current Image</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Toggling Fullscreen Mode">Toggling Fullscreen Mode</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Toggling Thumbnails">Toggling Thumbnails</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Customizing the Appearance">Customizing the Appearance</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Customizing the Thumbnails">Customizing the Thumbnails</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Optional Outlets">Optional Outlets</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/captionLabel">captionLabel</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/currentIndex">currentIndex</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fullscreen">fullscreen</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/imageLoader">imageLoader</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/imagePreloadCount">imagePreloadCount</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/navigationBarStyle">navigationBarStyle</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/nextButton">nextButton</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/nibNameForThumbnails">nibNameForThumbnails</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/nibNameForViews">nibNameForViews</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/objectArray">objectArray</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pageControl">pageControl</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/previousButton">previousButton</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/showThumbnailsView">showThumbnailsView</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/spaceBetweenViews">spaceBetweenViews</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/startingIndex">startingIndex</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/statusBarStyle">statusBarStyle</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/thumbnailMargin">thumbnailMargin</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/thumbnailSize">thumbnailSize</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/thumbnailsGridView">thumbnailsGridView</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/toggleThumbnailsViewButton">toggleThumbnailsViewButton</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/updatesBars">updatesBars</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/updatesTitle">updatesTitle</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/viewsToHide">viewsToHide</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/goToNext:">goToNext:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/goToPrevious:">goToPrevious:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pageControlWasTapped:">pageControlWasTapped:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/reloadGallery">reloadGallery</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setCurrentIndex:animated:">setCurrentIndex:animated:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setFullscreen:animated:">setFullscreen:animated:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setShowThumbnailsView:animated:">setShowThumbnailsView:animated:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/thumbnailWasTapped:">thumbnailWasTapped:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/toggleFullscreen:">toggleFullscreen:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/toggleThumbnailsView:">toggleThumbnailsView:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="NBUGalleryViewController Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">NBUGalleryViewController Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value"><a href="../Classes/NBUViewController.html">NBUViewController</a> : UIViewController</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">NBUGalleryViewController.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>A controller images from different sources.</p>
+
+<ul>
+<li>Displays objects from its objectArray using either the default NBUImageLoader<br/>
+or a custom imageLoader.</li>
+<li>Allows pinch and double tap to zoom, toggleFullscreen, toggleThumbnailsView and<br/>
+manually setting the currentIndex to be displayed with or without animations.</li>
+<li>Fully configurable with optional controls such as previousButton, nextButton,<br/>
+pageControl, thumbnailsGridView, captionLabel and viewsToHide.</li>
+</ul>
+
+
+<p>Inspired on FGallery by Grant Davis (<a href="https://github.com/gdavis/FGallery-iPhone">https://github.com/gdavis/FGallery-iPhone).</a>.)</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						<a title="Managing Image Loading" name="task_Managing Image Loading"></a>
+						<h3 class="subsubtitle task-title">Managing Image Loading</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/objectArray">&nbsp;&nbsp;objectArray</a></code>
+		<span class="tooltip"><p>The array ob objects to be displayed.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/imageLoader">&nbsp;&nbsp;imageLoader</a></code>
+		<span class="tooltip"><p>An optional custom imageLoader.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/imagePreloadCount">&nbsp;&nbsp;imagePreloadCount</a></code>
+		<span class="tooltip"><p>The number of images to be preloaded.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/reloadGallery">&ndash;&nbsp;reloadGallery</a></code>
+		<span class="tooltip"><p>Force to reconstruct the view hierarchy.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Managing the Current Image" name="task_Managing the Current Image"></a>
+						<h3 class="subsubtitle task-title">Managing the Current Image</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/startingIndex">&nbsp;&nbsp;startingIndex</a></code>
+		<span class="tooltip"><p>The index to be set when reloading the gallery. Defaults to <code>0</code>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/currentIndex">&nbsp;&nbsp;currentIndex</a></code>
+		<span class="tooltip"><p>The current index.<br/>
+@discusssion Setting a values is equivalent to <a href="#//api/name/setCurrentIndex:animated:">setCurrentIndex:animated:</a><br/>
+without animation.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setCurrentIndex:animated:">&ndash;&nbsp;setCurrentIndex:animated:</a></code>
+		<span class="tooltip"><p>Modify the current index.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/goToPrevious:">&ndash;&nbsp;goToPrevious:</a></code>
+		<span class="tooltip"><p>Go to the previous index with animation.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/goToNext:">&ndash;&nbsp;goToNext:</a></code>
+		<span class="tooltip"><p>Go to the next index with animation.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pageControlWasTapped:">&ndash;&nbsp;pageControlWasTapped:</a></code>
+		<span class="tooltip"><p>Refresh the <a href="#//api/name/currentIndex">currentIndex</a> based on the <a href="#//api/name/pageControl">pageControl</a> current value.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/thumbnailWasTapped:">&ndash;&nbsp;thumbnailWasTapped:</a></code>
+		<span class="tooltip"><p>Go to the index corresponding to the tapped <a href="../Classes/NBUGalleryThumbnailView.html">NBUGalleryThumbnailView</a> object.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Toggling Fullscreen Mode" name="task_Toggling Fullscreen Mode"></a>
+						<h3 class="subsubtitle task-title">Toggling Fullscreen Mode</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/fullscreen">&nbsp;&nbsp;fullscreen</a></code>
+		<span class="tooltip"><p>Whether the controller is in fullscreen mode.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setFullscreen:animated:">&ndash;&nbsp;setFullscreen:animated:</a></code>
+		<span class="tooltip"><p>Enter/exit <a href="#//api/name/fullscreen">fullscreen</a> mode.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/toggleFullscreen:">&ndash;&nbsp;toggleFullscreen:</a></code>
+		<span class="tooltip"><p>Toggle the <a href="#//api/name/fullscreen">fullscreen</a> mode.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Toggling Thumbnails" name="task_Toggling Thumbnails"></a>
+						<h3 class="subsubtitle task-title">Toggling Thumbnails</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/showThumbnailsView">&nbsp;&nbsp;showThumbnailsView</a></code>
+		<span class="tooltip"><p>Whether to show the <a href="#//api/name/thumbnailsGridView">thumbnailsGridView</a>;</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setShowThumbnailsView:animated:">&ndash;&nbsp;setShowThumbnailsView:animated:</a></code>
+		<span class="tooltip"><p>Show/hide the <a href="#//api/name/thumbnailsGridView">thumbnailsGridView</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/toggleThumbnailsView:">&ndash;&nbsp;toggleThumbnailsView:</a></code>
+		<span class="tooltip"><p>Toggle thumbnailsGridView&rsquo;s visibility.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Customizing the Appearance" name="task_Customizing the Appearance"></a>
+						<h3 class="subsubtitle task-title">Customizing the Appearance</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/updatesTitle">&nbsp;&nbsp;updatesTitle</a></code>
+		<span class="tooltip"><p>Whether the controller&rsquo;s navigationItem title should be updated to<br/>
+reflect the <a href="#//api/name/currentIndex">currentIndex</a>. Default <code>YES</code>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/updatesBars">&nbsp;&nbsp;updatesBars</a></code>
+		<span class="tooltip"><p>Whether the status and navigation bars should be modified when the<br/>
+controller appears/disappears. Default <code>YES</code>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/navigationBarStyle">&nbsp;&nbsp;navigationBarStyle</a></code>
+		<span class="tooltip"><p>The UIBarStyle to be applied to the navigation bar when the controller<br/>
+appears.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/statusBarStyle">&nbsp;&nbsp;statusBarStyle</a></code>
+		<span class="tooltip"><p>The UIStatusBarStyle to be applied to the status bar when the controller<br/>
+appears.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/nibNameForViews">&nbsp;&nbsp;nibNameForViews</a></code>
+		<span class="tooltip"><p>Optional Nib name to be used for <a href="#//api/name/objectArray">objectArray</a> elements.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/spaceBetweenViews">&nbsp;&nbsp;spaceBetweenViews</a></code>
+		<span class="tooltip"><p>The desired space between two images.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Customizing the Thumbnails" name="task_Customizing the Thumbnails"></a>
+						<h3 class="subsubtitle task-title">Customizing the Thumbnails</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/nibNameForThumbnails">&nbsp;&nbsp;nibNameForThumbnails</a></code>
+		<span class="tooltip"><p>Optional Nib name to be used to display thumbnails.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/thumbnailSize">&nbsp;&nbsp;thumbnailSize</a></code>
+		<span class="tooltip"><p>The target thumbnail size.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/thumbnailMargin">&nbsp;&nbsp;thumbnailMargin</a></code>
+		<span class="tooltip"><p>The target margin to be applied to thumbnails.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Optional Outlets" name="task_Optional Outlets"></a>
+						<h3 class="subsubtitle task-title">Optional Outlets</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/previousButton">&nbsp;&nbsp;previousButton</a></code>
+		<span class="tooltip"><p>Optional previous button.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/nextButton">&nbsp;&nbsp;nextButton</a></code>
+		<span class="tooltip"><p>Optional next button.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pageControl">&nbsp;&nbsp;pageControl</a></code>
+		<span class="tooltip"><p>Optional UIPageControl.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/toggleThumbnailsViewButton">&nbsp;&nbsp;toggleThumbnailsViewButton</a></code>
+		<span class="tooltip"><p>Optional toggle thumbnails button.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/captionLabel">&nbsp;&nbsp;captionLabel</a></code>
+		<span class="tooltip"><p>Optional caption label.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/thumbnailsGridView">&nbsp;&nbsp;thumbnailsGridView</a></code>
+		<span class="tooltip"><p>Optional thumbnails view holder.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/viewsToHide">&nbsp;&nbsp;viewsToHide</a></code>
+		<span class="tooltip"><p>Views that should be shown/hidden when toggling <a href="#//api/name/fullscreen">fullscreen</a>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/captionLabel" title="captionLabel"></a>
+	<h3 class="subsubtitle method-title">captionLabel</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Optional caption label.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) IBOutlet UILabel *captionLabel</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Automatically hidden for images with no caption.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/currentIndex" title="currentIndex"></a>
+	<h3 class="subsubtitle method-title">currentIndex</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The current index.<br/>
+@discusssion Setting a values is equivalent to <a href="#//api/name/setCurrentIndex:animated:">setCurrentIndex:animated:</a><br/>
+without animation.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) NSInteger currentIndex</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/fullscreen" title="fullscreen"></a>
+	<h3 class="subsubtitle method-title">fullscreen</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Whether the controller is in fullscreen mode.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, getter=isFulscreen) BOOL fullscreen</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>In fullscreen mode status and navigation bars are hidden<br/>
+along with any views in the <a href="#//api/name/viewsToHide">viewsToHide</a> array.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/imageLoader" title="imageLoader"></a>
+	<h3 class="subsubtitle method-title">imageLoader</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>An optional custom imageLoader.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) id&lt;NBUImageLoader&gt; imageLoader</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>If not specified <a href="../Classes/NBUImageLoader.html">NBUImageLoader</a> will be used.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/imagePreloadCount" title="imagePreloadCount"></a>
+	<h3 class="subsubtitle method-title">imagePreloadCount</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The number of images to be preloaded.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) NSUInteger imagePreloadCount</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/navigationBarStyle" title="navigationBarStyle"></a>
+	<h3 class="subsubtitle method-title">navigationBarStyle</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The UIBarStyle to be applied to the navigation bar when the controller<br/>
+appears.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) UIBarStyle navigationBarStyle</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/nextButton" title="nextButton"></a>
+	<h3 class="subsubtitle method-title">nextButton</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Optional next button.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) IBOutlet id&lt;UIButton&gt; nextButton</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/nibNameForThumbnails" title="nibNameForThumbnails"></a>
+	<h3 class="subsubtitle method-title">nibNameForThumbnails</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Optional Nib name to be used to display thumbnails.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSString *nibNameForThumbnails</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/nibNameForViews" title="nibNameForViews"></a>
+	<h3 class="subsubtitle method-title">nibNameForViews</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Optional Nib name to be used for <a href="#//api/name/objectArray">objectArray</a> elements.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSString *nibNameForViews</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/objectArray" title="objectArray"></a>
+	<h3 class="subsubtitle method-title">objectArray</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The array ob objects to be displayed.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSArray *objectArray</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/NBUImageLoader.html">NBUImageLoader</a>.</p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/pageControl" title="pageControl"></a>
+	<h3 class="subsubtitle method-title">pageControl</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Optional UIPageControl.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) IBOutlet UIPageControl *pageControl</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/previousButton" title="previousButton"></a>
+	<h3 class="subsubtitle method-title">previousButton</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Optional previous button.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) IBOutlet id&lt;UIButton&gt; previousButton</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/showThumbnailsView" title="showThumbnailsView"></a>
+	<h3 class="subsubtitle method-title">showThumbnailsView</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Whether to show the <a href="#//api/name/thumbnailsGridView">thumbnailsGridView</a>;</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL showThumbnailsView</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/spaceBetweenViews" title="spaceBetweenViews"></a>
+	<h3 class="subsubtitle method-title">spaceBetweenViews</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The desired space between two images.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) CGFloat spaceBetweenViews</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/startingIndex" title="startingIndex"></a>
+	<h3 class="subsubtitle method-title">startingIndex</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The index to be set when reloading the gallery. Defaults to <code>0</code>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) NSInteger startingIndex</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/statusBarStyle" title="statusBarStyle"></a>
+	<h3 class="subsubtitle method-title">statusBarStyle</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The UIStatusBarStyle to be applied to the status bar when the controller<br/>
+appears.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) UIStatusBarStyle statusBarStyle</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/thumbnailMargin" title="thumbnailMargin"></a>
+	<h3 class="subsubtitle method-title">thumbnailMargin</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The target margin to be applied to thumbnails.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) CGSize thumbnailMargin</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/thumbnailSize" title="thumbnailSize"></a>
+	<h3 class="subsubtitle method-title">thumbnailSize</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The target thumbnail size.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) CGSize thumbnailSize</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/thumbnailsGridView" title="thumbnailsGridView"></a>
+	<h3 class="subsubtitle method-title">thumbnailsGridView</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Optional thumbnails view holder.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) IBOutlet UIScrollView *thumbnailsGridView</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>If set to <code>nil</code> the thumbnails functionality is disabled.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/toggleThumbnailsViewButton" title="toggleThumbnailsViewButton"></a>
+	<h3 class="subsubtitle method-title">toggleThumbnailsViewButton</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Optional toggle thumbnails button.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) IBOutlet id&lt;UIButton&gt; toggleThumbnailsViewButton</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/updatesBars" title="updatesBars"></a>
+	<h3 class="subsubtitle method-title">updatesBars</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Whether the status and navigation bars should be modified when the<br/>
+controller appears/disappears. Default <code>YES</code>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL updatesBars</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/navigationBarStyle">@property navigationBarStyle</a> and <a href="#//api/name/statusBarStyle">@property statusBarStyle</a>.</p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/updatesTitle" title="updatesTitle"></a>
+	<h3 class="subsubtitle method-title">updatesTitle</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Whether the controller&rsquo;s navigationItem title should be updated to<br/>
+reflect the <a href="#//api/name/currentIndex">currentIndex</a>. Default <code>YES</code>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL updatesTitle</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/viewsToHide" title="viewsToHide"></a>
+	<h3 class="subsubtitle method-title">viewsToHide</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Views that should be shown/hidden when toggling <a href="#//api/name/fullscreen">fullscreen</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) IBOutletCollection ( UIView ) NSArray *viewsToHide</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/goToNext:" title="goToNext:"></a>
+	<h3 class="subsubtitle method-title">goToNext:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Go to the next index with animation.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (IBAction)goToNext:(id)<em>sender</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sender</em></dt>
+			<dd><p>The sender object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/goToPrevious:" title="goToPrevious:"></a>
+	<h3 class="subsubtitle method-title">goToPrevious:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Go to the previous index with animation.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (IBAction)goToPrevious:(id)<em>sender</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sender</em></dt>
+			<dd><p>The sender object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/pageControlWasTapped:" title="pageControlWasTapped:"></a>
+	<h3 class="subsubtitle method-title">pageControlWasTapped:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Refresh the <a href="#//api/name/currentIndex">currentIndex</a> based on the <a href="#//api/name/pageControl">pageControl</a> current value.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (IBAction)pageControlWasTapped:(id)<em>sender</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sender</em></dt>
+			<dd><p>The sender object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/reloadGallery" title="reloadGallery"></a>
+	<h3 class="subsubtitle method-title">reloadGallery</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Force to reconstruct the view hierarchy.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)reloadGallery</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setCurrentIndex:animated:" title="setCurrentIndex:animated:"></a>
+	<h3 class="subsubtitle method-title">setCurrentIndex:animated:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Modify the current index.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setCurrentIndex:(NSInteger)<em>index</em> animated:(BOOL)<em>animated</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>index</em></dt>
+			<dd><p>The desired index.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>animated</em></dt>
+			<dd><p>Whethet to animate the change.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setFullscreen:animated:" title="setFullscreen:animated:"></a>
+	<h3 class="subsubtitle method-title">setFullscreen:animated:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Enter/exit <a href="#//api/name/fullscreen">fullscreen</a> mode.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setFullscreen:(BOOL)<em>fullscreen</em> animated:(BOOL)<em>animated</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>fullscreen</em></dt>
+			<dd><p>Set to <code>YES</code> to go <a href="#//api/name/fullscreen">fullscreen</a>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>animated</em></dt>
+			<dd><p>Whether the mode change should be animated.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setShowThumbnailsView:animated:" title="setShowThumbnailsView:animated:"></a>
+	<h3 class="subsubtitle method-title">setShowThumbnailsView:animated:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Show/hide the <a href="#//api/name/thumbnailsGridView">thumbnailsGridView</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setShowThumbnailsView:(BOOL)<em>yesOrNo</em> animated:(BOOL)<em>animated</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>yesOrNo</em></dt>
+			<dd><p>Whether the thumbnails should be shown.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>animated</em></dt>
+			<dd><p>Whether showing/hiding the view should be animated.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/thumbnailWasTapped:" title="thumbnailWasTapped:"></a>
+	<h3 class="subsubtitle method-title">thumbnailWasTapped:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Go to the index corresponding to the tapped <a href="../Classes/NBUGalleryThumbnailView.html">NBUGalleryThumbnailView</a> object.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (IBAction)thumbnailWasTapped:(id)<em>sender</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sender</em></dt>
+			<dd><p>The sender object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/toggleFullscreen:" title="toggleFullscreen:"></a>
+	<h3 class="subsubtitle method-title">toggleFullscreen:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Toggle the <a href="#//api/name/fullscreen">fullscreen</a> mode.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (IBAction)toggleFullscreen:(id)<em>sender</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sender</em></dt>
+			<dd><p>The sender object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/toggleThumbnailsView:" title="toggleThumbnailsView:"></a>
+	<h3 class="subsubtitle method-title">toggleThumbnailsView:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Toggle thumbnailsGridView&rsquo;s visibility.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (IBAction)toggleThumbnailsView:(id)<em>sender</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sender</em></dt>
+			<dd><p>The sender object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUGalleryViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 CyberAgent Inc. All rights reserved. (Last updated: 2013-04-30)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>
