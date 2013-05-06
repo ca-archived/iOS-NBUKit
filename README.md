@@ -65,6 +65,12 @@ In development on the [cocoapod branch](https://github.com/CyberAgent/iOS-NBUKit
 
 [NBUKit Installation](https://github.com/CyberAgent/iOS-NBUKit/wiki/NBUKit-Installation).
 
+Documentation
+-------------
+
+* HTML: http://cyberagent.github.io/iOS-NBUKit/html/
+* Xcode DocSet: `http://cyberagent.github.io/iOS-NBUKit/publish/NBUKit.atom`
+
 License
 -------
 
