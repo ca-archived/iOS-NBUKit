@@ -96,6 +96,7 @@
     
     // Configure UI
     self.title = self.assetsGroup.name;
+    self.selectedAssets = nil;
     
     // Reload assets
     [self.assetsGroup stopLoadingAssets];
@@ -134,6 +135,14 @@
          }];
     });
     
+}
+
+- (void)setContinueButton:(id<UIButton>)continueButton
+{
+    _continueButton = continueButton;
+    
+    // Update the continue button
+    _continueButton.enabled = _selectedAssets.count > 0;
 }
 
 - (void)setLoading:(BOOL)loading
@@ -178,6 +187,9 @@
     {
         view.selected = [selectedAssets containsObject:view.asset];
     }
+    
+    // Call the selection changed block
+    if (_selectionChangedBlock) _selectionChangedBlock();
 }
 
 #pragma mark - Manage taps

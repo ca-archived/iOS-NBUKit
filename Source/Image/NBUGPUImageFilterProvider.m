@@ -566,10 +566,10 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
     return _otherImagePictures;
 }
 
-- (void)setImage:(UIImage *)image
-forImagePictureAtIndex:(NSUInteger)index
-withTargetFilterAtIndex:(NSUInteger)targetIndex
-atTextureLocation:(NSInteger)textureLocation
+- (void)        setImage:(UIImage *)image
+  forImagePictureAtIndex:(NSUInteger)index
+ withTargetFilterAtIndex:(NSUInteger)targetIndex
+       atTextureLocation:(NSInteger)textureLocation
 {
     if (!_otherImagePictures)
     {

@@ -99,5 +99,18 @@
     _shootButton.userInteractionEnabled = NO;
 }
 
+- (IBAction)customToggleFlash:(id)sender
+{
+    // We intentionally skip AVCaptureFlashModeAuto
+    if (self.cameraView.currentFlashMode == AVCaptureFlashModeOff)
+    {
+        self.cameraView.currentFlashMode = AVCaptureFlashModeOn;
+    }
+    else
+    {
+        self.cameraView.currentFlashMode = AVCaptureFlashModeOff;
+    }
+}
+
 @end
 

@@ -37,7 +37,6 @@
                                                    style:UIBarButtonItemStyleBordered
                                                   target:self
                                                   action:@selector(pushSlideView:)];
-    _nextButton.enabled = NO;
     self.navigationItem.rightBarButtonItem = _nextButton;
     self.continueButton = _nextButton;
     

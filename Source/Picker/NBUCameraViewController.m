@@ -37,6 +37,7 @@
 @synthesize targetLibraryAlbumName = _targetLibraryAlbumName;
 @synthesize singlePictureMode = _singlePictureMode;
 @synthesize takesPicturesWithVolumeButtons = _takesPicturesWithVolumeButtons;
+@synthesize flashLabel = _flashLabel;
 
 + (BOOL)isCameraAvailable
 {
@@ -70,12 +71,40 @@
         [_cameraView.lastPictureImageView removeFromSuperview];
         _cameraView.lastPictureImageView = nil;
     }
+    _cameraView.flashButtonConfigurationBlock = ^(id<UIButton> button, AVCaptureFlashMode mode)
+    {
+        switch (mode)
+        {
+            case AVCaptureFlashModeOn:
+                _flashLabel.text = NSLocalizedStringWithDefaultValue(@"NBUCameraViewController FlashLabel On",
+                                                                     nil, nil,
+                                                                     @"On",
+                                                                     @"NBUCameraViewController FlashLabel On");
+                break;
+                
+            case AVCaptureFlashModeOff:
+                _flashLabel.text = NSLocalizedStringWithDefaultValue(@"NBUCameraViewController FlashLabel Off",
+                                                                     nil, nil,
+                                                                     @"Off",
+                                                                     @"NBUCameraViewController FlashLabel Off");
+                break;
+
+            case AVCaptureFlashModeAuto:
+            default:
+                _flashLabel.text = NSLocalizedStringWithDefaultValue(@"NBUCameraViewController FlashLabel Auto",
+                                                                     nil, nil,
+                                                                     @"Auto",
+                                                                     @"NBUCameraViewController FlashLabel Auto");;
+                break;
+        }
+    };
 }
 
 - (void)viewDidUnload
 {
     _cameraView = nil;
     
+    [self setFlashLabel:nil];
     [super viewDidUnload];
 }
 

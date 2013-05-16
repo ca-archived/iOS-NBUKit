@@ -24,5 +24,8 @@
 @property (assign, nonatomic) IBOutlet UIButton * shootButton;
 @property (assign, nonatomic) IBOutlet ObjectSlideView * slideView;
 
+// Actions
+- (IBAction)customToggleFlash:(id)sender;
+
 @end
 

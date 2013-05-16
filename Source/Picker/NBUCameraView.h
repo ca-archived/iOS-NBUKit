@@ -19,6 +19,7 @@
 //
 
 #import "ActiveView.h"
+#import <AVFoundation/AVCaptureDevice.h>
 
 @protocol UIButton;
 
@@ -76,8 +77,14 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 
 /// @name Capture Devices and Modes
 
-/// The available devices' uniqueID's (ex. Front, Back camera).
-@property (strong, nonatomic, readonly) NSArray * availableDevices;
+/// The available capture devices' uniqueID's (ex. Front, Back camera).
+/// @see [AVCaptureDevice uniqueID].
+@property (strong, nonatomic, readonly) NSArray * availableCaptureDevices;
+
+/// The current capture device's uniqueID.
+/// @discussion Changing the current device refreshes the availableFlashModes, availableFocusModes,
+/// availableExposureModes and availableWhiteBalanceModes.
+@property (strong, nonatomic)           NSString * currentCaptureDevice;
 
 /// The current device's available capture presets and resolutions.
 @property (nonatomic, strong)           NSDictionary * availableResolutions;
@@ -85,14 +92,30 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 /// The current device's available AVCaptureFlashMode modes.
 @property (strong, nonatomic, readonly) NSArray * availableFlashModes;
 
+/// The current capture device's AVCaptureFlashMode.
+/// @see availableFlashModes.
+@property (nonatomic)                   AVCaptureFlashMode currentFlashMode;
+
 /// The current device's available AVCaptureFocusMode modes.
 @property (strong, nonatomic, readonly) NSArray * availableFocusModes;
+
+/// The current capture device's AVCaptureFocusMode.
+/// @see availableFocusModes.
+@property (nonatomic)                   AVCaptureFocusMode currentFocusMode;
 
 /// The current device's available AVCaptureExposureMode modes.
 @property (strong, nonatomic, readonly) NSArray * availableExposureModes;
 
+/// The current capture device's AVCaptureExposureMode.
+/// @see availableExposureModes.
+@property (nonatomic)                   AVCaptureExposureMode currentExposureMode;
+
 /// The current device's available AVCaptureWhiteBalanceMode modes.
 @property (strong, nonatomic, readonly) NSArray * availableWhiteBalanceModes;
+
+/// The current capture device's AVCaptureWhiteBalanceMode.
+/// @see availableWhiteBalanceModes.
+@property (nonatomic)                   AVCaptureWhiteBalanceMode currentWhiteBalanceMode;
 
 /// @name Customizing the UI Controls
 
@@ -126,6 +149,7 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 /// Switch between front and back cameras (if available).
 /// @discussion Configures toggleCameraButton using toggleCameraButtonConfigurationBlock when available.
 /// @param sender The sender object.
+/// @see availableCaptureDevices.
 - (IBAction)toggleCamera:(id)sender;
 
 /// Change the flash mode (if available).

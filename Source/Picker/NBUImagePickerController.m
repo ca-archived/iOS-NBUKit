@@ -27,12 +27,12 @@
 @implementation NBUImagePickerController
 {
     BOOL _returnMediaInfoMode;
-    BOOL _singleImageMode;
     NSMutableArray * _mediaInfos;
     NSMutableDictionary * _previousSelectedAssetPaths;
 }
 
 @synthesize options = _options;
+@synthesize singleImageMode = _singleImageMode;
 @synthesize resultBlock = _resultBlock;
 @synthesize targetLibraryAlbumName = _targetLibraryAlbumName;
 @synthesize cameraController = _cameraController;

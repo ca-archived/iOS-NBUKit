@@ -136,7 +136,8 @@ configureFilterBlock:(NBUConfigureFilterBlock)block
 - (id)concreteFilter
 {
     // Create/configure
-    _concreteFilter = _configureFilterBlock(self, _concreteFilter);
+//    _concreteFilter = _configureFilterBlock(self, _concreteFilter);
+    _concreteFilter = _configureFilterBlock(self, nil);
     
     return _concreteFilter;
 }

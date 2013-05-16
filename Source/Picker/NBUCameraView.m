@@ -55,7 +55,7 @@
 @synthesize savePicturesToLibrary = _savePicturesToLibrary;
 @synthesize targetLibraryAlbumName = _targetLibraryAlbumName;
 @synthesize shouldAutoRotateView = _shouldAutoRotateView;
-@synthesize availableDevices = _availableDevices;
+@synthesize availableCaptureDevices = _availableCaptureDevices;
 @synthesize availableResolutions = _availableResolutions;
 @synthesize availableFlashModes = _availableFlashModes;
 @synthesize availableFocusModes = _availableFocusModes;
@@ -168,14 +168,14 @@
     }
     
     // Get a capture device if needed
-    if (!_currentDevice && !_availableDevices)
+    if (!_currentDevice && !_availableCaptureDevices)
     {
 #ifndef __i386__
         // Real devices
-        self.currentCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+        self.currentAVCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
 #else
         // Simulator (iOS5 simulator reports an input device while iOS6 simulator doesn't)
-        self.currentCaptureDevice = nil;
+        self.currentAVCaptureDevice = nil;
 #endif
     }
     
@@ -282,12 +282,22 @@
 
 #pragma mark - Properties
 
-- (void)setCurrentCaptureDevice:(AVCaptureDevice *)device
+- (void)setCurrentCaptureDevice:(NSString *)currentCaptureDevice
+{
+    self.currentAVCaptureDevice = [AVCaptureDevice deviceWithUniqueID:currentCaptureDevice];
+}
+
+- (NSString *)currentCaptureDevice
+{
+    return _currentDevice.uniqueID;
+}
+
+- (void)setCurrentAVCaptureDevice:(AVCaptureDevice *)device
 {
     if ([_currentDevice.uniqueID isEqualToString:device.uniqueID])
         return;
     
-    NBULogVerbose(@"setCurrentCaptureDevice: %@", device);
+    NBULogVerbose(@"%@: %@", THIS_METHOD, device);
     _currentDevice = device;
     
     // Other available devices
@@ -296,8 +306,8 @@
     for (AVCaptureDevice * other in [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo])
         [tmp addObject:other.uniqueID];
 #endif
-    _availableDevices = [NSArray arrayWithArray:tmp];
-    NBULogVerbose(@"availableDevices: %@", _availableDevices);
+    _availableCaptureDevices = [NSArray arrayWithArray:tmp];
+    NBULogVerbose(@"availableCaptureDevices: %@", _availableCaptureDevices);
     
     // Available flash modes
     [tmp removeAllObjects];
@@ -332,7 +342,7 @@
     _availableExposureModes = [NSArray arrayWithArray:tmp];
     NBULogVerbose(@"availableExposureModes: %@", _availableExposureModes);
     
-    // Available exposure modes
+    // Available white balance modes
     [tmp removeAllObjects];
     if ([_currentDevice isWhiteBalanceModeSupported:AVCaptureWhiteBalanceModeLocked])
         [tmp addObject:@(AVCaptureWhiteBalanceModeLocked)];
@@ -355,7 +365,7 @@
 - (void)updateUI
 {
     // Enable/disable controls
-    _toggleCameraButton.enabled = _availableDevices.count > 1;
+    _toggleCameraButton.enabled = _availableCaptureDevices.count > 1;
     _flashButton.enabled = _availableFlashModes.count > 1;
     _focusButton.enabled = _availableFocusModes.count > 1;
     _exposureButton.enabled = _availableExposureModes.count > 1;
@@ -486,8 +496,8 @@
         }
     }
     
-    NBULogVerbose(@"Best preset for target resolution %@ is '%@'",
-                  NSStringFromCGSize(target), preset);
+    NBULogInfo(@"Best preset for target resolution %@ is '%@'",
+               NSStringFromCGSize(target), preset);
     return preset;
 }
 
@@ -500,7 +510,14 @@
     NSDictionary * possibleResolutions;
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
     {
-        presets = @[AVCaptureSessionPresetLow, AVCaptureSessionPreset352x288, AVCaptureSessionPresetMedium, AVCaptureSessionPreset640x480, AVCaptureSessionPresetiFrame960x540, AVCaptureSessionPreset1280x720, AVCaptureSessionPreset1920x1080, AVCaptureSessionPresetPhoto];
+        presets = @[AVCaptureSessionPresetLow,
+                    AVCaptureSessionPreset352x288,
+                    AVCaptureSessionPresetMedium,
+                    AVCaptureSessionPreset640x480,
+                    AVCaptureSessionPresetiFrame960x540,
+                    AVCaptureSessionPreset1280x720,
+                    AVCaptureSessionPreset1920x1080,
+                    AVCaptureSessionPresetPhoto];
         possibleResolutions = @{
                                 AVCaptureSessionPresetLow           : sizeObject(192.0, 144.0),             // iOS4+
                                 AVCaptureSessionPreset352x288       : sizeObject(352.0, 288.0),             // iOS5+
@@ -513,7 +530,11 @@
     }
     else
     {
-        presets = @[AVCaptureSessionPresetLow, AVCaptureSessionPresetMedium, AVCaptureSessionPreset640x480, AVCaptureSessionPreset1280x720, AVCaptureSessionPresetPhoto];
+        presets = @[AVCaptureSessionPresetLow,
+                    AVCaptureSessionPresetMedium,
+                    AVCaptureSessionPreset640x480,
+                    AVCaptureSessionPreset1280x720,
+                    AVCaptureSessionPresetPhoto];
         possibleResolutions = @{
                                 AVCaptureSessionPresetLow           : sizeObject(192.0, 144.0),             // iOS4+
                                 AVCaptureSessionPresetMedium        : sizeObject(480.0, 360.0),             // iOS4+,
@@ -653,11 +674,10 @@
 
 - (void)toggleCamera:(id)sender
 {
-    NBULogVerbose(@"toggleCamera");
+    NBULogTrace();
     
-    self.currentCaptureDevice = [AVCaptureDevice deviceWithUniqueID:
-                                 [_availableDevices objectAfter:_currentDevice.uniqueID
-                                                           wrap:YES]];
+    self.currentCaptureDevice = [_availableCaptureDevices objectAfter:_currentDevice.uniqueID
+                                                                 wrap:YES];
 }
 
 - (void)updateDeviceConfigurationWithBlock:(void (^)(void))block
@@ -674,48 +694,84 @@
     [self updateUI];
 }
 
+- (NSInteger)currentFlashMode
+{
+    return _currentDevice.flashMode;
+}
+
+- (void)setCurrentFlashMode:(NSInteger)currentFlashMode
+{
+    NBULogInfo(@"%@: %d", THIS_METHOD, currentFlashMode);
+    
+    [self updateDeviceConfigurationWithBlock:^{
+        _currentDevice.flashMode = currentFlashMode;
+    }];
+}
+
 - (void)toggleFlashMode:(id)sender
 {
-    NSNumber * mode = @(_currentDevice.flashMode);
-    [self updateDeviceConfigurationWithBlock:^{
-        _currentDevice.flashMode = [[_availableFlashModes objectAfter:mode
-                                                                 wrap:YES] integerValue];
-    }];
+    self.currentFlashMode = [[_availableFlashModes objectAfter:@(self.currentFlashMode)
+                                                          wrap:YES] integerValue];
+}
+
+- (NSInteger)currentFocusMode
+{
+    return _currentDevice.focusMode;
+}
+
+- (void)setCurrentFocusMode:(NSInteger)currentFocusMode
+{
+    NBULogInfo(@"%@: %d", THIS_METHOD, currentFocusMode);
     
-    NBULogVerbose(@"toggleFlashMode: %d", _currentDevice.flashMode);
+    [self updateDeviceConfigurationWithBlock:^{
+        _currentDevice.focusMode = currentFocusMode;
+    }];
 }
 
 - (void)toggleFocusMode:(id)sender
 {
-    NSNumber * mode = @(_currentDevice.focusMode);
-    [self updateDeviceConfigurationWithBlock:^{
-        _currentDevice.focusMode = [[_availableFocusModes objectAfter:mode
-                                                                 wrap:YES] integerValue];
-    }];
+    self.currentFocusMode = [[_availableFocusModes objectAfter:@(self.currentFocusMode)
+                                                          wrap:YES] integerValue];
+}
+
+- (NSInteger)currentExposureMode
+{
+    return _currentDevice.exposureMode;
+}
+
+- (void)setCurrentExposureMode:(NSInteger)currentExposureMode
+{
+    NBULogInfo(@"%@: %d", THIS_METHOD, currentExposureMode);
     
-    NBULogVerbose(@"toggleFocusMode: %d", _currentDevice.focusMode);
+    [self updateDeviceConfigurationWithBlock:^{
+        _currentDevice.exposureMode = currentExposureMode;
+    }];
 }
 
 - (void)toggleExposureMode:(id)sender
 {
-    NSNumber * mode = @(_currentDevice.exposureMode);
-    [self updateDeviceConfigurationWithBlock:^{
-        _currentDevice.exposureMode = [[_availableExposureModes objectAfter:mode
-                                                                       wrap:YES] integerValue];
-    }];
+    self.currentExposureMode = [[_availableExposureModes objectAfter:@(self.currentExposureMode)
+                                                                wrap:YES] integerValue];
+}
+
+- (NSInteger)currentWhiteBalanceMode
+{
+    return _currentDevice.whiteBalanceMode;
+}
+
+- (void)setCurrentWhiteBalanceMode:(NSInteger)currentWhiteBalanceMode
+{
+    NBULogInfo(@"%@: %d", THIS_METHOD, currentWhiteBalanceMode);
     
-    NBULogVerbose(@"toggleExposureMode: %d", _currentDevice.exposureMode);
+    [self updateDeviceConfigurationWithBlock:^{
+        _currentDevice.whiteBalanceMode = currentWhiteBalanceMode;
+    }];
 }
 
 - (void)toggleWhiteBalanceMode:(id)sender
 {
-    NSNumber * mode = @(_currentDevice.whiteBalanceMode);
-    [self updateDeviceConfigurationWithBlock:^{
-        _currentDevice.whiteBalanceMode = [[_availableWhiteBalanceModes objectAfter:mode
-                                                                               wrap:YES] integerValue];
-    }];
-    
-    NBULogVerbose(@"toggleWhiteBalanceMode: %d", _currentDevice.whiteBalanceMode);
+    self.currentWhiteBalanceMode = [[_availableWhiteBalanceModes objectAfter:@(self.currentWhiteBalanceMode)
+                                                                        wrap:YES] integerValue];
 }
 
 #pragma mark - Gestures

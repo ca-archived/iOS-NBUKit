@@ -59,5 +59,7 @@
 /// The camera underlying view.
 @property (assign, nonatomic) IBOutlet  NBUCameraView * cameraView;
 
+@property (assign, nonatomic) IBOutlet  UILabel * flashLabel;
+
 @end
 
