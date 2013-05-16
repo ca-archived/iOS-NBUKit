@@ -1,52 +1,88 @@
 iOS NBUKit
 ==========  
-[日本語](https://github.com/icb-cost-01/iOS-NBUKit/blob/master/README.jp.md)
 
 _Latest version 1.8.0_
 
-All-native static framework to create custom AVFoundation camera UI, interact with AssetLibrary and visually crop/apply filters to images.  
-__*Includes [NBUCore](https://github.com/icb-cost-01/iOS-NBUCore).*__
+[Customizable](https://github.com/CyberAgent/iOS-NBUKit/wiki/NBUKit-Customization) camera, assets, image editing, gallery, picker and UIKit subclasses.
 
-![NBUKit](https://github.com/icb-cost-01/iOS-NBUKit/wiki/images/NBUKit.png)
+_Includes [NBUCore](https://github.com/CyberAgent/iOS-NBUCore)._
+
+![NBUKit](https://github.com/CyberAgent/iOS-NBUKit/wiki/images/NBUKit.png)
 
 Components
 ----------
 
-### NBUImagePickerController
-
-Customizable picker based AVFoundation and AssetsLibrary.
-Supports image cropping, filters and subclassing.
-
 ### NBUCameraView
 
 Customizable AVFoundation-based camera view.
-Can be embeded in any superview, custom UIViewController or used through NBUCameraViewController.
+
+Can be embeded in any superview, custom UIViewController or used along NBUCameraViewController and even takes
+mock pictures on the iOS simulator!
+
+![NBUCamera](https://github.com/CyberAgent/iOS-NBUKit/wiki/Camera1.png)
+![NBUCamera](https://github.com/CyberAgent/iOS-NBUKit/wiki/Camera2.png)
 
 ### NBUAssets
 
-Multiple classes of all three MVC categories to ease access to AssetsLibrary.
+Multiple classes of all three MVC categories to ease access to AssetsLibrary listening to
+change notifications to stay always in valid.
 
-#### Model
+Also support for _local assets_: Images in folders that are handled just like regular library assets.
 
-NBUAssetsLibrary, NBUAssetsGroup and NBUAsset that listen to AssetsLibrary notifications to stay always valid.
-
-#### Views
-
-Customizable views to present groups and assets including selection.
-
-#### Controllers
-
-Use/subclass these controllers directly to customize your AssetsLibrary access.
+![NBUAssets](https://github.com/CyberAgent/iOS-NBUKit/wiki/Assets1.png)
+![NBUAssets](https://github.com/CyberAgent/iOS-NBUKit/wiki/Assets2.png)
 
 ### Cropping/Filters
 
-Customizable views that allow to edit images with gestures.
-Filters use CoreImage or [GPUImage](https://github.com/BradLarson/GPUImage).
+Customizable views and controllers to modify images (filters and cropping).
+
+Filters from CoreImage and [GPUImage](https://github.com/BradLarson/GPUImage) but could be extended to
+other libraries as well.
+
+![NBUEdit](https://github.com/CyberAgent/iOS-NBUKit/wiki/Edit2.png)
+![NBUEdit](https://github.com/CyberAgent/iOS-NBUKit/wiki/Edit3.png)
+
+### NBUGallery
+
+Image slideshow in development inspired on [FGallery](https://github.com/gdavis/FGallery-iPhone).
+
+![NBUGallery](https://github.com/CyberAgent/iOS-NBUKit/wiki/Gallery1.png)
+
+### NBUImagePickerController
+
+Block-based image picker that combines all modules mentioned above.
+
+![NBUPicker](https://github.com/CyberAgent/iOS-NBUKit/wiki/Picker1.png)
 
 Installation
 ------------
 
-1. ToDo
+### Cocoapods
 
-Notes
------
+In development on the [cocoapod branch](https://github.com/CyberAgent/iOS-NBUKit/tree/cocapods).
+
+### Manual
+
+[NBUKit Installation](https://github.com/CyberAgent/iOS-NBUKit/wiki/NBUKit-Installation).
+
+Documentation
+-------------
+
+* HTML: http://cyberagent.github.io/iOS-NBUKit/html/
+* Xcode DocSet: `http://cyberagent.github.io/iOS-NBUKit/publish/NBUKit.atom`
+
+License
+-------
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License. 
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
