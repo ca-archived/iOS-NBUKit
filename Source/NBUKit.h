@@ -19,7 +19,7 @@
 //
 
 /// NBUCore
-#import "NBUCore.h"
+#import <NBUCore/NBUCore.h>
 
 /// NBUCompatibility
 #import "ActiveView.h"

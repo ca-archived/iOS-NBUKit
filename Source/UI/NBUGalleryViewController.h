@@ -18,6 +18,8 @@
 //  limitations under the License.
 //
 
+#import "NBUViewController.h"
+
 @protocol NBUImageLoader, UIButton;
 
 /**

@@ -19,6 +19,7 @@
 //
 
 #import "NBUFilterThumbnailView.h"
+#import "NBUKitPrivate.h"
 
 // Define module
 #undef  NBUKIT_MODULE

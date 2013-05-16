@@ -21,9 +21,7 @@
 #import "NBUAssetsLibrary.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <CoreLocation/CoreLocation.h>
-#import "NBUAsset.h"
-#import "NBUAssetsGroup.h"
-#import "NSURL+RKAdditions.h"
+#import "NBUKitPrivate.h"
 
 // Define module
 #undef  NBUKIT_MODULE

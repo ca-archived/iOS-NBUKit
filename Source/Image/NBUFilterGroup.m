@@ -19,7 +19,7 @@
 //
 
 #import "NBUFilterGroup.h"
-#import "NBUFilterProvider.h"
+#import "NBUKitPrivate.h"
 
 @implementation NBUFilterGroup
 

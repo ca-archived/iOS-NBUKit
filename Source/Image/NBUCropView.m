@@ -18,9 +18,9 @@
 //  limitations under the License.
 //
 
-#import <QuartzCore/QuartzCore.h>
 #import "NBUCropView.h"
-#import "UIImage+NBUAdditions.h"
+#import "NBUKitPrivate.h"
+#import <QuartzCore/QuartzCore.h>
 
 // Define module
 #undef  NBUKIT_MODULE

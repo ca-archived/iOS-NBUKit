@@ -1,7 +1,7 @@
 iOS NBUKit
 ==========  
 
-_Latest version 1.8.0_
+_Latest version 1.9.0a1_
 
 [Customizable](https://github.com/CyberAgent/iOS-NBUKit/wiki/NBUKit-Customization) camera, assets, image editing, gallery, picker and UIKit subclasses.
 

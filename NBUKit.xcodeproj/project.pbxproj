@@ -293,6 +293,7 @@
 		E51BAE401716A7B8007DC13F /* previous@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "previous@2x.png"; sourceTree = "<group>"; };
 		E52AD4451682DA4900719BF6 /* NSData+RKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+RKAdditions.h"; sourceTree = "<group>"; };
 		E52AD4461682DA4900719BF6 /* NSData+RKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+RKAdditions.m"; sourceTree = "<group>"; };
+		E549F2901727C40400A09C16 /* NBUKitPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBUKitPrivate.h; sourceTree = "<group>"; };
 		E549F2F7172A1A6200A09C16 /* NBUMediaInfoTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBUMediaInfoTests.h; sourceTree = "<group>"; };
 		E549F2F8172A1A6200A09C16 /* NBUMediaInfoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBUMediaInfoTests.m; sourceTree = "<group>"; };
 		E54C15F3170EBC3E005067F4 /* NBUMediaInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBUMediaInfo.h; sourceTree = "<group>"; };
@@ -565,6 +566,7 @@
 		E5DD753416E5D9D5009AD190 /* NBUFilterGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBUFilterGroup.m; sourceTree = "<group>"; };
 		E5DE433B16855DEC00FBAF5B /* UIImageView+NBUAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+NBUAdditions.h"; sourceTree = "<group>"; };
 		E5DE433C16855DEC00FBAF5B /* UIImageView+NBUAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+NBUAdditions.m"; sourceTree = "<group>"; };
+		E5E5E05817310995004985B1 /* NBUKit.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = NBUKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E5F1DFDA16A7855F007A87CB /* CopyNBUKitResources.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = CopyNBUKitResources.sh; sourceTree = "<group>"; };
 		E5FE332516C3536B004215CC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/NBUKit.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -615,6 +617,19 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		E549F2931727C8A700A09C16 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				E58B5A7C1717A979008BB0E0 /* NBUCore.h */,
+				E58B5A801717A979008BB0E0 /* NBUUtil.h */,
+				E58B5A811717A979008BB0E0 /* NBUUtil.m */,
+				E58B5A841717A979008BB0E0 /* UI */,
+				E58B5A0B1717A979008BB0E0 /* Additions */,
+				E58B5A521717A979008BB0E0 /* Helpers */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
 		E573DDD2171D29040070C9B7 /* MPNotificationView */ = {
 			isa = PBXGroup;
 			children = (
@@ -649,6 +664,7 @@
 			children = (
 				E5AB19AB167AB0AB0048295E /* README.md */,
 				E5AB19AA167AB0AB0048295E /* README.jp.md */,
+				E5E5E05817310995004985B1 /* NBUKit.podspec */,
 				E5F1DFD216A784A0007A87CB /* Source */,
 				E5AB19AC167AB0AB0048295E /* Resources */,
 				E57EEC64167AAF36000ED6AA /* Tests */,
@@ -721,12 +737,7 @@
 				E58B5A7E1717A979008BB0E0 /* NBUCore_Production.xcconfig */,
 				E58B5A7F1717A979008BB0E0 /* NBUCore_Testing.xcconfig */,
 				E58B5AD91717EC65008BB0E0 /* NBUCore_MoreWarnings.xcconfig */,
-				E58B5A7C1717A979008BB0E0 /* NBUCore.h */,
-				E58B5A801717A979008BB0E0 /* NBUUtil.h */,
-				E58B5A811717A979008BB0E0 /* NBUUtil.m */,
-				E58B5A841717A979008BB0E0 /* UI */,
-				E58B5A0B1717A979008BB0E0 /* Additions */,
-				E58B5A521717A979008BB0E0 /* Helpers */,
+				E549F2931727C8A700A09C16 /* Source */,
 				E58B5A5B1717A979008BB0E0 /* Library */,
 			);
 			path = NBUCore;
@@ -1088,6 +1099,7 @@
 			children = (
 				E5AB19A6167AB0AB0048295E /* NBUKit.h */,
 				E5AB19A7167AB0AB0048295E /* NBUKit.m */,
+				E549F2901727C40400A09C16 /* NBUKitPrivate.h */,
 				E5AB19A8167AB0AB0048295E /* NBULog+NBUKit.h */,
 				E5AB19A9167AB0AB0048295E /* NBULog+NBUKit.m */,
 				E5AB19D5167AB0AB0048295E /* UI */,
@@ -1564,8 +1576,8 @@
 				);
 				"ARCHS[sdk=iphoneos6.*]" = "$(ARCHS_STANDARD_32_BIT)";
 				"ARCHS[sdk=iphonesimulator*]" = i386;
-				DYLIB_COMPATIBILITY_VERSION = 1.8.0;
-				DYLIB_CURRENT_VERSION = 1.8.0;
+				DYLIB_COMPATIBILITY_VERSION = 1.9.0a1;
+				DYLIB_CURRENT_VERSION = 1.9.0a1;
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				HEADER_SEARCH_PATHS = (
 					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
@@ -1589,8 +1601,8 @@
 				);
 				"ARCHS[sdk=iphoneos6.*]" = "$(ARCHS_STANDARD_32_BIT)";
 				"ARCHS[sdk=iphonesimulator*]" = i386;
-				DYLIB_COMPATIBILITY_VERSION = 1.8.0;
-				DYLIB_CURRENT_VERSION = 1.8.0;
+				DYLIB_COMPATIBILITY_VERSION = 1.9.0a1;
+				DYLIB_CURRENT_VERSION = 1.9.0a1;
 				HEADER_SEARCH_PATHS = (
 					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
 					"\"$(BUILT_PRODUCTS_DIR)/include\"",

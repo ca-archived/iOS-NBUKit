@@ -19,6 +19,7 @@
 //
 
 #import "NBUAsset.h"
+#import "NBUKit.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <CoreLocation/CoreLocation.h>
 

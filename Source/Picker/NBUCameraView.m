@@ -19,6 +19,7 @@
 //
 
 #import "NBUCameraView.h"
+#import "NBUKitPrivate.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "RKOrderedDictionary.h"

@@ -19,6 +19,7 @@
 //
 
 #import "NBUGalleryView.h"
+#import "NBUKitPrivate.h"
 
 // Private class
 @interface NBUGalleryScrollView : UIScrollView <UIScrollViewDelegate>

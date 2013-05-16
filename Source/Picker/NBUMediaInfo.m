@@ -19,6 +19,7 @@
 //
 
 #import "NBUMediaInfo.h"
+#import "NBUKitPrivate.h"
 
 // Media info keys
 NSString * const NBUMediaInfoOriginalMediaKey       = @"NBUMediaInfoOriginalMedia";

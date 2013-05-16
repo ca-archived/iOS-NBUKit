@@ -19,6 +19,7 @@
 //
 
 #import "NBUGalleryThumbnailView.h"
+#import "NBUKitPrivate.h"
 
 @implementation NBUGalleryThumbnailView
 

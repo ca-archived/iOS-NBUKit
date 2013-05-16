@@ -19,6 +19,7 @@
 //
 
 #import "NBUImageLoader.h"
+#import "NBUKitPrivate.h"
 
 NSString * const NBUImageLoaderErrorDomain = @"NBUImageLoaderErrorDomain";
 

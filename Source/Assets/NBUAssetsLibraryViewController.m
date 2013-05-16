@@ -19,7 +19,7 @@
 //
 
 #import "NBUAssetsLibraryViewController.h"
-#import "ObjectTableView.h"
+#import "NBUKitPrivate.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 
 // Define module

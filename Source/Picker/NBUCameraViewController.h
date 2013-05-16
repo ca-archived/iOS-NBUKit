@@ -19,7 +19,9 @@
 //
 
 #import "NBUViewController.h"
-#import "NBUCameraView.h"
+#import "NBUKitPrivate.h"
+
+@class NBUCameraView;
 
 /**
  An extensible UIViewController for a NBUCameraView.

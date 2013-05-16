@@ -19,7 +19,7 @@
 //
 
 #import "ScrollViewController.h"
-#import "ObjectGridView.h"
+#import "NBUKitPrivate.h"
 
 // Define module
 #undef  NBUKIT_MODULE
