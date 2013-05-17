@@ -3,7 +3,8 @@ iOS NBUKit
 
 _Latest version 1.8.0_
 
-[Customizable](https://github.com/CyberAgent/iOS-NBUKit/wiki/NBUKit-Customization) camera, assets, image editing, gallery, picker and UIKit subclasses.
+[Customizable](https://github.com/CyberAgent/iOS-NBUKit/wiki/NBUKit-Customization) camera, assets,
+image editing, gallery, picker and UIKit subclasses. [[日本語](README.jp.md)]
 
 _Includes [NBUCore](https://github.com/CyberAgent/iOS-NBUCore)._
 
@@ -44,7 +45,7 @@ other libraries as well.
 
 ### NBUGallery
 
-Image slideshow in development inspired on [FGallery](https://github.com/gdavis/FGallery-iPhone).
+Image slideshow in development inspired by [FGallery](https://github.com/gdavis/FGallery-iPhone).
 
 ![NBUGallery](https://github.com/CyberAgent/iOS-NBUKit/wiki/Gallery1.png)
 
