@@ -116,10 +116,6 @@
 		E5AB1AA1167AB1960048295E /* NBUImagePickerController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5AB1723167AB0AA0048295E /* NBUImagePickerController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5AB1AA2167AB1960048295E /* NBUImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AB1724167AB0AA0048295E /* NBUImagePickerController.m */; };
 		E5AB1AA3167AB1960048295E /* NBUImagePickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5AB1725167AB0AA0048295E /* NBUImagePickerController.xib */; };
-		E5AB1AA4167AB1EF0048295E /* NBUMockHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = E5AB1768167AB0AA0048295E /* NBUMockHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E5AB1AA5167AB1EF0048295E /* NBUMockHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AB1769167AB0AA0048295E /* NBUMockHelper.m */; };
-		E5AB1AA6167AB1EF0048295E /* NBUURLCache.h in Headers */ = {isa = PBXBuildFile; fileRef = E5AB176A167AB0AA0048295E /* NBUURLCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E5AB1AA7167AB1EF0048295E /* NBUURLCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AB176B167AB0AA0048295E /* NBUURLCache.m */; };
 		E5AB1AA8167AB1FF0048295E /* NBUCoreImageFilterProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = E5AB176D167AB0AA0048295E /* NBUCoreImageFilterProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5AB1AAA167AB1FF0048295E /* NBUCropView.h in Headers */ = {isa = PBXBuildFile; fileRef = E5AB176F167AB0AA0048295E /* NBUCropView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5AB1AAB167AB1FF0048295E /* NBUCropView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AB1770167AB0AA0048295E /* NBUCropView.m */; };
@@ -286,10 +282,6 @@
 		E5AB1723167AB0AA0048295E /* NBUImagePickerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBUImagePickerController.h; sourceTree = "<group>"; };
 		E5AB1724167AB0AA0048295E /* NBUImagePickerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBUImagePickerController.m; sourceTree = "<group>"; };
 		E5AB1725167AB0AA0048295E /* NBUImagePickerController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NBUImagePickerController.xib; sourceTree = "<group>"; };
-		E5AB1768167AB0AA0048295E /* NBUMockHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBUMockHelper.h; sourceTree = "<group>"; };
-		E5AB1769167AB0AA0048295E /* NBUMockHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBUMockHelper.m; sourceTree = "<group>"; };
-		E5AB176A167AB0AA0048295E /* NBUURLCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBUURLCache.h; sourceTree = "<group>"; };
-		E5AB176B167AB0AA0048295E /* NBUURLCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBUURLCache.m; sourceTree = "<group>"; };
 		E5AB176D167AB0AA0048295E /* NBUCoreImageFilterProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBUCoreImageFilterProvider.h; sourceTree = "<group>"; };
 		E5AB176E167AB0AA0048295E /* NBUCoreImageFilterProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBUCoreImageFilterProvider.m; sourceTree = "<group>"; };
 		E5AB176F167AB0AA0048295E /* NBUCropView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBUCropView.h; sourceTree = "<group>"; };
@@ -577,17 +569,6 @@
 			path = Picker;
 			sourceTree = "<group>";
 		};
-		E5AB1767167AB0AA0048295E /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				E5AB176A167AB0AA0048295E /* NBUURLCache.h */,
-				E5AB176B167AB0AA0048295E /* NBUURLCache.m */,
-				E5AB1768167AB0AA0048295E /* NBUMockHelper.h */,
-				E5AB1769167AB0AA0048295E /* NBUMockHelper.m */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		E5AB176C167AB0AA0048295E /* Image */ = {
 			isa = PBXGroup;
 			children = (
@@ -782,7 +763,6 @@
 				E5AB1709167AB0AA0048295E /* Picker */,
 				E524A5CB16F1AB31003054AE /* Assets */,
 				E5AB176C167AB0AA0048295E /* Image */,
-				E5AB1767167AB0AA0048295E /* Helpers */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -818,8 +798,6 @@
 				E5AB1A9C167AB1960048295E /* NBUAssetThumbnailView.h in Headers */,
 				E5AB1A9F167AB1960048295E /* NBUAssetView.h in Headers */,
 				E5AB1AA1167AB1960048295E /* NBUImagePickerController.h in Headers */,
-				E5AB1AA4167AB1EF0048295E /* NBUMockHelper.h in Headers */,
-				E5AB1AA6167AB1EF0048295E /* NBUURLCache.h in Headers */,
 				E5AB1AA8167AB1FF0048295E /* NBUCoreImageFilterProvider.h in Headers */,
 				E5AB1AAA167AB1FF0048295E /* NBUCropView.h in Headers */,
 				E5AB1AAD167AB1FF0048295E /* NBUEditImageViewController.h in Headers */,
@@ -1067,8 +1045,6 @@
 				E5AB1A9D167AB1960048295E /* NBUAssetThumbnailView.m in Sources */,
 				E5AB1AA0167AB1960048295E /* NBUAssetView.m in Sources */,
 				E5AB1AA2167AB1960048295E /* NBUImagePickerController.m in Sources */,
-				E5AB1AA5167AB1EF0048295E /* NBUMockHelper.m in Sources */,
-				E5AB1AA7167AB1EF0048295E /* NBUURLCache.m in Sources */,
 				E5AB1AAB167AB1FF0048295E /* NBUCropView.m in Sources */,
 				E5AB1AAE167AB1FF0048295E /* NBUEditImageViewController.m in Sources */,
 				E5AB1AB1167AB1FF0048295E /* NBUFilter.m in Sources */,

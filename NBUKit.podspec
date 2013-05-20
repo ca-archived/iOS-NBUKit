@@ -1,3 +1,5 @@
+
+
 Pod::Spec.new do |s|
     s.name          = "NBUKit"
     s.version       = "1.9.0a1"
@@ -9,12 +11,12 @@ Pod::Spec.new do |s|
     s.platform      = :ios
     s.source_files  = 'Source/*.{h,m}'
     s.resources     = ["Resources/*.{png,lproj}", "Resources/filters", "Source/**/*.{xib}"]
-    s.frameworks    = 'AssetsLibrary', 'CoreLocation', 'MessageUI', 'CoreData'
+    s.frameworks    = 'AssetsLibrary', 'CoreLocation', 'MessageUI'
     s.weak_frameworks = 'CoreImage'
     s.requires_arc  = true
-    s.preserve_paths = "README.*", "NOTICE", "*.xcconfig"
+    s.preserve_paths = "README.*", "NOTICE"
     
-    s.dependency 'NBUCore', '~> 1.8.1'
+    s.dependency 'NBUCore', '~> 1.8.2'
     s.dependency 'GPUImage'
     
     s.subspec 'UI' do |su|
@@ -33,18 +35,10 @@ Pod::Spec.new do |s|
         sp.source_files  = 'Source/Picker/*.{h,m}'
     end
     
-    s.subspec 'Helpers' do |sh|
-        sh.source_files  = 'Source/Helpers/*.{h,m}'
-    end
-    
     s.subspec 'Library' do |sl|
         
         sl.subspec 'NBUCompatibility' do |sc|
             sc.source_files = 'Library/NBUCompatibility'
-        end
-        
-        sl.subspec 'Lorem Ipsum' do |sli|
-            sli.source_files = 'Library/Lorem Ipsum'
         end
         
         sl.subspec 'RestKit Support' do |srk|
