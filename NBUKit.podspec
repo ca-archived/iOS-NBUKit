@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
     s.frameworks    = 'AssetsLibrary', 'CoreLocation', 'MessageUI', 'CoreData'
     s.weak_frameworks = 'CoreImage'
     s.requires_arc  = true
-    s.preserve_paths = "README.*", "NOTICE"
+    s.preserve_paths = "README.*", "NOTICE", "*.xcconfig"
     
     s.dependency 'NBUCore', '~> 1.8.1'
     s.dependency 'GPUImage'
