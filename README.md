@@ -55,12 +55,20 @@ Block-based image picker that combines all modules mentioned above.
 
 ![NBUPicker](https://github.com/CyberAgent/iOS-NBUKit/wiki/Picker1.png)
 
+Customization
+-------------
+
+The main goal of NBUKit is to be fully [customizable](https://github.com/CyberAgent/iOS-NBUKit/wiki/NBUKit-Customization) and easy to extend.
+
 Installation
 ------------
 
-### Cocoapods
+### Cocoapods (Recomended)
 
-In development on the [cocoapod branch](https://github.com/CyberAgent/iOS-NBUKit/tree/cocapods).
+1. Install [Cocoapods](http://cocoapods.org) if not already done.
+2. Add `pod 'NBUKit'` to your Podfile.
+
+_If you have a problem try `gem update cocoapods` first._
 
 ### Manual
 
