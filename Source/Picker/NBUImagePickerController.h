@@ -110,6 +110,7 @@ typedef NSUInteger NBUImagePickerOptions;
 /// The picker options.
 @property (nonatomic, readonly)         NBUImagePickerOptions options;
 
+/// Whether the picker is in single image mode.
 @property (nonatomic, readonly)         BOOL singleImageMode;
 
 /// The result block to be called upon picker completion.
