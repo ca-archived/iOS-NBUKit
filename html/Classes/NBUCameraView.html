@@ -40,7 +40,7 @@
 	
 	<option value="properties">Properties</option>
 	
-	<option value="//api/name/availableDevices">&nbsp;&nbsp;&nbsp;&nbsp;availableDevices</option>
+	<option value="//api/name/availableCaptureDevices">&nbsp;&nbsp;&nbsp;&nbsp;availableCaptureDevices</option>
 	
 	<option value="//api/name/availableExposureModes">&nbsp;&nbsp;&nbsp;&nbsp;availableExposureModes</option>
 	
@@ -53,6 +53,16 @@
 	<option value="//api/name/availableWhiteBalanceModes">&nbsp;&nbsp;&nbsp;&nbsp;availableWhiteBalanceModes</option>
 	
 	<option value="//api/name/captureResultBlock">&nbsp;&nbsp;&nbsp;&nbsp;captureResultBlock</option>
+	
+	<option value="//api/name/currentCaptureDevice">&nbsp;&nbsp;&nbsp;&nbsp;currentCaptureDevice</option>
+	
+	<option value="//api/name/currentExposureMode">&nbsp;&nbsp;&nbsp;&nbsp;currentExposureMode</option>
+	
+	<option value="//api/name/currentFlashMode">&nbsp;&nbsp;&nbsp;&nbsp;currentFlashMode</option>
+	
+	<option value="//api/name/currentFocusMode">&nbsp;&nbsp;&nbsp;&nbsp;currentFocusMode</option>
+	
+	<option value="//api/name/currentWhiteBalanceMode">&nbsp;&nbsp;&nbsp;&nbsp;currentWhiteBalanceMode</option>
 	
 	<option value="//api/name/exposureButton">&nbsp;&nbsp;&nbsp;&nbsp;exposureButton</option>
 	
@@ -153,7 +163,7 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/availableDevices">availableDevices</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/availableCaptureDevices">availableCaptureDevices</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/availableExposureModes">availableExposureModes</a></span></li>
 	
@@ -166,6 +176,16 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/availableWhiteBalanceModes">availableWhiteBalanceModes</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/captureResultBlock">captureResultBlock</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/currentCaptureDevice">currentCaptureDevice</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/currentExposureMode">currentExposureMode</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/currentFlashMode">currentFlashMode</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/currentFocusMode">currentFocusMode</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/currentWhiteBalanceMode">currentWhiteBalanceMode</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/exposureButton">exposureButton</a></span></li>
 	
@@ -353,8 +373,15 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/availableDevices">&nbsp;&nbsp;availableDevices</a></code>
-		<span class="tooltip"><p>The available devices' uniqueID&rsquo;s (ex. Front, Back camera).</p></span>
+		<code><a href="#//api/name/availableCaptureDevices">&nbsp;&nbsp;availableCaptureDevices</a></code>
+		<span class="tooltip"><p>The available capture devices' uniqueID&rsquo;s (ex. Front, Back camera).</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/currentCaptureDevice">&nbsp;&nbsp;currentCaptureDevice</a></code>
+		<span class="tooltip"><p>The current capture device&rsquo;s uniqueID.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -374,8 +401,22 @@
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/currentFlashMode">&nbsp;&nbsp;currentFlashMode</a></code>
+		<span class="tooltip"><p>The current capture device&rsquo;s AVCaptureFlashMode.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/availableFocusModes">&nbsp;&nbsp;availableFocusModes</a></code>
 		<span class="tooltip"><p>The current device&rsquo;s available AVCaptureFocusMode modes.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/currentFocusMode">&nbsp;&nbsp;currentFocusMode</a></code>
+		<span class="tooltip"><p>The current capture device&rsquo;s AVCaptureFocusMode.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -388,8 +429,22 @@
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/currentExposureMode">&nbsp;&nbsp;currentExposureMode</a></code>
+		<span class="tooltip"><p>The current capture device&rsquo;s AVCaptureExposureMode.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/availableWhiteBalanceModes">&nbsp;&nbsp;availableWhiteBalanceModes</a></code>
 		<span class="tooltip"><p>The current device&rsquo;s available AVCaptureWhiteBalanceMode modes.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/currentWhiteBalanceMode">&nbsp;&nbsp;currentWhiteBalanceMode</a></code>
+		<span class="tooltip"><p>The current capture device&rsquo;s AVCaptureWhiteBalanceMode.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -595,18 +650,18 @@ using the mode as index.</p></span>
 						<h2 class="subtitle subtitle-methods">Properties</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/availableDevices" title="availableDevices"></a>
-	<h3 class="subsubtitle method-title">availableDevices</h3>
+	<a name="//api/name/availableCaptureDevices" title="availableCaptureDevices"></a>
+	<h3 class="subsubtitle method-title">availableCaptureDevices</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The available devices' uniqueID&rsquo;s (ex. Front, Back camera).</p>
+		<p>The available capture devices' uniqueID&rsquo;s (ex. Front, Back camera).</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic, readonly) NSArray *availableDevices</code></div>
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic, readonly) NSArray *availableCaptureDevices</code></div>
 
     
 	
@@ -835,6 +890,228 @@ using the mode as index.</p></span>
 	
 	
 	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/currentCaptureDevice" title="currentCaptureDevice"></a>
+	<h3 class="subsubtitle method-title">currentCaptureDevice</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The current capture device&rsquo;s uniqueID.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSString *currentCaptureDevice</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Changing the current device refreshes the <a href="#//api/name/availableFlashModes">availableFlashModes</a>, <a href="#//api/name/availableFocusModes">availableFocusModes</a>,<br/>
+<a href="#//api/name/availableExposureModes">availableExposureModes</a> and <a href="#//api/name/availableWhiteBalanceModes">availableWhiteBalanceModes</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/currentExposureMode" title="currentExposureMode"></a>
+	<h3 class="subsubtitle method-title">currentExposureMode</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The current capture device&rsquo;s AVCaptureExposureMode.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) AVCaptureExposureMode currentExposureMode</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/availableExposureModes">@property availableExposureModes</a>.</p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/currentFlashMode" title="currentFlashMode"></a>
+	<h3 class="subsubtitle method-title">currentFlashMode</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The current capture device&rsquo;s AVCaptureFlashMode.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) AVCaptureFlashMode currentFlashMode</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/availableFlashModes">@property availableFlashModes</a>.</p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/currentFocusMode" title="currentFocusMode"></a>
+	<h3 class="subsubtitle method-title">currentFocusMode</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The current capture device&rsquo;s AVCaptureFocusMode.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) AVCaptureFocusMode currentFocusMode</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/availableFocusModes">@property availableFocusModes</a>.</p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NBUCameraView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/currentWhiteBalanceMode" title="currentWhiteBalanceMode"></a>
+	<h3 class="subsubtitle method-title">currentWhiteBalanceMode</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The current capture device&rsquo;s AVCaptureWhiteBalanceMode.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) AVCaptureWhiteBalanceMode currentWhiteBalanceMode</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/availableWhiteBalanceModes">@property availableWhiteBalanceModes</a>.</p></code></li>
+			
+		</ul>
+	</div>
 	
 	
 	
@@ -1798,6 +2075,15 @@ using the mode as index.</p>
 	
 	
 	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/availableCaptureDevices">@property availableCaptureDevices</a>.</p></code></li>
+			
+		</ul>
+	</div>
+	
 	
 	
 	<div class="method-subsection declared-in-section">
@@ -2025,7 +2311,7 @@ using the mode as index.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 CyberAgent Inc. All rights reserved. (Last updated: 2013-04-30)</span><br />
+						<p><span class="copyright">&copy; 2013 CyberAgent Inc. All rights reserved. (Last updated: 2013-05-27)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
 						
