@@ -3,10 +3,12 @@ iOS NBUKit
 
 _Latest version 1.9.0_
 
+[![Build Status](https://travis-ci.org/CyberAgent/iOS-NBUKit.png?branch=master)](https://travis-ci.org/CyberAgent/iOS-NBUKit)
+
 [Customizable](https://github.com/CyberAgent/iOS-NBUKit/wiki/NBUKit-Customization) camera, assets,
 image editing, gallery, picker and UIKit subclasses. [[日本語](README.jp.md)]
 
-_Includes [NBUCore](https://github.com/CyberAgent/iOS-NBUCore)._
+_Uses [NBUCore](https://github.com/CyberAgent/iOS-NBUCore)._
 
 ![NBUKit](https://github.com/CyberAgent/iOS-NBUKit/wiki/images/NBUKit.png)
 
@@ -77,8 +79,15 @@ _If you have a problem try `gem update cocoapods` first._
 Documentation
 -------------
 
+NBUKit + NBUCore
+
 * HTML: http://cyberagent.github.io/iOS-NBUKit/html/
 * Xcode DocSet: `http://cyberagent.github.io/iOS-NBUKit/publish/NBUKit.atom`
+
+NBUKit only
+
+* HTML: http://cocoadocs.org/docsets/NBUKit/
+* Xcode DocSet: `http://cocoadocs.org/docsets/NBUKit/xcode-docset.atom`
 
 License
 -------
