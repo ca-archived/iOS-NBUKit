@@ -9,6 +9,14 @@ Pod::Spec.new do |s|
     s.homepage      = "http://cyberagent.github.io/iOS-NBUKit/"
     s.license       = { :type => 'Apache License, Version 2.0', :file => 'LICENSE' }
     s.author        = { "CyberAgent Inc." => "", "Ernesto Rivera" => "rivera_ernesto@cyberagent.co.jp" }
+    s.screenshots   = [ "https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Camera1.png",
+                        "https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Camera2.png",
+                        "https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Assets1.png",
+                        "https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Assets2.png",
+                        "https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Edit2.png",
+                        "https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Edit3.png",
+                        "https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Gallery1.png",
+                        "https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Picker1.png" ]
     
     s.source        = { :git => "https://github.com/CyberAgent/iOS-NBUKit.git", :tag => "#{s.version}" }
     s.source_files  = 'Source/*.{h,m}'
