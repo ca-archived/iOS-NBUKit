@@ -1,2 +1,5 @@
-language:	objective-c
-install:	pod install
+language:   objective-c
+xcode_sdk:  iphonesimulator
+install:
+    - cd Demo
+    - pod install
