@@ -30,14 +30,12 @@
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Configure NBULog
-#ifdef PRODUCTION
-    [NBULog setAppLogLevel:LOG_LEVEL_WARN];
-    [NBULog setKitLogLevel:LOG_LEVEL_WARN];
-#else
+    [NBULog setAppLogLevel:LOG_LEVEL_INFO];     // Info, warning and errors only
+
+#ifndef PRODUCTION
     [NBULog setAppLogLevel:LOG_LEVEL_VERBOSE];  // Also verbose for debug and testing builds
     [NBULog setKitLogLevel:LOG_LEVEL_INFO];
-    [NBULog setKitLogLevel:LOG_LEVEL_VERBOSE forModule:NBUKIT_MODULE_IMAGE];
-    [NBULog addDashboardLogger];                // Add log dashboard
+    [NBULog addDashboardLogger];                // Add dashboard logger
 #endif
 
     NBULogTrace();
@@ -59,16 +57,15 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
                           window:_window];
     
     // Async launch tasks
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        // *** Do some real work here ***
-        
+    dispatch_async(dispatch_get_main_queue(), ^
+    {
         [self mockLaunchTasks];
     });
     
     return YES;
 }
 
+// *** Do some real work here ***
 - (void)mockLaunchTasks
 {
     // Mock 10 tasks

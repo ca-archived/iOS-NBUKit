@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
     s.frameworks    = 'AssetsLibrary', 'CoreLocation', 'MessageUI'
     s.weak_frameworks = 'CoreImage'
     
-    s.dependency 'NBUCore',     '~> 1.8.1'
+    s.dependency 'NBUCore',     '~> 1.9.0'
     s.dependency 'GPUImage',    '~> 0.1.0'
     
     s.subspec 'UI' do |su|
