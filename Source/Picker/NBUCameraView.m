@@ -56,6 +56,7 @@
 @synthesize savePicturesToLibrary = _savePicturesToLibrary;
 @synthesize targetLibraryAlbumName = _targetLibraryAlbumName;
 @synthesize shouldAutoRotateView = _shouldAutoRotateView;
+@synthesize shouldAutoRotatePicture = _shouldAutoRotatePicture;
 @synthesize availableCaptureDevices = _availableCaptureDevices;
 @synthesize availableResolutions = _availableResolutions;
 @synthesize availableFlashModes = _availableFlashModes;
@@ -222,7 +223,10 @@
 - (void)setInterfaceOrientation:(UIInterfaceOrientation)orientation
 {
     // Update video orientation
-    _videoConnection.videoOrientation = (AVCaptureVideoOrientation)UIInterfaceOrientationFromValidDeviceOrientation(orientation);
+	if(_shouldAutoRotatePicture)
+	{
+	    _videoConnection.videoOrientation = (AVCaptureVideoOrientation)UIInterfaceOrientationFromValidDeviceOrientation(orientation);
+	}
     
     // Also rotate view?
     if (_shouldAutoRotateView)

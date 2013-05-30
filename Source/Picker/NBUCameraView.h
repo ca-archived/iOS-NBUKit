@@ -71,6 +71,9 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 /// @note Set to `YES` when inside view controllers that support rotation.
 @property (nonatomic)                   BOOL shouldAutoRotateView;
 
+/// Whether the picture should keep its orientation up. Default `NO`.
+@property (nonatomic)                   BOOL shouldAutoRotatePicture;
+
 /// Programatically force the view to rotate.
 /// @param orientation The desired interface orientation.
 - (void)setInterfaceOrientation:(UIInterfaceOrientation)orientation;
