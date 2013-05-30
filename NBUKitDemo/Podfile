@@ -1,8 +1,0 @@
-platform :ios
-
-# For development we use:
-pod 'NBUKit',   :path => '../'
-
-# But for real projects should be:
-# pod 'NBUKit',  '~> 1.9.0a1'
-

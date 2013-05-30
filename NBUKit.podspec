@@ -1,40 +1,85 @@
+
+
 Pod::Spec.new do |s|
+    
     s.name          = "NBUKit"
-    s.version       = "1.9.0a1"
+    s.version       = "1.9.1"
+    s.platform      = :ios
     s.summary       = "Customizable image editing, filters, picker and other UIKit subclasses."
     s.homepage      = "http://cyberagent.github.io/iOS-NBUKit/"
     s.license       = { :type => 'Apache License, Version 2.0', :file => 'LICENSE' }
     s.author        = { "CyberAgent Inc." => "", "Ernesto Rivera" => "rivera_ernesto@cyberagent.co.jp" }
+    s.screenshots   = [ "https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Camera1.png",
+                        "https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Camera2.png",
+                        "https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Assets1.png",
+                        "https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Assets2.png",
+                        "https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Edit2.png",
+                        "https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Edit3.png",
+                        "https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Gallery1.png",
+                        "https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Picker1.png" ]
+    
     s.source        = { :git => "https://github.com/CyberAgent/iOS-NBUKit.git", :tag => "#{s.version}" }
-    s.platform      = :ios
-    s.source_files  = 'Source/**/*.{h,m}'
-    s.resources     = ["Resources/*.{png,lproj}", "Resources/filters", "Source/**/*.{xib}"]
-    s.frameworks  = 'AssetsLibrary', 'CoreLocation', 'MessageUI', 'CoreData'
-    s.weak_frameworks = 'CoreImage'
-    s.requires_arc  = true
+    s.source_files  = 'Source/*.{h,m}'
     s.preserve_paths = "README.*", "NOTICE"
     
-    s.dependency 'NBUCore', '~> 1.8.1'
-    s.dependency 'GPUImage'
+    s.requires_arc  = true
     
-    s.subspec 'NBUCompatibility' do |sc|
-        sc.source_files = 'Library/NBUCompatibility'
+    s.dependency 'NBUCore',     '~> 1.9.0'
+    s.dependency 'GPUImage',    '~> 0.1.0'
+    
+    s.subspec 'UI' do |su|
+        su.source_files = 'Source/UI/*.{h,m}'
+        su.resources    = 'Source/UI/*.{xib}'
+        su.frameworks   = 'MessageUI'
     end
     
-    s.subspec 'Lorem Ipsum' do |sli|
-        sli.source_files = 'Library/Lorem Ipsum'
+    s.subspec 'Image' do |si|
+        si.source_files = 'Source/Image/*.{h,m}'
+        si.resources    = 'Source/Image/*.{xib}'
+        si.weak_frameworks = 'CoreImage'
     end
     
-    s.subspec 'RestKit Support' do |srk|
-        srk.source_files = 'Library/RestKit Support'
-        srk.requires_arc = false
-        srk.frameworks   = 'MobileCoreServices'
+    s.subspec 'Assets' do |sa|
+        sa.source_files = 'Source/Assets/*.{h,m}'
+        sa.resources    = 'Source/Assets/*.{xib}'
+        sa.frameworks   = 'AssetsLibrary', 'CoreLocation'
     end
     
-    s.subspec 'RBVolumeButtons' do |srb|
-        srb.source_files = 'Library/RBVolumeButtons'
-        srb.requires_arc = false
-        srb.frameworks   = 'MediaPlayer', 'AudioToolbox'
+    s.subspec 'Picker' do |sp|
+        sp.source_files = 'Source/Picker/*.{h,m}'
+        sp.resources    = 'Source/Picker/*.{xib}'
     end
+    
+    s.subspec 'Resources' do |sr|
+        s.resources     = 'NBUKitResources.bundle'
+    end
+    
+    s.subspec 'Library' do |sl|
+        
+        sl.subspec 'NBUCompatibility' do |sc|
+            sc.source_files     = 'Library/NBUCompatibility'
+        end
+        
+        sl.subspec 'RestKit Support' do |srk|
+            srk.requires_arc    = false
+            srk.source_files    = 'Library/RestKit Support'
+            srk.frameworks      = 'MobileCoreServices'
+        end
+        
+        sl.subspec 'RBVolumeButtons' do |srb|
+            srb.requires_arc    = false
+            srb.source_files    = 'Library/RBVolumeButtons'
+            srb.frameworks      = 'MediaPlayer', 'AudioToolbox'
+        end
+        
+        sl.subspec 'MPNotificationView' do |snv|
+            snv.source_files    = 'Library/MPNotificationView'
+            snv.subspec 'OBGradientView' do |sgv|
+                sgv.source_files = 'Library/OBGradientView'
+            end
+        end
+        
+    end
+    
 end
 

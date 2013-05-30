@@ -1,13 +1,16 @@
-iOS NBUKit
-==========  
+NBUKit
+======
 
-_Latest version 1.9.0a1_
+_Latest version 1.9.1_
 
-[Customizable](https://github.com/CyberAgent/iOS-NBUKit/wiki/NBUKit-Customization) camera, assets, image editing, gallery, picker and UIKit subclasses.
+[![Build Status](https://travis-ci.org/CyberAgent/iOS-NBUKit.png?branch=master)](https://travis-ci.org/CyberAgent/iOS-NBUKit)
 
-_Includes [NBUCore](https://github.com/CyberAgent/iOS-NBUCore)._
+[Customizable](https://github.com/CyberAgent/iOS-NBUKit/wiki/NBUKit-Customization) camera, assets,
+image editing, gallery, picker and UIKit subclasses.
 
-![NBUKit](https://github.com/CyberAgent/iOS-NBUKit/wiki/images/NBUKit.png)
+_Uses [NBUCore](https://github.com/CyberAgent/iOS-NBUCore)._
+
+![NBUKit](https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/images/NBUKit.png)
 
 Components
 ----------
@@ -19,8 +22,8 @@ Customizable AVFoundation-based camera view.
 Can be embeded in any superview, custom UIViewController or used along NBUCameraViewController and even takes
 mock pictures on the iOS simulator!
 
-![NBUCamera](https://github.com/CyberAgent/iOS-NBUKit/wiki/Camera1.png)
-![NBUCamera](https://github.com/CyberAgent/iOS-NBUKit/wiki/Camera2.png)
+![NBUCamera](https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Camera1.png)
+![NBUCamera](https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Camera2.png)
 
 ### NBUAssets
 
@@ -29,8 +32,8 @@ change notifications to stay always in valid.
 
 Also support for _local assets_: Images in folders that are handled just like regular library assets.
 
-![NBUAssets](https://github.com/CyberAgent/iOS-NBUKit/wiki/Assets1.png)
-![NBUAssets](https://github.com/CyberAgent/iOS-NBUKit/wiki/Assets2.png)
+![NBUAssets](https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Assets1.png)
+![NBUAssets](https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Assets2.png)
 
 ### Cropping/Filters
 
@@ -39,37 +42,52 @@ Customizable views and controllers to modify images (filters and cropping).
 Filters from CoreImage and [GPUImage](https://github.com/BradLarson/GPUImage) but could be extended to
 other libraries as well.
 
-![NBUEdit](https://github.com/CyberAgent/iOS-NBUKit/wiki/Edit2.png)
-![NBUEdit](https://github.com/CyberAgent/iOS-NBUKit/wiki/Edit3.png)
+![NBUEdit](https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Edit2.png)
+![NBUEdit](https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Edit3.png)
 
 ### NBUGallery
 
-Image slideshow in development inspired on [FGallery](https://github.com/gdavis/FGallery-iPhone).
+Image slideshow in development inspired by [FGallery](https://github.com/gdavis/FGallery-iPhone).
 
-![NBUGallery](https://github.com/CyberAgent/iOS-NBUKit/wiki/Gallery1.png)
+![NBUGallery](https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Gallery1.png)
 
 ### NBUImagePickerController
 
 Block-based image picker that combines all modules mentioned above.
 
-![NBUPicker](https://github.com/CyberAgent/iOS-NBUKit/wiki/Picker1.png)
+![NBUPicker](https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Picker1.png)
+
+Customization
+-------------
+
+The main goal of NBUKit is to be fully [customizable](https://github.com/CyberAgent/iOS-NBUKit/wiki/NBUKit-Customization) and easy to extend.
 
 Installation
 ------------
 
-### Cocoapods
+### Cocoapods (1.9.x+)
 
-In development on the [cocoapod branch](https://github.com/CyberAgent/iOS-NBUKit/tree/cocapods).
+1. Install [Cocoapods](http://cocoapods.org) if not already done.
+2. Add `pod 'NBUKit'` to your Podfile.
 
-### Manual
+_If you have a problem try `gem update cocoapods` first._
+
+### Manual (up to 1.8.x)
 
 [NBUKit Installation](https://github.com/CyberAgent/iOS-NBUKit/wiki/NBUKit-Installation).
 
 Documentation
 -------------
 
+NBUKit + NBUCore
+
 * HTML: http://cyberagent.github.io/iOS-NBUKit/html/
 * Xcode DocSet: `http://cyberagent.github.io/iOS-NBUKit/publish/NBUKit.atom`
+
+NBUKit only
+
+* HTML: http://cocoadocs.org/docsets/NBUKit/
+* Xcode DocSet: `http://cocoadocs.org/docsets/NBUKit/xcode-docset.atom`
 
 License
 -------
