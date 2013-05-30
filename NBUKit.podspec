@@ -72,6 +72,13 @@ Pod::Spec.new do |s|
             srb.frameworks      = 'MediaPlayer', 'AudioToolbox'
         end
         
+        sl.subspec 'MPNotificationView' do |snv|
+            snv.source_files    = 'Library/MPNotificationView'
+            snv.subspec 'OBGradientView' do |sgv|
+                sgv.source_files = 'Library/OBGradientView'
+            end
+        end
+        
     end
     
 end
