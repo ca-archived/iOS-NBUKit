@@ -33,6 +33,7 @@
 		E54C15F6170EBC3E005067F4 /* NBUMediaInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E54C15F4170EBC3E005067F4 /* NBUMediaInfo.m */; };
 		E54C15FB171297EF005067F4 /* NBUEditMultiImageViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E54C15F9171297EF005067F4 /* NBUEditMultiImageViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E54C15FC171297EF005067F4 /* NBUEditMultiImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E54C15FA171297EF005067F4 /* NBUEditMultiImageViewController.m */; };
+		E5655F8F1745CC1600D662C6 /* NBUDashboardLogger.xib in Resources */ = {isa = PBXBuildFile; fileRef = E58B5A571717A979008BB0E0 /* NBUDashboardLogger.xib */; };
 		E573DDE4171D36620070C9B7 /* MPNotificationView.h in Headers */ = {isa = PBXBuildFile; fileRef = E573DDD4171D29040070C9B7 /* MPNotificationView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E573DDE5171D36620070C9B7 /* MPNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = E573DDD5171D29040070C9B7 /* MPNotificationView.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		E573DDEB171D36B10070C9B7 /* OBGradientView.h in Headers */ = {isa = PBXBuildFile; fileRef = E573DDE9171D36AA0070C9B7 /* OBGradientView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1356,6 +1357,7 @@
 				E51BAE441716A7B8007DC13F /* previous@2x.png in Resources */,
 				E575B553171E82FC0080BE8D /* NBUGalleryView.xib in Resources */,
 				E575B559171E8BB70080BE8D /* NBUGalleryThumbnailView.xib in Resources */,
+				E5655F8F1745CC1600D662C6 /* NBUDashboardLogger.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

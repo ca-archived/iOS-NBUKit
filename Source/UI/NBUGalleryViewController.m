@@ -37,7 +37,6 @@
     UIBarStyle _previousNavigationBarStyle;
 	
 	UIView * _container;        // Used as view for the controller
-	UIView * _innerContainer;   // Sized and placed to be fullscreen within the container
 	UIScrollView * _scrollView;
     UIScrollView * _thumnailsScrollView;
 	
@@ -107,8 +106,8 @@
     
     // Set container and it's background color if not set
     _container = self.view;
-    _container.autoresizingMask					= (UIViewAutoresizingFlexibleWidth |
-                                                   UIViewAutoresizingFlexibleHeight);
+    _container.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
+                                   UIViewAutoresizingFlexibleHeight);
     if (!_container.backgroundColor)
     {
         _container.backgroundColor = [UIColor blackColor];
@@ -117,20 +116,24 @@
     // Listen for frame changes to update layout during auto-rotation or going in and out of fullscreen
     [_container addObserver:self
                  forKeyPath:@"frame"
-                    options:NSKeyValueObservingOptionNew
+                    options:NSKeyValueObservingOptionOld
                     context:nil];
     
-    // setup scroller
+    // Setup scroller
     _scrollView = [[UIScrollView alloc] initWithFrame:CGRectZero];
     _scrollView.delegate = self;
     _scrollView.pagingEnabled = YES;
     _scrollView.showsVerticalScrollIndicator = NO;
     _scrollView.showsHorizontalScrollIndicator = NO;
-        
-    // Make things flexible
-    _innerContainer = [[UIView alloc] initWithFrame:CGRectZero];
-    _innerContainer.autoresizesSubviews			= NO;
-    _scrollView.autoresizesSubviews				= NO;
+    _scrollView.autoresizesSubviews = NO;
+    _scrollView.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
+                                    UIViewAutoresizingFlexibleHeight);
+    _scrollView.frame = CGRectMake(0.0,
+                                   0.0,
+                                   _container.size.width + _spaceBetweenViews,
+                                   _container.size.height);
+    [_container insertSubview:_scrollView
+                      atIndex:0];
     
     // Setup thumbnails
     if (_thumbnailsGridView)
@@ -150,13 +153,9 @@
             
             [self updateToggleThumbnailsViewButton];
         }
+        
+        [_container addSubview:_thumbnailsGridView];
     }
-    
-	// Add items to their containers
-	[_container insertSubview:_innerContainer
-                      atIndex:0];
-	[_container addSubview:_thumbnailsGridView];
-	[_innerContainer addSubview:_scrollView];
 	
     // Reload the gallery if possible
     if (_objectArray)
@@ -170,7 +169,6 @@
     [_container removeObserver:self
                     forKeyPath:@"frame"];
     _container = nil;
-    _innerContainer = nil;
     _scrollView = nil;
     
     [super viewDidUnload];
@@ -220,7 +218,6 @@
     [super viewWillAppear:animated];
 	
     self.showThumbnailsView = _showThumbnailsView;
-	[self layoutViews];
 	
 	// Update bars' style
     if (!_updatesBars)
@@ -300,8 +297,6 @@
 
 - (void)layoutViews
 {
-	[self positionInnerContainer];
-	[self positionScroller];
 	[self adjustThumbnailsView];
 	[self updateScrollSize];
 	[self updateCaption];
@@ -309,6 +304,9 @@
 	[self layoutThumbnails];
 	[self scrollToIndex:_currentIndex
                animated:NO];
+    
+    NBULogVerbose(@"+++ %@\ncontainer %@\nscrollView %@",
+                  THIS_METHOD, _container, _scrollView);
 }
 
 #pragma mark - Private Methods
@@ -320,57 +318,14 @@
 {
 	if([keyPath isEqualToString:@"frame"])
 	{
+        // Ignore change?
+        CGRect oldFrame = [(NSValue *)change[NSKeyValueChangeOldKey] CGRectValue];
+        if (CGRectEqualToRect(oldFrame, _container.frame))
+            return;
+        
+        // Update layout
 		[self layoutViews];
 	}
-}
-
-- (void)positionInnerContainer
-{
-	CGRect screenFrame = [UIScreen mainScreen].bounds;
-	CGRect innerContainerRect;
-	
-    // Portrait
-	if(UIInterfaceOrientationIsPortrait(self.interfaceOrientation))
-	{
-		innerContainerRect = CGRectMake(0.0,
-                                        _container.frame.size.height - screenFrame.size.height,
-                                        _container.frame.size.width,
-                                        screenFrame.size.height);
-	}
-    
-    // Landscape
-	else
-	{
-		innerContainerRect = CGRectMake(0.0,
-                                        _container.frame.size.height - screenFrame.size.width,
-                                        _container.frame.size.width,
-                                        screenFrame.size.width);
-	}
-	
-	_innerContainer.frame = innerContainerRect;
-}
-
-
-- (void)positionScroller
-{
-	CGRect screenFrame = [UIScreen mainScreen].bounds;
-	CGRect scrollerRect;
-	
-	// Portrait
-	if(UIInterfaceOrientationIsPortrait(self.interfaceOrientation))
-	{
-        screenFrame.size.width += _spaceBetweenViews;
-		scrollerRect = CGRectMake( 0, 0, screenFrame.size.width, screenFrame.size.height );
-	}
-    
-	// Landscape
-	else
-	{
-        screenFrame.size.height += _spaceBetweenViews;
-		scrollerRect = CGRectMake( 0, 0, screenFrame.size.height, screenFrame.size.width );
-	}
-	
-	_scrollView.frame = scrollerRect;
 }
 
 - (void)adjustThumbnailsView

@@ -73,6 +73,8 @@
     }
     _cameraView.flashButtonConfigurationBlock = ^(id<UIButton> button, AVCaptureFlashMode mode)
     {
+        _flashLabel.hidden = button.hidden;
+        
         switch (mode)
         {
             case AVCaptureFlashModeOn:

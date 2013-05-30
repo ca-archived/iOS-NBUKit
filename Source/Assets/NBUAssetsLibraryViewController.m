@@ -53,7 +53,10 @@
 
 - (void)loadGroups
 {
-    self.loading = YES;
+    dispatch_async(dispatch_get_main_queue(), ^
+                   {
+                       self.loading = YES;
+                   });
     
     [[NBUAssetsLibrary sharedLibrary] allGroupsWithResultBlock:^(NSArray * groups,
                                                                  NSError * error)
@@ -95,6 +98,21 @@
 - (void)setLoading:(BOOL)loading
 {
     _loading = loading; // Enables KVO
+	
+	if (_loading)
+	{
+		[_objectTableView setNoContentsViewText:NSLocalizedStringWithDefaultValue(@"NBUAssetsLibraryViewController LoadingLabel",
+																				  nil, nil,
+																				  @"Loading albums...",
+																				  @"NBUAssetsLibraryViewController LoadingLabel")];
+	}
+	else
+	{
+		[_objectTableView setNoContentsViewText:NSLocalizedStringWithDefaultValue(@"NBUAssetsLibraryViewController NoAlbumsLabel",
+																				  nil, nil,
+																				  @"No albums",
+																				  @"NBUAssetsLibraryViewController NoAlbumsLabel")];
+	}
 }
 
 #pragma mark - Show assets group

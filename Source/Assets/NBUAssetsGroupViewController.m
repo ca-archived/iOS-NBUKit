@@ -73,12 +73,6 @@
     _gridView.animated = NO;
     _gridView.delegate = self;
     [_gridView startObservingScrollViewDidScroll];
-    
-    // Localization
-    [_gridView setNoContentsViewText:NSLocalizedStringWithDefaultValue(@"NBUAssetsGroupViewController NoImagesLabel",
-                                                                       nil, nil,
-                                                                       @"No images",
-                                                                       @"NBUAssetsGroupViewController NoImagesLabel")];
 }
 
 - (void)objectUpdated:(NSDictionary *)userInfo
@@ -102,7 +96,10 @@
     // Reload assets
     [self.assetsGroup stopLoadingAssets];
     NBULogVerbose(@"Loading images for group %@...", self.assetsGroup.name);
-    self.loading = YES;
+    dispatch_async(dispatch_get_main_queue(), ^
+                   {
+                       self.loading = YES;
+                   });
     NSUInteger totalCount = self.assetsGroup.imageAssetsCount;
     __unsafe_unretained NBUAssetsGroupViewController * weakSelf = self;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
@@ -124,13 +121,14 @@
                      assets.count == totalCount)
                  {
                      NBULogVerbose(@"...%d images loaded", assets.count);
-                     if (assets.count == totalCount)
-                     {
-                         weakSelf.loading = NO;
-                     }
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                         weakSelf.gridView.objectArray = assets;
-                     });
+                     dispatch_async(dispatch_get_main_queue(), ^
+                                    {
+                                        if (assets.count == totalCount)
+                                        {
+                                            weakSelf.loading = NO;
+                                        }
+                                        weakSelf.gridView.objectArray = assets;
+                                    });
                  }
              }
          }];
@@ -149,6 +147,22 @@
 - (void)setLoading:(BOOL)loading
 {
     _loading = loading; // Enables KVO
+	
+    // Update label
+	if (_loading)
+	{
+        [_gridView setNoContentsViewText:NSLocalizedStringWithDefaultValue(@"NBUAssetsGroupViewController LoadingLabel",
+																		   nil, nil,
+																		   @"Loading images...",
+																		   @"NBUAssetsGroupViewController LoadingLabel")];
+	}
+	else
+	{
+		[_gridView setNoContentsViewText:NSLocalizedStringWithDefaultValue(@"NBUAssetsGroupViewController NoImagesLabel",
+																		   nil, nil,
+																		   @"No images",
+																		   @"NBUAssetsGroupViewController NoImagesLabel")];
+	}
 }
 
 #pragma mark - Grid view delegate
