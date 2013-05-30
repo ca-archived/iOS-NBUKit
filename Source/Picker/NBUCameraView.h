@@ -74,6 +74,9 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 /// Whether the picture should keep its orientation up. Default `NO`.
 @property (nonatomic)                   BOOL shouldAutoRotatePicture;
 
+/// Whether the front camera preview should should be mirrored. Default `YES`.
+@property (nonatomic)                   BOOL shouldMirrorFrontCamera;
+
 /// Programatically force the view to rotate.
 /// @param orientation The desired interface orientation.
 - (void)setInterfaceOrientation:(UIInterfaceOrientation)orientation;
@@ -212,4 +215,3 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 @property (assign, nonatomic) IBOutlet UIImageView * lastPictureImageView;
 
 @end
-
