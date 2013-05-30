@@ -1,8 +1,9 @@
 platform :ios
 
 # For NBUKit development:
-pod 'NBUKit',       :path => '../'
+pod 'NBUCore',  :path => '../../NBUCore/'
+pod 'NBUKit',   :path => '../'
 
 # For client projects use:
-# pod 'NBUKit',  '~> 1.9.1'
+#pod 'NBUKit',   '~> 1.9.1'
 
