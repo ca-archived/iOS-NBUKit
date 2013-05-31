@@ -369,6 +369,7 @@
 				34C4AD8E15BE87FF00709E28 /* Frameworks */,
 				34C4AD8F15BE87FF00709E28 /* Resources */,
 				0AB02F6FD4994421B6F59FBA /* Copy Pods Resources */,
+				E503265A1758434000A13329 /* Fix Xcode bug */,
 			);
 			buildRules = (
 			);
@@ -478,6 +479,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sanbox is not in sync with the Podfile.lock. Run 'pod install'.\nEOM\n    exit 1\nfi\n";
+		};
+		E503265A1758434000A13329 /* Fix Xcode bug */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Fix Xcode bug";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Force proper link code sign on next build\ntouch \"${PROJECT_DIR}/NBUKitDemo/main.m\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
