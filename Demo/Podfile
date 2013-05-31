@@ -1,9 +1,12 @@
 platform :ios
 
-# For NBUKit development:
-pod 'NBUCore',  :path => '../../NBUCore/'
-pod 'NBUKit',   :path => '../'
-
-# For client projects use:
+# For client projects just use:
 #pod 'NBUKit',   '~> 1.9.1'
+
+# Pre-release versions:
+pod 'NBUCore',  :git => 'https://github.com/CyberAgent/iOS-NBUCore.git',    :commit => 'd12559eaaedb661868d228c742f56ec3ef74b0a6'
+#pod 'NBUKit',   :git => 'https://github.com/CyberAgent/iOS-NBUKit.git',     :commit => ''
+
+# For NBUKit development only:
+pod 'NBUKit',   :path => '../'
 
