@@ -25,7 +25,6 @@ Pod::Spec.new do |s|
     s.requires_arc  = true
     
     s.dependency 'NBUCore',     '~> 1.9.0'
-    s.dependency 'GPUImage',    '~> 0.1.0'
     
     s.subspec 'UI' do |su|
         su.source_files = 'Source/UI/*.{h,m}'
@@ -37,6 +36,7 @@ Pod::Spec.new do |s|
         si.source_files = 'Source/Image/*.{h,m}'
         si.resources    = 'Source/Image/*.{xib}'
         si.weak_frameworks = 'CoreImage'
+        s.dependency 'GPUImage',    '~> 0.1.0'
     end
     
     s.subspec 'Assets' do |sa|
