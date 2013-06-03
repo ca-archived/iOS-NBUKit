@@ -71,6 +71,9 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 /// @note Set to `YES` when inside view controllers that support rotation.
 @property (nonatomic)                   BOOL shouldAutoRotateView;
 
+/// Whether the front camera preview should should be mirrored. Default `YES`.
+@property (nonatomic)                   BOOL shouldMirrorFrontCamera;
+
 /// Programatically force the view to rotate.
 /// @param orientation The desired interface orientation.
 - (void)setInterfaceOrientation:(UIInterfaceOrientation)orientation;
@@ -209,4 +212,3 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 @property (assign, nonatomic) IBOutlet UIImageView * lastPictureImageView;
 
 @end
-
