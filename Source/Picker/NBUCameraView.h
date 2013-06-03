@@ -71,9 +71,6 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 /// @note Set to `YES` when inside view controllers that support rotation.
 @property (nonatomic)                   BOOL shouldAutoRotateView;
 
-/// Whether the picture should keep its orientation up. Default `NO`.
-@property (nonatomic)                   BOOL shouldAutoRotatePicture;
-
 /// Whether the front camera preview should should be mirrored. Default `YES`.
 @property (nonatomic)                   BOOL shouldMirrorFrontCamera;
 
