@@ -1,7 +1,7 @@
 NBUKit
 ======
 
-_Latest version 1.9.1_
+_Latest version 1.9.2_
 
 [![Build Status](https://travis-ci.org/CyberAgent/iOS-NBUKit.png?branch=master)](https://travis-ci.org/CyberAgent/iOS-NBUKit)
 

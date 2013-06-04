@@ -1,7 +1,7 @@
 platform :ios
 
 # For client projects just use:
-#pod 'NBUKit',   '~> 1.9.1'
+#pod 'NBUKit',   '~> 1.9.2'
 
 # Pre-release versions:
 #pod 'NBUCore',  :git => 'https://github.com/CyberAgent/iOS-NBUCore.git',    :commit => 'd12559eaaedb661868d228c742f56ec3ef74b0a6'

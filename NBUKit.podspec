@@ -3,7 +3,7 @@
 Pod::Spec.new do |s|
     
     s.name          = "NBUKit"
-    s.version       = "1.9.1"
+    s.version       = "1.9.2"
     s.platform      = :ios
     s.summary       = "Customizable image editing, filters, picker and other UIKit subclasses."
     s.homepage      = "http://cyberagent.github.io/iOS-NBUKit/"
