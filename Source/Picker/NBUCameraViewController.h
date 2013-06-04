@@ -19,7 +19,7 @@
 //
 
 #import "NBUViewController.h"
-#import "NBUKitPrivate.h"
+#import "NBUCameraView.h"
 
 @class NBUCameraView;
 

@@ -19,6 +19,7 @@
 //
 
 #import "NBUCameraViewController.h"
+#import "NBUKitPrivate.h"
 #import "RBVolumeButtons.h"
 
 // Define module
