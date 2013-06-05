@@ -53,7 +53,8 @@ typedef void (^NBUEditImageResultBlock)(UIImage * image);
 
 /// @name Configuring Cropping
 
-/// An option target size. If set edited images will be downsized to fit this size.
+/// An optional target size. If set edited images will be downsized to fit this size.
+/// Default `CGSizeZero` which means no resizing of the cropped image.
 @property (nonatomic)                               CGSize cropTargetSize;
 
 /// The size relative to the UIScreen points to be used to crop the image.
