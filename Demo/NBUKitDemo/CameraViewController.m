@@ -36,6 +36,7 @@
     // Configure the camera view
     //self.cameraView.shouldAutoRotateView = YES;
     self.cameraView.targetResolution = CGSizeMake(640.0, 640.0); // The minimum resolution we want
+    self.cameraView.keepFrontCameraPicturesMirrored = YES;
     self.cameraView.captureResultBlock = ^(UIImage * image,
                                            NSError * error)
     {

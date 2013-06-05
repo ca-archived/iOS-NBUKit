@@ -56,6 +56,7 @@
 @synthesize savePicturesToLibrary = _savePicturesToLibrary;
 @synthesize targetLibraryAlbumName = _targetLibraryAlbumName;
 @synthesize shouldAutoRotateView = _shouldAutoRotateView;
+@synthesize keepFrontCameraPicturesMirrored = _keepFrontCameraPicturesMirrored;
 @synthesize availableCaptureDevices = _availableCaptureDevices;
 @synthesize availableResolutions = _availableResolutions;
 @synthesize availableFlashModes = _availableFlashModes;
@@ -112,9 +113,6 @@
                                              selector:@selector(deviceOrientationChanged:)
                                                  name:UIDeviceOrientationDidChangeNotification
                                                object:nil];
-    
-    self.shouldMirrorFrontCamera = YES;
-    
 }
 
 - (void)dealloc
@@ -452,9 +450,9 @@
     _videoConnection = nil;
     for (AVCaptureConnection * connection in _captureOutput.connections)
     {
-        for (AVCaptureInputPort * port in [connection inputPorts])
+        for (AVCaptureInputPort * port in connection.inputPorts)
         {
-            if ([port.mediaType isEqual:AVMediaTypeVideo])
+            if ([port.mediaType isEqualToString:AVMediaTypeVideo])
             {
                 _videoConnection = connection;
                 break;
@@ -463,21 +461,20 @@
         if (_videoConnection)
         {
             NBULogVerbose(@"Video connection: %@", _videoConnection);
+            
+            // Handle fron camera video mirroring
+            if (_currentDevice.position == AVCaptureDevicePositionFront &&
+                _videoConnection.supportsVideoMirroring)
+            {
+                _videoConnection.videoMirrored = _keepFrontCameraPicturesMirrored;
+            }
+            
             break;
         }
     }
     if (!_videoConnection)
     {
         NBULogError(@"Couldn't create video connection for output: %@", _captureOutput);
-    } else
-    {
-        if (_shouldMirrorFrontCamera && _currentDevice.position == AVCaptureDevicePositionFront)
-        {
-            if ([_videoConnection isVideoMirroringSupported])
-            {
-                [_videoConnection setVideoMirrored:YES];
-            }
-        }
     }
     
     // Choose the best suited session presset
