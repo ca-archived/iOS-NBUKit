@@ -56,6 +56,7 @@
 @synthesize savePicturesToLibrary = _savePicturesToLibrary;
 @synthesize targetLibraryAlbumName = _targetLibraryAlbumName;
 @synthesize shouldAutoRotateView = _shouldAutoRotateView;
+@synthesize shouldAutoRotatePicture = _shouldAutoRotatePicture;
 @synthesize availableCaptureDevices = _availableCaptureDevices;
 @synthesize availableResolutions = _availableResolutions;
 @synthesize availableFlashModes = _availableFlashModes;
@@ -112,6 +113,9 @@
                                              selector:@selector(deviceOrientationChanged:)
                                                  name:UIDeviceOrientationDidChangeNotification
                                                object:nil];
+    
+    self.shouldMirrorFrontCamera = YES;
+    
 }
 
 - (void)dealloc
@@ -222,7 +226,10 @@
 - (void)setInterfaceOrientation:(UIInterfaceOrientation)orientation
 {
     // Update video orientation
-    _videoConnection.videoOrientation = (AVCaptureVideoOrientation)UIInterfaceOrientationFromValidDeviceOrientation(orientation);
+    if ([_videoConnection isVideoOrientationSupported])
+    {
+        _videoConnection.videoOrientation = (AVCaptureVideoOrientation)UIInterfaceOrientationFromValidDeviceOrientation(orientation);
+    }
     
     // Also rotate view?
     if (_shouldAutoRotateView)
@@ -463,6 +470,15 @@
     if (!_videoConnection)
     {
         NBULogError(@"Couldn't create video connection for output: %@", _captureOutput);
+    } else
+    {
+        if (_shouldMirrorFrontCamera && _currentDevice.position == AVCaptureDevicePositionFront)
+        {
+            if ([_videoConnection isVideoMirroringSupported])
+            {
+                [_videoConnection setVideoMirrored:YES];
+            }
+        }
     }
     
     // Choose the best suited session presset
@@ -990,4 +1006,3 @@
 }
 
 @end
-
