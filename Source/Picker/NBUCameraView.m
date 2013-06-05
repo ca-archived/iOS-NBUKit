@@ -223,9 +223,9 @@
 - (void)setInterfaceOrientation:(UIInterfaceOrientation)orientation
 {
     // Update video orientation
-    if ([_videoConnection isVideoOrientationSupported])
+    if (_videoConnection.isVideoOrientationSupported)
     {
-        _videoConnection.videoOrientation = (AVCaptureVideoOrientation)UIInterfaceOrientationFromValidDeviceOrientation(orientation);
+        _videoConnection.videoOrientation = (AVCaptureVideoOrientation)orientation;
     }
     
     // Also rotate view?
