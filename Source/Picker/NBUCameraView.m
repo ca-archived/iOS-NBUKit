@@ -56,6 +56,7 @@
 @synthesize savePicturesToLibrary = _savePicturesToLibrary;
 @synthesize targetLibraryAlbumName = _targetLibraryAlbumName;
 @synthesize shouldAutoRotateView = _shouldAutoRotateView;
+@synthesize keepFrontCameraPicturesMirrored = _keepFrontCameraPicturesMirrored;
 @synthesize availableCaptureDevices = _availableCaptureDevices;
 @synthesize availableResolutions = _availableResolutions;
 @synthesize availableFlashModes = _availableFlashModes;
@@ -222,7 +223,10 @@
 - (void)setInterfaceOrientation:(UIInterfaceOrientation)orientation
 {
     // Update video orientation
-    _videoConnection.videoOrientation = (AVCaptureVideoOrientation)UIInterfaceOrientationFromValidDeviceOrientation(orientation);
+    if (_videoConnection.isVideoOrientationSupported)
+    {
+        _videoConnection.videoOrientation = (AVCaptureVideoOrientation)orientation;
+    }
     
     // Also rotate view?
     if (_shouldAutoRotateView)
@@ -446,9 +450,9 @@
     _videoConnection = nil;
     for (AVCaptureConnection * connection in _captureOutput.connections)
     {
-        for (AVCaptureInputPort * port in [connection inputPorts])
+        for (AVCaptureInputPort * port in connection.inputPorts)
         {
-            if ([port.mediaType isEqual:AVMediaTypeVideo])
+            if ([port.mediaType isEqualToString:AVMediaTypeVideo])
             {
                 _videoConnection = connection;
                 break;
@@ -457,6 +461,14 @@
         if (_videoConnection)
         {
             NBULogVerbose(@"Video connection: %@", _videoConnection);
+            
+            // Handle fron camera video mirroring
+            if (_currentDevice.position == AVCaptureDevicePositionFront &&
+                _videoConnection.supportsVideoMirroring)
+            {
+                _videoConnection.videoMirrored = _keepFrontCameraPicturesMirrored;
+            }
+            
             break;
         }
     }
@@ -990,4 +1002,3 @@
 }
 
 @end
-
