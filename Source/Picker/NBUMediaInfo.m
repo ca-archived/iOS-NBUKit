@@ -190,8 +190,9 @@ NSString * const NBUMediaInfoFiltersKey             = @"NBUMediaInfoFilters";
     {
         thumbnail = [self.originalImage thumbnailWithSize:size];
         
+        
         // Cache it
-        _attributes[key] = thumbnail;
+        if (thumbnail) _attributes[key] = thumbnail;
     };
     
     return thumbnail;
@@ -210,7 +211,7 @@ NSString * const NBUMediaInfoFiltersKey             = @"NBUMediaInfoFilters";
         thumbnail = [self.editedImage thumbnailWithSize:size];
         
         // Cache it
-        _attributes[key] = thumbnail;
+        if (thumbnail) _attributes[key] = thumbnail;
     };
     
     return thumbnail;

@@ -707,12 +707,12 @@
     [self updateUI];
 }
 
-- (NSInteger)currentFlashMode
+- (AVCaptureFlashMode)currentFlashMode
 {
     return _currentDevice.flashMode;
 }
 
-- (void)setCurrentFlashMode:(NSInteger)currentFlashMode
+- (void)setCurrentFlashMode:(AVCaptureFlashMode)currentFlashMode
 {
     NBULogInfo(@"%@: %d", THIS_METHOD, currentFlashMode);
     
@@ -727,12 +727,12 @@
                                                           wrap:YES] integerValue];
 }
 
-- (NSInteger)currentFocusMode
+- (AVCaptureFocusMode)currentFocusMode
 {
     return _currentDevice.focusMode;
 }
 
-- (void)setCurrentFocusMode:(NSInteger)currentFocusMode
+- (void)setCurrentFocusMode:(AVCaptureFocusMode)currentFocusMode
 {
     NBULogInfo(@"%@: %d", THIS_METHOD, currentFocusMode);
     
@@ -747,12 +747,12 @@
                                                           wrap:YES] integerValue];
 }
 
-- (NSInteger)currentExposureMode
+- (AVCaptureExposureMode)currentExposureMode
 {
     return _currentDevice.exposureMode;
 }
 
-- (void)setCurrentExposureMode:(NSInteger)currentExposureMode
+- (void)setCurrentExposureMode:(AVCaptureExposureMode)currentExposureMode
 {
     NBULogInfo(@"%@: %d", THIS_METHOD, currentExposureMode);
     
@@ -767,12 +767,12 @@
                                                                 wrap:YES] integerValue];
 }
 
-- (NSInteger)currentWhiteBalanceMode
+- (AVCaptureWhiteBalanceMode)currentWhiteBalanceMode
 {
     return _currentDevice.whiteBalanceMode;
 }
 
-- (void)setCurrentWhiteBalanceMode:(NSInteger)currentWhiteBalanceMode
+- (void)setCurrentWhiteBalanceMode:(AVCaptureWhiteBalanceMode)currentWhiteBalanceMode
 {
     NBULogInfo(@"%@: %d", THIS_METHOD, currentWhiteBalanceMode);
     

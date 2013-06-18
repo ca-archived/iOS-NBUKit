@@ -169,7 +169,7 @@ configureFilterBlock:(NBUConfigureFilterBlock)block
         forIndex:(NSUInteger)index
 {
     NSMutableArray * values = ([_values isKindOfClass:[NSMutableArray class]] ?
-                               _values :
+                               (NSMutableArray *)_values :
                                [NSMutableArray arrayWithArray:self.values]);
     values[index] = value;
     _values = values;
