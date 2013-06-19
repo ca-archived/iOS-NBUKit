@@ -95,10 +95,16 @@
                                                        cancelButtonTitle:cancel
                                                   destructiveButtonTitle:nil
                                                        otherButtonTitles:takePicture, chooseImage, nil];
+    
+    // Configure selection blocks
     actionSheet.selectedButtonBlock = ^(NSInteger buttonIndex)
     {
         self.rootViewController = buttonIndex == 0 ? _cameraController : _libraryController;
         [self _startPickerWithTarget:target];
+    };
+    actionSheet.cancelButtonBlock = ^
+    {
+        if (_resultBlock) _resultBlock(nil);
     };
     
     [actionSheet showFrom:target];
