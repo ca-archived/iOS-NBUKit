@@ -361,15 +361,19 @@
     // Multiple images mode
     else
     {
-        UIBarButtonItem * continueButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringWithDefaultValue(@"NBUImagePickerController assetsGroupController.continueButton",
-                                                                                                                    nil, nil,
-                                                                                                                    @"Continue",
-                                                                                                                    @"NBUImagePickerController assetsGroupController.continueButton")
-                                                                            style:UIBarButtonItemStyleDone
-                                                                           target:self
-                                                                           action:@selector(finishAssetsSelection)];
-        _assetsGroupController.continueButton = continueButton;
-        _assetsGroupController.navigationItem.rightBarButtonItem = continueButton;
+        // Replace the camera button by a continue button if not customized
+        if (_assetsGroupController.navigationItem.rightBarButtonItem.style == UIBarButtonSystemItemCamera)
+        {
+            UIBarButtonItem * continueButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringWithDefaultValue(@"NBUImagePickerController assetsGroupController.continueButton",
+                                                                                                                        nil, nil,
+                                                                                                                        @"Continue",
+                                                                                                                        @"NBUImagePickerController assetsGroupController.continueButton")
+                                                                                style:UIBarButtonItemStyleDone
+                                                                               target:self
+                                                                               action:@selector(finishAssetsSelection)];
+            _assetsGroupController.continueButton = continueButton;
+            _assetsGroupController.navigationItem.rightBarButtonItem = continueButton;
+        }
     }
 }
 
