@@ -49,6 +49,11 @@
 /// The currently selected NBUAsset objects.
 @property (strong, nonatomic)                       NSArray * selectedAssets;
 
+/// The currently selectedAssets' URLs.
+/// @note For persistence purposes prefer this property over selectedAssets as
+/// NBUAssets instances may not be unique.
+@property (strong, nonatomic)                       NSArray * selectedAssetsURLs;
+
 /// An optional block to be called when the selection changes.
 @property (nonatomic, copy)                         void (^selectionChangedBlock)();
 

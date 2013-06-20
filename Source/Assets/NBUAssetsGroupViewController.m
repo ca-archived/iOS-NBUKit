@@ -45,6 +45,7 @@
 @synthesize clearsSelectionOnViewWillAppear = _clearsSelectionOnViewWillAppear;
 @synthesize selectionChangedBlock = _selectionChangedBlock;
 @synthesize assets = _assets;
+@synthesize selectedAssetsURLs = _selectedAssetsURLs;
 @synthesize gridView = _gridView;
 @synthesize continueButton = _continueButton;
 
@@ -115,18 +116,27 @@
              {
                  _assets = assets;
                  
-                 // Update grid view from time to time
+                 // Update from time to time only...
                  if (assets.count == 100 ||
                      assets.count == 400 ||
                      assets.count == totalCount)
                  {
                      NBULogVerbose(@"...%d images loaded", assets.count);
+                     
+                     // Stop loading?
+                     if (assets.count == totalCount)
+                     {
+                         weakSelf.loading = NO;
+                     }
+                     
+                     // Check for selectedAssets
+                     NSArray * selectedAssets = [self selectedAssetsFromAssets:assets
+                                                            selectedAssetsURLs:_selectedAssetsURLs];
+                     
+                     // Update grid view and selected assets on main thread
                      dispatch_async(dispatch_get_main_queue(), ^
                                     {
-                                        if (assets.count == totalCount)
-                                        {
-                                            weakSelf.loading = NO;
-                                        }
+                                        self.selectedAssets = selectedAssets;
                                         weakSelf.gridView.objectArray = assets;
                                     });
                  }
@@ -205,6 +215,54 @@
     
     // Call the selection changed block
     if (_selectionChangedBlock) _selectionChangedBlock();
+}
+
+- (NSArray *)selectedAssetsFromAssets:(NSArray *)assets
+                   selectedAssetsURLs:(NSArray *)selectedAssetsURLs
+{
+    NSMutableArray * selectedAssets;
+    if (selectedAssetsURLs.count > 0)
+    {
+        selectedAssets = [NSMutableArray array];
+        for (NBUAsset * asset in assets)
+        {
+            for (NSURL * url in selectedAssetsURLs)
+            {
+                if ([asset.URL.absoluteString isEqualToString:url.absoluteString])
+                {
+                    [selectedAssets addObject:asset];
+                    break;
+                }
+            }
+            // Stop looking if we found all of them
+            if (selectedAssets.count == selectedAssetsURLs.count)
+                break;
+        }
+    }
+    return selectedAssets;
+}
+
+- (void)setSelectedAssetsURLs:(NSArray *)selectedAssetsURLs
+{
+    _selectedAssetsURLs = selectedAssetsURLs;
+    
+    self.selectedAssets = [self selectedAssetsFromAssets:self.assets
+                                      selectedAssetsURLs:selectedAssetsURLs];
+}
+
+- (NSArray *)selectedAssetsURLs
+{
+    if (!self.isViewLoaded)
+        return _selectedAssetsURLs;
+    
+    // Make sure that we have the latest URLs by recreating them from the actual selectedAssets
+    NSMutableArray * selectedAssetsURLs = [NSMutableArray array];
+    for (NBUAsset * asset in _selectedAssets)
+    {
+        [selectedAssetsURLs addObject:asset.URL];
+    }
+    _selectedAssetsURLs = selectedAssetsURLs;
+    return selectedAssetsURLs;
 }
 
 #pragma mark - Manage taps
