@@ -334,6 +334,7 @@
 - (void)configureAssetsGroupController:(NBUImagePickerOptions)options
 {
     // Customize assets group controller
+    _assetsGroupController.reverseOrder = YES;
     _assetsGroupController.navigationItem.leftBarButtonItem = nil; // Allow back button
     _assetsGroupController.customBackButtonTitle = NSLocalizedStringWithDefaultValue(@"NBUImagePickerController assetsGroupController.customBackButtonTitle",
                                                                                      nil, nil,
