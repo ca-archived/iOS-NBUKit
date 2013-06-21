@@ -20,6 +20,9 @@
 
 #import "NBUAssetView.h"
 
+// Media infos' change notification adn its userInfo keys
+extern NSString * const NBUAssetThumbnailViewSelectionStateChangedNotification;
+
 /**
  NBUAssetView for NBUAssetImageSizeThumbnail images. Provides selection.
  */

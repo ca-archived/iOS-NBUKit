@@ -272,8 +272,8 @@
     [super viewWillAppear:animated];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(imageAssetViewTapped:)
-                                                 name:ActiveViewTappedNotification
+                                             selector:@selector(thumbnailViewSelectionStateChanged:)
+                                                 name:NBUAssetThumbnailViewSelectionStateChangedNotification
                                                object:nil];
     
     // Clear selection if in single selection mode
@@ -288,17 +288,14 @@
     [super viewWillDisappear:animated];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:ActiveViewTappedNotification
+                                                    name:NBUAssetThumbnailViewSelectionStateChangedNotification
                                                   object:nil];
 }
 
-- (void)imageAssetViewTapped:(NSNotification *)notification
+- (void)thumbnailViewSelectionStateChanged:(NSNotification *)notification
 {
     // Refresh selected assets
     NBUAssetThumbnailView * assetView = (NBUAssetThumbnailView *)notification.object;
-    
-    if (![assetView isKindOfClass:[NBUAssetThumbnailView class]])
-        return;
     
     // Selected
     if (assetView.selected)

@@ -19,10 +19,13 @@
 //
 
 #import "NBUAssetThumbnailView.h"
+#import "NBUAssetsGroupViewController.h"
 
 // Define module
 #undef  NBUKIT_MODULE
 #define NBUKIT_MODULE   NBUKIT_MODULE_CAMERA_ASSETS
+
+NSString * const NBUAssetThumbnailViewSelectionStateChangedNotification = @"NBUAssetThumbnailViewSelectionStateChangedNotification";
 
 static BOOL _changesAlphaOnSelection;
 
@@ -65,6 +68,10 @@ static BOOL _changesAlphaOnSelection;
     {
         self.imageView.alpha = selected ? 0.7 : 1.0;
     }
+    
+    // Notify selection change
+    [[NSNotificationCenter defaultCenter] postNotificationName:NBUAssetThumbnailViewSelectionStateChangedNotification
+                                                        object:self];
 }
 
 - (void)tapped:(id)sender
