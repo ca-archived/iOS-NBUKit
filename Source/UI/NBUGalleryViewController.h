@@ -46,16 +46,13 @@
 /// @discussion If not specified NBUImageLoader will be used.
 @property (assign, nonatomic)               id<NBUImageLoader> imageLoader;
 
-/// The number of images to be preloaded.
+/// The number of images to be preloaded. Default `1`.
 @property (nonatomic)                       NSUInteger imagePreloadCount;
 
 /// Force to reconstruct the view hierarchy.
 - (void)reloadGallery;
 
 /// @name Managing the Current Image
-
-/// The index to be set when reloading the gallery. Defaults to `0`.
-@property (nonatomic)                       NSInteger startingIndex;
 
 /// The current index.
 /// @discusssion Setting a values is equivalent to setCurrentIndex:animated:

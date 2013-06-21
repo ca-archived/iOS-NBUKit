@@ -29,6 +29,7 @@
 
 @implementation NBUGalleryViewController
 {
+    NSInteger _startingIndex;
 	NSRange _currentPreloadedRange;
     
 	BOOL _isScrolling;
@@ -49,7 +50,6 @@
 @synthesize nibNameForThumbnails = _nibNameForThumbnails;
 @synthesize imageLoader = _imageLoader;
 @synthesize imagePreloadCount = _imagePreloadCount;
-@synthesize startingIndex = _startingIndex;
 @synthesize currentIndex = _currentIndex;
 @synthesize fullscreen = _fullscreen;
 @synthesize thumbnailSize = _thumbnailSize;
@@ -473,6 +473,14 @@
 - (void)setCurrentIndex:(NSInteger)index
                animated:(BOOL)animated
 {
+    // UI not loaded?
+    if (!self.isViewLoaded)
+    {
+        // Just remember what the currentIndex should be
+        _startingIndex = index;
+        return;
+    }
+    
     // Zoom out the previous view?
     if (_currentIndex < (NSInteger)_views.count)
     {
