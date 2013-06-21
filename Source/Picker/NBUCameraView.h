@@ -30,6 +30,8 @@ typedef void (^NBUSavePictureResultBlock)(UIImage * image,
                                           NSDictionary * metadata,
                                           NSURL * url,
                                           NSError * error);
+typedef void (^NBUCaptureMovieResultBlock)(NSURL * movieURL,
+                                           NSError * error);
 typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
                                             NSInteger mode);
 
@@ -53,7 +55,13 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 /// @note The captured image may not exactly match the targetResolution.
 @property (nonatomic)                   CGSize targetResolution;
 
-/// The optional block to be called immediately after capturing the picture.
+/// Programatically force the view to rotate.
+/// @param orientation The desired interface orientation.
+- (void)setInterfaceOrientation:(UIInterfaceOrientation)orientation;
+
+/// @name Image Properties
+
+/// The block to be called immediately after capturing the picture.
 @property (nonatomic, copy)             NBUCapturePictureResultBlock captureResultBlock;
 
 /// Whether to save the pictures to the the library. Default `NO`.
@@ -76,9 +84,12 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 /// @note Front camera's preview is always mirrored.
 @property(nonatomic)                    BOOL keepFrontCameraPicturesMirrored;
 
-/// Programatically force the view to rotate.
-/// @param orientation The desired interface orientation.
-- (void)setInterfaceOrientation:(UIInterfaceOrientation)orientation;
+/// @name Movie Properties
+
+/// The block to be called after capturing a movie.
+@property (nonatomic, copy)             NBUCaptureMovieResultBlock captureMovieResultBlock;
+
+@property (nonatomic, readonly)         BOOL isRecording;
 
 /// @name Capture Devices and Modes
 
@@ -150,6 +161,8 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 /// Take a picture and execure the resultBlock.
 /// @param sender The sender object.
 - (IBAction)takePicture:(id)sender;
+
+- (IBAction)startStopRecording:(id)sender;
 
 /// Switch between front and back cameras (if available).
 /// @discussion Configures toggleCameraButton using toggleCameraButtonConfigurationBlock when available.

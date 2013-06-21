@@ -28,10 +28,15 @@
 #undef  NBUKIT_MODULE
 #define NBUKIT_MODULE   NBUKIT_MODULE_CAMERA_ASSETS
 
-// Private class
+// Private categories and classes
+@interface NBUCameraView (Private) <AVCaptureFileOutputRecordingDelegate>
+
+@end
+
 @interface PointOfInterestView : UIView
 
 @end
+
 
 @implementation NBUCameraView
 {
@@ -40,7 +45,8 @@
     AVCaptureSession * _captureSession;
     AVCaptureVideoPreviewLayer * _previewLayer;
     AVCaptureDeviceInput * _captureInput;
-    AVCaptureStillImageOutput * _captureOutput;
+    AVCaptureStillImageOutput * _captureImageOutput;
+    AVCaptureMovieFileOutput * _captureMovieOutput;
     AVCaptureConnection * _videoConnection;
     PointOfInterestView * _poiView;
     
@@ -52,10 +58,12 @@
 
 @synthesize targetResolution = _targetResolution;
 @synthesize captureResultBlock = _captureResultBlock;
+@synthesize captureMovieResultBlock = _captureMovieResultBlock;
 @synthesize saveResultBlock = _saveResultBlock;
 @synthesize savePicturesToLibrary = _savePicturesToLibrary;
 @synthesize targetLibraryAlbumName = _targetLibraryAlbumName;
 @synthesize shouldAutoRotateView = _shouldAutoRotateView;
+@synthesize isRecording = _isRecording;
 @synthesize keepFrontCameraPicturesMirrored = _keepFrontCameraPicturesMirrored;
 @synthesize availableCaptureDevices = _availableCaptureDevices;
 @synthesize availableResolutions = _availableResolutions;
@@ -156,17 +164,17 @@
     }
     
     // Configure output if needed
-    if (!_captureOutput)
+    if (!_captureImageOutput)
     {
-        _captureOutput = [AVCaptureStillImageOutput new];
-        if ([_captureSession canAddOutput:_captureOutput])
-            [_captureSession addOutput:_captureOutput];
+        _captureImageOutput = [AVCaptureStillImageOutput new];
+        if ([_captureSession canAddOutput:_captureImageOutput])
+            [_captureSession addOutput:_captureImageOutput];
         else
         {
-            NBULogError(@"Can't add output: %@ to session: %@", _captureOutput, _captureSession);
+            NBULogError(@"Can't add output: %@ to session: %@", _captureImageOutput, _captureSession);
             return;
         }
-        NBULogVerbose(@"Output: %@ settings: %@", _captureOutput, _captureOutput.outputSettings);
+        NBULogVerbose(@"Output: %@ settings: %@", _captureImageOutput, _captureImageOutput.outputSettings);
     }
     
     // Get a capture device if needed
@@ -448,7 +456,7 @@
     
     // Refresh the video connection
     _videoConnection = nil;
-    for (AVCaptureConnection * connection in _captureOutput.connections)
+    for (AVCaptureConnection * connection in _captureImageOutput.connections)
     {
         for (AVCaptureInputPort * port in connection.inputPorts)
         {
@@ -474,7 +482,7 @@
     }
     if (!_videoConnection)
     {
-        NBULogError(@"Couldn't create video connection for output: %@", _captureOutput);
+        NBULogError(@"Couldn't create video connection for output: %@", _captureImageOutput);
     }
     
     // Choose the best suited session presset
@@ -583,7 +591,7 @@
     self.window.userInteractionEnabled = NO;
     
     // Get the image
-    [_captureOutput captureStillImageAsynchronouslyFromConnection:_videoConnection
+    [_captureImageOutput captureStillImageAsynchronouslyFromConnection:_videoConnection
                                                 completionHandler:^(CMSampleBufferRef imageDataSampleBuffer,
                                                                     NSError * error)
      {
@@ -683,6 +691,52 @@
          if (_saveResultBlock) _saveResultBlock(_mockImage, nil, assetURL, saveError);
      }];
 #endif
+}
+
+- (void)startStopRecording:(id)sender
+{
+    if (!_captureMovieOutput)
+    {
+        _captureMovieOutput = [AVCaptureMovieFileOutput new];
+//        _captureMovieOutput.maxRecordedDuration =
+        if ([_captureSession canAddOutput:_captureMovieOutput])
+        {
+            [_captureSession addOutput:_captureMovieOutput];
+        }
+        else
+        {
+            NBULogError(@"Can't record movies here!");
+            return;
+        }
+    }
+    
+    if (!_captureMovieOutput.recording)
+    {
+        NSURL * movieOutputURL = [[UIApplication sharedApplication].cachesDirectory URLByAppendingPathComponent:@"tmpMovie.mov"];
+        [_captureMovieOutput startRecordingToOutputFileURL:movieOutputURL
+                                         recordingDelegate:self];
+    }
+    else
+    {
+        [_captureMovieOutput stopRecording];
+    }
+}
+
+- (void)captureOutput:(AVCaptureFileOutput *)captureOutput
+didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
+      fromConnections:(NSArray *)connections
+                error:(NSError *)error
+{
+    if (!error)
+    {
+        NBULogInfo(@"Finished capturing movie to %@", outputFileURL);
+    }
+    else
+    {
+        NBULogError(@"Error capturing movie: %@", error);
+    }
+    
+    if (_captureMovieResultBlock) _captureMovieResultBlock(outputFileURL, error);
 }
 
 - (void)toggleCamera:(id)sender
