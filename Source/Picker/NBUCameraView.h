@@ -59,7 +59,7 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 /// @param orientation The desired interface orientation.
 - (void)setInterfaceOrientation:(UIInterfaceOrientation)orientation;
 
-/// @name Image Properties
+/// @name Picture Properties
 
 /// The block to be called immediately after capturing the picture.
 @property (nonatomic, copy)             NBUCapturePictureResultBlock captureResultBlock;
@@ -84,6 +84,13 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 /// @note Front camera's preview is always mirrored.
 @property(nonatomic)                    BOOL keepFrontCameraPicturesMirrored;
 
+/// @name Picture Sequence Properties
+
+@property (nonatomic)                   NSTimeInterval sequenceCaptureInterval;
+
+@property (nonatomic, readonly,
+           getter=isCapturingSequence)  BOOL capturingSequence;
+
 /// @name Movie Properties
 
 /// The local folder where recorded movies should be recorded.
@@ -94,7 +101,8 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 @property (nonatomic, copy)             NBUCaptureMovieResultBlock captureMovieResultBlock;
 
 /// Whether recording is in progress.
-@property (nonatomic, readonly, getter=isRecording) BOOL recording;
+@property (nonatomic, readonly,
+           getter=isRecording)          BOOL recording;
 
 /// @name Capture Devices and Modes
 
@@ -167,6 +175,10 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 /// @param sender The sender object.
 - (IBAction)takePicture:(id)sender;
 
+- (IBAction)startStopPictureSequence:(id)sender;
+
+/// Start or stop video recording.
+/// @param sender The sender object.
 - (IBAction)startStopRecording:(id)sender;
 
 /// Switch between front and back cameras (if available).

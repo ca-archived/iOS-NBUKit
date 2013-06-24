@@ -203,10 +203,10 @@
 					<object class="IBUIButton" id="142795144">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{5, 363}, {95, 44}}</string>
+						<string key="NSFrame">{{5, 364}, {95, 43}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
+						<reference key="NSNextKeyView" ref="382508704"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -214,6 +214,28 @@
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<int key="IBUIButtonType">1</int>
 						<string key="IBUINormalTitle">Rec video</string>
+						<reference key="IBUIHighlightedTitleColor" ref="710044466"/>
+						<object class="NSColor" key="IBUINormalTitleColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+						</object>
+						<reference key="IBUINormalTitleShadowColor" ref="157531920"/>
+						<reference key="IBUIFontDescription" ref="743081095"/>
+						<reference key="IBUIFont" ref="220753990"/>
+					</object>
+					<object class="IBUIButton" id="382508704">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">265</int>
+						<string key="NSFrame">{{189, 364}, {125, 43}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSWindow"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<int key="IBUIContentHorizontalAlignment">0</int>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<int key="IBUIButtonType">1</int>
+						<string key="IBUINormalTitle">Image sequence</string>
 						<reference key="IBUIHighlightedTitleColor" ref="710044466"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">1</int>
@@ -4752,6 +4774,15 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 					</object>
 					<int key="connectionID">46</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">startStopPictureSequence:</string>
+						<reference key="source" ref="382508704"/>
+						<reference key="destination" ref="716464058"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">49</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -4770,6 +4801,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<reference ref="716464058"/>
 							<reference ref="139711982"/>
 							<reference ref="142795144"/>
+							<reference ref="382508704"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -4856,6 +4888,11 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<reference key="object" ref="142795144"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">47</int>
+						<reference key="object" ref="382508704"/>
+						<reference key="parent" ref="191373211"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -4878,12 +4915,13 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="41.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="45.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="47.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">46</int>
+			<int key="maxID">49</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -4970,21 +5008,19 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 					<string key="className">NBUCameraView</string>
 					<string key="superclassName">ActiveView</string>
 					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="doubleTapped:">UITapGestureRecognizer</string>
+						<string key="startStopPictureSequence:">id</string>
 						<string key="startStopRecording:">id</string>
 						<string key="takePicture:">id</string>
-						<string key="tapped:">UITapGestureRecognizer</string>
 						<string key="toggleCamera:">id</string>
 						<string key="toggleExposureMode:">id</string>
 						<string key="toggleFlashMode:">id</string>
 						<string key="toggleFocusMode:">id</string>
 						<string key="toggleWhiteBalanceMode:">id</string>
-						<string key="toogleVideoRecording:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="doubleTapped:">
-							<string key="name">doubleTapped:</string>
-							<string key="candidateClassName">UITapGestureRecognizer</string>
+						<object class="IBActionInfo" key="startStopPictureSequence:">
+							<string key="name">startStopPictureSequence:</string>
+							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="startStopRecording:">
 							<string key="name">startStopRecording:</string>
@@ -4993,10 +5029,6 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<object class="IBActionInfo" key="takePicture:">
 							<string key="name">takePicture:</string>
 							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="tapped:">
-							<string key="name">tapped:</string>
-							<string key="candidateClassName">UITapGestureRecognizer</string>
 						</object>
 						<object class="IBActionInfo" key="toggleCamera:">
 							<string key="name">toggleCamera:</string>
@@ -5016,10 +5048,6 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						</object>
 						<object class="IBActionInfo" key="toggleWhiteBalanceMode:">
 							<string key="name">toggleWhiteBalanceMode:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="toogleVideoRecording:">
-							<string key="name">toogleVideoRecording:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</dictionary>
@@ -5144,6 +5172,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="changePage:">id</string>
 						<string key="presentModal:">id</string>
+						<string key="tapped:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="changePage:">
@@ -5152,6 +5181,10 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						</object>
 						<object class="IBActionInfo" key="presentModal:">
 							<string key="name">presentModal:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="tapped:">
+							<string key="name">tapped:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</dictionary>
@@ -5180,6 +5213,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="deleteObject:">id</string>
 						<string key="promptDelete:">id</string>
+						<string key="swiped:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="deleteObject:">
@@ -5188,6 +5222,10 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						</object>
 						<object class="IBActionInfo" key="promptDelete:">
 							<string key="name">promptDelete:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="swiped:">
+							<string key="name">swiped:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</dictionary>
