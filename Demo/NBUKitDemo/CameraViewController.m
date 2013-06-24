@@ -58,6 +58,9 @@
     self.cameraView.whiteBalanceButtonConfigurationBlock = [self.cameraView buttonConfigurationBlockWithTitleFrom:
                                                             @[@"WB Lckd", @"WB Auto", @"WB Cont"]];
     
+    // Configure for video
+    self.cameraView.targetMovieFolder = [UIApplication sharedApplication].temporaryDirectory;
+    
     // Optionally auto-save pictures to the library
     self.cameraView.saveResultBlock = ^(UIImage * image,
                                         NSDictionary * metadata,

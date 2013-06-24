@@ -62,8 +62,8 @@
 @synthesize saveResultBlock = _saveResultBlock;
 @synthesize savePicturesToLibrary = _savePicturesToLibrary;
 @synthesize targetLibraryAlbumName = _targetLibraryAlbumName;
+@synthesize targetMovieFolder = _targetMovieFolder;
 @synthesize shouldAutoRotateView = _shouldAutoRotateView;
-@synthesize isRecording = _isRecording;
 @synthesize keepFrontCameraPicturesMirrored = _keepFrontCameraPicturesMirrored;
 @synthesize availableCaptureDevices = _availableCaptureDevices;
 @synthesize availableResolutions = _availableResolutions;
@@ -693,12 +693,11 @@
 #endif
 }
 
-- (void)startStopRecording:(id)sender
+- (AVCaptureMovieFileOutput *)captureMovieOutput
 {
     if (!_captureMovieOutput)
     {
         _captureMovieOutput = [AVCaptureMovieFileOutput new];
-//        _captureMovieOutput.maxRecordedDuration =
         if ([_captureSession canAddOutput:_captureMovieOutput])
         {
             [_captureSession addOutput:_captureMovieOutput];
@@ -709,16 +708,30 @@
             return;
         }
     }
-    
-    if (!_captureMovieOutput.recording)
+    return _captureMovieOutput;
+}
+
+- (BOOL)isRecording
+{
+    return _captureMovieOutput.recording;
+}
+
+- (void)startStopRecording:(id)sender
+{
+    if (!self.recording)
     {
-        NSURL * movieOutputURL = [[UIApplication sharedApplication].cachesDirectory URLByAppendingPathComponent:@"tmpMovie.mov"];
-        [_captureMovieOutput startRecordingToOutputFileURL:movieOutputURL
-                                         recordingDelegate:self];
+        if (!_targetMovieFolder)
+        {
+            _targetMovieFolder = [UIApplication sharedApplication].documentsDirectory;
+        }
+        NSURL * movieOutputURL = [NSFileManager URLForNewFileAtDirectory:_targetMovieFolder
+                                                      fileNameWithFormat:@"movie%02d.mov"];
+        [self.captureMovieOutput startRecordingToOutputFileURL:movieOutputURL
+                                             recordingDelegate:self];
     }
     else
     {
-        [_captureMovieOutput stopRecording];
+        [self.captureMovieOutput stopRecording];
     }
 }
 

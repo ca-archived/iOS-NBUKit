@@ -86,10 +86,15 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 
 /// @name Movie Properties
 
+/// The local folder where recorded movies should be recorded.
+/// @discussion If not specified movies will be saved to the application's Documents folder.
+@property (nonatomic, strong)           NSURL * targetMovieFolder;
+
 /// The block to be called after capturing a movie.
 @property (nonatomic, copy)             NBUCaptureMovieResultBlock captureMovieResultBlock;
 
-@property (nonatomic, readonly)         BOOL isRecording;
+/// Whether recording is in progress.
+@property (nonatomic, readonly, getter=isRecording) BOOL recording;
 
 /// @name Capture Devices and Modes
 
