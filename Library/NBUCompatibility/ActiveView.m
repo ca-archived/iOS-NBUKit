@@ -457,7 +457,7 @@ NSString * const ActiveViewSwipedNotification = @"ActiveViewSwipedNotification";
     
     RKLogTrace(@"%@ shouldReceiveTouch: %@",
                NSStringFromClass([self class]),
-               NSStringFromBOOL(receive));
+               NBUStringFromBOOL(receive));
     return receive;
 }
 

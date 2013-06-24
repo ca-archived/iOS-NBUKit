@@ -137,7 +137,7 @@
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"<%@: %p; %@; editable = %@>",
-            NSStringFromClass([self class]), self, _ALAssetsGroup, NSStringFromBOOL(_editable)];
+            NSStringFromClass([self class]), self, _ALAssetsGroup, NBUStringFromBOOL(_editable)];
 }
 
 - (void)libraryChanged:(NSNotification *)notification
