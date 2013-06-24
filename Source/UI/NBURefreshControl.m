@@ -255,7 +255,7 @@
     
     _visible = visible;
     
-    NBULogVerbose(@"setVisible: %@", NSStringFromBOOL(visible));
+    NBULogVerbose(@"setVisible: %@", NBUStringFromBOOL(visible));
     
     // Make visible
     if (visible)
