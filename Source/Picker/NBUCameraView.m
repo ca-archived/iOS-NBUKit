@@ -708,7 +708,7 @@
             _captureVideoDataOutput = [AVCaptureVideoDataOutput new];
             _captureVideoDataOutput.videoSettings = @{(NSString *)kCVPixelBufferPixelFormatTypeKey: @(kCVPixelFormatType_32BGRA)};
             [_captureVideoDataOutput setSampleBufferDelegate:self
-                                                       queue:dispatch_get_main_queue()];
+                                                       queue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0)];
             if (_sequenceCaptureInterval == 0)
             {
                 _sequenceCaptureInterval = 0.25;
@@ -752,7 +752,10 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
                image, NSStringFromCGSize(image.size), image.imageOrientation);
     
     // Execute capture block
-    if (_captureResultBlock) _captureResultBlock(image, nil);
+    dispatch_async(dispatch_get_main_queue(), ^
+    {
+        if (_captureResultBlock) _captureResultBlock(image, nil);
+    });
 }
 
 - (BOOL)isRecording
