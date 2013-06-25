@@ -362,7 +362,8 @@
     else
     {
         // Replace the camera button by a continue button if not customized
-        if (_assetsGroupController.navigationItem.rightBarButtonItem.style == UIBarButtonSystemItemCamera)
+        if (!_assetsGroupController.navigationItem.rightBarButtonItem ||
+            _assetsGroupController.navigationItem.rightBarButtonItem.tag < 0)
         {
             UIBarButtonItem * continueButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringWithDefaultValue(@"NBUImagePickerController assetsGroupController.continueButton",
                                                                                                                         nil, nil,
