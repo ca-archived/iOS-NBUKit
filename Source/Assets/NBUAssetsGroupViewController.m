@@ -300,7 +300,7 @@
     // Selected
     if (assetView.selected)
     {
-        // Prefent further selections?
+        // Prevent further selections?
         if ((_selectionCountLimit > 0) &&
             (_selectedAssets.count >= _selectionCountLimit))
         {
