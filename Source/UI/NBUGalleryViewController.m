@@ -541,6 +541,11 @@
 	}
 }
 
+- (NSArray *)views
+{
+    return [NSArray arrayWithArray:_views];
+}
+
 - (void)buildThumbnailViews
 {
 	UIView * thumbnailView;

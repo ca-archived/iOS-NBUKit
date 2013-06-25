@@ -42,6 +42,8 @@
 /// @see NBUImageLoader.
 @property (strong, nonatomic)               NSArray * objectArray;
 
+@property (nonatomic, readonly)             NSArray * views;
+
 /// An optional custom imageLoader.
 /// @discussion If not specified NBUImageLoader will be used.
 @property (assign, nonatomic)               id<NBUImageLoader> imageLoader;
