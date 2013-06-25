@@ -422,8 +422,8 @@ static NSString * customBackButtonTitle;
 {
     RKLogDebug(@"~~~ %@ %p didReceiveMemoryWarning. View %@ has superview %@",
                NSStringFromClass([self class]), self,
-               NSStringFromBOOL(self.isViewLoaded),
-               NSStringFromBOOL(self.isViewLoaded && self.view.superview));
+               NBUStringFromBOOL(self.isViewLoaded),
+               NBUStringFromBOOL(self.isViewLoaded && self.view.superview));
     
     [super didReceiveMemoryWarning];
 }
@@ -432,8 +432,8 @@ static NSString * customBackButtonTitle;
 {
     RKLogTrace(@"~~~ %@ %p dealloc. View %@ has superview %@",
                NSStringFromClass([self class]), self,
-               NSStringFromBOOL(self.isViewLoaded),
-               NSStringFromBOOL(self.isViewLoaded && self.view.superview));
+               NBUStringFromBOOL(self.isViewLoaded),
+               NBUStringFromBOOL(self.isViewLoaded && self.view.superview));
     
     // Unregister KVO
     self.hidesBarsOnScroll = NO;
@@ -672,7 +672,7 @@ static NSString * customBackButtonTitle;
 - (IBAction)hideKeyboard:(id)sender
 {
     RKLogTrace(@"hideKeyboard %@ %@",
-               NSStringFromBOOL(_activeField.isFirstResponder), _activeField);
+               NBUStringFromBOOL(_activeField.isFirstResponder), _activeField);
     
     if (_activeField)
     {
@@ -688,7 +688,7 @@ static NSString * customBackButtonTitle;
 - (void)keyboardWillShow:(NSNotification*)notification
 {
     RKLogTrace(@"keyboardWillShow %@ %@ %@",
-               NSStringFromBOOL(_activeField.isFirstResponder), _activeField, _activeField.inputAccessoryView);
+               NBUStringFromBOOL(_activeField.isFirstResponder), _activeField, _activeField.inputAccessoryView);
     
     // Calculate the rect that gets hidden by the keyboard
     NSDictionary * info = [notification userInfo];
@@ -733,13 +733,13 @@ static NSString * customBackButtonTitle;
     [_activeField becomeFirstResponder];
     
     RKLogTrace(@"keyboardDidShow %@ %@ %@",
-               NSStringFromBOOL(_activeField.isFirstResponder), _activeField, _activeField.inputAccessoryView);
+               NBUStringFromBOOL(_activeField.isFirstResponder), _activeField, _activeField.inputAccessoryView);
 }
 
 - (void)keyboardWillHide:(NSNotification*)notification
 {
     RKLogTrace(@"keyboardWillHide %@ %@",
-               NSStringFromBOOL(_activeField.isFirstResponder), _activeField);
+               NBUStringFromBOOL(_activeField.isFirstResponder), _activeField);
     
 //    [UIView animateWithDuration:0.3
 //                     animations:^{
@@ -778,7 +778,7 @@ static NSString * customBackButtonTitle;
 - (void)keyboardDidHide:(NSNotification*)notification
 {
     RKLogTrace(@"keyboardDidHide %@ %@",
-               NSStringFromBOOL(_activeField.isFirstResponder), _activeField);
+               NBUStringFromBOOL(_activeField.isFirstResponder), _activeField);
     
     // Restore accessoryView
     if ([_activeField respondsToSelector:@selector(restoreAccessoryView)])
