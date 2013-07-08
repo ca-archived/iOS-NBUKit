@@ -178,6 +178,21 @@ static NSDictionary * _localizedFilterNames;
     return _availableFilterTypes;
 }
 
++ (NSArray *)availableFilters
+{
+    NSMutableArray * filters = [NSMutableArray array];
+    NBUFilter * filter;
+    NSArray * filterTypes = [self availableFilterTypes];
+    for (NSString * type in filterTypes)
+    {
+        filter = [self filterWithName:nil
+                                 type:type
+                               values:nil];
+        [filters addObject:filter];
+    }
+    return filters;
+}
+
 + (NBUFilter *)filterWithName:(NSString *)name
                          type:(NSString *)type
                        values:(NSArray *)values

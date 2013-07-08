@@ -82,5 +82,8 @@ extern NSString * const NBUFilterTypeGroup;
 /// @param type The target filter type.
 + (NSString *)localizedNameForFilterWithType:(NSString *)type;
 
+/// Get ready to use instances of each filter from all registered providers.
++ (NSArray *)availableFilters;
+
 @end
 

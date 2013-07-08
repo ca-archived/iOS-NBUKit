@@ -32,17 +32,7 @@
     [super awakeFromNib];
     
     // Configure and set all available filters
-    NSMutableArray * filters = [NSMutableArray array];
-    NBUFilter * filter;
-    NSArray * filterTypes = [NBUFilterProvider availableFilterTypes];
-    for (NSString * type in filterTypes)
-    {
-        filter = [NBUFilterProvider filterWithName:nil
-                                              type:type
-                                            values:nil];
-        [filters addObject:filter];
-    }
-    _providerFilters = filters;
+    _providerFilters = [NBUFilterProvider availableFilters];
     self.filters = _providerFilters;
     
     /*
