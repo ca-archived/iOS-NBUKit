@@ -72,6 +72,21 @@
     [super awakeFromNib];
     
     // Configure the scrollview
+    self.scrollView.delegate = self;
+    
+    // Configure pageControl
+    if (_pageControl)
+    {
+        CGRect frame = _pageControl.frame;
+        frame.origin.y += frame.size.height - kPageControlHeight;
+        frame.size.height = kPageControlHeight;
+        _pageControl.frame = frame;
+        _pageControl.numberOfPages = 0;
+    }
+}
+
+- (UIScrollView *)scrollView
+{
     if (!_scrollView)
     {
         // Create a scrollView and configure if necessary
@@ -84,17 +99,7 @@
         [self insertSubview:_scrollView
                     atIndex:0];
     }
-    _scrollView.delegate = self;
-    
-    // Configure pageControl
-    if (_pageControl)
-    {
-        CGRect frame = _pageControl.frame;
-        frame.origin.y += frame.size.height - kPageControlHeight;
-        frame.size.height = kPageControlHeight;
-        _pageControl.frame = frame;
-        _pageControl.numberOfPages = 0;
-    }
+    return _scrollView;
 }
 
 - (void)didMoveToWindow
