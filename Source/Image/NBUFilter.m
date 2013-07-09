@@ -227,8 +227,16 @@ configureFilterBlock:(NBUConfigureFilterBlock)block
 
 - (NSURL *)fileURLForIndex:(NSUInteger)index
 {
-    // Firs try inside the bundle
-    NSString * path = self.values[index];
+    id pathOrURL = self.values[index];
+    
+    // Already an NSURL?
+    if ([pathOrURL isKindOfClass:[NSURL class]])
+    {
+        return pathOrURL;
+    }
+    
+    // First try inside the bundle
+    NSString * path = pathOrURL;
     NSURL * fileURL = [[NSBundle mainBundle].bundleURL URLByAppendingPathComponent:path];
     
     // Else assume absolute path
