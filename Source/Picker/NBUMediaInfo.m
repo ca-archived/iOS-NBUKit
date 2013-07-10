@@ -38,14 +38,14 @@ NSString * const NBUMediaInfoFiltersKey             = @"NBUMediaInfoFilters";
 
 + (NBUMediaInfo *)mediaInfoWithAttributes:(NSDictionary *)attributes
 {
-    NBUMediaInfo * mediaInfo = [NBUMediaInfo new];
+    NBUMediaInfo * mediaInfo = [self new];
     mediaInfo.attributes = [NSMutableDictionary dictionaryWithDictionary:attributes];
     return mediaInfo;
 }
 
 + (NBUMediaInfo *)mediaInfoWithOriginalImage:(UIImage *)image
 {
-    NBUMediaInfo * mediaInfo = [NBUMediaInfo new];
+    NBUMediaInfo * mediaInfo = [self new];
     mediaInfo.originalImage = image;
     return mediaInfo;
 }
