@@ -1,9 +1,9 @@
 NBUKit
 ======
 
-_Latest version 1.9.2_
-
-[![Build Status](https://travis-ci.org/CyberAgent/iOS-NBUKit.png?branch=master)](https://travis-ci.org/CyberAgent/iOS-NBUKit)
+[![Pod Platform](http://cocoapod-badges.herokuapp.com/p/NBUKit/badge.svg)](http://cocoadocs.org/docsets/NBUKit/)
+[![Pod Version](http://cocoapod-badges.herokuapp.com/v/NBUKit/badge.png)](http://cocoadocs.org/docsets/NBUKit/)
+[![Build Status](https://travis-ci.org/CyberAgent/iOS-NBUKit.png)](https://travis-ci.org/CyberAgent/iOS-NBUKit)
 
 [Customizable](https://github.com/CyberAgent/iOS-NBUKit/wiki/NBUKit-Customization) camera, assets,
 image editing, gallery, picker and UIKit subclasses. [[English](README.md)]
