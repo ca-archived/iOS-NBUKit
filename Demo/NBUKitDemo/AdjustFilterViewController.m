@@ -122,16 +122,39 @@
     {
         i++;
     }
-    url = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"CustomFilter %d.plist", i]];
     filterGroup.name = [NSString stringWithFormat:@"CustomFilter %d", i];
+    NSURL * plistURL = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"CustomFilter %d.plist", i]];
+    NSURL * jsonURL = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"CustomFilter %d.json", i]];
     
-    NBULogInfo(@"%@ %@ to: %@", THIS_METHOD, filterGroup, url);
+    NBULogInfo(@"%@ %@ to: %@ and %@", THIS_METHOD, filterGroup, plistURL, jsonURL);
     
-    if (![filterGroup.configurationDictionary writeToURL:url
+    // Write plist
+    NSDictionary * configurationDictionary = filterGroup.configurationDictionary;
+    if (![filterGroup.configurationDictionary writeToURL:plistURL
                                               atomically:NO])
     {
         NBULogError(@"Can't save filter configuration dictionary. It may not be Plist compatible: %@",
-                    filterGroup.configurationDictionary);
+                    configurationDictionary);
+    }
+    
+    // Write json
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
+    {
+        NSError * error;
+        NSData * data = [NSJSONSerialization dataWithJSONObject:configurationDictionary
+                                                        options:NSJSONWritingPrettyPrinted
+                                                          error:&error];
+        if (error)
+        {
+            NBULogError(@"Error converting configuraion to JSON: %@", error);
+            return;
+        }
+        
+        if (![data writeToURL:jsonURL
+              atomically:NO])
+        {
+            NBULogError(@"Can't save filter configuration JSON: %@",data);
+        }
     }
 }
 
