@@ -28,10 +28,15 @@
 #undef  NBUKIT_MODULE
 #define NBUKIT_MODULE   NBUKIT_MODULE_CAMERA_ASSETS
 
-// Private class
+// Private categories and classes
+@interface NBUCameraView (Private) <AVCaptureFileOutputRecordingDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>
+
+@end
+
 @interface PointOfInterestView : UIView
 
 @end
+
 
 @implementation NBUCameraView
 {
@@ -40,9 +45,13 @@
     AVCaptureSession * _captureSession;
     AVCaptureVideoPreviewLayer * _previewLayer;
     AVCaptureDeviceInput * _captureInput;
-    AVCaptureStillImageOutput * _captureOutput;
+    AVCaptureStillImageOutput * _captureImageOutput;
+    AVCaptureMovieFileOutput * _captureMovieOutput;
+    AVCaptureVideoDataOutput * _captureVideoDataOutput;
     AVCaptureConnection * _videoConnection;
     PointOfInterestView * _poiView;
+    NSDate * _lastSequenceCaptureDate;
+    UIImageOrientation _sequenceCaptureOrientation;
     
 #ifdef __i386__
     // Mock image for simulator
@@ -52,9 +61,13 @@
 
 @synthesize targetResolution = _targetResolution;
 @synthesize captureResultBlock = _captureResultBlock;
+@synthesize captureMovieResultBlock = _captureMovieResultBlock;
 @synthesize saveResultBlock = _saveResultBlock;
 @synthesize savePicturesToLibrary = _savePicturesToLibrary;
 @synthesize targetLibraryAlbumName = _targetLibraryAlbumName;
+@synthesize capturingSequence = _capturingSequence;
+@synthesize sequenceCaptureInterval = _sequenceCaptureInterval;
+@synthesize targetMovieFolder = _targetMovieFolder;
 @synthesize shouldAutoRotateView = _shouldAutoRotateView;
 @synthesize keepFrontCameraPicturesMirrored = _keepFrontCameraPicturesMirrored;
 @synthesize availableCaptureDevices = _availableCaptureDevices;
@@ -156,17 +169,17 @@
     }
     
     // Configure output if needed
-    if (!_captureOutput)
+    if (!_captureImageOutput)
     {
-        _captureOutput = [AVCaptureStillImageOutput new];
-        if ([_captureSession canAddOutput:_captureOutput])
-            [_captureSession addOutput:_captureOutput];
+        _captureImageOutput = [AVCaptureStillImageOutput new];
+        if ([_captureSession canAddOutput:_captureImageOutput])
+            [_captureSession addOutput:_captureImageOutput];
         else
         {
-            NBULogError(@"Can't add output: %@ to session: %@", _captureOutput, _captureSession);
+            NBULogError(@"Can't add output: %@ to session: %@", _captureImageOutput, _captureSession);
             return;
         }
-        NBULogVerbose(@"Output: %@ settings: %@", _captureOutput, _captureOutput.outputSettings);
+        NBULogVerbose(@"Output: %@ settings: %@", _captureImageOutput, _captureImageOutput.outputSettings);
     }
     
     // Get a capture device if needed
@@ -448,7 +461,7 @@
     
     // Refresh the video connection
     _videoConnection = nil;
-    for (AVCaptureConnection * connection in _captureOutput.connections)
+    for (AVCaptureConnection * connection in _captureImageOutput.connections)
     {
         for (AVCaptureInputPort * port in connection.inputPorts)
         {
@@ -474,7 +487,7 @@
     }
     if (!_videoConnection)
     {
-        NBULogError(@"Couldn't create video connection for output: %@", _captureOutput);
+        NBULogError(@"Couldn't create video connection for output: %@", _captureImageOutput);
     }
     
     // Choose the best suited session presset
@@ -583,7 +596,7 @@
     self.window.userInteractionEnabled = NO;
     
     // Get the image
-    [_captureOutput captureStillImageAsynchronouslyFromConnection:_videoConnection
+    [_captureImageOutput captureStillImageAsynchronouslyFromConnection:_videoConnection
                                                 completionHandler:^(CMSampleBufferRef imageDataSampleBuffer,
                                                                     NSError * error)
      {
@@ -610,11 +623,6 @@
              // Execute capture block
              if (_captureResultBlock) _captureResultBlock(image, nil);
              
-             NSDictionary * metadata = (__bridge_transfer NSDictionary *)CMCopyDictionaryOfAttachments(kCFAllocatorDefault,
-                                                                                                       imageDataSampleBuffer,
-                                                                                                       kCMAttachmentMode_ShouldPropagate);
-             NBULogVerbose(@"Metadata: %@", metadata);
-             
              // Update UI
              dispatch_async(dispatch_get_main_queue(),
                             ^{
@@ -631,6 +639,12 @@
              // No need to save image?
              if (!_savePicturesToLibrary)
                  return;
+             
+             // Read metadata
+             NSDictionary * metadata = (__bridge_transfer NSDictionary *)CMCopyDictionaryOfAttachments(kCFAllocatorDefault,
+                                                                                                       imageDataSampleBuffer,
+                                                                                                       kCMAttachmentMode_ShouldPropagate);
+             NBULogInfo(@"Image metadata: %@", metadata);
              
              // Save to the Camera Roll
              dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
@@ -683,6 +697,123 @@
          if (_saveResultBlock) _saveResultBlock(_mockImage, nil, assetURL, saveError);
      }];
 #endif
+}
+
+- (IBAction)startStopPictureSequence:(id)sender
+{
+    if (!_capturingSequence)
+    {
+        if (!_captureVideoDataOutput)
+        {
+            _captureVideoDataOutput = [AVCaptureVideoDataOutput new];
+            _captureVideoDataOutput.videoSettings = @{(NSString *)kCVPixelBufferPixelFormatTypeKey: @(kCVPixelFormatType_32BGRA)};
+            [_captureVideoDataOutput setSampleBufferDelegate:self
+                                                       queue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0)];
+            if (_sequenceCaptureInterval == 0)
+            {
+                _sequenceCaptureInterval = 0.25;
+            }
+        }
+        
+        if ([_captureSession canAddOutput:_captureVideoDataOutput])
+        {
+            [_captureSession addOutput:_captureVideoDataOutput];
+            _lastSequenceCaptureDate = [NSDate date]; // Skip the first image which looks to dark for some reason
+            _sequenceCaptureOrientation = (_currentDevice.position == AVCaptureDevicePositionFront ? // Set the output orientation only once per sequence
+                                           UIImageOrientationLeftMirrored :
+                                           UIImageOrientationRight);
+            _capturingSequence = YES;
+        }
+        else
+        {
+            NBULogError(@"Can't capture picture sequences here!");
+            return;
+        }
+    }
+    else
+    {
+        [_captureSession removeOutput:_captureVideoDataOutput];
+        _capturingSequence = NO;
+    }
+}
+
+- (void)captureOutput:(AVCaptureOutput *)captureOutput
+didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
+       fromConnection:(AVCaptureConnection *)connection
+{
+    // Skip capture?
+    if ([[NSDate date] timeIntervalSinceDate:_lastSequenceCaptureDate] < _sequenceCaptureInterval)
+        return;
+    
+    _lastSequenceCaptureDate = [NSDate date];
+    
+    UIImage * image = [self imageFromSampleBuffer:sampleBuffer];
+    NBULogInfo(@"Captured image: %@ of size: %@ orientation: %d",
+               image, NSStringFromCGSize(image.size), image.imageOrientation);
+    
+    // Execute capture block
+    dispatch_async(dispatch_get_main_queue(), ^
+    {
+        if (_captureResultBlock) _captureResultBlock(image, nil);
+    });
+}
+
+- (BOOL)isRecording
+{
+    return _captureMovieOutput.recording;
+}
+
+- (IBAction)startStopRecording:(id)sender
+{
+    if (!self.recording)
+    {
+        if (!_captureMovieOutput)
+        {
+            _captureMovieOutput = [AVCaptureMovieFileOutput new];
+        }
+        
+        if ([_captureSession canAddOutput:_captureMovieOutput])
+        {
+            [_captureSession addOutput:_captureMovieOutput];
+        }
+        else
+        {
+            NBULogError(@"Can't record movies here!");
+            return;
+        }
+        
+        if (!_targetMovieFolder)
+        {
+            _targetMovieFolder = [UIApplication sharedApplication].documentsDirectory;
+        }
+        NSURL * movieOutputURL = [NSFileManager URLForNewFileAtDirectory:_targetMovieFolder
+                                                      fileNameWithFormat:@"movie%02d.mov"];
+        
+        [_captureMovieOutput startRecordingToOutputFileURL:movieOutputURL
+                                         recordingDelegate:self];
+    }
+    else
+    {
+        [_captureMovieOutput stopRecording];
+    }
+}
+
+- (void)captureOutput:(AVCaptureFileOutput *)captureOutput
+didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
+      fromConnections:(NSArray *)connections
+                error:(NSError *)error
+{
+    if (!error)
+    {
+        NBULogInfo(@"Finished capturing movie to %@", outputFileURL);
+    }
+    else
+    {
+        NBULogError(@"Error capturing movie: %@", error);
+    }
+    
+    [_captureSession removeOutput:_captureMovieOutput];
+    if (_captureMovieResultBlock) _captureMovieResultBlock(outputFileURL, error);
 }
 
 - (void)toggleCamera:(id)sender
@@ -948,6 +1079,52 @@
     }
     
     return pointOfInterest;
+}
+
+#pragma mark - Other methods
+
+// Create a UIImage from sample buffer data
+// Based on http://stackoverflow.com/questions/8924299/ios-capturing-image-using-avframework
+- (UIImage *)imageFromSampleBuffer:(CMSampleBufferRef)sampleBuffer
+{
+    // Get a CMSampleBuffer's Core Video image buffer for the media data
+    CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+    // Lock the base address of the pixel buffer
+    CVPixelBufferLockBaseAddress(imageBuffer, 0);
+    
+    // Get the number of bytes per row for the pixel buffer
+    void *baseAddress = CVPixelBufferGetBaseAddress(imageBuffer);
+    
+    // Get the number of bytes per row for the pixel buffer
+    size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer);
+    // Get the pixel buffer width and height
+    size_t width = CVPixelBufferGetWidth(imageBuffer);
+    size_t height = CVPixelBufferGetHeight(imageBuffer);
+    
+    // Create a device-dependent RGB color space
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    
+    // Create a bitmap graphics context with the sample buffer data
+    CGContextRef context = CGBitmapContextCreate(baseAddress, width, height, 8,
+                                                 bytesPerRow, colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
+    // Create a Quartz image from the pixel data in the bitmap graphics context
+    CGImageRef quartzImage = CGBitmapContextCreateImage(context);
+    // Unlock the pixel buffer
+    CVPixelBufferUnlockBaseAddress(imageBuffer,0);
+    
+    // Free up the context and color space
+    CGContextRelease(context);
+    CGColorSpaceRelease(colorSpace);
+    
+    // Create an image object from the Quartz image
+    UIImage *image = [UIImage imageWithCGImage:quartzImage
+                                         scale:1.0
+                                   orientation:_sequenceCaptureOrientation];
+    
+    // Release the Quartz image
+    CGImageRelease(quartzImage);
+    
+    return (image);
 }
 
 @end

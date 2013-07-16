@@ -72,17 +72,17 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     for (NSUInteger i = 1; i <= 10; i++)
     {
         // Using GCD to mock updates
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, i * 0.20 * NSEC_PER_SEC);
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, i * 0.10 * NSEC_PER_SEC);
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void)
                        {
                            // Update splash view
                            [_splashView updateProgress:i * 0.1
-                                            withStatus:[NSString stringWithFormat:@"Finished task %d of 10", i]];
+                                            withStatus:[NSString stringWithFormat:@"Mock task %d of 10", i]];
                            
                            // Finish splash view
                            if (i == 10)
                            {
-                               [_splashView finishWithStatus:@"Finished!"
+                               [_splashView finishWithStatus:@"Done"
                                                     animated:YES];
                                _splashView = nil;
                            }
