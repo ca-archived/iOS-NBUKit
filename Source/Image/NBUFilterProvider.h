@@ -56,7 +56,7 @@ extern NSString * const NBUFilterTypeGroup;
 /// @param values The optional initial values.
 + (NBUFilter *)filterWithName:(NSString *)name
                          type:(NSString *)type
-                       values:(NSArray *)values;
+                       values:(NSDictionary *)values;
 
 /// Apply filters to an image.
 /// @param filters An array of NBUFilter objects to be applied sequentially.

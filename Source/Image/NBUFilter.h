@@ -22,17 +22,19 @@
 @protocol NBUFilterProvider;
 
 /// Predefined attribute dictionary keys
-extern NSString * const NBUFilterValuesDescriptionKey;
-extern NSString * const NBUFilterValuesTypeKey;
-extern NSString * const NBUFilterMinValuesKey;
-extern NSString * const NBUFilterMaxValuesKey;
+extern NSString * const NBUFilterValueDescriptionKey;
+extern NSString * const NBUFilterValueTypeKey;
+extern NSString * const NBUFilterDefaultValueKey;       // Value set when the filter is created.
+extern NSString * const NBUFilterIdentityValueKey;      // Value that when set filter is disabled.
+extern NSString * const NBUFilterMinimumValueKey;
+extern NSString * const NBUFilterMaximumValueKey;
 
 /// Value types
-extern NSString * const NBUFilterValuesTypeFloat;
-extern NSString * const NBUFilterValuesTypeBool;
-extern NSString * const NBUFilterValuesTypeImage;
-extern NSString * const NBUFilterValuesTypeFile;
-extern NSString * const NBUFilterValuesTypeUnknown;
+extern NSString * const NBUFilterValueTypeFloat;
+extern NSString * const NBUFilterValueTypeBool;
+extern NSString * const NBUFilterValueTypeImage;
+extern NSString * const NBUFilterValueTypeFile;
+extern NSString * const NBUFilterValueTypeUnknown;
 
 /// Concrete filter block
 typedef id (^NBUConfigureFilterBlock)(NBUFilter * filter, id concreteFilter);
@@ -51,17 +53,13 @@ typedef id (^NBUConfigureFilterBlock)(NBUFilter * filter, id concreteFilter);
 /// @param name An optional filter name.
 /// @param type The desired filter type.
 /// @param values The optional initial values.
-/// @param defaultValues The default filter values.
-/// @param identityValues The filter values that don't modify the input.
 /// @param attributes A dictionary describing in more detail the input values range, type, etc.
 /// @param provider The associated NBUFilterProvider capable of handling the filter.
 /// @param block The block to be called to retrieve a configured concreteFilter.
 /// @note Prefer NBUFilterProvider methods.
 + (id)filterWithName:(NSString *)name
                 type:(NSString *)type
-              values:(NSArray *)values
-       defaultValues:(NSArray *)defaultValues
-      identityValues:(NSArray *)identityValues
+              values:(NSDictionary *)values
           attributes:(NSDictionary *)attributes
             provider:(Class<NBUFilterProvider>)provider
 configureFilterBlock:(NBUConfigureFilterBlock)block;
@@ -75,15 +73,10 @@ configureFilterBlock:(NBUConfigureFilterBlock)block;
 @property (nonatomic, getter=isEnabled) BOOL enabled;
 
 /// The current filter values.
-@property (nonatomic, strong)           NSArray * values;
+/// @discussion When not set default values specified in the attributes dictionary will be used.
+@property (nonatomic, strong, readonly) NSMutableDictionary * values;
 
-/// Set a value for given values index.
-/// @param value The value to set.
-/// @param index The corresponding value index.
-- (void)setValue:(id)value
-        forIndex:(NSUInteger)index;
-
-/// Reset the values by setting it to `nil`.
+/// Reset the values clearing them.
 - (void)reset;
 
 /// @name Read-only Properties
@@ -91,40 +84,37 @@ configureFilterBlock:(NBUConfigureFilterBlock)block;
 /// The filter type (ex. NBUFilterTypeBrightness).
 @property (nonatomic, readonly)         NSString * type;
 
-/// The default flter values.
-@property (nonatomic, readonly)         NSArray * defaultValues;
-
-/// The values that don't modify the input.
-@property (nonatomic, readonly)         NSArray * identityValues;
-
 /// A complete description of the filter.
 @property (nonatomic, readonly)         NSDictionary * attributes;
 
 /// @name Convenience Methods for Retrieving Values
 
+/// Return the value for a given key from either values or attributes' default values.
+- (id)effectiveValueForKey:(NSString *)valueKey;
+
 /// Get a value as a float number.
-/// @param index A values' index.
-- (CGFloat)floatValueForIndex:(NSUInteger)index;
+/// @param valueKey The value's key.
+- (CGFloat)floatValueForKey:(NSString *)valueKey;
 
-/// Get the maximum float value for a given index.
-/// @param index A values' index.
-- (CGFloat)maxFloatValueForIndex:(NSUInteger)index;
+/// Get the maximum float value for a given value key.
+/// @param valueKey The value's key.
+- (CGFloat)maxFloatValueForKey:(NSString *)valueKey;
 
-/// Get the minimum float value for a given index.
-/// @param index A values' index.
-- (CGFloat)minFloatValueForIndex:(NSUInteger)index;
+/// Get the minimum float value for a given value key.
+/// @param valueKey The value's key.
+- (CGFloat)minFloatValueForKey:(NSString *)valueKey;
 
 /// Get a value as a boolean number.
-/// @param index A values' index.
-- (BOOL)boolValueForIndex:(NSUInteger)index;
+/// @param valueKey The value's key.
+- (BOOL)boolValueForKey:(NSString *)valueKey;
 
 /// Get a value as a file URL number.
-/// @param index A values' index.
-- (NSURL *)fileURLForIndex:(NSUInteger)index;
+/// @param valueKey The value's key.
+- (NSURL *)fileURLForKey:(NSString *)valueKey;
 
 /// Get an UIImage from a given value.
-/// @param index A values' index.
-- (UIImage *)imageForIndex:(NSUInteger)index;
+/// @param valueKey The value's key.
+- (UIImage *)imageForKey:(NSString *)valueKey;
 
 /// @name Using the Concrete Filter
 

@@ -82,7 +82,7 @@
     {
         [customFilters addObject:[NBUFilterProvider filterWithName:[url.lastPathComponent stringByDeletingPathExtension]
                                                               type:NBUFilterTypeACV
-                                                            values:@[url]]];
+                                                            values:@{@"curveFile": url}]];
     }
     
     // Add custom filters created with the editor

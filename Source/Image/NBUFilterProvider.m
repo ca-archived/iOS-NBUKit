@@ -195,7 +195,7 @@ static NSDictionary * _localizedFilterNames;
 
 + (NBUFilter *)filterWithName:(NSString *)name
                          type:(NSString *)type
-                       values:(NSArray *)values
+                       values:(NSDictionary *)values
 {
     // Handle the "None" filter
     if ([type isEqualToString:NBUFilterTypeNone])
@@ -203,8 +203,6 @@ static NSDictionary * _localizedFilterNames;
         return [NBUFilter filterWithName:name ? name : [self localizedNameForFilterWithType:type]
                                     type:type
                                   values:nil
-                           defaultValues:nil
-                          identityValues:nil
                               attributes:nil
                                 provider:nil
                     configureFilterBlock:NULL];
