@@ -84,6 +84,9 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 /// @note Front camera's preview is always mirrored.
 @property(nonatomic)                    BOOL keepFrontCameraPicturesMirrored;
 
+/// Whether the lastPictureImageView should be animated. Default `YES`.
+@property(nonatomic)                    BOOL animateLastPictureImageView;
+
 /// @name Picture Sequence Properties
 
 @property (nonatomic)                   NSTimeInterval sequenceCaptureInterval;

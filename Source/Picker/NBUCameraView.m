@@ -90,6 +90,7 @@
 @synthesize exposureButton = _exposureButton;
 @synthesize whiteBalanceButton = _whiteBalanceButton;
 @synthesize lastPictureImageView = _lastPictureImageView;
+@synthesize animateLastPictureImageView = _animateLastPictureImageView;
 
 - (void)commonInit
 {
@@ -102,6 +103,7 @@
     self.recognizeDoubleTap = YES;
     self.highlightColor = [UIColor colorWithWhite:1.0
                                             alpha:0.7];
+    _animateLastPictureImageView = YES;
     
     // PoI view
     _poiView = [PointOfInterestView new];
@@ -592,13 +594,13 @@
 #ifndef __i386__
     // Update UI
     _shootButton.enabled = NO;
-    [self flashHighlightMask];
     self.window.userInteractionEnabled = NO;
+    [self flashHighlightMask];
     
     // Get the image
     [_captureImageOutput captureStillImageAsynchronouslyFromConnection:_videoConnection
-                                                completionHandler:^(CMSampleBufferRef imageDataSampleBuffer,
-                                                                    NSError * error)
+                                                     completionHandler:^(CMSampleBufferRef imageDataSampleBuffer,
+                                                                         NSError * error)
      {
          if (error)
          {
@@ -620,50 +622,92 @@
              NBULogInfo(@"Captured jpeg image: %@ of size: %@ orientation: %d",
                         image, NSStringFromCGSize(image.size), image.imageOrientation);
              
-             // Execute capture block
-             if (_captureResultBlock) _captureResultBlock(image, nil);
+             // Update last picture view
+             if (_lastPictureImageView)
+             {
+                 if (_animateLastPictureImageView)
+                 {
+                     static UIImageView * preview;
+                     static dispatch_once_t onceToken;
+                     dispatch_once(&onceToken, ^
+                                   {
+                                       preview = [[NBURotatingImageView alloc] initWithImage:image];
+                                       preview.contentMode = UIViewContentModeScaleAspectFill;
+                                       preview.clipsToBounds = YES;
+                                       [self.viewController.view addSubview:preview];
+                                   });
+                     preview.frame = [self.viewController.view convertRect:self.bounds
+                                                                  fromView:self];
+                     preview.hidden = NO;
+                     
+                     // Update UI
+                     [UIView animateWithDuration:0.2
+                                           delay:0.0
+                                         options:UIViewAnimationOptionCurveEaseIn
+                                      animations:^
+                      {
+                          preview.frame = [self.viewController.view convertRect:_lastPictureImageView.bounds
+                                                                       fromView:_lastPictureImageView];
+                      }
+                                      completion:^(BOOL finished)
+                      {
+                          //_lastPictureImageView.image = [image thumbnailWithSize:_lastPictureImageView.size];
+                          _lastPictureImageView.image = image;
+                          preview.hidden = YES;
+                          
+                          _shootButton.enabled = YES;
+                          self.window.userInteractionEnabled = YES;
+                      }];
+                 }
+                 else
+                 {
+                     //_lastPictureImageView.image = [image thumbnailWithSize:_lastPictureImageView.size];
+                     _lastPictureImageView.image = image;
+                     
+                     _shootButton.enabled = YES;
+                     self.window.userInteractionEnabled = YES;
+                 }
+             }
+             else
+             {
+                 _shootButton.enabled = YES;
+                 self.window.userInteractionEnabled = YES;
+             }
              
-             // Update UI
+             // Execute capture block
              dispatch_async(dispatch_get_main_queue(),
                             ^{
-                                _shootButton.enabled = YES;
-                                self.window.userInteractionEnabled = YES;
-                                
-                                // Update last picture view
-                                if (_lastPictureImageView)
-                                {
-                                    _lastPictureImageView.image = [image thumbnailWithSize:_lastPictureImageView.size];
-                                }
+                                if (_captureResultBlock) _captureResultBlock(image, nil);
                             });
              
              // No need to save image?
              if (!_savePicturesToLibrary)
                  return;
              
-             // Read metadata
-             NSDictionary * metadata = (__bridge_transfer NSDictionary *)CMCopyDictionaryOfAttachments(kCFAllocatorDefault,
-                                                                                                       imageDataSampleBuffer,
-                                                                                                       kCMAttachmentMode_ShouldPropagate);
-             NBULogInfo(@"Image metadata: %@", metadata);
-             
-             // Save to the Camera Roll
-             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-                 
-                 [[NBUAssetsLibrary sharedLibrary] saveImageToCameraRoll:image
-                                                                metadata:metadata
-                                                addToAssetsGroupWithName:_targetLibraryAlbumName
-                                                             resultBlock:^(NSURL * assetURL,
-                                                                           NSError * saveError)
-                  {
-                      // Execute result block
-                      dispatch_async(dispatch_get_main_queue(), ^{
-                          if (_saveResultBlock) _saveResultBlock(image,
-                                                                 metadata,
-                                                                 assetURL,
-                                                                 saveError);
-                      });
-                  }];
-             });
+             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^
+                            {
+                                // Read metadata
+                                NSDictionary * metadata = (__bridge_transfer NSDictionary *)CMCopyDictionaryOfAttachments(kCFAllocatorDefault,
+                                                                                                                          imageDataSampleBuffer,
+                                                                                                                          kCMAttachmentMode_ShouldPropagate);
+                                NBULogInfo(@"Image metadata: %@", metadata);
+                                
+                                // Save to the Camera Roll
+                                [[NBUAssetsLibrary sharedLibrary] saveImageToCameraRoll:image
+                                                                               metadata:metadata
+                                                               addToAssetsGroupWithName:_targetLibraryAlbumName
+                                                                            resultBlock:^(NSURL * assetURL,
+                                                                                          NSError * saveError)
+                                 {
+                                     // Execute result block
+                                     dispatch_async(dispatch_get_main_queue(), ^{
+                                         if (_saveResultBlock) _saveResultBlock(image,
+                                                                                metadata,
+                                                                                assetURL,
+                                                                                saveError);
+                                     });
+                                 }];
+                            });
          }
      }];
     
@@ -753,9 +797,9 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     
     // Execute capture block
     dispatch_async(dispatch_get_main_queue(), ^
-    {
-        if (_captureResultBlock) _captureResultBlock(image, nil);
-    });
+                   {
+                       if (_captureResultBlock) _captureResultBlock(image, nil);
+                   });
 }
 
 - (BOOL)isRecording
