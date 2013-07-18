@@ -591,12 +591,12 @@
 {
     NBULogTrace();
     
-#ifndef __i386__
     // Update UI
     _shootButton.enabled = NO;
     self.window.userInteractionEnabled = NO;
     [self flashHighlightMask];
     
+#ifndef __i386__
     // Get the image
     [_captureImageOutput captureStillImageAsynchronouslyFromConnection:_videoConnection
                                                      completionHandler:^(CMSampleBufferRef imageDataSampleBuffer,
@@ -621,7 +621,12 @@
              
              NBULogInfo(@"Captured jpeg image: %@ of size: %@ orientation: %d",
                         image, NSStringFromCGSize(image.size), image.imageOrientation);
-             
+#else
+             // Mock simulator
+             UIImage * image = _mockImage;
+             NBULogInfo(@"Captured mock image: %@ of size: %@",
+                        image, NSStringFromCGSize(_mockImage.size));
+#endif     
              // Update last picture view
              if (_lastPictureImageView)
              {
@@ -687,10 +692,13 @@
              dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^
                             {
                                 // Read metadata
-                                NSDictionary * metadata = (__bridge_transfer NSDictionary *)CMCopyDictionaryOfAttachments(kCFAllocatorDefault,
-                                                                                                                          imageDataSampleBuffer,
-                                                                                                                          kCMAttachmentMode_ShouldPropagate);
+                                NSDictionary * metadata;
+#ifndef __i386__
+                                metadata = (__bridge_transfer NSDictionary *)CMCopyDictionaryOfAttachments(kCFAllocatorDefault,
+                                                                                                           imageDataSampleBuffer,
+                                                                                                           kCMAttachmentMode_ShouldPropagate);
                                 NBULogInfo(@"Image metadata: %@", metadata);
+#endif
                                 
                                 // Save to the Camera Roll
                                 [[NBUAssetsLibrary sharedLibrary] saveImageToCameraRoll:image
@@ -708,37 +716,8 @@
                                      });
                                  }];
                             });
+#ifndef __i386__
          }
-     }];
-    
-#else
-    // Mock simulator
-    
-    NBULogInfo(@"Captured mock image: %@ of size: %@",
-               _mockImage, NSStringFromCGSize(_mockImage.size));
-    
-    // Execute capture block
-    if (_captureResultBlock) _captureResultBlock(_mockImage, nil);
-    
-    // Update last picture view
-    if (_lastPictureImageView)
-    {
-        _lastPictureImageView.image = [_mockImage thumbnailWithSize:_lastPictureImageView.size];
-    }
-    
-    // No need to save image?
-    if (!_savePicturesToLibrary)
-        return;
-    
-    // Save to the Camera Roll
-    [[NBUAssetsLibrary sharedLibrary] saveImageToCameraRoll:_mockImage
-                                                   metadata:nil
-                                   addToAssetsGroupWithName:_targetLibraryAlbumName
-                                                resultBlock:^(NSURL *assetURL,
-                                                              NSError * saveError)
-     {
-         // Execute result block
-         if (_saveResultBlock) _saveResultBlock(_mockImage, nil, assetURL, saveError);
      }];
 #endif
 }
