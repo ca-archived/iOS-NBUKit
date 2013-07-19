@@ -183,10 +183,12 @@ configureFilterBlock:(NBUConfigureFilterBlock)block
 
 - (NSDictionary *)configurationDictionary
 {
-    return @{@"name"    : _name ? _name : @"",
-             @"type"    : _type,
-             @"values"  : self.values ? self.values : @[],
-             @"enabled" : @(_enabled)};
+    return @{@"name"        : _name ? _name : @"",
+             @"type"        : _type,
+             //@"provider"    : NSStringFromClass(_provider) ? NSStringFromClass(_provider) : @"", // FIXME: Crashes
+             @"enabled"     : @(_enabled),
+             @"values"      : self.values ? self.values : @{},
+             @"attributes"  : self.attributes ? self.attributes : @{}};
 }
 
 #pragma mark - Float values

@@ -34,7 +34,7 @@ extern NSString * const NBUFilterTypeMultiplyBlend;
 extern NSString * const NBUFilterTypeAdditiveBlend;
 extern NSString * const NBUFilterTypeAlphaBlend;
 extern NSString * const NBUFilterTypeSourceOver;
-extern NSString * const NBUFilterTypeACV;
+extern NSString * const NBUFilterTypeToneCurve;
 extern NSString * const NBUFilterTypeFisheye;
 extern NSString * const NBUFilterTypeMaskBlur;
 extern NSString * const NBUFilterTypeGroup;

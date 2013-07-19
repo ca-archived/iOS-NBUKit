@@ -26,23 +26,23 @@
 #define NBUKIT_MODULE   NBUKIT_MODULE_IMAGE
 
 // Built-in filter types
-NSString * const NBUFilterTypeNone              = @"NBUFilterTypeNone";
-NSString * const NBUFilterTypeContrast          = @"NBUFilterTypeContrast";
-NSString * const NBUFilterTypeBrightness        = @"NBUFilterTypeBrightness";
-NSString * const NBUFilterTypeSaturation        = @"NBUFilterTypeSaturation";
-NSString * const NBUFilterTypeExposure          = @"NBUFilterTypeExposure";
-NSString * const NBUFilterTypeSharpen           = @"NBUFilterTypeSharpen";
-NSString * const NBUFilterTypeGamma             = @"NBUFilterTypeGamma";
-NSString * const NBUFilterTypeAuto              = @"NBUFilterTypeAuto";
-NSString * const NBUFilterTypeMonochrome        = @"NBUFilterTypeMonochrome";
-NSString * const NBUFilterTypeMultiplyBlend     = @"NBUFilterTypeMultiplyBlend";
-NSString * const NBUFilterTypeAdditiveBlend     = @"NBUFilterTypeAdditiveBlend";
-NSString * const NBUFilterTypeAlphaBlend        = @"NBUFilterTypeAlphaBlend";
-NSString * const NBUFilterTypeSourceOver        = @"NBUFilterTypeSourceOver";
-NSString * const NBUFilterTypeACV               = @"NBUFilterTypeACV";
-NSString * const NBUFilterTypeFisheye           = @"NBUFilterTypeFisheye";
-NSString * const NBUFilterTypeMaskBlur          = @"NBUFilterTypeMaskBlur";
-NSString * const NBUFilterTypeGroup             = @"NBUFilterTypeGroup";
+NSString * const NBUFilterTypeNone              = @"none";
+NSString * const NBUFilterTypeContrast          = @"contrast";
+NSString * const NBUFilterTypeBrightness        = @"brightness";
+NSString * const NBUFilterTypeSaturation        = @"saturation";
+NSString * const NBUFilterTypeExposure          = @"exposure";
+NSString * const NBUFilterTypeSharpen           = @"sharpen";
+NSString * const NBUFilterTypeGamma             = @"gamma";
+NSString * const NBUFilterTypeAuto              = @"auto";
+NSString * const NBUFilterTypeMonochrome        = @"monochrome";
+NSString * const NBUFilterTypeMultiplyBlend     = @"multiplyBlend";
+NSString * const NBUFilterTypeAdditiveBlend     = @"additiveBlend";
+NSString * const NBUFilterTypeAlphaBlend        = @"alphaBlend";
+NSString * const NBUFilterTypeSourceOver        = @"sourceOver";
+NSString * const NBUFilterTypeToneCurve         = @"toneCurve";
+NSString * const NBUFilterTypeFisheye           = @"fisheye";
+NSString * const NBUFilterTypeMaskBlur          = @"maskBlur";
+NSString * const NBUFilterTypeGroup             = @"group";
 
 // Static variables
 static NSMutableArray * _providers;
@@ -132,7 +132,7 @@ static NSDictionary * _localizedFilterNames;
                                                                             nil, nil,
                                                                             @"Source over",
                                                                             @"NBUFilterProvider Source over filter"),
-            NBUFilterTypeACV            : NSLocalizedStringWithDefaultValue(@"NBUFilterProvider Curve adjustement filter",
+            NBUFilterTypeToneCurve      : NSLocalizedStringWithDefaultValue(@"NBUFilterProvider Curve adjustement filter",
                                                                             nil, nil,
                                                                             @"Curve adjustement",
                                                                             @"NBUFilterProvider Curve adjustement filter"),

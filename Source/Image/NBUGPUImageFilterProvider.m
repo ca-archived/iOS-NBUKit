@@ -74,7 +74,7 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
              NBUFilterTypeAdditiveBlend,
              NBUFilterTypeAlphaBlend,
              NBUFilterTypeSourceOver,
-             NBUFilterTypeACV,
+             NBUFilterTypeToneCurve,
              NBUFilterTypeFisheye,
              NBUFilterTypeMaskBlur
              ];
@@ -493,7 +493,7 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
             return gpuFilterGroup;
         };
     }
-    else if ([type isEqualToString:NBUFilterTypeACV])
+    else if ([type isEqualToString:NBUFilterTypeToneCurve])
     {
         NSString * curveFile = @"curveFile";
         attributes = @{curveFile : @{NBUFilterValueDescriptionKey : @"Tone curve file",
