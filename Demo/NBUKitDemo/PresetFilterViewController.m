@@ -81,8 +81,8 @@
     for (NSURL * url in fileURLs)
     {
         [customFilters addObject:[NBUFilterProvider filterWithName:[url.lastPathComponent stringByDeletingPathExtension]
-                                                              type:NBUFilterTypeACV
-                                                            values:@[url]]];
+                                                              type:NBUFilterTypeToneCurve
+                                                            values:@{@"curveFile": url}]];
     }
     
     // Add custom filters created with the editor

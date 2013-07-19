@@ -29,14 +29,14 @@
 
 + (void)initialize
 {
-//    NSLog(@"Available CI filters on this device: %@", [CIFilter filterNamesInCategories:nil]);
-//    NSLog(@"+++++ %@", [CIFilter filterWithName:@"CIColorMonochrome"].attributes);
+//    NBULogInfo(@"Available CI filters on this device: %@", [CIFilter filterNamesInCategories:nil]);
+//    NBULogInfo(@"+++++ %@", [CIFilter filterWithName:@"CIColorMonochrome"].attributes);
 }
 
 + (CIFilter *)ciFilterWithName:(NSString *)name
 {
     CIFilter * filter = [CIFilter filterWithName:name];
-//    NSLog(@"%@ attributes: %@", name, filter.attributes);
+//    NBULogInfo(@"%@ %@ attributes: %@", THIS_METHOD, name, filter.attributes);
     return filter;
 }
 
@@ -70,26 +70,26 @@
 
 + (NBUFilter *)filterWithName:(NSString *)name
                          type:(NSString *)type
-                       values:(NSArray *)values
+                       values:(NSDictionary *)values
 {
     if (SYSTEM_VERSION_LESS_THAN(@"5.0"))
         return nil;
     
-    NSArray * defaultValues;
-    NSArray * identityValues;
     NSDictionary * attributes;
     NBUConfigureFilterBlock block;
     
     // iOS5+
     if ([type isEqualToString:NBUFilterTypeContrast])
     {
-        defaultValues                                   = @[@(1.1)];
-        identityValues                                  = @[@(1.0)];
-        attributes = @{NBUFilterValuesDescriptionKey    : @[@"Contrast"],
-                       NBUFilterValuesTypeKey           : @[NBUFilterValuesTypeFloat],
-                       NBUFilterMaxValuesKey            : @[@(4.0)],
-                       NBUFilterMinValuesKey            : @[@(0.0)]};
-        block = ^(NBUFilter * filter, CIFilter * ciFilter)
+        NSString * contrast = @"contrast";
+        attributes = @{contrast : @{NBUFilterValueDescriptionKey : @"Contrast",
+                                    NBUFilterValueTypeKey        : NBUFilterValueTypeFloat,
+                                    NBUFilterDefaultValueKey     : @(1.1),
+                                    NBUFilterIdentityValueKey    : @(1.0),
+                                    NBUFilterMaximumValueKey     : @(4.0),
+                                    NBUFilterMinimumValueKey     : @(0.0)}};
+        block = ^(NBUFilter * filter,
+                  CIFilter * ciFilter)
         {
             // Create a CI filter?
             if (!ciFilter)
@@ -99,7 +99,7 @@
             
             // Configure it
             [ciFilter setDefaults];
-            [ciFilter setValue:filter.values[0]
+            [ciFilter setValue:filter.values[contrast]
                         forKey:@"inputContrast"];
             
             return ciFilter;
@@ -107,13 +107,15 @@
     }
     else if ([type isEqualToString:NBUFilterTypeBrightness])
     {
-        defaultValues                                   = @[@(0.1)];
-        identityValues                                  = @[@(0.0)];
-        attributes = @{NBUFilterValuesDescriptionKey    : @[@"Brightness"],
-                       NBUFilterValuesTypeKey           : @[NBUFilterValuesTypeFloat],
-                       NBUFilterMaxValuesKey            : @[@(1.0)],
-                       NBUFilterMinValuesKey            : @[@(-1.0)]};
-        block = ^(NBUFilter * filter, CIFilter * ciFilter)
+        NSString * brightness = @"brightness";
+        attributes = @{brightness : @{NBUFilterValueDescriptionKey : @"Brightness",
+                                      NBUFilterValueTypeKey        : NBUFilterValueTypeFloat,
+                                      NBUFilterDefaultValueKey     : @(0.1),
+                                      NBUFilterIdentityValueKey    : @(0.0),
+                                      NBUFilterMaximumValueKey     : @(1.0),
+                                      NBUFilterMinimumValueKey     : @(-1.0)}};
+        block = ^(NBUFilter * filter,
+                  CIFilter * ciFilter)
         {
             // Create a CI filter?
             if (!ciFilter)
@@ -123,7 +125,7 @@
             
             // Configure it
             [ciFilter setDefaults];
-            [ciFilter setValue:filter.values[0]
+            [ciFilter setValue:filter.values[brightness]
                         forKey:@"inputBrightness"];
             
             return ciFilter;
@@ -131,13 +133,15 @@
     }
     else if ([type isEqualToString:NBUFilterTypeSaturation])
     {
-        defaultValues                                   = @[@(1.3)];
-        identityValues                                  = @[@(1.0)];
-        attributes = @{NBUFilterValuesDescriptionKey    : @[@"Saturation"],
-                       NBUFilterValuesTypeKey           : @[NBUFilterValuesTypeFloat],
-                       NBUFilterMaxValuesKey            : @[@(2.0)],
-                       NBUFilterMinValuesKey            : @[@(0.0)]};
-        block = ^(NBUFilter * filter, CIFilter * ciFilter)
+        NSString * saturation = @"saturation";
+        attributes = @{saturation : @{NBUFilterValueDescriptionKey : @"Saturation",
+                                      NBUFilterValueTypeKey        : NBUFilterValueTypeFloat,
+                                      NBUFilterDefaultValueKey     : @(1.3),
+                                      NBUFilterIdentityValueKey    : @(1.0),
+                                      NBUFilterMaximumValueKey     : @(2.0),
+                                      NBUFilterMinimumValueKey     : @(0.0)}};
+        block = ^(NBUFilter * filter,
+                  CIFilter * ciFilter)
         {
             // Create a CI filter?
             if (!ciFilter)
@@ -147,7 +151,7 @@
             
             // Configure it
             [ciFilter setDefaults];
-            [ciFilter setValue:filter.values[0]
+            [ciFilter setValue:filter.values[saturation]
                         forKey:@"inputSaturation"];
             
             return ciFilter;
@@ -155,13 +159,15 @@
     }
     else if ([type isEqualToString:NBUFilterTypeExposure])
     {
-        defaultValues                                   = @[@(0.2)];
-        identityValues                                  = @[@(0.0)];
-        attributes = @{NBUFilterValuesDescriptionKey    : @[@"Exposure"],
-                       NBUFilterValuesTypeKey           : @[NBUFilterValuesTypeFloat],
-                       NBUFilterMaxValuesKey            : @[@(10.0)],
-                       NBUFilterMinValuesKey            : @[@(-10.0)]};
-        block = ^(NBUFilter * filter, CIFilter * ciFilter)
+        NSString * exposure = @"exposure";
+        attributes = @{exposure : @{NBUFilterValueDescriptionKey : @"Exposure",
+                                    NBUFilterValueTypeKey        : NBUFilterValueTypeFloat,
+                                    NBUFilterDefaultValueKey     : @(0.2),
+                                    NBUFilterIdentityValueKey    : @(0.0),
+                                    NBUFilterMaximumValueKey     : @(10.0),
+                                    NBUFilterMinimumValueKey     : @(-10.0)}};
+        block = ^(NBUFilter * filter,
+                  CIFilter * ciFilter)
         {
             // Create a CI filter?
             if (!ciFilter)
@@ -171,7 +177,7 @@
             
             // Configure it
             [ciFilter setDefaults];
-            [ciFilter setValue:filter.values[0]
+            [ciFilter setValue:filter.values[exposure]
                         forKey:@"inputEV"];
             
             return ciFilter;
@@ -179,12 +185,13 @@
     }
     else if ([type isEqualToString:NBUFilterTypeGamma])
     {
-        defaultValues                                   = @[@(0.8)];
-        identityValues                                  = @[@(1.0)];
-        attributes = @{NBUFilterValuesDescriptionKey    : @[@"Gamma"],
-                       NBUFilterValuesTypeKey           : @[NBUFilterValuesTypeFloat],
-                       NBUFilterMaxValuesKey            : @[@(4.0)],
-                       NBUFilterMinValuesKey            : @[@(0.0)]}; // CIAttributeSliderMin 0.25
+        NSString * gamma = @"gamma";
+        attributes = @{gamma : @{NBUFilterValueDescriptionKey : @"Gamma",
+                                 NBUFilterValueTypeKey        : NBUFilterValueTypeFloat,
+                                 NBUFilterDefaultValueKey     : @(0.8),
+                                 NBUFilterIdentityValueKey    : @(1.0),
+                                 NBUFilterMaximumValueKey     : @(4.0),
+                                 NBUFilterMinimumValueKey     : @(0.0)}}; // CIAttributeSliderMin 0.25
         block = ^(NBUFilter * filter, CIFilter * ciFilter)
         {
             // Create a CI filter?
@@ -195,7 +202,7 @@
             
             // Configure it
             [ciFilter setDefaults];
-            [ciFilter setValue:filter.values[0]
+            [ciFilter setValue:filter.values[gamma]
                         forKey:@"inputPower"];
             
             return ciFilter;
@@ -203,11 +210,12 @@
     }
     else if ([type isEqualToString:NBUFilterTypeAuto])
     {
-        defaultValues                                   = @[@(YES)];
-        identityValues                                  = @[@(NO)];
-        attributes = @{NBUFilterValuesDescriptionKey    : @[@"Auto adjust"],
-                       NBUFilterValuesTypeKey           : @[NBUFilterValuesTypeBool]};
-        block = NULL;
+        NSString * autoAdjust = @"autoAdjust";
+        attributes = @{autoAdjust : @{NBUFilterValueDescriptionKey : @"Auto adjust",
+                                      NBUFilterValueTypeKey        : NBUFilterValueTypeBool,
+                                      NBUFilterDefaultValueKey     : @(YES),
+                                      NBUFilterIdentityValueKey    : @(NO)}};
+        block = NULL; // Special processing at applyFilters:toImage:
     }
     
     // iOS6+
@@ -215,12 +223,13 @@
     {
         if ([type isEqualToString:NBUFilterTypeSharpen])
         {
-            defaultValues                                   = @[@(0.4)]; // CIAttributeDefault 0.4
-            identityValues                                  = @[@(0.0)];
-            attributes = @{NBUFilterValuesDescriptionKey    : @[@"Sharpness"],
-                           NBUFilterValuesTypeKey           : @[NBUFilterValuesTypeFloat],
-                           NBUFilterMaxValuesKey            : @[@(2.0)],
-                           NBUFilterMinValuesKey            : @[@(0.0)]};
+            NSString * sharpness = @"sharpness";
+            attributes = @{sharpness : @{NBUFilterValueDescriptionKey : @"Sharpness",
+                                         NBUFilterValueTypeKey        : NBUFilterValueTypeFloat,
+                                         NBUFilterDefaultValueKey     : @(0.4),
+                                         NBUFilterIdentityValueKey    : @(0.0),
+                                         NBUFilterMaximumValueKey     : @(2.0),
+                                         NBUFilterMinimumValueKey     : @(0.0)}};
             block = ^(NBUFilter * filter, CIFilter * ciFilter)
             {
                 // Create a CI filter?
@@ -231,7 +240,7 @@
                 
                 // Configure it
                 [ciFilter setDefaults];
-                [ciFilter setValue:filter.values[0]
+                [ciFilter setValue:filter.values[sharpness]
                             forKey:@"inputSharpness"];
                 
                 return ciFilter;
@@ -249,8 +258,6 @@
     NBUFilter * filter = [NBUFilter filterWithName:name
                                               type:type
                                             values:values
-                                     defaultValues:defaultValues
-                                    identityValues:identityValues
                                         attributes:attributes
                                           provider:self
                               configureFilterBlock:block];
@@ -293,7 +300,7 @@
         else
         {
             // Auto adjust off?
-            if (![filter boolValueForIndex:0])
+            if (![filter boolValueForKey:@"autoAdjust"])
                 continue;
             
             NSArray * autoFilters = [ciImage autoAdjustmentFilters];

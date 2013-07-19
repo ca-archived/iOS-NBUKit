@@ -25,6 +25,7 @@
 @implementation AdjustFilterViewController
 {
     NSMutableArray * _filters;
+    NSMutableArray * _filterValueKeys;
     NSMutableArray * _previouslyEnabledFilters;
 }
 
@@ -165,7 +166,7 @@
         if (!_filters)
         {
             // Configure and set all available filters
-            _filters = [NSMutableArray array];
+            NSMutableArray * filters = [NSMutableArray array];
             NBUFilter * filter;
             NSArray * filterTypes = [NBUFilterProvider availableFilterTypes];
             for (NSString * type in filterTypes)
@@ -174,8 +175,10 @@
                                                       type:type
                                                     values:nil];
                 filter.enabled = NO;
-                [_filters addObject:filter];
+                [filters addObject:filter];
             }
+            
+            self.filters = filters;
         }
         return _filters;
     }
@@ -184,6 +187,13 @@
 - (void)setFilters:(NSArray *)filters
 {
     _filters = [NSMutableArray arrayWithArray:filters];
+    
+    // Create the value keys
+    _filterValueKeys = [NSMutableArray arrayWithCapacity:filters.count];
+    for (NBUFilter * filter in filters)
+    {
+        [_filterValueKeys addObject:filter.attributes ? filter.attributes.allKeys : @[]];
+    }
     
     _previouslyEnabledFilters = nil;
     [_tableView reloadData];
@@ -255,6 +265,8 @@
         
         [_filters exchangeObjectAtIndex:index
                       withObjectAtIndex:index - 1];
+        [_filterValueKeys exchangeObjectAtIndex:index
+                              withObjectAtIndex:index - 1];
         [_tableView moveSection:index
                       toSection:index - 1];
         
@@ -276,6 +288,8 @@
         
         [_filters exchangeObjectAtIndex:index
                       withObjectAtIndex:index + 1];
+        [_filterValueKeys exchangeObjectAtIndex:index
+                              withObjectAtIndex:index + 1];
         [_tableView moveSection:index
                       toSection:index + 1];
         
@@ -320,8 +334,7 @@
     // Return the number of rows in the section.
     if (section < self.filters.count)
     {
-        NBUFilter * filter = self.filters[section];
-        return filter.defaultValues.count + 1;
+        return ((NSArray *)_filterValueKeys[section]).count + 1;
     }
     else
     {
@@ -344,8 +357,8 @@
         // Value cell
         else
         {
-            cell = [AdjustFilterCell valueCellForForIndex:indexPath.row - 1
-                                                   filter:self.filters[indexPath.section]];
+            cell = [AdjustFilterCell valueCellForForKey:_filterValueKeys[indexPath.section][indexPath.row - 1]
+                                                 filter:self.filters[indexPath.section]];
         }
     }
     else
@@ -387,39 +400,39 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     return cell;
 }
 
-+ (AdjustFilterValueCell *)valueCellForForIndex:(NSUInteger)index
-                                         filter:(NBUFilter *)filter
++ (AdjustFilterValueCell *)valueCellForForKey:(NSString *)valueKey
+                                       filter:(NBUFilter *)filter
 {
-    NSString * valueType = filter.attributes[NBUFilterValuesTypeKey][index];
+    NSString * valueType = filter.attributes[valueKey][NBUFilterValueTypeKey];
     NSString * nibName;
-    if ([valueType isEqualToString:NBUFilterValuesTypeFloat])
+    if ([valueType isEqualToString:NBUFilterValueTypeFloat])
     {
         nibName = @"AdjustFilterSliderCell";
     }
-    else if ([valueType isEqualToString:NBUFilterValuesTypeBool])
+    else if ([valueType isEqualToString:NBUFilterValueTypeBool])
     {
         nibName = @"AdjustFilterSwitchCell";
     }
-    else if ([valueType isEqualToString:NBUFilterValuesTypeImage])
+    else if ([valueType isEqualToString:NBUFilterValueTypeImage])
     {
         nibName = @"AdjustFilterButtonCell";
     }
-    else if ([valueType isEqualToString:NBUFilterValuesTypeFile])
+    else if ([valueType isEqualToString:NBUFilterValueTypeFile])
     {
         nibName = @"AdjustFilterButtonCell";
     }
     else
     {
-        NBULogError(@"Can't create cell for value at index %d of type '%@' for filter %@",
-                    index, valueType, filter);
+        NBULogError(@"Can't create cell for value '%@' of type '%@' for filter %@",
+                    valueKey, valueType, filter);
         return nil;
     }
     
     AdjustFilterValueCell * cell = [NSBundle loadNibNamed:nibName
                                                     owner:nil
                                                   options:nil][0];
-    [cell setIndex:index
-            filter:filter];
+    [cell setFilter:filter
+                key:valueKey];
     
     return cell;
 }
@@ -537,17 +550,17 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 @implementation AdjustFilterValueCell
 
-@synthesize index = _index;
+@synthesize valueKey = _valueKey;
 @synthesize enabled = _enabled;
 
-- (void)setIndex:(NSUInteger)index
-          filter:(NBUFilter *)filter
+- (void)setFilter:(NBUFilter *)filter
+              key:(NSString *)valueKey
 {
     super.filter = filter;
-    _index = index;
+    _valueKey = valueKey;
     
     self.enabled = filter.enabled;
-    self.label.text = filter.attributes[NBUFilterValuesDescriptionKey][index];
+    self.label.text = filter.attributes[valueKey][NBUFilterValueDescriptionKey];
 }
 
 - (void)setEnabled:(BOOL)enabled
@@ -578,15 +591,15 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 @synthesize minValueLabel = _minValueLabel;
 @synthesize maxValueLabel = _maxValueLabel;
 
-- (void)setIndex:(NSUInteger)index
-          filter:(NBUFilter *)filter
+- (void)setFilter:(NBUFilter *)filter
+              key:(NSString *)valueKey
 {
-    [super setIndex:index
-             filter:filter];
+    [super setFilter:filter
+                 key:valueKey];
     
-    _slider.minimumValue = [filter minFloatValueForIndex:index];
-    _slider.maximumValue = [filter maxFloatValueForIndex:index];
-    _slider.value = [filter floatValueForIndex:index];
+    _slider.minimumValue = [filter minFloatValueForKey:valueKey];
+    _slider.maximumValue = [filter maxFloatValueForKey:valueKey];
+    _slider.value = [filter floatValueForKey:valueKey];
     _minValueLabel.text = [NSString stringWithFormat:@"%0.2f", _slider.minimumValue];
     _maxValueLabel.text = [NSString stringWithFormat:@"%0.2f", _slider.maximumValue];
     _currentValueLabel.text = [NSString stringWithFormat:@"%0.2f", _slider.value];
@@ -605,8 +618,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (IBAction)updateFilter:(id)sender
 {
     _currentValueLabel.text = [NSString stringWithFormat:@"%0.2f", _slider.value];
-    [self.filter setValue:@(_slider.value)
-                 forIndex:self.index];
+    self.filter.values[self.valueKey] = @(_slider.value);
     
     [super updateFilter:sender];
 }
@@ -623,7 +635,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     
     if ([keyPath isEqualToString:@"values"])
     {
-        [_slider setValue:[filter floatValueForIndex:self.index]
+        [_slider setValue:[filter floatValueForKey:self.valueKey]
                  animated:YES];
     }
 }
@@ -635,13 +647,13 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 @synthesize onOffSwitch = _onOffSwitch;
 
-- (void)setIndex:(NSUInteger)index
-          filter:(NBUFilter *)filter
+- (void)setFilter:(NBUFilter *)filter
+              key:(NSString *)valueKey
 {
-    [super setIndex:index
-             filter:filter];
+    [super setFilter:filter
+                 key:valueKey];
     
-    _onOffSwitch.on = [filter boolValueForIndex:index];
+    _onOffSwitch.on = [filter boolValueForKey:valueKey];
 }
 
 - (void)setEnabled:(BOOL)enabled
@@ -654,7 +666,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (IBAction)updateFilter:(id)sender
 {
     [self.filter setValue:@(_onOffSwitch.on)
-                 forIndex:self.index];
+                   forKey:self.valueKey];
     
     [super updateFilter:sender];
 }
@@ -671,7 +683,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     
     if ([keyPath isEqualToString:@"values"])
     {
-        [_onOffSwitch setOn:[filter boolValueForIndex:self.index]
+        [_onOffSwitch setOn:[filter boolValueForKey:self.valueKey]
                    animated:YES];
     }
 }
@@ -688,22 +700,22 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 @synthesize button = _button;
 
-- (void)setIndex:(NSUInteger)index
-          filter:(NBUFilter *)filter
+- (void)setFilter:(NBUFilter *)filter
+              key:(NSString *)valueKey
 {
-    [super setIndex:index
-             filter:filter];
+    [super setFilter:filter
+                 key:valueKey];
     
-    _valueType = filter.attributes[NBUFilterValuesTypeKey][index];
+    _valueType = filter.attributes[valueKey][NBUFilterValueTypeKey];
     
-    if ([_valueType isEqualToString:NBUFilterValuesTypeImage])
+    if ([_valueType isEqualToString:NBUFilterValueTypeImage])
     {
         // Nothing for now
 //        _fileExtension = @"png";
     }
-    else if ([_valueType isEqualToString:NBUFilterValuesTypeFile])
+    else if ([_valueType isEqualToString:NBUFilterValueTypeFile])
     {
-        _currentFileURL = [filter fileURLForIndex:index];
+        _currentFileURL = [filter fileURLForKey:valueKey];
         _fileExtension = _currentFileURL.pathExtension;
         _button.title = _currentFileURL.lastPathComponent;
     }
@@ -719,7 +731,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (IBAction)buttonTapped:(id)sender
 {
     // Pick an image
-    if ([_valueType isEqualToString:NBUFilterValuesTypeImage])
+    if ([_valueType isEqualToString:NBUFilterValueTypeImage])
     {
         [NBUImagePickerController startPickerWithTarget:_button
                                                 options:(NBUImagePickerDefaultOptions |
@@ -732,7 +744,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
             if (images.count == 1)
             {
                 [self.filter setValue:images[0]
-                             forIndex:self.index];
+                               forKey:self.valueKey];
                 
                 [self updateFilter:self];
             }
@@ -740,7 +752,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     }
     
     // Pick a file
-    else if ([_valueType isEqualToString:NBUFilterValuesTypeFile])
+    else if ([_valueType isEqualToString:NBUFilterValueTypeFile])
     {
         NSArray * directoyURLs = @[[UIApplication sharedApplication].documentsDirectory,
                                    [[NBUKit resourcesBundle].bundleURL URLByAppendingPathComponent:@"Filters"]];
@@ -767,7 +779,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
                                                        
                                                        _button.title = selectedURL.lastPathComponent;
                                                        [self.filter setValue:selectedURL.path
-                                                                    forIndex:self.index];
+                                                                      forKey:self.valueKey];
                                                        
                                                        [self updateFilter:self];
                                                    }

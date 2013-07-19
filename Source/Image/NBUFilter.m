@@ -26,17 +26,19 @@
 #define NBUKIT_MODULE   NBUKIT_MODULE_IMAGE
 
 // Attributes' keys
-NSString * const NBUFilterValuesDescriptionKey  = @"descriptions";
-NSString * const NBUFilterValuesTypeKey         = @"types";
-NSString * const NBUFilterMinValuesKey          = @"minValues";
-NSString * const NBUFilterMaxValuesKey          = @"maxValues";
+NSString * const NBUFilterValueDescriptionKey   = @"description";
+NSString * const NBUFilterValueTypeKey          = @"valueType";
+NSString * const NBUFilterDefaultValueKey       = @"defaultValue";
+NSString * const NBUFilterIdentityValueKey      = @"identityValue";
+NSString * const NBUFilterMinimumValueKey       = @"minValue";
+NSString * const NBUFilterMaximumValueKey       = @"maxValue";
 
 // Types
-NSString * const NBUFilterValuesTypeFloat       = @"CGFloat";
-NSString * const NBUFilterValuesTypeBool        = @"BOOL";
-NSString * const NBUFilterValuesTypeImage       = @"PathOrUIImage";
-NSString * const NBUFilterValuesTypeFile        = @"Path";
-NSString * const NBUFilterValuesTypeUnknown     = @"Unknown";
+NSString * const NBUFilterValueTypeFloat        = @"float";
+NSString * const NBUFilterValueTypeBool         = @"bool";
+NSString * const NBUFilterValueTypeImage        = @"pathOrImage";
+NSString * const NBUFilterValueTypeFile         = @"path";
+NSString * const NBUFilterValueTypeUnknown      = @"unknown";
 
 @implementation NBUFilter
 {
@@ -48,17 +50,13 @@ NSString * const NBUFilterValuesTypeUnknown     = @"Unknown";
 @synthesize type = _type;
 @synthesize enabled = _enabled;
 @synthesize values = _values;
-@synthesize defaultValues = _defaultValues;
-@synthesize identityValues = _identityValues;
 @synthesize attributes = _attributes;
 @synthesize provider = _provider;
 @synthesize concreteFilter = _concreteFilter;
 
 + (id)filterWithName:(NSString *)name
                 type:(NSString *)type
-              values:(NSArray *)values
-       defaultValues:(NSArray *)defaultValues
-      identityValues:(NSArray *)identityValues
+              values:(NSDictionary *)values
           attributes:(NSDictionary *)attributes
             provider:(Class<NBUFilterProvider>)provider
 configureFilterBlock:(NBUConfigureFilterBlock)block
@@ -66,18 +64,16 @@ configureFilterBlock:(NBUConfigureFilterBlock)block
     return [[self alloc] initWithName:name
                                  type:type
                                values:values
-                        defaultValues:defaultValues
-                       identityValues:(NSArray *)identityValues
                            attributes:attributes
                              provider:provider
                  configureFilterBlock:block];
 }
 
+
+
 - (id)initWithName:(NSString *)name
               type:(NSString *)type
-            values:(NSArray *)values
-     defaultValues:(NSArray *)defaultValues
-    identityValues:(NSArray *)identityValues
+            values:(NSDictionary *)values
         attributes:(NSDictionary *)attributes
           provider:(Class<NBUFilterProvider>)provider
 configureFilterBlock:(NBUConfigureFilterBlock)block
@@ -92,9 +88,7 @@ configureFilterBlock:(NBUConfigureFilterBlock)block
                                stringByReplacingOccurrencesOfString:@"FilterType"
                                withString:@""];
         _type = type;
-        _values = values;
-        _defaultValues = defaultValues;
-        _identityValues = identityValues;
+        _values = [values isKindOfClass:[NSMutableDictionary class]] ? values : [NSMutableDictionary dictionaryWithDictionary:values];
         _attributes = attributes;
         _provider = provider;
         _configureFilterBlock = block;
@@ -102,36 +96,36 @@ configureFilterBlock:(NBUConfigureFilterBlock)block
     return self;
 }
 
-- (NSArray *)values
-{
-    // Enough values?
-    if (_values.count >= _defaultValues.count)
-    {
-        // Too many, some will be ignored
-        if (_values.count > _defaultValues.count)
-        {
-            NBULogWarn(@"The last %d values () will be ignored by filter %@",
-                       _values.count - _defaultValues.count, self);
-        }
-        return _values;
-    }
-    
-    // No values at all?
-    if (_values.count == 0)
-    {
-        return _defaultValues;
-    }
-    
-    // A mix of values
-    NSRange defaultValuesRange = NSMakeRange(_values.count,
-                                             _defaultValues.count - _values.count);
-    NSArray * values = [_values arrayByAddingObjectsFromArray:[_defaultValues subarrayWithRange:defaultValuesRange]];
-    return values;
-}
+//- (NSMutableDictionary *)values
+//{
+//    // Enough values?
+//    if (_values.count >= _defaultValues.count)
+//    {
+//        // Too many, some will be ignored
+//        if (_values.count > _defaultValues.count)
+//        {
+//            NBULogWarn(@"The last %d values () will be ignored by filter %@",
+//                       _values.count - _defaultValues.count, self);
+//        }
+//        return _values;
+//    }
+//    
+//    // No values at all?
+//    if (_values.count == 0)
+//    {
+//        return _defaultValues;
+//    }
+//    
+//    // A mix of values
+//    NSRange defaultValuesRange = NSMakeRange(_values.count,
+//                                             _defaultValues.count - _values.count);
+//    NSArray * values = [_values arrayByAddingObjectsFromArray:[_defaultValues subarrayWithRange:defaultValuesRange]];
+//    return values;
+//}
 
 - (void)reset
 {
-    self.values = nil;
+    [_values removeAllObjects];
 }
 
 - (id)concreteFilter
@@ -148,11 +142,9 @@ configureFilterBlock:(NBUConfigureFilterBlock)block
     if (_enabled)
     {
         return [NSString stringWithFormat:
-                @"<%@ %p: %@ (%@ - %@)\n  values: %@\n  default values: %@\n  identity values: %@\n  attributes:%@>",
+                @"<%@ %p: %@ (%@ - %@)\n  values: %@\n  attributes:%@>",
                 [self class], self, _name, _type, _provider,
-                _values.shortDescription,
-                _defaultValues.shortDescription,
-                _identityValues.shortDescription,
+                _values,
                 [[_attributes.description  stringByReplacingOccurrencesOfString:@"\n"
                                                                      withString:@""] stringByReplacingOccurrencesOfString:@"  "
                  withString:@""]];
@@ -165,15 +157,13 @@ configureFilterBlock:(NBUConfigureFilterBlock)block
     }
 }
 
-- (void)setValue:(id)value
-        forIndex:(NSUInteger)index
+- (id)effectiveValueForKey:(NSString *)valueKey
 {
-    NSMutableArray * values = ([_values isKindOfClass:[NSMutableArray class]] ?
-                               (NSMutableArray *)_values :
-                               [NSMutableArray arrayWithArray:self.values]);
-    values[index] = value;
-    _values = values;
+    id value = _values[valueKey];
+    return value ? value : _attributes[valueKey][NBUFilterDefaultValueKey];
 }
+
+#pragma mark - Serialization
 
 - (void)setConfigurationDictionary:(NSDictionary *)configurationDictionary
 {
@@ -193,41 +183,43 @@ configureFilterBlock:(NBUConfigureFilterBlock)block
 
 - (NSDictionary *)configurationDictionary
 {
-    return @{@"name"    : _name ? _name : @"",
-             @"type"    : _type,
-             @"values"  : self.values ? self.values : @[],
-             @"enabled" : @(_enabled)};
+    return @{@"name"        : _name ? _name : @"",
+             @"type"        : _type,
+             //@"provider"    : NSStringFromClass(_provider) ? NSStringFromClass(_provider) : @"", // FIXME: Crashes
+             @"enabled"     : @(_enabled),
+             @"values"      : self.values ? self.values : @{},
+             @"attributes"  : self.attributes ? self.attributes : @{}};
 }
 
 #pragma mark - Float values
 
-- (CGFloat)floatValueForIndex:(NSUInteger)index
+- (CGFloat)floatValueForKey:(NSString *)valueKey
 {
-    return [self.values[index] floatValue];
+    return [[self effectiveValueForKey:valueKey] floatValue];
 }
 
-- (CGFloat)maxFloatValueForIndex:(NSUInteger)index
+- (CGFloat)maxFloatValueForKey:(NSString *)valueKey
 {
-    return [_attributes[NBUFilterMaxValuesKey][index] floatValue];
+    return [_attributes[valueKey][NBUFilterMaximumValueKey] floatValue];
 }
 
-- (CGFloat)minFloatValueForIndex:(NSUInteger)index
+- (CGFloat)minFloatValueForKey:(NSString *)valueKey
 {
-    return [_attributes[NBUFilterMinValuesKey][index] floatValue];
+    return [_attributes[valueKey][NBUFilterMinimumValueKey] floatValue];
 }
 
 #pragma mark - Booleans
 
-- (BOOL)boolValueForIndex:(NSUInteger)index
+- (BOOL)boolValueForKey:(NSString *)valueKey
 {
-    return [self.values[index] boolValue];
+    return [[self effectiveValueForKey:valueKey] boolValue];
 }
 
 #pragma mark - File URLs
 
-- (NSURL *)fileURLForIndex:(NSUInteger)index
+- (NSURL *)fileURLForKey:(NSString *)valueKey
 {
-    id pathOrURL = self.values[index];
+    id pathOrURL = [self effectiveValueForKey:valueKey];
     
     // Already an NSURL?
     if ([pathOrURL isKindOfClass:[NSURL class]])
@@ -253,9 +245,9 @@ configureFilterBlock:(NBUConfigureFilterBlock)block
 
 #pragma mark - Images
 
-- (UIImage *)imageForIndex:(NSUInteger)index
+- (UIImage *)imageForKey:(NSString *)valueKey
 {
-    id imageOrPath = self.values[index];
+    id imageOrPath = [self effectiveValueForKey:valueKey];
     
     // Already an image?
     if ([imageOrPath isKindOfClass:[UIImage class]])
@@ -267,7 +259,7 @@ configureFilterBlock:(NBUConfigureFilterBlock)block
     UIImage * image = [UIImage imageNamed:imageOrPath];
     if (!image)
     {
-        image = [UIImage imageWithContentsOfFile:[self fileURLForIndex:index].path];
+        image = [UIImage imageWithContentsOfFile:[self fileURLForKey:valueKey].path];
     }
     if (!image)
     {

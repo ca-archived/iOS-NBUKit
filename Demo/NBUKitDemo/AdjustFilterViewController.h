@@ -49,8 +49,8 @@
 @interface AdjustFilterCell : UITableViewCell
 
 + (AdjustFilterTitleCell *)titleCellForForFilter:(NBUFilter *)filter;
-+ (AdjustFilterValueCell *)valueCellForForIndex:(NSUInteger)index
-                                         filter:(NBUFilter *)filter;
++ (AdjustFilterValueCell *)valueCellForForKey:(NSString *)valueKey
+                                       filter:(NBUFilter *)filter;
 
 @property (strong, nonatomic) NBUFilter * filter;
 @property (assign, nonatomic) IBOutlet UILabel * label;
@@ -80,12 +80,12 @@
 
 @interface AdjustFilterValueCell : AdjustFilterCell
 
-@property (nonatomic, readonly)             NSUInteger index;
+@property (nonatomic, readonly)         NSString * valueKey;
 
-@property (nonatomic, getter=isEnabled)   BOOL enabled;
+@property (nonatomic, getter=isEnabled) BOOL enabled;
 
-- (void)setIndex:(NSUInteger)index
-          filter:(NBUFilter *)filter;
+- (void)setFilter:(NBUFilter *)filter
+              key:(NSString *)valueKey;
 
 @end
 
