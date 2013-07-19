@@ -1,0 +1,1 @@
+PODS_NBUKIT_OTHER_LDFLAGS = -framework AssetsLibrary -framework AudioToolbox -framework CoreLocation -framework MediaPlayer -framework MessageUI -framework MobileCoreServices -weak_framework CoreImage

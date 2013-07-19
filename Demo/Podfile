@@ -1,7 +1,7 @@
 platform :ios
 
 # For client projects just use:
-#pod 'NBUKit',   '~> 1.9.2'
+#pod 'NBUKit',   '~> 1.9.3'
 
 # Pre-release versions:
 pod 'NBUCore',  :head
