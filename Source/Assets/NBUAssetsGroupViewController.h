@@ -80,5 +80,12 @@
 /// @discussion You should configure the button's target actions separatly.
 @property (assign, nonatomic) IBOutlet              id<UIButton> continueButton;
 
+/// An optional UILabel that will be updated automatically with the associated assetsGroup.
+/// @discussion When set the controllers' [UINavigationItem title] will no longer be modified.
+@property (assign, nonatomic) IBOutlet              UILabel * groupNameLabel;
+
+/// An optional UILabel that will be updated automatically with the assets count.
+@property (assign, nonatomic) IBOutlet              UILabel * assetsCountLabel;
+
 @end
 

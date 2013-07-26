@@ -67,11 +67,23 @@ static UIImage * _noContentsImage;
     
     // Update UI
     _nameLabel.text = self.object.name;
-    _countLabel.text = [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"NBUAssetsGroupView Number of images",
-                                                                                    nil, nil,
-                                                                                    @"%d images",
-                                                                                    @"NBUAssetsGroupView Number of images"),
-                        self.assetsGroup.imageAssetsCount];
+    NSUInteger count = self.assetsGroup.imageAssetsCount;
+    if (count == 0)
+    {
+        _countLabel.text = [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"NBUAssetsGroupView Only one image",
+                                                                                        nil, nil,
+                                                                                        @"1 image",
+                                                                                        @"NBUAssetsGroupView Only one image"),
+                            count];
+    }
+    else
+    {
+        _countLabel.text = [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"NBUAssetsGroupView Number of images",
+                                                                                        nil, nil,
+                                                                                        @"%d images",
+                                                                                        @"NBUAssetsGroupView Number of images"),
+                            count];
+    }
     _posterImageView.image = self.object.posterImage ? self.object.posterImage : _noContentsImage;
     _editableView.hidden = !self.object.editable;
 }

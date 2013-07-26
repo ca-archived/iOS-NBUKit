@@ -48,6 +48,8 @@
 @synthesize selectedAssetsURLs = _selectedAssetsURLs;
 @synthesize gridView = _gridView;
 @synthesize continueButton = _continueButton;
+@synthesize groupNameLabel = _groupNameLabel;
+@synthesize assetsCountLabel = _assetsCountLabel;
 
 // TODO: Remove
 - (void)setScrollOffset
@@ -91,7 +93,10 @@
     }
     
     // Configure UI
-    self.title = self.assetsGroup.name;
+    if (_groupNameLabel)
+        _groupNameLabel.text = self.assetsGroup.name;
+    else
+        self.title = self.assetsGroup.name;
     self.selectedAssets = nil;
     
     // Reload assets
@@ -102,6 +107,22 @@
                        self.loading = YES;
                    });
     NSUInteger totalCount = self.assetsGroup.imageAssetsCount;
+    if (totalCount == 0)
+    {
+        _assetsCountLabel.text = [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"NBUAssetsGroupView Only one image",
+                                                                                              nil, nil,
+                                                                                              @"1 image",
+                                                                                              @"NBUAssetsGroupView Only one image"),
+                                  totalCount];
+    }
+    else
+    {
+        _assetsCountLabel.text = [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"NBUAssetsGroupView Number of images",
+                                                                                              nil, nil,
+                                                                                              @"%d images",
+                                                                                              @"NBUAssetsGroupView Number of images"),
+                                  totalCount];
+    }
     __unsafe_unretained NBUAssetsGroupViewController * weakSelf = self;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         
