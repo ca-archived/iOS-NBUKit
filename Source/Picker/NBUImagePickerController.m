@@ -168,6 +168,12 @@
     NBULogInfo(@"Picker options: %x", options);
     _options = options;
     
+    // No camera?
+    if (![NBUCameraViewController isCameraAvailable])
+    {
+        _options |= NBUImagePickerOptionDisableCamera;
+    }
+    
     // NBUImagePickerResultBlock mode
     _returnMediaInfoMode = (_options & NBUImagePickerOptionReturnMediaInfo) == NBUImagePickerOptionReturnMediaInfo;
     _singleImageMode = (options & NBUImagePickerOptionMultipleImages) != NBUImagePickerOptionMultipleImages;
