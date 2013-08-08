@@ -277,10 +277,13 @@
     }
     
     // Configure controller
-    _cameraController.navigationItem.title = NSLocalizedStringWithDefaultValue(@"NBUImagePickerController CameraTitle",
-                                                                               nil, nil,
-                                                                               @"Camera",
-                                                                               @"NBUImagePickerController CameraTitle");
+    if (_cameraController.navigationItem.title.length == 0)
+    {
+        _cameraController.navigationItem.title = NSLocalizedStringWithDefaultValue(@"NBUImagePickerController CameraTitle",
+                                                                                   nil, nil,
+                                                                                   @"Camera",
+                                                                                   @"NBUImagePickerController CameraTitle");
+    }
     _cameraController.supportedInterfaceOrientations = UIInterfaceOrientationMaskPortrait;
     _cameraController.singlePictureMode = _singleImageMode;
     
