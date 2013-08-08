@@ -116,7 +116,8 @@
     mockView.contentMode = UIViewContentModeScaleAspectFill;
     mockView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     mockView.frame = self.bounds;
-    [self addSubview:mockView];
+    [self insertSubview:mockView
+                atIndex:0];
 #endif
     
     // First orientation update
