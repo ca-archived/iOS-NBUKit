@@ -294,7 +294,7 @@
     {
         if (!error && image)
         {
-            NBUMediaInfo * mediaInfo = [NBUMediaInfo mediaInfoWithOriginalImage:image];
+            NBUMediaInfo * mediaInfo = [NBUMediaInfo mediaInfoWithOriginalImage:[image imageWithOrientationUp]];
             
             if (singleImageMode)
             {
