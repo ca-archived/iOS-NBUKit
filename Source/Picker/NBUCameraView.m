@@ -690,16 +690,18 @@
              if (!_savePicturesToLibrary)
                  return;
              
+             // Retrieve the metadata
+             NSDictionary * metadata;
+#ifndef __i386__
+             metadata = (__bridge_transfer NSDictionary *)CMCopyDictionaryOfAttachments(kCFAllocatorDefault,
+                                                                                        imageDataSampleBuffer,
+                                                                                        kCMAttachmentMode_ShouldPropagate);
+             NBULogInfo(@"Image metadata: %@", metadata);
+#endif
+             
              dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^
                             {
                                 // Read metadata
-                                NSDictionary * metadata;
-#ifndef __i386__
-                                metadata = (__bridge_transfer NSDictionary *)CMCopyDictionaryOfAttachments(kCFAllocatorDefault,
-                                                                                                           imageDataSampleBuffer,
-                                                                                                           kCMAttachmentMode_ShouldPropagate);
-                                NBULogInfo(@"Image metadata: %@", metadata);
-#endif
                                 
                                 // Save to the Camera Roll
                                 [[NBUAssetsLibrary sharedLibrary] saveImageToCameraRoll:image
