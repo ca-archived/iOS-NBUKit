@@ -1,5 +1,5 @@
-language:   objective-c
-xcode_sdk:  iphonesimulator
+language: objective-c
 install:
     - cd Demo
     - pod install
+script: xctool -workspace NBUKitDemo.xcworkspace -scheme 'NBUKitDemo' -configuration Release -sdk iphonesimulator -arch i386 build
