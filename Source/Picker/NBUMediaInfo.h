@@ -96,5 +96,8 @@ typedef NSInteger NBUMediaInfoSource;
 /// @param size The target size of the thumbnail.
 - (UIImage *)editedThumbnailWithSize:(CGSize)size;
 
+/// Remove all cached edited thumbnails created by editedThumbnailWithSize:.
+- (void)resetEditedThumbnails;
+
 @end
 

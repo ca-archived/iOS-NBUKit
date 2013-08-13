@@ -151,15 +151,9 @@ NSString * const NBUMediaInfoFiltersKey             = @"NBUMediaInfoFilters";
     [_attributes setValue:editedImage
                    forKey:NBUMediaInfoEditedMediaKey];
     
-    // Remove outdated objects
+    // Reset outdated objects
     [_attributes removeObjectForKey:NBUMediaInfoEditedMediaURLKey];
-    for (NSString * key in _attributes.allKeys)
-    {
-        if ([key containsString:NBUMediaInfoEditedThumbnailKey])
-        {
-            [_attributes removeObjectForKey:key];
-        }
-    }
+    [self resetEditedThumbnails];
 }
 
 - (NBUMediaInfoSource)source
@@ -215,6 +209,17 @@ NSString * const NBUMediaInfoFiltersKey             = @"NBUMediaInfoFilters";
     };
     
     return thumbnail;
+}
+
+- (void)resetEditedThumbnails
+{
+    for (NSString * key in _attributes.allKeys)
+    {
+        if ([key containsString:NBUMediaInfoEditedThumbnailKey])
+        {
+            [_attributes removeObjectForKey:key];
+        }
+    }
 }
 
 - (BOOL)isEdited
