@@ -72,7 +72,7 @@ Installation
 
 _If you have a problem try `gem update cocoapods` first._
 
-### Manual (up to 1.8.x)
+### Older versions (up to 1.8.x)
 
 [NBUKit Installation](https://github.com/CyberAgent/iOS-NBUKit/wiki/NBUKit-Installation).
 
