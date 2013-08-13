@@ -4,7 +4,7 @@ platform :ios
 #pod 'NBUKit',   '~> 1.9.5'
 
 # Pre-release versions:
-pod 'NBUCore',  :head
+#pod 'NBUCore',  :head
 #pod 'NBUKit',   :git => 'https://github.com/CyberAgent/iOS-NBUKit.git',     :commit => '8d67084b760ed97079bffc9ff9b66f02cc37ab48'
 
 # For NBUKit development only:

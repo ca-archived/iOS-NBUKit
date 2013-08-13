@@ -2,23 +2,23 @@ PODS:
   - CocoaLumberjack (1.6)
   - GPUImage (0.1.0)
   - Lockbox (1.4.2)
-  - NBUCore (HEAD based on 1.9.2):
+  - NBUCore (1.9.2):
     - CocoaLumberjack (<= 1.6)
     - Lockbox (~> 1.4.2)
     - NBUCore/Additions
     - NBUCore/Dashboard
     - NBUCore/Helpers
     - NBUCore/UI
-  - NBUCore/Additions (HEAD based on 1.9.2):
+  - NBUCore/Additions (1.9.2):
     - CocoaLumberjack (<= 1.6)
     - Lockbox (~> 1.4.2)
-  - NBUCore/Dashboard (HEAD based on 1.9.2):
+  - NBUCore/Dashboard (1.9.2):
     - CocoaLumberjack (<= 1.6)
     - Lockbox (~> 1.4.2)
-  - NBUCore/Helpers (HEAD based on 1.9.2):
+  - NBUCore/Helpers (1.9.2):
     - CocoaLumberjack (<= 1.6)
     - Lockbox (~> 1.4.2)
-  - NBUCore/UI (HEAD based on 1.9.2):
+  - NBUCore/UI (1.9.2):
     - CocoaLumberjack (<= 1.6)
     - Lockbox (~> 1.4.2)
   - NBUKit (1.9.5):
@@ -39,17 +39,9 @@ PODS:
   - NBUKit/Library (1.9.5):
     - GPUImage (~> 0.1.0)
     - NBUCore (~> 1.9.1)
-    - NBUKit/Library/MPNotificationView
     - NBUKit/Library/NBUCompatibility
     - NBUKit/Library/RBVolumeButtons
     - NBUKit/Library/RestKit Support
-  - NBUKit/Library/MPNotificationView (1.9.5):
-    - GPUImage (~> 0.1.0)
-    - NBUCore (~> 1.9.1)
-    - NBUKit/Library/MPNotificationView/OBGradientView
-  - NBUKit/Library/MPNotificationView/OBGradientView (1.9.5):
-    - GPUImage (~> 0.1.0)
-    - NBUCore (~> 1.9.1)
   - NBUKit/Library/NBUCompatibility (1.9.5):
     - GPUImage (~> 0.1.0)
     - NBUCore (~> 1.9.1)
@@ -70,7 +62,6 @@ PODS:
     - NBUCore (~> 1.9.1)
 
 DEPENDENCIES:
-  - NBUCore (HEAD)
   - NBUKit (from `../`)
 
 EXTERNAL SOURCES:
@@ -82,6 +73,6 @@ SPEC CHECKSUMS:
   GPUImage: 5b902c1df2afe0ac30a8e3e7379f9c0bb25c7c85
   Lockbox: d1be948dcf7ef9e584ee9d56787728f99336e87f
   NBUCore: b638a7e35186f2b219e174bb68072ebaf435b1a2
-  NBUKit: 5383c1fdaa330d1f7e8406a768127b3298215515
+  NBUKit: 383f98a456aece9ff929727b985620c564abd133
 
-COCOAPODS: 0.22.2
+COCOAPODS: 0.23.0

@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
     s.name          = "NBUKit"
     s.version       = "1.9.5"
     s.platform      = :ios
-    s.summary       = "Customizable image editing, filters, picker and other UIKit subclasses."
+    s.summary       = "Customizable image editing, filters, camera, picker and other UIKit subclasses."
     s.homepage      = "http://cyberagent.github.io/iOS-NBUKit/"
     s.license       = { :type => 'Apache License, Version 2.0', :file => 'LICENSE' }
     s.author        = { "CyberAgent Inc." => "", "Ernesto Rivera" => "rivera_ernesto@cyberagent.co.jp" }
@@ -70,13 +70,6 @@ Pod::Spec.new do |s|
             srb.requires_arc    = false
             srb.source_files    = 'Library/RBVolumeButtons'
             srb.frameworks      = 'MediaPlayer', 'AudioToolbox'
-        end
-        
-        sl.subspec 'MPNotificationView' do |snv|
-            snv.source_files    = 'Library/MPNotificationView'
-            snv.subspec 'OBGradientView' do |sgv|
-                sgv.source_files = 'Library/OBGradientView'
-            end
         end
         
     end
