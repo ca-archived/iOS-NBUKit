@@ -2,9 +2,9 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1552</int>
-		<string key="IBDocument.SystemVersion">12D78</string>
+		<string key="IBDocument.SystemVersion">12E55</string>
 		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
-		<string key="IBDocument.AppKitVersion">1187.37</string>
+		<string key="IBDocument.AppKitVersion">1187.39</string>
 		<string key="IBDocument.HIToolboxVersion">626.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -55,7 +55,7 @@
 						<string key="NSFrame">{{27, 20}, {20, 20}}</string>
 						<reference key="NSSuperview" ref="967519900"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="385331618"/>
+						<reference key="NSNextKeyView" ref="359845205"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -83,6 +83,7 @@
 						<string key="NSFrame">{{0, 55}, {75, 20}}</string>
 						<reference key="NSSuperview" ref="967519900"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -119,12 +120,13 @@
 						<string key="NSFrame">{{47, 0}, {28, 28}}</string>
 						<reference key="NSSuperview" ref="967519900"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="385331618"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">checkmark.png</string>
+							<string key="NSResourceName">NBUKitResources.bundle/checkmark.png</string>
 						</object>
 					</object>
 				</array>
@@ -304,17 +306,6 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">NBUFilterThumbnailView</string>
 					<string key="superclassName">NBUObjectView</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">tapped:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">tapped:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">tapped:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="imageView">UIImageView</string>
 						<string key="nameLabel">UILabel</string>
@@ -381,15 +372,11 @@
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
-		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
-			<real value="1552" key="NS.object.0"/>
-		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">checkmark.png</string>
-			<string key="NS.object.0">{28, 28}</string>
+			<string key="NS.key.0">NBUKitResources.bundle/checkmark.png</string>
+			<string key="NS.object.0">{16, 16}</string>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>

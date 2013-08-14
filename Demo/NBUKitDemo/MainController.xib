@@ -385,7 +385,7 @@
 				</object>
 			</object>
 			<object class="IBUIView" id="721684271">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">298</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIButton" id="869330960">
@@ -393,6 +393,7 @@
 						<int key="NSvFlags">269</int>
 						<string key="NSFrame">{{139, -10}, {42, 43}}</string>
 						<reference key="NSSuperview" ref="721684271"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<reference key="IBUIBackgroundColor" ref="69284788"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -408,13 +409,14 @@
 						<reference key="IBUINormalTitleShadowColor" ref="334034749"/>
 						<object class="NSCustomResource" key="IBUINormalBackgroundImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">camera_shot.png</string>
+							<string key="NSResourceName">NBUKitResources.bundle/camera_shot.png</string>
 						</object>
 						<reference key="IBUIFontDescription" ref="153020386"/>
 						<reference key="IBUIFont" ref="12349333"/>
 					</object>
 				</array>
 				<string key="NSFrameSize">{320, 49}</string>
+				<reference key="NSSuperview"/>
 				<reference key="NSNextKeyView" ref="869330960"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<reference key="IBUIBackgroundColor" ref="69284788"/>
@@ -851,7 +853,7 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="camera_shot.png">{36, 37}</string>
+			<string key="NBUKitResources.bundle/camera_shot.png">{16, 16}</string>
 			<string key="first.png">{30, 30}</string>
 			<string key="second.png">{30, 30}</string>
 		</dictionary>
