@@ -470,6 +470,10 @@
                                                                                                 nil, nil,
                                                                                                 @"Next",
                                                                                                 @"NBUImagePickerController editController rightBarButtonItem.title");
+    _editController.customBackButtonTitle = NSLocalizedStringWithDefaultValue(@"NBUImagePickerController editController.customBackButtonTitle",
+                                                                              nil, nil,
+                                                                              @"Edit",
+                                                                              @"NBUImagePickerController editController.customBackButtonTitle");
     if (_singleImageMode)
     {
         _editController.navigationItem.titleView = nil;
