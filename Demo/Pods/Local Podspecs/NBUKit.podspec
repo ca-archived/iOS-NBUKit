@@ -57,19 +57,27 @@ Pod::Spec.new do |s|
     s.subspec 'Library' do |sl|
         
         sl.subspec 'NBUCompatibility' do |sc|
-            sc.source_files     = 'Library/NBUCompatibility'
+            sc.source_files     = 'Library/NBUCompatibility/*.{h,m}'
         end
         
         sl.subspec 'RestKit Support' do |srk|
             srk.requires_arc    = false
-            srk.source_files    = 'Library/RestKit Support'
+            srk.source_files    = 'Library/RestKit Support/*.{h,m}'
             srk.frameworks      = 'MobileCoreServices'
+            srk.preserve_paths  = "README.*", "LICENSE"
         end
         
         sl.subspec 'RBVolumeButtons' do |srb|
             srb.requires_arc    = false
-            srb.source_files    = 'Library/RBVolumeButtons'
+            srb.source_files    = 'Library/RBVolumeButtons/*.{h,m}'
             srb.frameworks      = 'MediaPlayer', 'AudioToolbox'
+        end
+        
+        sl.subspec 'MotionOrientation' do |smo|
+            smo.requires_arc    = false
+            smo.source_files    = 'Library/MotionOrientation/*.{h,m}'
+            smo.frameworks      = 'CoreMotion'
+            smo.preserve_paths  = "README.*"
         end
         
     end

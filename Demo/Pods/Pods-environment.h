@@ -22,7 +22,7 @@
 #define COCOAPODS_POD_AVAILABLE_Lockbox
 #define COCOAPODS_VERSION_MAJOR_Lockbox 1
 #define COCOAPODS_VERSION_MINOR_Lockbox 4
-#define COCOAPODS_VERSION_PATCH_Lockbox 2
+#define COCOAPODS_VERSION_PATCH_Lockbox 3
 
 // NBUCore
 #define COCOAPODS_POD_AVAILABLE_NBUCore
@@ -77,6 +77,12 @@
 #define COCOAPODS_VERSION_MAJOR_NBUKit_Library 1
 #define COCOAPODS_VERSION_MINOR_NBUKit_Library 9
 #define COCOAPODS_VERSION_PATCH_NBUKit_Library 5
+
+// NBUKit/Library/MotionOrientation
+#define COCOAPODS_POD_AVAILABLE_NBUKit_Library_MotionOrientation
+#define COCOAPODS_VERSION_MAJOR_NBUKit_Library_MotionOrientation 1
+#define COCOAPODS_VERSION_MINOR_NBUKit_Library_MotionOrientation 9
+#define COCOAPODS_VERSION_PATCH_NBUKit_Library_MotionOrientation 5
 
 // NBUKit/Library/NBUCompatibility
 #define COCOAPODS_POD_AVAILABLE_NBUKit_Library_NBUCompatibility

@@ -1,7 +1,7 @@
 PODS:
   - CocoaLumberjack (1.6)
   - GPUImage (0.1.0)
-  - Lockbox (1.4.2)
+  - Lockbox (1.4.3)
   - NBUCore (1.9.2):
     - CocoaLumberjack (<= 1.6)
     - Lockbox (~> 1.4.2)
@@ -39,9 +39,13 @@ PODS:
   - NBUKit/Library (1.9.5):
     - GPUImage (~> 0.1.0)
     - NBUCore (~> 1.9.1)
+    - NBUKit/Library/MotionOrientation
     - NBUKit/Library/NBUCompatibility
     - NBUKit/Library/RBVolumeButtons
     - NBUKit/Library/RestKit Support
+  - NBUKit/Library/MotionOrientation (1.9.5):
+    - GPUImage (~> 0.1.0)
+    - NBUCore (~> 1.9.1)
   - NBUKit/Library/NBUCompatibility (1.9.5):
     - GPUImage (~> 0.1.0)
     - NBUCore (~> 1.9.1)
@@ -71,8 +75,8 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   CocoaLumberjack: 0f2fa7090a23f13261072d882e017c688300efbe
   GPUImage: 5b902c1df2afe0ac30a8e3e7379f9c0bb25c7c85
-  Lockbox: d1be948dcf7ef9e584ee9d56787728f99336e87f
+  Lockbox: 1bcfd564f034b83456fcad5bdd49470a80a38d2b
   NBUCore: b638a7e35186f2b219e174bb68072ebaf435b1a2
-  NBUKit: 383f98a456aece9ff929727b985620c564abd133
+  NBUKit: 1711f07f8761325e36ab11511595525c6ed4df36
 
 COCOAPODS: 0.23.0
