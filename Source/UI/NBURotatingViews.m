@@ -20,6 +20,7 @@
 
 #import "NBURotatingViews.h"
 #import "NBUKitPrivate.h"
+#import "MotionOrientation.h"
 
 #define kAnimationDuration 0.3
 
@@ -57,27 +58,26 @@
                                        UIInterfaceOrientationMaskPortraitUpsideDown);
     
     // First rotation
-    [self setDeviceOrientation:[UIDevice currentDevice].orientation
+    [MotionOrientation initialize];
+    [self setDeviceOrientation:[MotionOrientation sharedInstance].deviceOrientation
                       animated:NO];
     
     // Observe orientation changes
-    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(deviceOrientationChanged:)
-                                                 name:UIDeviceOrientationDidChangeNotification
+                                                 name:MotionOrientationChangedNotification
                                                object:nil];
 }
 
 - (void)dealloc
 {
     // Stop observing
-    [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)deviceOrientationChanged:(NSNotification *)notification
 {
-    [self setDeviceOrientation:[UIDevice currentDevice].orientation
+    [self setDeviceOrientation:[MotionOrientation sharedInstance].deviceOrientation
                       animated:YES];
 }
 
@@ -158,27 +158,26 @@
                                        UIInterfaceOrientationMaskPortraitUpsideDown);
     
     // First rotation
-    [self setDeviceOrientation:[UIDevice currentDevice].orientation
+    [MotionOrientation initialize];
+    [self setDeviceOrientation:[MotionOrientation sharedInstance].deviceOrientation
                       animated:NO];
     
     // Observe orientation changes
-    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(deviceOrientationChanged:)
-                                                 name:UIDeviceOrientationDidChangeNotification
+                                                 name:MotionOrientationChangedNotification
                                                object:nil];
 }
 
 - (void)dealloc
 {
     // Stop observing
-    [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)deviceOrientationChanged:(NSNotification *)notification
 {
-    [self setDeviceOrientation:[UIDevice currentDevice].orientation
+    [self setDeviceOrientation:[MotionOrientation sharedInstance].deviceOrientation
                       animated:YES];
 }
 
@@ -259,27 +258,26 @@
                                        UIInterfaceOrientationMaskPortraitUpsideDown);
     
     // First rotation
-    [self setDeviceOrientation:[UIDevice currentDevice].orientation
+    [MotionOrientation initialize];
+    [self setDeviceOrientation:[MotionOrientation sharedInstance].deviceOrientation
                       animated:NO];
     
     // Observe orientation changes
-    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(deviceOrientationChanged:)
-                                                 name:UIDeviceOrientationDidChangeNotification
+                                                 name:MotionOrientationChangedNotification
                                                object:nil];
 }
 
 - (void)dealloc
 {
     // Stop observing
-    [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)deviceOrientationChanged:(NSNotification *)notification
 {
-    [self setDeviceOrientation:[UIDevice currentDevice].orientation
+    [self setDeviceOrientation:[MotionOrientation sharedInstance].deviceOrientation
                       animated:YES];
 }
 
