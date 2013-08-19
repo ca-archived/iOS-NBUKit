@@ -23,6 +23,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "RKOrderedDictionary.h"
+#import "MotionOrientation.h"
 
 // Define module
 #undef  NBUKIT_MODULE
@@ -121,20 +122,19 @@
 #endif
     
     // First orientation update
-    [self setDeviceOrientation:[UIDevice currentDevice].orientation];
+    [MotionOrientation initialize];
+    [self setDeviceOrientation:[MotionOrientation sharedInstance].deviceOrientation];
     
     // Observe orientation changes
-    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(deviceOrientationChanged:)
-                                                 name:UIDeviceOrientationDidChangeNotification
+                                                 name:MotionOrientationChangedNotification
                                                object:nil];
 }
 
 - (void)dealloc
 {
     // Stop observing
-    [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -225,7 +225,7 @@
 
 - (void)deviceOrientationChanged:(NSNotification *)notification
 {
-    [self setDeviceOrientation:[UIDevice currentDevice].orientation];
+    [self setDeviceOrientation:[MotionOrientation sharedInstance].deviceOrientation];
 }
 
 - (void)setDeviceOrientation:(UIDeviceOrientation)orientation
