@@ -88,7 +88,7 @@ configureFilterBlock:(NBUConfigureFilterBlock)block
                                stringByReplacingOccurrencesOfString:@"FilterType"
                                withString:@""];
         _type = type;
-        _values = [values isKindOfClass:[NSMutableDictionary class]] ? values : [NSMutableDictionary dictionaryWithDictionary:values];
+        _values = [values isKindOfClass:[NSMutableDictionary class]] ? (NSMutableDictionary *)values : [NSMutableDictionary dictionaryWithDictionary:values];
         _attributes = attributes;
         _provider = provider;
         _configureFilterBlock = block;
