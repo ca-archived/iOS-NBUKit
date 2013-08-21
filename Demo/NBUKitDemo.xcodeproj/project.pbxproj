@@ -685,8 +685,7 @@
 			baseConfigurationReference = 7C918EBE545141BB8B2D2448 /* Pods.xcconfig */;
 			buildSettings = {
 				BUNDLEID = "jp.co.cyberagent.nbu.${PRODUCT_NAME:rfc1034identifier}-dev";
-				DISPLAYNAME = "NBUKit-dev";
-				FACEBOOK_APPID = 236308173162984;
+				DISPLAYNAME = NBUKitDev;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NBUKitDemo/NBUKitDemo-Prefix.pch";
 				INFOPLIST_FILE = "NBUKitDemo/NBUKitDemo-Info.plist";
@@ -703,7 +702,6 @@
 			buildSettings = {
 				BUNDLEID = "jp.co.cyberagent.nbu.${PRODUCT_NAME:rfc1034identifier}-ota";
 				DISPLAYNAME = NBUKit;
-				FACEBOOK_APPID = 236308173162984;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NBUKitDemo/NBUKitDemo-Prefix.pch";
 				INFOPLIST_FILE = "NBUKitDemo/NBUKitDemo-Info.plist";

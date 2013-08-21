@@ -98,7 +98,6 @@
     [super commonInit];
     
     // Configure the view
-    self.clipsToBounds = YES;
     self.recognizeTap = YES;
     self.doNotHighlightOnTap = YES;
     self.recognizeDoubleTap = YES;
