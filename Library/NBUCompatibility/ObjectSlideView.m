@@ -486,7 +486,7 @@
     RKLogTrace(@"content width %f current page %d frame width %f",
                _scrollView.contentSize.width, _pageControl.currentPage, _scrollView.frame.size.width);
     
-    CGFloat offsetX = _scrollView.frame.size.width * _pageControl.currentPage;
+    CGFloat offsetX = _scrollView.pagingEnabled ? _scrollView.frame.size.width * _pageControl.currentPage : _scrollView.contentOffset.x;
     if (offsetX > 0.0 &&
         offsetX + _scrollView.frame.size.width > _scrollView.contentSize.width)
     {
