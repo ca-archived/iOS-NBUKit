@@ -51,6 +51,9 @@ NSString* const kMotionOrientationKey = @"kMotionOrientationKey";
     self.motionManager.accelerometerUpdateInterval = 0.1;
     if ( ![self.motionManager isAccelerometerAvailable] ) {
         NSLog(@"MotionOrientation - Accelerometer is NOT available");
+#ifdef __i386__
+        [self simulatorInit];
+#endif
         return;
     }
     [self.motionManager startAccelerometerUpdatesToQueue:self.operationQueue withHandler:^(CMAccelerometerData *accelerometerData, NSError *error) {
@@ -210,5 +213,35 @@ NSString* const kMotionOrientationKey = @"kMotionOrientationKey";
         });
     }
 }
+
+// Simulator support
+#ifdef __i386__
+
+- (void)simulatorInit
+{
+    // Simulator
+    NSLog(@"MotionOrientation - Simulator in use. Using UIDevice instead");
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(deviceOrientationChanged:)
+                                                 name:UIDeviceOrientationDidChangeNotification
+                                               object:nil];
+}
+
+- (void)deviceOrientationChanged:(NSNotification *)notification
+{
+    _deviceOrientation = [UIDevice currentDevice].orientation;
+    [[NSNotificationCenter defaultCenter] postNotificationName:MotionOrientationChangedNotification
+                                                        object:nil
+                                                      userInfo:[NSDictionary dictionaryWithObjectsAndKeys:self, kMotionOrientationKey, nil]];
+}
+
+- (void)dealloc
+{
+    [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#endif
 
 @end
