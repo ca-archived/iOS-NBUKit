@@ -44,6 +44,7 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
  - Can automatically save to device's Camera Roll/custom albums.
  - Can be used with any UIViewController, so it can be embedded in a UITabView, pushed to a UINavigationController, presented modally, etc.
  - Works with simulator.
+ - Proper orientation support both in autorotation-locked devices and simulator.
  */
 @interface NBUCameraView : ActiveView
 
