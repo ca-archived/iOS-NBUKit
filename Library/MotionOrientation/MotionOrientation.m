@@ -240,6 +240,8 @@ NSString* const kMotionOrientationKey = @"kMotionOrientationKey";
 {
     [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    [super dealloc];
 }
 
 #endif
