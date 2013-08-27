@@ -313,7 +313,7 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
         NSString * blurSize     = @"blurSize";
         attributes = @{alphaMask    : @{NBUFilterValueDescriptionKey : @"Alpha mask",
                                         NBUFilterValueTypeKey        : NBUFilterValueTypeImage,
-                                        NBUFilterDefaultValueKey     : @"filters/frame.png"},
+                                        NBUFilterDefaultValueKey     : @"NBUKitResources.bundle/filters/frame.png"},
                        blurSize     : @{NBUFilterValueDescriptionKey : @"Blur size",
                                         NBUFilterValueTypeKey        : NBUFilterValueTypeFloat,
                                         NBUFilterDefaultValueKey     : @(1.0),
@@ -361,7 +361,7 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
         NSString * secondImage = @"secondImage";
         attributes = @{secondImage : @{NBUFilterValueDescriptionKey : @"Second image",
                                        NBUFilterValueTypeKey        : NBUFilterValueTypeImage,
-                                       NBUFilterDefaultValueKey     : @"filters/mask.png"}};
+                                       NBUFilterDefaultValueKey     : @"NBUKitResources.bundle/filters/mask.png"}};
         block = ^(NBUFilter * filter,
                   NBUGPUMultiInputImageFilterGroup * gpuFilterGroup)
         {
@@ -393,7 +393,7 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
         NSString * secondImage = @"secondImage";
         attributes = @{secondImage : @{NBUFilterValueDescriptionKey : @"Second image",
                                        NBUFilterValueTypeKey        : NBUFilterValueTypeImage,
-                                       NBUFilterDefaultValueKey     : @"filters/frame.png"}};
+                                       NBUFilterDefaultValueKey     : @"NBUKitResources.bundle/filters/frame.png"}};
         block = ^(NBUFilter * filter,
                   NBUGPUMultiInputImageFilterGroup * gpuFilterGroup)
         {
@@ -426,7 +426,7 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
         NSString * mix     = @"mix";
         attributes = @{secondImage  : @{NBUFilterValueDescriptionKey : @"Second image",
                                         NBUFilterValueTypeKey        : NBUFilterValueTypeImage,
-                                        NBUFilterDefaultValueKey     : @"filters/frame.png"},
+                                        NBUFilterDefaultValueKey     : @"NBUKitResources.bundle/filters/frame.png"},
                        mix          : @{NBUFilterValueDescriptionKey : @"Mix",
                                         NBUFilterValueTypeKey        : NBUFilterValueTypeFloat,
                                         NBUFilterDefaultValueKey     : @(0.5),
@@ -466,7 +466,7 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
         NSString * secondImage = @"secondImage";
         attributes = @{secondImage : @{NBUFilterValueDescriptionKey : @"Second image",
                                        NBUFilterValueTypeKey        : NBUFilterValueTypeImage,
-                                       NBUFilterDefaultValueKey     : @"filters/frame.png"}};
+                                       NBUFilterDefaultValueKey     : @"NBUKitResources.bundle/filters/frame.png"}};
         block = ^(NBUFilter * filter,
                   NBUGPUMultiInputImageFilterGroup * gpuFilterGroup)
         {
@@ -498,7 +498,7 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
         NSString * curveFile = @"curveFile";
         attributes = @{curveFile : @{NBUFilterValueDescriptionKey : @"Tone curve file",
                                      NBUFilterValueTypeKey        : NBUFilterValueTypeFile,
-                                     NBUFilterDefaultValueKey     : @"filters/sample.acv"}};
+                                     NBUFilterDefaultValueKey     : @"NBUKitResources.bundle/filters/sample.acv"}};
         block = ^(NBUFilter * filter,
                   GPUImageToneCurveFilter * gpuFilter)
         {
