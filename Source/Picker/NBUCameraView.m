@@ -696,7 +696,7 @@
              metadata = (__bridge_transfer NSDictionary *)CMCopyDictionaryOfAttachments(kCFAllocatorDefault,
                                                                                         imageDataSampleBuffer,
                                                                                         kCMAttachmentMode_ShouldPropagate);
-             NBULogInfo(@"Image metadata: %@", metadata);
+             NBULogVerbose(@"Image metadata: %@", metadata);
 #endif
              
              dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^

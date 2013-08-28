@@ -182,8 +182,14 @@ NSString * const NBUMediaInfoFiltersKey             = @"NBUMediaInfoFilters";
     // Not cached?
     if (!thumbnail)
     {
-        thumbnail = [self.originalImage thumbnailWithSize:size];
-        
+        if (_attributes[NBUMediaInfoOriginalAssetKey])
+        {
+            thumbnail = ((NBUAsset *)_attributes[NBUMediaInfoOriginalAssetKey]).thumbnailImage;
+        }
+        else
+        {
+            thumbnail = [self.originalImage thumbnailWithSize:size];
+        }
         
         // Cache it
         if (thumbnail) _attributes[key] = thumbnail;
@@ -194,6 +200,12 @@ NSString * const NBUMediaInfoFiltersKey             = @"NBUMediaInfoFilters";
 
 - (UIImage *)editedThumbnailWithSize:(CGSize)size
 {
+    // Not edited?
+    if (!self.edited)
+    {
+        return [self originalThumbnailWithSize:size];
+    }
+    
     // Try cache
     NSString * key = [NSString stringWithFormat:@"%@%dx%d",
                       NBUMediaInfoEditedThumbnailKey, (NSUInteger)size.width, (NSUInteger)size.height];
