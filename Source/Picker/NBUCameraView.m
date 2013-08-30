@@ -451,6 +451,9 @@
         NBULogError(@"Error creating an AVCaptureDeviceInput: %@", error);
     }
     
+    // Choose the best suited session presset
+    [_captureSession setSessionPreset:[self bestSuitedSessionPresetForResolution:_targetResolution]];
+    
     // Add input to session
     if ([_captureSession canAddInput:_captureInput])
     {
@@ -493,9 +496,6 @@
         NBULogError(@"Couldn't create video connection for output: %@", _captureImageOutput);
     }
     
-    // Choose the best suited session presset
-    [_captureSession setSessionPreset:[self bestSuitedSessionPresetForResolution:_targetResolution]];
-    
     [_captureSession commitConfiguration];
 }
 
@@ -504,7 +504,7 @@
     // Not set?
     if (CGSizeEqualToSize(targetResolution, CGSizeZero))
     {
-        NBULogInfo(@"No target resolution was set. Capturing full resolution pictures.");
+        NBULogInfo(@"No target resolution was set. Capturing full resolution pictures ('%@').", AVCaptureSessionPresetPhoto);
         return AVCaptureSessionPresetPhoto;
     }
     
@@ -513,7 +513,7 @@
                                                                                                       targetResolution.width);
     // Try different resolutions
     NSString * preset;
-    NSDictionary * resolutions = [self availableResolutions];
+    NSDictionary * resolutions = [self availableResolutionsForCurrentDevice];
     CGSize resolution;
     for (preset in resolutions)
     {
@@ -532,7 +532,7 @@
 
 #define sizeObject(width, height) [NSValue valueWithCGSize:CGSizeMake(width, height)]
 
-- (NSDictionary *)availableResolutions
+- (NSDictionary *)availableResolutionsForCurrentDevice
 {
     // Possible resolutions
     NSArray * presets;
