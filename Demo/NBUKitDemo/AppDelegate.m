@@ -34,7 +34,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 
 #ifndef PRODUCTION
     [NBULog setAppLogLevel:LOG_LEVEL_VERBOSE];  // Also verbose for debug and testing builds
-    [NBULog setKitLogLevel:LOG_LEVEL_INFO];
+    [NBULog setKitLogLevel:LOG_LEVEL_VERBOSE];
     [NBULog addDashboardLogger];                // Add dashboard logger
 #endif
 
