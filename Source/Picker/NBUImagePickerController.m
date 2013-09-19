@@ -546,6 +546,7 @@
                                                                                 @"Confirm",
                                                                                 @"NBUImagePickerController confirmController title");
     _confirmController.updatesTitle = NO;
+    _confirmController.updatesBars = NO;
 }
 
 - (void)confirmImages
