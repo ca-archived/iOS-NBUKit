@@ -82,7 +82,7 @@ NSString * const NBULocalizedStringNotFound = @"NBULocalizedStringNotFound";
     if ([mainBundle pathForResource:name
                              ofType:@"nib"])
     {
-        NBULogVerbose(@"Loaded Nib named: '%@' from mainBundle", name);
+        NBULogVerbose(@"Loading Nib named: '%@' from mainBundle...", name);
         return [mainBundle loadNibNamed:name
                                   owner:owner
                                 options:options];
@@ -97,7 +97,7 @@ NSString * const NBULocalizedStringNotFound = @"NBULocalizedStringNotFound";
         if ([bundle pathForResource:name
                              ofType:@"nib"])
         {
-            NBULogVerbose(@"Loaded Nib named: '%@' from bundle: '%@' ", name, bundle.bundleIdentifier);
+            NBULogVerbose(@"Loading Nib named: '%@' from bundle: '%@'...", name, bundle.bundleIdentifier);
             return [bundle loadNibNamed:name
                                   owner:owner
                                 options:options];

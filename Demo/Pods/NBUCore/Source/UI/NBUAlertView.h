@@ -18,6 +18,10 @@
 //  limitations under the License.
 //
 
+/// Result blocks.
+typedef void (^NBUAlertSelectedButtonBlock)(NSInteger buttonIndex);
+typedef void (^NBUAlertCancelButtonBlock)();
+
 /**
  Block-based UIAlertView subclass.
  
@@ -25,12 +29,30 @@
  */
 @interface NBUAlertView : UIAlertView
 
+/// @name Creating and Configuring an Alert View
+
+/// Initialize an alert view.
+/// @param title An optional title.
+/// @param message An optional alert message.
+/// @param cancelButtonTitle An optional cancel button title.
+/// @param otherButtonTitles Optional additional buttons.
+/// @param selectedButtonBlock The optional block to be called when the user chooses
+/// a non-cancel button.
+/// @param cancelButtonBlock The optional block to be called if the user cancels the
+/// action sheet.
+- (id)initWithTitle:(NSString *)title
+            message:(NSString *)message
+  cancelButtonTitle:(NSString *)cancelButtonTitle
+  otherButtonTitles:(NSArray *)otherButtonTitles
+selectedButtonBlock:(NBUAlertSelectedButtonBlock)selectedButtonBlock
+  cancelButtonBlock:(NBUAlertCancelButtonBlock)cancelButtonBlock;
+
 /// The optional block to be called if a non-cancel button is selected.
-/// @note The cancel button may have the index `0`.
-@property (nonatomic, copy) void (^selectedButtonBlock)(NSInteger buttonIndex);
+/// @note The cancel button index is ignored.
+@property (nonatomic, copy) NBUAlertSelectedButtonBlock selectedButtonBlock;
 
 /// The optional block to be called if the cancel button is selected.
-@property (nonatomic, copy) void (^cancelButtonBlock)();
+@property (nonatomic, copy) NBUAlertCancelButtonBlock cancelButtonBlock;
 
 @end
 

@@ -32,6 +32,30 @@
 @synthesize selectedButtonBlock = _selectedButtonBlock;
 @synthesize cancelButtonBlock = _cancelButtonBlock;
 
+- (id)initWithTitle:(NSString *)title
+            message:(NSString *)message
+  cancelButtonTitle:(NSString *)cancelButtonTitle
+  otherButtonTitles:(NSArray *)otherButtonTitles
+selectedButtonBlock:(NBUAlertSelectedButtonBlock)selectedButtonBlock
+  cancelButtonBlock:(NBUAlertCancelButtonBlock)cancelButtonBlock
+{
+    self = [super initWithTitle:title
+                        message:message
+                       delegate:self
+              cancelButtonTitle:cancelButtonTitle
+              otherButtonTitles:nil];
+    if (self)
+    {
+        for (NSString * otherButtonTitle in otherButtonTitles)
+        {
+            [self addButtonWithTitle:otherButtonTitle];
+        }
+        self.selectedButtonBlock = selectedButtonBlock;
+        self.cancelButtonBlock = cancelButtonBlock;
+    }
+    return self;
+}
+
 - (void)setDelegate:(id<UIAlertViewDelegate>)delegate
 {
     if (delegate && delegate != self)
@@ -56,12 +80,16 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex != self.cancelButtonIndex)
     {
+        NSInteger selectedIndex = self.cancelButtonIndex == 0 ? buttonIndex - 1 : buttonIndex;
+        
         NBULogVerbose(@"Selected button at index: %d", buttonIndex);
+        
         if (_selectedButtonBlock) _selectedButtonBlock(buttonIndex);
     }
     else
     {
         NBULogVerbose(@"Canceled");
+        
         if (_cancelButtonBlock) _cancelButtonBlock();
     }
 }

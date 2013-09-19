@@ -2,23 +2,23 @@ PODS:
   - CocoaLumberjack (1.6)
   - GPUImage (0.1.0)
   - Lockbox (1.4.3)
-  - NBUCore (1.9.2):
+  - NBUCore (1.9.5):
     - CocoaLumberjack (<= 1.6)
     - Lockbox (~> 1.4.2)
     - NBUCore/Additions
     - NBUCore/Dashboard
     - NBUCore/Helpers
     - NBUCore/UI
-  - NBUCore/Additions (1.9.2):
+  - NBUCore/Additions (1.9.5):
     - CocoaLumberjack (<= 1.6)
     - Lockbox (~> 1.4.2)
-  - NBUCore/Dashboard (1.9.2):
+  - NBUCore/Dashboard (1.9.5):
     - CocoaLumberjack (<= 1.6)
     - Lockbox (~> 1.4.2)
-  - NBUCore/Helpers (1.9.2):
+  - NBUCore/Helpers (1.9.5):
     - CocoaLumberjack (<= 1.6)
     - Lockbox (~> 1.4.2)
-  - NBUCore/UI (1.9.2):
+  - NBUCore/UI (1.9.5):
     - CocoaLumberjack (<= 1.6)
     - Lockbox (~> 1.4.2)
   - NBUKit (1.9.5):
@@ -76,7 +76,7 @@ SPEC CHECKSUMS:
   CocoaLumberjack: 0f2fa7090a23f13261072d882e017c688300efbe
   GPUImage: 5b902c1df2afe0ac30a8e3e7379f9c0bb25c7c85
   Lockbox: 1bcfd564f034b83456fcad5bdd49470a80a38d2b
-  NBUCore: b638a7e35186f2b219e174bb68072ebaf435b1a2
+  NBUCore: 1d276541ae098e5b83c06a645a07bfbf0cb0414e
   NBUKit: 1711f07f8761325e36ab11511595525c6ed4df36
 
-COCOAPODS: 0.23.0
+COCOAPODS: 0.24.0

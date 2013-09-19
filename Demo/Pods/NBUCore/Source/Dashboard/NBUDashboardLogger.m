@@ -334,6 +334,7 @@ didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:@"logMessage"];
+        cell.backgroundColor = [UIColor clearColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         label = [UILabel new];
         label.backgroundColor = [UIColor clearColor];

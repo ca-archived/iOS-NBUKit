@@ -23,6 +23,7 @@
 #import "NBUDashboard.h"
 #import "NBUDashboardLogger.h"
 #import "NBUCore.h"
+#import "NBUUtil.h"
 #import <QuartzCore/QuartzCore.h>
 
 #define kMinimumHeight 20.0
@@ -57,6 +58,10 @@ static NBUDashboard * _sharedDashboard;
     {
         self.windowLevel = UIWindowLevelStatusBar + 1;
         _screenSize = [UIScreen mainScreen].bounds.size;
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
+        {
+            self.tintColor = [UIColor lightGrayColor];
+        }
         
         // Load other views and objects
         [NSBundle loadNibNamed:@"NBUDashboard"

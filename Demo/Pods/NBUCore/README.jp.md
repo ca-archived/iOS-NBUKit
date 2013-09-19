@@ -2,7 +2,7 @@ NBUCore
 =======
 
 [![Platform: iOS](http://cocoapod-badges.herokuapp.com/p/NBUCore/badge.svg)](http://cocoadocs.org/docsets/NBUCore/)
-[![Version: 1.9.2](http://cocoapod-badges.herokuapp.com/v/NBUCore/badge.png)](http://cocoadocs.org/docsets/NBUCore/)
+[![Version: 1.9.5](http://cocoapod-badges.herokuapp.com/v/NBUCore/badge.png)](http://cocoadocs.org/docsets/NBUCore/)
 [![Build Status](https://travis-ci.org/CyberAgent/iOS-NBUCore.png?branch=master)](https://travis-ci.org/CyberAgent/iOS-NBUCore)
 
 個々に使用の選択が可能なコンポーネント。 [English](README.md)
