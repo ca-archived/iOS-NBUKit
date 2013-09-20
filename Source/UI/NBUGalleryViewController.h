@@ -32,6 +32,8 @@
  - Fully configurable with optional controls such as previousButton, nextButton,
  pageControl, thumbnailsGridView, captionLabel and viewsToHide.
  
+ @note The controllers view must be a UIScreenView.
+ 
  Inspired on FGallery by Grant Davis (https://github.com/gdavis/FGallery-iPhone).
  */
 @interface NBUGalleryViewController : NBUViewController
@@ -126,13 +128,17 @@
 /// @see navigationBarStyle and statusBarStyle.
 @property (nonatomic)                       BOOL updatesBars;
 
+/// The UIStatusBarStyle to be applied to the status bar when the controller
+/// appears. Default `UIStatusBarStyleLightContent` on iOS 7 (`UIStatusBarStyleBlackTranslucent` otherwise).
+@property (nonatomic)                       UIStatusBarStyle statusBarStyle;
+
 /// The UIBarStyle to be applied to the navigation bar when the controller
-/// appears.
+/// appears. Default `UIBarStyleBlack` on iOS 7 (`UIStatusBarStyleBlackTranslucent` otherwise).
 @property (nonatomic)                       UIBarStyle navigationBarStyle;
 
-/// The UIStatusBarStyle to be applied to the status bar when the controller
-/// appears.
-@property (nonatomic)                       UIStatusBarStyle statusBarStyle;
+/// Whether the the navigation bar should turn translucent when the controller
+/// appears (iOS 7 only). Default `YES`.
+@property(nonatomic)                        BOOL navigationBarTranslucent;
 
 /// Optional Nib name to be used for objectArray elements.
 @property (strong, nonatomic)               NSString * nibNameForViews;

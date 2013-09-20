@@ -48,6 +48,7 @@
     
     // Create scrollView
     _scrollView = [[NBUGalleryScrollView alloc] initWithFrame:self.bounds];
+    _scrollView.clipsToBounds = NO;
     [self insertSubview:_scrollView
            belowSubview:_imageView];
     

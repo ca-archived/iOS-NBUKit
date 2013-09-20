@@ -14,10 +14,9 @@
             <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <navigationBar key="navigationBar" contentMode="scaleToFill" id="5">
+            <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="5">
                 <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
-                <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 <textAttributes key="titleTextAttributes">
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </textAttributes>
@@ -89,8 +88,7 @@
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <nil key="simulatedDestinationMetrics"/>
         </viewController>
-        <viewController id="41" customClass="NBUEditMultiImageViewController">
-            <extendedEdge key="edgesForExtendedLayout"/>
+        <viewController automaticallyAdjustsScrollViewInsets="NO" id="41" customClass="NBUEditMultiImageViewController">
             <navigationItem key="navigationItem" id="42">
                 <nil key="title"/>
                 <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="44">
@@ -165,13 +163,13 @@
                 <outlet property="titleLabel" destination="55" id="58"/>
             </connections>
         </viewController>
-        <viewController id="22" customClass="NBUGalleryViewController">
+        <viewController automaticallyAdjustsScrollViewInsets="NO" id="22" customClass="NBUGalleryViewController">
             <view key="view" contentMode="scaleToFill" id="29">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="3" id="64">
-                        <rect key="frame" x="-1" y="380" width="320" height="36"/>
+                        <rect key="frame" x="-1" y="444" width="320" height="36"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <connections>
                             <action selector="pageControlWasTapped:" destination="22" eventType="valueChanged" id="67"/>
@@ -180,7 +178,6 @@
                 </subviews>
                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
             </view>
-            <extendedEdge key="edgesForExtendedLayout"/>
             <navigationItem key="navigationItem" title="ConfirmTitle" id="23">
                 <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="28">
                     <connections>
