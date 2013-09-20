@@ -79,6 +79,7 @@ static NSString * customBackButtonTitle;
 {
     _scrollView = [[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
     _scrollView.backgroundColor = [UIColor whiteColor];
+    _scrollView.clipsToBounds = NO;
     return _scrollView;
 }
 

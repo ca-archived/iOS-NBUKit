@@ -314,6 +314,7 @@
                                     cell.contentView.bounds.origin.y,
                                     cell.contentView.bounds.size.width,
                                     view.frame.size.height);
+            cell.backgroundColor = [UIColor clearColor];
             cell.contentView.bounds = view.frame;
             [cell.contentView addSubview:view];
         }
