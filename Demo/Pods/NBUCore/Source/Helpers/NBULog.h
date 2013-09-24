@@ -39,7 +39,7 @@
 #define APP_LOG_LEVEL       [NBULog appLogLevelForModule:APP_MODULE]
 
 /// Remove NSLog from production builds
-#ifndef PRODUCTION
+#ifndef DEBUG
     #define NSLog(...)
 #endif
 

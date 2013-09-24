@@ -82,12 +82,12 @@
                                                      NBUImagePickerOptionStartWithLibrary)
                                             nibName:nil
                                         resultBlock:^(NSArray * images)
-    {
-        if (images.count == 1)
-        {
-            self.image = images[0];
-        }
-    }];
+     {
+         if (images.count == 1)
+         {
+             self.image = images[0];
+         }
+     }];
 }
 
 - (IBAction)saveFilterGroup:(id)sender
@@ -109,9 +109,9 @@
     NSURL * url = [[UIApplication sharedApplication].libraryDirectory URLByAppendingPathComponent:@"Filters"];
     NSError * error;
     if (![[NSFileManager defaultManager] createDirectoryAtPath:url.path
-                                  withIntermediateDirectories:YES
-                                                   attributes:nil
-                                                        error:&error])
+                                   withIntermediateDirectories:YES
+                                                    attributes:nil
+                                                         error:&error])
     {
         NBULogError(@"Can't create Filters folder: %@ error: %@", url, error);
         return;
@@ -152,7 +152,7 @@
         }
         
         if (![data writeToURL:jsonURL
-              atomically:NO])
+                   atomically:NO])
         {
             NBULogError(@"Can't save filter configuration JSON: %@",data);
         }
@@ -325,47 +325,30 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return self.filters.count + 1;
+    return self.filters.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    if (section < self.filters.count)
-    {
-        return ((NSArray *)_filterValueKeys[section]).count + 1;
-    }
-    else
-    {
-        // "Save to plist" cell
-        return 1;
-    }
+    return ((NSArray *)_filterValueKeys[section]).count + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell * cell;
-    if (indexPath.section < self.filters.count)
+    // Title cell?
+    if (indexPath.row == 0)
     {
-        // Title cell?
-        if (indexPath.row == 0)
-        {
-            cell = [AdjustFilterCell titleCellForForFilter:self.filters[indexPath.section]];
-        }
-        // Value cell
-        else
-        {
-            cell = [AdjustFilterCell valueCellForForKey:_filterValueKeys[indexPath.section][indexPath.row - 1]
-                                                 filter:self.filters[indexPath.section]];
-        }
+        cell = [AdjustFilterCell titleCellForForFilter:self.filters[indexPath.section]];
     }
+    // Value cell
     else
     {
-        cell = [NSBundle loadNibNamed:@"AdjustFilterSaveCell"
-                                owner:nil
-                              options:nil][0];
+        cell = [AdjustFilterCell valueCellForForKey:_filterValueKeys[indexPath.section][indexPath.row - 1]
+                                             filter:self.filters[indexPath.section]];
     }
     return cell;
 }
@@ -711,7 +694,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     if ([_valueType isEqualToString:NBUFilterValueTypeImage])
     {
         // Nothing for now
-//        _fileExtension = @"png";
+        //        _fileExtension = @"png";
     }
     else if ([_valueType isEqualToString:NBUFilterValueTypeFile])
     {
@@ -740,15 +723,15 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
                                                          NBUImagePickerOptionStartWithLibrary)
                                                 nibName:nil
                                             resultBlock:^(NSArray * images)
-        {
-            if (images.count == 1)
-            {
-                [self.filter setValue:images[0]
-                               forKey:self.valueKey];
-                
-                [self updateFilter:self];
-            }
-        }];
+         {
+             if (images.count == 1)
+             {
+                 [self.filter setValue:images[0]
+                                forKey:self.valueKey];
+                 
+                 [self updateFilter:self];
+             }
+         }];
     }
     
     // Pick a file

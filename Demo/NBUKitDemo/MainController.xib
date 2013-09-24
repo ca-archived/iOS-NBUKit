@@ -5,30 +5,52 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AppDelegate"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AppDelegate">
+            <connections>
+                <outlet property="cameraButton" destination="53" id="Y4M-GN-aRC"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tabBarController id="10" customClass="NBUTabBarController">
-            <extendedEdge key="edgesForExtendedLayout"/>
+        <tabBarController id="10">
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-            <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <nil key="simulatedDestinationMetrics"/>
-            <tabBar key="tabBar" contentMode="scaleToFill" id="11" customClass="NBUTabBar">
+            <tabBar key="tabBar" contentMode="scaleToFill" id="11">
                 <rect key="frame" x="0.0" y="431" width="320" height="49"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </tabBar>
             <viewControllers>
-                <viewController id="35" customClass="PickerTestsViewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
+                <navigationController id="whf-JZ-Nez">
                     <tabBarItem key="tabBarItem" title="Picker" image="first.png" id="36"/>
-                    <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <nil key="simulatedDestinationMetrics"/>
-                </viewController>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X6D-E3-PU8">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <viewControllers>
+                        <viewController id="35" customClass="PickerTestsViewController">
+                            <extendedEdge key="edgesForExtendedLayout"/>
+                            <navigationItem key="navigationItem" title="Picker" id="V2m-Pu-Rgs">
+                                <barButtonItem key="rightBarButtonItem" title="Start Picker!" id="WxK-NJ-L5S">
+                                    <connections>
+                                        <action selector="startPicker:" destination="35" id="1id-wK-NxA"/>
+                                    </connections>
+                                </barButtonItem>
+                            </navigationItem>
+                            <nil key="simulatedStatusBarMetrics"/>
+                            <nil key="simulatedTopBarMetrics"/>
+                            <nil key="simulatedBottomBarMetrics"/>
+                            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                            <nil key="simulatedDestinationMetrics"/>
+                        </viewController>
+                    </viewControllers>
+                </navigationController>
                 <navigationController id="19">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Assets" image="second.png" id="18"/>
@@ -37,7 +59,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <nil key="simulatedDestinationMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="20">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="20">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <viewControllers>
@@ -46,7 +68,7 @@
                             <navigationItem key="navigationItem" title="Loading..." id="24">
                                 <barButtonItem key="rightBarButtonItem" id="32">
                                     <view key="customView" contentMode="scaleToFill" id="31">
-                                        <rect key="frame" x="282" y="5" width="33" height="33"/>
+                                        <rect key="frame" x="271" y="5" width="33" height="33"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="33">
@@ -103,13 +125,13 @@
                     <viewControllers>
                         <viewController id="59" customClass="PresetFilterViewController">
                             <extendedEdge key="edgesForExtendedLayout"/>
-                            <navigationItem key="navigationItem" id="62">
-                                <barButtonItem key="leftBarButtonItem" title="Reset from a button" id="64">
+                            <navigationItem key="navigationItem" title="Filters" id="62">
+                                <barButtonItem key="leftBarButtonItem" title="Reset" id="64">
                                     <connections>
                                         <action selector="reset:" destination="59" id="88"/>
                                     </connections>
                                 </barButtonItem>
-                                <barButtonItem key="rightBarButtonItem" title="Apply to full res image" id="63">
+                                <barButtonItem key="rightBarButtonItem" title="Apply" id="63">
                                     <connections>
                                         <action selector="apply:" destination="59" id="89"/>
                                     </connections>
@@ -123,17 +145,35 @@
                         </viewController>
                     </viewControllers>
                 </navigationController>
-                <viewController id="96" customClass="AdjustFilterViewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
+                <navigationController id="Sbz-d1-wpH">
                     <tabBarItem key="tabBarItem" title="Filter Editor" image="first.png" id="98"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <nil key="simulatedDestinationMetrics"/>
-                </viewController>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HSd-6h-141">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <viewControllers>
+                        <viewController id="96" customClass="AdjustFilterViewController">
+                            <extendedEdge key="edgesForExtendedLayout"/>
+                            <navigationItem key="navigationItem" title="Filter Editor" id="7CD-3s-kGm">
+                                <barButtonItem key="rightBarButtonItem" title="Save" id="IGU-l6-Tva">
+                                    <connections>
+                                        <action selector="saveFilterGroup:" destination="96" id="Yag-6z-bSO"/>
+                                    </connections>
+                                </barButtonItem>
+                            </navigationItem>
+                            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                            <nil key="simulatedTopBarMetrics"/>
+                            <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                            <nil key="simulatedDestinationMetrics"/>
+                        </viewController>
+                    </viewControllers>
+                </navigationController>
                 <navigationController id="99">
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Gallery" image="first.png" id="103"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
@@ -142,10 +182,10 @@
                     <nil key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="100">
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <viewControllers>
-                        <viewController id="101" customClass="GalleryViewController">
-                            <extendedEdge key="edgesForExtendedLayout"/>
+                        <viewController automaticallyAdjustsScrollViewInsets="NO" id="101" customClass="GalleryViewController">
                             <navigationItem key="navigationItem" id="102"/>
                             <nil key="simulatedStatusBarMetrics"/>
                             <nil key="simulatedTopBarMetrics"/>
@@ -155,24 +195,61 @@
                         </viewController>
                     </viewControllers>
                 </navigationController>
-                <viewController id="56" customClass="CropViewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
+                <navigationController id="bgn-w9-tpY">
                     <tabBarItem key="tabBarItem" title="Crop" image="second.png" id="66"/>
-                    <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <nil key="simulatedDestinationMetrics"/>
-                </viewController>
-                <viewController id="69" customClass="PullToRefreshViewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5DN-42-ovR">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <viewControllers>
+                        <viewController id="56" customClass="CropViewController">
+                            <extendedEdge key="edgesForExtendedLayout"/>
+                            <navigationItem key="navigationItem" title="Pinch and Drag" id="fmQ-lT-48K">
+                                <barButtonItem key="leftBarButtonItem" title="Reset" id="lky-qz-kAs">
+                                    <connections>
+                                        <action selector="reset:" destination="56" id="wop-69-AGM"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem key="rightBarButtonItem" title="Crop" id="sTZ-dK-lYS">
+                                    <connections>
+                                        <action selector="apply:" destination="56" id="625-rk-Zwx"/>
+                                    </connections>
+                                </barButtonItem>
+                            </navigationItem>
+                            <nil key="simulatedStatusBarMetrics"/>
+                            <nil key="simulatedTopBarMetrics"/>
+                            <nil key="simulatedBottomBarMetrics"/>
+                            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                            <nil key="simulatedDestinationMetrics"/>
+                        </viewController>
+                    </viewControllers>
+                </navigationController>
+                <navigationController id="AYq-Wa-BnC">
                     <tabBarItem key="tabBarItem" title="Pull to Refresh" image="first.png" id="82"/>
-                    <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <nil key="simulatedDestinationMetrics"/>
-                </viewController>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IlB-81-DTi">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <viewControllers>
+                        <viewController id="69" customClass="PullToRefreshViewController">
+                            <extendedEdge key="edgesForExtendedLayout"/>
+                            <navigationItem key="navigationItem" title="Pull to Refresh" id="bD3-CE-uW4"/>
+                            <nil key="simulatedStatusBarMetrics"/>
+                            <nil key="simulatedTopBarMetrics"/>
+                            <nil key="simulatedBottomBarMetrics"/>
+                            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                            <nil key="simulatedDestinationMetrics"/>
+                        </viewController>
+                    </viewControllers>
+                </navigationController>
                 <navigationController id="70">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Hide on Scroll" image="second.png" id="78"/>
@@ -181,8 +258,9 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <nil key="simulatedDestinationMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="79">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="79">
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <viewControllers>
                         <viewController id="80" customClass="HideOnScrollViewController">
@@ -196,41 +274,43 @@
                         </viewController>
                     </viewControllers>
                 </navigationController>
-                <viewController id="71" customClass="BadgesViewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
+                <navigationController id="w1M-fd-Wtg">
                     <tabBarItem key="tabBarItem" title="Badges" image="first.png" id="76"/>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="77"/>
-                    <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <nil key="simulatedDestinationMetrics"/>
-                </viewController>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KPh-L2-khv">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <viewControllers>
+                        <viewController id="71" customClass="BadgesViewController">
+                            <extendedEdge key="edgesForExtendedLayout"/>
+                            <navigationItem key="navigationItem" title="Badges" id="77"/>
+                            <nil key="simulatedStatusBarMetrics"/>
+                            <nil key="simulatedTopBarMetrics"/>
+                            <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                            <nil key="simulatedDestinationMetrics"/>
+                        </viewController>
+                    </viewControllers>
+                </navigationController>
             </viewControllers>
-            <connections>
-                <outlet property="tabBarModel" destination="40" id="51"/>
-            </connections>
         </tabBarController>
-        <view contentMode="scaleToFill" id="40" customClass="NBUTabBarModel">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-            <subviews>
-                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="53">
-                    <rect key="frame" x="139" y="-10" width="42" height="43"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                    <state key="normal" backgroundImage="NBUKitResources.bundle/camera_shot.png">
-                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="highlighted">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
-            </subviews>
+        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="53">
+            <rect key="frame" x="0.0" y="0.0" width="42" height="43"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-        </view>
+            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+            <state key="normal" backgroundImage="NBUKitResources.bundle/camera_shot.png">
+                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <state key="highlighted">
+                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+        </button>
     </objects>
     <resources>
         <image name="NBUKitResources.bundle/camera_shot.png" width="16" height="16"/>

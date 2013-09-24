@@ -24,7 +24,9 @@
 {
     NBUSplashView * _splashView;
 }
+
 @synthesize window = _window;
+@synthesize cameraButton = _cameraButton;
 
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -46,6 +48,9 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
                                                                         owner:self
                                                                       options:nil][0];
     rootController.customizableViewControllers = nil;
+    _cameraButton.center = CGPointMake(CGRectGetMidX(rootController.tabBar.bounds),
+                                       CGRectGetMidY(rootController.tabBar.bounds) - 10.0);
+    [rootController.tabBar addSubview:_cameraButton];
     _window.rootViewController = rootController;
     [_window makeKeyAndVisible];
     

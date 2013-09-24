@@ -74,7 +74,6 @@
 		E5A03E5416522AD3008A4719 /* PickerTestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A03E5216522AD3008A4719 /* PickerTestsViewController.m */; };
 		E5A03E5516522AD3008A4719 /* PickerTestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5A03E5316522AD3008A4719 /* PickerTestsViewController.xib */; };
 		E5ADD44016DB2C5D00446994 /* AdjustFilterTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5ADD43F16DB2C5D00446994 /* AdjustFilterTitleCell.xib */; };
-		E5DD753216E590D3009AD190 /* AdjustFilterSaveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5DD753116E590D3009AD190 /* AdjustFilterSaveCell.xib */; };
 		E5EF2122164CDD8C0086BC71 /* LibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EF2121164CDD8C0086BC71 /* LibraryViewController.m */; };
 		E5F11D3D162BECA800A896A8 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F11D3B162BECA800A896A8 /* CameraViewController.m */; };
 		E5F11D3E162BECA800A896A8 /* CameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5F11D3C162BECA800A896A8 /* CameraViewController.xib */; };
@@ -170,7 +169,6 @@
 		E5B06CDE1643591A0043F53F /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = Resources/iTunesArtwork; sourceTree = "<group>"; };
 		E5B06CDF1643591A0043F53F /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "Resources/Icon-Small@2x.png"; sourceTree = "<group>"; };
 		E5B06CE01643591A0043F53F /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "Resources/Icon-Small.png"; sourceTree = "<group>"; };
-		E5DD753116E590D3009AD190 /* AdjustFilterSaveCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdjustFilterSaveCell.xib; sourceTree = "<group>"; };
 		E5EF2120164CDD8C0086BC71 /* LibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryViewController.h; sourceTree = "<group>"; };
 		E5EF2121164CDD8C0086BC71 /* LibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryViewController.m; sourceTree = "<group>"; };
 		E5F11D3A162BECA800A896A8 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
@@ -412,7 +410,6 @@
 				E58A4C8C16D74D6300542F8C /* AdjustFilterSliderCell.xib */,
 				E58A4C8E16D753EA00542F8C /* AdjustFilterSwitchCell.xib */,
 				E58A4C9016D753FA00542F8C /* AdjustFilterButtonCell.xib */,
-				E5DD753116E590D3009AD190 /* AdjustFilterSaveCell.xib */,
 			);
 			name = "Filter Editor";
 			sourceTree = "<group>";
@@ -501,7 +498,6 @@
 				E58A4C8F16D753EA00542F8C /* AdjustFilterSwitchCell.xib in Resources */,
 				E58A4C9116D753FA00542F8C /* AdjustFilterButtonCell.xib in Resources */,
 				E5ADD44016DB2C5D00446994 /* AdjustFilterTitleCell.xib in Resources */,
-				E5DD753216E590D3009AD190 /* AdjustFilterSaveCell.xib in Resources */,
 				E5FEE31E16E7360600DABE0F /* AdjustFilterViewController_iPad.xib in Resources */,
 				E524A5C616F1A367003054AE /* CustomAssetThumbnailView.xib in Resources */,
 				E524A5CA16F1A687003054AE /* CustomAssetsGroupView.xib in Resources */,
