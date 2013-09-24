@@ -117,6 +117,10 @@
     
     // Set container and it's background color if not set
     _container = (UIScrollView *)self.view;
+    if (![_container isKindOfClass:[UIScrollView class]])
+    {
+        NBULogError(@"%@ The controller's view is expected to be a UIScrollView and not a %@", THIS_METHOD, NSStringFromClass([_container class]));
+    }
     _container.clipsToBounds = YES;
     _container.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
                                    UIViewAutoresizingFlexibleHeight);
