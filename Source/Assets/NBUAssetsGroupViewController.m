@@ -88,7 +88,6 @@
     {
         [oldGroup stopLoadingAssets];
         [_gridView resetGridView];
-        [self resetScrollViewOffset];
         _selectedAssets = [NSMutableArray array];
     }
     

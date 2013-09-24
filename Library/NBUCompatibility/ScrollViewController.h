@@ -25,8 +25,6 @@ extern NSString * const ScrollViewContentOffsetChangedNotification;
 extern NSString * const ScrollViewDidScrollNotification;
 extern NSString * const ScrollViewEndScrollNotification;
 
-@protocol AnalyticsDelegate;
-
 /**
  Base UIViewController with many convenience methods.
 
@@ -47,15 +45,9 @@ extern NSString * const ScrollViewEndScrollNotification;
 /// Managed UIScrollView (may be the controller's view or a subview of that view).
 @property (nonatomic, strong) IBOutlet  UIScrollView * scrollView;
 
-/// Force scroll to top.
-- (void)resetScrollViewOffset;
-
 /// The view that is used to adjust the scrollview contentSize.
 /// @discussion If not set it will be scrollview's first subview.
 @property (nonatomic, strong) IBOutlet  UIView * contentView;
-
-/// The AnalyticsDelegate.
-@property (nonatomic, assign) IBOutlet id<AnalyticsDelegate> analyticsDelegate;
 
 /// @name Configurable Properties
 
@@ -67,10 +59,6 @@ extern NSString * const ScrollViewEndScrollNotification;
 
 /// Empty or nil string will force to use the system default back button.
 @property (nonatomic, strong)           NSString * customBackButtonTitle;
-
-/// A NSString to be used for analytics tracking
-/// @see AnalyticsHelper
-@property (nonatomic, strong)           NSString * analyticsTag;
 
 /// Whether to hide or not navigation and tab bars on scroll. Default `NO`.
 @property (nonatomic)                   BOOL hidesBarsOnScroll;
@@ -119,20 +107,5 @@ extern NSString * const ScrollViewEndScrollNotification;
                   topMargin:(CGFloat)topMargin
                bottomMargin:(CGFloat)bottomMargin;
 
-- (NSString*)findAnalyticsTag; // Returns the tag if it exists, otherwise asks the delegate. Nil if all else fails
-
 @end
-
-///// Analytics convenience methods for ActiveView
-//@interface ActiveView (Analytics)
-//
-///// Convenience method to set view's related UIViewController's analyticsTag.
-/////
-///// The view's viewController should be a ScrollViewController subclass.
-///// @param tag Any NSString to be used as tag
-///// @see ScrollViewController
-///// @see AnalyticsHelper
-//- (void)setViewControllerAnalyticsTag:(NSString *)tag;
-//
-//@end
 

@@ -25,12 +25,6 @@
 #undef  NBUKIT_MODULE
 #define NBUKIT_MODULE   NBUKIT_MODULE_COMPATIBILITY
 
-#define RKLogError      NBULogError
-#define RKLogWarning    NBULogWarn
-#define RKLogInfo       NBULogInfo
-#define RKLogDebug      NBULogVerbose
-#define RKLogTrace      NBULogVerbose
-
 @implementation ObjectArrayView
 {
     NSMutableSet * _hiddenObjects;
@@ -91,7 +85,7 @@
         }
         else
         {
-            RKLogError(@"delegate %@ says it hasMoreObjects but no loadMoreView was provided.", _delegate);
+            NBULogError(@"delegate %@ says it hasMoreObjects but no loadMoreView was provided.", _delegate);
         }
     }
     return NO;
@@ -99,7 +93,7 @@
 
 - (IBAction)loadMoreObjects:(id)sender
 {
-    RKLogDebug(@"%d",self.hasMoreObjects);
+    NBULogVerbose(@"%d",self.hasMoreObjects);
     if (self.hasMoreObjects &&
         [_delegate respondsToSelector:@selector(objectArrayViewLoadMoreObjects:)])
     {
@@ -112,7 +106,7 @@
 // Save a mutable copy of the array
 - (void)setObject:(NSArray *)objectArray
 {
-    RKLogDebug(@"%@ setObjectArray: %d elements", self, objectArray.count);
+    NBULogVerbose(@"%@ setObjectArray: %d elements", self, objectArray.count);
     
     [super setObject:[NSMutableArray arrayWithArray:objectArray]];
 }
@@ -121,7 +115,7 @@
 {
     if ([self.objectArray containsObject:object])
     {
-        RKLogWarning(@"Adding already present object: %@", object);
+        NBULogWarn(@"Adding already present object: %@", object);
     }
     [(NSMutableArray *)self.objectArray addObject:object];
     
@@ -148,7 +142,7 @@
 {
     if (index > self.objectArray.count)
     {
-        RKLogError(@"insertObject ignored for index %d as objectArray has count %d",
+        NBULogError(@"insertObject ignored for index %d as objectArray has count %d",
                    index, self.objectArray.count);
         return;
     }
@@ -163,7 +157,7 @@
 {
     if (index >= self.objectArray.count)
     {
-        RKLogError(@"removeObjectAtIndex ignored for index %d as objectArray has count %d",
+        NBULogError(@"removeObjectAtIndex ignored for index %d as objectArray has count %d",
                    index, self.objectArray.count);
         return;
     }
@@ -178,7 +172,7 @@
 {
     if (index >= self.objectArray.count)
     {
-        RKLogError(@"replaceObjectAtIndex ignored for index %d as objectArray has count %d",
+        NBULogError(@"replaceObjectAtIndex ignored for index %d as objectArray has count %d",
                    index, self.objectArray.count);
         return;
     }
@@ -201,7 +195,7 @@
 {
     if (![self.objectArray containsObject:object])
     {
-        RKLogWarning(@"Ignoring hide message for object not present: %@", object);
+        NBULogWarn(@"Ignoring hide message for object not present: %@", object);
         return;
     }
     
@@ -222,7 +216,7 @@
 {
     if (index >= self.objectArray.count)
     {
-        RKLogError(@"setObjectAtIndex hidden ignored for index %d as objectArray has count %d",
+        NBULogError(@"setObjectAtIndex hidden ignored for index %d as objectArray has count %d",
                    index, self.objectArray.count);
         return;
     }

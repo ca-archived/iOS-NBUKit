@@ -11,7 +11,7 @@
             <extendedEdge key="edgesForExtendedLayout"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
-            <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <nil key="simulatedDestinationMetrics"/>
             <tabBar key="tabBar" contentMode="scaleToFill" id="8" customClass="NBUTabBar">
@@ -110,6 +110,9 @@
         </view>
     </objects>
     <resources>
+        <image name="second.png" width="30" height="30"/>
+        <image name="second.png" width="30" height="30"/>
+        <image name="second.png" width="30" height="30"/>
         <image name="second.png" width="30" height="30"/>
     </resources>
 </document>

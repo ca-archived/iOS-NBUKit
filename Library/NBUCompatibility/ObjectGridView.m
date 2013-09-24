@@ -25,12 +25,6 @@
 #undef  NBUKIT_MODULE
 #define NBUKIT_MODULE   NBUKIT_MODULE_COMPATIBILITY
 
-#define RKLogError      NBULogError
-#define RKLogWarning    NBULogWarn
-#define RKLogInfo       NBULogInfo
-#define RKLogDebug      NBULogVerbose
-#define RKLogTrace      NBULogVerbose
-
 @implementation ObjectGridView
 {
     CGFloat _heightThatFits;
@@ -97,13 +91,13 @@
 {
     if (self.isEmpty)
     {
-        RKLogTrace(@"<<< %@ to %@ (gv originalSize)",
+        NBULogVerbose(@"<<< %@ to %@ (gv originalSize)",
               NSStringFromCGSize(self.bounds.size),
               NSStringFromCGSize(CGSizeMake(size.width, self.originalSize.height)));
         return CGSizeMake(size.width,
                           self.originalSize.height);
     }
-    RKLogTrace(@"<<< %@ to %@ (gv)",
+    NBULogVerbose(@"<<< %@ to %@ (gv)",
           NSStringFromCGSize(self.bounds.size),
           NSStringFromCGSize(CGSizeMake(size.width,
                                         _heightThatFits)));
@@ -170,7 +164,7 @@
 
 - (void)startObservingScrollViewDidScroll
 {
-    RKLogDebug(@"Start observing...");
+    NBULogVerbose(@"Start observing...");
     [[NSNotificationCenter defaultCenter] removeObserver:self // Avoid observing multiple times!
                                                     name:ScrollViewDidScrollNotification
                                                   object:nil];
@@ -182,7 +176,7 @@
 
 - (void)stopObservingScrollViewDidScroll
 {
-    RKLogDebug(@"Stop observing");
+    NBULogVerbose(@"Stop observing");
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:ScrollViewDidScrollNotification
                                                   object:nil];
@@ -241,7 +235,7 @@
         return;
     }
     
-    RKLogTrace(@"layoutSubviews %@ subviews %d", NSStringFromCGSize(self.frame.size), self.subviews.count);
+    NBULogVerbose(@"layoutSubviews %@ subviews %d", NSStringFromCGSize(self.frame.size), self.subviews.count);
     
     [super layoutSubviews];
     
@@ -272,7 +266,7 @@
     }
 
     // Not empty
-    RKLogTrace(@"animated %d", self.isAnimated);
+    NBULogVerbose(@"animated %d", self.isAnimated);
     
     // There seems to be a big time difference between using animations and not, so I split them up
     if(self.isAnimated) {
@@ -289,7 +283,7 @@
                                  _heightThatFits != self.bounds.size.height)                    // ...height that fits is different?
                              {
                                  // Fire notification!
-                                 RKLogDebug(@"! %p heightThatFits changed: %f should be %f",
+                                 NBULogVerbose(@"! %p heightThatFits changed: %f should be %f",
                                             self,
                                             self.bounds.size.height,
                                             _heightThatFits);
@@ -303,7 +297,7 @@
         if (_heightThatFits != self.bounds.size.height)// ...height that fits is different?
         {
             // Fire notification!
-            RKLogDebug(@"! %p heightThatFits changed: %f should be %f",
+            NBULogVerbose(@"! %p heightThatFits changed: %f should be %f",
                        self,
                        self.bounds.size.height,
                        _heightThatFits);
@@ -352,7 +346,7 @@
     _currentArea.size = CGSizeMake(MAX(_currentArea.size.width, self.bounds.size.width),
                                    MAX(_currentArea.size.height, 480.0));
     
-    RKLogDebug(@"reloadGrid: %d visible objects (%d hidden), current area %@, %d reusable views",
+    NBULogVerbose(@"reloadGrid: %d visible objects (%d hidden), current area %@, %d reusable views",
                _visibleObjects.count, self.hiddenObjects.count, NSStringFromCGRect(_currentArea), _reusableViews.count);
     
     // Rebuild _viewsOrFrames
@@ -433,7 +427,7 @@
             // Activated reuse mode
             if (!_reuseViewsMode)
             {
-                RKLogDebug(@"Reuse mode ON");
+                NBULogVerbose(@"Reuse mode ON");
                 _reuseViewsMode = YES;
             }
         }
@@ -472,9 +466,9 @@
     _modelView = nil;
     _useModelView = NO;
     
-    RKLogDebug(@"reloadGrid finished: frame %@, range %@, %d subviews",
+    NBULogVerbose(@"reloadGrid finished: frame %@, range %@, %d subviews",
                NSStringFromCGRect(self.frame), NSStringFromRange(_currentRange), self.currentViews.count);
-    RKLogTrace(@"%@", _viewsOrFrames);
+    NBULogVerbose(@"%@", _viewsOrFrames);
 }
 
 - (void)setFrame:(CGRect)frame
@@ -487,7 +481,7 @@
 
 - (void)refreshArea:(CGRect)area
 {
-    RKLogTrace(@"refreshArea: %@", NSStringFromCGRect(area));
+    NBULogVerbose(@"refreshArea: %@", NSStringFromCGRect(area));
     //    UIEdgeInsets insets = UIEdgeInsetsMake(-50.0, 0.0, -50.0, 0.0); // Test
     UIEdgeInsets insets = UIEdgeInsetsMake(100.0, 0.0, 100.0, 0.0);
     
@@ -631,7 +625,7 @@
 //        [_debug appendFormat:@"<<< %@", NSStringFromRange(_currentRange)];
     }
     
-//    RKLogDebug(@"%@", _debug);
+//    NBULogVerbose(@"%@", _debug);
 }
 
 - (BOOL)collectReusableViewAtIndex:(NSUInteger)index
@@ -640,7 +634,7 @@
 //    NSAssert([view isKindOfClass:[UIView class]], @"%@ is not a view", view);
     if (![view isKindOfClass:[UIView class]])
     {
-        RKLogWarning(@"Object at index %d can't be collected (%@ is not a view)", index, view);
+        NBULogWarn(@"Object at index %d can't be collected (%@ is not a view)", index, view);
         return NO;
     }
     

@@ -25,12 +25,6 @@
 #undef  NBUKIT_MODULE
 #define NBUKIT_MODULE   NBUKIT_MODULE_COMPATIBILITY
 
-#define RKLogError      NBULogError
-#define RKLogWarning    NBULogWarn
-#define RKLogInfo       NBULogInfo
-#define RKLogDebug      NBULogVerbose
-#define RKLogTrace      NBULogVerbose
-
 #define kMinimumHeightToShowPageControl 150.0
 #define kImageMargin 5.0
 #define kMinimumIntervalToChangePage 2.0
@@ -222,7 +216,7 @@
     {
         index = floor(([sender locationInView:self].x + _scrollView.contentOffset.x) /
                       (_scrollView.contentSize.width  / _nViews));
-        RKLogTrace(@"location %f offset %f viewWidth %f index %d",
+        NBULogVerbose(@"location %f offset %f viewWidth %f index %d",
               [sender locationInView:self].x, _scrollView.contentOffset.x, (_scrollView.contentSize.width  / _nViews), index);
     }
     
@@ -246,7 +240,7 @@
     [self.viewController.navigationController pushViewController:controller
                                                         animated:YES];
     
-    RKLogTrace(@"content width %f current page %d frame width %f",
+    NBULogVerbose(@"content width %f current page %d frame width %f",
                _scrollView.contentSize.width, _pageControl.currentPage, _scrollView.frame.size.width);
     
     controller.objectView.pageControl.numberOfPages = _nViews;
@@ -338,7 +332,7 @@
         
     }
 
-    RKLogTrace(@"currentPage %d",page);
+    NBULogVerbose(@"currentPage %d",page);
     _pageControl.currentPage = page;
 }
 
@@ -483,7 +477,7 @@
                                          frame.origin.x,
                                          frame.size.height);
     
-    RKLogTrace(@"content width %f current page %d frame width %f",
+    NBULogVerbose(@"content width %f current page %d frame width %f",
                _scrollView.contentSize.width, _pageControl.currentPage, _scrollView.frame.size.width);
     
     CGFloat offsetX = _scrollView.pagingEnabled ? _scrollView.frame.size.width * _pageControl.currentPage : _scrollView.contentOffset.x;

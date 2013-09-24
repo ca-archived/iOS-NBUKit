@@ -25,12 +25,6 @@
 #undef  NBUKIT_MODULE
 #define NBUKIT_MODULE   NBUKIT_MODULE_COMPATIBILITY
 
-#define RKLogError      NBULogError
-#define RKLogWarning    NBULogWarn
-#define RKLogInfo       NBULogInfo
-#define RKLogDebug      NBULogVerbose
-#define RKLogTrace      NBULogVerbose
-
 NSString * const ObjectDeletedNotification = @"ObjectDeletedNotification";
 
 // Private class
