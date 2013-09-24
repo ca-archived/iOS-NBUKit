@@ -472,8 +472,6 @@
 
 - (void)adjustScrollView
 {
-    _scrollView.size = CGSizeMake(_scrollView.size.width,
-                                  _container.size.height + _container.contentOffset.y);
 	_scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width * _objectArray.count,
                                          _scrollView.frame.size.height);
 }
