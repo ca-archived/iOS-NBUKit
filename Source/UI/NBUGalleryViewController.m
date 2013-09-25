@@ -86,9 +86,11 @@
     _thumbnailMargin = CGSizeMake(4.0, 4.0);
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
     {
+#if XCODE_VERSION_MAJOR >= 0500
         _statusBarStyle = UIStatusBarStyleLightContent;
         _navigationBarStyle = UIBarStyleBlack;
         _navigationBarTranslucent = YES;
+#endif
     }
     else
     {
