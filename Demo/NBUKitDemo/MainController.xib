@@ -1,320 +1,1242 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
-    <dependencies>
-        <deployment defaultVersion="1072" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
-    </dependencies>
-    <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AppDelegate">
-            <connections>
-                <outlet property="cameraButton" destination="53" id="Y4M-GN-aRC"/>
-            </connections>
-        </placeholder>
-        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tabBarController id="10">
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-            <nil key="simulatedBottomBarMetrics"/>
-            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-            <nil key="simulatedDestinationMetrics"/>
-            <tabBar key="tabBar" contentMode="scaleToFill" id="11">
-                <rect key="frame" x="0.0" y="431" width="320" height="49"/>
-                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-            </tabBar>
-            <viewControllers>
-                <navigationController id="whf-JZ-Nez">
-                    <tabBarItem key="tabBarItem" title="Picker" image="first.png" id="36"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <nil key="simulatedDestinationMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X6D-E3-PU8">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <viewControllers>
-                        <viewController id="35" customClass="PickerTestsViewController">
-                            <extendedEdge key="edgesForExtendedLayout"/>
-                            <navigationItem key="navigationItem" title="Picker" id="V2m-Pu-Rgs">
-                                <barButtonItem key="rightBarButtonItem" title="Start Picker!" id="WxK-NJ-L5S">
-                                    <connections>
-                                        <action selector="startPicker:" destination="35" id="1id-wK-NxA"/>
-                                    </connections>
-                                </barButtonItem>
-                            </navigationItem>
-                            <nil key="simulatedStatusBarMetrics"/>
-                            <nil key="simulatedTopBarMetrics"/>
-                            <nil key="simulatedBottomBarMetrics"/>
-                            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                            <nil key="simulatedDestinationMetrics"/>
-                        </viewController>
-                    </viewControllers>
-                </navigationController>
-                <navigationController id="19">
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Assets" image="second.png" id="18"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <nil key="simulatedDestinationMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="20">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <viewControllers>
-                        <viewController nibName="NBUAssetsLibraryViewController" id="17" customClass="LibraryViewController">
-                            <extendedEdge key="edgesForExtendedLayout"/>
-                            <navigationItem key="navigationItem" title="Loading..." id="24">
-                                <barButtonItem key="rightBarButtonItem" id="32">
-                                    <view key="customView" contentMode="scaleToFill" id="31">
-                                        <rect key="frame" x="271" y="5" width="33" height="33"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="33">
-                                                <rect key="frame" x="7" y="7" width="22" height="22"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <state key="normal">
-                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <state key="highlighted">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="accessInfo:" destination="17" eventType="touchUpInside" id="34"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </view>
-                                </barButtonItem>
-                            </navigationItem>
-                            <nil key="simulatedStatusBarMetrics"/>
-                            <nil key="simulatedTopBarMetrics"/>
-                            <nil key="simulatedBottomBarMetrics"/>
-                            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                            <nil key="simulatedDestinationMetrics"/>
-                        </viewController>
-                    </viewControllers>
-                </navigationController>
-                <viewController id="25" customClass="CameraViewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Camera" id="26"/>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <nil key="simulatedDestinationMetrics"/>
-                    <connections>
-                        <outlet property="shootButton" destination="53" id="55"/>
-                    </connections>
-                </viewController>
-                <navigationController id="58">
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Filters" image="second.png" id="60"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <nil key="simulatedDestinationMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="61">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <viewControllers>
-                        <viewController id="59" customClass="PresetFilterViewController">
-                            <extendedEdge key="edgesForExtendedLayout"/>
-                            <navigationItem key="navigationItem" title="Filters" id="62">
-                                <barButtonItem key="leftBarButtonItem" title="Reset" id="64">
-                                    <connections>
-                                        <action selector="reset:" destination="59" id="88"/>
-                                    </connections>
-                                </barButtonItem>
-                                <barButtonItem key="rightBarButtonItem" title="Apply" id="63">
-                                    <connections>
-                                        <action selector="apply:" destination="59" id="89"/>
-                                    </connections>
-                                </barButtonItem>
-                            </navigationItem>
-                            <nil key="simulatedStatusBarMetrics"/>
-                            <nil key="simulatedTopBarMetrics"/>
-                            <nil key="simulatedBottomBarMetrics"/>
-                            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                            <nil key="simulatedDestinationMetrics"/>
-                        </viewController>
-                    </viewControllers>
-                </navigationController>
-                <navigationController id="Sbz-d1-wpH">
-                    <tabBarItem key="tabBarItem" title="Filter Editor" image="first.png" id="98"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HSd-6h-141">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <viewControllers>
-                        <viewController id="96" customClass="AdjustFilterViewController">
-                            <extendedEdge key="edgesForExtendedLayout"/>
-                            <navigationItem key="navigationItem" title="Filter Editor" id="7CD-3s-kGm">
-                                <barButtonItem key="rightBarButtonItem" title="Save" id="IGU-l6-Tva">
-                                    <connections>
-                                        <action selector="saveFilterGroup:" destination="96" id="Yag-6z-bSO"/>
-                                    </connections>
-                                </barButtonItem>
-                            </navigationItem>
-                            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                            <nil key="simulatedTopBarMetrics"/>
-                            <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                            <nil key="simulatedDestinationMetrics"/>
-                        </viewController>
-                    </viewControllers>
-                </navigationController>
-                <navigationController id="99">
-                    <tabBarItem key="tabBarItem" title="Gallery" image="first.png" id="103"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <nil key="simulatedDestinationMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="100">
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                    </navigationBar>
-                    <viewControllers>
-                        <viewController automaticallyAdjustsScrollViewInsets="NO" id="101" customClass="GalleryViewController">
-                            <navigationItem key="navigationItem" id="102"/>
-                            <nil key="simulatedStatusBarMetrics"/>
-                            <nil key="simulatedTopBarMetrics"/>
-                            <nil key="simulatedBottomBarMetrics"/>
-                            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                            <nil key="simulatedDestinationMetrics"/>
-                        </viewController>
-                    </viewControllers>
-                </navigationController>
-                <navigationController id="bgn-w9-tpY">
-                    <tabBarItem key="tabBarItem" title="Crop" image="second.png" id="66"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <nil key="simulatedDestinationMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5DN-42-ovR">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <viewControllers>
-                        <viewController id="56" customClass="CropViewController">
-                            <extendedEdge key="edgesForExtendedLayout"/>
-                            <navigationItem key="navigationItem" title="Pinch and Drag" id="fmQ-lT-48K">
-                                <barButtonItem key="leftBarButtonItem" title="Reset" id="lky-qz-kAs">
-                                    <connections>
-                                        <action selector="reset:" destination="56" id="wop-69-AGM"/>
-                                    </connections>
-                                </barButtonItem>
-                                <barButtonItem key="rightBarButtonItem" title="Crop" id="sTZ-dK-lYS">
-                                    <connections>
-                                        <action selector="apply:" destination="56" id="625-rk-Zwx"/>
-                                    </connections>
-                                </barButtonItem>
-                            </navigationItem>
-                            <nil key="simulatedStatusBarMetrics"/>
-                            <nil key="simulatedTopBarMetrics"/>
-                            <nil key="simulatedBottomBarMetrics"/>
-                            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                            <nil key="simulatedDestinationMetrics"/>
-                        </viewController>
-                    </viewControllers>
-                </navigationController>
-                <navigationController id="AYq-Wa-BnC">
-                    <tabBarItem key="tabBarItem" title="Pull to Refresh" image="first.png" id="82"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <nil key="simulatedDestinationMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IlB-81-DTi">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <viewControllers>
-                        <viewController id="69" customClass="PullToRefreshViewController">
-                            <extendedEdge key="edgesForExtendedLayout"/>
-                            <navigationItem key="navigationItem" title="Pull to Refresh" id="bD3-CE-uW4"/>
-                            <nil key="simulatedStatusBarMetrics"/>
-                            <nil key="simulatedTopBarMetrics"/>
-                            <nil key="simulatedBottomBarMetrics"/>
-                            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                            <nil key="simulatedDestinationMetrics"/>
-                        </viewController>
-                    </viewControllers>
-                </navigationController>
-                <navigationController id="70">
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Hide on Scroll" image="second.png" id="78"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <nil key="simulatedDestinationMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="79">
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                    </navigationBar>
-                    <viewControllers>
-                        <viewController id="80" customClass="HideOnScrollViewController">
-                            <extendedEdge key="edgesForExtendedLayout"/>
-                            <navigationItem key="navigationItem" title="Root View Controller" id="81"/>
-                            <nil key="simulatedStatusBarMetrics"/>
-                            <nil key="simulatedTopBarMetrics"/>
-                            <nil key="simulatedBottomBarMetrics"/>
-                            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                            <nil key="simulatedDestinationMetrics"/>
-                        </viewController>
-                    </viewControllers>
-                </navigationController>
-                <navigationController id="w1M-fd-Wtg">
-                    <tabBarItem key="tabBarItem" title="Badges" image="first.png" id="76"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <nil key="simulatedDestinationMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KPh-L2-khv">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <viewControllers>
-                        <viewController id="71" customClass="BadgesViewController">
-                            <extendedEdge key="edgesForExtendedLayout"/>
-                            <navigationItem key="navigationItem" title="Badges" id="77"/>
-                            <nil key="simulatedStatusBarMetrics"/>
-                            <nil key="simulatedTopBarMetrics"/>
-                            <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                            <nil key="simulatedDestinationMetrics"/>
-                        </viewController>
-                    </viewControllers>
-                </navigationController>
-            </viewControllers>
-        </tabBarController>
-        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="53">
-            <rect key="frame" x="0.0" y="0.0" width="42" height="43"/>
-            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-            <state key="normal" backgroundImage="NBUKitResources.bundle/camera_shot.png">
-                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-            </state>
-            <state key="highlighted">
-                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-            </state>
-        </button>
-    </objects>
-    <resources>
-        <image name="NBUKitResources.bundle/camera_shot.png" width="16" height="16"/>
-        <image name="first.png" width="30" height="30"/>
-        <image name="second.png" width="30" height="30"/>
-    </resources>
-</document>
+<?xml version="1.0" encoding="UTF-8"?>
+<archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
+	<data>
+		<int key="IBDocument.SystemTarget">1072</int>
+		<string key="IBDocument.SystemVersion">12F37</string>
+		<string key="IBDocument.InterfaceBuilderVersion">4510</string>
+		<string key="IBDocument.AppKitVersion">1187.39</string>
+		<string key="IBDocument.HIToolboxVersion">626.00</string>
+		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
+			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+			<string key="NS.object.0">3742</string>
+		</object>
+		<array key="IBDocument.IntegratedClassDependencies">
+			<string>IBProxyObject</string>
+			<string>IBUIBarButtonItem</string>
+			<string>IBUIButton</string>
+			<string>IBUINavigationBar</string>
+			<string>IBUINavigationController</string>
+			<string>IBUINavigationItem</string>
+			<string>IBUITabBar</string>
+			<string>IBUITabBarController</string>
+			<string>IBUITabBarItem</string>
+			<string>IBUIView</string>
+			<string>IBUIViewController</string>
+		</array>
+		<array key="IBDocument.PluginDependencies">
+			<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+		</array>
+		<object class="NSMutableDictionary" key="IBDocument.Metadata">
+			<string key="NS.key.0">PluginDependencyRecalculationVersion</string>
+			<integer value="1" key="NS.object.0"/>
+		</object>
+		<array class="NSMutableArray" key="IBDocument.RootObjects" id="581660153">
+			<object class="IBProxyObject" id="135585439">
+				<string key="IBProxiedObjectIdentifier">IBFilesOwner</string>
+				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+			</object>
+			<object class="IBProxyObject" id="33182766">
+				<string key="IBProxiedObjectIdentifier">IBFirstResponder</string>
+				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+			</object>
+			<object class="IBUITabBarController" id="405817330">
+				<object class="IBUISimulatedNavigationBarMetrics" key="IBUISimulatedTopBarMetrics">
+					<bool key="IBUIPrompted">NO</bool>
+				</object>
+				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
+				<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
+					<int key="IBUIInterfaceOrientation">1</int>
+					<int key="interfaceOrientation">1</int>
+				</object>
+				<int key="IBUIEdgesForExtendedLayout">15</int>
+				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+				<bool key="IBUIHorizontal">NO</bool>
+				<object class="IBUINavigationController" key="IBUISelectedViewController" id="227887737">
+					<object class="IBUITabBarItem" key="IBUITabBarItem" id="425682707">
+						<string key="IBUITitle">Gallery</string>
+						<object class="NSCustomResource" key="IBUIImage" id="843280797">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">first.png</string>
+						</object>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+					</object>
+					<reference key="IBUIParentViewController" ref="405817330"/>
+					<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
+					<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
+						<int key="IBUIInterfaceOrientation">1</int>
+						<int key="interfaceOrientation">1</int>
+					</object>
+					<int key="IBUIEdgesForExtendedLayout">15</int>
+					<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+					<bool key="IBUIHorizontal">NO</bool>
+					<object class="IBUINavigationBar" key="IBUINavigationBar" id="612445238">
+						<nil key="NSNextResponder"/>
+						<int key="NSvFlags">1792</int>
+						<object class="NSPSMatrix" key="NSFrameMatrix"/>
+						<string key="NSFrameSize">{0, 0}</string>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<int key="IBUIBarStyle">2</int>
+						<object class="NSColor" key="IBUIBarTintColor" id="945304098">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MAA</bytes>
+						</object>
+						<array class="NSMutableArray" key="IBUIItems"/>
+					</object>
+					<array key="IBUIViewControllers">
+						<object class="IBUIViewController" id="483646640">
+							<object class="IBUINavigationItem" key="IBUINavigationItem" id="561267146">
+								<string key="IBUITitle"/>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+							</object>
+							<reference key="IBUIParentViewController" ref="227887737"/>
+							<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
+								<int key="IBUIInterfaceOrientation">1</int>
+								<int key="interfaceOrientation">1</int>
+							</object>
+							<bool key="IBUIAutomaticallyAdjustsScrollViewInsets">NO</bool>
+							<int key="IBUIEdgesForExtendedLayout">15</int>
+							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+							<bool key="IBUIHorizontal">NO</bool>
+						</object>
+					</array>
+				</object>
+				<array class="NSMutableArray" key="IBUIViewControllers">
+					<object class="IBUINavigationController" id="428908818">
+						<object class="IBUITabBarItem" key="IBUITabBarItem" id="737752170">
+							<string key="IBUITitle">Picker</string>
+							<reference key="IBUIImage" ref="843280797"/>
+							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						</object>
+						<reference key="IBUIParentViewController" ref="405817330"/>
+						<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
+						<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
+							<int key="IBUIInterfaceOrientation">1</int>
+							<int key="interfaceOrientation">1</int>
+						</object>
+						<int key="IBUIEdgesForExtendedLayout">15</int>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<bool key="IBUIHorizontal">NO</bool>
+						<object class="IBUINavigationBar" key="IBUINavigationBar" id="952915017">
+							<nil key="NSNextResponder"/>
+							<int key="NSvFlags">1792</int>
+							<object class="NSPSMatrix" key="NSFrameMatrix"/>
+							<string key="NSFrameSize">{0, 0}</string>
+							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+							<array class="NSMutableArray" key="IBUIItems"/>
+						</object>
+						<array key="IBUIViewControllers">
+							<object class="IBUIViewController" id="633679904">
+								<object class="IBUINavigationItem" key="IBUINavigationItem" id="361964002">
+									<string key="IBUITitle">Picker</string>
+									<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="862745256">
+										<string key="IBUITitle">Start Picker!</string>
+										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+										<int key="IBUIStyle">1</int>
+										<reference key="IBUINavigationItem" ref="361964002"/>
+									</object>
+									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								</object>
+								<reference key="IBUIParentViewController" ref="428908818"/>
+								<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
+									<int key="IBUIInterfaceOrientation">1</int>
+									<int key="interfaceOrientation">1</int>
+								</object>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<bool key="IBUIHorizontal">NO</bool>
+							</object>
+						</array>
+					</object>
+					<object class="IBUINavigationController" id="613695508">
+						<object class="IBUITabBarItem" key="IBUITabBarItem" id="298541851">
+							<string key="IBUITitle">Assets</string>
+							<object class="NSCustomResource" key="IBUIImage" id="792214109">
+								<string key="NSClassName">NSImage</string>
+								<string key="NSResourceName">second.png</string>
+							</object>
+							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						</object>
+						<reference key="IBUIParentViewController" ref="405817330"/>
+						<object class="IBUISimulatedTabBarMetrics" key="IBUISimulatedBottomBarMetrics"/>
+						<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
+						<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
+							<int key="IBUIInterfaceOrientation">1</int>
+							<int key="interfaceOrientation">1</int>
+						</object>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<bool key="IBUIHorizontal">NO</bool>
+						<object class="IBUINavigationBar" key="IBUINavigationBar" id="518146832">
+							<nil key="NSNextResponder"/>
+							<int key="NSvFlags">1792</int>
+							<object class="NSPSMatrix" key="NSFrameMatrix"/>
+							<string key="NSFrameSize">{0, 0}</string>
+							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+							<array class="NSMutableArray" key="IBUIItems"/>
+						</object>
+						<array key="IBUIViewControllers">
+							<object class="IBUIViewController" id="94965924">
+								<object class="IBUINavigationItem" key="IBUINavigationItem" id="638362183">
+									<string key="IBUITitle">Loading...</string>
+									<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="271706853">
+										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+										<int key="IBUIStyle">1</int>
+										<object class="IBUIView" key="IBUICustomView" id="152160882">
+											<nil key="NSNextResponder"/>
+											<int key="NSvFlags">1828</int>
+											<array class="NSMutableArray" key="NSSubviews">
+												<object class="IBUIButton" id="670672285">
+													<reference key="NSNextResponder" ref="152160882"/>
+													<int key="NSvFlags">1828</int>
+													<object class="NSPSMatrix" key="NSFrameMatrix"/>
+													<string key="NSFrame">{{7, 7}, {18, 19}}</string>
+													<reference key="NSSuperview" ref="152160882"/>
+													<bool key="IBUIOpaque">NO</bool>
+													<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+													<int key="IBUIContentHorizontalAlignment">0</int>
+													<int key="IBUIContentVerticalAlignment">0</int>
+													<int key="IBUIButtonType">3</int>
+													<bool key="IBUIShowsTouchWhenHighlighted">YES</bool>
+													<object class="NSColor" key="IBUINormalTitleColor">
+														<int key="NSColorSpace">1</int>
+														<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+													</object>
+													<object class="NSColor" key="IBUIHighlightedTitleColor" id="124023237">
+														<int key="NSColorSpace">3</int>
+														<bytes key="NSWhite">MQA</bytes>
+													</object>
+													<object class="NSColor" key="IBUINormalTitleShadowColor" id="104509801">
+														<int key="NSColorSpace">3</int>
+														<bytes key="NSWhite">MC41AA</bytes>
+													</object>
+													<object class="IBUIFontDescription" key="IBUIFontDescription" id="435840163">
+														<int key="type">2</int>
+														<double key="pointSize">15</double>
+													</object>
+													<object class="NSFont" key="IBUIFont" id="958831164">
+														<string key="NSName">HelveticaNeue-Bold</string>
+														<double key="NSSize">15</double>
+														<int key="NSfFlags">16</int>
+													</object>
+												</object>
+											</array>
+											<object class="NSPSMatrix" key="NSFrameMatrix"/>
+											<string key="NSFrame">{{271, 5}, {33, 33}}</string>
+											<object class="NSColor" key="IBUIBackgroundColor" id="6506946">
+												<int key="NSColorSpace">3</int>
+												<bytes key="NSWhite">MCAwAA</bytes>
+											</object>
+											<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+										</object>
+										<reference key="IBUINavigationItem" ref="638362183"/>
+									</object>
+									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								</object>
+								<reference key="IBUIParentViewController" ref="613695508"/>
+								<string key="IBUINibName">NBUAssetsLibraryViewController</string>
+								<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
+									<int key="IBUIInterfaceOrientation">1</int>
+									<int key="interfaceOrientation">1</int>
+								</object>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<bool key="IBUIHorizontal">NO</bool>
+							</object>
+						</array>
+					</object>
+					<object class="IBUIViewController" id="263878173">
+						<object class="IBUITabBarItem" key="IBUITabBarItem" id="170102126">
+							<string key="IBUITitle">Camera</string>
+							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						</object>
+						<reference key="IBUIParentViewController" ref="405817330"/>
+						<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
+							<int key="IBUIInterfaceOrientation">1</int>
+							<int key="interfaceOrientation">1</int>
+						</object>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<bool key="IBUIHorizontal">NO</bool>
+					</object>
+					<object class="IBUINavigationController" id="147519644">
+						<object class="IBUITabBarItem" key="IBUITabBarItem" id="474537061">
+							<string key="IBUITitle">Filters</string>
+							<reference key="IBUIImage" ref="792214109"/>
+							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						</object>
+						<reference key="IBUIParentViewController" ref="405817330"/>
+						<object class="IBUISimulatedTabBarMetrics" key="IBUISimulatedBottomBarMetrics"/>
+						<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
+						<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
+							<int key="IBUIInterfaceOrientation">1</int>
+							<int key="interfaceOrientation">1</int>
+						</object>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<bool key="IBUIHorizontal">NO</bool>
+						<object class="IBUINavigationBar" key="IBUINavigationBar" id="321175904">
+							<nil key="NSNextResponder"/>
+							<int key="NSvFlags">1792</int>
+							<object class="NSPSMatrix" key="NSFrameMatrix"/>
+							<string key="NSFrameSize">{0, 0}</string>
+							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+							<array class="NSMutableArray" key="IBUIItems"/>
+						</object>
+						<array key="IBUIViewControllers">
+							<object class="IBUIViewController" id="941491012">
+								<object class="IBUINavigationItem" key="IBUINavigationItem" id="679562973">
+									<string key="IBUITitle">Filters</string>
+									<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="500782254">
+										<string key="IBUITitle">Reset</string>
+										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+										<int key="IBUIStyle">1</int>
+										<reference key="IBUINavigationItem" ref="679562973"/>
+									</object>
+									<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="1050628172">
+										<string key="IBUITitle">Apply</string>
+										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+										<int key="IBUIStyle">1</int>
+										<reference key="IBUINavigationItem" ref="679562973"/>
+									</object>
+									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								</object>
+								<reference key="IBUIParentViewController" ref="147519644"/>
+								<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
+									<int key="IBUIInterfaceOrientation">1</int>
+									<int key="interfaceOrientation">1</int>
+								</object>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<bool key="IBUIHorizontal">NO</bool>
+							</object>
+						</array>
+					</object>
+					<object class="IBUINavigationController" id="919733250">
+						<object class="IBUITabBarItem" key="IBUITabBarItem" id="176608072">
+							<string key="IBUITitle">Filter Editor</string>
+							<reference key="IBUIImage" ref="843280797"/>
+							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						</object>
+						<reference key="IBUIParentViewController" ref="405817330"/>
+						<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
+						<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
+							<int key="IBUIInterfaceOrientation">1</int>
+							<int key="interfaceOrientation">1</int>
+						</object>
+						<int key="IBUIEdgesForExtendedLayout">15</int>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<bool key="IBUIHorizontal">NO</bool>
+						<object class="IBUINavigationBar" key="IBUINavigationBar" id="598559299">
+							<nil key="NSNextResponder"/>
+							<int key="NSvFlags">1792</int>
+							<object class="NSPSMatrix" key="NSFrameMatrix"/>
+							<string key="NSFrameSize">{0, 0}</string>
+							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+							<array class="NSMutableArray" key="IBUIItems"/>
+						</object>
+						<array key="IBUIViewControllers">
+							<object class="IBUIViewController" id="711027986">
+								<object class="IBUINavigationItem" key="IBUINavigationItem" id="156093017">
+									<string key="IBUITitle">Filter Editor</string>
+									<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="204772086">
+										<string key="IBUITitle">Save</string>
+										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+										<int key="IBUIStyle">1</int>
+										<reference key="IBUINavigationItem" ref="156093017"/>
+									</object>
+									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								</object>
+								<reference key="IBUIParentViewController" ref="919733250"/>
+								<object class="IBUISimulatedTabBarMetrics" key="IBUISimulatedBottomBarMetrics"/>
+								<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
+								<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
+									<int key="IBUIInterfaceOrientation">1</int>
+									<int key="interfaceOrientation">1</int>
+								</object>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<bool key="IBUIHorizontal">NO</bool>
+							</object>
+						</array>
+					</object>
+					<reference ref="227887737"/>
+					<object class="IBUINavigationController" id="854138485">
+						<object class="IBUITabBarItem" key="IBUITabBarItem" id="318781242">
+							<string key="IBUITitle">Crop</string>
+							<reference key="IBUIImage" ref="792214109"/>
+							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						</object>
+						<reference key="IBUIParentViewController" ref="405817330"/>
+						<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
+						<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
+							<int key="IBUIInterfaceOrientation">1</int>
+							<int key="interfaceOrientation">1</int>
+						</object>
+						<int key="IBUIEdgesForExtendedLayout">15</int>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<bool key="IBUIHorizontal">NO</bool>
+						<object class="IBUINavigationBar" key="IBUINavigationBar" id="747523814">
+							<nil key="NSNextResponder"/>
+							<int key="NSvFlags">1792</int>
+							<object class="NSPSMatrix" key="NSFrameMatrix"/>
+							<string key="NSFrameSize">{0, 0}</string>
+							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+							<array class="NSMutableArray" key="IBUIItems"/>
+						</object>
+						<array key="IBUIViewControllers">
+							<object class="IBUIViewController" id="427363616">
+								<object class="IBUINavigationItem" key="IBUINavigationItem" id="1051133442">
+									<string key="IBUITitle">Pinch and Drag</string>
+									<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="863187868">
+										<string key="IBUITitle">Reset</string>
+										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+										<int key="IBUIStyle">1</int>
+										<reference key="IBUINavigationItem" ref="1051133442"/>
+									</object>
+									<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="173631590">
+										<string key="IBUITitle">Crop</string>
+										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+										<int key="IBUIStyle">1</int>
+										<reference key="IBUINavigationItem" ref="1051133442"/>
+									</object>
+									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								</object>
+								<reference key="IBUIParentViewController" ref="854138485"/>
+								<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
+									<int key="IBUIInterfaceOrientation">1</int>
+									<int key="interfaceOrientation">1</int>
+								</object>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<bool key="IBUIHorizontal">NO</bool>
+							</object>
+						</array>
+					</object>
+					<object class="IBUINavigationController" id="392535659">
+						<object class="IBUITabBarItem" key="IBUITabBarItem" id="158195608">
+							<string key="IBUITitle">Pull to Refresh</string>
+							<reference key="IBUIImage" ref="843280797"/>
+							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						</object>
+						<reference key="IBUIParentViewController" ref="405817330"/>
+						<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
+						<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
+							<int key="IBUIInterfaceOrientation">1</int>
+							<int key="interfaceOrientation">1</int>
+						</object>
+						<int key="IBUIEdgesForExtendedLayout">15</int>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<bool key="IBUIHorizontal">NO</bool>
+						<object class="IBUINavigationBar" key="IBUINavigationBar" id="413746166">
+							<nil key="NSNextResponder"/>
+							<int key="NSvFlags">1792</int>
+							<object class="NSPSMatrix" key="NSFrameMatrix"/>
+							<string key="NSFrameSize">{0, 0}</string>
+							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+							<array class="NSMutableArray" key="IBUIItems"/>
+						</object>
+						<array key="IBUIViewControllers">
+							<object class="IBUIViewController" id="724410161">
+								<object class="IBUINavigationItem" key="IBUINavigationItem" id="25942798">
+									<string key="IBUITitle">Pull to Refresh</string>
+									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								</object>
+								<reference key="IBUIParentViewController" ref="392535659"/>
+								<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
+									<int key="IBUIInterfaceOrientation">1</int>
+									<int key="interfaceOrientation">1</int>
+								</object>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<bool key="IBUIHorizontal">NO</bool>
+							</object>
+						</array>
+					</object>
+					<object class="IBUINavigationController" id="1030134052">
+						<object class="IBUITabBarItem" key="IBUITabBarItem" id="914525423">
+							<string key="IBUITitle">Hide on Scroll</string>
+							<reference key="IBUIImage" ref="792214109"/>
+							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						</object>
+						<reference key="IBUIParentViewController" ref="405817330"/>
+						<object class="IBUISimulatedTabBarMetrics" key="IBUISimulatedBottomBarMetrics"/>
+						<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
+						<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
+							<int key="IBUIInterfaceOrientation">1</int>
+							<int key="interfaceOrientation">1</int>
+						</object>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<bool key="IBUIHorizontal">NO</bool>
+						<object class="IBUINavigationBar" key="IBUINavigationBar" id="929181248">
+							<nil key="NSNextResponder"/>
+							<int key="NSvFlags">1792</int>
+							<object class="NSPSMatrix" key="NSFrameMatrix"/>
+							<string key="NSFrameSize">{0, 0}</string>
+							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+							<int key="IBUIBarStyle">2</int>
+							<reference key="IBUIBarTintColor" ref="945304098"/>
+							<array class="NSMutableArray" key="IBUIItems"/>
+						</object>
+						<array key="IBUIViewControllers">
+							<object class="IBUIViewController" id="736969784">
+								<object class="IBUINavigationItem" key="IBUINavigationItem" id="703526856">
+									<string key="IBUITitle">Root View Controller</string>
+									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								</object>
+								<reference key="IBUIParentViewController" ref="1030134052"/>
+								<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
+									<int key="IBUIInterfaceOrientation">1</int>
+									<int key="interfaceOrientation">1</int>
+								</object>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<bool key="IBUIHorizontal">NO</bool>
+							</object>
+						</array>
+					</object>
+					<object class="IBUINavigationController" id="49470051">
+						<object class="IBUITabBarItem" key="IBUITabBarItem" id="489117329">
+							<string key="IBUITitle">Badges</string>
+							<reference key="IBUIImage" ref="843280797"/>
+							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						</object>
+						<reference key="IBUIParentViewController" ref="405817330"/>
+						<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
+						<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
+							<int key="IBUIInterfaceOrientation">1</int>
+							<int key="interfaceOrientation">1</int>
+						</object>
+						<int key="IBUIEdgesForExtendedLayout">15</int>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<bool key="IBUIHorizontal">NO</bool>
+						<object class="IBUINavigationBar" key="IBUINavigationBar" id="526415828">
+							<nil key="NSNextResponder"/>
+							<int key="NSvFlags">1792</int>
+							<object class="NSPSMatrix" key="NSFrameMatrix"/>
+							<string key="NSFrameSize">{0, 0}</string>
+							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+							<array class="NSMutableArray" key="IBUIItems"/>
+						</object>
+						<array key="IBUIViewControllers">
+							<object class="IBUIViewController" id="57146650">
+								<object class="IBUINavigationItem" key="IBUINavigationItem" id="662747919">
+									<string key="IBUITitle">Badges</string>
+									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								</object>
+								<reference key="IBUIParentViewController" ref="49470051"/>
+								<object class="IBUISimulatedTabBarMetrics" key="IBUISimulatedBottomBarMetrics"/>
+								<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
+									<int key="IBUIInterfaceOrientation">1</int>
+									<int key="interfaceOrientation">1</int>
+								</object>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<bool key="IBUIHorizontal">NO</bool>
+							</object>
+						</array>
+					</object>
+				</array>
+				<object class="IBUITabBar" key="IBUITabBar" id="321150234">
+					<nil key="NSNextResponder"/>
+					<int key="NSvFlags">1290</int>
+					<object class="NSPSMatrix" key="NSFrameMatrix"/>
+					<string key="NSFrame">{{0, 431}, {320, 49}}</string>
+					<reference key="IBUIBackgroundColor" ref="6506946"/>
+					<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+					<array class="NSMutableArray" key="IBUIItems"/>
+				</object>
+			</object>
+			<object class="IBUIButton" id="780077829">
+				<nil key="NSNextResponder"/>
+				<int key="NSvFlags">1805</int>
+				<object class="NSPSMatrix" key="NSFrameMatrix"/>
+				<string key="NSFrameSize">{42, 43}</string>
+				<reference key="IBUIBackgroundColor" ref="6506946"/>
+				<bool key="IBUIOpaque">NO</bool>
+				<bool key="IBUIUserInteractionEnabled">NO</bool>
+				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+				<int key="IBUIContentHorizontalAlignment">0</int>
+				<int key="IBUIContentVerticalAlignment">0</int>
+				<object class="NSColor" key="IBUINormalTitleColor">
+					<int key="NSColorSpace">1</int>
+					<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+				</object>
+				<reference key="IBUIHighlightedTitleColor" ref="124023237"/>
+				<reference key="IBUINormalTitleShadowColor" ref="104509801"/>
+				<object class="NSCustomResource" key="IBUINormalBackgroundImage">
+					<string key="NSClassName">NSImage</string>
+					<string key="NSResourceName">NBUKitResources.bundle/camera_shot.png</string>
+				</object>
+				<reference key="IBUIFontDescription" ref="435840163"/>
+				<reference key="IBUIFont" ref="958831164"/>
+			</object>
+		</array>
+		<object class="IBObjectContainer" key="IBDocument.Objects">
+			<bool key="usesAutoincrementingIDs">NO</bool>
+			<array class="NSMutableArray" key="connectionRecords">
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">cameraButton</string>
+						<reference key="source" ref="135585439"/>
+						<reference key="destination" ref="780077829"/>
+					</object>
+					<string key="id">Y4M-GN-aRC</string>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">shootButton</string>
+						<reference key="source" ref="263878173"/>
+						<reference key="destination" ref="780077829"/>
+					</object>
+					<string key="id">55</string>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">accessInfo:</string>
+						<reference key="source" ref="670672285"/>
+						<reference key="destination" ref="94965924"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<string key="id">34</string>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">apply:</string>
+						<reference key="source" ref="1050628172"/>
+						<reference key="destination" ref="941491012"/>
+					</object>
+					<string key="id">89</string>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">reset:</string>
+						<reference key="source" ref="500782254"/>
+						<reference key="destination" ref="941491012"/>
+					</object>
+					<string key="id">88</string>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">saveFilterGroup:</string>
+						<reference key="source" ref="204772086"/>
+						<reference key="destination" ref="711027986"/>
+					</object>
+					<string key="id">Yag-6z-bSO</string>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">startPicker:</string>
+						<reference key="source" ref="862745256"/>
+						<reference key="destination" ref="633679904"/>
+					</object>
+					<string key="id">1id-wK-NxA</string>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">reset:</string>
+						<reference key="source" ref="863187868"/>
+						<reference key="destination" ref="427363616"/>
+					</object>
+					<string key="id">wop-69-AGM</string>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">apply:</string>
+						<reference key="source" ref="173631590"/>
+						<reference key="destination" ref="427363616"/>
+					</object>
+					<string key="id">625-rk-Zwx</string>
+				</object>
+			</array>
+			<object class="IBMutableOrderedSet" key="objectRecords">
+				<array key="orderedObjects">
+					<object class="IBObjectRecord">
+						<string key="id">0</string>
+						<array key="object" id="0"/>
+						<reference key="children" ref="581660153"/>
+						<nil key="parent"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">-1</string>
+						<reference key="object" ref="135585439"/>
+						<reference key="parent" ref="0"/>
+						<string key="objectName">File's Owner</string>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">-2</string>
+						<reference key="object" ref="33182766"/>
+						<reference key="parent" ref="0"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">10</string>
+						<reference key="object" ref="405817330"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="321150234"/>
+							<reference ref="428908818"/>
+							<reference ref="613695508"/>
+							<reference ref="263878173"/>
+							<reference ref="147519644"/>
+							<reference ref="919733250"/>
+							<reference ref="227887737"/>
+							<reference ref="854138485"/>
+							<reference ref="392535659"/>
+							<reference ref="1030134052"/>
+							<reference ref="49470051"/>
+						</array>
+						<reference key="parent" ref="0"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">11</string>
+						<reference key="object" ref="321150234"/>
+						<reference key="parent" ref="405817330"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">whf-JZ-Nez</string>
+						<reference key="object" ref="428908818"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="737752170"/>
+							<reference ref="952915017"/>
+							<reference ref="633679904"/>
+						</array>
+						<reference key="parent" ref="405817330"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">36</string>
+						<reference key="object" ref="737752170"/>
+						<reference key="parent" ref="428908818"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">X6D-E3-PU8</string>
+						<reference key="object" ref="952915017"/>
+						<reference key="parent" ref="428908818"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">35</string>
+						<reference key="object" ref="633679904"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="361964002"/>
+						</array>
+						<reference key="parent" ref="428908818"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">V2m-Pu-Rgs</string>
+						<reference key="object" ref="361964002"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="862745256"/>
+						</array>
+						<reference key="parent" ref="633679904"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">WxK-NJ-L5S</string>
+						<reference key="object" ref="862745256"/>
+						<reference key="parent" ref="361964002"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">19</string>
+						<reference key="object" ref="613695508"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="298541851"/>
+							<reference ref="518146832"/>
+							<reference ref="94965924"/>
+						</array>
+						<reference key="parent" ref="405817330"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">18</string>
+						<reference key="object" ref="298541851"/>
+						<reference key="parent" ref="613695508"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">20</string>
+						<reference key="object" ref="518146832"/>
+						<reference key="parent" ref="613695508"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">17</string>
+						<reference key="object" ref="94965924"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="638362183"/>
+						</array>
+						<reference key="parent" ref="613695508"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">24</string>
+						<reference key="object" ref="638362183"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="271706853"/>
+						</array>
+						<reference key="parent" ref="94965924"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">32</string>
+						<reference key="object" ref="271706853"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="152160882"/>
+						</array>
+						<reference key="parent" ref="638362183"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">31</string>
+						<reference key="object" ref="152160882"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="670672285"/>
+						</array>
+						<reference key="parent" ref="271706853"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">33</string>
+						<reference key="object" ref="670672285"/>
+						<reference key="parent" ref="152160882"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">25</string>
+						<reference key="object" ref="263878173"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="170102126"/>
+						</array>
+						<reference key="parent" ref="405817330"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">26</string>
+						<reference key="object" ref="170102126"/>
+						<reference key="parent" ref="263878173"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">58</string>
+						<reference key="object" ref="147519644"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="474537061"/>
+							<reference ref="321175904"/>
+							<reference ref="941491012"/>
+						</array>
+						<reference key="parent" ref="405817330"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">60</string>
+						<reference key="object" ref="474537061"/>
+						<reference key="parent" ref="147519644"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">61</string>
+						<reference key="object" ref="321175904"/>
+						<reference key="parent" ref="147519644"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">59</string>
+						<reference key="object" ref="941491012"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="679562973"/>
+						</array>
+						<reference key="parent" ref="147519644"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">62</string>
+						<reference key="object" ref="679562973"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="500782254"/>
+							<reference ref="1050628172"/>
+						</array>
+						<reference key="parent" ref="941491012"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">64</string>
+						<reference key="object" ref="500782254"/>
+						<reference key="parent" ref="679562973"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">63</string>
+						<reference key="object" ref="1050628172"/>
+						<reference key="parent" ref="679562973"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">Sbz-d1-wpH</string>
+						<reference key="object" ref="919733250"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="176608072"/>
+							<reference ref="598559299"/>
+							<reference ref="711027986"/>
+						</array>
+						<reference key="parent" ref="405817330"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">98</string>
+						<reference key="object" ref="176608072"/>
+						<reference key="parent" ref="919733250"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">HSd-6h-141</string>
+						<reference key="object" ref="598559299"/>
+						<reference key="parent" ref="919733250"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">96</string>
+						<reference key="object" ref="711027986"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="156093017"/>
+						</array>
+						<reference key="parent" ref="919733250"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">7CD-3s-kGm</string>
+						<reference key="object" ref="156093017"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="204772086"/>
+						</array>
+						<reference key="parent" ref="711027986"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">IGU-l6-Tva</string>
+						<reference key="object" ref="204772086"/>
+						<reference key="parent" ref="156093017"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">99</string>
+						<reference key="object" ref="227887737"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="425682707"/>
+							<reference ref="612445238"/>
+							<reference ref="483646640"/>
+						</array>
+						<reference key="parent" ref="405817330"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">103</string>
+						<reference key="object" ref="425682707"/>
+						<reference key="parent" ref="227887737"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">100</string>
+						<reference key="object" ref="612445238"/>
+						<reference key="parent" ref="227887737"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">101</string>
+						<reference key="object" ref="483646640"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="561267146"/>
+						</array>
+						<reference key="parent" ref="227887737"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">102</string>
+						<reference key="object" ref="561267146"/>
+						<reference key="parent" ref="483646640"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">bgn-w9-tpY</string>
+						<reference key="object" ref="854138485"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="318781242"/>
+							<reference ref="747523814"/>
+							<reference ref="427363616"/>
+						</array>
+						<reference key="parent" ref="405817330"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">66</string>
+						<reference key="object" ref="318781242"/>
+						<reference key="parent" ref="854138485"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">5DN-42-ovR</string>
+						<reference key="object" ref="747523814"/>
+						<reference key="parent" ref="854138485"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">56</string>
+						<reference key="object" ref="427363616"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="1051133442"/>
+						</array>
+						<reference key="parent" ref="854138485"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">fmQ-lT-48K</string>
+						<reference key="object" ref="1051133442"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="863187868"/>
+							<reference ref="173631590"/>
+						</array>
+						<reference key="parent" ref="427363616"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">lky-qz-kAs</string>
+						<reference key="object" ref="863187868"/>
+						<reference key="parent" ref="1051133442"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">sTZ-dK-lYS</string>
+						<reference key="object" ref="173631590"/>
+						<reference key="parent" ref="1051133442"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">AYq-Wa-BnC</string>
+						<reference key="object" ref="392535659"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="158195608"/>
+							<reference ref="413746166"/>
+							<reference ref="724410161"/>
+						</array>
+						<reference key="parent" ref="405817330"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">82</string>
+						<reference key="object" ref="158195608"/>
+						<reference key="parent" ref="392535659"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">IlB-81-DTi</string>
+						<reference key="object" ref="413746166"/>
+						<reference key="parent" ref="392535659"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">69</string>
+						<reference key="object" ref="724410161"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="25942798"/>
+						</array>
+						<reference key="parent" ref="392535659"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">bD3-CE-uW4</string>
+						<reference key="object" ref="25942798"/>
+						<reference key="parent" ref="724410161"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">70</string>
+						<reference key="object" ref="1030134052"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="914525423"/>
+							<reference ref="929181248"/>
+							<reference ref="736969784"/>
+						</array>
+						<reference key="parent" ref="405817330"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">78</string>
+						<reference key="object" ref="914525423"/>
+						<reference key="parent" ref="1030134052"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">79</string>
+						<reference key="object" ref="929181248"/>
+						<reference key="parent" ref="1030134052"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">80</string>
+						<reference key="object" ref="736969784"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="703526856"/>
+						</array>
+						<reference key="parent" ref="1030134052"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">81</string>
+						<reference key="object" ref="703526856"/>
+						<reference key="parent" ref="736969784"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">w1M-fd-Wtg</string>
+						<reference key="object" ref="49470051"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="489117329"/>
+							<reference ref="526415828"/>
+							<reference ref="57146650"/>
+						</array>
+						<reference key="parent" ref="405817330"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">76</string>
+						<reference key="object" ref="489117329"/>
+						<reference key="parent" ref="49470051"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">KPh-L2-khv</string>
+						<reference key="object" ref="526415828"/>
+						<reference key="parent" ref="49470051"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">71</string>
+						<reference key="object" ref="57146650"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="662747919"/>
+						</array>
+						<reference key="parent" ref="49470051"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">77</string>
+						<reference key="object" ref="662747919"/>
+						<reference key="parent" ref="57146650"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">53</string>
+						<reference key="object" ref="780077829"/>
+						<reference key="parent" ref="0"/>
+					</object>
+				</array>
+			</object>
+			<dictionary class="NSMutableDictionary" key="flattenedProperties">
+				<string key="-1.CustomClassName">AppDelegate</string>
+				<string key="-1.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="-1.showNotes"/>
+				<string key="-2.CustomClassName">UIResponder</string>
+				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="-2.showNotes"/>
+				<string key="10.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="10.showNotes"/>
+				<string key="100.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<reference key="100.IBUserGuides" ref="0"/>
+				<boolean value="NO" key="100.showNotes"/>
+				<string key="101.CustomClassName">GalleryViewController</string>
+				<string key="101.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="101.showNotes"/>
+				<string key="102.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="102.showNotes"/>
+				<string key="103.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="103.showNotes"/>
+				<string key="11.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<reference key="11.IBUserGuides" ref="0"/>
+				<boolean value="NO" key="11.showNotes"/>
+				<string key="17.CustomClassName">LibraryViewController</string>
+				<string key="17.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="17.showNotes"/>
+				<string key="18.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="18.showNotes"/>
+				<string key="19.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="19.showNotes"/>
+				<string key="20.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<reference key="20.IBUserGuides" ref="0"/>
+				<boolean value="NO" key="20.showNotes"/>
+				<string key="24.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="24.showNotes"/>
+				<string key="25.CustomClassName">CameraViewController</string>
+				<string key="25.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="25.showNotes"/>
+				<string key="26.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="26.showNotes"/>
+				<string key="31.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<reference key="31.IBUserGuides" ref="0"/>
+				<boolean value="NO" key="31.showNotes"/>
+				<string key="32.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="32.showNotes"/>
+				<string key="33.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<reference key="33.IBUserGuides" ref="0"/>
+				<boolean value="NO" key="33.showNotes"/>
+				<string key="35.CustomClassName">PickerTestsViewController</string>
+				<string key="35.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="35.showNotes"/>
+				<string key="36.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="36.showNotes"/>
+				<string key="53.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<reference key="53.IBUserGuides" ref="0"/>
+				<boolean value="NO" key="53.showNotes"/>
+				<string key="56.CustomClassName">CropViewController</string>
+				<string key="56.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="56.showNotes"/>
+				<string key="58.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="58.showNotes"/>
+				<string key="59.CustomClassName">PresetFilterViewController</string>
+				<string key="59.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="59.showNotes"/>
+				<string key="5DN-42-ovR.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<reference key="5DN-42-ovR.IBUserGuides" ref="0"/>
+				<boolean value="NO" key="5DN-42-ovR.showNotes"/>
+				<string key="60.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="60.showNotes"/>
+				<string key="61.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<reference key="61.IBUserGuides" ref="0"/>
+				<boolean value="NO" key="61.showNotes"/>
+				<string key="62.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="62.showNotes"/>
+				<string key="63.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="63.showNotes"/>
+				<string key="64.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="64.showNotes"/>
+				<string key="66.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="66.showNotes"/>
+				<string key="69.CustomClassName">PullToRefreshViewController</string>
+				<string key="69.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="69.showNotes"/>
+				<string key="70.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="70.showNotes"/>
+				<string key="71.CustomClassName">BadgesViewController</string>
+				<string key="71.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="71.showNotes"/>
+				<string key="76.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="76.showNotes"/>
+				<string key="77.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="77.showNotes"/>
+				<string key="78.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="78.showNotes"/>
+				<string key="79.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<reference key="79.IBUserGuides" ref="0"/>
+				<boolean value="NO" key="79.showNotes"/>
+				<string key="7CD-3s-kGm.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="7CD-3s-kGm.showNotes"/>
+				<string key="80.CustomClassName">HideOnScrollViewController</string>
+				<string key="80.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="80.showNotes"/>
+				<string key="81.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="81.showNotes"/>
+				<string key="82.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="82.showNotes"/>
+				<string key="96.CustomClassName">AdjustFilterViewController</string>
+				<string key="96.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="96.showNotes"/>
+				<string key="98.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="98.showNotes"/>
+				<string key="99.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="99.showNotes"/>
+				<string key="AYq-Wa-BnC.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="AYq-Wa-BnC.showNotes"/>
+				<string key="HSd-6h-141.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<reference key="HSd-6h-141.IBUserGuides" ref="0"/>
+				<boolean value="NO" key="HSd-6h-141.showNotes"/>
+				<string key="IGU-l6-Tva.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="IGU-l6-Tva.showNotes"/>
+				<string key="IlB-81-DTi.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<reference key="IlB-81-DTi.IBUserGuides" ref="0"/>
+				<boolean value="NO" key="IlB-81-DTi.showNotes"/>
+				<string key="KPh-L2-khv.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<reference key="KPh-L2-khv.IBUserGuides" ref="0"/>
+				<boolean value="NO" key="KPh-L2-khv.showNotes"/>
+				<string key="Sbz-d1-wpH.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="Sbz-d1-wpH.showNotes"/>
+				<string key="V2m-Pu-Rgs.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="V2m-Pu-Rgs.showNotes"/>
+				<string key="WxK-NJ-L5S.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="WxK-NJ-L5S.showNotes"/>
+				<string key="X6D-E3-PU8.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<reference key="X6D-E3-PU8.IBUserGuides" ref="0"/>
+				<boolean value="NO" key="X6D-E3-PU8.showNotes"/>
+				<string key="bD3-CE-uW4.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="bD3-CE-uW4.showNotes"/>
+				<string key="bgn-w9-tpY.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="bgn-w9-tpY.showNotes"/>
+				<string key="fmQ-lT-48K.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="fmQ-lT-48K.showNotes"/>
+				<string key="lky-qz-kAs.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="lky-qz-kAs.showNotes"/>
+				<string key="sTZ-dK-lYS.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="sTZ-dK-lYS.showNotes"/>
+				<string key="w1M-fd-Wtg.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="w1M-fd-Wtg.showNotes"/>
+				<string key="whf-JZ-Nez.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<boolean value="NO" key="whf-JZ-Nez.showNotes"/>
+			</dictionary>
+			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
+			<nil key="activeLocalization"/>
+			<dictionary class="NSMutableDictionary" key="localizations"/>
+			<nil key="sourceID"/>
+		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<int key="IBDocument.localizationMode">0</int>
+		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
+		<bool key="IBDocument.previouslyAttemptedUpgradeToXcode5">YES</bool>
+		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
+			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
+			<real value="1072" key="NS.object.0"/>
+		</object>
+		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
+			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.InterfaceBuilder3</string>
+			<integer value="4600" key="NS.object.0"/>
+		</object>
+		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
+		<int key="IBDocument.defaultPropertyAccessControl">3</int>
+		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="NBUKitResources.bundle/camera_shot.png">{16, 16}</string>
+			<string key="first.png">{30, 30}</string>
+			<string key="second.png">{30, 30}</string>
+		</dictionary>
+		<string key="IBCocoaTouchPluginVersion">3742</string>
+	</data>
+</archive>

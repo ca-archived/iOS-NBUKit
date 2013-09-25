@@ -18,8 +18,6 @@
 //  limitations under the License.
 //
 
-#ifndef PRODUCTION
-
 @class NBUDashboardLogger;
 
 /**
@@ -59,6 +57,4 @@
 @property (nonatomic, getter=isMinimized)   BOOL minimized;
 
 @end
-
-#endif
 

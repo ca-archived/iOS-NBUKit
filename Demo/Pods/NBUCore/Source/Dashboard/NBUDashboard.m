@@ -18,8 +18,6 @@
 //  limitations under the License.
 //
 
-#ifndef PRODUCTION
-
 #import "NBUDashboard.h"
 #import "NBUDashboardLogger.h"
 #import "NBUCore.h"
@@ -58,10 +56,13 @@ static NBUDashboard * _sharedDashboard;
     {
         self.windowLevel = UIWindowLevelStatusBar + 1;
         _screenSize = [UIScreen mainScreen].bounds.size;
+        
+#if XCODE_VERSION_MAJOR >= 0500
         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
         {
             self.tintColor = [UIColor lightGrayColor];
         }
+#endif
         
         // Load other views and objects
         [NSBundle loadNibNamed:@"NBUDashboard"
@@ -255,6 +256,4 @@ static NBUDashboard * _sharedDashboard;
 }
 
 @end
-
-#endif
 

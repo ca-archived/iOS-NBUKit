@@ -18,8 +18,6 @@
 //  limitations under the License.
 //
 
-#ifndef PRODUCTION
-
 #import "NBUDashboardLogger.h"
 #import "NBUDashboard.h"
 #import "NBUCore.h"
@@ -460,6 +458,4 @@ selectedScopeButtonIndexDidChange:(NSInteger)selectedScope
 }
 
 @end
-
-#endif
 
