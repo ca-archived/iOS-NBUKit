@@ -368,13 +368,15 @@
 {
     // Calculate bar height
     CGFloat topInset;
-    if (SYSTEM_VERSION_LESS_THAN(@"7.0"))
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
     {
-        topInset = self.navigationController.navigationBar.translucent ? self.navigationController.navigationBar.frame.size.height : 0.0;
+#if XCODE_VERSION_MAJOR >= 0500
+        topInset = self.topLayoutGuide.length;
+#endif
     }
     else
     {
-        topInset = self.topLayoutGuide.length;
+        topInset = self.navigationController.navigationBar.translucent ? self.navigationController.navigationBar.frame.size.height : 0.0;
     }
     
 	_thumbnailsGridView.frame = _container.bounds;
