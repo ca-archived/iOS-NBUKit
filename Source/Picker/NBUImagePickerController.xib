@@ -73,6 +73,7 @@
 			</object>
 			<object class="IBUIViewController" id="627336647">
 				<object class="IBUINavigationItem" key="IBUINavigationItem" id="840055665">
+					<reference key="IBUINavigationBar"/>
 					<string key="IBUITitle"/>
 					<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="361226013">
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -98,7 +99,7 @@
 					<int key="IBUIInterfaceOrientation">1</int>
 					<int key="interfaceOrientation">1</int>
 				</object>
-				<int key="IBUIEdgesForExtendedLayout">15</int>
+				<bool key="IBUIAutomaticallyAdjustsScrollViewInsets">NO</bool>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<bool key="IBUIHorizontal">NO</bool>
 			</object>
@@ -217,7 +218,6 @@
 								<string key="NSFrame">{{107, 0}, {33, 33}}</string>
 								<reference key="NSSuperview" ref="477924362"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
@@ -312,7 +312,6 @@
 							<string key="NSFrame">{{0, 380}, {320, 36}}</string>
 							<reference key="NSSuperview" ref="575846685"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<bool key="IBUIOpaque">NO</bool>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							<int key="IBUIContentHorizontalAlignment">0</int>
@@ -5547,7 +5546,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<string key="goToNext:">id</string>
 						<string key="goToPrevious:">id</string>
 						<string key="pageControlWasTapped:">id</string>
-						<string key="thumbnailWasTapped:">id</string>
+						<string key="thumbnailWasTapped:">UIView</string>
 						<string key="toggleFullscreen:">id</string>
 						<string key="toggleThumbnailsView:">id</string>
 					</dictionary>
@@ -5566,7 +5565,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						</object>
 						<object class="IBActionInfo" key="thumbnailWasTapped:">
 							<string key="name">thumbnailWasTapped:</string>
-							<string key="candidateClassName">id</string>
+							<string key="candidateClassName">UIView</string>
 						</object>
 						<object class="IBActionInfo" key="toggleFullscreen:">
 							<string key="name">toggleFullscreen:</string>
