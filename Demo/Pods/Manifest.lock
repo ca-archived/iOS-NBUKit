@@ -2,28 +2,27 @@ PODS:
   - CocoaLumberjack (1.6)
   - GPUImage (0.1.0)
   - Lockbox (1.4.3)
-  - NBUCore (HEAD based on 1.9.5):
+  - NBUCore (1.9.6):
     - CocoaLumberjack (<= 1.6)
     - Lockbox (~> 1.4.2)
     - NBUCore/Additions
     - NBUCore/Dashboard
     - NBUCore/Helpers
     - NBUCore/UI
-  - NBUCore/Additions (HEAD based on 1.9.5):
+  - NBUCore/Additions (1.9.6):
     - CocoaLumberjack (<= 1.6)
     - Lockbox (~> 1.4.2)
-  - NBUCore/Dashboard (HEAD based on 1.9.5):
+  - NBUCore/Dashboard (1.9.6):
     - CocoaLumberjack (<= 1.6)
     - Lockbox (~> 1.4.2)
-  - NBUCore/Helpers (HEAD based on 1.9.5):
+  - NBUCore/Helpers (1.9.6):
     - CocoaLumberjack (<= 1.6)
     - Lockbox (~> 1.4.2)
-  - NBUCore/UI (HEAD based on 1.9.5):
+  - NBUCore/UI (1.9.6):
     - CocoaLumberjack (<= 1.6)
     - Lockbox (~> 1.4.2)
   - NBUKit (1.9.5):
-    - GPUImage (~> 0.1.0)
-    - NBUCore (~> 1.9.5)
+    - NBUCore (~> 1.9.6)
     - NBUKit/Assets
     - NBUKit/Image
     - NBUKit/Library
@@ -31,42 +30,32 @@ PODS:
     - NBUKit/Resources
     - NBUKit/UI
   - NBUKit/Assets (1.9.5):
-    - GPUImage (~> 0.1.0)
-    - NBUCore (~> 1.9.5)
+    - NBUCore (~> 1.9.6)
   - NBUKit/Image (1.9.5):
-    - GPUImage (~> 0.1.0)
-    - NBUCore (~> 1.9.5)
+    - GPUImage (>= 0.1.0)
+    - NBUCore (~> 1.9.6)
   - NBUKit/Library (1.9.5):
-    - GPUImage (~> 0.1.0)
-    - NBUCore (~> 1.9.5)
+    - NBUCore (~> 1.9.6)
     - NBUKit/Library/MotionOrientation
     - NBUKit/Library/NBUCompatibility
     - NBUKit/Library/RBVolumeButtons
     - NBUKit/Library/RestKit Support
   - NBUKit/Library/MotionOrientation (1.9.5):
-    - GPUImage (~> 0.1.0)
-    - NBUCore (~> 1.9.5)
+    - NBUCore (~> 1.9.6)
   - NBUKit/Library/NBUCompatibility (1.9.5):
-    - GPUImage (~> 0.1.0)
-    - NBUCore (~> 1.9.5)
+    - NBUCore (~> 1.9.6)
   - NBUKit/Library/RBVolumeButtons (1.9.5):
-    - GPUImage (~> 0.1.0)
-    - NBUCore (~> 1.9.5)
+    - NBUCore (~> 1.9.6)
   - NBUKit/Library/RestKit Support (1.9.5):
-    - GPUImage (~> 0.1.0)
-    - NBUCore (~> 1.9.5)
+    - NBUCore (~> 1.9.6)
   - NBUKit/Picker (1.9.5):
-    - GPUImage (~> 0.1.0)
-    - NBUCore (~> 1.9.5)
+    - NBUCore (~> 1.9.6)
   - NBUKit/Resources (1.9.5):
-    - GPUImage (~> 0.1.0)
-    - NBUCore (~> 1.9.5)
+    - NBUCore (~> 1.9.6)
   - NBUKit/UI (1.9.5):
-    - GPUImage (~> 0.1.0)
-    - NBUCore (~> 1.9.5)
+    - NBUCore (~> 1.9.6)
 
 DEPENDENCIES:
-  - NBUCore (HEAD)
   - NBUKit (from `../`)
 
 EXTERNAL SOURCES:
@@ -77,7 +66,7 @@ SPEC CHECKSUMS:
   CocoaLumberjack: 0f2fa7090a23f13261072d882e017c688300efbe
   GPUImage: 5b902c1df2afe0ac30a8e3e7379f9c0bb25c7c85
   Lockbox: 1bcfd564f034b83456fcad5bdd49470a80a38d2b
-  NBUCore: 1d276541ae098e5b83c06a645a07bfbf0cb0414e
-  NBUKit: 649a465ab13f6f5235ef7ef6b7f3699361e33631
+  NBUCore: 05f28118e670f19d41196a6b00bfd338f28f3a77
+  NBUKit: 12e5ad538a30e8e496e1696b103e970fdbf17405
 
 COCOAPODS: 0.25.0
