@@ -90,6 +90,7 @@ configureFilterBlock:(NBUConfigureFilterBlock)block;
 /// @name Convenience Methods for Retrieving Values
 
 /// Return the value for a given key from either values or attributes' default values.
+/// @param valueKey The value's key.
 - (id)effectiveValueForKey:(NSString *)valueKey;
 
 /// Get a value as a float number.

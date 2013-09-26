@@ -90,8 +90,10 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 
 /// @name Picture Sequence Properties
 
+/// The interval at which images should be captured.
 @property (nonatomic)                   NSTimeInterval sequenceCaptureInterval;
 
+/// Whether the camera is currently capturing a sequence of images.
 @property (nonatomic, readonly,
            getter=isCapturingSequence)  BOOL capturingSequence;
 
@@ -179,6 +181,8 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 /// @param sender The sender object.
 - (IBAction)takePicture:(id)sender;
 
+/// Start/stop a picture capture sequence.
+/// @param sender The sender object.
 - (IBAction)startStopPictureSequence:(id)sender;
 
 /// Start or stop video recording.

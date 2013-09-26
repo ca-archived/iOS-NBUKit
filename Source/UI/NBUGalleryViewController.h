@@ -40,10 +40,11 @@
 
 /// @name Managing Image Loading
 
-/// The array ob objects to be displayed.
+/// The array of objects to be displayed.
 /// @see NBUImageLoader.
 @property (strong, nonatomic)               NSArray * objectArray;
 
+/// The gallery views.
 @property (nonatomic, readonly)             NSArray * views;
 
 /// An optional custom imageLoader.
