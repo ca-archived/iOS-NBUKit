@@ -25,12 +25,6 @@
 #undef  NBUKIT_MODULE
 #define NBUKIT_MODULE   NBUKIT_MODULE_COMPATIBILITY
 
-#define RKLogError      NBULogError
-#define RKLogWarning    NBULogWarn
-#define RKLogInfo       NBULogInfo
-#define RKLogDebug      NBULogVerbose
-#define RKLogTrace      NBULogVerbose
-
 #define kMarginFromTop 30.0
 #define kAnimationDuration 0.3
 
@@ -182,7 +176,7 @@ NSString * const ActiveViewSwipedNotification = @"ActiveViewSwipedNotification";
 // For complex layouts override layoutSubviews
 - (CGSize)sizeThatFits:(CGSize)size
 {
-    RKLogTrace(@">>> %@ sizeThatFits: %@ dynamicHeightViews: %@",
+    NBULogVerbose(@">>> %@ sizeThatFits: %@ dynamicHeightViews: %@",
                NSStringFromClass([self class]),
                NSStringFromCGSize(size),
                _dynamicHeightSubviews);
@@ -192,7 +186,7 @@ NSString * const ActiveViewSwipedNotification = @"ActiveViewSwipedNotification";
         !_dynamicHeightSubviews ||
         ([_dynamicHeightSubviews count] == 0))
     {
-        RKLogTrace(@"<<< %@ to %@ (originalSize)",
+        NBULogVerbose(@"<<< %@ to %@ (originalSize)",
                    NSStringFromCGSize(self.bounds.size),
                    NSStringFromCGSize(CGSizeMake(size.width, _originalSize.height)));
         return CGSizeMake(size.width,
@@ -212,7 +206,7 @@ NSString * const ActiveViewSwipedNotification = @"ActiveViewSwipedNotification";
         heightThatFits += sizeThatFits.height - view.bounds.size.height;
     }
     
-    RKLogTrace(@"<<< %@ to %@",
+    NBULogVerbose(@"<<< %@ to %@",
                NSStringFromCGSize(self.bounds.size),
                NSStringFromCGSize(CGSizeMake(size.width, heightThatFits)));
     return CGSizeMake(size.width,
@@ -455,7 +449,7 @@ NSString * const ActiveViewSwipedNotification = @"ActiveViewSwipedNotification";
         receive = _recognizeSwipe;
     }
     
-    RKLogTrace(@"%@ shouldReceiveTouch: %@",
+    NBULogVerbose(@"%@ shouldReceiveTouch: %@",
                NSStringFromClass([self class]),
                NBUStringFromBOOL(receive));
     return receive;
@@ -491,7 +485,7 @@ NSString * const ActiveViewSwipedNotification = @"ActiveViewSwipedNotification";
     {
         if (size.width == CGFLOAT_MAX)
         {
-            RKLogWarning(@"Active label autoresizing masks are nor properly set %@", self);
+            NBULogWarn(@"Active label autoresizing masks are nor properly set %@", self);
         }
         sizeThatFits = CGSizeMake(size.width,
                                   MAX(sizeThatFits.height, _originalSize.height));
@@ -502,13 +496,13 @@ NSString * const ActiveViewSwipedNotification = @"ActiveViewSwipedNotification";
     {
         if (size.height == CGFLOAT_MAX)
         {
-            RKLogWarning(@"Active label autoresizing masks are nor properly set %@", self);
+            NBULogWarn(@"Active label autoresizing masks are nor properly set %@", self);
         }
         sizeThatFits = CGSizeMake(MAX(sizeThatFits.width, _originalSize.width),
                                   size.height);
     }
     
-    RKLogTrace(@"<<< %@ to %@ (supper sizeThatFits %@: %@) (al: %@)",
+    NBULogVerbose(@"<<< %@ to %@ (supper sizeThatFits %@: %@) (al: %@)",
                NSStringFromCGSize(self.bounds.size), NSStringFromCGSize(sizeThatFits), NSStringFromCGSize(size), NSStringFromCGSize([super sizeThatFits:size]), self.text);
     
     return CGSizeMake(MIN(sizeThatFits.width, _maxSize.width),

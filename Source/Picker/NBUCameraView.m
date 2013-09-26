@@ -23,15 +23,21 @@
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "RKOrderedDictionary.h"
+#import "MotionOrientation.h"
 
 // Define module
 #undef  NBUKIT_MODULE
 #define NBUKIT_MODULE   NBUKIT_MODULE_CAMERA_ASSETS
 
-// Private class
+// Private categories and classes
+@interface NBUCameraView (Private) <AVCaptureFileOutputRecordingDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>
+
+@end
+
 @interface PointOfInterestView : UIView
 
 @end
+
 
 @implementation NBUCameraView
 {
@@ -40,9 +46,13 @@
     AVCaptureSession * _captureSession;
     AVCaptureVideoPreviewLayer * _previewLayer;
     AVCaptureDeviceInput * _captureInput;
-    AVCaptureStillImageOutput * _captureOutput;
+    AVCaptureStillImageOutput * _captureImageOutput;
+    AVCaptureMovieFileOutput * _captureMovieOutput;
+    AVCaptureVideoDataOutput * _captureVideoDataOutput;
     AVCaptureConnection * _videoConnection;
     PointOfInterestView * _poiView;
+    NSDate * _lastSequenceCaptureDate;
+    UIImageOrientation _sequenceCaptureOrientation;
     
 #ifdef __i386__
     // Mock image for simulator
@@ -52,9 +62,13 @@
 
 @synthesize targetResolution = _targetResolution;
 @synthesize captureResultBlock = _captureResultBlock;
+@synthesize captureMovieResultBlock = _captureMovieResultBlock;
 @synthesize saveResultBlock = _saveResultBlock;
 @synthesize savePicturesToLibrary = _savePicturesToLibrary;
 @synthesize targetLibraryAlbumName = _targetLibraryAlbumName;
+@synthesize capturingSequence = _capturingSequence;
+@synthesize sequenceCaptureInterval = _sequenceCaptureInterval;
+@synthesize targetMovieFolder = _targetMovieFolder;
 @synthesize shouldAutoRotateView = _shouldAutoRotateView;
 @synthesize keepFrontCameraPicturesMirrored = _keepFrontCameraPicturesMirrored;
 @synthesize availableCaptureDevices = _availableCaptureDevices;
@@ -77,18 +91,19 @@
 @synthesize exposureButton = _exposureButton;
 @synthesize whiteBalanceButton = _whiteBalanceButton;
 @synthesize lastPictureImageView = _lastPictureImageView;
+@synthesize animateLastPictureImageView = _animateLastPictureImageView;
 
 - (void)commonInit
 {
     [super commonInit];
     
     // Configure the view
-    self.clipsToBounds = YES;
     self.recognizeTap = YES;
     self.doNotHighlightOnTap = YES;
     self.recognizeDoubleTap = YES;
     self.highlightColor = [UIColor colorWithWhite:1.0
                                             alpha:0.7];
+    _animateLastPictureImageView = YES;
     
     // PoI view
     _poiView = [PointOfInterestView new];
@@ -101,24 +116,24 @@
     mockView.contentMode = UIViewContentModeScaleAspectFill;
     mockView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     mockView.frame = self.bounds;
-    [self addSubview:mockView];
+    [self insertSubview:mockView
+                atIndex:0];
 #endif
     
     // First orientation update
-    [self setDeviceOrientation:[UIDevice currentDevice].orientation];
+    [MotionOrientation initialize];
+    [self setDeviceOrientation:[MotionOrientation sharedInstance].deviceOrientation];
     
     // Observe orientation changes
-    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(deviceOrientationChanged:)
-                                                 name:UIDeviceOrientationDidChangeNotification
+                                                 name:MotionOrientationChangedNotification
                                                object:nil];
 }
 
 - (void)dealloc
 {
     // Stop observing
-    [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -156,17 +171,17 @@
     }
     
     // Configure output if needed
-    if (!_captureOutput)
+    if (!_captureImageOutput)
     {
-        _captureOutput = [AVCaptureStillImageOutput new];
-        if ([_captureSession canAddOutput:_captureOutput])
-            [_captureSession addOutput:_captureOutput];
+        _captureImageOutput = [AVCaptureStillImageOutput new];
+        if ([_captureSession canAddOutput:_captureImageOutput])
+            [_captureSession addOutput:_captureImageOutput];
         else
         {
-            NBULogError(@"Can't add output: %@ to session: %@", _captureOutput, _captureSession);
+            NBULogError(@"Can't add output: %@ to session: %@", _captureImageOutput, _captureSession);
             return;
         }
-        NBULogVerbose(@"Output: %@ settings: %@", _captureOutput, _captureOutput.outputSettings);
+        NBULogVerbose(@"Output: %@ settings: %@", _captureImageOutput, _captureImageOutput.outputSettings);
     }
     
     // Get a capture device if needed
@@ -209,7 +224,7 @@
 
 - (void)deviceOrientationChanged:(NSNotification *)notification
 {
-    [self setDeviceOrientation:[UIDevice currentDevice].orientation];
+    [self setDeviceOrientation:[MotionOrientation sharedInstance].deviceOrientation];
 }
 
 - (void)setDeviceOrientation:(UIDeviceOrientation)orientation
@@ -435,6 +450,9 @@
         NBULogError(@"Error creating an AVCaptureDeviceInput: %@", error);
     }
     
+    // Choose the best suited session presset
+    [_captureSession setSessionPreset:[self bestSuitedSessionPresetForResolution:_targetResolution]];
+    
     // Add input to session
     if ([_captureSession canAddInput:_captureInput])
     {
@@ -448,7 +466,7 @@
     
     // Refresh the video connection
     _videoConnection = nil;
-    for (AVCaptureConnection * connection in _captureOutput.connections)
+    for (AVCaptureConnection * connection in _captureImageOutput.connections)
     {
         for (AVCaptureInputPort * port in connection.inputPorts)
         {
@@ -474,11 +492,8 @@
     }
     if (!_videoConnection)
     {
-        NBULogError(@"Couldn't create video connection for output: %@", _captureOutput);
+        NBULogError(@"Couldn't create video connection for output: %@", _captureImageOutput);
     }
-    
-    // Choose the best suited session presset
-    [_captureSession setSessionPreset:[self bestSuitedSessionPresetForResolution:_targetResolution]];
     
     [_captureSession commitConfiguration];
 }
@@ -488,7 +503,7 @@
     // Not set?
     if (CGSizeEqualToSize(targetResolution, CGSizeZero))
     {
-        NBULogInfo(@"No target resolution was set. Capturing full resolution pictures.");
+        NBULogInfo(@"No target resolution was set. Capturing full resolution pictures ('%@').", AVCaptureSessionPresetPhoto);
         return AVCaptureSessionPresetPhoto;
     }
     
@@ -497,7 +512,7 @@
                                                                                                       targetResolution.width);
     // Try different resolutions
     NSString * preset;
-    NSDictionary * resolutions = [self availableResolutions];
+    NSDictionary * resolutions = [self availableResolutionsForCurrentDevice];
     CGSize resolution;
     for (preset in resolutions)
     {
@@ -516,7 +531,7 @@
 
 #define sizeObject(width, height) [NSValue valueWithCGSize:CGSizeMake(width, height)]
 
-- (NSDictionary *)availableResolutions
+- (NSDictionary *)availableResolutionsForCurrentDevice
 {
     // Possible resolutions
     NSArray * presets;
@@ -576,16 +591,16 @@
 {
     NBULogTrace();
     
-#ifndef __i386__
     // Update UI
     _shootButton.enabled = NO;
-    [self flashHighlightMask];
     self.window.userInteractionEnabled = NO;
+    [self flashHighlightMask];
     
+#ifndef __i386__
     // Get the image
-    [_captureOutput captureStillImageAsynchronouslyFromConnection:_videoConnection
-                                                completionHandler:^(CMSampleBufferRef imageDataSampleBuffer,
-                                                                    NSError * error)
+    [_captureImageOutput captureStillImageAsynchronouslyFromConnection:_videoConnection
+                                                     completionHandler:^(CMSampleBufferRef imageDataSampleBuffer,
+                                                                         NSError * error)
      {
          if (error)
          {
@@ -606,83 +621,224 @@
              
              NBULogInfo(@"Captured jpeg image: %@ of size: %@ orientation: %d",
                         image, NSStringFromCGSize(image.size), image.imageOrientation);
+#else
+             // Mock simulator
+             UIImage * image = _mockImage;
+             NBULogInfo(@"Captured mock image: %@ of size: %@",
+                        image, NSStringFromCGSize(_mockImage.size));
+#endif     
+             // Update last picture view
+             if (_lastPictureImageView)
+             {
+                 if (_animateLastPictureImageView)
+                 {
+                     static UIImageView * preview;
+                     static dispatch_once_t onceToken;
+                     dispatch_once(&onceToken, ^
+                                   {
+                                       preview = [[NBURotatingImageView alloc] initWithImage:image];
+                                       preview.contentMode = UIViewContentModeScaleAspectFill;
+                                       preview.clipsToBounds = YES;
+                                       [self.viewController.view addSubview:preview];
+                                   });
+                     preview.frame = [self.viewController.view convertRect:self.bounds
+                                                                  fromView:self];
+                     preview.hidden = NO;
+                     
+                     // Update UI
+                     [UIView animateWithDuration:0.2
+                                           delay:0.0
+                                         options:UIViewAnimationOptionCurveEaseIn
+                                      animations:^
+                      {
+                          preview.frame = [self.viewController.view convertRect:_lastPictureImageView.bounds
+                                                                       fromView:_lastPictureImageView];
+                      }
+                                      completion:^(BOOL finished)
+                      {
+                          //_lastPictureImageView.image = [image thumbnailWithSize:_lastPictureImageView.size];
+                          _lastPictureImageView.image = image;
+                          preview.hidden = YES;
+                          
+                          _shootButton.enabled = YES;
+                          self.window.userInteractionEnabled = YES;
+                      }];
+                 }
+                 else
+                 {
+                     //_lastPictureImageView.image = [image thumbnailWithSize:_lastPictureImageView.size];
+                     _lastPictureImageView.image = image;
+                     
+                     _shootButton.enabled = YES;
+                     self.window.userInteractionEnabled = YES;
+                 }
+             }
+             else
+             {
+                 _shootButton.enabled = YES;
+                 self.window.userInteractionEnabled = YES;
+             }
              
              // Execute capture block
-             if (_captureResultBlock) _captureResultBlock(image, nil);
-             
-             NSDictionary * metadata = (__bridge_transfer NSDictionary *)CMCopyDictionaryOfAttachments(kCFAllocatorDefault,
-                                                                                                       imageDataSampleBuffer,
-                                                                                                       kCMAttachmentMode_ShouldPropagate);
-             NBULogVerbose(@"Metadata: %@", metadata);
-             
-             // Update UI
              dispatch_async(dispatch_get_main_queue(),
                             ^{
-                                _shootButton.enabled = YES;
-                                self.window.userInteractionEnabled = YES;
-                                
-                                // Update last picture view
-                                if (_lastPictureImageView)
-                                {
-                                    _lastPictureImageView.image = [image thumbnailWithSize:_lastPictureImageView.size];
-                                }
+                                if (_captureResultBlock) _captureResultBlock(image, nil);
                             });
              
              // No need to save image?
              if (!_savePicturesToLibrary)
                  return;
              
-             // Save to the Camera Roll
-             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-                 
-                 [[NBUAssetsLibrary sharedLibrary] saveImageToCameraRoll:image
-                                                                metadata:metadata
-                                                addToAssetsGroupWithName:_targetLibraryAlbumName
-                                                             resultBlock:^(NSURL * assetURL,
-                                                                           NSError * saveError)
-                  {
-                      // Execute result block
-                      dispatch_async(dispatch_get_main_queue(), ^{
-                          if (_saveResultBlock) _saveResultBlock(image,
-                                                                 metadata,
-                                                                 assetURL,
-                                                                 saveError);
-                      });
-                  }];
-             });
+             // Retrieve the metadata
+             NSDictionary * metadata;
+#ifndef __i386__
+             metadata = (__bridge_transfer NSDictionary *)CMCopyDictionaryOfAttachments(kCFAllocatorDefault,
+                                                                                        imageDataSampleBuffer,
+                                                                                        kCMAttachmentMode_ShouldPropagate);
+             NBULogVerbose(@"Image metadata: %@", metadata);
+#endif
+             
+             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^
+                            {
+                                // Read metadata
+                                
+                                // Save to the Camera Roll
+                                [[NBUAssetsLibrary sharedLibrary] saveImageToCameraRoll:image
+                                                                               metadata:metadata
+                                                               addToAssetsGroupWithName:_targetLibraryAlbumName
+                                                                            resultBlock:^(NSURL * assetURL,
+                                                                                          NSError * saveError)
+                                 {
+                                     // Execute result block
+                                     dispatch_async(dispatch_get_main_queue(), ^{
+                                         if (_saveResultBlock) _saveResultBlock(image,
+                                                                                metadata,
+                                                                                assetURL,
+                                                                                saveError);
+                                     });
+                                 }];
+                            });
+#ifndef __i386__
          }
      }];
-    
-#else
-    // Mock simulator
-    
-    NBULogInfo(@"Captured mock image: %@ of size: %@",
-               _mockImage, NSStringFromCGSize(_mockImage.size));
-    
-    // Execute capture block
-    if (_captureResultBlock) _captureResultBlock(_mockImage, nil);
-    
-    // Update last picture view
-    if (_lastPictureImageView)
+#endif
+}
+
+- (IBAction)startStopPictureSequence:(id)sender
+{
+    if (!_capturingSequence)
     {
-        _lastPictureImageView.image = [_mockImage thumbnailWithSize:_lastPictureImageView.size];
+        if (!_captureVideoDataOutput)
+        {
+            _captureVideoDataOutput = [AVCaptureVideoDataOutput new];
+            _captureVideoDataOutput.videoSettings = @{(NSString *)kCVPixelBufferPixelFormatTypeKey: @(kCVPixelFormatType_32BGRA)};
+            [_captureVideoDataOutput setSampleBufferDelegate:self
+                                                       queue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0)];
+            if (_sequenceCaptureInterval == 0)
+            {
+                _sequenceCaptureInterval = 0.25;
+            }
+        }
+        
+        if ([_captureSession canAddOutput:_captureVideoDataOutput])
+        {
+            [_captureSession addOutput:_captureVideoDataOutput];
+            _lastSequenceCaptureDate = [NSDate date]; // Skip the first image which looks to dark for some reason
+            _sequenceCaptureOrientation = (_currentDevice.position == AVCaptureDevicePositionFront ? // Set the output orientation only once per sequence
+                                           UIImageOrientationLeftMirrored :
+                                           UIImageOrientationRight);
+            _capturingSequence = YES;
+        }
+        else
+        {
+            NBULogError(@"Can't capture picture sequences here!");
+            return;
+        }
     }
-    
-    // No need to save image?
-    if (!_savePicturesToLibrary)
+    else
+    {
+        [_captureSession removeOutput:_captureVideoDataOutput];
+        _capturingSequence = NO;
+    }
+}
+
+- (void)captureOutput:(AVCaptureOutput *)captureOutput
+didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
+       fromConnection:(AVCaptureConnection *)connection
+{
+    // Skip capture?
+    if ([[NSDate date] timeIntervalSinceDate:_lastSequenceCaptureDate] < _sequenceCaptureInterval)
         return;
     
-    // Save to the Camera Roll
-    [[NBUAssetsLibrary sharedLibrary] saveImageToCameraRoll:_mockImage
-                                                   metadata:nil
-                                   addToAssetsGroupWithName:_targetLibraryAlbumName
-                                                resultBlock:^(NSURL *assetURL,
-                                                              NSError * saveError)
-     {
-         // Execute result block
-         if (_saveResultBlock) _saveResultBlock(_mockImage, nil, assetURL, saveError);
-     }];
-#endif
+    _lastSequenceCaptureDate = [NSDate date];
+    
+    UIImage * image = [self imageFromSampleBuffer:sampleBuffer];
+    NBULogInfo(@"Captured image: %@ of size: %@ orientation: %d",
+               image, NSStringFromCGSize(image.size), image.imageOrientation);
+    
+    // Execute capture block
+    dispatch_async(dispatch_get_main_queue(), ^
+                   {
+                       if (_captureResultBlock) _captureResultBlock(image, nil);
+                   });
+}
+
+- (BOOL)isRecording
+{
+    return _captureMovieOutput.recording;
+}
+
+- (IBAction)startStopRecording:(id)sender
+{
+    if (!self.recording)
+    {
+        if (!_captureMovieOutput)
+        {
+            _captureMovieOutput = [AVCaptureMovieFileOutput new];
+        }
+        
+        if ([_captureSession canAddOutput:_captureMovieOutput])
+        {
+            [_captureSession addOutput:_captureMovieOutput];
+        }
+        else
+        {
+            NBULogError(@"Can't record movies here!");
+            return;
+        }
+        
+        if (!_targetMovieFolder)
+        {
+            _targetMovieFolder = [UIApplication sharedApplication].documentsDirectory;
+        }
+        NSURL * movieOutputURL = [NSFileManager URLForNewFileAtDirectory:_targetMovieFolder
+                                                      fileNameWithFormat:@"movie%02d.mov"];
+        
+        [_captureMovieOutput startRecordingToOutputFileURL:movieOutputURL
+                                         recordingDelegate:self];
+    }
+    else
+    {
+        [_captureMovieOutput stopRecording];
+    }
+}
+
+- (void)captureOutput:(AVCaptureFileOutput *)captureOutput
+didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
+      fromConnections:(NSArray *)connections
+                error:(NSError *)error
+{
+    if (!error)
+    {
+        NBULogInfo(@"Finished capturing movie to %@", outputFileURL);
+    }
+    else
+    {
+        NBULogError(@"Error capturing movie: %@", error);
+    }
+    
+    [_captureSession removeOutput:_captureMovieOutput];
+    if (_captureMovieResultBlock) _captureMovieResultBlock(outputFileURL, error);
 }
 
 - (void)toggleCamera:(id)sender
@@ -948,6 +1104,52 @@
     }
     
     return pointOfInterest;
+}
+
+#pragma mark - Other methods
+
+// Create a UIImage from sample buffer data
+// Based on http://stackoverflow.com/questions/8924299/ios-capturing-image-using-avframework
+- (UIImage *)imageFromSampleBuffer:(CMSampleBufferRef)sampleBuffer
+{
+    // Get a CMSampleBuffer's Core Video image buffer for the media data
+    CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+    // Lock the base address of the pixel buffer
+    CVPixelBufferLockBaseAddress(imageBuffer, 0);
+    
+    // Get the number of bytes per row for the pixel buffer
+    void *baseAddress = CVPixelBufferGetBaseAddress(imageBuffer);
+    
+    // Get the number of bytes per row for the pixel buffer
+    size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer);
+    // Get the pixel buffer width and height
+    size_t width = CVPixelBufferGetWidth(imageBuffer);
+    size_t height = CVPixelBufferGetHeight(imageBuffer);
+    
+    // Create a device-dependent RGB color space
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    
+    // Create a bitmap graphics context with the sample buffer data
+    CGContextRef context = CGBitmapContextCreate(baseAddress, width, height, 8,
+                                                 bytesPerRow, colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
+    // Create a Quartz image from the pixel data in the bitmap graphics context
+    CGImageRef quartzImage = CGBitmapContextCreateImage(context);
+    // Unlock the pixel buffer
+    CVPixelBufferUnlockBaseAddress(imageBuffer,0);
+    
+    // Free up the context and color space
+    CGContextRelease(context);
+    CGColorSpaceRelease(colorSpace);
+    
+    // Create an image object from the Quartz image
+    UIImage *image = [UIImage imageWithCGImage:quartzImage
+                                         scale:1.0
+                                   orientation:_sequenceCaptureOrientation];
+    
+    // Release the Quartz image
+    CGImageRelease(quartzImage);
+    
+    return (image);
 }
 
 @end

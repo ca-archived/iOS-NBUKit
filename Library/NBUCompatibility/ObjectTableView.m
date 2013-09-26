@@ -25,12 +25,6 @@
 #undef  NBUKIT_MODULE
 #define NBUKIT_MODULE   NBUKIT_MODULE_COMPATIBILITY
 
-#define RKLogError      NBULogError
-#define RKLogWarning    NBULogWarn
-#define RKLogInfo       NBULogInfo
-#define RKLogDebug      NBULogVerbose
-#define RKLogTrace      NBULogVerbose
-
 // Private classes
 @interface FlexibleTableView : UITableView
 {
@@ -314,6 +308,7 @@
                                     cell.contentView.bounds.origin.y,
                                     cell.contentView.bounds.size.width,
                                     view.frame.size.height);
+            cell.backgroundColor = [UIColor clearColor];
             cell.contentView.bounds = view.frame;
             [cell.contentView addSubview:view];
         }
@@ -325,7 +320,7 @@
     {
         if (!self.loadMoreView)
         {
-            RKLogError(@"loadMoreView is nil so an empty cell will be used instead");
+            NBULogError(@"loadMoreView is nil so an empty cell will be used instead");
             return [[ActiveCell alloc] initWithStyle:UITableViewCellStyleDefault
                                      reuseIdentifier:nil];
         }
@@ -333,7 +328,7 @@
     }
     
     // We shouldn't reach here!!!
-    RKLogError(@"Cell is being asked for non-existent indexPath: %@. Will return an empty cell", indexPath);
+    NBULogError(@"Cell is being asked for non-existent indexPath: %@. Will return an empty cell", indexPath);
     return [[ActiveCell alloc] initWithStyle:UITableViewCellStyleDefault
                              reuseIdentifier:nil];
 }
@@ -357,7 +352,7 @@
     
     if (index==NSNotFound)
     {
-        RKLogWarning(@"Ignoring setRowHeight for not present object: %@", object);
+        NBULogWarn(@"Ignoring setRowHeight for not present object: %@", object);
         return;
     }
     
@@ -477,7 +472,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
         }
         
         // d) Loaded view's height
-        RKLogTrace(@"\nobject: %@\nview: %@\nsize: %f\n", object, view, view.bounds.size.height);
+        NBULogVerbose(@"\nobject: %@\nview: %@\nsize: %f\n", object, view, view.bounds.size.height);
         return view.bounds.size.height;
     }
     
@@ -493,7 +488,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CGFloat height = [self logTableView:tableView heightForRowAtIndexPath:indexPath];
-    RKLogTrace(@"--- %d,%d: %f", indexPath.section, indexPath.row, height);
+    NBULogVerbose(@"--- %d,%d: %f", indexPath.section, indexPath.row, height);
     return height;
 }
 
@@ -510,13 +505,13 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.isEmpty || self.doesNotResize)
     {
-        RKLogTrace(@"<<< %@ (tv originalSize)",
+        NBULogVerbose(@"<<< %@ (tv originalSize)",
                    NSStringFromCGSize(CGSizeMake(size.width,
                                                  self.originalSize.height)));
         return CGSizeMake(size.width,
                           self.originalSize.height);
     }
-    RKLogTrace(@"<<< %@ to %@ (tv)",
+    NBULogVerbose(@"<<< %@ to %@ (tv)",
                NSStringFromCGSize(self.bounds.size),
                NSStringFromCGSize(CGSizeMake(size.width,
                                              _tableView.contentSize.height)));
@@ -552,7 +547,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)setContentSize:(CGSize)contentSize
 {
-//    RKLogTrace(@"!!! %p %@", self, NSStringFromCGSize(contentSize));
+//    NBULogVerbose(@"!!! %p %@", self, NSStringFromCGSize(contentSize));
     [super setContentSize:contentSize];
     
     if (_doNotFireSizeNotification ||
@@ -562,7 +557,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     }
     
     // Fire notification!
-    RKLogDebug(@"! %p contentSize changed: %@ should be %@",
+    NBULogVerbose(@"! %p contentSize changed: %@ should be %@",
                self.superview,
                NSStringFromCGSize(self.bounds.size),
                NSStringFromCGSize(contentSize));
@@ -590,13 +585,13 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     UIView * view = [self.contentView.subviews objectAtIndex:0];
     if (frame.size.height > 0.0)
     {
-        RKLogTrace(@"%p xxx %@ (%d)", self, NSStringFromCGRect(frame), self.subviews.count);
+        NBULogVerbose(@"%p xxx %@ (%d)", self, NSStringFromCGRect(frame), self.subviews.count);
         view.hidden = NO;
         view.frame = self.bounds;
     }
     else
     {
-        RKLogTrace(@"%p xxx skipped %@ (%d)", self, NSStringFromCGRect(frame), self.subviews.count);
+        NBULogVerbose(@"%p xxx skipped %@ (%d)", self, NSStringFromCGRect(frame), self.subviews.count);
         view.hidden = YES;
     }
 }

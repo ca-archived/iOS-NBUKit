@@ -34,7 +34,7 @@ extern NSString * const NBUFilterTypeMultiplyBlend;
 extern NSString * const NBUFilterTypeAdditiveBlend;
 extern NSString * const NBUFilterTypeAlphaBlend;
 extern NSString * const NBUFilterTypeSourceOver;
-extern NSString * const NBUFilterTypeACV;
+extern NSString * const NBUFilterTypeToneCurve;
 extern NSString * const NBUFilterTypeFisheye;
 extern NSString * const NBUFilterTypeMaskBlur;
 extern NSString * const NBUFilterTypeGroup;
@@ -56,7 +56,7 @@ extern NSString * const NBUFilterTypeGroup;
 /// @param values The optional initial values.
 + (NBUFilter *)filterWithName:(NSString *)name
                          type:(NSString *)type
-                       values:(NSArray *)values;
+                       values:(NSDictionary *)values;
 
 /// Apply filters to an image.
 /// @param filters An array of NBUFilter objects to be applied sequentially.
@@ -81,6 +81,9 @@ extern NSString * const NBUFilterTypeGroup;
 /// Retrieve the localized name for a given filter type.
 /// @param type The target filter type.
 + (NSString *)localizedNameForFilterWithType:(NSString *)type;
+
+/// Get ready to use instances of each filter from all registered providers.
++ (NSArray *)availableFilters;
 
 @end
 

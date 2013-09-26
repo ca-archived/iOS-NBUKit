@@ -30,6 +30,8 @@ typedef void (^NBUSavePictureResultBlock)(UIImage * image,
                                           NSDictionary * metadata,
                                           NSURL * url,
                                           NSError * error);
+typedef void (^NBUCaptureMovieResultBlock)(NSURL * movieURL,
+                                           NSError * error);
 typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
                                             NSInteger mode);
 
@@ -42,6 +44,7 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
  - Can automatically save to device's Camera Roll/custom albums.
  - Can be used with any UIViewController, so it can be embedded in a UITabView, pushed to a UINavigationController, presented modally, etc.
  - Works with simulator.
+ - Proper orientation support both in autorotation-locked devices and simulator.
  */
 @interface NBUCameraView : ActiveView
 
@@ -53,7 +56,13 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 /// @note The captured image may not exactly match the targetResolution.
 @property (nonatomic)                   CGSize targetResolution;
 
-/// The optional block to be called immediately after capturing the picture.
+/// Programatically force the view to rotate.
+/// @param orientation The desired interface orientation.
+- (void)setInterfaceOrientation:(UIInterfaceOrientation)orientation;
+
+/// @name Picture Properties
+
+/// The block to be called immediately after capturing the picture.
 @property (nonatomic, copy)             NBUCapturePictureResultBlock captureResultBlock;
 
 /// Whether to save the pictures to the the library. Default `NO`.
@@ -76,9 +85,30 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 /// @note Front camera's preview is always mirrored.
 @property(nonatomic)                    BOOL keepFrontCameraPicturesMirrored;
 
-/// Programatically force the view to rotate.
-/// @param orientation The desired interface orientation.
-- (void)setInterfaceOrientation:(UIInterfaceOrientation)orientation;
+/// Whether the lastPictureImageView should be animated. Default `YES`.
+@property(nonatomic)                    BOOL animateLastPictureImageView;
+
+/// @name Picture Sequence Properties
+
+/// The interval at which images should be captured.
+@property (nonatomic)                   NSTimeInterval sequenceCaptureInterval;
+
+/// Whether the camera is currently capturing a sequence of images.
+@property (nonatomic, readonly,
+           getter=isCapturingSequence)  BOOL capturingSequence;
+
+/// @name Movie Properties
+
+/// The local folder where recorded movies should be recorded.
+/// @discussion If not specified movies will be saved to the application's Documents folder.
+@property (nonatomic, strong)           NSURL * targetMovieFolder;
+
+/// The block to be called after capturing a movie.
+@property (nonatomic, copy)             NBUCaptureMovieResultBlock captureMovieResultBlock;
+
+/// Whether recording is in progress.
+@property (nonatomic, readonly,
+           getter=isRecording)          BOOL recording;
 
 /// @name Capture Devices and Modes
 
@@ -150,6 +180,14 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 /// Take a picture and execure the resultBlock.
 /// @param sender The sender object.
 - (IBAction)takePicture:(id)sender;
+
+/// Start/stop a picture capture sequence.
+/// @param sender The sender object.
+- (IBAction)startStopPictureSequence:(id)sender;
+
+/// Start or stop video recording.
+/// @param sender The sender object.
+- (IBAction)startStopRecording:(id)sender;
 
 /// Switch between front and back cameras (if available).
 /// @discussion Configures toggleCameraButton using toggleCameraButtonConfigurationBlock when available.

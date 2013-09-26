@@ -128,7 +128,6 @@
         _scrollView = [UIScrollView new];
         _scrollView.autoresizingMask = (UIViewAutoresizingFlexibleHeight |
                                         UIViewAutoresizingFlexibleWidth);
-        _scrollView.clipsToBounds = YES;
         _scrollView.showsHorizontalScrollIndicator = NO;
         _scrollView.showsVerticalScrollIndicator = NO;
         _scrollView.frame = self.bounds;

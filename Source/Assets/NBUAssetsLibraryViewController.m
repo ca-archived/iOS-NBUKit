@@ -138,8 +138,11 @@
 
 - (void)assetsGroupViewTapped:(NSNotification *)notification
 {
-    NBUAssetsGroup * group = ((NBUAssetsGroupView *)notification.object).assetsGroup;
+    NBUAssetsGroupView * groupView = notification.object;
+    if (![groupView isKindOfClass:[NBUAssetsGroupView class]])
+        return;
     
+    NBUAssetsGroup * group = groupView.assetsGroup;
     if (![group isKindOfClass:[NBUAssetsGroup class]])
         return;
     

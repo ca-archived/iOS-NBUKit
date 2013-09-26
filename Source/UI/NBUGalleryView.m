@@ -48,6 +48,7 @@
     
     // Create scrollView
     _scrollView = [[NBUGalleryScrollView alloc] initWithFrame:self.bounds];
+    _scrollView.clipsToBounds = NO;
     [self insertSubview:_scrollView
            belowSubview:_imageView];
     
@@ -73,7 +74,7 @@
 	
 	[self updateContentSize];
 	
-	// resize image view and keep it proportional to the current zoom scale
+	// Resize image view and keep it proportional to the current zoom scale
 	_imageView.frame = CGRectMake(imagePoint.x,
                                   imagePoint.y,
                                   frame.size.width * _scrollView.zoomScale,
@@ -107,7 +108,6 @@
     if (self)
     {
         // Configure the scrollView
-        self.clipsToBounds = YES;
         self.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
                                  UIViewAutoresizingFlexibleHeight);
         self.autoresizesSubviews = YES;

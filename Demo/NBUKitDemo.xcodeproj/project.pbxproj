@@ -44,6 +44,26 @@
 		E55984821610221800D0F2BF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E559847F1610221800D0F2BF /* Default-568h@2x.png */; };
 		E573DD8C171BA06B0070C9B7 /* GalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E573DD8A171BA06B0070C9B7 /* GalleryViewController.m */; };
 		E573DD8D171BA06B0070C9B7 /* GalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E573DD8B171BA06B0070C9B7 /* GalleryViewController.xib */; };
+		E57C0AE3178BD039005CFFF3 /* Toy.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AE1178BD039005CFFF3 /* Toy.acv */; };
+		E57C0AE4178BD039005CFFF3 /* Old.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AE2178BD039005CFFF3 /* Old.acv */; };
+		E57C0AF7178BD7C2005CFFF3 /* RJ16.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AE5178BD7C1005CFFF3 /* RJ16.acv */; };
+		E57C0AF8178BD7C2005CFFF3 /* RJ17.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AE6178BD7C1005CFFF3 /* RJ17.acv */; };
+		E57C0AF9178BD7C2005CFFF3 /* RJ18.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AE7178BD7C1005CFFF3 /* RJ18.acv */; };
+		E57C0AFA178BD7C2005CFFF3 /* RJ19.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AE8178BD7C1005CFFF3 /* RJ19.acv */; };
+		E57C0AFB178BD7C2005CFFF3 /* RJ20.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AE9178BD7C1005CFFF3 /* RJ20.acv */; };
+		E57C0AFC178BD7C2005CFFF3 /* RJ21.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AEA178BD7C1005CFFF3 /* RJ21.acv */; };
+		E57C0AFD178BD7C2005CFFF3 /* RJ22.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AEB178BD7C1005CFFF3 /* RJ22.acv */; };
+		E57C0AFE178BD7C2005CFFF3 /* RJ23.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AEC178BD7C1005CFFF3 /* RJ23.acv */; };
+		E57C0AFF178BD7C2005CFFF3 /* RJ24.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AED178BD7C1005CFFF3 /* RJ24.acv */; };
+		E57C0B00178BD7C2005CFFF3 /* RJ25.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AEE178BD7C1005CFFF3 /* RJ25.acv */; };
+		E57C0B01178BD7C2005CFFF3 /* RJ26.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AEF178BD7C2005CFFF3 /* RJ26.acv */; };
+		E57C0B02178BD7C2005CFFF3 /* RJ27.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AF0178BD7C2005CFFF3 /* RJ27.acv */; };
+		E57C0B03178BD7C2005CFFF3 /* RJ28.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AF1178BD7C2005CFFF3 /* RJ28.acv */; };
+		E57C0B04178BD7C2005CFFF3 /* RJ29.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AF2178BD7C2005CFFF3 /* RJ29.acv */; };
+		E57C0B05178BD7C2005CFFF3 /* RJ30.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AF3178BD7C2005CFFF3 /* RJ30.acv */; };
+		E57C0B06178BD7C2005CFFF3 /* FA_Curves1.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AF4178BD7C2005CFFF3 /* FA_Curves1.acv */; };
+		E57C0B07178BD7C2005CFFF3 /* FA_Curves2.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AF5178BD7C2005CFFF3 /* FA_Curves2.acv */; };
+		E57C0B08178BD7C2005CFFF3 /* FA_Curves3.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AF6178BD7C2005CFFF3 /* FA_Curves3.acv */; };
 		E57F639E1667090500C36E85 /* CropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E52CAEEE1665FF3700629D77 /* CropViewController.m */; };
 		E58A4C8716D744BC00542F8C /* AdjustFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E58A4C8516D744BC00542F8C /* AdjustFilterViewController.m */; };
 		E58A4C8816D744BC00542F8C /* AdjustFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E58A4C8616D744BC00542F8C /* AdjustFilterViewController.xib */; };
@@ -54,7 +74,6 @@
 		E5A03E5416522AD3008A4719 /* PickerTestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A03E5216522AD3008A4719 /* PickerTestsViewController.m */; };
 		E5A03E5516522AD3008A4719 /* PickerTestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5A03E5316522AD3008A4719 /* PickerTestsViewController.xib */; };
 		E5ADD44016DB2C5D00446994 /* AdjustFilterTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5ADD43F16DB2C5D00446994 /* AdjustFilterTitleCell.xib */; };
-		E5DD753216E590D3009AD190 /* AdjustFilterSaveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5DD753116E590D3009AD190 /* AdjustFilterSaveCell.xib */; };
 		E5EF2122164CDD8C0086BC71 /* LibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EF2121164CDD8C0086BC71 /* LibraryViewController.m */; };
 		E5F11D3D162BECA800A896A8 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F11D3B162BECA800A896A8 /* CameraViewController.m */; };
 		E5F11D3E162BECA800A896A8 /* CameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5F11D3C162BECA800A896A8 /* CameraViewController.xib */; };
@@ -81,9 +100,9 @@
 		8A8D7D81AEF4434C98230B87 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E524A5C516F1A367003054AE /* CustomAssetThumbnailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAssetThumbnailView.xib; sourceTree = "<group>"; };
 		E524A5C916F1A687003054AE /* CustomAssetsGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAssetsGroupView.xib; sourceTree = "<group>"; };
-		E52CAEE11665FEE100629D77 /* frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame.png; sourceTree = "<group>"; };
-		E52CAEE21665FEE100629D77 /* photo_hires.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = photo_hires.jpg; sourceTree = "<group>"; };
-		E52CAEE31665FEE100629D77 /* photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = photo.jpg; sourceTree = "<group>"; };
+		E52CAEE11665FEE100629D77 /* frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = frame.png; path = Resources/frame.png; sourceTree = "<group>"; };
+		E52CAEE21665FEE100629D77 /* photo_hires.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = photo_hires.jpg; path = Resources/photo_hires.jpg; sourceTree = "<group>"; };
+		E52CAEE31665FEE100629D77 /* photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = photo.jpg; path = Resources/photo.jpg; sourceTree = "<group>"; };
 		E52CAEED1665FF3700629D77 /* CropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CropViewController.h; sourceTree = "<group>"; };
 		E52CAEEE1665FF3700629D77 /* CropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CropViewController.m; sourceTree = "<group>"; };
 		E52CAEEF1665FF3700629D77 /* CropViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CropViewController.xib; sourceTree = "<group>"; };
@@ -114,6 +133,26 @@
 		E573DD89171BA06B0070C9B7 /* GalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryViewController.h; sourceTree = "<group>"; };
 		E573DD8A171BA06B0070C9B7 /* GalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryViewController.m; sourceTree = "<group>"; };
 		E573DD8B171BA06B0070C9B7 /* GalleryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GalleryViewController.xib; sourceTree = "<group>"; };
+		E57C0AE1178BD039005CFFF3 /* Toy.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = Toy.acv; path = Resources/Toy.acv; sourceTree = "<group>"; };
+		E57C0AE2178BD039005CFFF3 /* Old.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = Old.acv; path = Resources/Old.acv; sourceTree = "<group>"; };
+		E57C0AE5178BD7C1005CFFF3 /* RJ16.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ16.acv; path = Resources/RJ16.acv; sourceTree = "<group>"; };
+		E57C0AE6178BD7C1005CFFF3 /* RJ17.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ17.acv; path = Resources/RJ17.acv; sourceTree = "<group>"; };
+		E57C0AE7178BD7C1005CFFF3 /* RJ18.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ18.acv; path = Resources/RJ18.acv; sourceTree = "<group>"; };
+		E57C0AE8178BD7C1005CFFF3 /* RJ19.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ19.acv; path = Resources/RJ19.acv; sourceTree = "<group>"; };
+		E57C0AE9178BD7C1005CFFF3 /* RJ20.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ20.acv; path = Resources/RJ20.acv; sourceTree = "<group>"; };
+		E57C0AEA178BD7C1005CFFF3 /* RJ21.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ21.acv; path = Resources/RJ21.acv; sourceTree = "<group>"; };
+		E57C0AEB178BD7C1005CFFF3 /* RJ22.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ22.acv; path = Resources/RJ22.acv; sourceTree = "<group>"; };
+		E57C0AEC178BD7C1005CFFF3 /* RJ23.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ23.acv; path = Resources/RJ23.acv; sourceTree = "<group>"; };
+		E57C0AED178BD7C1005CFFF3 /* RJ24.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ24.acv; path = Resources/RJ24.acv; sourceTree = "<group>"; };
+		E57C0AEE178BD7C1005CFFF3 /* RJ25.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ25.acv; path = Resources/RJ25.acv; sourceTree = "<group>"; };
+		E57C0AEF178BD7C2005CFFF3 /* RJ26.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ26.acv; path = Resources/RJ26.acv; sourceTree = "<group>"; };
+		E57C0AF0178BD7C2005CFFF3 /* RJ27.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ27.acv; path = Resources/RJ27.acv; sourceTree = "<group>"; };
+		E57C0AF1178BD7C2005CFFF3 /* RJ28.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ28.acv; path = Resources/RJ28.acv; sourceTree = "<group>"; };
+		E57C0AF2178BD7C2005CFFF3 /* RJ29.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ29.acv; path = Resources/RJ29.acv; sourceTree = "<group>"; };
+		E57C0AF3178BD7C2005CFFF3 /* RJ30.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ30.acv; path = Resources/RJ30.acv; sourceTree = "<group>"; };
+		E57C0AF4178BD7C2005CFFF3 /* FA_Curves1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = FA_Curves1.acv; path = Resources/FA_Curves1.acv; sourceTree = "<group>"; };
+		E57C0AF5178BD7C2005CFFF3 /* FA_Curves2.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = FA_Curves2.acv; path = Resources/FA_Curves2.acv; sourceTree = "<group>"; };
+		E57C0AF6178BD7C2005CFFF3 /* FA_Curves3.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = FA_Curves3.acv; path = Resources/FA_Curves3.acv; sourceTree = "<group>"; };
 		E58A4C8416D744BC00542F8C /* AdjustFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdjustFilterViewController.h; sourceTree = "<group>"; };
 		E58A4C8516D744BC00542F8C /* AdjustFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdjustFilterViewController.m; sourceTree = "<group>"; };
 		E58A4C8616D744BC00542F8C /* AdjustFilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdjustFilterViewController.xib; sourceTree = "<group>"; };
@@ -130,7 +169,6 @@
 		E5B06CDE1643591A0043F53F /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = Resources/iTunesArtwork; sourceTree = "<group>"; };
 		E5B06CDF1643591A0043F53F /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "Resources/Icon-Small@2x.png"; sourceTree = "<group>"; };
 		E5B06CE01643591A0043F53F /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "Resources/Icon-Small.png"; sourceTree = "<group>"; };
-		E5DD753116E590D3009AD190 /* AdjustFilterSaveCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdjustFilterSaveCell.xib; sourceTree = "<group>"; };
 		E5EF2120164CDD8C0086BC71 /* LibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryViewController.h; sourceTree = "<group>"; };
 		E5EF2121164CDD8C0086BC71 /* LibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryViewController.m; sourceTree = "<group>"; };
 		E5F11D3A162BECA800A896A8 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
@@ -177,6 +215,26 @@
 				E52CAEE11665FEE100629D77 /* frame.png */,
 				E52CAEE21665FEE100629D77 /* photo_hires.jpg */,
 				E52CAEE31665FEE100629D77 /* photo.jpg */,
+				E57C0AE1178BD039005CFFF3 /* Toy.acv */,
+				E57C0AE2178BD039005CFFF3 /* Old.acv */,
+				E57C0AE5178BD7C1005CFFF3 /* RJ16.acv */,
+				E57C0AE6178BD7C1005CFFF3 /* RJ17.acv */,
+				E57C0AE7178BD7C1005CFFF3 /* RJ18.acv */,
+				E57C0AE8178BD7C1005CFFF3 /* RJ19.acv */,
+				E57C0AE9178BD7C1005CFFF3 /* RJ20.acv */,
+				E57C0AEA178BD7C1005CFFF3 /* RJ21.acv */,
+				E57C0AEB178BD7C1005CFFF3 /* RJ22.acv */,
+				E57C0AEC178BD7C1005CFFF3 /* RJ23.acv */,
+				E57C0AED178BD7C1005CFFF3 /* RJ24.acv */,
+				E57C0AEE178BD7C1005CFFF3 /* RJ25.acv */,
+				E57C0AEF178BD7C2005CFFF3 /* RJ26.acv */,
+				E57C0AF0178BD7C2005CFFF3 /* RJ27.acv */,
+				E57C0AF1178BD7C2005CFFF3 /* RJ28.acv */,
+				E57C0AF2178BD7C2005CFFF3 /* RJ29.acv */,
+				E57C0AF3178BD7C2005CFFF3 /* RJ30.acv */,
+				E57C0AF4178BD7C2005CFFF3 /* FA_Curves1.acv */,
+				E57C0AF5178BD7C2005CFFF3 /* FA_Curves2.acv */,
+				E57C0AF6178BD7C2005CFFF3 /* FA_Curves3.acv */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -352,7 +410,6 @@
 				E58A4C8C16D74D6300542F8C /* AdjustFilterSliderCell.xib */,
 				E58A4C8E16D753EA00542F8C /* AdjustFilterSwitchCell.xib */,
 				E58A4C9016D753FA00542F8C /* AdjustFilterButtonCell.xib */,
-				E5DD753116E590D3009AD190 /* AdjustFilterSaveCell.xib */,
 			);
 			name = "Filter Editor";
 			sourceTree = "<group>";
@@ -441,11 +498,30 @@
 				E58A4C8F16D753EA00542F8C /* AdjustFilterSwitchCell.xib in Resources */,
 				E58A4C9116D753FA00542F8C /* AdjustFilterButtonCell.xib in Resources */,
 				E5ADD44016DB2C5D00446994 /* AdjustFilterTitleCell.xib in Resources */,
-				E5DD753216E590D3009AD190 /* AdjustFilterSaveCell.xib in Resources */,
 				E5FEE31E16E7360600DABE0F /* AdjustFilterViewController_iPad.xib in Resources */,
 				E524A5C616F1A367003054AE /* CustomAssetThumbnailView.xib in Resources */,
 				E524A5CA16F1A687003054AE /* CustomAssetsGroupView.xib in Resources */,
 				E573DD8D171BA06B0070C9B7 /* GalleryViewController.xib in Resources */,
+				E57C0AE3178BD039005CFFF3 /* Toy.acv in Resources */,
+				E57C0AE4178BD039005CFFF3 /* Old.acv in Resources */,
+				E57C0AF7178BD7C2005CFFF3 /* RJ16.acv in Resources */,
+				E57C0AF8178BD7C2005CFFF3 /* RJ17.acv in Resources */,
+				E57C0AF9178BD7C2005CFFF3 /* RJ18.acv in Resources */,
+				E57C0AFA178BD7C2005CFFF3 /* RJ19.acv in Resources */,
+				E57C0AFB178BD7C2005CFFF3 /* RJ20.acv in Resources */,
+				E57C0AFC178BD7C2005CFFF3 /* RJ21.acv in Resources */,
+				E57C0AFD178BD7C2005CFFF3 /* RJ22.acv in Resources */,
+				E57C0AFE178BD7C2005CFFF3 /* RJ23.acv in Resources */,
+				E57C0AFF178BD7C2005CFFF3 /* RJ24.acv in Resources */,
+				E57C0B00178BD7C2005CFFF3 /* RJ25.acv in Resources */,
+				E57C0B01178BD7C2005CFFF3 /* RJ26.acv in Resources */,
+				E57C0B02178BD7C2005CFFF3 /* RJ27.acv in Resources */,
+				E57C0B03178BD7C2005CFFF3 /* RJ28.acv in Resources */,
+				E57C0B04178BD7C2005CFFF3 /* RJ29.acv in Resources */,
+				E57C0B05178BD7C2005CFFF3 /* RJ30.acv in Resources */,
+				E57C0B06178BD7C2005CFFF3 /* FA_Curves1.acv in Resources */,
+				E57C0B07178BD7C2005CFFF3 /* FA_Curves2.acv in Resources */,
+				E57C0B08178BD7C2005CFFF3 /* FA_Curves3.acv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,9 +662,10 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "TESTING=1";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -605,8 +682,7 @@
 			baseConfigurationReference = 7C918EBE545141BB8B2D2448 /* Pods.xcconfig */;
 			buildSettings = {
 				BUNDLEID = "jp.co.cyberagent.nbu.${PRODUCT_NAME:rfc1034identifier}-dev";
-				DISPLAYNAME = "NBUKit-dev";
-				FACEBOOK_APPID = 236308173162984;
+				DISPLAYNAME = NBUKitDev;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NBUKitDemo/NBUKitDemo-Prefix.pch";
 				INFOPLIST_FILE = "NBUKitDemo/NBUKitDemo-Info.plist";
@@ -623,7 +699,6 @@
 			buildSettings = {
 				BUNDLEID = "jp.co.cyberagent.nbu.${PRODUCT_NAME:rfc1034identifier}-ota";
 				DISPLAYNAME = NBUKit;
-				FACEBOOK_APPID = 236308173162984;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NBUKitDemo/NBUKitDemo-Prefix.pch";
 				INFOPLIST_FILE = "NBUKitDemo/NBUKitDemo-Info.plist";

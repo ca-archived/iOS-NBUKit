@@ -68,6 +68,30 @@
     }
 }
 
+- (void)sizeToFit
+{
+    CGRect originalFrame = self.frame;
+    
+    [super sizeToFit];
+    
+    // Center the view
+    if ((self.autoresizingMask & UIViewAutoresizingFlexibleLeftMargin) &&
+        (self.autoresizingMask & UIViewAutoresizingFlexibleRightMargin))
+    {
+        self.center = CGPointMake(CGRectGetMidX(originalFrame),
+                                  CGRectGetMidY(originalFrame));
+    }
+    
+    // Grow to the left
+    else if (self.autoresizingMask & UIViewAutoresizingFlexibleLeftMargin)
+    {
+        self.origin = CGPointMake(self.origin.x - (self.size.width - originalFrame.size.width),
+                                  self.origin.y);
+    }
+    
+    // Otherwise we just grow to the right
+}
+
 - (CGSize)sizeThatFits:(CGSize)size
 {
     return CGSizeMake(MAX([_label sizeThatFits:CGSizeMake(CGFLOAT_MAX,

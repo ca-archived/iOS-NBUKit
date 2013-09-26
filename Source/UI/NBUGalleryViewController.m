@@ -29,14 +29,16 @@
 
 @implementation NBUGalleryViewController
 {
+    NSInteger _startingIndex;
 	NSRange _currentPreloadedRange;
     
 	BOOL _isScrolling;
 	
 	UIStatusBarStyle _previousStatusBarStyle;
     UIBarStyle _previousNavigationBarStyle;
+    BOOL _previousNavigationBarTranslucent;
 	
-	UIView * _container;        // Used as view for the controller
+	UIScrollView * _container;        // Used as view for the controller
 	UIScrollView * _scrollView;
     UIScrollView * _thumnailsScrollView;
 	
@@ -49,7 +51,6 @@
 @synthesize nibNameForThumbnails = _nibNameForThumbnails;
 @synthesize imageLoader = _imageLoader;
 @synthesize imagePreloadCount = _imagePreloadCount;
-@synthesize startingIndex = _startingIndex;
 @synthesize currentIndex = _currentIndex;
 @synthesize fullscreen = _fullscreen;
 @synthesize thumbnailSize = _thumbnailSize;
@@ -65,6 +66,7 @@
 @synthesize captionLabel = _captionLabel;
 @synthesize showThumbnailsView = _showThumbnailsView;
 @synthesize navigationBarStyle = _navigationBarStyle;
+@synthesize navigationBarTranslucent = _navigationBarTranslucent;
 @synthesize statusBarStyle = _statusBarStyle;
 @synthesize viewsToHide = _viewsToHide;
 
@@ -82,8 +84,19 @@
     _spaceBetweenViews = 10.0;
     _thumbnailSize = CGSizeMake(75.0, 75.0);
     _thumbnailMargin = CGSizeMake(4.0, 4.0);
-    _statusBarStyle = UIStatusBarStyleBlackTranslucent;
-    _navigationBarStyle = UIBarStyleBlackTranslucent;
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
+    {
+#if XCODE_VERSION_MAJOR >= 0500
+        _statusBarStyle = UIStatusBarStyleLightContent;
+        _navigationBarStyle = UIBarStyleBlack;
+        _navigationBarTranslucent = YES;
+#endif
+    }
+    else
+    {
+        _statusBarStyle = UIStatusBarStyleBlackTranslucent;
+        _navigationBarStyle = UIBarStyleBlackTranslucent;
+    }
     
     // Create storage objects
     _views = [NSMutableArray array];
@@ -105,7 +118,12 @@
     [super viewDidLoad];
     
     // Set container and it's background color if not set
-    _container = self.view;
+    _container = (UIScrollView *)self.view;
+    if (![_container isKindOfClass:[UIScrollView class]])
+    {
+        NBULogError(@"%@ The controller's view is expected to be a UIScrollView and not a %@", THIS_METHOD, NSStringFromClass([_container class]));
+    }
+    _container.clipsToBounds = YES;
     _container.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
                                    UIViewAutoresizingFlexibleHeight);
     if (!_container.backgroundColor)
@@ -126,6 +144,7 @@
     _scrollView.showsVerticalScrollIndicator = NO;
     _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.autoresizesSubviews = NO;
+    _scrollView.clipsToBounds = NO;
     _scrollView.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
                                     UIViewAutoresizingFlexibleHeight);
     _scrollView.frame = CGRectMake(0.0,
@@ -219,26 +238,43 @@
 	
     self.showThumbnailsView = _showThumbnailsView;
 	
-	// Update bars' style
     if (!_updatesBars)
         return;
+    
+    // Update status bar
     _previousStatusBarStyle = [UIApplication sharedApplication].statusBarStyle;
 	[[UIApplication sharedApplication] setStatusBarStyle:_statusBarStyle
                                                 animated:animated];
-    _previousNavigationBarStyle = self.navigationController.navigationBar.barStyle;
-    self.navigationController.navigationBar.barStyle = _navigationBarStyle;
+    
+    // Update navigation bar
+    UINavigationBar * navigationBar = self.navigationController.navigationBar;
+    _previousNavigationBarStyle = navigationBar.barStyle;
+    navigationBar.barStyle = _navigationBarStyle;
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
+    {
+        _previousNavigationBarTranslucent = navigationBar.translucent;
+        navigationBar.translucent = _navigationBarTranslucent;
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     
-    // Restore bars' style
     if (!_updatesBars)
         return;
+    
+    // Restore status bar
 	[[UIApplication sharedApplication] setStatusBarStyle:_previousStatusBarStyle
                                                 animated:animated];
-    self.navigationController.navigationBar.barStyle = _previousNavigationBarStyle;
+    
+    // Restore navigation bar
+    UINavigationBar * navigationBar = self.navigationController.navigationBar;
+    navigationBar.barStyle = _previousNavigationBarStyle;
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
+    {
+        navigationBar.translucent = _previousNavigationBarTranslucent;
+    }
 }
 
 - (void)resizePhotoViewsWithSize:(CGSize)size
@@ -298,14 +334,14 @@
 - (void)layoutViews
 {
 	[self adjustThumbnailsView];
-	[self updateScrollSize];
-	[self updateCaption];
+	[self adjustScrollView];
 	[self resizePhotoViewsWithSize:_scrollView.size];
+    [self updateCaption];
 	[self layoutThumbnails];
 	[self scrollToIndex:_currentIndex
                animated:NO];
     
-    NBULogVerbose(@"+++ %@\ncontainer %@\nscrollView %@",
+    NBULogVerbose(@"%@\ncontainer %@\nscrollView %@",
                   THIS_METHOD, _container, _scrollView);
 }
 
@@ -331,18 +367,24 @@
 - (void)adjustThumbnailsView
 {
     // Calculate bar height
-    CGFloat barHeight = 0.0;
-    if (self.navigationController.navigationBar.translucent)
+    CGFloat topInset;
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
     {
-        barHeight = self.navigationController.navigationBar.frame.size.height;
+#if XCODE_VERSION_MAJOR >= 0500
+        topInset = self.topLayoutGuide.length;
+#endif
+    }
+    else
+    {
+        topInset = self.navigationController.navigationBar.translucent ? self.navigationController.navigationBar.frame.size.height : 0.0;
     }
     
 	_thumbnailsGridView.frame = _container.bounds;
-    _thumbnailsGridView.contentInset = UIEdgeInsetsMake(barHeight,
+    _thumbnailsGridView.contentInset = UIEdgeInsetsMake(topInset,
                                                         0.0,
                                                         0.0,
                                                         0.0);
-    _thumbnailsGridView.scrollIndicatorInsets = UIEdgeInsetsMake(barHeight,
+    _thumbnailsGridView.scrollIndicatorInsets = UIEdgeInsetsMake(topInset,
                                                                  0.0,
                                                                  0.0,
                                                                  0.0);
@@ -350,8 +392,8 @@
 
 - (void)setFullscreen:(BOOL)fullscreen
 {
-    [self setEditing:fullscreen
-            animated:NO];
+    [self setFullscreen:fullscreen
+               animated:NO];
 }
 
 - (void)toggleFullscreen:(id)sender
@@ -413,7 +455,7 @@
 
 - (void)updateCaption
 {
-    if (!_captionLabel)
+    if (!_captionLabel || _currentIndex >= _objectArray.count)
         return;
     
     // Get the caption
@@ -436,10 +478,10 @@
     }
 }
 
-- (void)updateScrollSize
+- (void)adjustScrollView
 {
-	[_scrollView setContentSize:CGSizeMake(_scrollView.frame.size.width * _objectArray.count,
-                                           _scrollView.frame.size.height)];
+	_scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width * _objectArray.count,
+                                         _scrollView.frame.size.height);
 }
 
 - (void)updateTitle
@@ -473,6 +515,14 @@
 - (void)setCurrentIndex:(NSInteger)index
                animated:(BOOL)animated
 {
+    // UI not loaded?
+    if (!self.isViewLoaded)
+    {
+        // Just remember what the currentIndex should be
+        _startingIndex = index;
+        return;
+    }
+    
     // Zoom out the previous view?
     if (_currentIndex < (NSInteger)_views.count)
     {
@@ -531,6 +581,11 @@
 		[_scrollView addSubview:view];
 		[_views addObject:view];
 	}
+}
+
+- (NSArray *)views
+{
+    return [NSArray arrayWithArray:_views];
 }
 
 - (void)buildThumbnailViews
@@ -600,6 +655,7 @@
     // Show?
     if (yesOrNo)
     {
+        _thumbnailsGridView.contentOffset = _container.contentOffset;
         [self layoutThumbnails];
         [self loadAllThumbnails];
         [self scrollThumbnailsViewToIndex:_currentIndex

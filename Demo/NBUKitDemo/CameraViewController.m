@@ -35,6 +35,7 @@
     
     // Configure the camera view
     //self.cameraView.shouldAutoRotateView = YES;
+    //self.cameraView.savePicturesToLibrary = YES;
     self.cameraView.targetResolution = CGSizeMake(640.0, 640.0); // The minimum resolution we want
     self.cameraView.keepFrontCameraPicturesMirrored = YES;
     self.cameraView.captureResultBlock = ^(UIImage * image,
@@ -57,6 +58,9 @@
                                                         @[@"Exp Lckd", @"Exp Auto", @"Exp Cont"]];
     self.cameraView.whiteBalanceButtonConfigurationBlock = [self.cameraView buttonConfigurationBlockWithTitleFrom:
                                                             @[@"WB Lckd", @"WB Auto", @"WB Cont"]];
+    
+    // Configure for video
+    self.cameraView.targetMovieFolder = [UIApplication sharedApplication].temporaryDirectory;
     
     // Optionally auto-save pictures to the library
     self.cameraView.saveResultBlock = ^(UIImage * image,

@@ -32,30 +32,32 @@
  - Fully configurable with optional controls such as previousButton, nextButton,
  pageControl, thumbnailsGridView, captionLabel and viewsToHide.
  
+ @note The controllers view must be a UIScreenView.
+ 
  Inspired on FGallery by Grant Davis (https://github.com/gdavis/FGallery-iPhone).
  */
 @interface NBUGalleryViewController : NBUViewController
 
 /// @name Managing Image Loading
 
-/// The array ob objects to be displayed.
+/// The array of objects to be displayed.
 /// @see NBUImageLoader.
 @property (strong, nonatomic)               NSArray * objectArray;
+
+/// The gallery views.
+@property (nonatomic, readonly)             NSArray * views;
 
 /// An optional custom imageLoader.
 /// @discussion If not specified NBUImageLoader will be used.
 @property (assign, nonatomic)               id<NBUImageLoader> imageLoader;
 
-/// The number of images to be preloaded.
+/// The number of images to be preloaded. Default `1`.
 @property (nonatomic)                       NSUInteger imagePreloadCount;
 
 /// Force to reconstruct the view hierarchy.
 - (void)reloadGallery;
 
 /// @name Managing the Current Image
-
-/// The index to be set when reloading the gallery. Defaults to `0`.
-@property (nonatomic)                       NSInteger startingIndex;
 
 /// The current index.
 /// @discusssion Setting a values is equivalent to setCurrentIndex:animated:
@@ -127,13 +129,17 @@
 /// @see navigationBarStyle and statusBarStyle.
 @property (nonatomic)                       BOOL updatesBars;
 
+/// The UIStatusBarStyle to be applied to the status bar when the controller
+/// appears. Default `UIStatusBarStyleLightContent` on iOS 7 (`UIStatusBarStyleBlackTranslucent` otherwise).
+@property (nonatomic)                       UIStatusBarStyle statusBarStyle;
+
 /// The UIBarStyle to be applied to the navigation bar when the controller
-/// appears.
+/// appears. Default `UIBarStyleBlack` on iOS 7 (`UIStatusBarStyleBlackTranslucent` otherwise).
 @property (nonatomic)                       UIBarStyle navigationBarStyle;
 
-/// The UIStatusBarStyle to be applied to the status bar when the controller
-/// appears.
-@property (nonatomic)                       UIStatusBarStyle statusBarStyle;
+/// Whether the the navigation bar should turn translucent when the controller
+/// appears (iOS 7 only). Default `YES`.
+@property(nonatomic)                        BOOL navigationBarTranslucent;
 
 /// Optional Nib name to be used for objectArray elements.
 @property (strong, nonatomic)               NSString * nibNameForViews;

@@ -67,12 +67,33 @@ static UIImage * _noContentsImage;
     
     // Update UI
     _nameLabel.text = self.object.name;
-    _countLabel.text = [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"NBUAssetsGroupView Number of images",
-                                                                                    nil, nil,
-                                                                                    @"%d images",
-                                                                                    @"NBUAssetsGroupView Number of images"),
-                        self.assetsGroup.imageAssetsCount];
-    _posterImageView.image = self.object.posterImage ? self.object.posterImage : _noContentsImage;
+    NSUInteger count = self.assetsGroup.imageAssetsCount;
+    if (count == 1)
+    {
+        _countLabel.text = [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"NBUAssetsGroupView Only one image",
+                                                                                        nil, nil,
+                                                                                        @"1 image",
+                                                                                        @"NBUAssetsGroupView Only one image"),
+                            count];
+    }
+    else
+    {
+        _countLabel.text = [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"NBUAssetsGroupView Number of images",
+                                                                                        nil, nil,
+                                                                                        @"%d images",
+                                                                                        @"NBUAssetsGroupView Number of images"),
+                            count];
+    }
+    if (count == 0)
+    {
+        // Try to use a custom poster image for empty groups
+        _posterImageView.image = _noContentsImage ? _noContentsImage : self.object.posterImage;
+    }
+    else
+    {
+        // Normal poster image for non-empty groups
+        _posterImageView.image = self.object.posterImage;
+    }
     _editableView.hidden = !self.object.editable;
 }
 

@@ -30,7 +30,7 @@
 /// @name Properties
 
 /// The view's controller should be a NBUGalleryViewController instance.
-@property (assign, nonatomic)           NBUGalleryViewController * viewController;
+@property (nonatomic, readonly)         NBUGalleryViewController * viewController;
 
 /// Whether the view should show its activityView.
 @property (nonatomic, getter=isLoading) BOOL loading;

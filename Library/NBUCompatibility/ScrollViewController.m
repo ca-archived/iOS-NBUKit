@@ -25,12 +25,6 @@
 #undef  NBUKIT_MODULE
 #define NBUKIT_MODULE   NBUKIT_MODULE_COMPATIBILITY
 
-#define RKLogError      NBULogError
-#define RKLogWarning    NBULogWarn
-#define RKLogInfo       NBULogInfo
-#define RKLogDebug      NBULogVerbose
-#define RKLogTrace      NBULogVerbose
-
 #define kMinIntervalBetweenNotifications 1.0
 #define kContentSizeCalculationInterval 1.0
 #define kMinIntervalBetweenPromptUpdates 0.3
@@ -55,10 +49,6 @@ static NSString * customBackButtonTitle;
     NSTimer * _sendNotificationTimer;
     BOOL _rightButtonSaved;
     BOOL _barsHidden;
-    // 2012.10.16 modify start by Kubota
-    // フッタにあるヘルプ等を開いて閉じると、スクロール位置がずれている
-    CGPoint _offsetPoint ;
-    // 2012.10.16 modify end by Kubota
 }
 
 @synthesize animated = _animated;
@@ -66,9 +56,7 @@ static NSString * customBackButtonTitle;
 @synthesize contentView = _contentView;
 @synthesize activeField = _activeField;
 @synthesize customBackButtonTitle = _customBackButtonTitle;
-@synthesize analyticsTag = _analyticsTag;
 @synthesize hidesBarsOnScroll = _hidesBarsOnScroll;
-@synthesize analyticsDelegate = _analyticsDelegate;
 
 + (void)setCustomBackButtonTitle:(NSString *)title
 {
@@ -79,6 +67,7 @@ static NSString * customBackButtonTitle;
 {
     _scrollView = [[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
     _scrollView.backgroundColor = [UIColor whiteColor];
+    _scrollView.clipsToBounds = NO;
     return _scrollView;
 }
 
@@ -96,7 +85,7 @@ static NSString * customBackButtonTitle;
     if([NSBundle pathForResource:nibName
                           ofType:@"nib"])
     {
-        RKLogDebug(@"Loading nib '%@' for class '%@'", nibName, NSStringFromClass([self class]));
+        NBULogVerbose(@"Loading nib '%@' for class '%@'", nibName, NSStringFromClass([self class]));
         
         // Check if set with owner
         NSArray * loadedObjects = [NSBundle loadNibNamed:nibName
@@ -113,7 +102,7 @@ static NSString * customBackButtonTitle;
     // Else if still not set create an empty one
     if (!self.isViewLoaded)
     {
-        RKLogInfo(@"~~~ Nib for class %@ didn't set a view. An empty scrollView will be created",
+        NBULogInfo(@"~~~ Nib for class %@ didn't set a view. An empty scrollView will be created",
                   NSStringFromClass([self class]));
         self.view = [self createScrollView];
     }
@@ -186,13 +175,13 @@ static NSString * customBackButtonTitle;
                                   UIViewAutoresizingFlexibleHeight |
                                   UIViewAutoresizingFlexibleWidth);
     
-    RKLogTrace(@"~~~ %@ %p viewDidLoad", NSStringFromClass([self class]), self);
+    NBULogVerbose(@"~~~ %@ %p viewDidLoad", NSStringFromClass([self class]), self);
 }
 
 - (void)viewDidUnload
 {
     // Release any retained subviews of the main view
-    RKLogTrace(@"~~~ %@ %p viewDidUnload", NSStringFromClass([self class]), self);
+    NBULogVerbose(@"~~~ %@ %p viewDidUnload", NSStringFromClass([self class]), self);
     
     // Unregister KVO
     self.hidesBarsOnScroll = NO;
@@ -237,12 +226,12 @@ static NSString * customBackButtonTitle;
 {
     if (!CGSizeEqualToSize(size, _scrollView.contentSize))
     {
-        RKLogDebug(@">> %@ %@",
+        NBULogVerbose(@">> %@ %@",
               NSStringFromCGSize(_scrollView.contentSize), NSStringFromCGPoint(_scrollView.contentOffset));
 //        CGPoint offset = _scrollView.contentOffset;
         _scrollView.contentSize = size;
 //        _scrollView.contentOffset = offset;
-        RKLogDebug(@"<< %@ %@",
+        NBULogVerbose(@"<< %@ %@",
               NSStringFromCGSize(_scrollView.contentSize), NSStringFromCGPoint(_scrollView.contentOffset));
     }
 }
@@ -315,22 +304,6 @@ static NSString * customBackButtonTitle;
                                              selector:@selector(updateActiveField:)
                                                  name:UITextFieldTextDidBeginEditingNotification
                                                object:nil];
-    
-    // 2012.10.16 modify start by Kubota
-    // フッタにあるヘルプ等を開いて閉じると、スクロール位置がずれている
-    [self performSelector:@selector(setScrollOffset) withObject:nil afterDelay:0.01] ;
-    // 2012.10.16 modify end by Kubota
-}
-
-- (void)setScrollOffset
-{
-    _scrollView.contentOffset = _offsetPoint ;
-}
-
-- (void)resetScrollViewOffset
-{
-    _scrollView.contentOffset = CGPointZero;
-    _offsetPoint = CGPointZero;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -344,20 +317,13 @@ static NSString * customBackButtonTitle;
     // Post a first notification
     [self postScrollViewContentOffsetChangedNotification];
     
-#ifdef NBU_COMPATIBILITY
-    // Analytics
-    _analyticsTag = [self findAnalyticsTag];
-    [[AnalyticsHelper sharedHelper] movedTo:self
-                                        tag:_analyticsTag];
-#endif
-    
     if (CGSizeEqualToSize(_scrollView.contentSize, CGSizeZero))
     {
         [self sizeToFitContentView:self];
 //        _lastContentSizeCalculation = [NSDate dateWithTimeIntervalSince1970:0.0]; // Ignore first update date
     }
     
-    RKLogTrace(@"--- %@ %@", self.view, _scrollView);
+    NBULogVerbose(@"--- %@ %@", self.view, _scrollView);
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -411,16 +377,11 @@ static NSString * customBackButtonTitle;
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:UITextFieldTextDidBeginEditingNotification
                                                   object:nil];
-
-    // 2012.10.16 modify start by Kubota
-    // フッタにあるヘルプ等を開いて閉じると、スクロール位置がずれている
-    _offsetPoint = _scrollView.contentOffset ;
-    // 2012.10.16 modify end by Kubota
 }
 
 - (void)didReceiveMemoryWarning
 {
-    RKLogDebug(@"~~~ %@ %p didReceiveMemoryWarning. View %@ has superview %@",
+    NBULogVerbose(@"~~~ %@ %p didReceiveMemoryWarning. View %@ has superview %@",
                NSStringFromClass([self class]), self,
                NBUStringFromBOOL(self.isViewLoaded),
                NBUStringFromBOOL(self.isViewLoaded && self.view.superview));
@@ -430,7 +391,7 @@ static NSString * customBackButtonTitle;
 
 - (void)dealloc
 {
-    RKLogTrace(@"~~~ %@ %p dealloc. View %@ has superview %@",
+    NBULogVerbose(@"~~~ %@ %p dealloc. View %@ has superview %@",
                NSStringFromClass([self class]), self,
                NBUStringFromBOOL(self.isViewLoaded),
                NBUStringFromBOOL(self.isViewLoaded && self.view.superview));
@@ -450,14 +411,14 @@ static NSString * customBackButtonTitle;
 ////        [notification.object isKindOfClass:[ObjectTableView class]] ||
 ////        [notification.object isKindOfClass:[ObjectGridView class]] )
 //    {
-//        RKLogTrace(@"*** sizeToFitContentView direct");
+//        NBULogVerbose(@"*** sizeToFitContentView direct");
 //        [self sizeToFitContentView:self];
 //    }
 //    
 //    // Too soon -> (re)schedule
 //    else @synchronized(self)
 //    {
-//        RKLogTrace(@"*** sizeToFitContentView scheduled");
+//        NBULogVerbose(@"*** sizeToFitContentView scheduled");
 //        [_fireSizeToFitTimer invalidate];
 //        _fireSizeToFitTimer = [NSTimer scheduledTimerWithTimeInterval:kContentSizeCalculationInterval
 //                                                               target:self
@@ -471,7 +432,7 @@ static NSString * customBackButtonTitle;
 {
 //    if ([sender isKindOfClass:[NSTimer class]])
 //    {
-//        RKLogTrace(@"*** sizeToFitContentView fired");
+//        NBULogVerbose(@"*** sizeToFitContentView fired");
 //    }
     
 //    [_fireSizeToFitTimer invalidate];
@@ -490,7 +451,7 @@ static NSString * customBackButtonTitle;
                                                          sizeThatFits.width,
                                                          sizeThatFits.height);
                          [self setScrollViewContentSize:sizeThatFits];
-                         RKLogDebug(@"*** sizeToFitContentView = %@", NSStringFromCGSize(_scrollView.contentSize));
+                         NBULogVerbose(@"*** sizeToFitContentView = %@", NSStringFromCGSize(_scrollView.contentSize));
                          
                      }
                      completion:^(BOOL finished) {
@@ -506,7 +467,7 @@ static NSString * customBackButtonTitle;
         // Schedule if not already scheduled
         if (!_sendNotificationTimer.isValid) @synchronized(self)
         {
-            RKLogTrace(@"postScrollViewContentOffsetChangedNotification scheduled");
+            NBULogVerbose(@"postScrollViewContentOffsetChangedNotification scheduled");
             [_sendNotificationTimer invalidate];
             _sendNotificationTimer = [NSTimer scheduledTimerWithTimeInterval:kMinIntervalBetweenNotifications
                                                                       target:self
@@ -517,7 +478,7 @@ static NSString * customBackButtonTitle;
         return;
     }
     
-    RKLogTrace(@"postScrollViewContentOffsetChangedNotification");
+    NBULogVerbose(@"postScrollViewContentOffsetChangedNotification");
     
     _lastContentOffsetNotification = [NSDate date];
     [[NSNotificationCenter defaultCenter] postNotificationName:ScrollViewContentOffsetChangedNotification
@@ -528,25 +489,6 @@ static NSString * customBackButtonTitle;
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:ScrollViewEndScrollNotification
                                                         object:_scrollView];
-}
-
-// Return the analytics tag if it already exists, otherwise ask the delegate. If all fails, nil.
-- (NSString*)findAnalyticsTag 
-{
-    // If already exists, use it
-    if([_analyticsTag length] > 0) {
-        return _analyticsTag;
-    }
-    
-#ifdef NBU_COMPATIBILITY
-    // Ask the delegate if it exists
-    if(_analyticsDelegate && [_analyticsDelegate respondsToSelector:@selector(analyticsTagForViewController:)]) {
-        return [_analyticsDelegate analyticsTagForViewController:self];
-    }
-#endif
-    
-    // Give up
-    return nil;
 }
 
 #pragma mark - Prompt methods
@@ -650,7 +592,7 @@ static NSString * customBackButtonTitle;
 
 - (void)scrollToVisible:(NSNotification *)notification
 {
-    RKLogTrace(@"scrollToVisible %@", notification.object);
+    NBULogVerbose(@"scrollToVisible %@", notification.object);
     if ([notification.object isKindOfClass:[UIView class]])
     {
         [self scrollViewToVisible:notification.object
@@ -661,7 +603,7 @@ static NSString * customBackButtonTitle;
 
 //- (void)scrollToActiveField
 //{
-//    RKLogTrace(@"scrollToActiveField %@ (+ 10.0)", _activeField);
+//    NBULogVerbose(@"scrollToActiveField %@ (+ 10.0)", _activeField);
 //    CGRect rect = [_scrollView convertRect:_activeField.bounds
 //                                  fromView:_activeField];
 //    rect.size.height += 10.0;
@@ -671,7 +613,7 @@ static NSString * customBackButtonTitle;
 
 - (IBAction)hideKeyboard:(id)sender
 {
-    RKLogTrace(@"hideKeyboard %@ %@",
+    NBULogVerbose(@"hideKeyboard %@ %@",
                NBUStringFromBOOL(_activeField.isFirstResponder), _activeField);
     
     if (_activeField)
@@ -687,7 +629,7 @@ static NSString * customBackButtonTitle;
 
 - (void)keyboardWillShow:(NSNotification*)notification
 {
-    RKLogTrace(@"keyboardWillShow %@ %@ %@",
+    NBULogVerbose(@"keyboardWillShow %@ %@ %@",
                NBUStringFromBOOL(_activeField.isFirstResponder), _activeField, _activeField.inputAccessoryView);
     
     // Calculate the rect that gets hidden by the keyboard
@@ -732,13 +674,13 @@ static NSString * customBackButtonTitle;
     // Make sure activeField is the first responder
     [_activeField becomeFirstResponder];
     
-    RKLogTrace(@"keyboardDidShow %@ %@ %@",
+    NBULogVerbose(@"keyboardDidShow %@ %@ %@",
                NBUStringFromBOOL(_activeField.isFirstResponder), _activeField, _activeField.inputAccessoryView);
 }
 
 - (void)keyboardWillHide:(NSNotification*)notification
 {
-    RKLogTrace(@"keyboardWillHide %@ %@",
+    NBULogVerbose(@"keyboardWillHide %@ %@",
                NBUStringFromBOOL(_activeField.isFirstResponder), _activeField);
     
 //    [UIView animateWithDuration:0.3
@@ -777,7 +719,7 @@ static NSString * customBackButtonTitle;
 
 - (void)keyboardDidHide:(NSNotification*)notification
 {
-    RKLogTrace(@"keyboardDidHide %@ %@",
+    NBULogVerbose(@"keyboardDidHide %@ %@",
                NBUStringFromBOOL(_activeField.isFirstResponder), _activeField);
     
     // Restore accessoryView
@@ -853,26 +795,6 @@ static NSString * customBackButtonTitle;
         [self.tabBarController setTabBarHidden:YES
                                       animated:YES];
         _barsHidden = YES;
-    }
-}
-
-@end
-
-
-@implementation ActiveView (Analytics)
-
-- (void)setViewControllerAnalyticsTag:(NSString *)tag
-{
-    ScrollViewController * controller = (ScrollViewController *)self.viewController;
-    
-    if ([controller isKindOfClass:[ScrollViewController class]])
-    {
-        controller.analyticsTag = tag;
-    }
-    else
-    {
-        RKLogError(@"Can't setViewControllerAnalyticsTag: %@ is not kind of ScrollViewController",
-                   NSStringFromClass([controller class]));
     }
 }
 

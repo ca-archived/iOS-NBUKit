@@ -25,12 +25,6 @@
 #undef  NBUKIT_MODULE
 #define NBUKIT_MODULE   NBUKIT_MODULE_COMPATIBILITY
 
-#define RKLogError      NBULogError
-#define RKLogWarning    NBULogWarn
-#define RKLogInfo       NBULogInfo
-#define RKLogDebug      NBULogVerbose
-#define RKLogTrace      NBULogVerbose
-
 #define kMinimumHeightToShowPageControl 150.0
 #define kImageMargin 5.0
 #define kMinimumIntervalToChangePage 2.0
@@ -72,6 +66,21 @@
     [super awakeFromNib];
     
     // Configure the scrollview
+    self.scrollView.delegate = self;
+    
+    // Configure pageControl
+    if (_pageControl)
+    {
+        CGRect frame = _pageControl.frame;
+        frame.origin.y += frame.size.height - kPageControlHeight;
+        frame.size.height = kPageControlHeight;
+        _pageControl.frame = frame;
+        _pageControl.numberOfPages = 0;
+    }
+}
+
+- (UIScrollView *)scrollView
+{
     if (!_scrollView)
     {
         // Create a scrollView and configure if necessary
@@ -84,17 +93,7 @@
         [self insertSubview:_scrollView
                     atIndex:0];
     }
-    _scrollView.delegate = self;
-    
-    // Configure pageControl
-    if (_pageControl)
-    {
-        CGRect frame = _pageControl.frame;
-        frame.origin.y += frame.size.height - kPageControlHeight;
-        frame.size.height = kPageControlHeight;
-        _pageControl.frame = frame;
-        _pageControl.numberOfPages = 0;
-    }
+    return _scrollView;
 }
 
 - (void)didMoveToWindow
@@ -217,7 +216,7 @@
     {
         index = floor(([sender locationInView:self].x + _scrollView.contentOffset.x) /
                       (_scrollView.contentSize.width  / _nViews));
-        RKLogTrace(@"location %f offset %f viewWidth %f index %d",
+        NBULogVerbose(@"location %f offset %f viewWidth %f index %d",
               [sender locationInView:self].x, _scrollView.contentOffset.x, (_scrollView.contentSize.width  / _nViews), index);
     }
     
@@ -241,7 +240,7 @@
     [self.viewController.navigationController pushViewController:controller
                                                         animated:YES];
     
-    RKLogTrace(@"content width %f current page %d frame width %f",
+    NBULogVerbose(@"content width %f current page %d frame width %f",
                _scrollView.contentSize.width, _pageControl.currentPage, _scrollView.frame.size.width);
     
     controller.objectView.pageControl.numberOfPages = _nViews;
@@ -333,7 +332,7 @@
         
     }
 
-    RKLogTrace(@"currentPage %d",page);
+    NBULogVerbose(@"currentPage %d",page);
     _pageControl.currentPage = page;
 }
 
@@ -478,10 +477,10 @@
                                          frame.origin.x,
                                          frame.size.height);
     
-    RKLogTrace(@"content width %f current page %d frame width %f",
+    NBULogVerbose(@"content width %f current page %d frame width %f",
                _scrollView.contentSize.width, _pageControl.currentPage, _scrollView.frame.size.width);
     
-    CGFloat offsetX = _scrollView.frame.size.width * _pageControl.currentPage;
+    CGFloat offsetX = _scrollView.pagingEnabled ? _scrollView.frame.size.width * _pageControl.currentPage : _scrollView.contentOffset.x;
     if (offsetX > 0.0 &&
         offsetX + _scrollView.frame.size.width > _scrollView.contentSize.width)
     {

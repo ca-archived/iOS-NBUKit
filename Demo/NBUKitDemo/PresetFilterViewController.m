@@ -26,25 +26,14 @@
     NSArray * _providerFilters;
 }
 
-
 - (void)awakeFromNib
 {
     [super awakeFromNib];
     
     // Configure and set all available filters
-    NSMutableArray * filters = [NSMutableArray array];
-    NBUFilter * filter;
-    NSArray * filterTypes = [NBUFilterProvider availableFilterTypes];
-    for (NSString * type in filterTypes)
-    {
-        filter = [NBUFilterProvider filterWithName:nil
-                                              type:type
-                                            values:nil];
-        [filters addObject:filter];
-    }
-    _providerFilters = filters;
+    _providerFilters = [NBUFilterProvider availableFilters];
     self.filters = _providerFilters;
-    
+
     /*
      Another possibility:
      
@@ -85,14 +74,24 @@
 {
     [super viewWillAppear:animated];
     
-    // Add custom filters
+    // Add .acv filters
+    NSMutableArray * customFilters = [NSMutableArray array];
+    NSArray * fileURLs = [[NSFileManager defaultManager] URLsForFilesWithExtensions:@[@"acv"]
+                                                              searchInDirectoryURLs:@[[NSBundle mainBundle].bundleURL]];
+    for (NSURL * url in fileURLs)
+    {
+        [customFilters addObject:[NBUFilterProvider filterWithName:[url.lastPathComponent stringByDeletingPathExtension]
+                                                              type:NBUFilterTypeToneCurve
+                                                            values:@{@"curveFile": url}]];
+    }
+    
+    // Add custom filters created with the editor
     NSURL * filtersURL = [[UIApplication sharedApplication].libraryDirectory URLByAppendingPathComponent:@"Filters"];
     NSArray * contents = [[NSFileManager defaultManager] URLsForFilesWithExtensions:@[@"plist"]
                                                               searchInDirectoryURLs:@[filtersURL]];
     
     NBULogInfo(@"Filters folder contents: %@", contents);
     
-    NSMutableArray * customFilters = [NSMutableArray array];
     NBUFilterGroup * filter;
     NSDictionary * configuration;
     for (NSURL * fileURL in contents)

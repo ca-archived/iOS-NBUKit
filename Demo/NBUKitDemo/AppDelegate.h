@@ -22,6 +22,7 @@
 
 // Outlets
 @property (strong, nonatomic) IBOutlet UIWindow * window;
+@property (strong, nonatomic) IBOutlet UIButton * cameraButton;
 
 @end
 

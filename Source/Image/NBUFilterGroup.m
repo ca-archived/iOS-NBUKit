@@ -32,8 +32,6 @@
     NBUFilterGroup * filterGroup = [NBUFilterGroup filterWithName:name
                                                              type:type ? type : NBUFilterTypeGroup
                                                            values:nil
-                                                    defaultValues:nil
-                                                   identityValues:nil
                                                        attributes:nil
                                                          provider:nil
                                              configureFilterBlock:NULL];

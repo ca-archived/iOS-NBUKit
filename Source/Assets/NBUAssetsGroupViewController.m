@@ -45,8 +45,11 @@
 @synthesize clearsSelectionOnViewWillAppear = _clearsSelectionOnViewWillAppear;
 @synthesize selectionChangedBlock = _selectionChangedBlock;
 @synthesize assets = _assets;
+@synthesize selectedAssetsURLs = _selectedAssetsURLs;
 @synthesize gridView = _gridView;
 @synthesize continueButton = _continueButton;
+@synthesize groupNameLabel = _groupNameLabel;
+@synthesize assetsCountLabel = _assetsCountLabel;
 
 // TODO: Remove
 - (void)setScrollOffset
@@ -85,12 +88,14 @@
     {
         [oldGroup stopLoadingAssets];
         [_gridView resetGridView];
-        [self resetScrollViewOffset];
         _selectedAssets = [NSMutableArray array];
     }
     
     // Configure UI
-    self.title = self.assetsGroup.name;
+    if (_groupNameLabel)
+        _groupNameLabel.text = self.assetsGroup.name;
+    else
+        self.title = self.assetsGroup.name;
     self.selectedAssets = nil;
     
     // Reload assets
@@ -101,6 +106,22 @@
                        self.loading = YES;
                    });
     NSUInteger totalCount = self.assetsGroup.imageAssetsCount;
+    if (totalCount == 0)
+    {
+        _assetsCountLabel.text = [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"NBUAssetsGroupView Only one image",
+                                                                                              nil, nil,
+                                                                                              @"1 image",
+                                                                                              @"NBUAssetsGroupView Only one image"),
+                                  totalCount];
+    }
+    else
+    {
+        _assetsCountLabel.text = [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"NBUAssetsGroupView Number of images",
+                                                                                              nil, nil,
+                                                                                              @"%d images",
+                                                                                              @"NBUAssetsGroupView Number of images"),
+                                  totalCount];
+    }
     __unsafe_unretained NBUAssetsGroupViewController * weakSelf = self;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         
@@ -115,18 +136,27 @@
              {
                  _assets = assets;
                  
-                 // Update grid view from time to time
+                 // Update from time to time only...
                  if (assets.count == 100 ||
                      assets.count == 400 ||
                      assets.count == totalCount)
                  {
                      NBULogVerbose(@"...%d images loaded", assets.count);
+                     
+                     // Stop loading?
+                     if (assets.count == totalCount)
+                     {
+                         weakSelf.loading = NO;
+                     }
+                     
+                     // Check for selectedAssets
+                     NSArray * selectedAssets = [self selectedAssetsFromAssets:assets
+                                                            selectedAssetsURLs:_selectedAssetsURLs];
+                     
+                     // Update grid view and selected assets on main thread
                      dispatch_async(dispatch_get_main_queue(), ^
                                     {
-                                        if (assets.count == totalCount)
-                                        {
-                                            weakSelf.loading = NO;
-                                        }
+                                        self.selectedAssets = selectedAssets;
                                         weakSelf.gridView.objectArray = assets;
                                     });
                  }
@@ -207,6 +237,54 @@
     if (_selectionChangedBlock) _selectionChangedBlock();
 }
 
+- (NSArray *)selectedAssetsFromAssets:(NSArray *)assets
+                   selectedAssetsURLs:(NSArray *)selectedAssetsURLs
+{
+    NSMutableArray * selectedAssets;
+    if (selectedAssetsURLs.count > 0)
+    {
+        selectedAssets = [NSMutableArray array];
+        for (NBUAsset * asset in assets)
+        {
+            for (NSURL * url in selectedAssetsURLs)
+            {
+                if ([asset.URL.absoluteString isEqualToString:url.absoluteString])
+                {
+                    [selectedAssets addObject:asset];
+                    break;
+                }
+            }
+            // Stop looking if we found all of them
+            if (selectedAssets.count == selectedAssetsURLs.count)
+                break;
+        }
+    }
+    return selectedAssets;
+}
+
+- (void)setSelectedAssetsURLs:(NSArray *)selectedAssetsURLs
+{
+    _selectedAssetsURLs = selectedAssetsURLs;
+    
+    self.selectedAssets = [self selectedAssetsFromAssets:self.assets
+                                      selectedAssetsURLs:selectedAssetsURLs];
+}
+
+- (NSArray *)selectedAssetsURLs
+{
+    if (!self.isViewLoaded)
+        return _selectedAssetsURLs;
+    
+    // Make sure that we have the latest URLs by recreating them from the actual selectedAssets
+    NSMutableArray * selectedAssetsURLs = [NSMutableArray array];
+    for (NBUAsset * asset in _selectedAssets)
+    {
+        [selectedAssetsURLs addObject:asset.URL];
+    }
+    _selectedAssetsURLs = selectedAssetsURLs;
+    return selectedAssetsURLs;
+}
+
 #pragma mark - Manage taps
 
 - (void)viewWillAppear:(BOOL)animated
@@ -214,8 +292,8 @@
     [super viewWillAppear:animated];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(imageAssetViewTapped:)
-                                                 name:ActiveViewTappedNotification
+                                             selector:@selector(thumbnailViewSelectionStateChanged:)
+                                                 name:NBUAssetThumbnailViewSelectionStateChangedNotification
                                                object:nil];
     
     // Clear selection if in single selection mode
@@ -230,22 +308,19 @@
     [super viewWillDisappear:animated];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:ActiveViewTappedNotification
+                                                    name:NBUAssetThumbnailViewSelectionStateChangedNotification
                                                   object:nil];
 }
 
-- (void)imageAssetViewTapped:(NSNotification *)notification
+- (void)thumbnailViewSelectionStateChanged:(NSNotification *)notification
 {
     // Refresh selected assets
     NBUAssetThumbnailView * assetView = (NBUAssetThumbnailView *)notification.object;
     
-    if (![assetView isKindOfClass:[NBUAssetThumbnailView class]])
-        return;
-    
     // Selected
     if (assetView.selected)
     {
-        // Prefent further selections?
+        // Prevent further selections?
         if ((_selectionCountLimit > 0) &&
             (_selectedAssets.count >= _selectionCountLimit))
         {

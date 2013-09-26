@@ -31,6 +31,7 @@
     
     // Programatic badge
     NBUBadgeView * badge = [NBUBadgeView badge];
+    badge.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
     badge.origin = CGPointMake(10.0, 100.0);
     badge.value = @"Programatic badge";
     [self.view addSubview:badge];

@@ -74,7 +74,7 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
              NBUFilterTypeAdditiveBlend,
              NBUFilterTypeAlphaBlend,
              NBUFilterTypeSourceOver,
-             NBUFilterTypeACV,
+             NBUFilterTypeToneCurve,
              NBUFilterTypeFisheye,
              NBUFilterTypeMaskBlur
              ];
@@ -82,21 +82,20 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
 
 + (NBUFilter *)filterWithName:(NSString *)name
                          type:(NSString *)type
-                       values:(NSArray *)values
+                       values:(NSDictionary *)values
 {
-    NSArray * defaultValues;
-    NSArray * identityValues;
     NSDictionary * attributes;
     NBUConfigureFilterBlock block;
     
     if ([type isEqualToString:NBUFilterTypeContrast])
     {
-        defaultValues                                   = @[@(1.2)];
-        identityValues                                  = @[@(1.0)];
-        attributes = @{NBUFilterValuesDescriptionKey    : @[@"Contrast"],
-                       NBUFilterValuesTypeKey           : @[NBUFilterValuesTypeFloat],
-                       NBUFilterMaxValuesKey            : @[@(4.0)],
-                       NBUFilterMinValuesKey            : @[@(0.0)]};
+        NSString * contrast = @"contrast";
+        attributes = @{contrast : @{NBUFilterValueDescriptionKey : @"Contrast",
+                                    NBUFilterValueTypeKey        : NBUFilterValueTypeFloat,
+                                    NBUFilterDefaultValueKey     : @(1.2),
+                                    NBUFilterIdentityValueKey    : @(1.0),
+                                    NBUFilterMaximumValueKey     : @(4.0),
+                                    NBUFilterMinimumValueKey     : @(0.0)}};
         block = ^(NBUFilter * filter,
                   GPUImageContrastFilter * gpuFilter)
         {
@@ -107,19 +106,20 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
             }
             
             // Configure it
-            gpuFilter.contrast = [filter floatValueForIndex:0];
+            gpuFilter.contrast = [filter floatValueForKey:contrast];
             
             return gpuFilter;
         };
     }
     else if ([type isEqualToString:NBUFilterTypeBrightness])
     {
-        defaultValues                                   = @[@(0.1)];
-        identityValues                                  = @[@(0.0)];
-        attributes = @{NBUFilterValuesDescriptionKey    : @[@"Brightness"],
-                       NBUFilterValuesTypeKey           : @[NBUFilterValuesTypeFloat],
-                       NBUFilterMaxValuesKey            : @[@(1.0)],
-                       NBUFilterMinValuesKey            : @[@(-1.0)]};
+        NSString * brightness = @"brightness";
+        attributes = @{brightness : @{NBUFilterValueDescriptionKey : @"Brightness",
+                                      NBUFilterValueTypeKey        : NBUFilterValueTypeFloat,
+                                      NBUFilterDefaultValueKey     : @(0.1),
+                                      NBUFilterIdentityValueKey    : @(0.0),
+                                      NBUFilterMaximumValueKey     : @(1.0),
+                                      NBUFilterMinimumValueKey     : @(-1.0)}};
         block = ^(NBUFilter * filter,
                   GPUImageBrightnessFilter * gpuFilter)
         {
@@ -130,19 +130,20 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
             }
             
             // Configure it
-            gpuFilter.brightness = [filter floatValueForIndex:0];
+            gpuFilter.brightness = [filter floatValueForKey:brightness];
             
             return gpuFilter;
         };
     }
     else if ([type isEqualToString:NBUFilterTypeSaturation])
     {
-        defaultValues                                   = @[@(1.3)];
-        identityValues                                  = @[@(1.0)];
-        attributes = @{NBUFilterValuesDescriptionKey    : @[@"Saturation"],
-                       NBUFilterValuesTypeKey           : @[NBUFilterValuesTypeFloat],
-                       NBUFilterMaxValuesKey            : @[@(2.0)],
-                       NBUFilterMinValuesKey            : @[@(0.0)]};
+        NSString * saturation = @"saturation";
+        attributes = @{saturation : @{NBUFilterValueDescriptionKey : @"Saturation",
+                                      NBUFilterValueTypeKey        : NBUFilterValueTypeFloat,
+                                      NBUFilterDefaultValueKey     : @(1.3),
+                                      NBUFilterIdentityValueKey    : @(1.0),
+                                      NBUFilterMaximumValueKey     : @(2.0),
+                                      NBUFilterMinimumValueKey     : @(0.0)}};
         block = ^(NBUFilter * filter,
                   GPUImageSaturationFilter * gpuFilter)
         {
@@ -153,19 +154,20 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
             }
             
             // Configure it
-            gpuFilter.saturation = [filter floatValueForIndex:0];
+            gpuFilter.saturation = [filter floatValueForKey:saturation];
             
             return gpuFilter;
         };
     }
     else if ([type isEqualToString:NBUFilterTypeExposure])
     {
-        defaultValues                                   = @[@(0.2)];
-        identityValues                                  = @[@(0.0)];
-        attributes = @{NBUFilterValuesDescriptionKey    : @[@"Exposure"],
-                       NBUFilterValuesTypeKey           : @[NBUFilterValuesTypeFloat],
-                       NBUFilterMaxValuesKey            : @[@(10.0)],
-                       NBUFilterMinValuesKey            : @[@(-10.0)]};
+        NSString * exposure = @"exposure";
+        attributes = @{exposure : @{NBUFilterValueDescriptionKey : @"Exposure",
+                                    NBUFilterValueTypeKey        : NBUFilterValueTypeFloat,
+                                    NBUFilterDefaultValueKey     : @(0.2),
+                                    NBUFilterIdentityValueKey    : @(0.0),
+                                    NBUFilterMaximumValueKey     : @(10.0),
+                                    NBUFilterMinimumValueKey     : @(-10.0)}};
         block = ^(NBUFilter * filter,
                   GPUImageExposureFilter * gpuFilter)
         {
@@ -176,19 +178,20 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
             }
             
             // Configure it
-            gpuFilter.exposure = [filter floatValueForIndex:0];
+            gpuFilter.exposure = [filter floatValueForKey:exposure];
             
             return gpuFilter;
         };
     }
     else if ([type isEqualToString:NBUFilterTypeSharpen])
     {
-        defaultValues                                   = @[@(0.5)];
-        identityValues                                  = @[@(0.0)];
-        attributes = @{NBUFilterValuesDescriptionKey    : @[@"Sharpness"],
-                       NBUFilterValuesTypeKey           : @[NBUFilterValuesTypeFloat],
-                       NBUFilterMaxValuesKey            : @[@(4.0)],
-                       NBUFilterMinValuesKey            : @[@(-4.0)]};
+        NSString * sharpness = @"sharpness";
+        attributes = @{sharpness : @{NBUFilterValueDescriptionKey : @"Sharpness",
+                                     NBUFilterValueTypeKey        : NBUFilterValueTypeFloat,
+                                     NBUFilterDefaultValueKey     : @(0.5),
+                                     NBUFilterIdentityValueKey    : @(0.0),
+                                     NBUFilterMaximumValueKey     : @(4.0),
+                                     NBUFilterMinimumValueKey     : @(-4.0)}};
         block = ^(NBUFilter * filter,
                   GPUImageSharpenFilter * gpuFilter)
         {
@@ -199,19 +202,20 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
             }
             
             // Configure it
-            gpuFilter.sharpness = [filter floatValueForIndex:0];
+            gpuFilter.sharpness = [filter floatValueForKey:sharpness];
             
             return gpuFilter;
         };
     }
     else if ([type isEqualToString:NBUFilterTypeGamma])
     {
-        defaultValues                                   = @[@(0.8)];
-        identityValues                                  = @[@(1.0)];
-        attributes = @{NBUFilterValuesDescriptionKey    : @[@"Gamma"],
-                       NBUFilterValuesTypeKey           : @[NBUFilterValuesTypeFloat],
-                       NBUFilterMaxValuesKey            : @[@(3.0)],
-                       NBUFilterMinValuesKey            : @[@(0.0)]};
+        NSString * gamma = @"gamma";
+        attributes = @{gamma : @{NBUFilterValueDescriptionKey : @"Gamma",
+                                 NBUFilterValueTypeKey        : NBUFilterValueTypeFloat,
+                                 NBUFilterDefaultValueKey     : @(0.8),
+                                 NBUFilterIdentityValueKey    : @(1.0),
+                                 NBUFilterMaximumValueKey     : @(3.0),
+                                 NBUFilterMinimumValueKey     : @(0.0)}};
         block = ^(NBUFilter * filter,
                   GPUImageGammaFilter * gpuFilter)
         {
@@ -222,25 +226,38 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
             }
             
             // Configure it
-            gpuFilter.gamma = [filter floatValueForIndex:0];
+            gpuFilter.gamma = [filter floatValueForKey:gamma];
             
             return gpuFilter;
         };
     }
     else if ([type isEqualToString:NBUFilterTypeMonochrome])
     {
-        defaultValues                                   = @[@(1.0), @(0.7), @(0.7), @(0.7)];
-        identityValues                                  = @[@(0.0), [NSNull null], [NSNull null], [NSNull null]];
-        attributes = @{NBUFilterValuesDescriptionKey    : @[@"Intensity",
-                                                            @"Red",
-                                                            @"Green",
-                                                            @"Blue"],
-                       NBUFilterValuesTypeKey           : @[NBUFilterValuesTypeFloat,
-                                                            NBUFilterValuesTypeFloat,
-                                                            NBUFilterValuesTypeFloat,
-                                                            NBUFilterValuesTypeFloat],
-                       NBUFilterMaxValuesKey            : @[@(1.0), @(1.0), @(1.0), @(1.0)],
-                       NBUFilterMinValuesKey            : @[@(0.0), @(0.0), @(0.0), @(0.0)]};
+        NSString * intensity    = @"intensity";
+        NSString * red          = @"red";
+        NSString * green        = @"green";
+        NSString * blue         = @"blue";
+        attributes = @{intensity    : @{NBUFilterValueDescriptionKey : @"Intensity",
+                                        NBUFilterValueTypeKey        : NBUFilterValueTypeFloat,
+                                        NBUFilterDefaultValueKey     : @(1.0),
+                                        NBUFilterIdentityValueKey    : @(0.0),
+                                        NBUFilterMaximumValueKey     : @(1.0),
+                                        NBUFilterMinimumValueKey     : @(0.0)},
+                       red          : @{NBUFilterValueDescriptionKey : @"Red",
+                                        NBUFilterValueTypeKey        : NBUFilterValueTypeFloat,
+                                        NBUFilterDefaultValueKey     : @(0.7),
+                                        NBUFilterMaximumValueKey     : @(1.0),
+                                        NBUFilterMinimumValueKey     : @(0.0)},
+                       green        : @{NBUFilterValueDescriptionKey : @"Green",
+                                        NBUFilterValueTypeKey        : NBUFilterValueTypeFloat,
+                                        NBUFilterDefaultValueKey     : @(0.7),
+                                        NBUFilterMaximumValueKey     : @(1.0),
+                                        NBUFilterMinimumValueKey     : @(0.0)},
+                       blue         : @{NBUFilterValueDescriptionKey : @"Blue",
+                                        NBUFilterValueTypeKey        : NBUFilterValueTypeFloat,
+                                        NBUFilterDefaultValueKey     : @(0.7),
+                                        NBUFilterMaximumValueKey     : @(1.0),
+                                        NBUFilterMinimumValueKey     : @(0.0)}};
         block = ^(NBUFilter * filter,
                   GPUImageMonochromeFilter * gpuFilter)
         {
@@ -251,24 +268,29 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
             }
             
             // Configure it
-            gpuFilter.intensity = [filter floatValueForIndex:0];
-            [gpuFilter setColorRed:[filter floatValueForIndex:1]
-                             green:[filter floatValueForIndex:2]
-                              blue:[filter floatValueForIndex:3]];
+            gpuFilter.intensity  = [filter floatValueForKey:intensity];
+            [gpuFilter setColorRed:[filter floatValueForKey:red]
+                             green:[filter floatValueForKey:green]
+                              blue:[filter floatValueForKey:blue]];
             
             return gpuFilter;
         };
     }
     else if ([type isEqualToString:NBUFilterTypeFisheye])
     {
-        defaultValues                                   = @[@(0.3), @(0.65)];
-        identityValues                                  = @[[NSNull null], @(0.0)];
-        attributes = @{NBUFilterValuesDescriptionKey    : @[@"Scale",
-                                                            @"Radius"],
-                       NBUFilterValuesTypeKey           : @[NBUFilterValuesTypeFloat,
-                                                            NBUFilterValuesTypeFloat],
-                       NBUFilterMaxValuesKey            : @[@(1.0), @(1.0)],
-                       NBUFilterMinValuesKey            : @[@(-1.0), @(0.0)]};
+        NSString * scale    = @"scale";
+        NSString * radius   = @"radius";
+        attributes = @{scale    : @{NBUFilterValueDescriptionKey : @"Scale",
+                                    NBUFilterValueTypeKey        : NBUFilterValueTypeFloat,
+                                    NBUFilterDefaultValueKey     : @(0.3),
+                                    NBUFilterMaximumValueKey     : @(1.0),
+                                    NBUFilterMinimumValueKey     : @(-1.0)},
+                       radius   : @{NBUFilterValueDescriptionKey : @"Radius",
+                                    NBUFilterValueTypeKey        : NBUFilterValueTypeFloat,
+                                    NBUFilterDefaultValueKey     : @(0.65),
+                                    NBUFilterIdentityValueKey    : @(0.0),
+                                    NBUFilterMaximumValueKey     : @(1.0),
+                                    NBUFilterMinimumValueKey     : @(0.0)}};
         block = ^(NBUFilter * filter,
                   GPUImageBulgeDistortionFilter * gpuFilter)
         {
@@ -279,22 +301,25 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
             }
             
             // Configure it
-            gpuFilter.scale = [filter floatValueForIndex:0];
-            gpuFilter.radius = [filter floatValueForIndex:1];
+            gpuFilter.scale  = [filter floatValueForKey:scale];
+            gpuFilter.radius = [filter floatValueForKey:radius];
             
             return gpuFilter;
         };
     }
     else if ([type isEqualToString:NBUFilterTypeMaskBlur])
     {
-        defaultValues                           = @[@"filters/frame.png", @(1.0)];
-        identityValues                          = @[@""];
-        attributes                              = @{NBUFilterValuesDescriptionKey   : @[@"Alpha mask",
-                                                                                        @"Blur size"],
-                                                    NBUFilterValuesTypeKey          : @[NBUFilterValuesTypeImage,
-                                                                                        NBUFilterValuesTypeFloat],
-                                                    NBUFilterMaxValuesKey           : @[[NSNull null], @(3.0)],
-                                                    NBUFilterMinValuesKey           : @[[NSNull null], @(0.0)]};
+        NSString * alphaMask    = @"alphaMask";
+        NSString * blurSize     = @"blurSize";
+        attributes = @{alphaMask    : @{NBUFilterValueDescriptionKey : @"Alpha mask",
+                                        NBUFilterValueTypeKey        : NBUFilterValueTypeImage,
+                                        NBUFilterDefaultValueKey     : @"NBUKitResources.bundle/filters/frame.png"},
+                       blurSize     : @{NBUFilterValueDescriptionKey : @"Blur size",
+                                        NBUFilterValueTypeKey        : NBUFilterValueTypeFloat,
+                                        NBUFilterDefaultValueKey     : @(1.0),
+                                        NBUFilterIdentityValueKey    : @(0.0),
+                                        NBUFilterMaximumValueKey     : @(3.0),
+                                        NBUFilterMinimumValueKey     : @(0.0)}};
         block = ^(NBUFilter * filter,
                   NBUGPUMultiInputImageFilterGroup * gpuFilterGroup)
         {
@@ -320,23 +345,23 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
             }
             
             // Configure
-            UIImage * mask = [filter imageForIndex:0];
+            UIImage * mask = [filter imageForKey:alphaMask];
             [gpuFilterGroup setImage:mask
               forImagePictureAtIndex:0
              withTargetFilterAtIndex:0
                    atTextureLocation:1];
             GPUImageGaussianBlurFilter * blurFilter = (GPUImageGaussianBlurFilter *)[gpuFilterGroup filterAtIndex:1];
-            blurFilter.blurSize = [filter floatValueForIndex:1];
+            blurFilter.blurSize = [filter floatValueForKey:blurSize];
             
             return gpuFilterGroup;
         };
     }
     else if ([type isEqualToString:NBUFilterTypeMultiplyBlend])
     {
-        defaultValues                           = @[@"filters/mask.png"];
-        identityValues                          = @[@""];
-        attributes                              = @{NBUFilterValuesDescriptionKey   : @[@"Second image"],
-                                                    NBUFilterValuesTypeKey          : @[NBUFilterValuesTypeImage]};
+        NSString * secondImage = @"secondImage";
+        attributes = @{secondImage : @{NBUFilterValueDescriptionKey : @"Second image",
+                                       NBUFilterValueTypeKey        : NBUFilterValueTypeImage,
+                                       NBUFilterDefaultValueKey     : @"NBUKitResources.bundle/filters/mask.png"}};
         block = ^(NBUFilter * filter,
                   NBUGPUMultiInputImageFilterGroup * gpuFilterGroup)
         {
@@ -354,7 +379,7 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
             }
             
             // Configure
-            UIImage * overlay = [filter imageForIndex:0];
+            UIImage * overlay = [filter imageForKey:secondImage];
             [gpuFilterGroup setImage:overlay
               forImagePictureAtIndex:0
              withTargetFilterAtIndex:0
@@ -365,10 +390,10 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
     }
     else if ([type isEqualToString:NBUFilterTypeAdditiveBlend])
     {
-        defaultValues                           = @[@"filters/frame.png"];
-        identityValues                          = @[@""];
-        attributes                              = @{NBUFilterValuesDescriptionKey   : @[@"Second image"],
-                                                    NBUFilterValuesTypeKey          : @[NBUFilterValuesTypeImage]};
+        NSString * secondImage = @"secondImage";
+        attributes = @{secondImage : @{NBUFilterValueDescriptionKey : @"Second image",
+                                       NBUFilterValueTypeKey        : NBUFilterValueTypeImage,
+                                       NBUFilterDefaultValueKey     : @"NBUKitResources.bundle/filters/frame.png"}};
         block = ^(NBUFilter * filter,
                   NBUGPUMultiInputImageFilterGroup * gpuFilterGroup)
         {
@@ -386,7 +411,7 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
             }
             
             // Configure
-            UIImage * overlay = [filter imageForIndex:0];
+            UIImage * overlay = [filter imageForKey:secondImage];
             [gpuFilterGroup setImage:overlay
               forImagePictureAtIndex:0
              withTargetFilterAtIndex:0
@@ -397,14 +422,17 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
     }
     else if ([type isEqualToString:NBUFilterTypeAlphaBlend])
     {
-        defaultValues                           = @[@"filters/frame.png", @(0.5)];
-        identityValues                          = nil;
-        attributes                              = @{NBUFilterValuesDescriptionKey   : @[@"Second image",
-                                                                                        @"Mix"],
-                                                    NBUFilterValuesTypeKey          : @[NBUFilterValuesTypeImage,
-                                                                                        NBUFilterValuesTypeFloat],
-                                                    NBUFilterMaxValuesKey           : @[[NSNull null], @(1.0)],
-                                                    NBUFilterMinValuesKey           : @[[NSNull null], @(0.0)]};
+        NSString * secondImage  = @"secondImage";
+        NSString * mix     = @"mix";
+        attributes = @{secondImage  : @{NBUFilterValueDescriptionKey : @"Second image",
+                                        NBUFilterValueTypeKey        : NBUFilterValueTypeImage,
+                                        NBUFilterDefaultValueKey     : @"NBUKitResources.bundle/filters/frame.png"},
+                       mix          : @{NBUFilterValueDescriptionKey : @"Mix",
+                                        NBUFilterValueTypeKey        : NBUFilterValueTypeFloat,
+                                        NBUFilterDefaultValueKey     : @(0.5),
+                                        NBUFilterIdentityValueKey    : @(0.0),
+                                        NBUFilterMaximumValueKey     : @(1.0),
+                                        NBUFilterMinimumValueKey     : @(0.0)}};
         block = ^(NBUFilter * filter,
                   NBUGPUMultiInputImageFilterGroup * gpuFilterGroup)
         {
@@ -422,23 +450,23 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
             }
             
             // Configure
-            UIImage * overlay = [filter imageForIndex:0];
+            UIImage * overlay = [filter imageForKey:secondImage];
             [gpuFilterGroup setImage:overlay
               forImagePictureAtIndex:0
              withTargetFilterAtIndex:0
                    atTextureLocation:1];
             GPUImageAlphaBlendFilter * blendFilter = (GPUImageAlphaBlendFilter *)[gpuFilterGroup filterAtIndex:0];
-            blendFilter.mix = [filter floatValueForIndex:1];
+            blendFilter.mix = [filter floatValueForKey:mix];
             
             return gpuFilterGroup;
         };
     }
     else if ([type isEqualToString:NBUFilterTypeSourceOver])
     {
-        defaultValues                           = @[@"filters/frame.png"];
-        identityValues                          = @[@""];
-        attributes                              = @{NBUFilterValuesDescriptionKey   : @[@"Second image"],
-                                                    NBUFilterValuesTypeKey          : @[NBUFilterValuesTypeImage]};
+        NSString * secondImage = @"secondImage";
+        attributes = @{secondImage : @{NBUFilterValueDescriptionKey : @"Second image",
+                                       NBUFilterValueTypeKey        : NBUFilterValueTypeImage,
+                                       NBUFilterDefaultValueKey     : @"NBUKitResources.bundle/filters/frame.png"}};
         block = ^(NBUFilter * filter,
                   NBUGPUMultiInputImageFilterGroup * gpuFilterGroup)
         {
@@ -456,7 +484,7 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
             }
             
             // Configure
-            UIImage * overlay = [filter imageForIndex:0];
+            UIImage * overlay = [filter imageForKey:secondImage];
             [gpuFilterGroup setImage:overlay
               forImagePictureAtIndex:0
              withTargetFilterAtIndex:0
@@ -465,12 +493,12 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
             return gpuFilterGroup;
         };
     }
-    else if ([type isEqualToString:NBUFilterTypeACV])
+    else if ([type isEqualToString:NBUFilterTypeToneCurve])
     {
-        defaultValues                           = @[@"filters/sample.acv"];
-        identityValues                          = @[@""];
-        attributes                              = @{NBUFilterValuesDescriptionKey   : @[@"ACV file"],
-                                                    NBUFilterValuesTypeKey          : @[NBUFilterValuesTypeFile]};
+        NSString * curveFile = @"curveFile";
+        attributes = @{curveFile : @{NBUFilterValueDescriptionKey : @"Tone curve file",
+                                     NBUFilterValueTypeKey        : NBUFilterValueTypeFile,
+                                     NBUFilterDefaultValueKey     : @"NBUKitResources.bundle/filters/sample.acv"}};
         block = ^(NBUFilter * filter,
                   GPUImageToneCurveFilter * gpuFilter)
         {
@@ -481,7 +509,7 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
             }
             
             // Configure it
-            NSURL * fileURL = [filter fileURLForIndex:0];
+            NSURL * fileURL = [filter fileURLForKey:curveFile];
             [gpuFilter setPointsWithACVURL:fileURL];
             
             return gpuFilter;
@@ -496,8 +524,6 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
     NBUFilter * filter = [NBUFilter filterWithName:name
                                               type:type
                                             values:values
-                                     defaultValues:defaultValues
-                                    identityValues:identityValues
                                         attributes:attributes
                                           provider:self
                               configureFilterBlock:block];

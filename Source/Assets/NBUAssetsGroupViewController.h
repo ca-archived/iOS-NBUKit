@@ -49,6 +49,11 @@
 /// The currently selected NBUAsset objects.
 @property (strong, nonatomic)                       NSArray * selectedAssets;
 
+/// The currently selectedAssets' URLs.
+/// @note For persistence purposes prefer this property over selectedAssets as
+/// NBUAssets instances may not be unique.
+@property (strong, nonatomic)                       NSArray * selectedAssetsURLs;
+
 /// An optional block to be called when the selection changes.
 @property (nonatomic, copy)                         void (^selectionChangedBlock)();
 
@@ -74,6 +79,13 @@
 /// An optional UIButton or UIBarButtonItem that will be automatically disabled/enabled as selection changes.
 /// @discussion You should configure the button's target actions separatly.
 @property (assign, nonatomic) IBOutlet              id<UIButton> continueButton;
+
+/// An optional UILabel that will be updated automatically with the associated assetsGroup.
+/// @discussion When set the controllers' [UINavigationItem title] will no longer be modified.
+@property (assign, nonatomic) IBOutlet              UILabel * groupNameLabel;
+
+/// An optional UILabel that will be updated automatically with the assets count.
+@property (assign, nonatomic) IBOutlet              UILabel * assetsCountLabel;
 
 @end
 

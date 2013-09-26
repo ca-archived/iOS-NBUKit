@@ -15,3 +15,9 @@ Staring with 1.9.x the Demo project requires [Cocoapods](http://cocoapods.org):
    * `$ pod install`
 3. Finally open the newly created `NBUKitDemo.xcworkspace`.
 
+### Acknowledgements
+
+Demo curve files from:
+
+http://frikialternatiivo.deviantart.com/art/Photoshop-Curves-pack-170955755
+http://raineyj.deviantart.com/art/Curves-for-the-Uninspired-2-137264795

@@ -26,6 +26,7 @@
  - Animates when set/cleared.
  - Supports any string.
  - Sizes to fit automatically.
+ - Adjusts origin's x according to its UIViewAutoresizing's flexible margins. 
  */
 @interface NBUBadgeView : ObjectView
 

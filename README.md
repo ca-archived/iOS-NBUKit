@@ -68,7 +68,18 @@ Installation
 ### Cocoapods (1.9.x+)
 
 1. Install [Cocoapods](http://cocoapods.org) if not already done.
-2. Add `pod 'NBUKit'` to your Podfile.
+2. For iOS 5+ targets add `pod 'GPUImage', :podspec => 'https://raw.github.com/CyberAgent/iOS-NBUKit/master/Library/GPUImage.podspec'`
+to your Podfile as GPUImage's Podspec is stuck at 0.1.0.
+3. Add `pod 'NBUKit'` to your Podfile.
+
+Sample Podfile:
+
+```ruby
+platform :ios
+
+pod 'GPUImage', :podspec => 'https://raw.github.com/CyberAgent/iOS-NBUKit/master/Library/GPUImage.podspec' # iOS 5+ only
+pod 'NBUKit',   '~> 1.9.5'
+```
 
 _If you have a problem try `gem update cocoapods` first._
 
