@@ -90,7 +90,7 @@ _If you have a problem try `gem update cocoapods` first._
 Documentation
 -------------
 
-NBUKit + NBUCore
+NBUKit + NBUCore 
 
 * HTML: http://cyberagent.github.io/iOS-NBUKit/html/
 * Xcode DocSet: `http://cyberagent.github.io/iOS-NBUKit/publish/NBUKit.atom`
