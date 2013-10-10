@@ -18,7 +18,7 @@
 //  limitations under the License.
 //
 
-#import "NBULog.h"
+#import <NBUCore/NBULog.h>
 
 /// NBUKit log context
 #define NBUKIT_LOG_CONTEXT          110
