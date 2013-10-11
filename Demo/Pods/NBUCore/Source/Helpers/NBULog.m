@@ -63,14 +63,6 @@ static BOOL _fileLoggerAdded;
     return _appLogLevel;
 }
 
-+ (int)appLogLevelForModule:(int)APP_MODULE_XXX
-{
-    int logLevel = _appModuleLogLevel[APP_MODULE_XXX];
-    
-    // Fallback to the default log level if necessary
-    return logLevel == LOG_LEVEL_DEFAULT ? _appLogLevel : logLevel;
-}
-
 + (void)setAppLogLevel:(int)LOG_LEVEL_XXX
 {
 #ifdef DEBUG
@@ -85,6 +77,14 @@ static BOOL _fileLoggerAdded;
         [self setAppLogLevel:LOG_LEVEL_DEFAULT
                    forModule:i];
     }
+}
+
++ (int)appLogLevelForModule:(int)APP_MODULE_XXX
+{
+    int logLevel = _appModuleLogLevel[APP_MODULE_XXX];
+    
+    // Fallback to the default log level if necessary
+    return logLevel == LOG_LEVEL_DEFAULT ? _appLogLevel : logLevel;
 }
 
 + (void)setAppLogLevel:(int)LOG_LEVEL_XXX
@@ -614,6 +614,11 @@ static int _coreLogLevel;
                                                        setContextLevelForModuleBlock:NULL]];
 }
 
++ (int)coreLogLevel
+{
+    return _coreLogLevel;
+}
+
 + (void)setCoreLogLevel:(int)LOG_LEVEL_XXX
 {
 #ifdef DEBUG
@@ -622,11 +627,6 @@ static int _coreLogLevel;
     _coreLogLevel = LOG_LEVEL_XXX == LOG_LEVEL_DEFAULT ? LOG_LEVEL_WARN : LOG_LEVEL_XXX;
 #endif
     
-}
-
-+ (int)coreLogLevel
-{
-    return _coreLogLevel;
 }
 
 @end

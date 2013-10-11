@@ -57,14 +57,14 @@ PODS:
 
 DEPENDENCIES:
   - GPUImage (from `../Library/GPUImage.podspec`)
-  - NBUCore (from `https://github.com/CyberAgent/iOS-NBUCore.git`, commit `990473314a3708750dae7a6a124b8abe1820edc1`)
+  - NBUCore (from `https://github.com/CyberAgent/iOS-NBUCore.git`, commit `918a7ba269ed656e09531c1760f118602ee77ef9`)
   - NBUKit (from `../`)
 
 EXTERNAL SOURCES:
   GPUImage:
     :podspec: ../Library/GPUImage.podspec
   NBUCore:
-    :commit: 990473314a3708750dae7a6a124b8abe1820edc1
+    :commit: 918a7ba269ed656e09531c1760f118602ee77ef9
     :git: https://github.com/CyberAgent/iOS-NBUCore.git
   NBUKit:
     :path: ../

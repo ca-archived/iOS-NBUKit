@@ -31,7 +31,7 @@
 /// By default all files will be in the "Default" module.
 /// Change the module of any file by redefining `APP_MODULE` at
 /// the beginning of the implementation file. Ex.:
-///     #undef APP_MODULE
+///     #undef  APP_MODULE
 ///     #define APP_MODULE APP_MODULE_NETWORK
 #define APP_MODULE          APP_MODULE_DEFAULT
 
