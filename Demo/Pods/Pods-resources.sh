@@ -40,6 +40,7 @@ install_resource()
   esac
 }
 install_resource "NBUCore/Source/Dashboard/NBUDashboard.xib"
+install_resource "NBUCore/Source/Dashboard/NBULogAdjustLevelsCell.xib"
 install_resource "../../NBUKitResources.bundle"
 install_resource "../../Source/Assets/NBUAssetsGroupView.xib"
 install_resource "../../Source/Assets/NBUAssetsGroupViewController.xib"

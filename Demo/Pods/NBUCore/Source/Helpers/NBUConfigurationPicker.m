@@ -22,7 +22,7 @@
 #import "UIApplication+NBUAdditions.h"
 #import "UIButton+NBUAdditions.h"
 #import "NBUActionSheet.h"
-#import "NBULog.h"
+#import "NBUCorePrivate.h"
 
 NSString * const NBUConfigurationNameKey                = @"NBUConfigurationNameKey";
 NSString * const NBUConfigurationChangedNotification    = @"NBUConfigurationChangedNotification";

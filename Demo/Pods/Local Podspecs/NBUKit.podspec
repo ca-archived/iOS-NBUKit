@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
     
     s.requires_arc  = true
     
-    s.dependency 'NBUCore',     '~> 1.9.6'
+    s.dependency 'NBUCore',     '~> 2.0.0'
     
     s.subspec 'UI' do |su|
         su.source_files = 'Source/UI/*.{h,m}'

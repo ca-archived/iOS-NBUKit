@@ -19,6 +19,7 @@
 //
 
 #import "UIViewController+NBUAdditions.h"
+#import "NBUCorePrivate.h"
 
 @implementation UIViewController (NBUAdditions)
 

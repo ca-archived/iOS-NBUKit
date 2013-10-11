@@ -3,7 +3,7 @@
 //  NBUCore
 //
 //  Created by Ernesto Rivera on 12/06/20.
-//  Copyright (c) 2012 CyberAgent Inc.
+//  Copyright (c) 2012-2013 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@
 //
 
 #import "Lockbox+NBUAdditions.h"
-#import "NBULog.h"
+#import "NBUCorePrivate.h"
 
 @implementation Lockbox (NBUAdditions)
 
