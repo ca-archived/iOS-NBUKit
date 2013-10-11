@@ -1,1 +1,1 @@
-../../GPUImage/framework/Source/GPUImageMovieWriter.h
+../../GPUImage/framework/Source/iOS/GPUImageMovieWriter.h

@@ -1,7 +1,7 @@
 #import "GPUImageView.h"
 #import <OpenGLES/EAGLDrawable.h>
 #import <QuartzCore/QuartzCore.h>
-#import "GPUImageOpenGLESContext.h"
+#import "GPUImageContext.h"
 #import "GPUImageFilter.h"
 #import <AVFoundation/AVFoundation.h>
 
@@ -90,9 +90,9 @@
     self.enabled = YES;
     
     runSynchronouslyOnVideoProcessingQueue(^{
-        [GPUImageOpenGLESContext useImageProcessingContext];
+        [GPUImageContext useImageProcessingContext];
         
-        displayProgram = [[GPUImageOpenGLESContext sharedImageProcessingOpenGLESContext] programForVertexShaderString:kGPUImageVertexShaderString fragmentShaderString:kGPUImagePassthroughFragmentShaderString];
+        displayProgram = [[GPUImageContext sharedImageProcessingContext] programForVertexShaderString:kGPUImageVertexShaderString fragmentShaderString:kGPUImagePassthroughFragmentShaderString];
         if (!displayProgram.initialized)
         {
             [displayProgram addAttribute:@"position"];
@@ -115,7 +115,7 @@
         displayTextureCoordinateAttribute = [displayProgram attributeIndex:@"inputTextureCoordinate"];
         displayInputTextureUniform = [displayProgram uniformIndex:@"inputImageTexture"]; // This does assume a name of "inputTexture" for the fragment shader
 
-        [GPUImageOpenGLESContext setActiveShaderProgram:displayProgram];
+        [GPUImageContext setActiveShaderProgram:displayProgram];
         glEnableVertexAttribArray(displayPositionAttribute);
         glEnableVertexAttribArray(displayTextureCoordinateAttribute);
         
@@ -134,6 +134,7 @@
         runSynchronouslyOnVideoProcessingQueue(^{
             [self destroyDisplayFramebuffer];
             [self createDisplayFramebuffer];
+            [self recalculateViewGeometry];
         });
     }
 }
@@ -152,7 +153,7 @@
 
 - (void)createDisplayFramebuffer;
 {
-    [GPUImageOpenGLESContext useImageProcessingContext];
+    [GPUImageContext useImageProcessingContext];
     
 	glGenFramebuffers(1, &displayFramebuffer);
 	glBindFramebuffer(GL_FRAMEBUFFER, displayFramebuffer);
@@ -160,7 +161,7 @@
 	glGenRenderbuffers(1, &displayRenderbuffer);
 	glBindRenderbuffer(GL_RENDERBUFFER, displayRenderbuffer);
 	
-	[[[GPUImageOpenGLESContext sharedImageProcessingOpenGLESContext] context] renderbufferStorage:GL_RENDERBUFFER fromDrawable:(CAEAGLLayer*)self.layer];
+	[[[GPUImageContext sharedImageProcessingContext] context] renderbufferStorage:GL_RENDERBUFFER fromDrawable:(CAEAGLLayer*)self.layer];
 	
     GLint backingWidth, backingHeight;
 
@@ -186,7 +187,7 @@
 
 - (void)destroyDisplayFramebuffer;
 {
-    [GPUImageOpenGLESContext useImageProcessingContext];
+    [GPUImageContext useImageProcessingContext];
 
     if (displayFramebuffer)
 	{
@@ -216,7 +217,7 @@
 - (void)presentFramebuffer;
 {
     glBindRenderbuffer(GL_RENDERBUFFER, displayRenderbuffer);
-    [[GPUImageOpenGLESContext sharedImageProcessingOpenGLESContext] presentBufferForDisplay];
+    [[GPUImageContext sharedImageProcessingContext] presentBufferForDisplay];
 }
 
 #pragma mark -
@@ -331,6 +332,13 @@
         0.0f, 1.0f,
     };
     
+    static const GLfloat rotateRightHorizontalFlipTextureCoordinates[] = {
+        1.0f, 1.0f,
+        1.0f, 0.0f,
+        0.0f, 1.0f,
+        0.0f, 0.0f,
+    };
+
     static const GLfloat rotate180TextureCoordinates[] = {
         1.0f, 0.0f,
         0.0f, 0.0f,
@@ -346,6 +354,7 @@
         case kGPUImageFlipVertical: return verticalFlipTextureCoordinates;
         case kGPUImageFlipHorizonal: return horizontalFlipTextureCoordinates;
         case kGPUImageRotateRightFlipVertical: return rotateRightVerticalFlipTextureCoordinates;
+        case kGPUImageRotateRightFlipHorizontal: return rotateRightHorizontalFlipTextureCoordinates;
         case kGPUImageRotate180: return rotate180TextureCoordinates;
     }
 }
@@ -356,7 +365,7 @@
 - (void)newFrameReadyAtTime:(CMTime)frameTime atIndex:(NSInteger)textureIndex;
 {
     runSynchronouslyOnVideoProcessingQueue(^{
-        [GPUImageOpenGLESContext setActiveShaderProgram:displayProgram];
+        [GPUImageContext setActiveShaderProgram:displayProgram];
         [self setDisplayFramebuffer];
         
         glClearColor(backgroundColorRed, backgroundColorGreen, backgroundColorBlue, backgroundColorAlpha);

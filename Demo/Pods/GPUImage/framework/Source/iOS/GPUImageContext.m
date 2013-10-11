@@ -1,8 +1,8 @@
-#import "GPUImageOpenGLESContext.h"
+#import "GPUImageContext.h"
 #import <OpenGLES/EAGLDrawable.h>
 #import <AVFoundation/AVFoundation.h>
 
-@interface GPUImageOpenGLESContext()
+@interface GPUImageContext()
 {
     NSMutableDictionary *shaderProgramCache;
     EAGLSharegroup *_sharegroup;
@@ -10,11 +10,13 @@
 
 @end
 
-@implementation GPUImageOpenGLESContext
+@implementation GPUImageContext
 
 @synthesize context = _context;
 @synthesize currentShaderProgram = _currentShaderProgram;
 @synthesize contextQueue = _contextQueue;
+
+static void *openGLESContextQueueKey;
 
 - (id)init;
 {
@@ -22,33 +24,42 @@
     {
 		return nil;
     }
-        
+
+	openGLESContextQueueKey = &openGLESContextQueueKey;
     _contextQueue = dispatch_queue_create("com.sunsetlakesoftware.GPUImage.openGLESContextQueue", NULL);
+#if (!defined(__IPHONE_6_0) || (__IPHONE_OS_VERSION_MAX_ALLOWED < __IPHONE_6_0))
+#else
+	dispatch_queue_set_specific(_contextQueue, openGLESContextQueueKey, (__bridge void *)self, NULL);
+#endif
     shaderProgramCache = [[NSMutableDictionary alloc] init];
     
     return self;
 }
 
-// Based on Colin Wheeler's example here: http://cocoasamurai.blogspot.com/2011/04/singletons-your-doing-them-wrong.html
-+ (GPUImageOpenGLESContext *)sharedImageProcessingOpenGLESContext;
-{
-    static dispatch_once_t pred;
-    static GPUImageOpenGLESContext *sharedImageProcessingOpenGLESContext = nil;
-    
-    dispatch_once(&pred, ^{
-        sharedImageProcessingOpenGLESContext = [[[self class] alloc] init];
-    });
-    return sharedImageProcessingOpenGLESContext;
++ (void *)contextKey {
+	return openGLESContextQueueKey;
 }
 
-+ (dispatch_queue_t)sharedOpenGLESQueue;
+// Based on Colin Wheeler's example here: http://cocoasamurai.blogspot.com/2011/04/singletons-your-doing-them-wrong.html
++ (GPUImageContext *)sharedImageProcessingContext;
 {
-    return [[self sharedImageProcessingOpenGLESContext] contextQueue];
+    static dispatch_once_t pred;
+    static GPUImageContext *sharedImageProcessingContext = nil;
+    
+    dispatch_once(&pred, ^{
+        sharedImageProcessingContext = [[[self class] alloc] init];
+    });
+    return sharedImageProcessingContext;
+}
+
++ (dispatch_queue_t)sharedContextQueue;
+{
+    return [[self sharedImageProcessingContext] contextQueue];
 }
 
 + (void)useImageProcessingContext;
 {
-    EAGLContext *imageProcessingContext = [[GPUImageOpenGLESContext sharedImageProcessingOpenGLESContext] context];
+    EAGLContext *imageProcessingContext = [[GPUImageContext sharedImageProcessingContext] context];
     if ([EAGLContext currentContext] != imageProcessingContext)
     {
         [EAGLContext setCurrentContext:imageProcessingContext];
@@ -57,7 +68,7 @@
 
 + (void)setActiveShaderProgram:(GLProgram *)shaderProgram;
 {
-    GPUImageOpenGLESContext *sharedContext = [GPUImageOpenGLESContext sharedImageProcessingOpenGLESContext];
+    GPUImageContext *sharedContext = [GPUImageContext sharedImageProcessingContext];
     EAGLContext *imageProcessingContext = [sharedContext context];
     if ([EAGLContext currentContext] != imageProcessingContext)
     {
@@ -98,7 +109,7 @@
 
     // Cache extensions for later quick reference, since this won't change for a given device
     dispatch_once(&pred, ^{
-        [GPUImageOpenGLESContext useImageProcessingContext];
+        [GPUImageContext useImageProcessingContext];
         NSString *extensionsString = [NSString stringWithCString:(const char *)glGetString(GL_EXTENSIONS) encoding:NSASCIIStringEncoding];
         extensionNames = [extensionsString componentsSeparatedByString:@" "];
     });
@@ -115,12 +126,23 @@
     static BOOL supportsRedTextures = NO;
     
     dispatch_once(&pred, ^{
-        supportsRedTextures = [GPUImageOpenGLESContext deviceSupportsOpenGLESExtension:@"GL_EXT_texture_rg"];
+        supportsRedTextures = [GPUImageContext deviceSupportsOpenGLESExtension:@"GL_EXT_texture_rg"];
     });
     
     return supportsRedTextures;
 }
 
++ (BOOL)deviceSupportsFramebufferReads;
+{
+    static dispatch_once_t pred;
+    static BOOL supportsFramebufferReads = NO;
+    
+    dispatch_once(&pred, ^{
+        supportsFramebufferReads = [GPUImageContext deviceSupportsOpenGLESExtension:@"GL_EXT_shader_framebuffer_fetch"];
+    });
+    
+    return supportsFramebufferReads;
+}
 
 + (CGSize)sizeThatFitsWithinATextureForSize:(CGSize)inputSize;
 {

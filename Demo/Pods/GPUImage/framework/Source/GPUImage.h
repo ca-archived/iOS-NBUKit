@@ -1,7 +1,7 @@
 #import "GLProgram.h"
 
 // Base classes
-#import "GPUImageOpenGLESContext.h"
+#import "GPUImageContext.h"
 #import "GPUImageOutput.h"
 #import "GPUImageView.h"
 #import "GPUImageVideoCamera.h"
@@ -117,6 +117,7 @@
 #import "GPUImageOpacityFilter.h"
 #import "GPUImageHighlightShadowFilter.h"
 #import "GPUImageFalseColorFilter.h"
+#import "GPUImageHSBFilter.h"
 #import "GPUImageHueFilter.h"
 #import "GPUImageGlassSphereFilter.h"
 #import "GPUImageLookupFilter.h"
@@ -150,3 +151,4 @@
 #import "GPUImagePoissonBlendFilter.h"
 #import "GPUImageMotionBlurFilter.h"
 #import "GPUImageZoomBlurFilter.h"
+#import "GPUImageLaplacianFilter.h"

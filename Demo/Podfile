@@ -11,7 +11,7 @@ pod 'NBUCore', :git => 'https://github.com/CyberAgent/iOS-NBUCore.git', :commit 
 #pod 'NBUKit',  :git => 'https://github.com/CyberAgent/iOS-NBUKit.git', :commit => '8d67084b760ed97079bffc9ff9b66f02cc37ab48'
 
 # For NBUKit development only:
-#pod 'GPUImage', :podspec => '../Library/GPUImage.podspec' # iOS 5+ targets only
+pod 'GPUImage', :podspec => '../Library/GPUImage.podspec' # iOS 5+ targets only
 #pod 'NBUCore',  :path => '../../NBUCore'
 pod 'NBUKit',   :path => '../'
 

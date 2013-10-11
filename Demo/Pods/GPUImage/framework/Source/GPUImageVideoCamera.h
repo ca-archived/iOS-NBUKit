@@ -1,8 +1,14 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 #import <CoreMedia/CoreMedia.h>
-#import "GPUImageOpenGLESContext.h"
+#import "GPUImageContext.h"
 #import "GPUImageOutput.h"
+
+extern const GLfloat kColorConversion601[];
+extern const GLfloat kColorConversion709[];
+extern NSString *const kGPUImageYUVVideoRangeConversionForRGFragmentShaderString;
+extern NSString *const kGPUImageYUVVideoRangeConversionForLAFragmentShaderString;
+
 
 //Delegate Protocal for Face Detection.
 @protocol GPUImageVideoCameraDelegate <NSObject>
@@ -50,8 +56,9 @@
  */
 @property (readwrite) NSInteger frameRate;
 
-/// Easy way to tell if front-facing camera is present on device
+/// Easy way to tell which cameras are present on device
 @property (readonly, getter = isFrontFacingCameraPresent) BOOL frontFacingCameraPresent;
+@property (readonly, getter = isBackFacingCameraPresent) BOOL backFacingCameraPresent;
 
 /// This enables the benchmarking mode, which logs out instantaneous and average frame times to the console
 @property(readwrite, nonatomic) BOOL runBenchmark;
@@ -77,6 +84,17 @@
  @param cameraPosition Camera to capture from
  */
 - (id)initWithSessionPreset:(NSString *)sessionPreset cameraPosition:(AVCaptureDevicePosition)cameraPosition;
+
+/** Add audio capture to the session. Adding inputs and outputs freezes the capture session momentarily, so you
+    can use this method to add the audio inputs and outputs early, if you're going to set the audioEncodingTarget 
+    later. Returns YES is the audio inputs and outputs were added, or NO if they had already been added.
+ */
+- (BOOL)addAudioInputsAndOutputs;
+
+/** Remove the audio capture inputs and outputs from this session. Returns YES if the audio inputs and outputs
+    were removed, or NO is they hadn't already been added.
+ */
+- (BOOL)removeAudioInputsAndOutputs;
 
 /** Tear down the capture session
  */
@@ -127,5 +145,8 @@
 /** When benchmarking is enabled, this will keep a running average of the time from uploading, processing, and final recording or display
  */
 - (CGFloat)averageFrameDurationDuringCapture;
+
++ (BOOL)isBackFacingCameraPresent;
++ (BOOL)isFrontFacingCameraPresent;
 
 @end

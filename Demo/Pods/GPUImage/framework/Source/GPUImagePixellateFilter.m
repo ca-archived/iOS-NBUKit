@@ -1,5 +1,6 @@
 #import "GPUImagePixellateFilter.h"
 
+#if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
 NSString *const kGPUImagePixellationFragmentShaderString = SHADER_STRING
 (
  varying highp vec2 textureCoordinate;
@@ -17,10 +18,31 @@ NSString *const kGPUImagePixellationFragmentShaderString = SHADER_STRING
      gl_FragColor = texture2D(inputImageTexture, samplePos );
  }
 );
+#else
+NSString *const kGPUImagePixellationFragmentShaderString = SHADER_STRING
+(
+ varying vec2 textureCoordinate;
+ 
+ uniform sampler2D inputImageTexture;
+ 
+ uniform float fractionalWidthOfPixel;
+ uniform float aspectRatio;
+ 
+ void main()
+ {
+     vec2 sampleDivisor = vec2(fractionalWidthOfPixel, fractionalWidthOfPixel / aspectRatio);
+     
+     vec2 samplePos = textureCoordinate - mod(textureCoordinate, sampleDivisor) + 0.5 * sampleDivisor;
+     gl_FragColor = texture2D(inputImageTexture, samplePos );
+ }
+);
+#endif
 
 @interface GPUImagePixellateFilter ()
 
 @property (readwrite, nonatomic) CGFloat aspectRatio;
+
+- (void)adjustAspectRatio;
 
 @end
 
@@ -57,6 +79,30 @@ NSString *const kGPUImagePixellationFragmentShaderString = SHADER_STRING
     return self;
 }
 
+- (void)adjustAspectRatio;
+{
+    if (GPUImageRotationSwapsWidthAndHeight(inputRotation))
+    {
+        [self setAspectRatio:(inputTextureSize.width / inputTextureSize.height)];
+    }
+    else
+    {
+        [self setAspectRatio:(inputTextureSize.height / inputTextureSize.width)];
+    }
+}
+
+- (void)setInputRotation:(GPUImageRotationMode)newInputRotation atIndex:(NSInteger)textureIndex;
+{
+    [super setInputRotation:newInputRotation atIndex:textureIndex];    
+    [self adjustAspectRatio];
+}
+
+- (void)forceProcessingAtSize:(CGSize)frameSize;
+{
+    [super forceProcessingAtSize:frameSize];
+    [self adjustAspectRatio];
+}
+
 - (void)setInputSize:(CGSize)newSize atIndex:(NSInteger)textureIndex;
 {
     CGSize oldInputSize = inputTextureSize;
@@ -64,14 +110,7 @@ NSString *const kGPUImagePixellationFragmentShaderString = SHADER_STRING
     
     if ( (!CGSizeEqualToSize(oldInputSize, inputTextureSize)) && (!CGSizeEqualToSize(newSize, CGSizeZero)) )
     {
-        if (GPUImageRotationSwapsWidthAndHeight(inputRotation))
-        {
-            [self setAspectRatio:(inputTextureSize.width / inputTextureSize.height)];
-        }
-        else
-        {
-            [self setAspectRatio:(inputTextureSize.height / inputTextureSize.width)];
-        }
+        [self adjustAspectRatio];
     }
 }
 
