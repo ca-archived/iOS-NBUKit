@@ -78,7 +78,7 @@ Sample Podfile:
 platform :ios
 
 pod 'GPUImage', :podspec => 'https://raw.github.com/CyberAgent/iOS-NBUKit/master/Library/GPUImage.podspec' # iOS 5+ only
-pod 'NBUKit',   '~> 1.9.5'
+pod 'NBUKit',   '~> 2.0.0'
 ```
 
 _If you have a problem try `gem update cocoapods` first._
