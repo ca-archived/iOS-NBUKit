@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
     
     s.name          = "NBUKit"
     s.version       = "2.0.0"
-    s.platform      = :ios
+    s.platform      = :ios, '5.0'
     s.summary       = "Customizable image editing, filters, camera, picker and other UIKit subclasses."
     s.homepage      = "http://cyberagent.github.io/iOS-NBUKit/"
     s.license       = { :type => 'Apache License, Version 2.0', :file => 'LICENSE' }
