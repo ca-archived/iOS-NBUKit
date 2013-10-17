@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
                         "https://raw.github.com/wiki/CyberAgent/iOS-NBUCore/images/Dashboard_minimized.png",
                         "https://raw.github.com/wiki/CyberAgent/iOS-NBUCore/images/Dashboard_filter.png" ]
     s.source        = { :git => "https://github.com/CyberAgent/iOS-NBUCore.git", :tag => "#{s.version}" }
-    s.platform      = :ios
+    s.platform      = :ios, '5.0'
     s.source_files  = 'Source/*.{h,m}'
     s.framework     = 'Security'
     s.requires_arc  = true

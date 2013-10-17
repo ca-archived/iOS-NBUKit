@@ -1,6 +1,6 @@
 PODS:
   - CocoaLumberjack (1.6.2)
-  - GPUImage (0.2.0)
+  - GPUImage (0.1.1)
   - Lockbox (1.4.3)
   - NBUCore (2.0.0):
     - CocoaLumberjack (~> 1.6.2)
@@ -32,7 +32,7 @@ PODS:
   - NBUKit/Assets (2.0.0):
     - NBUCore (~> 2.0.0)
   - NBUKit/Image (2.0.0):
-    - GPUImage (>= 0.1.0)
+    - GPUImage (>= 0.1.1)
     - NBUCore (~> 2.0.0)
   - NBUKit/Library (2.0.0):
     - NBUCore (~> 2.0.0)
@@ -56,24 +56,21 @@ PODS:
     - NBUCore (~> 2.0.0)
 
 DEPENDENCIES:
-  - GPUImage (from `../Library/GPUImage.podspec`)
-  - NBUCore (from `https://github.com/CyberAgent/iOS-NBUCore.git`, commit `918a7ba269ed656e09531c1760f118602ee77ef9`)
+  - NBUCore (from `https://github.com/CyberAgent/iOS-NBUCore.git`, commit `f2f1764812e89dbf00e96bc6f883e5f397aeb0f2`)
   - NBUKit (from `../`)
 
 EXTERNAL SOURCES:
-  GPUImage:
-    :podspec: ../Library/GPUImage.podspec
   NBUCore:
-    :commit: 918a7ba269ed656e09531c1760f118602ee77ef9
+    :commit: f2f1764812e89dbf00e96bc6f883e5f397aeb0f2
     :git: https://github.com/CyberAgent/iOS-NBUCore.git
   NBUKit:
     :path: ../
 
 SPEC CHECKSUMS:
   CocoaLumberjack: d73e1e317ced14ab930797dda6c17156ff17aaa1
-  GPUImage: 83f0ececd92cf638b7cd7bb2d1a4c3259a254b87
+  GPUImage: b9840114a0ad0323801c2e0aa2752679057f808d
   Lockbox: 1bcfd564f034b83456fcad5bdd49470a80a38d2b
-  NBUCore: 21b37b65fb28894af3d54d1d0f9a3031af6eb1ed
-  NBUKit: b3471c6892d0d5302ac94d254ea4e97b042578cf
+  NBUCore: a2c469207e96f9b582411794ac65f72a25d81584
+  NBUKit: deb6fc7dd3923f54e7a97fe0528c03ec8af3cbd6
 
-COCOAPODS: 0.25.0
+COCOAPODS: 0.26.2
