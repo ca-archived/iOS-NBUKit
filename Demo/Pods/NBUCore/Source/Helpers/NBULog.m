@@ -315,7 +315,8 @@ static NSString * _processName;
 		
 		// Set default replacements:
 		
-		_replacements[@"com.apple.main-thread"] = @"main";
+        [_replacements setObject:@"main"
+                          forKey:@"com.apple.main-thread"]; // Can't use subscript here on iOS 5 because this method gets called from +load methods
 	}
 	return self;
 }
@@ -576,7 +577,8 @@ static NSMutableDictionary * _registeredContexts;
     
     @synchronized(self)
     {
-        _registeredContexts[@(contextDescription.logContext)] = contextDescription;
+        [_registeredContexts setObject:contextDescription
+                                forKey:@(contextDescription.logContext)]; // Can't use subscript here on iOS 5 because this method gets called from +load methods
     }
 }
 

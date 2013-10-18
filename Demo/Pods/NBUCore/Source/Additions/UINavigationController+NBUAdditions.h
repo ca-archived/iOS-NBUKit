@@ -30,7 +30,7 @@
 
 /// Shortcut to get/set the first view controller.
 /// @note When set all other controllers will be removed.
-@property(nonatomic, retain) UIViewController * rootViewController;
+@property(nonatomic, strong) UIViewController * rootViewController;
 
 /// Convenience method to change the top view controller.
 /// @param controller The new top view controller.

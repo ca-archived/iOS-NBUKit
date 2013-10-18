@@ -56,12 +56,12 @@ PODS:
     - NBUCore (~> 2.0.0)
 
 DEPENDENCIES:
-  - NBUCore (from `https://github.com/CyberAgent/iOS-NBUCore.git`, commit `f2f1764812e89dbf00e96bc6f883e5f397aeb0f2`)
+  - NBUCore (from `https://github.com/CyberAgent/iOS-NBUCore.git`, commit `b6f3f5327d5914ec2952d4b718bab810c2534bf6`)
   - NBUKit (from `../`)
 
 EXTERNAL SOURCES:
   NBUCore:
-    :commit: f2f1764812e89dbf00e96bc6f883e5f397aeb0f2
+    :commit: b6f3f5327d5914ec2952d4b718bab810c2534bf6
     :git: https://github.com/CyberAgent/iOS-NBUCore.git
   NBUKit:
     :path: ../
@@ -73,4 +73,4 @@ SPEC CHECKSUMS:
   NBUCore: a2c469207e96f9b582411794ac65f72a25d81584
   NBUKit: deb6fc7dd3923f54e7a97fe0528c03ec8af3cbd6
 
-COCOAPODS: 0.26.2
+COCOAPODS: 0.25.0
