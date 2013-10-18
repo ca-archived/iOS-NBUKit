@@ -26,7 +26,7 @@
 @protocol UIImageView <NSObject>
 
 /// Set/get an image.
-@property(nonatomic, retain) UIImage * image;
+@property(nonatomic, strong) UIImage * image;
 
 @end
 
