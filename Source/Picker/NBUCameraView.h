@@ -230,25 +230,25 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 /// @name UI Outlets
 
 /// The button to takePicture:.
-@property (assign, nonatomic) IBOutlet id<UIButton> shootButton;
+@property (weak, nonatomic) IBOutlet id<UIButton> shootButton;
 
 /// The optional button to toggleCamera:.
-@property (assign, nonatomic) IBOutlet id<UIButton> toggleCameraButton;
+@property (weak, nonatomic) IBOutlet id<UIButton> toggleCameraButton;
 
 /// The optional button to toggleFlashMode:.
-@property (assign, nonatomic) IBOutlet id<UIButton> flashButton;
+@property (weak, nonatomic) IBOutlet id<UIButton> flashButton;
 
 /// The optional button to toggleFocusMode:.
-@property (assign, nonatomic) IBOutlet id<UIButton> focusButton;
+@property (weak, nonatomic) IBOutlet id<UIButton> focusButton;
 
 /// The optional button to toggleExposureMode:.
-@property (assign, nonatomic) IBOutlet id<UIButton> exposureButton;
+@property (weak, nonatomic) IBOutlet id<UIButton> exposureButton;
 
 /// The optional button to toggleWhiteBalanceMode:.
-@property (assign, nonatomic) IBOutlet id<UIButton> whiteBalanceButton;
+@property (weak, nonatomic) IBOutlet id<UIButton> whiteBalanceButton;
 
 /// The optional UIImageView to be used to display the last taken picture.
 /// @note Check the NBUKitDemo project for other ways to customize displaying the last taken pictures.
-@property (assign, nonatomic) IBOutlet UIImageView * lastPictureImageView;
+@property (weak, nonatomic) IBOutlet UIImageView * lastPictureImageView;
 
 @end

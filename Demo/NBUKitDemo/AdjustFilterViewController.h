@@ -25,8 +25,8 @@
 @interface AdjustFilterViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 // Outlets
-@property (assign, nonatomic) IBOutlet UITableView * tableView;
-@property (assign, nonatomic) IBOutlet UIImageView * imageView;
+@property (weak, nonatomic) IBOutlet UITableView * tableView;
+@property (weak, nonatomic) IBOutlet UIImageView * imageView;
 
 // Properties
 @property (strong, nonatomic) UIImage * image;
@@ -53,7 +53,7 @@
                                        filter:(NBUFilter *)filter;
 
 @property (strong, nonatomic) NBUFilter * filter;
-@property (assign, nonatomic) IBOutlet UILabel * label;
+@property (weak, nonatomic) IBOutlet UILabel * label;
 @property (nonatomic, readonly) AdjustFilterViewController * viewController;
 
 - (IBAction)updateFilter:(id)sender;
@@ -63,12 +63,12 @@
 
 @interface AdjustFilterTitleCell : AdjustFilterCell
 
-@property (assign, nonatomic) IBOutlet UILabel * providerLabel;
-@property (assign, nonatomic) IBOutlet UISwitch * enableSwitch;
-@property (assign, nonatomic) IBOutlet UIButton * moveUpButton;
-@property (assign, nonatomic) IBOutlet UIButton * moveDownButton;
-@property (assign, nonatomic) IBOutlet UIButton * resetButton;
-@property (assign, nonatomic) IBOutlet UIButton * removeButton;
+@property (weak, nonatomic) IBOutlet UILabel * providerLabel;
+@property (weak, nonatomic) IBOutlet UISwitch * enableSwitch;
+@property (weak, nonatomic) IBOutlet UIButton * moveUpButton;
+@property (weak, nonatomic) IBOutlet UIButton * moveDownButton;
+@property (weak, nonatomic) IBOutlet UIButton * resetButton;
+@property (weak, nonatomic) IBOutlet UIButton * removeButton;
 
 - (IBAction)moveUp:(id)sender;
 - (IBAction)moveDown:(id)sender;
@@ -92,24 +92,24 @@
 
 @interface AdjustFilterSliderCell : AdjustFilterValueCell
 
-@property (assign, nonatomic) IBOutlet UISlider * slider;
-@property (assign, nonatomic) IBOutlet UILabel * currentValueLabel;
-@property (assign, nonatomic) IBOutlet UILabel * minValueLabel;
-@property (assign, nonatomic) IBOutlet UILabel * maxValueLabel;
+@property (weak, nonatomic) IBOutlet UISlider * slider;
+@property (weak, nonatomic) IBOutlet UILabel * currentValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel * minValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel * maxValueLabel;
 
 @end
 
 
 @interface AdjustFilterSwitchCell : AdjustFilterValueCell
 
-@property (assign, nonatomic) IBOutlet UISwitch * onOffSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch * onOffSwitch;
 
 @end
 
 
 @interface AdjustFilterButtonCell : AdjustFilterValueCell
 
-@property (assign, nonatomic) IBOutlet UIButton * button;
+@property (weak, nonatomic) IBOutlet UIButton * button;
 
 - (IBAction)buttonTapped:(id)sender;
 

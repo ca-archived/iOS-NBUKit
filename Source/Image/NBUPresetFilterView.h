@@ -57,16 +57,16 @@
 /// @name Outlets
 
 /// The working image preview.
-@property (assign, nonatomic) IBOutlet  UIImageView * editingImageView;
+@property (weak, nonatomic) IBOutlet    UIImageView * editingImageView;
 
 /// An ObjectSlideView to display NBUFilterThumbnailView objects.
-@property (assign, nonatomic) IBOutlet  ObjectSlideView * filterSlideView;
+@property (weak, nonatomic) IBOutlet    ObjectSlideView * filterSlideView;
 
 /// A view to be shown while async processing images.
-@property (assign, nonatomic) IBOutlet  UIView * activityView;
+@property (weak, nonatomic) IBOutlet    UIView * activityView;
 
 /// A reset button automatically enabled/disabled.
-@property (assign, nonatomic) IBOutlet  UIButton * resetButton;
+@property (weak, nonatomic) IBOutlet    UIButton * resetButton;
 
 /// @name Actions
 

@@ -59,10 +59,10 @@
 /// @name Outlets
 
 /// The camera underlying view.
-@property (assign, nonatomic) IBOutlet  NBUCameraView * cameraView;
+@property (weak, nonatomic) IBOutlet    NBUCameraView * cameraView;
 
 /// A label that displays the [NBUCameraView currentFlashMode].
-@property (assign, nonatomic) IBOutlet  UILabel * flashLabel;
+@property (weak, nonatomic) IBOutlet    UILabel * flashLabel;
 
 @end
 

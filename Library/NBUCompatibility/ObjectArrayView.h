@@ -95,7 +95,7 @@
 /// @name Managing Objects' Views
 
 /// A delegate to help load, configure and/or provide "load more objects" support.
-@property (nonatomic, assign)IBOutlet       id<ObjectArrayViewDelegate> delegate;
+@property (nonatomic, weak)IBOutlet         id<ObjectArrayViewDelegate> delegate;
 
 /// When set, a delegate is no longer needed to create views.
 @property (nonatomic, strong)               NSString * nibNameForViews;

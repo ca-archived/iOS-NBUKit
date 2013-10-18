@@ -46,7 +46,7 @@
 /// @name Outlets
 
 /// An ObjectTableView used to display library's NBUAssetsGroup objects.
-@property (assign, nonatomic) IBOutlet              ObjectTableView * objectTableView;
+@property (weak, nonatomic) IBOutlet                ObjectTableView * objectTableView;
 
 /// The assets group controller to be pushed by default.
 @property (strong, nonatomic) IBOutlet              NBUAssetsGroupViewController * assetsGroupController;

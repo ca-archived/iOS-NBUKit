@@ -34,12 +34,12 @@
 /// The view's controller should be a NBUGalleryViewController instance.
 /// @discussion Taps on the view will trigger [NBUGalleryViewController thumbnailWasTapped:]
 /// on its controller.
-@property (assign, nonatomic)           NBUGalleryViewController * viewController;
+@property (weak, nonatomic)             NBUGalleryViewController * viewController;
 
 /// @name Outlets
 
 /// A UIImageView to display the thumbnail.
-@property (assign, nonatomic) IBOutlet  UIImageView * imageView;
+@property (weak, nonatomic) IBOutlet    UIImageView * imageView;
 
 @end
 

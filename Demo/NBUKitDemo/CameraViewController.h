@@ -21,8 +21,8 @@
 @interface CameraViewController : NBUCameraViewController
 
 // Outlets
-@property (assign, nonatomic) IBOutlet UIButton * shootButton;
-@property (assign, nonatomic) IBOutlet ObjectSlideView * slideView;
+@property (weak, nonatomic) IBOutlet UIButton * shootButton;
+@property (weak, nonatomic) IBOutlet ObjectSlideView * slideView;
 
 // Actions
 - (IBAction)customToggleFlash:(id)sender;

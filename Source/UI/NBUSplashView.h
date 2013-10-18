@@ -32,19 +32,19 @@
 /// @name Outlets
 
 /// The background UIImageView. Normally set to the apropiate `Default.png`.
-@property (assign, nonatomic) IBOutlet UIImageView * imageView;
+@property (weak, nonatomic) IBOutlet UIImageView * imageView;
 
 /// An optional activity indicator.
-@property (assign, nonatomic) IBOutlet UIActivityIndicatorView * activityIndicatorView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView * activityIndicatorView;
 
 /// An optional progress view.
-@property (assign, nonatomic) IBOutlet UIProgressView * progressView;
+@property (weak, nonatomic) IBOutlet UIProgressView * progressView;
 
 /// An optional status label.
-@property (assign, nonatomic) IBOutlet UILabel * statusLabel;
+@property (weak, nonatomic) IBOutlet UILabel * statusLabel;
 
 /// An optional application version label.
-@property (assign, nonatomic) IBOutlet UILabel * versionLabel;
+@property (weak, nonatomic) IBOutlet UILabel * versionLabel;
 
 /// @name Methods
 

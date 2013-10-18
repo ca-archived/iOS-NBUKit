@@ -23,8 +23,8 @@
 @interface BadgesViewController : ScrollViewController
 
 // Outlets
-@property (assign, nonatomic) IBOutlet NBUBadgeView * badgeView;
-@property (assign, nonatomic) IBOutlet NBUBadgeSegmentedControl * badgeSegmentedControl;
+@property (weak, nonatomic) IBOutlet NBUBadgeView * badgeView;
+@property (weak, nonatomic) IBOutlet NBUBadgeSegmentedControl * badgeSegmentedControl;
 
 // Actions
 - (IBAction)badgeTapped:(id)sender;

@@ -62,7 +62,7 @@ typedef NSInteger NBURefreshStatus;
 /// @name Outlets
 
 /// The UIScrollView to which the control should be attached.
-@property (assign, nonatomic) IBOutlet  UIScrollView * scrollView;
+@property (weak, nonatomic) IBOutlet    UIScrollView * scrollView;
 
 /// A configurable UILabel.
 @property (strong, nonatomic) IBOutlet  UILabel * statusLabel;
