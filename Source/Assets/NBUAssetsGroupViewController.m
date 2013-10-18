@@ -122,7 +122,7 @@
                                                                                               @"NBUAssetsGroupView Number of images"),
                                   totalCount];
     }
-    __unsafe_unretained NBUAssetsGroupViewController * weakSelf = self;
+    __weak NBUAssetsGroupViewController * weakSelf = self;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         
         [weakSelf.assetsGroup assetsWithTypes:NBUAssetTypeImage

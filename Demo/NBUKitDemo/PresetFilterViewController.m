@@ -57,7 +57,7 @@
     self.image = [UIImage imageNamed:@"photo_hires.jpg"];
     
     // Our resultBlock
-    __unsafe_unretained PresetFilterViewController * weakSelf = self;
+    __weak PresetFilterViewController * weakSelf = self;
     self.resultBlock = ^(UIImage * image)
     {
         // *** Do whatever you want with the resulting image here ***
