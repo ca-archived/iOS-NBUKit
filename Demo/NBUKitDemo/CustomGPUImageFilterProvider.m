@@ -142,9 +142,9 @@ NSString * const CustomFilterTypeGaussianSelectiveBlur    = @"CustomFilterTypeGa
         NSString * centerY          = @"centerY";
         attributes = @{blurSize         : @{NBUFilterValueDescriptionKey : @"Blur size",
                                             NBUFilterValueTypeKey        : NBUFilterValueTypeFloat,
-                                            NBUFilterDefaultValueKey     : @(1.0),
-                                            NBUFilterMaximumValueKey     : @(3.0),
-                                            NBUFilterMinimumValueKey     : @(0.0)},
+                                            NBUFilterDefaultValueKey     : @(2.0),
+                                            NBUFilterMaximumValueKey     : @(5.0),
+                                            NBUFilterMinimumValueKey     : @(1.0)},
                        excludeBlurSize  : @{NBUFilterValueDescriptionKey : @"Exclude blur size",
                                             NBUFilterValueTypeKey        : NBUFilterValueTypeFloat,
                                             NBUFilterDefaultValueKey     : @(1.0),
@@ -176,7 +176,7 @@ NSString * const CustomFilterTypeGaussianSelectiveBlur    = @"CustomFilterTypeGa
             }
             
             // Configure it
-            gpuFilter.blurSize = [filter floatValueForKey:blurSize];
+            gpuFilter.blurRadiusInPixels = [filter floatValueForKey:blurSize];
             gpuFilter.excludeBlurSize = [filter floatValueForKey:excludeBlurSize];
             gpuFilter.excludeCircleRadius = [filter floatValueForKey:radius];
             gpuFilter.excludeCirclePoint = CGPointMake([filter floatValueForKey:centerX],
