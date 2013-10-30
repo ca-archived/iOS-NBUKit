@@ -105,6 +105,7 @@
 + (void)addASLLogger;
 
 /// Configure and add a DDTTYLogger (Apple System Log and Xcode console). Not needed in most cases.
+/// @discussion Will enable console colors if XcodeColors is installed.
 /// @note To be used for testing builds only.
 + (void)addTTYLogger;
 

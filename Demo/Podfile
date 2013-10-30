@@ -6,7 +6,8 @@ platform :ios, '5.0'
 
 # Pre-release versions:
 #pod 'NBUCore', :head
-pod 'NBUCore', :git => 'https://github.com/CyberAgent/iOS-NBUCore.git', :commit => 'b6f3f5327d5914ec2952d4b718bab810c2534bf6'
+pod 'CocoaLumberjack', :git => 'https://github.com/rivera-ernesto/CocoaLumberjack.git', :commit => '635987dacce6ecd8a315b66d5422c8abf6107ae0'
+pod 'NBUCore', :git => 'https://github.com/CyberAgent/iOS-NBUCore.git', :commit => 'd96c2ca4d0f318fa7f72c39d2f2db0c001d17d81'
 pod 'GPUImage', :git => 'https://github.com/rivera-ernesto/GPUImage.git', :commit => '569fd0805fa4c3e26f9b5675736f8cc6372283dd'
 #pod 'NBUKit',  :git => 'https://github.com/CyberAgent/iOS-NBUKit.git', :commit => '8d67084b760ed97079bffc9ff9b66f02cc37ab48'
 
