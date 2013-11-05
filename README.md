@@ -2,7 +2,7 @@ NBUKit
 ======
 
 [![Pod Platform](https://cocoapod-badges.herokuapp.com/p/NBUKit/badge.svg)](http://cocoadocs.org/docsets/NBUKit/)
-[![Pod Version](https://cocoapod-badges.herokuapp.com/v/NBUKit/badge.png)](http://cocoadocs.org/docsets/NBUKit/)
+[![Version 1.9.6](https://cocoapod-badges.herokuapp.com/v/NBUKit/badge.png)](http://cocoadocs.org/docsets/NBUKit/)
 [![Build Status](https://travis-ci.org/CyberAgent/iOS-NBUKit.png?branch=master)](https://travis-ci.org/CyberAgent/iOS-NBUKit)
 
 [Customizable](https://github.com/CyberAgent/iOS-NBUKit/wiki/NBUKit-Customization) camera, assets,
@@ -68,8 +68,8 @@ Installation
 ### Cocoapods (1.9.x+)
 
 1. Install [Cocoapods](http://cocoapods.org) if not already done.
-2. For iOS 5+ targets add `pod 'GPUImage', :podspec => 'https://raw.github.com/CyberAgent/iOS-NBUKit/master/Library/GPUImage.podspec'`
-to your Podfile as GPUImage's Podspec is stuck at 0.1.0.
+2. For iOS 4 targets add add `pod 'GPUImage', '0.1.0'` to your Podfile.  
+iOS 5+ add `pod 'GPUImage'`, `pod 'GPUImage', :head` or specify a [commit](http://docs.cocoapods.org/podfile.html#pod).
 3. Add `pod 'NBUKit'` to your Podfile.
 
 Sample Podfile:
@@ -77,7 +77,7 @@ Sample Podfile:
 ```ruby
 platform :ios
 
-pod 'GPUImage', :podspec => 'https://raw.github.com/CyberAgent/iOS-NBUKit/master/Library/GPUImage.podspec' # iOS 5+ only
+pod 'GPUImage', :head # iOS 5+ only
 pod 'NBUKit',   '~> 1.9.5'
 ```
 
