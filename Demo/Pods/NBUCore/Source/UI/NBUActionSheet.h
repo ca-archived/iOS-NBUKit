@@ -51,7 +51,7 @@ selectedButtonBlock:(NBUActionSheetSelectedButtonBlock)selectedButtonBlock
   cancelButtonBlock:(NBUActionSheetCancelButtonBlock)cancelButtonBlock;
 
 /// The optional block to be called if a non-cancel button is selected.
-/// @note The cancel button index is ignored.
+/// @note The cancel button index is ignored and the destructive button index is `0` (if present).
 @property (nonatomic, copy) NBUActionSheetSelectedButtonBlock selectedButtonBlock;
 
 /// The optional block to be called if the cancel button is selected.

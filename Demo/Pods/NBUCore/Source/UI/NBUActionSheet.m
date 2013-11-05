@@ -41,17 +41,33 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
 selectedButtonBlock:(NBUActionSheetSelectedButtonBlock)selectedButtonBlock
   cancelButtonBlock:(NBUActionSheetCancelButtonBlock)cancelButtonBlock
 {
+    // Create an empty action sheet
     self = [super initWithTitle:title
                        delegate:nil
-              cancelButtonTitle:DEVICE_IS_IPHONE_IDIOM ? cancelButtonTitle : nil
-         destructiveButtonTitle:destructiveButtonTitle
+              cancelButtonTitle:nil
+         destructiveButtonTitle:nil
               otherButtonTitles:nil];
     if (self)
     {
+        // Add the destructive button
+        if (destructiveButtonTitle)
+        {
+            self.destructiveButtonIndex = [self addButtonWithTitle:destructiveButtonTitle];
+        }
+        
+        // Add the other buttons
         for (NSString * otherButtonTitle in otherButtonTitles)
         {
             [self addButtonWithTitle:otherButtonTitle];
         }
+        
+        // Add the cancel button
+        if (DEVICE_IS_IPHONE_IDIOM && cancelButtonTitle)
+        {
+            self.cancelButtonIndex = [self addButtonWithTitle:cancelButtonTitle];
+        }
+        
+        // Set the blocks
         self.selectedButtonBlock = selectedButtonBlock;
         self.cancelButtonBlock = cancelButtonBlock;
     }
@@ -155,19 +171,20 @@ selectedButtonBlock:(NBUActionSheetSelectedButtonBlock)selectedButtonBlock
 - (void)actionSheet:(UIActionSheet *)actionSheet
 clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex != self.cancelButtonIndex)
+    NSLog(@"%@ %d cancel: %d", THIS_METHOD, buttonIndex, self.cancelButtonIndex);
+    if (buttonIndex == self.cancelButtonIndex)
+    {
+        NBULogVerbose(@"Canceled");
+        
+        if (_cancelButtonBlock) _cancelButtonBlock();
+    }
+    else
     {
         NSInteger selectedIndex = self.cancelButtonIndex == 0 ? buttonIndex - 1 : buttonIndex;
         
         NBULogVerbose(@"Selected button at index: %d", selectedIndex);
         
         if (_selectedButtonBlock) _selectedButtonBlock(selectedIndex);
-    }
-    else
-    {
-        NBULogVerbose(@"Canceled");
-        
-        if (_cancelButtonBlock) _cancelButtonBlock();
     }
 }
 

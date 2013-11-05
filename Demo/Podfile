@@ -2,7 +2,8 @@
 platform :ios
 
 # For client projects just use:
-#pod 'GPUImage', :podspec => 'https://raw.github.com/CyberAgent/iOS-NBUKit/master/Library/GPUImage.podspec' # Needed as GPUImage's Podspec is stuck at 0.1.0 (iOS 5+ targets only)
+pod 'GPUImage', '0.1.0'
+#pod 'GPUImage', :head' # iOS 5+ targets
 #pod 'NBUKit',   '~> 1.9.5'
 
 # Pre-release versions:
