@@ -1,6 +1,6 @@
 PODS:
-  - CocoaLumberjack (1.6.2)
-  - GPUImage (0.1.1)
+  - CocoaLumberjack (HEAD based on 1.6.2)
+  - GPUImage (HEAD based on 0.1.1)
   - Lockbox (1.4.3)
   - NBUCore (2.0.0):
     - CocoaLumberjack (~> 1.6.2)
@@ -56,27 +56,21 @@ PODS:
     - NBUCore (~> 2.0.0)
 
 DEPENDENCIES:
-  - CocoaLumberjack (from `https://github.com/rivera-ernesto/CocoaLumberjack.git`, commit `635987dacce6ecd8a315b66d5422c8abf6107ae0`)
-  - GPUImage (from `https://github.com/rivera-ernesto/GPUImage.git`, commit `569fd0805fa4c3e26f9b5675736f8cc6372283dd`)
-  - NBUCore (from `https://github.com/CyberAgent/iOS-NBUCore.git`, commit `d96c2ca4d0f318fa7f72c39d2f2db0c001d17d81`)
+  - CocoaLumberjack (HEAD)
+  - GPUImage (HEAD)
+  - NBUCore (from `https://github.com/CyberAgent/iOS-NBUCore.git`, commit `d786ba3a183c289ec4fb2d7dd5107efc97400c86`)
   - NBUKit (from `../`)
 
 EXTERNAL SOURCES:
-  CocoaLumberjack:
-    :commit: 635987dacce6ecd8a315b66d5422c8abf6107ae0
-    :git: https://github.com/rivera-ernesto/CocoaLumberjack.git
-  GPUImage:
-    :commit: 569fd0805fa4c3e26f9b5675736f8cc6372283dd
-    :git: https://github.com/rivera-ernesto/GPUImage.git
   NBUCore:
-    :commit: d96c2ca4d0f318fa7f72c39d2f2db0c001d17d81
+    :commit: d786ba3a183c289ec4fb2d7dd5107efc97400c86
     :git: https://github.com/CyberAgent/iOS-NBUCore.git
   NBUKit:
     :path: ../
 
 SPEC CHECKSUMS:
   CocoaLumberjack: 2619775f386bbec1e870eddb5040f870c68726b1
-  GPUImage: a75cf4936af07ba826e99765ffddc30acadeec31
+  GPUImage: b9840114a0ad0323801c2e0aa2752679057f808d
   Lockbox: 1bcfd564f034b83456fcad5bdd49470a80a38d2b
   NBUCore: a2c469207e96f9b582411794ac65f72a25d81584
   NBUKit: deb6fc7dd3923f54e7a97fe0528c03ec8af3cbd6

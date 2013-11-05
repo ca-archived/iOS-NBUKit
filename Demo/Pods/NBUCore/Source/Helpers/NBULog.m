@@ -140,26 +140,22 @@ static BOOL _fileLoggerAdded;
                                                        blue:0.5
                                                       alpha:1.0]
                       backgroundColor:nil
-                              forFlag:LOG_FLAG_VERBOSE
-                              context:LOG_CONTEXT_ALL];
+                              forFlag:LOG_FLAG_VERBOSE];
         [ttyLogger setForegroundColor:[UIColor colorWithRed:26.0/255.0
                                                       green:158.0/255.0
                                                        blue:4.0/255.0
                                                       alpha:1.0]
                       backgroundColor:nil
-                              forFlag:LOG_FLAG_INFO
-                              context:LOG_CONTEXT_ALL];
+                              forFlag:LOG_FLAG_INFO];
         [ttyLogger setForegroundColor:[UIColor colorWithRed:244.0/255.0
                                                       green:103.0/255.0
                                                        blue:8.0/255.0
                                                       alpha:1.0]
                       backgroundColor:nil
-                              forFlag:LOG_FLAG_WARN
-                              context:LOG_CONTEXT_ALL];
+                              forFlag:LOG_FLAG_WARN];
         [ttyLogger setForegroundColor:[UIColor redColor]
                       backgroundColor:nil
-                              forFlag:LOG_FLAG_ERROR
-                              context:LOG_CONTEXT_ALL];
+                              forFlag:LOG_FLAG_ERROR];
         
         // Enable colors
         [ttyLogger setColorsEnabled:YES];

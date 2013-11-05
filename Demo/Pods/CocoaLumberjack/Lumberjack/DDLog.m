@@ -59,16 +59,19 @@ static void *const GlobalLoggingQueueIdentityKey = (void *)&GlobalLoggingQueueId
 @public 
 	id <DDLogger> logger;	
 	dispatch_queue_t loggerQueue;
+    int logLevel;
 }
 
-+ (DDLoggerNode *)nodeWithLogger:(id <DDLogger>)logger loggerQueue:(dispatch_queue_t)loggerQueue;
+@property (nonatomic, assign, readonly) int logLevel;
+
++ (DDLoggerNode *)nodeWithLogger:(id <DDLogger>)logger loggerQueue:(dispatch_queue_t)loggerQueue logLevel:(int)logLevel;
 
 @end
 
 
 @interface DDLog (PrivateAPI)
 
-+ (void)lt_addLogger:(id <DDLogger>)logger;
++ (void)lt_addLogger:(id <DDLogger>)logger logLevel:(int)logLevel;
 + (void)lt_removeLogger:(id <DDLogger>)logger;
 + (void)lt_removeAllLoggers;
 + (void)lt_log:(DDLogMessage *)logMessage;
@@ -180,11 +183,16 @@ static unsigned int numProcessors;
 
 + (void)addLogger:(id <DDLogger>)logger
 {
-	if (logger == nil) return;
-		
+    [self addLogger:logger withLogLevel:LOG_LEVEL_VERBOSE];
+}
+
++ (void)addLogger:(id <DDLogger>)logger withLogLevel:(int)logLevel
+{
+    if (logger == nil) return;
+    
 	dispatch_async(loggingQueue, ^{ @autoreleasepool {
 		
-		[self lt_addLogger:logger];
+		[self lt_addLogger:logger logLevel:logLevel];
 	}});
 }
 
@@ -504,7 +512,7 @@ static unsigned int numProcessors;
 /**
  * This method should only be run on the logging thread/queue.
 **/
-+ (void)lt_addLogger:(id <DDLogger>)logger
++ (void)lt_addLogger:(id <DDLogger>)logger logLevel:(int)logLevel
 {
 	// Add to loggers array.
 	// Need to create loggerQueue if loggerNode doesn't provide one.
@@ -532,7 +540,7 @@ static unsigned int numProcessors;
 		loggerQueue = dispatch_queue_create(loggerQueueName, NULL);
 	}
 	
-	DDLoggerNode *loggerNode = [DDLoggerNode nodeWithLogger:logger loggerQueue:loggerQueue];
+	DDLoggerNode *loggerNode = [DDLoggerNode nodeWithLogger:logger loggerQueue:loggerQueue logLevel:logLevel];
 	[loggers addObject:loggerNode];
 	
 	if ([logger respondsToSelector:@selector(didAddLogger)])
@@ -612,6 +620,14 @@ static unsigned int numProcessors;
 + (void)lt_log:(DDLogMessage *)logMessage
 {
 	// Execute the given log message on each of our loggers.
+    
+    // filter the loggers that should write this message based on the logLevel
+    NSMutableArray *filteredLoggers = [NSMutableArray arrayWithCapacity:loggers.count];
+    for (DDLoggerNode *loggerNode in loggers) {
+        if (logMessage->logFlag <= loggerNode.logLevel) {
+            [filteredLoggers addObject:loggerNode];
+        }
+    }
 		
 	if (numProcessors > 1)
 	{
@@ -622,7 +638,7 @@ static unsigned int numProcessors;
 		// The waiting ensures that a slow logger doesn't end up with a large queue of pending log messages.
 		// This would defeat the purpose of the efforts we made earlier to restrict the max queue size.
 		
-		for (DDLoggerNode *loggerNode in loggers)
+		for (DDLoggerNode *loggerNode in filteredLoggers)
 		{
 			dispatch_group_async(loggingGroup, loggerNode->loggerQueue, ^{ @autoreleasepool {
 				
@@ -637,7 +653,7 @@ static unsigned int numProcessors;
 	{
 		// Execute each logger serialy, each within its own queue.
 		
-		for (DDLoggerNode *loggerNode in loggers)
+		for (DDLoggerNode *loggerNode in filteredLoggers)
 		{
 			dispatch_sync(loggerNode->loggerQueue, ^{ @autoreleasepool {
 				
@@ -773,7 +789,9 @@ NSString *DDExtractFileNameWithoutExtension(const char *filePath, BOOL copy)
 
 @implementation DDLoggerNode
 
-- (id)initWithLogger:(id <DDLogger>)aLogger loggerQueue:(dispatch_queue_t)aLoggerQueue
+@synthesize logLevel;
+
+- (instancetype)initWithLogger:(id <DDLogger>)aLogger loggerQueue:(dispatch_queue_t)aLoggerQueue logLevel:(int)aLogLevel
 {
 	if ((self = [super init]))
 	{
@@ -785,13 +803,14 @@ NSString *DDExtractFileNameWithoutExtension(const char *filePath, BOOL copy)
 			dispatch_retain(loggerQueue);
 			#endif
 		}
+        logLevel = aLogLevel;
 	}
 	return self;
 }
 
-+ (DDLoggerNode *)nodeWithLogger:(id <DDLogger>)logger loggerQueue:(dispatch_queue_t)loggerQueue
++ (DDLoggerNode *)nodeWithLogger:(id <DDLogger>)logger loggerQueue:(dispatch_queue_t)loggerQueue logLevel:(int)logLevel
 {
-	return [[DDLoggerNode alloc] initWithLogger:logger loggerQueue:loggerQueue];
+	return [[DDLoggerNode alloc] initWithLogger:logger loggerQueue:loggerQueue logLevel:logLevel];
 }
 
 - (void)dealloc
@@ -822,15 +841,15 @@ static char *dd_str_copy(const char *str)
 	return result;
 }
 
-- (id)initWithLogMsg:(NSString *)msg
-               level:(int)level
-                flag:(int)flag
-             context:(int)context
-                file:(const char *)aFile
-            function:(const char *)aFunction
-                line:(int)line
-                 tag:(id)aTag
-             options:(DDLogMessageOptions)optionsMask
+- (instancetype)initWithLogMsg:(NSString *)msg
+                         level:(int)level
+                          flag:(int)flag
+                       context:(int)context
+                          file:(const char *)aFile
+                      function:(const char *)aFunction
+                          line:(int)line
+                           tag:(id)aTag
+                       options:(DDLogMessageOptions)optionsMask
 {
 	if ((self = [super init]))
 	{
@@ -855,7 +874,14 @@ static char *dd_str_copy(const char *str)
 		timestamp = [[NSDate alloc] init];
 		
 		machThreadID = pthread_mach_thread_np(pthread_self());
-		
+
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 60000
+        // dispatch_get_current_queue() is deprecated and most importantly it
+        // crashes sometimes and there's no other way to reliably get the name
+        // of the current queue.
+
+        queueLabel = dd_str_copy("");
+#else
 		#pragma clang diagnostic push
 		#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 		// The documentation for dispatch_get_current_queue() states:
@@ -874,6 +900,7 @@ static char *dd_str_copy(const char *str)
 		#pragma clang diagnostic pop
 		
 		queueLabel = dd_str_copy(dispatch_queue_get_label(currentQueue));
+#endif
 		
 		threadName = [[NSThread currentThread] name];
 	}
