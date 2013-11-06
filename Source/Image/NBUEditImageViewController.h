@@ -78,10 +78,10 @@ typedef void (^NBUEditImageResultBlock)(UIImage * image);
 /// @name Outlets
 
 /// The optional NBUPresetFilterView.
-@property (assign, nonatomic) IBOutlet              NBUPresetFilterView * filterView;
+@property (weak, nonatomic) IBOutlet                NBUPresetFilterView * filterView;
 
 /// The optional NBUCropView.
-@property (assign, nonatomic) IBOutlet              NBUCropView * cropView;
+@property (weak, nonatomic) IBOutlet                NBUCropView * cropView;
 
 /// @name Methods
 

@@ -3,7 +3,7 @@
 //  NBUCore
 //
 //  Created by Ernesto Rivera on 2012/12/06.
-//  Copyright (c) 2012 CyberAgent Inc.
+//  Copyright (c) 2012-2013 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -18,25 +18,28 @@
 //  limitations under the License.
 //
 
-#import "DDLog.h"
+#import <CocoaLumberjack/DDLog.h>
 
 /// Extensible default contexts
 #define APP_LOG_CONTEXT     0
 
 /// App modules
-/// Define more in your Prefix.pch file if needed (max 10 modules).
+/// Define more in your Prefix.pch file if needed (max 20 modules).
 /// Ex.:    #define APP_MODULE_NETWORK  1
-#define APP_MODULE_GENERAL  0
+#define APP_MODULE_DEFAULT  0
 
-/// By default all files will be in the "General" module.
+/// By default all files will be in the "Default" module.
 /// Change the module of any file by redefining `APP_MODULE` at
 /// the beginning of the implementation file. Ex.:
-///     #undef APP_MODULE
+///     #undef  APP_MODULE
 ///     #define APP_MODULE APP_MODULE_NETWORK
-#define APP_MODULE          APP_MODULE_GENERAL
+#define APP_MODULE          APP_MODULE_DEFAULT
 
 /// Dynamic levels
 #define APP_LOG_LEVEL       [NBULog appLogLevelForModule:APP_MODULE]
+
+/// Log level used to clear modules' log levels
+#define LOG_LEVEL_DEFAULT   -1
 
 /// Remove NSLog from non DEBUG builds
 #ifndef DEBUG
@@ -65,13 +68,21 @@
  - AppLogLevel: `LOG_LEVEL_VERBOSE` for `DEBUG`, `LOG_LEVEL_INFO` otherwise.
  - Loggers: DDTTYLogger for `DEBUG`, DDFileLogger otherwise.
  
- Manually add NBUDashboard or DDASLLogger if desired.
+ Manually add NBUDashboard, DDTTYLogger, DDASLLogger or DDFileLogger if desired.
  
  To add register new modules just create a NBULog category.
  */
 @interface NBULog : DDLog
 
 /// @name Adjusting App Log Levels
+
+/// Get the current App log level.
++ (int)appLogLevel;
+
+/// Dynamically set the App log level for all modules at once.
+/// @param LOG_LEVEL_XXX The desired log level.
+/// @note Setting this value clears all modules' levels.
++ (void)setAppLogLevel:(int)LOG_LEVEL_XXX;
 
 /// Get the current App log level for a given module.
 /// @param APP_MODULE_XXX The target module.
@@ -82,10 +93,6 @@
 /// @param APP_MODULE_XXX The target module.
 + (void)setAppLogLevel:(int)LOG_LEVEL_XXX
              forModule:(int)APP_MODULE_XXX;
-
-/// Dynamically set the App log level for all modules at once.
-/// @param LOG_LEVEL_XXX The desired log level.
-+ (void)setAppLogLevel:(int)LOG_LEVEL_XXX;
 
 /// @name Adding Loggers
 
@@ -98,12 +105,48 @@
 + (void)addASLLogger;
 
 /// Configure and add a DDTTYLogger (Apple System Log and Xcode console). Not needed in most cases.
+/// @discussion Will enable console colors if XcodeColors is installed.
 /// @note To be used for testing builds only.
 + (void)addTTYLogger;
 
 /// Configure and add a DDFileLogger (log to a file).
 /// @note Added by default for non debug builds.
 + (void)addFileLogger;
+
+@end
+
+
+@class NBULogContextDescription;
+
+/**
+ */
+@interface NBULog (NBULogContextDescription)
+
++ (void)registerAppContextWithModulesAndNames:(NSDictionary *)appContextModulesAndNames;
++ (void)registerContextDescription:(NBULogContextDescription *)contextDescription;
++ (NSArray *)orderedRegisteredContexts;
+
+@end
+
+
+/**
+ NBULog category used to set/get NBUCore log levels.
+ 
+ Default configuration (can be dynamically changed):
+ 
+ - Log level: `LOG_LEVEL_INFO` for `DEBUG`, `LOG_LEVEL_WARN` otherwise.
+ 
+ */
+@interface NBULog (NBUCore)
+
+/// @name Adjusting NBUCore Log Levels
+
+/// Get the current NBUCore log level.
++ (int)coreLogLevel;
+
+/// Dynamically set the NBUCore log level for all modules at once.
+/// @param LOG_LEVEL_XXX The desired log level.
++ (void)setCoreLogLevel:(int)LOG_LEVEL_XXX;
 
 @end
 

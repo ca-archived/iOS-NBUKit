@@ -252,7 +252,7 @@ NSString *DDExtractFileNameWithoutExtension(const char *filePath, BOOL copy);
 /**
  * The THIS_METHOD macro gives you the name of the current objective-c method.
  * 
- * For example: DDLogWarn(@"%@ - Requires non-nil strings") -> @"setMake:model: requires non-nil strings"
+ * For example: DDLogWarn(@"%@ - Requires non-nil strings", THIS_METHOD) -> @"setMake:model: requires non-nil strings"
  * 
  * Note: This does NOT work in straight C functions (non objective-c).
  * Instead you should use the predefined __FUNCTION__ macro.
@@ -323,9 +323,15 @@ NSString *DDExtractFileNameWithoutExtension(const char *filePath, BOOL copy);
  * you should create and add a logger.
 **/
 
-+ (void)addLogger:(id <DDLogger>)logger;
-+ (void)removeLogger:(id <DDLogger>)logger;
++ (void)addLogger:(id <DDLogger>)logger;    // adds the logger using maximum log level (LOG_LEVEL_VERBOSE)
 
+/**
+ * Please use as logLevels the LOG_LEVEL_* macros
+ *
+**/
++ (void)addLogger:(id <DDLogger>)logger withLogLevel:(int)logLevel;
+
++ (void)removeLogger:(id <DDLogger>)logger;
 + (void)removeAllLoggers;
 
 /**
@@ -489,7 +495,7 @@ NSString *DDExtractFileNameWithoutExtension(const char *filePath, BOOL copy);
 
 enum {
 	DDLogMessageCopyFile     = 1 << 0,
-	DDLogMessageCopyFunction = 1 << 1,
+	DDLogMessageCopyFunction = 1 << 1
 };
 typedef int DDLogMessageOptions;
 
@@ -534,15 +540,15 @@ typedef int DDLogMessageOptions;
  * However, if you need them to be copied you may use the options parameter to specify this.
  * Options is a bitmask which supports DDLogMessageCopyFile and DDLogMessageCopyFunction.
 **/
-- (id)initWithLogMsg:(NSString *)logMsg
-               level:(int)logLevel
-                flag:(int)logFlag
-             context:(int)logContext
-                file:(const char *)file
-            function:(const char *)function
-                line:(int)line
-                 tag:(id)tag
-             options:(DDLogMessageOptions)optionsMask;
+- (instancetype)initWithLogMsg:(NSString *)logMsg
+                         level:(int)logLevel
+                          flag:(int)logFlag
+                       context:(int)logContext
+                          file:(const char *)file
+                      function:(const char *)function
+                          line:(int)line
+                           tag:(id)tag
+                       options:(DDLogMessageOptions)optionsMask;
 
 /**
  * Returns the threadID as it appears in NSLog.
@@ -593,5 +599,9 @@ typedef int DDLogMessageOptions;
 
 - (id <DDLogFormatter>)logFormatter;
 - (void)setLogFormatter:(id <DDLogFormatter>)formatter;
+
+// For thread-safety assertions
+- (BOOL)isOnGlobalLoggingQueue;
+- (BOOL)isOnInternalLoggerQueue;
 
 @end

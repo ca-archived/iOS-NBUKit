@@ -23,7 +23,7 @@
 @interface PickerTestsViewController : NBUViewController
 
 // Outlets
-@property (assign, nonatomic) IBOutlet ObjectSlideView * slideView;
+@property (weak, nonatomic) IBOutlet ObjectSlideView * slideView;
 
 // Actions
 - (IBAction)startPicker:(id)sender;

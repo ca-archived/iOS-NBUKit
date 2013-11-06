@@ -48,7 +48,7 @@ typedef NSUInteger NBUSelectionType;
 /// @name Properties
 
 /// The image to be presented as thumbnail.
-@property (assign, nonatomic)                       UIImage * thumbnailImage;
+@property (weak, nonatomic)                         UIImage * thumbnailImage;
 
 /// Whether the thumbanil view is selected or not.
 @property (nonatomic, getter=isSelected)            BOOL selected;
@@ -69,13 +69,13 @@ typedef NSUInteger NBUSelectionType;
 /// @name Outlets
 
 /// The label used to disaplay the [NBUFilter name].
-@property (assign, nonatomic) IBOutlet              UILabel * nameLabel;
+@property (weak, nonatomic) IBOutlet                UILabel * nameLabel;
 
 /// The view to display the filtered thumbnail image.
-@property (assign, nonatomic) IBOutlet              UIImageView * imageView;
+@property (weak, nonatomic) IBOutlet                UIImageView * imageView;
 
 /// An optional view to be shown/hidden upon selection.
-@property (assign, nonatomic) IBOutlet              UIView * selectionView;
+@property (weak, nonatomic) IBOutlet                UIView * selectionView;
 
 @end
 

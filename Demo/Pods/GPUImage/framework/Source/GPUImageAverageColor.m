@@ -5,8 +5,8 @@ NSString *const kGPUImageColorAveragingVertexShaderString = SHADER_STRING
  attribute vec4 position;
  attribute vec4 inputTextureCoordinate;
  
- uniform highp float texelWidth;
- uniform highp float texelHeight;
+ uniform float texelWidth;
+ uniform float texelHeight;
  
  varying vec2 upperLeftInputTextureCoordinate;
  varying vec2 upperRightInputTextureCoordinate;
@@ -24,6 +24,7 @@ NSString *const kGPUImageColorAveragingVertexShaderString = SHADER_STRING
  }
  );
 
+#if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
 NSString *const kGPUImageColorAveragingFragmentShaderString = SHADER_STRING
 (
  precision highp float;
@@ -47,7 +48,29 @@ NSString *const kGPUImageColorAveragingFragmentShaderString = SHADER_STRING
      gl_FragColor = 0.25 * (upperLeftColor + upperRightColor + lowerLeftColor + lowerRightColor);
  }
 );
-
+#else
+NSString *const kGPUImageColorAveragingFragmentShaderString = SHADER_STRING
+(
+ uniform sampler2D inputImageTexture;
+ 
+ varying vec2 outputTextureCoordinate;
+ 
+ varying vec2 upperLeftInputTextureCoordinate;
+ varying vec2 upperRightInputTextureCoordinate;
+ varying vec2 lowerLeftInputTextureCoordinate;
+ varying vec2 lowerRightInputTextureCoordinate;
+ 
+ void main()
+ {
+     vec4 upperLeftColor = texture2D(inputImageTexture, upperLeftInputTextureCoordinate);
+     vec4 upperRightColor = texture2D(inputImageTexture, upperRightInputTextureCoordinate);
+     vec4 lowerLeftColor = texture2D(inputImageTexture, lowerLeftInputTextureCoordinate);
+     vec4 lowerRightColor = texture2D(inputImageTexture, lowerRightInputTextureCoordinate);
+     
+     gl_FragColor = 0.25 * (upperLeftColor + upperRightColor + lowerLeftColor + lowerRightColor);
+ }
+);
+#endif
 
 @implementation GPUImageAverageColor
 
@@ -98,7 +121,7 @@ NSString *const kGPUImageColorAveragingFragmentShaderString = SHADER_STRING
     
     // Create textures for each level
     runSynchronouslyOnVideoProcessingQueue(^{
-        [GPUImageOpenGLESContext useImageProcessingContext];
+        [GPUImageContext useImageProcessingContext];
 
         NSUInteger numberOfReductionsInX = floor(log(inputTextureSize.width) / log(4.0));
         NSUInteger numberOfReductionsInY = floor(log(inputTextureSize.height) / log(4.0));
@@ -117,15 +140,19 @@ NSString *const kGPUImageColorAveragingFragmentShaderString = SHADER_STRING
 //                currentStageSize.height = 2.0; // TODO: Rotate the image to account for this case, which causes FBO construction to fail
             }
             
+#if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
             [stageSizes addObject:[NSValue valueWithCGSize:currentStageSize]];
+#else
+            [stageSizes addObject:[NSValue valueWithSize:NSSizeFromCGSize(currentStageSize)]];
+#endif
 
             GLuint textureForStage;
             glGenTextures(1, &textureForStage);
             glBindTexture(GL_TEXTURE_2D, textureForStage);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, self.outputTextureOptions.minFilter);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, self.outputTextureOptions.magFilter);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, self.outputTextureOptions.wrapS);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, self.outputTextureOptions.wrapT);
             [stageTextures addObject:[NSNumber numberWithInt:textureForStage]];
             
 //            NSLog(@"At reduction: %d size in X: %f, size in Y:%f", currentReduction, currentStageSize.width, currentStageSize.height);
@@ -141,7 +168,7 @@ NSString *const kGPUImageColorAveragingFragmentShaderString = SHADER_STRING
     }
     
     runSynchronouslyOnVideoProcessingQueue(^{
-        [GPUImageOpenGLESContext useImageProcessingContext];
+        [GPUImageContext useImageProcessingContext];
         
         NSUInteger numberOfStageTextures = [stageTextures count];
         for (NSUInteger currentStage = 0; currentStage < numberOfStageTextures; currentStage++)
@@ -172,7 +199,7 @@ NSString *const kGPUImageColorAveragingFragmentShaderString = SHADER_STRING
 {
     // Create framebuffers for each level
     runSynchronouslyOnVideoProcessingQueue(^{
-        [GPUImageOpenGLESContext useImageProcessingContext];
+        [GPUImageContext useImageProcessingContext];
         glActiveTexture(GL_TEXTURE1);
         
         NSUInteger numberOfStageFramebuffers = [stageTextures count];
@@ -186,10 +213,22 @@ NSString *const kGPUImageColorAveragingFragmentShaderString = SHADER_STRING
             GLuint currentTexture = [[stageTextures objectAtIndex:currentStage] intValue];
             glBindTexture(GL_TEXTURE_2D, currentTexture);
             
+#if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
             CGSize currentFramebufferSize = [[stageSizes objectAtIndex:currentStage] CGSizeValue];
+#else
+            NSSize currentFramebufferSize = [[stageSizes objectAtIndex:currentStage] sizeValue];
+#endif
             
 //            NSLog(@"FBO stage size: %f, %f", currentFramebufferSize.width, currentFramebufferSize.height);
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, (int)currentFramebufferSize.width, (int)currentFramebufferSize.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, 0);
+            glTexImage2D(GL_TEXTURE_2D,
+                         0,
+                         self.outputTextureOptions.internalFormat,
+                         (int)currentFramebufferSize.width,
+                         (int)currentFramebufferSize.height,
+                         0,
+                         self.outputTextureOptions.format,
+                         self.outputTextureOptions.type,
+                         0);
             glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, currentTexture, 0);
             GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
             
@@ -203,7 +242,7 @@ NSString *const kGPUImageColorAveragingFragmentShaderString = SHADER_STRING
 - (void)destroyFilterFBO;
 {
     runSynchronouslyOnVideoProcessingQueue(^{
-        [GPUImageOpenGLESContext useImageProcessingContext];
+        [GPUImageContext useImageProcessingContext];
         
         NSUInteger numberOfStageFramebuffers = [stageFramebuffers count];
         for (NSUInteger currentStage = 0; currentStage < numberOfStageFramebuffers; currentStage++)
@@ -223,7 +262,7 @@ NSString *const kGPUImageColorAveragingFragmentShaderString = SHADER_STRING
         return;
     }
     
-    [GPUImageOpenGLESContext setActiveShaderProgram:filterProgram];
+    [GPUImageContext setActiveShaderProgram:filterProgram];
 
     glVertexAttribPointer(filterPositionAttribute, 2, GL_FLOAT, 0, 0, vertices);
     glVertexAttribPointer(filterTextureCoordinateAttribute, 2, GL_FLOAT, 0, 0, textureCoordinates);
@@ -236,7 +275,11 @@ NSString *const kGPUImageColorAveragingFragmentShaderString = SHADER_STRING
         GLuint currentFramebuffer = [[stageFramebuffers objectAtIndex:currentStage] intValue];
         glBindFramebuffer(GL_FRAMEBUFFER, currentFramebuffer);
         
+#if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
         CGSize currentStageSize = [[stageSizes objectAtIndex:currentStage] CGSizeValue];
+#else
+        NSSize currentStageSize = [[stageSizes objectAtIndex:currentStage] sizeValue];
+#endif
         glViewport(0, 0, (int)currentStageSize.width, (int)currentStageSize.height);
 
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -304,7 +347,15 @@ NSString *const kGPUImageColorAveragingFragmentShaderString = SHADER_STRING
 
 - (void)extractAverageColorAtFrameTime:(CMTime)frameTime;
 {
+    // we need a normal color texture for averaging the color values
+    NSAssert(self.outputTextureOptions.internalFormat == GL_RGBA, @"The output texture internal format for this filter must be GL_RGBA.");
+    NSAssert(self.outputTextureOptions.type == GL_UNSIGNED_BYTE, @"The type of the output texture of this filter must be GL_UNSIGNED_BYTE.");
+    
+#if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
     CGSize finalStageSize = [[stageSizes lastObject] CGSizeValue];
+#else
+    NSSize finalStageSize = [[stageSizes lastObject] sizeValue];
+#endif
     NSUInteger totalNumberOfPixels = round(finalStageSize.width * finalStageSize.height);
     
     if (rawImagePixels == NULL)

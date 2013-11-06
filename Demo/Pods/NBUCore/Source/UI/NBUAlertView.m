@@ -3,7 +3,7 @@
 //  NBUCore
 //
 //  Created by Ernesto Rivera on 2012/10/31.
-//  Copyright (c) 2012 CyberAgent Inc.
+//  Copyright (c) 2012-2013 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@
 //
 
 #import "NBUAlertView.h"
-#import "NBULog.h"
+#import "NBUCorePrivate.h"
 
 // Private category
 @interface NBUAlertView (Private) <UIAlertViewDelegate>
@@ -82,9 +82,9 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     {
         NSInteger selectedIndex = self.cancelButtonIndex == 0 ? buttonIndex - 1 : buttonIndex;
         
-        NBULogVerbose(@"Selected button at index: %d", buttonIndex);
+        NBULogVerbose(@"Selected button at index: %d", selectedIndex);
         
-        if (_selectedButtonBlock) _selectedButtonBlock(buttonIndex);
+        if (_selectedButtonBlock) _selectedButtonBlock(selectedIndex);
     }
     else
     {

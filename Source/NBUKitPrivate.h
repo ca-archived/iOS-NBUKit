@@ -16,6 +16,9 @@
 #define NSLocalizedStringWithDefaultValue(key, tableName, bundle, defaultValue, comment) \
 [NSBundle localizedStringForKey:key value:defaultValue table:@"NBUKit" backupBundle:NBUKit.resourcesBundle]
 
+// NBUKit log context
+#define NBUKIT_LOG_CONTEXT  110
+
 // Default module
 #define NBUKIT_MODULE       NBUKIT_MODULE_GENERAL
 

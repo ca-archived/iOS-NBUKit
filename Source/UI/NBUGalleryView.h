@@ -43,10 +43,10 @@
 /// @name Outlets
 
 /// A UIImageView to display the image.
-@property (assign, nonatomic) IBOutlet  UIImageView * imageView;
+@property (weak, nonatomic) IBOutlet    UIImageView * imageView;
 
 /// An optional view to be shown/hidden according to the loading value.
-@property (assign, nonatomic) IBOutlet  UIView * activityView;
+@property (weak, nonatomic) IBOutlet    UIView * activityView;
 
 @end
 

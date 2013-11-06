@@ -3,7 +3,7 @@
 //  NBUCore
 //
 //  Created by Ernesto Rivera on 2012/10/04.
-//  Copyright (c) 2012 CyberAgent Inc.
+//  Copyright (c) 2012-2013 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@
 
 /// Shortcut to get/set the first view controller.
 /// @note When set all other controllers will be removed.
-@property(nonatomic, retain) UIViewController * rootViewController;
+@property(nonatomic, strong) UIViewController * rootViewController;
 
 /// Convenience method to change the top view controller.
 /// @param controller The new top view controller.

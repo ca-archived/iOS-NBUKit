@@ -17,6 +17,16 @@
 
 
 @implementation DispatchQueueLogFormatter
+{
+	int32_t atomicLoggerCount;
+	NSDateFormatter *threadUnsafeDateFormatter; // Use [self stringFromDate]
+	
+	OSSpinLock lock;
+	
+	NSUInteger _minQueueLength;           // _prefix == Only access via atomic property
+	NSUInteger _maxQueueLength;           // _prefix == Only access via atomic property
+	NSMutableDictionary *_replacements;   // _prefix == Only access from within spinlock
+}
 
 - (id)init
 {
@@ -33,7 +43,7 @@
 		
 		// Set default replacements:
 		
-		[_replacements setObject:@"main" forKey:@"com.apple.main-thread"];
+		_replacements[@"com.apple.main-thread"] = @"main";
 	}
 	return self;
 }
@@ -52,7 +62,7 @@
 	
 	OSSpinLockLock(&lock);
 	{
-		result = [_replacements objectForKey:longLabel];
+		result = _replacements[longLabel];
 	}
 	OSSpinLockUnlock(&lock);
 	
@@ -64,7 +74,7 @@
 	OSSpinLockLock(&lock);
 	{
 		if (shortLabel)
-			[_replacements setObject:shortLabel forKey:longLabel];
+			_replacements[longLabel] = shortLabel;
 		else
 			[_replacements removeObjectForKey:longLabel];
 	}
@@ -90,6 +100,7 @@
 			[threadUnsafeDateFormatter setDateFormat:dateFormatString];
 		}
 		
+        [threadUnsafeDateFormatter setCalendar:[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar]];
 		return [threadUnsafeDateFormatter stringFromDate:date];
 	}
 	else
@@ -100,7 +111,7 @@
 		NSString *key = @"DispatchQueueLogFormatter_NSDateFormatter";
 		
 		NSMutableDictionary *threadDictionary = [[NSThread currentThread] threadDictionary];
-		NSDateFormatter *dateFormatter = [threadDictionary objectForKey:key];
+		NSDateFormatter *dateFormatter = threadDictionary[key];
 		
 		if (dateFormatter == nil)
 		{
@@ -108,9 +119,10 @@
 			[dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
 			[dateFormatter setDateFormat:dateFormatString];
 			
-			[threadDictionary setObject:dateFormatter forKey:key];
+			threadDictionary[key] = dateFormatter;
 		}
 		
+        [dateFormatter setCalendar:[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar]];
 		return [dateFormatter stringFromDate:date];
 	}
 }
@@ -166,13 +178,13 @@
 		NSString *abrvLabel;
 		
 		if (useQueueLabel)
-			fullLabel = [NSString stringWithUTF8String:logMessage->queueLabel];
+			fullLabel = @(logMessage->queueLabel);
 		else
 			fullLabel = logMessage->threadName;
 		
 		OSSpinLockLock(&lock);
 		{
-			abrvLabel = [_replacements objectForKey:fullLabel];
+			abrvLabel = _replacements[fullLabel];
 		}
 		OSSpinLockUnlock(&lock);
 		

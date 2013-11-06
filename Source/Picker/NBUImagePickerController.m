@@ -287,7 +287,7 @@
     _cameraController.supportedInterfaceOrientations = UIInterfaceOrientationMaskPortrait;
     _cameraController.singlePictureMode = _singleImageMode;
     
-    __unsafe_unretained NBUImagePickerController * weakSelf = self;
+    __weak NBUImagePickerController * weakSelf = self;
     BOOL singleImageMode = _singleImageMode;
     _cameraController.captureResultBlock = ^(UIImage * image,
                                              NSError * error)
@@ -356,7 +356,7 @@
         _assetsGroupController.selectionCountLimit = 1;
         _assetsGroupController.clearsSelectionOnViewWillAppear = YES;
         
-        __unsafe_unretained NBUImagePickerController * weakSelf = self;
+        __weak NBUImagePickerController * weakSelf = self;
         _assetsGroupController.selectionChangedBlock = ^()
         {
             NSArray * selectedAssets = weakSelf.assetsGroupController.selectedAssets;

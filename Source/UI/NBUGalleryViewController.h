@@ -49,7 +49,7 @@
 
 /// An optional custom imageLoader.
 /// @discussion If not specified NBUImageLoader will be used.
-@property (assign, nonatomic)               id<NBUImageLoader> imageLoader;
+@property (weak, nonatomic)                 id<NBUImageLoader> imageLoader;
 
 /// The number of images to be preloaded. Default `1`.
 @property (nonatomic)                       NSUInteger imagePreloadCount;
@@ -167,7 +167,7 @@
 @property (strong, nonatomic) IBOutlet      id<UIButton> nextButton;
 
 /// Optional UIPageControl.
-@property (assign, nonatomic) IBOutlet      UIPageControl * pageControl;
+@property (weak, nonatomic) IBOutlet      UIPageControl * pageControl;
 
 /// Optional toggle thumbnails button.
 @property (strong, nonatomic) IBOutlet      id<UIButton> toggleThumbnailsViewButton;

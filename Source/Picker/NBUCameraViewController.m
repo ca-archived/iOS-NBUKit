@@ -128,7 +128,7 @@
     {
         if (!_buttonStealer)
         {
-            __unsafe_unretained NBUCameraViewController * weakSelf = self;
+            __weak NBUCameraViewController * weakSelf = self;
             ButtonBlock block = ^
             {
                 [weakSelf.cameraView takePicture:weakSelf];

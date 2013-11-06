@@ -22,7 +22,7 @@
 
 @interface PullToRefreshViewController : ScrollViewController
 
-@property (assign, nonatomic) IBOutlet UILabel * label;
+@property (weak, nonatomic) IBOutlet UILabel * label;
 
 - (IBAction)refresh:(id)sender;
 

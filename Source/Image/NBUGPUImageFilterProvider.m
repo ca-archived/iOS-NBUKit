@@ -316,10 +316,10 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
                                         NBUFilterDefaultValueKey     : @"NBUKitResources.bundle/filters/frame.png"},
                        blurSize     : @{NBUFilterValueDescriptionKey : @"Blur size",
                                         NBUFilterValueTypeKey        : NBUFilterValueTypeFloat,
-                                        NBUFilterDefaultValueKey     : @(1.0),
+                                        NBUFilterDefaultValueKey     : @(2.0),
                                         NBUFilterIdentityValueKey    : @(0.0),
-                                        NBUFilterMaximumValueKey     : @(3.0),
-                                        NBUFilterMinimumValueKey     : @(0.0)}};
+                                        NBUFilterMaximumValueKey     : @(5.0),
+                                        NBUFilterMinimumValueKey     : @(1.0)}};
         block = ^(NBUFilter * filter,
                   NBUGPUMultiInputImageFilterGroup * gpuFilterGroup)
         {
@@ -351,7 +351,7 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
              withTargetFilterAtIndex:0
                    atTextureLocation:1];
             GPUImageGaussianBlurFilter * blurFilter = (GPUImageGaussianBlurFilter *)[gpuFilterGroup filterAtIndex:1];
-            blurFilter.blurSize = [filter floatValueForKey:blurSize];
+            blurFilter.blurRadiusInPixels = [filter floatValueForKey:blurSize];
             
             return gpuFilterGroup;
         };

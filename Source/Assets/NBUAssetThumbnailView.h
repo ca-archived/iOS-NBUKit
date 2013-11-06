@@ -47,7 +47,7 @@ extern NSString * const NBUAssetThumbnailViewSelectionStateChangedNotification;
 
 /// A view to be shown/hidden upon selection.
 /// @see selected
-@property (assign, nonatomic) IBOutlet      UIView * selectionView;
+@property (weak, nonatomic) IBOutlet        UIView * selectionView;
 
 @end
 

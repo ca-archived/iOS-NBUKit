@@ -42,10 +42,10 @@
 /// @name Outlets
 
 /// The UITableView used to display log messages.
-@property (assign, nonatomic) IBOutlet  UITableView * tableView;
+@property (weak, nonatomic) IBOutlet    UITableView * tableView;
 
 /// The UISearchBar used to filter log messages.
-@property (assign, nonatomic) IBOutlet  UISearchBar * searchBar;
+@property (weak, nonatomic) IBOutlet    UISearchBar * searchBar;
 
 @end
 

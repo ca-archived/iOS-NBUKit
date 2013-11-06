@@ -1,73 +1,78 @@
 PODS:
-  - CocoaLumberjack (1.6)
-  - GPUImage (0.1.0)
+  - CocoaLumberjack (HEAD based on 1.6.2)
+  - GPUImage (HEAD based on 0.1.1)
   - Lockbox (1.4.3)
-  - NBUCore (1.9.7):
-    - CocoaLumberjack (<= 1.6)
-    - Lockbox (~> 1.4.2)
+  - NBUCore (2.0.0):
+    - CocoaLumberjack (~> 1.6.2)
+    - Lockbox (~> 1.4.3)
     - NBUCore/Additions
     - NBUCore/Dashboard
     - NBUCore/Helpers
     - NBUCore/UI
-  - NBUCore/Additions (1.9.7):
-    - CocoaLumberjack (<= 1.6)
-    - Lockbox (~> 1.4.2)
-  - NBUCore/Dashboard (1.9.7):
-    - CocoaLumberjack (<= 1.6)
-    - Lockbox (~> 1.4.2)
-  - NBUCore/Helpers (1.9.7):
-    - CocoaLumberjack (<= 1.6)
-    - Lockbox (~> 1.4.2)
-  - NBUCore/UI (1.9.7):
-    - CocoaLumberjack (<= 1.6)
-    - Lockbox (~> 1.4.2)
-  - NBUKit (1.9.5):
-    - NBUCore (~> 1.9.6)
+  - NBUCore/Additions (2.0.0):
+    - CocoaLumberjack (~> 1.6.2)
+    - Lockbox (~> 1.4.3)
+  - NBUCore/Dashboard (2.0.0):
+    - CocoaLumberjack (~> 1.6.2)
+    - Lockbox (~> 1.4.3)
+  - NBUCore/Helpers (2.0.0):
+    - CocoaLumberjack (~> 1.6.2)
+    - Lockbox (~> 1.4.3)
+  - NBUCore/UI (2.0.0):
+    - CocoaLumberjack (~> 1.6.2)
+    - Lockbox (~> 1.4.3)
+  - NBUKit (2.0.0):
+    - NBUCore (~> 2.0.0)
     - NBUKit/Assets
     - NBUKit/Image
     - NBUKit/Library
     - NBUKit/Picker
     - NBUKit/Resources
     - NBUKit/UI
-  - NBUKit/Assets (1.9.5):
-    - NBUCore (~> 1.9.6)
-  - NBUKit/Image (1.9.5):
-    - GPUImage (>= 0.1.0)
-    - NBUCore (~> 1.9.6)
-  - NBUKit/Library (1.9.5):
-    - NBUCore (~> 1.9.6)
+  - NBUKit/Assets (2.0.0):
+    - NBUCore (~> 2.0.0)
+  - NBUKit/Image (2.0.0):
+    - GPUImage (>= 0.1.1)
+    - NBUCore (~> 2.0.0)
+  - NBUKit/Library (2.0.0):
+    - NBUCore (~> 2.0.0)
     - NBUKit/Library/MotionOrientation
     - NBUKit/Library/NBUCompatibility
     - NBUKit/Library/RBVolumeButtons
     - NBUKit/Library/RestKit Support
-  - NBUKit/Library/MotionOrientation (1.9.5):
-    - NBUCore (~> 1.9.6)
-  - NBUKit/Library/NBUCompatibility (1.9.5):
-    - NBUCore (~> 1.9.6)
-  - NBUKit/Library/RBVolumeButtons (1.9.5):
-    - NBUCore (~> 1.9.6)
-  - NBUKit/Library/RestKit Support (1.9.5):
-    - NBUCore (~> 1.9.6)
-  - NBUKit/Picker (1.9.5):
-    - NBUCore (~> 1.9.6)
-  - NBUKit/Resources (1.9.5):
-    - NBUCore (~> 1.9.6)
-  - NBUKit/UI (1.9.5):
-    - NBUCore (~> 1.9.6)
+  - NBUKit/Library/MotionOrientation (2.0.0):
+    - NBUCore (~> 2.0.0)
+  - NBUKit/Library/NBUCompatibility (2.0.0):
+    - NBUCore (~> 2.0.0)
+  - NBUKit/Library/RBVolumeButtons (2.0.0):
+    - NBUCore (~> 2.0.0)
+  - NBUKit/Library/RestKit Support (2.0.0):
+    - NBUCore (~> 2.0.0)
+  - NBUKit/Picker (2.0.0):
+    - NBUCore (~> 2.0.0)
+  - NBUKit/Resources (2.0.0):
+    - NBUCore (~> 2.0.0)
+  - NBUKit/UI (2.0.0):
+    - NBUCore (~> 2.0.0)
 
 DEPENDENCIES:
-  - GPUImage (= 0.1.0)
+  - CocoaLumberjack (HEAD)
+  - GPUImage (HEAD)
+  - NBUCore (from `https://github.com/CyberAgent/iOS-NBUCore.git`, commit `d786ba3a183c289ec4fb2d7dd5107efc97400c86`)
   - NBUKit (from `../`)
 
 EXTERNAL SOURCES:
+  NBUCore:
+    :commit: d786ba3a183c289ec4fb2d7dd5107efc97400c86
+    :git: https://github.com/CyberAgent/iOS-NBUCore.git
   NBUKit:
     :path: ../
 
 SPEC CHECKSUMS:
-  CocoaLumberjack: 0f2fa7090a23f13261072d882e017c688300efbe
-  GPUImage: 5b902c1df2afe0ac30a8e3e7379f9c0bb25c7c85
+  CocoaLumberjack: 2619775f386bbec1e870eddb5040f870c68726b1
+  GPUImage: b9840114a0ad0323801c2e0aa2752679057f808d
   Lockbox: 1bcfd564f034b83456fcad5bdd49470a80a38d2b
-  NBUCore: 63cb2455028c611a9b533fd94efe3dad668bd5cd
-  NBUKit: 12e5ad538a30e8e496e1696b103e970fdbf17405
+  NBUCore: a2c469207e96f9b582411794ac65f72a25d81584
+  NBUKit: deb6fc7dd3923f54e7a97fe0528c03ec8af3cbd6
 
 COCOAPODS: 0.25.0

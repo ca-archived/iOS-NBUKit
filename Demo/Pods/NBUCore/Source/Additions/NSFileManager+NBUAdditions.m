@@ -20,7 +20,7 @@
 
 #import "NSFileManager+NBUAdditions.h"
 #import "NSArray+NBUAdditions.h"
-#import "NBULog.h"
+#import "NBUCorePrivate.h"
 
 @implementation NSFileManager (NBUAdditions)
 

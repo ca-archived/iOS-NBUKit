@@ -14,7 +14,7 @@ NSString *const kGPUImageRedHistogramSamplingVertexShaderString = SHADER_STRING
 (
  attribute vec4 position;
  
- varying lowp vec3 colorFactor;
+ varying vec3 colorFactor;
 
  void main()
  {
@@ -28,7 +28,7 @@ NSString *const kGPUImageGreenHistogramSamplingVertexShaderString = SHADER_STRIN
 (
  attribute vec4 position;
  
- varying lowp vec3 colorFactor;
+ varying vec3 colorFactor;
  
  void main()
  {
@@ -42,7 +42,7 @@ NSString *const kGPUImageBlueHistogramSamplingVertexShaderString = SHADER_STRING
 (
  attribute vec4 position;
  
- varying lowp vec3 colorFactor;
+ varying vec3 colorFactor;
  
  void main()
  {
@@ -56,9 +56,9 @@ NSString *const kGPUImageLuminanceHistogramSamplingVertexShaderString = SHADER_S
 (
  attribute vec4 position;
  
- varying lowp vec3 colorFactor;
+ varying vec3 colorFactor;
  
- const highp vec3 W = vec3(0.2125, 0.7154, 0.0721);
+ const vec3 W = vec3(0.2125, 0.7154, 0.0721);
  
  void main()
  {
@@ -70,6 +70,7 @@ NSString *const kGPUImageLuminanceHistogramSamplingVertexShaderString = SHADER_S
  }
 );
 
+#if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
 NSString *const kGPUImageHistogramAccumulationFragmentShaderString = SHADER_STRING
 (
  const lowp float scalingFactor = 1.0 / 256.0;
@@ -81,6 +82,19 @@ NSString *const kGPUImageHistogramAccumulationFragmentShaderString = SHADER_STRI
      gl_FragColor = vec4(colorFactor * scalingFactor , 1.0);
  }
 );
+#else
+NSString *const kGPUImageHistogramAccumulationFragmentShaderString = SHADER_STRING
+(
+ const float scalingFactor = 1.0 / 256.0;
+ 
+ varying vec3 colorFactor;
+ 
+ void main()
+ {
+     gl_FragColor = vec4(colorFactor * scalingFactor , 1.0);
+ }
+);
+#endif
 
 @implementation GPUImageHistogramFilter
 
@@ -129,10 +143,10 @@ NSString *const kGPUImageHistogramAccumulationFragmentShaderString = SHADER_STRI
             }
             
             runSynchronouslyOnVideoProcessingQueue(^{
-                [GPUImageOpenGLESContext useImageProcessingContext];
+                [GPUImageContext useImageProcessingContext];
                 
-                secondFilterProgram = [[GPUImageOpenGLESContext sharedImageProcessingOpenGLESContext] programForVertexShaderString:kGPUImageGreenHistogramSamplingVertexShaderString fragmentShaderString:kGPUImageHistogramAccumulationFragmentShaderString];
-                thirdFilterProgram = [[GPUImageOpenGLESContext sharedImageProcessingOpenGLESContext] programForVertexShaderString:kGPUImageBlueHistogramSamplingVertexShaderString fragmentShaderString:kGPUImageHistogramAccumulationFragmentShaderString];
+                secondFilterProgram = [[GPUImageContext sharedImageProcessingContext] programForVertexShaderString:kGPUImageGreenHistogramSamplingVertexShaderString fragmentShaderString:kGPUImageHistogramAccumulationFragmentShaderString];
+                thirdFilterProgram = [[GPUImageContext sharedImageProcessingContext] programForVertexShaderString:kGPUImageBlueHistogramSamplingVertexShaderString fragmentShaderString:kGPUImageHistogramAccumulationFragmentShaderString];
                 
                 if (!secondFilterProgram.initialized)
                 {
@@ -151,7 +165,7 @@ NSString *const kGPUImageHistogramAccumulationFragmentShaderString = SHADER_STRI
 
                     }
 
-                    [GPUImageOpenGLESContext setActiveShaderProgram:secondFilterProgram];
+                    [GPUImageContext setActiveShaderProgram:secondFilterProgram];
                     
                     glEnableVertexAttribArray(secondFilterPositionAttribute);
                     
@@ -172,7 +186,7 @@ NSString *const kGPUImageHistogramAccumulationFragmentShaderString = SHADER_STRI
                 
                 
                 thirdFilterPositionAttribute = [thirdFilterProgram attributeIndex:@"position"];
-                [GPUImageOpenGLESContext setActiveShaderProgram:thirdFilterProgram];
+                [GPUImageContext setActiveShaderProgram:thirdFilterProgram];
                 
                 glEnableVertexAttribArray(thirdFilterPositionAttribute);
             });
@@ -249,18 +263,22 @@ NSString *const kGPUImageHistogramAccumulationFragmentShaderString = SHADER_STRI
 
 - (void)renderToTextureWithVertices:(const GLfloat *)vertices textureCoordinates:(const GLfloat *)textureCoordinates sourceTexture:(GLuint)sourceTexture;
 {
+    // we need a normal color texture for this filter
+    NSAssert(self.outputTextureOptions.internalFormat == GL_RGBA, @"The output texture format for this filter must be GL_RGBA.");
+    NSAssert(self.outputTextureOptions.type == GL_UNSIGNED_BYTE, @"The type of the output texture of this filter must be GL_UNSIGNED_BYTE.");
+    
     if (self.preventRendering)
     {
         return;
     }
     
-    [GPUImageOpenGLESContext useImageProcessingContext];
+    [GPUImageContext useImageProcessingContext];
     
     glReadPixels(0, 0, inputTextureSize.width, inputTextureSize.height, GL_RGBA, GL_UNSIGNED_BYTE, vertexSamplingCoordinates);
 
     [self setFilterFBO];
         
-    [GPUImageOpenGLESContext setActiveShaderProgram:filterProgram];
+    [GPUImageContext setActiveShaderProgram:filterProgram];
     
     glClearColor(0.0, 0.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
@@ -269,19 +287,19 @@ NSString *const kGPUImageHistogramAccumulationFragmentShaderString = SHADER_STRI
     glBlendFunc(GL_ONE, GL_ONE);
     glEnable(GL_BLEND);
     
-	glVertexAttribPointer(filterPositionAttribute, 4, GL_UNSIGNED_BYTE, 0, (_downsamplingFactor - 1) * 4, vertexSamplingCoordinates);
+	glVertexAttribPointer(filterPositionAttribute, 4, GL_UNSIGNED_BYTE, 0, ((unsigned int)_downsamplingFactor - 1) * 4, vertexSamplingCoordinates);
     glDrawArrays(GL_POINTS, 0, inputTextureSize.width * inputTextureSize.height / (CGFloat)_downsamplingFactor);
 
     if (histogramType == kGPUImageHistogramRGB)
     {
-        [GPUImageOpenGLESContext setActiveShaderProgram:secondFilterProgram];
+        [GPUImageContext setActiveShaderProgram:secondFilterProgram];
         
-        glVertexAttribPointer(secondFilterPositionAttribute, 4, GL_UNSIGNED_BYTE, 0, (_downsamplingFactor - 1) * 4, vertexSamplingCoordinates);
+        glVertexAttribPointer(secondFilterPositionAttribute, 4, GL_UNSIGNED_BYTE, 0, ((unsigned int)_downsamplingFactor - 1) * 4, vertexSamplingCoordinates);
         glDrawArrays(GL_POINTS, 0, inputTextureSize.width * inputTextureSize.height / (CGFloat)_downsamplingFactor);
 
-        [GPUImageOpenGLESContext setActiveShaderProgram:thirdFilterProgram];
+        [GPUImageContext setActiveShaderProgram:thirdFilterProgram];
         
-        glVertexAttribPointer(thirdFilterPositionAttribute, 4, GL_UNSIGNED_BYTE, 0, (_downsamplingFactor - 1) * 4, vertexSamplingCoordinates);
+        glVertexAttribPointer(thirdFilterPositionAttribute, 4, GL_UNSIGNED_BYTE, 0, ((unsigned int)_downsamplingFactor - 1) * 4, vertexSamplingCoordinates);
         glDrawArrays(GL_POINTS, 0, inputTextureSize.width * inputTextureSize.height / (CGFloat)_downsamplingFactor);
     }
     
@@ -295,7 +313,7 @@ NSString *const kGPUImageHistogramAccumulationFragmentShaderString = SHADER_STRI
 //{
 //    _scalingFactor = newValue;
 //    
-//    [GPUImageOpenGLESContext useImageProcessingContext];
+//    [GPUImageContext useImageProcessingContext];
 //    [filterProgram use];
 //    glUniform1f(scalingFactorUniform, _scalingFactor);
 //}

@@ -3,7 +3,7 @@
 //  NBUCore
 //
 //  Created by Ernesto Rivera on 2012/12/17.
-//  Copyright (c) 2012 CyberAgent Inc.
+//  Copyright (c) 2012-2013 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@
 #import "NBUDashboardLogger.h"
 #import "NBUCore.h"
 #import "NBUUtil.h"
+#import "NBUCorePrivate.h"
 #import <QuartzCore/QuartzCore.h>
 
 #define kMinimumHeight 20.0
@@ -43,7 +44,6 @@ static NBUDashboard * _sharedDashboard;
     dispatch_once(&onceToken, ^
                   {
                       CGRect frame = [UIScreen mainScreen].bounds;
-//                      frame.size = CGSizeMake(20.0, 20.0);
                       _sharedDashboard = [[NBUDashboard alloc] initWithFrame:frame];
                   });
     return _sharedDashboard;
@@ -154,7 +154,7 @@ static NBUDashboard * _sharedDashboard;
     self.minimized = YES;
 }
 
-- (IBAction)toggle:(id)sender
+- (IBAction)toggleFullscreen:(id)sender
 {
     _toggleButton.selected = !_toggleButton.selected;
     
@@ -170,6 +170,21 @@ static NBUDashboard * _sharedDashboard;
              self.minimized = YES;
          }
      }];
+}
+
+- (IBAction)toggleAdjustLevelsView:(id)sender
+{
+    // Show adjust levels view?
+    if (self.rootViewController.view == _loggerView)
+    {
+        self.rootViewController.view = _adjustLevelsView;
+    }
+    
+    // Set back the logger view
+    else
+    {
+        self.rootViewController.view = _loggerView;
+    }
 }
 
 - (void)handlePanGesture:(UIPanGestureRecognizer *)gestureRecognizer
@@ -242,6 +257,12 @@ static NBUDashboard * _sharedDashboard;
             [self makeKeyWindow];
 //            NSLog(@"+++ %@ -> %@", _keyWindow, [UIApplication sharedApplication].keyWindow);
         }
+        
+        // Show fullscreen-only views
+        for (UIView * view in _fullscreenOnlyViews)
+        {
+            view.hidden = NO;
+        }
     }
     else
     {
@@ -251,6 +272,12 @@ static NBUDashboard * _sharedDashboard;
             [_keyWindow makeKeyWindow];
             _keyWindow = nil;
 //            NSLog(@"+++ %@ <-", [UIApplication sharedApplication].keyWindow);
+        }
+        
+        // Hide fullscreen-only views
+        for (UIView * view in _fullscreenOnlyViews)
+        {
+            view.hidden = YES;
         }
     }
 }

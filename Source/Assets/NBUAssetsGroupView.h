@@ -33,16 +33,16 @@
 /// @name Outlets
 
 /// An optional group name UILabel.
-@property (assign, nonatomic) IBOutlet              UILabel * nameLabel;
+@property (weak, nonatomic) IBOutlet                UILabel * nameLabel;
 
 /// An optional item count UIlabel.
-@property (assign, nonatomic) IBOutlet              UILabel * countLabel;
+@property (weak, nonatomic) IBOutlet                UILabel * countLabel;
 
 /// An optional UIImageView used to display the [NBUAssetsGroup posterImage].
-@property (assign, nonatomic) IBOutlet              UIImageView * posterImageView;
+@property (weak, nonatomic) IBOutlet                UIImageView * posterImageView;
 
 /// An optional view to display whether the [NBUAssetsGroup isEditable].
-@property (assign, nonatomic) IBOutlet              UIView * editableView;
+@property (weak, nonatomic) IBOutlet                UIView * editableView;
 
 @end
 

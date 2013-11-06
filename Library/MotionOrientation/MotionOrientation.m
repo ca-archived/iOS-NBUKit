@@ -45,9 +45,9 @@ NSString* const kMotionOrientationKey = @"kMotionOrientationKey";
 
 - (void)_initialize
 {
-    self.operationQueue = [[NSOperationQueue alloc] init];
+    self.operationQueue = [[[NSOperationQueue alloc] init] autorelease];
     
-    self.motionManager = [[CMMotionManager alloc] init];
+    self.motionManager = [[[CMMotionManager alloc] init] autorelease];
     self.motionManager.accelerometerUpdateInterval = 0.1;
     if ( ![self.motionManager isAccelerometerAvailable] ) {
         NSLog(@"MotionOrientation - Accelerometer is NOT available");

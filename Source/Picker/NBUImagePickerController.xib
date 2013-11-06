@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1072</int>
-		<string key="IBDocument.SystemVersion">12F37</string>
-		<string key="IBDocument.InterfaceBuilderVersion">4510</string>
-		<string key="IBDocument.AppKitVersion">1187.39</string>
-		<string key="IBDocument.HIToolboxVersion">626.00</string>
+		<int key="IBDocument.SystemTarget">1280</int>
+		<string key="IBDocument.SystemVersion">13A598</string>
+		<string key="IBDocument.InterfaceBuilderVersion">4511</string>
+		<string key="IBDocument.AppKitVersion">1265</string>
+		<string key="IBDocument.HIToolboxVersion">695.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">3742</string>
+			<string key="NS.object.0">3745</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBProxyObject</string>
@@ -73,7 +73,6 @@
 			</object>
 			<object class="IBUIViewController" id="627336647">
 				<object class="IBUINavigationItem" key="IBUINavigationItem" id="840055665">
-					<reference key="IBUINavigationBar"/>
 					<string key="IBUITitle"/>
 					<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="361226013">
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -164,7 +163,6 @@
 			</object>
 			<object class="IBUIViewController" id="1033568830">
 				<object class="IBUINavigationItem" key="IBUINavigationItem" id="403448029">
-					<reference key="IBUINavigationBar"/>
 					<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="875229358">
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIStyle">1</int>
@@ -172,7 +170,7 @@
 						<int key="IBUISystemItemIdentifier">1</int>
 					</object>
 					<object class="IBUIView" key="IBUITitleView" id="477924362">
-						<reference key="NSNextResponder"/>
+						<nil key="NSNextResponder"/>
 						<int key="NSvFlags">1317</int>
 						<array class="NSMutableArray" key="NSSubviews">
 							<object class="IBUIButton" id="191422182">
@@ -181,7 +179,6 @@
 								<object class="NSPSMatrix" key="NSFrameMatrix"/>
 								<string key="NSFrameSize">{33, 33}</string>
 								<reference key="NSSuperview" ref="477924362"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="701995294"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -217,7 +214,6 @@
 								<object class="NSPSMatrix" key="NSFrameMatrix"/>
 								<string key="NSFrame">{{107, 0}, {33, 33}}</string>
 								<reference key="NSSuperview" ref="477924362"/>
-								<reference key="NSWindow"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
@@ -239,7 +235,6 @@
 								<object class="NSPSMatrix" key="NSFrameMatrix"/>
 								<string key="NSFrame">{{33, 0}, {74, 33}}</string>
 								<reference key="NSSuperview" ref="477924362"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="140632828"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -271,8 +266,6 @@
 						</array>
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{90, 6}, {140, 33}}</string>
-						<reference key="NSSuperview"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="191422182"/>
 						<object class="NSColor" key="IBUIBackgroundColor" id="991376434">
 							<int key="NSColorSpace">3</int>
@@ -302,7 +295,7 @@
 			</object>
 			<object class="IBUIViewController" id="828998110">
 				<object class="IBUIView" key="IBUIView" id="575846685">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">1298</int>
 					<array class="NSMutableArray" key="NSSubviews">
 						<object class="IBUIPageControl" id="117500449">
@@ -311,7 +304,6 @@
 							<object class="NSPSMatrix" key="NSFrameMatrix"/>
 							<string key="NSFrame">{{0, 380}, {320, 36}}</string>
 							<reference key="NSSuperview" ref="575846685"/>
-							<reference key="NSWindow"/>
 							<bool key="IBUIOpaque">NO</bool>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							<int key="IBUIContentHorizontalAlignment">0</int>
@@ -322,8 +314,6 @@
 					</array>
 					<object class="NSPSMatrix" key="NSFrameMatrix"/>
 					<string key="NSFrame">{{0, 64}, {320, 416}}</string>
-					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="117500449"/>
 					<object class="NSColor" key="IBUIBackgroundColor">
 						<int key="NSColorSpace">10</int>
@@ -4705,9 +4695,9 @@ dXd9/3Bzff9qbXf/am13/3Byef9qbXf/am13/2Zpc/9ucXv/bG95/2xvef9nanT/bnF7/2Rncf9sb3n/
 bnF7/25xe/9gY2z/Z2p0/2xvef9qbXf/am13/3Bzff93eoP/am13/2ptd/97fYP/bG51/2xvef9ucXv/
 bG95/2psc/91d33/dXd9/2ptd/9zdXz/bnB3/3Bzff9ucHf/dnh8/25xe/9wcnn/cHJ5/3d6g/9ucXv/
 cHN9/2xvef9wc33/AA0BAAADAAAAAQEAAAABAQADAAAAAQEAAAABAgADAAAABAAEAKoBAwADAAAAAQAB
-AAABBgADAAAAAQACAAABEQAEAAAAAgAEALIBEgADAAAAAQABAAABFQADAAAAAQAEAAABFgADAAAAAQCA
-AAABFwAEAAAAAgAEALoBHAADAAAAAQABAAABUgADAAAAAQABAAABUwADAAAABAAEAMIAAAAAAAgACAAI
-AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
+AAABBgADAAAAAQACAAABEQAEAAAAAgAEALoBEgADAAAAAQABAAABFQADAAAAAQAEAAABFgADAAAAAQCA
+AAABFwAEAAAAAgAEALIBHAADAAAAAQABAAABUgADAAAAAQABAAABUwADAAAABAAEAMIAAAAAAAgACAAI
+AAgAAgAAAAIAAAAAAAgAAgAIAAEAAQABAAE</bytes>
 										</object>
 									</object>
 								</array>
@@ -4719,7 +4709,6 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 					<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				</object>
 				<object class="IBUINavigationItem" key="IBUINavigationItem" id="999635863">
-					<reference key="IBUINavigationBar"/>
 					<string key="IBUITitle">ConfirmTitle</string>
 					<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="129001479">
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -5210,771 +5199,13 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">ActiveView</string>
-					<string key="superclassName">NBUView</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="doubleTapped:">id</string>
-						<string key="swiped:">id</string>
-						<string key="tapped:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="doubleTapped:">
-							<string key="name">doubleTapped:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="swiped:">
-							<string key="name">swiped:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="tapped:">
-							<string key="name">tapped:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">noContentsView</string>
-						<string key="NS.object.0">UIView</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">noContentsView</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">noContentsView</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="toManyOutletInfosByName">
-						<string key="NS.key.0">dynamicHeightSubviews</string>
-						<object class="IBToManyOutletInfo" key="NS.object.0">
-							<string key="name">dynamicHeightSubviews</string>
-							<string key="candidateClassName">UIView</string>
-							<string key="collectionClassName">NSMutableArray</string>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ActiveView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NBUAssetsGroupViewController</string>
-					<string key="superclassName">NBUObjectViewController</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="assetsCountLabel">UILabel</string>
-						<string key="continueButton">id</string>
-						<string key="gridView">ObjectGridView</string>
-						<string key="groupNameLabel">UILabel</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="assetsCountLabel">
-							<string key="name">assetsCountLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="continueButton">
-							<string key="name">continueButton</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="gridView">
-							<string key="name">gridView</string>
-							<string key="candidateClassName">ObjectGridView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="groupNameLabel">
-							<string key="name">groupNameLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NBUAssetsGroupViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NBUAssetsLibraryViewController</string>
-					<string key="superclassName">ScrollViewController</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="assetsGroupController">NBUAssetsGroupViewController</string>
-						<string key="objectTableView">ObjectTableView</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="assetsGroupController">
-							<string key="name">assetsGroupController</string>
-							<string key="candidateClassName">NBUAssetsGroupViewController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="objectTableView">
-							<string key="name">objectTableView</string>
-							<string key="candidateClassName">ObjectTableView</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NBUAssetsLibraryViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NBUCameraView</string>
-					<string key="superclassName">ActiveView</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="doubleTapped:">UITapGestureRecognizer</string>
-						<string key="startStopPictureSequence:">id</string>
-						<string key="startStopRecording:">id</string>
-						<string key="takePicture:">id</string>
-						<string key="tapped:">UITapGestureRecognizer</string>
-						<string key="toggleCamera:">id</string>
-						<string key="toggleExposureMode:">id</string>
-						<string key="toggleFlashMode:">id</string>
-						<string key="toggleFocusMode:">id</string>
-						<string key="toggleWhiteBalanceMode:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="doubleTapped:">
-							<string key="name">doubleTapped:</string>
-							<string key="candidateClassName">UITapGestureRecognizer</string>
-						</object>
-						<object class="IBActionInfo" key="startStopPictureSequence:">
-							<string key="name">startStopPictureSequence:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="startStopRecording:">
-							<string key="name">startStopRecording:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="takePicture:">
-							<string key="name">takePicture:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="tapped:">
-							<string key="name">tapped:</string>
-							<string key="candidateClassName">UITapGestureRecognizer</string>
-						</object>
-						<object class="IBActionInfo" key="toggleCamera:">
-							<string key="name">toggleCamera:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="toggleExposureMode:">
-							<string key="name">toggleExposureMode:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="toggleFlashMode:">
-							<string key="name">toggleFlashMode:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="toggleFocusMode:">
-							<string key="name">toggleFocusMode:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="toggleWhiteBalanceMode:">
-							<string key="name">toggleWhiteBalanceMode:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="exposureButton">id</string>
-						<string key="flashButton">id</string>
-						<string key="focusButton">id</string>
-						<string key="lastPictureImageView">UIImageView</string>
-						<string key="shootButton">id</string>
-						<string key="toggleCameraButton">id</string>
-						<string key="whiteBalanceButton">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="exposureButton">
-							<string key="name">exposureButton</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="flashButton">
-							<string key="name">flashButton</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="focusButton">
-							<string key="name">focusButton</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="lastPictureImageView">
-							<string key="name">lastPictureImageView</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="shootButton">
-							<string key="name">shootButton</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="toggleCameraButton">
-							<string key="name">toggleCameraButton</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="whiteBalanceButton">
-							<string key="name">whiteBalanceButton</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NBUCameraView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NBUCameraViewController</string>
-					<string key="superclassName">NBUViewController</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="cameraView">NBUCameraView</string>
-						<string key="flashLabel">UILabel</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="cameraView">
-							<string key="name">cameraView</string>
-							<string key="candidateClassName">NBUCameraView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="flashLabel">
-							<string key="name">flashLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NBUCameraViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NBUCropView</string>
-					<string key="superclassName">NBUView</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="cropGuideView">UIView</string>
-						<string key="scrollView">UIScrollView</string>
-						<string key="viewToCrop">UIView</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="cropGuideView">
-							<string key="name">cropGuideView</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="scrollView">
-							<string key="name">scrollView</string>
-							<string key="candidateClassName">UIScrollView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="viewToCrop">
-							<string key="name">viewToCrop</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NBUCropView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NBUEditImageViewController</string>
-					<string key="superclassName">NBUObjectViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="apply:">id</string>
-						<string key="reset:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="apply:">
-							<string key="name">apply:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="reset:">
-							<string key="name">reset:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="cropView">NBUCropView</string>
-						<string key="filterView">NBUPresetFilterView</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="cropView">
-							<string key="name">cropView</string>
-							<string key="candidateClassName">NBUCropView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="filterView">
-							<string key="name">filterView</string>
-							<string key="candidateClassName">NBUPresetFilterView</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NBUEditImageViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NBUEditMultiImageViewController</string>
-					<string key="superclassName">NBUEditImageViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="goToNext:">id</string>
-						<string key="goToPrevious:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="goToNext:">
-							<string key="name">goToNext:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="goToPrevious:">
-							<string key="name">goToPrevious:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="nextButton">id</string>
-						<string key="previousButton">id</string>
-						<string key="titleLabel">UILabel</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="nextButton">
-							<string key="name">nextButton</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="previousButton">
-							<string key="name">previousButton</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="titleLabel">
-							<string key="name">titleLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NBUEditMultiImageViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NBUGalleryViewController</string>
-					<string key="superclassName">NBUViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="goToNext:">id</string>
-						<string key="goToPrevious:">id</string>
-						<string key="pageControlWasTapped:">id</string>
-						<string key="thumbnailWasTapped:">UIView</string>
-						<string key="toggleFullscreen:">id</string>
-						<string key="toggleThumbnailsView:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="goToNext:">
-							<string key="name">goToNext:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="goToPrevious:">
-							<string key="name">goToPrevious:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="pageControlWasTapped:">
-							<string key="name">pageControlWasTapped:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="thumbnailWasTapped:">
-							<string key="name">thumbnailWasTapped:</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBActionInfo" key="toggleFullscreen:">
-							<string key="name">toggleFullscreen:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="toggleThumbnailsView:">
-							<string key="name">toggleThumbnailsView:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="captionLabel">UILabel</string>
-						<string key="nextButton">id</string>
-						<string key="pageControl">UIPageControl</string>
-						<string key="previousButton">id</string>
-						<string key="thumbnailsGridView">UIScrollView</string>
-						<string key="toggleThumbnailsViewButton">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="captionLabel">
-							<string key="name">captionLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="nextButton">
-							<string key="name">nextButton</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="pageControl">
-							<string key="name">pageControl</string>
-							<string key="candidateClassName">UIPageControl</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="previousButton">
-							<string key="name">previousButton</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="thumbnailsGridView">
-							<string key="name">thumbnailsGridView</string>
-							<string key="candidateClassName">UIScrollView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="toggleThumbnailsViewButton">
-							<string key="name">toggleThumbnailsViewButton</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<object class="NSMutableDictionary" key="toManyOutletInfosByName">
-						<string key="NS.key.0">viewsToHide</string>
-						<object class="IBToManyOutletInfo" key="NS.object.0">
-							<string key="name">viewsToHide</string>
-							<string key="candidateClassName">UIView</string>
-							<string key="collectionClassName">NSArray</string>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NBUGalleryViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NBUImagePickerController</string>
-					<string key="superclassName">UINavigationController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="dismiss:">id</string>
-						<string key="finishPicker:">id</string>
-						<string key="goToNextStep:">id</string>
-						<string key="toggleSource:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="dismiss:">
-							<string key="name">dismiss:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="finishPicker:">
-							<string key="name">finishPicker:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="goToNextStep:">
-							<string key="name">goToNextStep:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="toggleSource:">
-							<string key="name">toggleSource:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="assetsGroupController">NBUAssetsGroupViewController</string>
-						<string key="cameraController">NBUCameraViewController</string>
-						<string key="confirmController">NBUGalleryViewController</string>
-						<string key="editController">NBUEditMultiImageViewController</string>
-						<string key="libraryController">NBUAssetsLibraryViewController</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="assetsGroupController">
-							<string key="name">assetsGroupController</string>
-							<string key="candidateClassName">NBUAssetsGroupViewController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="cameraController">
-							<string key="name">cameraController</string>
-							<string key="candidateClassName">NBUCameraViewController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="confirmController">
-							<string key="name">confirmController</string>
-							<string key="candidateClassName">NBUGalleryViewController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="editController">
-							<string key="name">editController</string>
-							<string key="candidateClassName">NBUEditMultiImageViewController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="libraryController">
-							<string key="name">libraryController</string>
-							<string key="candidateClassName">NBUAssetsLibraryViewController</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NBUImagePickerController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NBUObjectViewController</string>
-					<string key="superclassName">ScrollViewController</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NBUObjectViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NBUPresetFilterView</string>
-					<string key="superclassName">NBUView</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">reset:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">reset:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">reset:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="activityView">UIView</string>
-						<string key="editingImageView">UIImageView</string>
-						<string key="filterSlideView">ObjectSlideView</string>
-						<string key="resetButton">UIButton</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="activityView">
-							<string key="name">activityView</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="editingImageView">
-							<string key="name">editingImageView</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="filterSlideView">
-							<string key="name">filterSlideView</string>
-							<string key="candidateClassName">ObjectSlideView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="resetButton">
-							<string key="name">resetButton</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NBUPresetFilterView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NBUView</string>
-					<string key="superclassName">UIView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NBUView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NBUViewController</string>
-					<string key="superclassName">UIViewController</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NBUViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">ObjectArrayView</string>
-					<string key="superclassName">ObjectView</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">loadMoreObjects:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">loadMoreObjects:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">loadMoreObjects:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="delegate">id</string>
-						<string key="loadMoreView">UIView</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="delegate">
-							<string key="name">delegate</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="loadMoreView">
-							<string key="name">loadMoreView</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ObjectArrayView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">ObjectGridView</string>
-					<string key="superclassName">ObjectArrayView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ObjectGridView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">ObjectSlideView</string>
-					<string key="superclassName">ObjectArrayView</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="changePage:">id</string>
-						<string key="presentModal:">id</string>
-						<string key="tapped:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="changePage:">
-							<string key="name">changePage:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="presentModal:">
-							<string key="name">presentModal:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="tapped:">
-							<string key="name">tapped:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="pageControl">UIPageControl</string>
-						<string key="scrollView">UIScrollView</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="pageControl">
-							<string key="name">pageControl</string>
-							<string key="candidateClassName">UIPageControl</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="scrollView">
-							<string key="name">scrollView</string>
-							<string key="candidateClassName">UIScrollView</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ObjectSlideView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">ObjectTableView</string>
-					<string key="superclassName">ObjectArrayView</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="footerView">UIView</string>
-						<string key="headerView">UIView</string>
-						<string key="loadMoreView">UITableViewCell</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="footerView">
-							<string key="name">footerView</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="headerView">
-							<string key="name">headerView</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="loadMoreView">
-							<string key="name">loadMoreView</string>
-							<string key="candidateClassName">UITableViewCell</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ObjectTableView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">ObjectView</string>
-					<string key="superclassName">ActiveView</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="deleteObject:">id</string>
-						<string key="promptDelete:">id</string>
-						<string key="swiped:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="deleteObject:">
-							<string key="name">deleteObject:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="promptDelete:">
-							<string key="name">promptDelete:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="swiped:">
-							<string key="name">swiped:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ObjectView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">ScrollViewController</string>
-					<string key="superclassName">NBUViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="hideKeyboard:">id</string>
-						<string key="sizeToFitContentView:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="hideKeyboard:">
-							<string key="name">hideKeyboard:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="sizeToFitContentView:">
-							<string key="name">sizeToFitContentView:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="contentView">UIView</string>
-						<string key="scrollView">UIScrollView</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="contentView">
-							<string key="name">contentView</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="scrollView">
-							<string key="name">scrollView</string>
-							<string key="candidateClassName">UIScrollView</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ScrollViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">UINavigationController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="dismiss:">id</string>
-						<string key="popToRootViewController:">id</string>
-						<string key="popViewController:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="dismiss:">
-							<string key="name">dismiss:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="popToRootViewController:">
-							<string key="name">popToRootViewController:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="popViewController:">
-							<string key="name">popViewController:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/UINavigationController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">UIViewController</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">navigationItem</string>
-						<string key="NS.object.0">UINavigationItem</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">navigationItem</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">navigationItem</string>
-							<string key="candidateClassName">UINavigationItem</string>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/UIViewController.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<bool key="IBDocument.previouslyAttemptedUpgradeToXcode5">YES</bool>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
-			<real value="1072" key="NS.object.0"/>
+			<integer value="1280" key="NS.object.0"/>
 		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.InterfaceBuilder3</string>
@@ -5986,6 +5217,6 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 			<string key="NBUKitResources.bundle/next.png">{16, 16}</string>
 			<string key="NBUKitResources.bundle/previous.png">{16, 16}</string>
 		</dictionary>
-		<string key="IBCocoaTouchPluginVersion">3742</string>
+		<string key="IBCocoaTouchPluginVersion">3745</string>
 	</data>
 </archive>

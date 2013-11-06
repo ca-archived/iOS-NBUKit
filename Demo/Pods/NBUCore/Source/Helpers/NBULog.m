@@ -3,7 +3,7 @@
 //  NBUCore
 //
 //  Created by Ernesto Rivera on 2012/12/06.
-//  Copyright (c) 2012 CyberAgent Inc.
+//  Copyright (c) 2012-2013 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -19,57 +19,81 @@
 //
 
 #import "NBULog.h"
-#import "DDTTYLogger.h"
-#import "DDFileLogger.h"
-#import "DDASLLogger.h"
 #import "NBUDashboard.h"
 #import "NBUDashboardLogger.h"
+#import "NBUCorePrivate.h"
+#import <CocoaLumberjack/DDTTYLogger.h>
+#import <CocoaLumberjack/DDFileLogger.h>
+#import <CocoaLumberjack/DDASLLogger.h>
 
-#define MAX_MODULES 10
+#define MAX_MODULES 20
 
-static int _appLogLevel[MAX_MODULES];
+// Keep compatibility with CocoaLumberjack master
+#ifndef LOG_CONTEXT_ALL
+    #define LOG_CONTEXT_ALL 0
+#endif
 
-static id<DDLogFormatter> _nbuLogFormatter;
+static int _appLogLevel;
+static int _appModuleLogLevel[MAX_MODULES];
 
 @implementation NBULog
 
+static id<DDLogFormatter> _nbuLogFormatter;
 static BOOL _dashboardLoggerAdded;
 static BOOL _ttyLoggerAdded;
 static BOOL _aslLoggerAdded;
 static BOOL _fileLoggerAdded;
 
 // Configure a formatter, default levels and add default loggers
-+ (void)initialize
++ (void)load
 {
     _nbuLogFormatter = [NSClassFromString(@"NBULogFormatter") new];
 
-    // Default log levels and loggers
+    // Default log level
+    [self setAppLogLevel:LOG_LEVEL_DEFAULT];
+    
+    // Register the App log context
+    [NBULog registerAppContextWithModulesAndNames:nil];
+    
+    // Default loggers
 #ifdef DEBUG
-    [self setAppLogLevel:LOG_LEVEL_VERBOSE];
     [self addTTYLogger];
-#else
-    [self setAppLogLevel:LOG_LEVEL_INFO];
-    [self addFileLogger];
 #endif
+}
+
++ (int)appLogLevel
+{
+    return _appLogLevel;
+}
+
++ (void)setAppLogLevel:(int)LOG_LEVEL_XXX
+{
+#ifdef DEBUG
+    _appLogLevel = LOG_LEVEL_XXX == LOG_LEVEL_DEFAULT ? LOG_LEVEL_VERBOSE : LOG_LEVEL_XXX;
+#else
+    _appLogLevel = LOG_LEVEL_XXX == LOG_LEVEL_DEFAULT ? LOG_LEVEL_INFO : LOG_LEVEL_XXX;
+#endif
+    
+    // Reset all modules' levels
+    for (int i = 0; i < MAX_MODULES; i++)
+    {
+        [self setAppLogLevel:LOG_LEVEL_DEFAULT
+                   forModule:i];
+    }
 }
 
 + (int)appLogLevelForModule:(int)APP_MODULE_XXX
 {
-    return _appLogLevel[APP_MODULE_XXX];
+    int logLevel = _appModuleLogLevel[APP_MODULE_XXX];
+    
+    // Fallback to the default log level if necessary
+    return logLevel == LOG_LEVEL_DEFAULT ? _appLogLevel : logLevel;
 }
 
 + (void)setAppLogLevel:(int)LOG_LEVEL_XXX
              forModule:(int)APP_MODULE_XXX
 {
-    _appLogLevel[APP_MODULE_XXX] = LOG_LEVEL_XXX;
-}
-
-+ (void)setAppLogLevel:(int)LOG_LEVEL_XXX
-{
-    for (int i = 0; i < MAX_MODULES; i++)
-    {
-        _appLogLevel[i] = LOG_LEVEL_XXX;
-    }
+    _appModuleLogLevel[APP_MODULE_XXX] = LOG_LEVEL_XXX;
 }
 
 #pragma mark - Adding loggers
@@ -106,12 +130,37 @@ static BOOL _fileLoggerAdded;
     ttyLogger.logFormatter = _nbuLogFormatter;
     [self addLogger:ttyLogger];
     
-    // Colors for iOS are not working yet...
-    //    [ttyLogger setColorsEnabled:YES];
-    //    [ttyLogger setForegroundColor:[UIColor redColor]
-    //                  backgroundColor:nil
-    //                          forFlag:LOG_FLAG_VERBOSE];
-
+    // XcodeColors installed and enabled?
+    char *xcode_colors = getenv("XcodeColors");
+    if (xcode_colors && (strcmp(xcode_colors, "YES") == 0))
+    {
+        // Set default colors
+        [ttyLogger setForegroundColor:[UIColor colorWithRed:0.5
+                                                      green:0.5
+                                                       blue:0.5
+                                                      alpha:1.0]
+                      backgroundColor:nil
+                              forFlag:LOG_FLAG_VERBOSE];
+        [ttyLogger setForegroundColor:[UIColor colorWithRed:26.0/255.0
+                                                      green:158.0/255.0
+                                                       blue:4.0/255.0
+                                                      alpha:1.0]
+                      backgroundColor:nil
+                              forFlag:LOG_FLAG_INFO];
+        [ttyLogger setForegroundColor:[UIColor colorWithRed:244.0/255.0
+                                                      green:103.0/255.0
+                                                       blue:8.0/255.0
+                                                      alpha:1.0]
+                      backgroundColor:nil
+                              forFlag:LOG_FLAG_WARN];
+        [ttyLogger setForegroundColor:[UIColor redColor]
+                      backgroundColor:nil
+                              forFlag:LOG_FLAG_ERROR];
+        
+        // Enable colors
+        [ttyLogger setColorsEnabled:YES];
+    }
+    
     _ttyLoggerAdded = YES;
 }
 
@@ -131,8 +180,6 @@ static BOOL _fileLoggerAdded;
 @end
 
 #pragma mark - Log Formatter based on DDLog's DispatchQueueLogFormatter
-
-#import <libkern/OSAtomic.h>
 
 /**
  * Welcome to Cocoa Lumberjack!
@@ -296,7 +343,8 @@ static NSString * _processName;
 		
 		// Set default replacements:
 		
-		_replacements[@"com.apple.main-thread"] = @"main";
+        [_replacements setObject:@"main"
+                          forKey:@"com.apple.main-thread"]; // Can't use subscript here on iOS 5 because this method gets called from +load methods
 	}
 	return self;
 }
@@ -526,3 +574,90 @@ static NSString * _processName;
 }
 
 @end
+
+
+#pragma mark - NBULog (NBULogContextDescription)
+
+#import "NBULogContextDescription.h"
+
+static NSMutableDictionary * _registeredContexts;
+
+@implementation NBULog (NBULogContextDescription)
+
++ (void)registerAppContextWithModulesAndNames:(NSDictionary *)appContextModulesAndNames
+{
+    [self registerContextDescription:[NBULogContextDescription descriptionWithName:@"App"
+                                                                           context:APP_LOG_CONTEXT
+                                                                   modulesAndNames:appContextModulesAndNames
+                                                                 contextLevelBlock:^{ return [NBULog appLogLevel]; }
+                                                              setContextLevelBlock:^(int level) { [NBULog setAppLogLevel:level]; }
+                                                        contextLevelForModuleBlock:^(int module) { return [NBULog appLogLevelForModule:module]; }
+                                                     setContextLevelForModuleBlock:^(int module, int level) { [NBULog setAppLogLevel:level forModule:module]; }]];
+}
+
++ (void)registerContextDescription:(NBULogContextDescription *)contextDescription
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^
+    {
+        _registeredContexts = [NSMutableDictionary dictionary];
+    });
+    
+    @synchronized(self)
+    {
+        [_registeredContexts setObject:contextDescription
+                                forKey:@(contextDescription.logContext)]; // Can't use subscript here on iOS 5 because this method gets called from +load methods
+    }
+}
+
++ (NSArray *)orderedRegisteredContexts
+{
+    NSMutableArray * orderedContexts = [NSMutableArray array];
+    for (id key in [_registeredContexts.allKeys sortedArrayUsingSelector:@selector(compare:)])
+    {
+        [orderedContexts addObject:_registeredContexts[key]];
+    }
+    return orderedContexts;
+}
+
+@end
+
+
+#pragma mark - NBULog (NBUCore)
+
+static int _coreLogLevel;
+
+@implementation NBULog (NBUCore)
+
++ (void)load
+{
+    // Default levels
+    [self setCoreLogLevel:LOG_LEVEL_DEFAULT];
+    
+    // Register the NBUCore log context
+    [NBULog registerContextDescription:[NBULogContextDescription descriptionWithName:@"NBUCore"
+                                                                             context:NBUCORE_LOG_CONTEXT
+                                                                     modulesAndNames:nil
+                                                                   contextLevelBlock:^{ return [NBULog coreLogLevel]; }
+                                                                setContextLevelBlock:^(int level) { [NBULog setCoreLogLevel:level]; }
+                                                          contextLevelForModuleBlock:NULL
+                                                       setContextLevelForModuleBlock:NULL]];
+}
+
++ (int)coreLogLevel
+{
+    return _coreLogLevel;
+}
+
++ (void)setCoreLogLevel:(int)LOG_LEVEL_XXX
+{
+#ifdef DEBUG
+    _coreLogLevel = LOG_LEVEL_XXX == LOG_LEVEL_DEFAULT ? LOG_LEVEL_INFO : LOG_LEVEL_XXX;
+#else
+    _coreLogLevel = LOG_LEVEL_XXX == LOG_LEVEL_DEFAULT ? LOG_LEVEL_WARN : LOG_LEVEL_XXX;
+#endif
+    
+}
+
+@end
+

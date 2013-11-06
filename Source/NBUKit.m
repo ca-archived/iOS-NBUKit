@@ -31,7 +31,7 @@ static NSBundle * _resourcesBundle;
 
 + (NSString *)version
 {
-    return @"1.9.6";
+    return @"2.0.0";
 }
 
 + (NSBundle *)resourcesBundle

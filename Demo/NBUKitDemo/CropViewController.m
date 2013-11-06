@@ -34,7 +34,7 @@
     self.image = [UIImage imageNamed:@"photo.jpg"];
     
     // Our resultBlock
-    __unsafe_unretained CropViewController * weakSelf = self;
+    __weak CropViewController * weakSelf = self;
     self.resultBlock = ^(UIImage * image)
     {
         // *** Do whatever you want with the resulting image here ***

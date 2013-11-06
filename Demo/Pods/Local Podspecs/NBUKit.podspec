@@ -3,8 +3,8 @@
 Pod::Spec.new do |s|
     
     s.name          = "NBUKit"
-    s.version       = "1.9.5"
-    s.platform      = :ios
+    s.version       = "2.0.0"
+    s.platform      = :ios, '5.0'
     s.summary       = "Customizable image editing, filters, camera, picker and other UIKit subclasses."
     s.homepage      = "http://cyberagent.github.io/iOS-NBUKit/"
     s.license       = { :type => 'Apache License, Version 2.0', :file => 'LICENSE' }
@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
     
     s.requires_arc  = true
     
-    s.dependency 'NBUCore',     '~> 1.9.6'
+    s.dependency 'NBUCore',     '~> 2.0.0'
     
     s.subspec 'UI' do |su|
         su.source_files = 'Source/UI/*.{h,m}'
@@ -36,7 +36,7 @@ Pod::Spec.new do |s|
         si.source_files = 'Source/Image/*.{h,m}'
         si.resources    = 'Source/Image/*.{xib}'
         si.weak_frameworks = 'CoreImage'
-        si.dependency 'GPUImage',   '>= 0.1.0'
+        si.dependency 'GPUImage',   '>= 0.1.1'
     end
     
     s.subspec 'Assets' do |sa|

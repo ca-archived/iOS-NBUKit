@@ -13,8 +13,14 @@
 		return nil;
     }
 
+#if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
     UIImage *image1 = [UIImage imageNamed:@"lookup_soft_elegance_1.png"];
     UIImage *image2 = [UIImage imageNamed:@"lookup_soft_elegance_2.png"];
+#else
+    NSImage *image1 = [NSImage imageNamed:@"lookup_soft_elegance_1.png"];
+    NSImage *image2 = [NSImage imageNamed:@"lookup_soft_elegance_2.png"];
+#endif
+
     NSAssert(image1 && image2,
              @"To use GPUImageSoftEleganceFilter you need to add lookup_soft_elegance_1.png and lookup_soft_elegance_2.png from GPUImage/framework/Resources to your application bundle.");
     
@@ -26,7 +32,7 @@
     [lookupImageSource1 processImage];
 
     GPUImageGaussianBlurFilter *gaussianBlur = [[GPUImageGaussianBlurFilter alloc] init];
-    gaussianBlur.blurSize = 9.7;
+    gaussianBlur.blurRadiusInPixels = 10.0;
     [lookupFilter1 addTarget:gaussianBlur];
     [self addFilter:gaussianBlur];
     

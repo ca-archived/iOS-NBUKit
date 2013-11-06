@@ -1,16 +1,17 @@
 
-platform :ios
+platform :ios, '5.0'
 
 # For client projects just use:
-pod 'GPUImage', '0.1.0'
-#pod 'GPUImage', :head' # iOS 5+ targets
-#pod 'NBUKit',   '~> 1.9.6'
+#pod 'NBUKit',   '~> 2.0.0'
 
 # Pre-release versions:
 #pod 'NBUCore', :head
-#pod 'NBUKit',  :git => 'https://github.com/CyberAgent/iOS-NBUKit.git', :commit => '8d67084b760ed97079bffc9ff9b66f02cc37ab48'
+pod 'CocoaLumberjack', :head
+pod 'NBUCore',         :git => 'https://github.com/CyberAgent/iOS-NBUCore.git', :commit => 'd786ba3a183c289ec4fb2d7dd5107efc97400c86'
+pod 'GPUImage',        :head
+#pod 'NBUKit',          :git => 'https://github.com/CyberAgent/iOS-NBUKit.git', :commit => '8d67084b760ed97079bffc9ff9b66f02cc37ab48'
 
 # For NBUKit development only:
-#pod 'GPUImage', :podspec => '../Library/GPUImage.podspec' # iOS 5+ targets only
+#pod 'NBUCore', :path => '../../NBUCore'
 pod 'NBUKit',   :path => '../'
 

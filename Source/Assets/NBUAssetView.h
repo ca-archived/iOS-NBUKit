@@ -55,7 +55,7 @@ typedef NSUInteger NBUAssetImageSize;
 /// @name Outlets
 
 /// An UIImageView used to show the [NBUAsset thumbnailImage].
-@property (assign, nonatomic) IBOutlet              UIImageView * imageView;
+@property (weak, nonatomic) IBOutlet                UIImageView * imageView;
 
 @end
 
