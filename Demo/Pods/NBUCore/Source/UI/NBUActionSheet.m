@@ -171,7 +171,7 @@ selectedButtonBlock:(NBUActionSheetSelectedButtonBlock)selectedButtonBlock
 - (void)actionSheet:(UIActionSheet *)actionSheet
 clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSLog(@"%@ %d cancel: %d", THIS_METHOD, buttonIndex, self.cancelButtonIndex);
+    NBULogVerbose(@"%@ %d cancel: %d", THIS_METHOD, buttonIndex, self.cancelButtonIndex);
     if (buttonIndex == self.cancelButtonIndex)
     {
         NBULogVerbose(@"Canceled");

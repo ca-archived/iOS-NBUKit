@@ -58,12 +58,12 @@ PODS:
 DEPENDENCIES:
   - CocoaLumberjack (HEAD)
   - GPUImage (HEAD)
-  - NBUCore (from `https://github.com/CyberAgent/iOS-NBUCore.git`, commit `d786ba3a183c289ec4fb2d7dd5107efc97400c86`)
+  - NBUCore (from `https://github.com/CyberAgent/iOS-NBUCore.git`, commit `c7bcb5b253088f3bc8b0d388cc4809742906239d`)
   - NBUKit (from `../`)
 
 EXTERNAL SOURCES:
   NBUCore:
-    :commit: d786ba3a183c289ec4fb2d7dd5107efc97400c86
+    :commit: c7bcb5b253088f3bc8b0d388cc4809742906239d
     :git: https://github.com/CyberAgent/iOS-NBUCore.git
   NBUKit:
     :path: ../
