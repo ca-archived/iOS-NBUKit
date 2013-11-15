@@ -1,9 +1,9 @@
 //
-//  NBUGalleryThumbnailView.m
-//  NBUKit
+//  UIResponder+NBUAdditions.h
+//  NBUCore
 //
-//  Created by Ernesto Rivera on 2013/04/17.
-//  Copyright (c) 2013 CyberAgent Inc.
+//  Created by Wirth Caesar on 12/08/08.
+//  Copyright (c) 2012-2013 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -18,27 +18,19 @@
 //  limitations under the License.
 //
 
-#import "NBUGalleryThumbnailView.h"
-#import "NBUKitPrivate.h"
+/**
+ Convenience methods to send actions through the responder chain.
+ */
+@interface UIResponder (NBUAdditions)
 
-@implementation NBUGalleryThumbnailView
-
-@dynamic viewController;
-@synthesize imageView = _imageView;
-
-- (void)commonInit
-{
-    [super commonInit];
-    
-    self.recognizeTap = YES;
-}
-
-- (void)tapped:(id)sender
-{
-    [super tapped:sender];
-    
-    [self.viewController thumbnailWasTapped:self];
-}
+/// Send an action to through the object's responder chain.
+/// @param action A selector to be invocated.
+/// @param sender The sending object.
+/// @param event An optional UIEvent.
+/// @return Whether or not the action found a target.
+- (BOOL)sendAction:(SEL)action
+              from:(id)sender
+          forEvent:(UIEvent*)event;
 
 @end
 

@@ -1,9 +1,9 @@
 //
-//  NBUGPUImageFilterProvider.h
-//  NBUKit
+//  UIButton+NBUAdditions.m
+//  NBUCore
 //
-//  Created by Ernesto Rivera on 12/05/03.
-//  Copyright (c) 2012 CyberAgent Inc.
+//  Created by Ernesto Rivera on 2012/10/15.
+//  Copyright (c) 2012-2013 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -18,12 +18,33 @@
 //  limitations under the License.
 //
 
-#import "NBUFilterProvider.h"
+#import "UIButton+NBUAdditions.h"
+#import "NBUCorePrivate.h"
 
-/**
- Wrapper NBUFilterProvider for GPUImage filters.
- */
-@interface NBUGPUImageFilterProvider : NSObject <NBUFilterProvider>
+@implementation UIButton (NBUAdditions)
+
+@dynamic enabled;
+@dynamic hidden;
+
+- (void)setTitle:(NSString *)title
+{
+    [self setTitle:title
+          forState:UIControlStateNormal];
+}
+
+- (NSString *)title
+{
+    return [self titleForState:UIControlStateNormal];
+}
+
+@end
+
+
+@implementation UIBarButtonItem (NBUAdditions)
+
+@dynamic title;
+@dynamic enabled;
+@dynamic hidden;
 
 @end
 
