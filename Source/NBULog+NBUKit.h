@@ -18,6 +18,8 @@
 //  limitations under the License.
 //
 
+#ifdef COCOAPODS_POD_AVAILABLE_NBULog
+
 #import <NBULog/NBULog.h>
 
 // NBUKit log context
@@ -61,4 +63,6 @@
              forModule:(int)NBUKIT_MODULE_XXX;
 
 @end
+
+#endif
 

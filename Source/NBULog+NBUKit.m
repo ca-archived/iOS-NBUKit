@@ -18,6 +18,8 @@
 //  limitations under the License.
 //
 
+#ifdef COCOAPODS_POD_AVAILABLE_NBULog
+
 #import "NBULog+NBUKit.h"
 #import <NBULog/NBULogContextDescription.h>
 
@@ -83,4 +85,6 @@ static int _kitModulesLogLevel[MAX_MODULES];
 }
 
 @end
+
+#endif
 
