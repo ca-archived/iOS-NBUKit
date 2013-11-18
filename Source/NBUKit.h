@@ -22,9 +22,9 @@
 #import <NBUCore/NBUCore.h>
 
 /// NBULog
-//#ifdef COCOAPODS_POD_AVAILABLE_NBULog
-//    #import <NBULog/NBULog.h>
-//#endif
+#ifdef COCOAPODS_POD_AVAILABLE_NBULog
+    #import "NBULog+NBUKit.h"
+#endif
 
 /// Additions
 #import "Lockbox+NBUAdditions.h"
