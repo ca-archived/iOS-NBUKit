@@ -1,4 +1,4 @@
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/CocoaLumberjack" "${PODS_ROOT}/Headers/GPUImage" "${PODS_ROOT}/Headers/Lockbox" "${PODS_ROOT}/Headers/NBUCore" "${PODS_ROOT}/Headers/NBUKit"
-OTHER_LDFLAGS = -ObjC -framework AVFoundation -framework AssetsLibrary -framework AudioToolbox -framework CoreLocation -framework CoreMedia -framework CoreMotion -framework CoreVideo -framework MediaPlayer -framework MessageUI -framework MobileCoreServices -framework OpenGLES -framework QuartzCore -framework Security -weak_framework CoreImage
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/CocoaLumberjack" "${PODS_ROOT}/Headers/Lockbox" "${PODS_ROOT}/Headers/LumberjackConsole" "${PODS_ROOT}/Headers/NBUCore" "${PODS_ROOT}/Headers/NBUKit" "${PODS_ROOT}/Headers/NBULog"
+OTHER_LDFLAGS = -ObjC -framework CoreMotion -framework MessageUI -framework MobileCoreServices -framework Security
 PODS_ROOT = ${SRCROOT}/Pods

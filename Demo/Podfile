@@ -1,17 +1,13 @@
 
 platform :ios, '5.0'
 
-# For client projects just use:
-#pod 'NBUKit',   '~> 2.0.0'
+# For client projects
+#pod 'NBUKit', '~> 2.0.0'
 
-# Pre-release versions:
-#pod 'NBUCore', :head
-pod 'CocoaLumberjack', :head
-pod 'NBUCore',         :git => 'https://github.com/CyberAgent/iOS-NBUCore.git', :commit => 'c7bcb5b253088f3bc8b0d388cc4809742906239d'
-pod 'GPUImage',        :head
-#pod 'NBUKit',          :git => 'https://github.com/CyberAgent/iOS-NBUKit.git', :commit => '8d67084b760ed97079bffc9ff9b66f02cc37ab48'
+# Optional for loggin and on-device console
+pod 'NBULog'
+pod 'LumberjackConsole'
 
-# For NBUKit development only:
-#pod 'NBUCore', :path => '../../NBUCore'
-pod 'NBUKit',   :path => '../'
+# For development
+pod 'NBUKit', :path => '../'
 

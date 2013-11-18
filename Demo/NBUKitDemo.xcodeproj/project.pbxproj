@@ -19,15 +19,9 @@
 		34C4ADA615BE880000709E28 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4ADA515BE880000709E28 /* AppDelegate.m */; };
 		34C4ADBD15BE8E1F00709E28 /* MainController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34C4ADBC15BE8E1F00709E28 /* MainController.xib */; };
 		969D0504C0F445879CB97CA9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A8D7D81AEF4434C98230B87 /* libPods.a */; };
-		E524A5C616F1A367003054AE /* CustomAssetThumbnailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E524A5C516F1A367003054AE /* CustomAssetThumbnailView.xib */; };
-		E524A5CA16F1A687003054AE /* CustomAssetsGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E524A5C916F1A687003054AE /* CustomAssetsGroupView.xib */; };
 		E52CAEE41665FEE100629D77 /* frame.png in Resources */ = {isa = PBXBuildFile; fileRef = E52CAEE11665FEE100629D77 /* frame.png */; };
 		E52CAEE51665FEE100629D77 /* photo_hires.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E52CAEE21665FEE100629D77 /* photo_hires.jpg */; };
 		E52CAEE61665FEE100629D77 /* photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E52CAEE31665FEE100629D77 /* photo.jpg */; };
-		E52CAEF71665FF3700629D77 /* CropViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E52CAEEF1665FF3700629D77 /* CropViewController.xib */; };
-		E52CAEF81665FF3700629D77 /* PresetFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E52CAEF01665FF3700629D77 /* PresetFilterViewController.xib */; };
-		E52CAEF91665FF3700629D77 /* PresetFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E52CAEF21665FF3700629D77 /* PresetFilterViewController.m */; };
-		E5332BDC16660CDF00B019DB /* BadgesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5332BCE16660CDF00B019DB /* BadgesViewController.m */; };
 		E5332BDD16660CDF00B019DB /* BadgesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5332BCF16660CDF00B019DB /* BadgesViewController.xib */; };
 		E5332BE016660CDF00B019DB /* HideOnScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5332BD416660CDF00B019DB /* HideOnScrollViewController.m */; };
 		E5332BE116660CDF00B019DB /* HideOnScrollViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5332BD516660CDF00B019DB /* HideOnScrollViewController.xib */; };
@@ -37,13 +31,11 @@
 		E53658FB15E384F4004A2F1A /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E53658F515E384F4004A2F1A /* Icon-72@2x.png */; };
 		E53658FC15E384F4004A2F1A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E53658F615E384F4004A2F1A /* Icon.png */; };
 		E53658FD15E384F4004A2F1A /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E53658F715E384F4004A2F1A /* Icon@2x.png */; };
-		E5456BD616DC534A000C7D83 /* CustomGPUImageFilterProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E5456BD516DC534A000C7D83 /* CustomGPUImageFilterProvider.m */; };
 		E545740017057D22005E142B /* NBUKit.strings in Resources */ = {isa = PBXBuildFile; fileRef = E545740217057D22005E142B /* NBUKit.strings */; };
+		E555171B1839F51400E273F4 /* BadgesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5332BCE16660CDF00B019DB /* BadgesViewController.m */; };
 		E55984801610221800D0F2BF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E559847D1610221800D0F2BF /* Default.png */; };
 		E55984811610221800D0F2BF /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E559847E1610221800D0F2BF /* Default@2x.png */; };
 		E55984821610221800D0F2BF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E559847F1610221800D0F2BF /* Default-568h@2x.png */; };
-		E573DD8C171BA06B0070C9B7 /* GalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E573DD8A171BA06B0070C9B7 /* GalleryViewController.m */; };
-		E573DD8D171BA06B0070C9B7 /* GalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E573DD8B171BA06B0070C9B7 /* GalleryViewController.xib */; };
 		E57C0AE3178BD039005CFFF3 /* Toy.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AE1178BD039005CFFF3 /* Toy.acv */; };
 		E57C0AE4178BD039005CFFF3 /* Old.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AE2178BD039005CFFF3 /* Old.acv */; };
 		E57C0AF7178BD7C2005CFFF3 /* RJ16.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AE5178BD7C1005CFFF3 /* RJ16.acv */; };
@@ -64,20 +56,6 @@
 		E57C0B06178BD7C2005CFFF3 /* FA_Curves1.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AF4178BD7C2005CFFF3 /* FA_Curves1.acv */; };
 		E57C0B07178BD7C2005CFFF3 /* FA_Curves2.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AF5178BD7C2005CFFF3 /* FA_Curves2.acv */; };
 		E57C0B08178BD7C2005CFFF3 /* FA_Curves3.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AF6178BD7C2005CFFF3 /* FA_Curves3.acv */; };
-		E57F639E1667090500C36E85 /* CropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E52CAEEE1665FF3700629D77 /* CropViewController.m */; };
-		E58A4C8716D744BC00542F8C /* AdjustFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E58A4C8516D744BC00542F8C /* AdjustFilterViewController.m */; };
-		E58A4C8816D744BC00542F8C /* AdjustFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E58A4C8616D744BC00542F8C /* AdjustFilterViewController.xib */; };
-		E58A4C8D16D74D6300542F8C /* AdjustFilterSliderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E58A4C8C16D74D6300542F8C /* AdjustFilterSliderCell.xib */; };
-		E58A4C8F16D753EA00542F8C /* AdjustFilterSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E58A4C8E16D753EA00542F8C /* AdjustFilterSwitchCell.xib */; };
-		E58A4C9116D753FA00542F8C /* AdjustFilterButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E58A4C9016D753FA00542F8C /* AdjustFilterButtonCell.xib */; };
-		E592B7AE164D03BA00AD48AF /* AssetsGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E592B7AD164D03BA00AD48AF /* AssetsGroupViewController.m */; };
-		E5A03E5416522AD3008A4719 /* PickerTestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A03E5216522AD3008A4719 /* PickerTestsViewController.m */; };
-		E5A03E5516522AD3008A4719 /* PickerTestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5A03E5316522AD3008A4719 /* PickerTestsViewController.xib */; };
-		E5ADD44016DB2C5D00446994 /* AdjustFilterTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5ADD43F16DB2C5D00446994 /* AdjustFilterTitleCell.xib */; };
-		E5EF2122164CDD8C0086BC71 /* LibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EF2121164CDD8C0086BC71 /* LibraryViewController.m */; };
-		E5F11D3D162BECA800A896A8 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F11D3B162BECA800A896A8 /* CameraViewController.m */; };
-		E5F11D3E162BECA800A896A8 /* CameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5F11D3C162BECA800A896A8 /* CameraViewController.xib */; };
-		E5FEE31E16E7360600DABE0F /* AdjustFilterViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5FEE31D16E7360600DABE0F /* AdjustFilterViewController_iPad.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,17 +76,9 @@
 		34C4ADBC15BE8E1F00709E28 /* MainController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainController.xib; sourceTree = "<group>"; };
 		7C918EBE545141BB8B2D2448 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		8A8D7D81AEF4434C98230B87 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		E524A5C516F1A367003054AE /* CustomAssetThumbnailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAssetThumbnailView.xib; sourceTree = "<group>"; };
-		E524A5C916F1A687003054AE /* CustomAssetsGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAssetsGroupView.xib; sourceTree = "<group>"; };
 		E52CAEE11665FEE100629D77 /* frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = frame.png; path = Resources/frame.png; sourceTree = "<group>"; };
 		E52CAEE21665FEE100629D77 /* photo_hires.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = photo_hires.jpg; path = Resources/photo_hires.jpg; sourceTree = "<group>"; };
 		E52CAEE31665FEE100629D77 /* photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = photo.jpg; path = Resources/photo.jpg; sourceTree = "<group>"; };
-		E52CAEED1665FF3700629D77 /* CropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CropViewController.h; sourceTree = "<group>"; };
-		E52CAEEE1665FF3700629D77 /* CropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CropViewController.m; sourceTree = "<group>"; };
-		E52CAEEF1665FF3700629D77 /* CropViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CropViewController.xib; sourceTree = "<group>"; };
-		E52CAEF01665FF3700629D77 /* PresetFilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PresetFilterViewController.xib; sourceTree = "<group>"; };
-		E52CAEF11665FF3700629D77 /* PresetFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresetFilterViewController.h; sourceTree = "<group>"; };
-		E52CAEF21665FF3700629D77 /* PresetFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresetFilterViewController.m; sourceTree = "<group>"; };
 		E5332BCD16660CDF00B019DB /* BadgesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadgesViewController.h; sourceTree = "<group>"; };
 		E5332BCE16660CDF00B019DB /* BadgesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BadgesViewController.m; sourceTree = "<group>"; };
 		E5332BCF16660CDF00B019DB /* BadgesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BadgesViewController.xib; sourceTree = "<group>"; };
@@ -122,17 +92,12 @@
 		E53658F515E384F4004A2F1A /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "Resources/Icon-72@2x.png"; sourceTree = "<group>"; };
 		E53658F615E384F4004A2F1A /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Resources/Icon.png; sourceTree = "<group>"; };
 		E53658F715E384F4004A2F1A /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Resources/Icon@2x.png"; sourceTree = "<group>"; };
-		E5456BD416DC534A000C7D83 /* CustomGPUImageFilterProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomGPUImageFilterProvider.h; sourceTree = "<group>"; };
-		E5456BD516DC534A000C7D83 /* CustomGPUImageFilterProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomGPUImageFilterProvider.m; sourceTree = "<group>"; };
 		E54573FE17057B32005E142B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E545740117057D22005E142B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/NBUKit.strings; sourceTree = "<group>"; };
 		E545740317057D30005E142B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/NBUKit.strings; sourceTree = "<group>"; };
 		E559847D1610221800D0F2BF /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Default.png; sourceTree = "<group>"; };
 		E559847E1610221800D0F2BF /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/Default@2x.png"; sourceTree = "<group>"; };
 		E559847F1610221800D0F2BF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Default-568h@2x.png"; sourceTree = "<group>"; };
-		E573DD89171BA06B0070C9B7 /* GalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryViewController.h; sourceTree = "<group>"; };
-		E573DD8A171BA06B0070C9B7 /* GalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryViewController.m; sourceTree = "<group>"; };
-		E573DD8B171BA06B0070C9B7 /* GalleryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GalleryViewController.xib; sourceTree = "<group>"; };
 		E57C0AE1178BD039005CFFF3 /* Toy.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = Toy.acv; path = Resources/Toy.acv; sourceTree = "<group>"; };
 		E57C0AE2178BD039005CFFF3 /* Old.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = Old.acv; path = Resources/Old.acv; sourceTree = "<group>"; };
 		E57C0AE5178BD7C1005CFFF3 /* RJ16.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ16.acv; path = Resources/RJ16.acv; sourceTree = "<group>"; };
@@ -153,30 +118,12 @@
 		E57C0AF4178BD7C2005CFFF3 /* FA_Curves1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = FA_Curves1.acv; path = Resources/FA_Curves1.acv; sourceTree = "<group>"; };
 		E57C0AF5178BD7C2005CFFF3 /* FA_Curves2.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = FA_Curves2.acv; path = Resources/FA_Curves2.acv; sourceTree = "<group>"; };
 		E57C0AF6178BD7C2005CFFF3 /* FA_Curves3.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = FA_Curves3.acv; path = Resources/FA_Curves3.acv; sourceTree = "<group>"; };
-		E58A4C8416D744BC00542F8C /* AdjustFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdjustFilterViewController.h; sourceTree = "<group>"; };
-		E58A4C8516D744BC00542F8C /* AdjustFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdjustFilterViewController.m; sourceTree = "<group>"; };
-		E58A4C8616D744BC00542F8C /* AdjustFilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdjustFilterViewController.xib; sourceTree = "<group>"; };
-		E58A4C8C16D74D6300542F8C /* AdjustFilterSliderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdjustFilterSliderCell.xib; sourceTree = "<group>"; };
-		E58A4C8E16D753EA00542F8C /* AdjustFilterSwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdjustFilterSwitchCell.xib; sourceTree = "<group>"; };
-		E58A4C9016D753FA00542F8C /* AdjustFilterButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdjustFilterButtonCell.xib; sourceTree = "<group>"; };
-		E592B7AC164D03BA00AD48AF /* AssetsGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetsGroupViewController.h; sourceTree = "<group>"; };
-		E592B7AD164D03BA00AD48AF /* AssetsGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetsGroupViewController.m; sourceTree = "<group>"; };
-		E5A03E5116522AD3008A4719 /* PickerTestsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerTestsViewController.h; sourceTree = "<group>"; };
-		E5A03E5216522AD3008A4719 /* PickerTestsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerTestsViewController.m; sourceTree = "<group>"; };
-		E5A03E5316522AD3008A4719 /* PickerTestsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerTestsViewController.xib; sourceTree = "<group>"; };
-		E5ADD43F16DB2C5D00446994 /* AdjustFilterTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdjustFilterTitleCell.xib; sourceTree = "<group>"; };
 		E5B06CDD1643591A0043F53F /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "Resources/Icon-Small-50.png"; sourceTree = "<group>"; };
 		E5B06CDE1643591A0043F53F /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = Resources/iTunesArtwork; sourceTree = "<group>"; };
 		E5B06CDF1643591A0043F53F /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "Resources/Icon-Small@2x.png"; sourceTree = "<group>"; };
 		E5B06CE01643591A0043F53F /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "Resources/Icon-Small.png"; sourceTree = "<group>"; };
-		E5EF2120164CDD8C0086BC71 /* LibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryViewController.h; sourceTree = "<group>"; };
-		E5EF2121164CDD8C0086BC71 /* LibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryViewController.m; sourceTree = "<group>"; };
-		E5F11D3A162BECA800A896A8 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
-		E5F11D3B162BECA800A896A8 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
-		E5F11D3C162BECA800A896A8 /* CameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraViewController.xib; sourceTree = "<group>"; };
 		E5F8090A17543706008120E4 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		E5F8090B1754384B008120E4 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		E5FEE31D16E7360600DABE0F /* AdjustFilterViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdjustFilterViewController_iPad.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,13 +224,6 @@
 				34C4ADA415BE880000709E28 /* AppDelegate.h */,
 				34C4ADA515BE880000709E28 /* AppDelegate.m */,
 				34C4ADBC15BE8E1F00709E28 /* MainController.xib */,
-				E57F63781666EA0100C36E85 /* Picker */,
-				E57F63791666EA2200C36E85 /* Assets */,
-				E57F637B1666EA3F00C36E85 /* Camera */,
-				E57F639D1666FCE700C36E85 /* Filters Showcase */,
-				E5DD752E16E58ADC009AD190 /* Filter Editor */,
-				E57BAE4E170A6CEF007B9306 /* Gallery */,
-				E57F639C1666FCBE00C36E85 /* Image Crop */,
 				E57F637F1666EBE000C36E85 /* Pull to Refresh */,
 				E57F637E1666EBC100C36E85 /* Hide on Scroll */,
 				E57F637C1666EA8E00C36E85 /* Badges */,
@@ -302,49 +242,6 @@
 				34C4ADA315BE880000709E28 /* NBUKitDemo-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E57BAE4E170A6CEF007B9306 /* Gallery */ = {
-			isa = PBXGroup;
-			children = (
-				E573DD89171BA06B0070C9B7 /* GalleryViewController.h */,
-				E573DD8A171BA06B0070C9B7 /* GalleryViewController.m */,
-				E573DD8B171BA06B0070C9B7 /* GalleryViewController.xib */,
-			);
-			name = Gallery;
-			sourceTree = "<group>";
-		};
-		E57F63781666EA0100C36E85 /* Picker */ = {
-			isa = PBXGroup;
-			children = (
-				E5A03E5116522AD3008A4719 /* PickerTestsViewController.h */,
-				E5A03E5216522AD3008A4719 /* PickerTestsViewController.m */,
-				E5A03E5316522AD3008A4719 /* PickerTestsViewController.xib */,
-			);
-			name = Picker;
-			sourceTree = "<group>";
-		};
-		E57F63791666EA2200C36E85 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				E5EF2120164CDD8C0086BC71 /* LibraryViewController.h */,
-				E5EF2121164CDD8C0086BC71 /* LibraryViewController.m */,
-				E592B7AC164D03BA00AD48AF /* AssetsGroupViewController.h */,
-				E592B7AD164D03BA00AD48AF /* AssetsGroupViewController.m */,
-				E524A5C916F1A687003054AE /* CustomAssetsGroupView.xib */,
-				E524A5C516F1A367003054AE /* CustomAssetThumbnailView.xib */,
-			);
-			name = Assets;
-			sourceTree = "<group>";
-		};
-		E57F637B1666EA3F00C36E85 /* Camera */ = {
-			isa = PBXGroup;
-			children = (
-				E5F11D3A162BECA800A896A8 /* CameraViewController.h */,
-				E5F11D3B162BECA800A896A8 /* CameraViewController.m */,
-				E5F11D3C162BECA800A896A8 /* CameraViewController.xib */,
-			);
-			name = Camera;
 			sourceTree = "<group>";
 		};
 		E57F637C1666EA8E00C36E85 /* Badges */ = {
@@ -375,43 +272,6 @@
 				E5332BDB16660CDF00B019DB /* PullToRefreshViewController.xib */,
 			);
 			name = "Pull to Refresh";
-			sourceTree = "<group>";
-		};
-		E57F639C1666FCBE00C36E85 /* Image Crop */ = {
-			isa = PBXGroup;
-			children = (
-				E52CAEED1665FF3700629D77 /* CropViewController.h */,
-				E52CAEEE1665FF3700629D77 /* CropViewController.m */,
-				E52CAEEF1665FF3700629D77 /* CropViewController.xib */,
-			);
-			name = "Image Crop";
-			sourceTree = "<group>";
-		};
-		E57F639D1666FCE700C36E85 /* Filters Showcase */ = {
-			isa = PBXGroup;
-			children = (
-				E52CAEF11665FF3700629D77 /* PresetFilterViewController.h */,
-				E52CAEF21665FF3700629D77 /* PresetFilterViewController.m */,
-				E52CAEF01665FF3700629D77 /* PresetFilterViewController.xib */,
-			);
-			name = "Filters Showcase";
-			sourceTree = "<group>";
-		};
-		E5DD752E16E58ADC009AD190 /* Filter Editor */ = {
-			isa = PBXGroup;
-			children = (
-				E5456BD416DC534A000C7D83 /* CustomGPUImageFilterProvider.h */,
-				E5456BD516DC534A000C7D83 /* CustomGPUImageFilterProvider.m */,
-				E58A4C8416D744BC00542F8C /* AdjustFilterViewController.h */,
-				E58A4C8516D744BC00542F8C /* AdjustFilterViewController.m */,
-				E58A4C8616D744BC00542F8C /* AdjustFilterViewController.xib */,
-				E5FEE31D16E7360600DABE0F /* AdjustFilterViewController_iPad.xib */,
-				E5ADD43F16DB2C5D00446994 /* AdjustFilterTitleCell.xib */,
-				E58A4C8C16D74D6300542F8C /* AdjustFilterSliderCell.xib */,
-				E58A4C8E16D753EA00542F8C /* AdjustFilterSwitchCell.xib */,
-				E58A4C9016D753FA00542F8C /* AdjustFilterButtonCell.xib */,
-			);
-			name = "Filter Editor";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -471,12 +331,9 @@
 			files = (
 				34C4ADBD15BE8E1F00709E28 /* MainController.xib in Resources */,
 				3426B02E15BF769F00EAF6B8 /* first.png in Resources */,
-				E5A03E5516522AD3008A4719 /* PickerTestsViewController.xib in Resources */,
 				E52CAEE41665FEE100629D77 /* frame.png in Resources */,
 				E52CAEE51665FEE100629D77 /* photo_hires.jpg in Resources */,
 				E52CAEE61665FEE100629D77 /* photo.jpg in Resources */,
-				E52CAEF71665FF3700629D77 /* CropViewController.xib in Resources */,
-				E52CAEF81665FF3700629D77 /* PresetFilterViewController.xib in Resources */,
 				E5332BDD16660CDF00B019DB /* BadgesViewController.xib in Resources */,
 				E5332BE116660CDF00B019DB /* HideOnScrollViewController.xib in Resources */,
 				E5332BE516660CDF00B019DB /* PullToRefreshViewController.xib in Resources */,
@@ -492,16 +349,6 @@
 				E55984801610221800D0F2BF /* Default.png in Resources */,
 				E55984811610221800D0F2BF /* Default@2x.png in Resources */,
 				E55984821610221800D0F2BF /* Default-568h@2x.png in Resources */,
-				E5F11D3E162BECA800A896A8 /* CameraViewController.xib in Resources */,
-				E58A4C8816D744BC00542F8C /* AdjustFilterViewController.xib in Resources */,
-				E58A4C8D16D74D6300542F8C /* AdjustFilterSliderCell.xib in Resources */,
-				E58A4C8F16D753EA00542F8C /* AdjustFilterSwitchCell.xib in Resources */,
-				E58A4C9116D753FA00542F8C /* AdjustFilterButtonCell.xib in Resources */,
-				E5ADD44016DB2C5D00446994 /* AdjustFilterTitleCell.xib in Resources */,
-				E5FEE31E16E7360600DABE0F /* AdjustFilterViewController_iPad.xib in Resources */,
-				E524A5C616F1A367003054AE /* CustomAssetThumbnailView.xib in Resources */,
-				E524A5CA16F1A687003054AE /* CustomAssetsGroupView.xib in Resources */,
-				E573DD8D171BA06B0070C9B7 /* GalleryViewController.xib in Resources */,
 				E57C0AE3178BD039005CFFF3 /* Toy.acv in Resources */,
 				E57C0AE4178BD039005CFFF3 /* Old.acv in Resources */,
 				E57C0AF7178BD7C2005CFFF3 /* RJ16.acv in Resources */,
@@ -579,18 +426,9 @@
 			files = (
 				34C4ADA215BE880000709E28 /* main.m in Sources */,
 				34C4ADA615BE880000709E28 /* AppDelegate.m in Sources */,
-				E5F11D3D162BECA800A896A8 /* CameraViewController.m in Sources */,
-				E5EF2122164CDD8C0086BC71 /* LibraryViewController.m in Sources */,
-				E592B7AE164D03BA00AD48AF /* AssetsGroupViewController.m in Sources */,
-				E5A03E5416522AD3008A4719 /* PickerTestsViewController.m in Sources */,
-				E52CAEF91665FF3700629D77 /* PresetFilterViewController.m in Sources */,
-				E5332BDC16660CDF00B019DB /* BadgesViewController.m in Sources */,
 				E5332BE016660CDF00B019DB /* HideOnScrollViewController.m in Sources */,
 				E5332BE416660CDF00B019DB /* PullToRefreshViewController.m in Sources */,
-				E57F639E1667090500C36E85 /* CropViewController.m in Sources */,
-				E58A4C8716D744BC00542F8C /* AdjustFilterViewController.m in Sources */,
-				E5456BD616DC534A000C7D83 /* CustomGPUImageFilterProvider.m in Sources */,
-				E573DD8C171BA06B0070C9B7 /* GalleryViewController.m in Sources */,
+				E555171B1839F51400E273F4 /* BadgesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

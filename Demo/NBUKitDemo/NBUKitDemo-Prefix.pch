@@ -12,6 +12,8 @@
 
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import <NBULog/NBULog.h>
     #import <NBUKit/NBUKit.h>
+
 #endif
 
