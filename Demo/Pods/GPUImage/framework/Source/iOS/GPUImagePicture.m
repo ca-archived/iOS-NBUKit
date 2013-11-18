@@ -5,6 +5,30 @@
 #pragma mark -
 #pragma mark Initialization and teardown
 
+- (id)initWithURL:(NSURL *)url;
+{
+    NSData *imageData = [[NSData alloc] initWithContentsOfURL:url];
+    
+    if (!(self = [self initWithData:imageData]))
+    {
+        return nil;
+    }
+    
+    return self;
+}
+
+- (id)initWithData:(NSData *)imageData;
+{
+    UIImage *inputImage = [[UIImage alloc] initWithData:imageData];
+    
+    if (!(self = [self initWithImage:inputImage]))
+    {
+		return nil;
+    }
+    
+    return self;
+}
+
 - (id)initWithImage:(UIImage *)newImageSource;
 {
     if (!(self = [self initWithImage:newImageSource smoothlyScaleOutput:NO]))
@@ -43,13 +67,17 @@
     // TODO: Dispatch this whole thing asynchronously to move image loading off main thread
     CGFloat widthOfImage = CGImageGetWidth(newImageSource);
     CGFloat heightOfImage = CGImageGetHeight(newImageSource);
+
+    // If passed an empty image reference, CGContextDrawImage will fail in future versions of the SDK.
+    NSAssert( widthOfImage > 0 && heightOfImage > 0, @"Passed image must not be empty - it should be at least 1px tall and wide");
+    
     pixelSizeOfImage = CGSizeMake(widthOfImage, heightOfImage);
     CGSize pixelSizeToUseForTexture = pixelSizeOfImage;
     
-    BOOL shouldRedrawUsingCoreGraphics = YES;
+    BOOL shouldRedrawUsingCoreGraphics = NO;
     
     // For now, deal with images larger than the maximum texture size by resizing to be within that limit
-    CGSize scaledImageSizeToFitOnGPU = [GPUImageOpenGLESContext sizeThatFitsWithinATextureForSize:pixelSizeOfImage];
+    CGSize scaledImageSizeToFitOnGPU = [GPUImageContext sizeThatFitsWithinATextureForSize:pixelSizeOfImage];
     if (!CGSizeEqualToSize(scaledImageSizeToFitOnGPU, pixelSizeOfImage))
     {
         pixelSizeOfImage = scaledImageSizeToFitOnGPU;
@@ -70,12 +98,52 @@
     
     GLubyte *imageData = NULL;
     CFDataRef dataFromImageDataProvider;
+    GLenum format = GL_BGRA;
+    
+    if (!shouldRedrawUsingCoreGraphics) {
+        /* Check that the memory layout is compatible with GL, as we cannot use glPixelStore to
+         * tell GL about the memory layout with GLES.
+         */
+        if (CGImageGetBytesPerRow(newImageSource) != CGImageGetWidth(newImageSource) * 4 ||
+            CGImageGetBitsPerPixel(newImageSource) != 32 ||
+            CGImageGetBitsPerComponent(newImageSource) != 8)
+        {
+            shouldRedrawUsingCoreGraphics = YES;
+        } else {
+            /* Check that the bitmap pixel format is compatible with GL */
+            CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(newImageSource);
+            if ((bitmapInfo & kCGBitmapFloatComponents) != 0) {
+                /* We don't support float components for use directly in GL */
+                shouldRedrawUsingCoreGraphics = YES;
+            } else {
+                CGBitmapInfo byteOrderInfo = bitmapInfo & kCGBitmapByteOrderMask;
+                if (byteOrderInfo == kCGBitmapByteOrder32Little) {
+                    /* Little endian, for alpha-first we can use this bitmap directly in GL */
+                    CGImageAlphaInfo alphaInfo = bitmapInfo & kCGBitmapAlphaInfoMask;
+                    if (alphaInfo != kCGImageAlphaPremultipliedFirst && alphaInfo != kCGImageAlphaFirst &&
+                        alphaInfo != kCGImageAlphaNoneSkipFirst) {
+                        shouldRedrawUsingCoreGraphics = YES;
+                    }
+                } else if (byteOrderInfo == kCGBitmapByteOrderDefault || byteOrderInfo == kCGBitmapByteOrder32Big) {
+                    /* Big endian, for alpha-last we can use this bitmap directly in GL */
+                    CGImageAlphaInfo alphaInfo = bitmapInfo & kCGBitmapAlphaInfoMask;
+                    if (alphaInfo != kCGImageAlphaPremultipliedLast && alphaInfo != kCGImageAlphaLast &&
+                        alphaInfo != kCGImageAlphaNoneSkipLast) {
+                        shouldRedrawUsingCoreGraphics = YES;
+                    } else {
+                        /* Can access directly using GL_RGBA pixel format */
+                        format = GL_RGBA;
+                    }
+                }
+            }
+        }
+    }
     
     //    CFAbsoluteTime elapsedTime, startTime = CFAbsoluteTimeGetCurrent();
     
     if (shouldRedrawUsingCoreGraphics)
     {
-        // For resized image, redraw
+        // For resized or incompatible image: redraw
         imageData = (GLubyte *) calloc(1, (int)pixelSizeToUseForTexture.width * (int)pixelSizeToUseForTexture.height * 4);
         
         CGColorSpaceRef genericRGBColorspace = CGColorSpaceCreateDeviceRGB();
@@ -110,7 +178,7 @@
     //    NSLog(@"Debug, average input image red: %f, green: %f, blue: %f, alpha: %f", currentRedTotal / (CGFloat)totalNumberOfPixels, currentGreenTotal / (CGFloat)totalNumberOfPixels, currentBlueTotal / (CGFloat)totalNumberOfPixels, currentAlphaTotal / (CGFloat)totalNumberOfPixels);
     
     runSynchronouslyOnVideoProcessingQueue(^{
-        [GPUImageOpenGLESContext useImageProcessingContext];
+        [GPUImageContext useImageProcessingContext];
         
         [self initializeOutputTextureIfNeeded];
         
@@ -119,12 +187,14 @@
         {
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
         }
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, (int)pixelSizeToUseForTexture.width, (int)pixelSizeToUseForTexture.height, 0, GL_BGRA, GL_UNSIGNED_BYTE, imageData);
+        // no need to use self.outputTextureOptions here since pictures need this texture formats and type
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, (int)pixelSizeToUseForTexture.width, (int)pixelSizeToUseForTexture.height, 0, format, GL_UNSIGNED_BYTE, imageData);
         
         if (self.shouldSmoothlyScaleOutput)
         {
             glGenerateMipmap(GL_TEXTURE_2D);
         }
+        glBindTexture(GL_TEXTURE_2D, 0);
     });
     
     if (shouldRedrawUsingCoreGraphics)
@@ -140,7 +210,7 @@
 }
 
 // ARC forbids explicit message send of 'release'; since iOS 6 even for dispatch_release() calls: stripping it out in that case is required.
-#if ( (__IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0) || (!defined(__IPHONE_6_0)) )
+#if ( (__IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0) || (!defined(__IPHONE_7_0)) )
 - (void)dealloc;
 {
     if (imageUpdateSemaphore != NULL)
@@ -161,13 +231,18 @@
 
 - (void)processImage;
 {
+    [self processImageWithCompletionHandler:nil];
+}
+
+- (BOOL)processImageWithCompletionHandler:(void (^)(void))completion;
+{
     hasProcessedImage = YES;
     
     //    dispatch_semaphore_wait(imageUpdateSemaphore, DISPATCH_TIME_FOREVER);
     
     if (dispatch_semaphore_wait(imageUpdateSemaphore, DISPATCH_TIME_NOW) != 0)
     {
-        return;
+        return NO;
     }
     
     runAsynchronouslyOnVideoProcessingQueue(^{
@@ -182,12 +257,20 @@
             NSInteger indexOfObject = [targets indexOfObject:currentTarget];
             NSInteger textureIndexOfTarget = [[targetTextureIndices objectAtIndex:indexOfObject] integerValue];
             
+            [currentTarget setCurrentlyReceivingMonochromeInput:NO];
             [currentTarget setInputSize:pixelSizeOfImage atIndex:textureIndexOfTarget];
+//            [currentTarget setInputTexture:outputTexture atIndex:textureIndexOfTarget];
             [currentTarget newFrameReadyAtTime:kCMTimeIndefinite atIndex:textureIndexOfTarget];
         }
         
         dispatch_semaphore_signal(imageUpdateSemaphore);
+        
+        if (completion != nil) {
+            completion();
+        }
     });
+    
+    return YES;
 }
 
 - (CGSize)outputImageSize;

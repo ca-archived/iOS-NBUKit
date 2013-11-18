@@ -32,7 +32,7 @@
     return [filters objectAtIndex:filterIndex];
 }
 
-- (int)filterCount;
+- (NSUInteger)filterCount;
 {
     return [filters count];
 }
@@ -151,6 +151,13 @@
     }
 }
 
+- (void)forceProcessingAtSizeRespectingAspectRatio:(CGSize)frameSize;
+{
+    for (GPUImageOutput<GPUImageInput> *currentFilter in filters)
+    {
+        [currentFilter forceProcessingAtSizeRespectingAspectRatio:frameSize];
+    }
+}
 
 - (CGSize)maximumOutputSize;
 {
@@ -175,9 +182,14 @@
 
 - (void)endProcessing;
 {
-    for (GPUImageOutput<GPUImageInput> *currentFilter in _initialFilters)
+    if (!isEndProcessing)
     {
-        [currentFilter endProcessing];
+        isEndProcessing = YES;
+        
+        for (id<GPUImageInput> currentTarget in targets)
+        {
+            [currentTarget endProcessing];
+        }
     }
 }
 

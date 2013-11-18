@@ -1,7 +1,7 @@
 PODS:
   - CocoaLumberjack (1.6)
-  - GPUImage (0.1.0)
-  - Lockbox (1.4.3)
+  - GPUImage (HEAD based on 0.1.1)
+  - Lockbox (1.4.4)
   - NBUCore (1.9.7):
     - CocoaLumberjack (<= 1.6)
     - Lockbox (~> 1.4.2)
@@ -21,7 +21,7 @@ PODS:
   - NBUCore/UI (1.9.7):
     - CocoaLumberjack (<= 1.6)
     - Lockbox (~> 1.4.2)
-  - NBUKit (1.9.5):
+  - NBUKit (1.9.6):
     - NBUCore (~> 1.9.6)
     - NBUKit/Assets
     - NBUKit/Image
@@ -29,34 +29,34 @@ PODS:
     - NBUKit/Picker
     - NBUKit/Resources
     - NBUKit/UI
-  - NBUKit/Assets (1.9.5):
+  - NBUKit/Assets (1.9.6):
     - NBUCore (~> 1.9.6)
-  - NBUKit/Image (1.9.5):
+  - NBUKit/Image (1.9.6):
     - GPUImage (>= 0.1.0)
     - NBUCore (~> 1.9.6)
-  - NBUKit/Library (1.9.5):
+  - NBUKit/Library (1.9.6):
     - NBUCore (~> 1.9.6)
     - NBUKit/Library/MotionOrientation
     - NBUKit/Library/NBUCompatibility
     - NBUKit/Library/RBVolumeButtons
     - NBUKit/Library/RestKit Support
-  - NBUKit/Library/MotionOrientation (1.9.5):
+  - NBUKit/Library/MotionOrientation (1.9.6):
     - NBUCore (~> 1.9.6)
-  - NBUKit/Library/NBUCompatibility (1.9.5):
+  - NBUKit/Library/NBUCompatibility (1.9.6):
     - NBUCore (~> 1.9.6)
-  - NBUKit/Library/RBVolumeButtons (1.9.5):
+  - NBUKit/Library/RBVolumeButtons (1.9.6):
     - NBUCore (~> 1.9.6)
-  - NBUKit/Library/RestKit Support (1.9.5):
+  - NBUKit/Library/RestKit Support (1.9.6):
     - NBUCore (~> 1.9.6)
-  - NBUKit/Picker (1.9.5):
+  - NBUKit/Picker (1.9.6):
     - NBUCore (~> 1.9.6)
-  - NBUKit/Resources (1.9.5):
+  - NBUKit/Resources (1.9.6):
     - NBUCore (~> 1.9.6)
-  - NBUKit/UI (1.9.5):
+  - NBUKit/UI (1.9.6):
     - NBUCore (~> 1.9.6)
 
 DEPENDENCIES:
-  - GPUImage (= 0.1.0)
+  - GPUImage (HEAD)
   - NBUKit (from `../`)
 
 EXTERNAL SOURCES:
@@ -65,9 +65,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   CocoaLumberjack: 0f2fa7090a23f13261072d882e017c688300efbe
-  GPUImage: 5b902c1df2afe0ac30a8e3e7379f9c0bb25c7c85
-  Lockbox: 1bcfd564f034b83456fcad5bdd49470a80a38d2b
+  GPUImage: b9840114a0ad0323801c2e0aa2752679057f808d
+  Lockbox: 917945068ab8b0802e65527f225e6480937b2106
   NBUCore: 63cb2455028c611a9b533fd94efe3dad668bd5cd
-  NBUKit: 12e5ad538a30e8e496e1696b103e970fdbf17405
+  NBUKit: 1c3b28eaffeae63b86ead9b87568f873866b5574
 
 COCOAPODS: 0.25.0
