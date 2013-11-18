@@ -4,54 +4,33 @@ Pod::Spec.new do |s|
     
     s.name          = "NBUKit"
     s.version       = "2.0.0"
-    s.platform      = :ios, '5.0'
     s.summary       = "Customizable image editing, filters, camera, picker and other UIKit subclasses."
     s.homepage      = "http://cyberagent.github.io/iOS-NBUKit/"
     s.license       = { :type => 'Apache License, Version 2.0', :file => 'LICENSE' }
     s.author        = { "CyberAgent Inc." => "", "Ernesto Rivera" => "rivera_ernesto@cyberagent.co.jp" }
-    s.screenshots   = [ "https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Camera1.png",
-                        "https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Camera2.png",
-                        "https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Assets1.png",
-                        "https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Assets2.png",
-                        "https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Edit2.png",
-                        "https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Edit3.png",
-                        "https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Gallery1.png",
-                        "https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Picker1.png" ]
-    
     s.source        = { :git => "https://github.com/CyberAgent/iOS-NBUKit.git", :tag => "#{s.version}" }
-    s.source_files  = 'Source/*.{h,m}'
-    s.preserve_paths = "README.*", "NOTICE"
     
+    s.platform      = :ios, '5.0'
     s.requires_arc  = true
+    s.source_files  = 'Source/*.{h,m}'
+    s.preserve_paths = "README.md", "NOTICE"
     
-    s.dependency 'NBUCore',     '~> 2.0.0'
+    s.dependency 'NBUCore', '>= 2.0.0'
+    s.dependency 'Lockbox', '~> 1.4.4'
     
-    s.subspec 'UI' do |su|
-        su.source_files = 'Source/UI/*.{h,m}'
-        su.resources    = 'Source/UI/*.{xib}'
-        su.frameworks   = 'MessageUI'
+    s.subspec 'UI' do |sub|
+        sub.source_files = 'Source/UI/*.{h,m}'
+        sub.resources    = 'Source/UI/*.{xib}'
+        sub.frameworks   = 'MessageUI'
+        sub.dependency 'NBUKit/Resources'
     end
     
-    s.subspec 'Image' do |si|
-        si.source_files = 'Source/Image/*.{h,m}'
-        si.resources    = 'Source/Image/*.{xib}'
-        si.weak_frameworks = 'CoreImage'
-        si.dependency 'GPUImage',   '>= 0.1.1'
+    s.subspec 'Additions' do |sub|
+        sub.source_files = 'Source/Additions/*.{h,m}'
     end
-    
-    s.subspec 'Assets' do |sa|
-        sa.source_files = 'Source/Assets/*.{h,m}'
-        sa.resources    = 'Source/Assets/*.{xib}'
-        sa.frameworks   = 'AssetsLibrary', 'CoreLocation'
-    end
-    
-    s.subspec 'Picker' do |sp|
-        sp.source_files = 'Source/Picker/*.{h,m}'
-        sp.resources    = 'Source/Picker/*.{xib}'
-    end
-    
-    s.subspec 'Resources' do |sr|
-        s.resources     = 'NBUKitResources.bundle'
+
+    s.subspec 'Resources' do |sub|
+        sub.resources    = 'NBUKitResources.bundle'
     end
     
     s.subspec 'Library' do |sl|
@@ -65,12 +44,6 @@ Pod::Spec.new do |s|
             srk.source_files    = 'Library/RestKit Support/*.{h,m}'
             srk.frameworks      = 'MobileCoreServices'
             srk.preserve_paths  = "README.*", "LICENSE"
-        end
-        
-        sl.subspec 'RBVolumeButtons' do |srb|
-            srb.requires_arc    = false
-            srb.source_files    = 'Library/RBVolumeButtons/*.{h,m}'
-            srb.frameworks      = 'MediaPlayer', 'AudioToolbox'
         end
         
         sl.subspec 'MotionOrientation' do |smo|
