@@ -3,7 +3,7 @@
 #  NBUKitStrings.sh
 #  
 #
-#  Created by 利辺羅 on 2013/08/14.
+#  Created by Ernesto Rivera on 2013/08/14.
 #
 
 cd Source

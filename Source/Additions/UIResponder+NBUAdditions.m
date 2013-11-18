@@ -2,7 +2,7 @@
 //  UIResponder+NBUAdditions.m
 //  NBUKit
 //
-//  Created by Wirth Caesar on 12/08/08.
+//  Created by Wirth Caesar on 2012/08/08.
 //  Copyright (c) 2012-2013 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");

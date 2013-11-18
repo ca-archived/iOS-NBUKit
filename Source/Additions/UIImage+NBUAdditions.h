@@ -2,7 +2,7 @@
 //  UIImage+NBUAdditions.h
 //  NBUKit
 //
-//  Created by Ernesto Rivera on 12/06/01.
+//  Created by Ernesto Rivera on 2012/06/01.
 //  Copyright (c) 2012-2013 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
