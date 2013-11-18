@@ -1,6 +1,6 @@
 //
 //  UIResponder+NBUAdditions.m
-//  NBUCore
+//  NBUKit
 //
 //  Created by Wirth Caesar on 12/08/08.
 //  Copyright (c) 2012-2013 CyberAgent Inc.
@@ -19,7 +19,7 @@
 //
 
 #import "UIResponder+NBUAdditions.h"
-#import "NBUCorePrivate.h"
+#import "NBUKitPrivate.h"
 
 @implementation UIResponder (NBUAdditions)
 
@@ -54,3 +54,4 @@
 }
 
 @end
+

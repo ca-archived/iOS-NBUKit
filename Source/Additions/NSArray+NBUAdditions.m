@@ -1,6 +1,6 @@
 //
 //  NSArray+NBUAdditions.m
-//  NBUCore
+//  NBUKit
 //
 //  Created by Ernesto Rivera on 2012/10/16.
 //  Copyright (c) 2012-2013 CyberAgent Inc.
@@ -19,7 +19,7 @@
 //
 
 #import "NSArray+NBUAdditions.h"
-#import "NBUCorePrivate.h"
+#import "NBUKitPrivate.h"
 
 @implementation NSArray (NBUAdditions)
 

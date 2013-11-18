@@ -1,6 +1,6 @@
 //
 //  UINavigationController+NBUAdditions.h
-//  NBUCore
+//  NBUKit
 //
 //  Created by Ernesto Rivera on 2012/10/04.
 //  Copyright (c) 2012-2013 CyberAgent Inc.

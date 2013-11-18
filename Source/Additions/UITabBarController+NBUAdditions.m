@@ -1,6 +1,6 @@
 //
 //  UITabBarController+NBUAdditions.m
-//  NBUCore
+//  NBUKit
 //
 //  Created by Ernesto Rivera on 2012/09/18.
 //  Copyright (c) 2012-2013 CyberAgent Inc.
@@ -19,9 +19,7 @@
 //
 
 #import "UITabBarController+NBUAdditions.h"
-#import "UIView+NBUAdditions.h"
-#import "NBUUtil.h"
-#import "NBUCorePrivate.h"
+#import "NBUKitPrivate.h"
 
 @implementation UITabBarController (NBUAdditions)
 

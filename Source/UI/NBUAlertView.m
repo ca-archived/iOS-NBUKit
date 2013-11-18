@@ -1,6 +1,6 @@
 //
 //  NBUAlertView.m
-//  NBUCore
+//  NBUKit
 //
 //  Created by Ernesto Rivera on 2012/10/31.
 //  Copyright (c) 2012-2013 CyberAgent Inc.
@@ -19,7 +19,7 @@
 //
 
 #import "NBUAlertView.h"
-#import "NBUCorePrivate.h"
+#import "NBUKitPrivate.h"
 
 // Private category
 @interface NBUAlertView (Private) <UIAlertViewDelegate>

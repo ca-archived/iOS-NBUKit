@@ -1,6 +1,6 @@
 //
 //  UIImageView+NBUAdditions.m
-//  NBUCore
+//  NBUKit
 //
 //  Created by Ernesto Rivera on 2012/11/29.
 //  Copyright (c) 2012 CyberAgent Inc.

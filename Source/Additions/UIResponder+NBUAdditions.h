@@ -1,6 +1,6 @@
 //
 //  UIResponder+NBUAdditions.h
-//  NBUCore
+//  NBUKit
 //
 //  Created by Wirth Caesar on 12/08/08.
 //  Copyright (c) 2012-2013 CyberAgent Inc.

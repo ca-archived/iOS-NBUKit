@@ -24,11 +24,6 @@ static NSBundle * _resourcesBundle;
 
 @implementation NBUKit
 
-+ (void)initialize
-{
-    NBULogInfo(@"NBUKit %@ initialized...", [self version]);
-}
-
 + (NSString *)version
 {
     return @"2.0.0";
@@ -36,11 +31,13 @@ static NSBundle * _resourcesBundle;
 
 + (NSBundle *)resourcesBundle
 {
-    if (!_resourcesBundle)
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^
     {
         NSString * resourcesPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"NBUKitResources.bundle"];
         _resourcesBundle = [NSBundle bundleWithPath:resourcesPath];
-    }
+    });
+    
     return _resourcesBundle;
 }
 

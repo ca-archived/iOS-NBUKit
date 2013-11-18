@@ -1,6 +1,6 @@
 //
 //  UIView+NBUAdditions.h
-//  NBUCore
+//  NBUKit
 //
 //  Created by Ernesto Rivera on 2012/08/06.
 //  Copyright (c) 2012-2013 CyberAgent Inc.

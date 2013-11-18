@@ -1,6 +1,6 @@
 //
 //  UIScrollView+NBUAdditions.h
-//  NBUCore
+//  NBUKit
 //
 //  Created by Ernesto Rivera on 2012/10/17.
 //  Copyright (c) 2012-2013 CyberAgent Inc.

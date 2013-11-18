@@ -1,6 +1,6 @@
 //
 //  UIViewController+NBUAdditions.m
-//  NBUCore
+//  NBUKit
 //
 //  Created by Ernesto Rivera on 2013/04/12.
 //  Copyright (c) 2013 CyberAgent Inc.
@@ -19,7 +19,7 @@
 //
 
 #import "UIViewController+NBUAdditions.h"
-#import "NBUCorePrivate.h"
+#import "NBUKitPrivate.h"
 
 @implementation UIViewController (NBUAdditions)
 

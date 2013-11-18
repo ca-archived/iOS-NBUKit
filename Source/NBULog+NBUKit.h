@@ -18,7 +18,10 @@
 //  limitations under the License.
 //
 
-#import <NBUCore/NBULog.h>
+#import <NBULog/NBULog.h>
+
+// NBUKit log context
+#define NBUKIT_LOG_CONTEXT          110
 
 /// NBUKit modules
 #define NBUKIT_MODULE_GENERAL       0

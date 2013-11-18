@@ -1,6 +1,6 @@
 //
 //  NSBundle+NBUAdditions.h
-//  NBUCore
+//  NBUKit
 //
 //  Created by Ernesto Rivera on 2012/08/13.
 //  Copyright (c) 2012-2013 CyberAgent Inc.

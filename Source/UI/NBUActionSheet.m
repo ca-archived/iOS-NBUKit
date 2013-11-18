@@ -1,6 +1,6 @@
 //
 //  NBUActionSheet.m
-//  NBUCore
+//  NBUKit
 //
 //  Created by Ernesto Rivera on 2012/11/12.
 //  Copyright (c) 2012-2013 CyberAgent Inc.
@@ -19,20 +19,15 @@
 //
 
 #import "NBUActionSheet.h"
-#import "UIView+NBUAdditions.h"
-#import "NBUUtil.h"
-#import "NBUCorePrivate.h"
+#import "NBUKitPrivate.h"
 
-// Private category
-@interface NBUActionSheet (Private) <UIActionSheetDelegate>
+// Class extension
+@interface NBUActionSheet () <UIActionSheetDelegate>
 
 @end
 
 
 @implementation NBUActionSheet
-
-@synthesize selectedButtonBlock = _selectedButtonBlock;
-@synthesize cancelButtonBlock = _cancelButtonBlock;
 
 - (id)initWithTitle:(NSString *)title
   cancelButtonTitle:(NSString *)cancelButtonTitle

@@ -19,8 +19,7 @@
 //
 
 #import "NBULog+NBUKit.h"
-#import "NBUKitPrivate.h"
-#import <NBUCore/NBULogContextDescription.h>
+#import <NBULog/NBULogContextDescription.h>
 
 #define MAX_MODULES 10
 
