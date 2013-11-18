@@ -19,7 +19,7 @@
 //
 
 /**
- NBUCore additions to UIViews.
+ NBUKit additions to UIViews.
  
  - Ease access to view's size, origin, UIViewController, UINavigationController and UITabBarController
  */

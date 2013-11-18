@@ -23,10 +23,7 @@
 #import "NBULog+NBUKit.h"
 #import <NBULog/NBULogContextDescription.h>
 
-#define MAX_MODULES 10
-
 static int _kitLogLevel;
-static int _kitModulesLogLevel[MAX_MODULES];
 
 @implementation NBULog (NBUKit)
 
@@ -38,15 +35,11 @@ static int _kitModulesLogLevel[MAX_MODULES];
     // Register the NBUKit log context
     [NBULog registerContextDescription:[NBULogContextDescription descriptionWithName:@"NBUKit"
                                                                              context:NBUKIT_LOG_CONTEXT
-                                                                     modulesAndNames:@{@(NBUKIT_MODULE_UI)              : @"UI",
-                                                                                       @(NBUKIT_MODULE_CAMERA_ASSETS)   : @"Camera/Assets",
-                                                                                       @(NBUKIT_MODULE_IMAGE)           : @"Image",
-                                                                                       @(NBUKIT_MODULE_HELPERS)         : @"Helpers",
-                                                                                       @(NBUKIT_MODULE_COMPATIBILITY)   : @"Compatibility"}
+                                                                     modulesAndNames:nil
                                                                    contextLevelBlock:^{ return [NBULog kitLogLevel]; }
                                                                 setContextLevelBlock:^(int level) { [NBULog setKitLogLevel:level]; }
-                                                          contextLevelForModuleBlock:^(int module) { return [NBULog kitLogLevelForModule:module]; }
-                                                       setContextLevelForModuleBlock:^(int module, int level) { [NBULog setKitLogLevel:level forModule:module]; }]];
+                                                          contextLevelForModuleBlock:NULL
+                                                       setContextLevelForModuleBlock:NULL]];
 }
 
 + (int)kitLogLevel
@@ -61,27 +54,6 @@ static int _kitModulesLogLevel[MAX_MODULES];
 #else
     _kitLogLevel = LOG_LEVEL_XXX == LOG_LEVEL_DEFAULT ? LOG_LEVEL_WARN : LOG_LEVEL_XXX;
 #endif
-    
-    // Reset all modules' levels
-    for (int i = 0; i < MAX_MODULES; i++)
-    {
-        [self setKitLogLevel:LOG_LEVEL_DEFAULT
-                   forModule:i];
-    }
-}
-
-+ (int)kitLogLevelForModule:(int)NBUKIT_MODULE_XXX
-{
-    int logLevel = _kitModulesLogLevel[NBUKIT_MODULE_XXX];
-    
-    // Fallback to the default log level if necessary
-    return logLevel == LOG_LEVEL_DEFAULT ? _kitLogLevel : logLevel;
-}
-
-+ (void)setKitLogLevel:(int)LOG_LEVEL_XXX
-             forModule:(int)NBUKIT_MODULE_XXX
-{
-    _kitModulesLogLevel[NBUKIT_MODULE_XXX] = LOG_LEVEL_XXX;
 }
 
 @end

@@ -19,7 +19,7 @@
 //
 
 /**
- NBUCore additions to UIImage to handle cropping, resizes and image flattening.
+ NBUKit additions to UIImage to handle cropping, resizes and image flattening.
  */
 @interface UIImage (NBUAdditions)
 
