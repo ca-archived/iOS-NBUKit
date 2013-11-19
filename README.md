@@ -2,7 +2,7 @@ NBUKit
 ======
 
 [![Pod Platform](https://cocoapod-badges.herokuapp.com/p/NBUKit/badge.svg)](http://cocoadocs.org/docsets/NBUKit/)
-[![Version 1.9.6](https://cocoapod-badges.herokuapp.com/v/NBUKit/badge.png)](http://cocoadocs.org/docsets/NBUKit/)
+[![Version 1.9.7](https://cocoapod-badges.herokuapp.com/v/NBUKit/badge.png)](http://cocoadocs.org/docsets/NBUKit/)
 [![Build Status](https://travis-ci.org/CyberAgent/iOS-NBUKit.png?branch=master)](https://travis-ci.org/CyberAgent/iOS-NBUKit)
 
 [Customizable](https://github.com/CyberAgent/iOS-NBUKit/wiki/NBUKit-Customization) camera, assets,
@@ -78,7 +78,7 @@ Sample Podfile:
 platform :ios
 
 pod 'GPUImage', :head # iOS 5+ only
-pod 'NBUKit',   '~> 1.9.6'
+pod 'NBUKit',   '~> 1.9.7' # iOS 4 use 1.9.6
 ```
 
 _If you have a problem try `gem update cocoapods` first._
