@@ -72,32 +72,34 @@
         [_cameraView.lastPictureImageView removeFromSuperview];
         _cameraView.lastPictureImageView = nil;
     }
+    
+    __unsafe_unretained NBUCameraViewController * weakSelf = self;
     _cameraView.flashButtonConfigurationBlock = ^(id<UIButton> button, AVCaptureFlashMode mode)
     {
-        _flashLabel.hidden = button.hidden;
+        weakSelf.flashLabel.hidden = button.hidden;
         
         switch (mode)
         {
             case AVCaptureFlashModeOn:
-                _flashLabel.text = NSLocalizedStringWithDefaultValue(@"NBUCameraViewController FlashLabel On",
-                                                                     nil, nil,
-                                                                     @"On",
-                                                                     @"NBUCameraViewController FlashLabel On");
+                weakSelf.flashLabel.text = NSLocalizedStringWithDefaultValue(@"NBUCameraViewController FlashLabel On",
+                                                                             nil, nil,
+                                                                             @"On",
+                                                                             @"NBUCameraViewController FlashLabel On");
                 break;
                 
             case AVCaptureFlashModeOff:
-                _flashLabel.text = NSLocalizedStringWithDefaultValue(@"NBUCameraViewController FlashLabel Off",
-                                                                     nil, nil,
-                                                                     @"Off",
-                                                                     @"NBUCameraViewController FlashLabel Off");
+                weakSelf.flashLabel.text = NSLocalizedStringWithDefaultValue(@"NBUCameraViewController FlashLabel Off",
+                                                                             nil, nil,
+                                                                             @"Off",
+                                                                             @"NBUCameraViewController FlashLabel Off");
                 break;
-
+                
             case AVCaptureFlashModeAuto:
             default:
-                _flashLabel.text = NSLocalizedStringWithDefaultValue(@"NBUCameraViewController FlashLabel Auto",
-                                                                     nil, nil,
-                                                                     @"Auto",
-                                                                     @"NBUCameraViewController FlashLabel Auto");;
+                weakSelf.flashLabel.text = NSLocalizedStringWithDefaultValue(@"NBUCameraViewController FlashLabel Auto",
+                                                                             nil, nil,
+                                                                             @"Auto",
+                                                                             @"NBUCameraViewController FlashLabel Auto");;
                 break;
         }
     };
