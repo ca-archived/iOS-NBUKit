@@ -16,8 +16,8 @@ Pod::Spec.new do |s|
     s.preserve_paths = "README.md", "NOTICE"
     
     s.dependency 'NBUCore', '>= 2.0.0'
-    s.dependency 'Lockbox', '~> 1.4.4'
-    s.dependency 'MotionOrientation@PTEz', '~> 1.0.0'
+    s.dependency 'Lockbox', '>= 1.4.4'
+    s.dependency 'MotionOrientation@PTEz', '>= 1.0.0'
     
     s.subspec 'UI' do |sub|
         sub.source_files = 'Source/UI/*.{h,m}'
