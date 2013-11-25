@@ -48,6 +48,53 @@
 				<int key="IBUIEdgesForExtendedLayout">15</int>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<bool key="IBUIHorizontal">NO</bool>
+				<object class="IBUINavigationController" key="IBUISelectedViewController" id="1030134052">
+					<object class="IBUITabBarItem" key="IBUITabBarItem" id="914525423">
+						<string key="IBUITitle">Hide on Scroll</string>
+						<object class="NSCustomResource" key="IBUIImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">second.png</string>
+						</object>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+					</object>
+					<reference key="IBUIParentViewController" ref="405817330"/>
+					<object class="IBUISimulatedTabBarMetrics" key="IBUISimulatedBottomBarMetrics"/>
+					<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
+					<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
+						<int key="IBUIInterfaceOrientation">1</int>
+						<int key="interfaceOrientation">1</int>
+					</object>
+					<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+					<bool key="IBUIHorizontal">NO</bool>
+					<object class="IBUINavigationBar" key="IBUINavigationBar" id="929181248">
+						<nil key="NSNextResponder"/>
+						<int key="NSvFlags">1792</int>
+						<object class="NSPSMatrix" key="NSFrameMatrix"/>
+						<string key="NSFrameSize">{0, 0}</string>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<int key="IBUIBarStyle">2</int>
+						<object class="NSColor" key="IBUIBarTintColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MAA</bytes>
+						</object>
+						<array key="IBUIItems" id="0"/>
+					</object>
+					<array class="NSMutableArray" key="IBUIViewControllers">
+						<object class="IBUIViewController" id="736969784">
+							<object class="IBUINavigationItem" key="IBUINavigationItem" id="703526856">
+								<string key="IBUITitle">Root View Controller</string>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+							</object>
+							<reference key="IBUIParentViewController" ref="1030134052"/>
+							<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
+								<int key="IBUIInterfaceOrientation">1</int>
+								<int key="interfaceOrientation">1</int>
+							</object>
+							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+							<bool key="IBUIHorizontal">NO</bool>
+						</object>
+					</array>
+				</object>
 				<array class="NSMutableArray" key="IBUIViewControllers">
 					<object class="IBUINavigationController" id="392535659">
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="158195608">
@@ -73,7 +120,7 @@
 							<object class="NSPSMatrix" key="NSFrameMatrix"/>
 							<string key="NSFrameSize">{0, 0}</string>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-							<array key="IBUIItems" id="0"/>
+							<reference key="IBUIItems" ref="0"/>
 						</object>
 						<array class="NSMutableArray" key="IBUIViewControllers">
 							<object class="IBUIViewController" id="724410161">
@@ -91,53 +138,7 @@
 							</object>
 						</array>
 					</object>
-					<object class="IBUINavigationController" id="1030134052">
-						<object class="IBUITabBarItem" key="IBUITabBarItem" id="914525423">
-							<string key="IBUITitle">Hide on Scroll</string>
-							<object class="NSCustomResource" key="IBUIImage">
-								<string key="NSClassName">NSImage</string>
-								<string key="NSResourceName">second.png</string>
-							</object>
-							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						</object>
-						<reference key="IBUIParentViewController" ref="405817330"/>
-						<object class="IBUISimulatedTabBarMetrics" key="IBUISimulatedBottomBarMetrics"/>
-						<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
-						<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
-							<int key="IBUIInterfaceOrientation">1</int>
-							<int key="interfaceOrientation">1</int>
-						</object>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<bool key="IBUIHorizontal">NO</bool>
-						<object class="IBUINavigationBar" key="IBUINavigationBar" id="929181248">
-							<nil key="NSNextResponder"/>
-							<int key="NSvFlags">1792</int>
-							<object class="NSPSMatrix" key="NSFrameMatrix"/>
-							<string key="NSFrameSize">{0, 0}</string>
-							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-							<int key="IBUIBarStyle">2</int>
-							<object class="NSColor" key="IBUIBarTintColor">
-								<int key="NSColorSpace">3</int>
-								<bytes key="NSWhite">MAA</bytes>
-							</object>
-							<reference key="IBUIItems" ref="0"/>
-						</object>
-						<array class="NSMutableArray" key="IBUIViewControllers">
-							<object class="IBUIViewController" id="736969784">
-								<object class="IBUINavigationItem" key="IBUINavigationItem" id="703526856">
-									<string key="IBUITitle">Root View Controller</string>
-									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								</object>
-								<reference key="IBUIParentViewController" ref="1030134052"/>
-								<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
-									<int key="IBUIInterfaceOrientation">1</int>
-									<int key="interfaceOrientation">1</int>
-								</object>
-								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<bool key="IBUIHorizontal">NO</bool>
-							</object>
-						</array>
-					</object>
+					<reference ref="1030134052"/>
 					<object class="IBUINavigationController" id="49470051">
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="489117329">
 							<string key="IBUITitle">Badges</string>

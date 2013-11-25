@@ -20,7 +20,6 @@
 
 #import "NBUKit.h"
 
-
 // Localization
 #undef  NSLocalizedString
 #define NSLocalizedString(key, comment) \
@@ -35,19 +34,14 @@
 
 #import "NBULog+NBUKit.h"
 
-#define NBUKIT_LOG_LEVEL    [NBULog kitLogLevel]
+#undef  LOG_CONTEXT
+#define LOG_CONTEXT NBUKIT_LOG_CONTEXT
 
-// Customize NBULog macros
-#undef  NBULogError
-#define NBULogError(frmt, ...)  LOG_OBJC_MAYBE(LOG_ASYNC_ERROR,   NBUKIT_LOG_LEVEL, LOG_FLAG_ERROR,   NBUKIT_LOG_CONTEXT, frmt, ##__VA_ARGS__)
-#undef  NBULogWarn
-#define NBULogWarn(frmt, ...)   LOG_OBJC_MAYBE(LOG_ASYNC_WARN,    NBUKIT_LOG_LEVEL, LOG_FLAG_WARN,    NBUKIT_LOG_CONTEXT, frmt, ##__VA_ARGS__)
-#undef  NBULogInfo
-#define NBULogInfo(frmt, ...)   LOG_OBJC_MAYBE(LOG_ASYNC_INFO,    NBUKIT_LOG_LEVEL, LOG_FLAG_INFO,    NBUKIT_LOG_CONTEXT, frmt, ##__VA_ARGS__)
-#undef  NBULogDebug
-#define NBULogDebug(frmt, ...)  LOG_OBJC_MAYBE(LOG_ASYNC_DEBUG,   NBUKIT_LOG_LEVEL, LOG_FLAG_DEBUG,   NBUKIT_LOG_CONTEXT, frmt, ##__VA_ARGS__)
-#undef  NBULogVerbose
-#define NBULogVerbose(frmt, ...)LOG_OBJC_MAYBE(LOG_ASYNC_VERBOSE, NBUKIT_LOG_LEVEL, LOG_FLAG_VERBOSE, NBUKIT_LOG_CONTEXT, frmt, ##__VA_ARGS__)
+#undef  LOG_MODULE
+#define LOG_MODULE  NBUKIT_MODULE_DEFAULT
+
+#undef  LOG_LEVEL
+#define LOG_LEVEL   [NBULog kitLogLevel]
 
 
 // b) Else try CocoaLumberjack

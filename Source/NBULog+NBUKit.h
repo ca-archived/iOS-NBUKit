@@ -25,6 +25,9 @@
 // NBUKit log context
 #define NBUKIT_LOG_CONTEXT          110
 
+/// NBUKit modules
+#define NBUKIT_MODULE_DEFAULT       0
+
 /**
  NBULog category used to set/get NBUKit log levels.
  
@@ -37,6 +40,7 @@
 
 /// @name Adjusting NBUKit Log Levels
 
+/// The current NBUKit log level.
 + (int)kitLogLevel;
 
 /// Dynamically set the NBUKit log level for all modules at once.
