@@ -36,15 +36,17 @@
 
 #define NBUKIT_LOG_LEVEL    [NBULog kitLogLevel]
 
-// NBULog macros
-#undef NBULogError
-#define NBULogError(frmt, ...)  LOG_OBJC_MAYBE(LOG_ASYNC_ERROR,   NBUKIT_LOG_LEVEL, LOG_FLAG_ERROR,     NBUKIT_LOG_CONTEXT, frmt, ##__VA_ARGS__)
-#undef NBULogWarn
-#define NBULogWarn(frmt, ...)   LOG_OBJC_MAYBE(LOG_ASYNC_WARN,    NBUKIT_LOG_LEVEL, LOG_FLAG_WARN,      NBUKIT_LOG_CONTEXT, frmt, ##__VA_ARGS__)
-#undef NBULogInfo
-#define NBULogInfo(frmt, ...)   LOG_OBJC_MAYBE(LOG_ASYNC_INFO,    NBUKIT_LOG_LEVEL, LOG_FLAG_INFO,      NBUKIT_LOG_CONTEXT, frmt, ##__VA_ARGS__)
-#undef NBULogVerbose
-#define NBULogVerbose(frmt, ...)LOG_OBJC_MAYBE(LOG_ASYNC_VERBOSE, NBUKIT_LOG_LEVEL, LOG_FLAG_VERBOSE,   NBUKIT_LOG_CONTEXT, frmt, ##__VA_ARGS__)
+// Customize NBULog macros
+#undef  NBULogError
+#define NBULogError(frmt, ...)  LOG_OBJC_MAYBE(LOG_ASYNC_ERROR,   NBUKIT_LOG_LEVEL, LOG_FLAG_ERROR,   NBUKIT_LOG_CONTEXT, frmt, ##__VA_ARGS__)
+#undef  NBULogWarn
+#define NBULogWarn(frmt, ...)   LOG_OBJC_MAYBE(LOG_ASYNC_WARN,    NBUKIT_LOG_LEVEL, LOG_FLAG_WARN,    NBUKIT_LOG_CONTEXT, frmt, ##__VA_ARGS__)
+#undef  NBULogInfo
+#define NBULogInfo(frmt, ...)   LOG_OBJC_MAYBE(LOG_ASYNC_INFO,    NBUKIT_LOG_LEVEL, LOG_FLAG_INFO,    NBUKIT_LOG_CONTEXT, frmt, ##__VA_ARGS__)
+#undef  NBULogDebug
+#define NBULogDebug(frmt, ...)  LOG_OBJC_MAYBE(LOG_ASYNC_DEBUG,   NBUKIT_LOG_LEVEL, LOG_FLAG_DEBUG,   NBUKIT_LOG_CONTEXT, frmt, ##__VA_ARGS__)
+#undef  NBULogVerbose
+#define NBULogVerbose(frmt, ...)LOG_OBJC_MAYBE(LOG_ASYNC_VERBOSE, NBUKIT_LOG_LEVEL, LOG_FLAG_VERBOSE, NBUKIT_LOG_CONTEXT, frmt, ##__VA_ARGS__)
 
 #else
 
