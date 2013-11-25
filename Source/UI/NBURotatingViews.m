@@ -20,7 +20,7 @@
 
 #import "NBURotatingViews.h"
 #import "NBUKitPrivate.h"
-#import "MotionOrientation.h"
+#import <MotionOrientation@PTEz/MotionOrientation.h>
 
 #define kAnimationDuration 0.3
 

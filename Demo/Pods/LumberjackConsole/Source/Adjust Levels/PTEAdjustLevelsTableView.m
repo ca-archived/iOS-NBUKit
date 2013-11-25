@@ -84,7 +84,7 @@
     {
         logContext = ((NSNumber *)contextDictionary[@"context"]).intValue;
         
-        // Get the context description
+        // Get the context description, modules and levels
         context = nil;
         for (context  in _orderedContexts)
         {
@@ -95,7 +95,10 @@
         if (!context)
             continue;
         
-        // And each module level
+        // Set the context level
+        context.setContextLevel(((NSNumber *)contextDictionary[@"contextLevel"]).intValue);
+        
+        // Set each module's level
         moduleLevels = contextDictionary[@"modules"];
         for (NSString * module in moduleLevels)
         {

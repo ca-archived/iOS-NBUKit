@@ -5,7 +5,7 @@
 //  Copyright (c) 2012 tastyone@gmail.com. All rights reserved.
 //
 
-#import "MotionOrientation.h"
+#import <MotionOrientation@PTEz/MotionOrientation.h>
 
 #define MO_degreesToRadian(x) (M_PI * (x) / 180.0)
 
@@ -45,9 +45,9 @@ NSString* const kMotionOrientationKey = @"kMotionOrientationKey";
 
 - (void)_initialize
 {
-    self.operationQueue = [[[NSOperationQueue alloc] init] autorelease];
+    self.operationQueue = [[NSOperationQueue alloc] init];
     
-    self.motionManager = [[[CMMotionManager alloc] init] autorelease];
+    self.motionManager = [[CMMotionManager alloc] init];
     self.motionManager.accelerometerUpdateInterval = 0.1;
     if ( ![self.motionManager isAccelerometerAvailable] ) {
         NSLog(@"MotionOrientation - Accelerometer is NOT available");
@@ -194,9 +194,9 @@ NSString* const kMotionOrientationKey = @"kMotionOrientationKey";
     // post notifications
     if ( deviceOrientationChanged ) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:MotionOrientationChangedNotification
-                                                                object:nil
-                                                              userInfo:[NSDictionary dictionaryWithObjectsAndKeys:self, kMotionOrientationKey, nil]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:MotionOrientationChangedNotification 
+                                                            object:nil 
+                                                          userInfo:@{kMotionOrientationKey: self}];
         });
 #ifdef DEBUG
         NSLog(@"didAccelerate: absoluteZ: %f angle: %f (x: %f, y: %f, z: %f), orientationString: %@", 
@@ -207,9 +207,9 @@ NSString* const kMotionOrientationKey = @"kMotionOrientationKey";
     }
     if ( interfaceOrientationChanged ) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:MotionOrientationInterfaceOrientationChangedNotification
-                                                                object:nil
-                                                              userInfo:[NSDictionary dictionaryWithObjectsAndKeys:self, kMotionOrientationKey, nil]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:MotionOrientationInterfaceOrientationChangedNotification 
+                                                            object:nil 
+                                                          userInfo:@{kMotionOrientationKey: self}];
         });
     }
 }
@@ -233,7 +233,7 @@ NSString* const kMotionOrientationKey = @"kMotionOrientationKey";
     _deviceOrientation = [UIDevice currentDevice].orientation;
     [[NSNotificationCenter defaultCenter] postNotificationName:MotionOrientationChangedNotification
                                                         object:nil
-                                                      userInfo:[NSDictionary dictionaryWithObjectsAndKeys:self, kMotionOrientationKey, nil]];
+                                                      userInfo:@{kMotionOrientationKey: self}];
 }
 
 - (void)dealloc
@@ -241,7 +241,6 @@ NSString* const kMotionOrientationKey = @"kMotionOrientationKey";
     [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    [super dealloc];
 }
 
 #endif

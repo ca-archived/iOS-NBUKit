@@ -1,28 +1,30 @@
 PODS:
-  - CocoaLumberjack (1.6.3):
+  - CocoaLumberjack (1.6.4):
     - CocoaLumberjack/Core
     - CocoaLumberjack/Extensions
-  - CocoaLumberjack/Core (1.6.3)
-  - CocoaLumberjack/Extensions (1.6.3):
+  - CocoaLumberjack/Core (1.6.4)
+  - CocoaLumberjack/Extensions (1.6.4):
     - CocoaLumberjack/Core
   - Lockbox (1.4.4)
-  - LumberjackConsole (1.0.0):
+  - LumberjackConsole (1.0.1):
     - CocoaLumberjack (>= 1.6.3)
     - LumberjackConsole/AdjustLevels
     - LumberjackConsole/Base
     - LumberjackConsole/Base
     - NBUCore (>= 2.0.0)
-  - LumberjackConsole/AdjustLevels (1.0.0):
+  - LumberjackConsole/AdjustLevels (1.0.1):
     - CocoaLumberjack (>= 1.6.3)
     - LumberjackConsole/Base
     - NBUCore (>= 2.0.0)
-  - LumberjackConsole/Base (1.0.0):
+  - LumberjackConsole/Base (1.0.1):
     - CocoaLumberjack (>= 1.6.3)
     - LumberjackConsole/Base
     - NBUCore (>= 2.0.0)
+  - MotionOrientation@PTEz (1.0.0)
   - NBUCore (2.0.0)
   - NBUKit (2.0.0):
     - Lockbox (~> 1.4.4)
+    - MotionOrientation@PTEz (~> 1.0.0)
     - NBUCore (>= 2.0.0)
     - NBUKit/Additions
     - NBUKit/Library
@@ -30,30 +32,32 @@ PODS:
     - NBUKit/UI
   - NBUKit/Additions (2.0.0):
     - Lockbox (~> 1.4.4)
+    - MotionOrientation@PTEz (~> 1.0.0)
     - NBUCore (>= 2.0.0)
   - NBUKit/Library (2.0.0):
     - Lockbox (~> 1.4.4)
+    - MotionOrientation@PTEz (~> 1.0.0)
     - NBUCore (>= 2.0.0)
-    - NBUKit/Library/MotionOrientation
     - NBUKit/Library/NBUCompatibility
     - NBUKit/Library/RestKit Support
-  - NBUKit/Library/MotionOrientation (2.0.0):
-    - Lockbox (~> 1.4.4)
-    - NBUCore (>= 2.0.0)
   - NBUKit/Library/NBUCompatibility (2.0.0):
     - Lockbox (~> 1.4.4)
+    - MotionOrientation@PTEz (~> 1.0.0)
     - NBUCore (>= 2.0.0)
   - NBUKit/Library/RestKit Support (2.0.0):
     - Lockbox (~> 1.4.4)
+    - MotionOrientation@PTEz (~> 1.0.0)
     - NBUCore (>= 2.0.0)
   - NBUKit/Resources (2.0.0):
     - Lockbox (~> 1.4.4)
+    - MotionOrientation@PTEz (~> 1.0.0)
     - NBUCore (>= 2.0.0)
   - NBUKit/UI (2.0.0):
     - Lockbox (~> 1.4.4)
+    - MotionOrientation@PTEz (~> 1.0.0)
     - NBUCore (>= 2.0.0)
     - NBUKit/Resources
-  - NBULog (1.0.0):
+  - NBULog (1.0.2):
     - CocoaLumberjack (>= 1.6.3)
     - NBUCore (>= 2.0.0)
 
@@ -67,11 +71,12 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  CocoaLumberjack: 0af89e0de15835a499fcc6ee5e0b6d396bc95976
+  CocoaLumberjack: 006187e7e3c52f505aab43d7b5ba6af35838bf23
   Lockbox: 917945068ab8b0802e65527f225e6480937b2106
-  LumberjackConsole: 8ccf5df9abb5afc2ccb7cb9f49f6492fdf400527
+  LumberjackConsole: 98711fa522dec36439d729939308819a082d4c47
+  MotionOrientation@PTEz: 0b987d39639b13ce2769f6dc6f96f59783ca8786
   NBUCore: 66e33f9426cbefb5ca88f3228cfc2dd36eac6e71
-  NBUKit: 7606c3c5e468e178429d1d324e07f3024e510954
-  NBULog: baa10a13773d2dbae54b133a70b4b1fee3d099dd
+  NBUKit: e32fd0283c8113c4bb90fdea59ac3feabd4f96bd
+  NBULog: b64973232ea789d726ca3de34278d27526b273db
 
 COCOAPODS: 0.25.0

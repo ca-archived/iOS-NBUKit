@@ -46,8 +46,6 @@ static BOOL _fileLoggerAdded;
 // Configure a formatter, default levels and add default loggers
 + (void)load
 {
-    _nbuLogFormatter = [NBULogFormatter new];
-
     // Default log level
     [self setAppLogLevel:LOG_LEVEL_DEFAULT];
     
@@ -58,6 +56,16 @@ static BOOL _fileLoggerAdded;
 #ifdef DEBUG
     [self addTTYLogger];
 #endif
+}
+
++ (id<DDLogFormatter>)nbuLogFormater
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^
+    {
+        _nbuLogFormatter = [NBULogFormatter new];
+    });
+    return _nbuLogFormatter;
 }
 
 + (int)appLogLevel
@@ -117,7 +125,7 @@ static BOOL _fileLoggerAdded;
         return;
     
     DDASLLogger * logger = [DDASLLogger sharedInstance];
-    logger.logFormatter = _nbuLogFormatter;
+    logger.logFormatter = [self nbuLogFormater];
     [self addLogger:logger];
     
     _aslLoggerAdded = YES;
@@ -129,7 +137,7 @@ static BOOL _fileLoggerAdded;
         return;
     
     DDTTYLogger * ttyLogger = [DDTTYLogger sharedInstance];
-    ttyLogger.logFormatter = _nbuLogFormatter;
+    ttyLogger.logFormatter = [self nbuLogFormater];
     [self addLogger:ttyLogger];
     
     // XcodeColors installed and enabled?
@@ -179,7 +187,7 @@ static BOOL _fileLoggerAdded;
     
     DDFileLogger * fileLogger = [DDFileLogger new];
     fileLogger.logFileManager.maximumNumberOfLogFiles = 10;
-    fileLogger.logFormatter = _nbuLogFormatter;
+    fileLogger.logFormatter = [self nbuLogFormater];
     [self addLogger:fileLogger];
     
     _fileLoggerAdded = YES;

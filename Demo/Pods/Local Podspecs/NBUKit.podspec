@@ -17,6 +17,7 @@ Pod::Spec.new do |s|
     
     s.dependency 'NBUCore', '>= 2.0.0'
     s.dependency 'Lockbox', '~> 1.4.4'
+    s.dependency 'MotionOrientation@PTEz', '~> 1.0.0'
     
     s.subspec 'UI' do |sub|
         sub.source_files = 'Source/UI/*.{h,m}'
@@ -45,14 +46,7 @@ Pod::Spec.new do |s|
             srk.frameworks      = 'MobileCoreServices'
             srk.preserve_paths  = "README.*", "LICENSE"
         end
-        
-        sl.subspec 'MotionOrientation' do |smo|
-            smo.requires_arc    = false
-            smo.source_files    = 'Library/MotionOrientation/*.{h,m}'
-            smo.frameworks      = 'CoreMotion'
-            smo.preserve_paths  = "README.*"
-        end
-        
+
     end
     
 end

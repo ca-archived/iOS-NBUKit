@@ -2,7 +2,7 @@
 platform :ios, '5.0'
 
 # For client projects
-#pod 'NBUKit', '~> 2.0.0'
+#pod 'NBUKit'
 
 # Optional for loggin and on-device console
 pod 'NBULog'
