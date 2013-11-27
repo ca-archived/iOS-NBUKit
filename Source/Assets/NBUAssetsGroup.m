@@ -319,12 +319,19 @@
     }
     [_ALAssetsGroup setAssetsFilter:filter];
     
+    // Nothing to enumerate?
+    NSMutableArray * assets = [NSMutableArray array];
+    if (countToReach == 0)
+    {
+        resultBlock(assets, nil);
+        return;
+    }
+    
     // Incremental load size
     loadSize = loadSize ? loadSize : NSUIntegerMax;
     
     // Enumeration block
     _stopLoadingAssets = NO;
-    NSMutableArray * assets = [NSMutableArray array];
     ALAssetsGroupEnumerationResultsBlock block = ^(ALAsset * ALAsset,
                                                    NSUInteger index,
                                                    BOOL * stop)
