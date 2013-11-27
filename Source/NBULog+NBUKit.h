@@ -22,7 +22,7 @@
 
 #import <NBULog/NBULog.h>
 
-// NBUKit log context
+/// NBUKit log context
 #define NBUKIT_LOG_CONTEXT          110
 
 /// NBUKit modules
