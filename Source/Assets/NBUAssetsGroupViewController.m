@@ -88,40 +88,67 @@
     {
         [oldGroup stopLoadingAssets];
         [_gridView resetGridView];
-        _selectedAssets = [NSMutableArray array];
     }
     
-    // Configure UI
+    // Set the group name
     if (_groupNameLabel)
         _groupNameLabel.text = self.assetsGroup.name;
     else
         self.title = self.assetsGroup.name;
     self.selectedAssets = nil;
     
-    // Reload assets
+    // Check the number of images
     [self.assetsGroup stopLoadingAssets];
-    NBULogVerbose(@"Loading images for group %@...", self.assetsGroup.name);
+    NSUInteger totalCount = self.assetsGroup.imageAssetsCount;
+    
+    // And update the count label
+    if (_assetsCountLabel)
+    {
+        switch (totalCount)
+        {
+            case 0:
+            {
+                _assetsCountLabel.text = [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"NBUAssetsGroupViewController NoImagesLabel",
+                                                                                                      nil, nil,
+                                                                                                      @"No images",
+                                                                                                      @"NBUAssetsGroupViewController NoImagesLabel"),
+                                          totalCount];
+                break;
+            }
+            case 1:
+            {
+                _assetsCountLabel.text = [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"NBUAssetsGroupView Only one image",
+                                                                                                      nil, nil,
+                                                                                                      @"1 image",
+                                                                                                      @"NBUAssetsGroupView Only one image"),
+                                          totalCount];
+                break;
+            }
+            default:
+            {
+                _assetsCountLabel.text = [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"NBUAssetsGroupView Number of images",
+                                                                                                      nil, nil,
+                                                                                                      @"%d images",
+                                                                                                      @"NBUAssetsGroupView Number of images"),
+                                          totalCount];
+                break;
+            }
+        }
+    }
+    
+    // No need to load assets
+    if (totalCount == 0)
+    {
+        self.loading = NO;
+        return;
+    }
+    
+    // Load assets
+    NBULogInfo(@"Loading %d images for group %@...", totalCount, self.assetsGroup.name);
     dispatch_async(dispatch_get_main_queue(), ^
                    {
                        self.loading = YES;
                    });
-    NSUInteger totalCount = self.assetsGroup.imageAssetsCount;
-    if (totalCount == 0)
-    {
-        _assetsCountLabel.text = [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"NBUAssetsGroupView Only one image",
-                                                                                              nil, nil,
-                                                                                              @"1 image",
-                                                                                              @"NBUAssetsGroupView Only one image"),
-                                  totalCount];
-    }
-    else
-    {
-        _assetsCountLabel.text = [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"NBUAssetsGroupView Number of images",
-                                                                                              nil, nil,
-                                                                                              @"%d images",
-                                                                                              @"NBUAssetsGroupView Number of images"),
-                                  totalCount];
-    }
     __unsafe_unretained NBUAssetsGroupViewController * weakSelf = self;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         
@@ -146,7 +173,10 @@
                      // Stop loading?
                      if (assets.count == totalCount)
                      {
-                         weakSelf.loading = NO;
+                         dispatch_async(dispatch_get_main_queue(), ^
+                                        {
+                                            weakSelf.loading = NO;
+                                        });
                      }
                      
                      // Check for selectedAssets
