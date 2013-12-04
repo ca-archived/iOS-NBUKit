@@ -723,10 +723,10 @@ static NSString * customBackButtonTitle;
                NBUStringFromBOOL(_activeField.isFirstResponder), _activeField);
     
     // Restore accessoryView
-    if ([_activeField respondsToSelector:@selector(restoreAccessoryView)])
-    {
-        [_activeField performSelector:@selector(restoreAccessoryView)];
-    }
+//    if ([_activeField respondsToSelector:@selector(restoreAccessoryView)])
+//    {
+//        [_activeField performSelector:@selector(restoreAccessoryView)];
+//    }
 
     // 2012.08.08 modify start by Kubota
     // テキスト入力で、変換候補一覧を表示して元の画面に戻ると完了ボタンが効かない

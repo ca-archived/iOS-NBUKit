@@ -3,7 +3,7 @@
 //  NBUKit
 //
 //  Created by Ernesto Rivera on 2012/12/12.
-//  Copyright (c) 2012 CyberAgent Inc.
+//  Copyright (c) 2012-2013 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -18,42 +18,45 @@
 //  limitations under the License.
 //
 
+#ifdef COCOAPODS_POD_AVAILABLE_NBULog
+
 #import "NBULog+NBUKit.h"
+#import <NBULog/NBULogContextDescription.h>
 
-#define MAX_MODULES 10
-
-static int _kitLogLevel[MAX_MODULES];
+static int _kitLogLevel;
 
 @implementation NBULog (NBUKit)
 
 + (void)load
 {
     // Default levels
+    [self setKitLogLevel:LOG_LEVEL_DEFAULT];
+    
+    // Register the NBUKit log context
+    [NBULog registerContextDescription:[NBULogContextDescription descriptionWithName:@"NBUKit"
+                                                                             context:NBUKIT_LOG_CONTEXT
+                                                                     modulesAndNames:nil
+                                                                   contextLevelBlock:^{ return [NBULog kitLogLevel]; }
+                                                                setContextLevelBlock:^(int level) { [NBULog setKitLogLevel:level]; }
+                                                          contextLevelForModuleBlock:NULL
+                                                       setContextLevelForModuleBlock:NULL]];
+}
+
++ (int)kitLogLevel
+{
+    return _kitLogLevel;
+}
+
++ (void)setKitLogLevel:(int)LOG_LEVEL_XXX
+{
 #ifdef DEBUG
-    [self setKitLogLevel:LOG_LEVEL_INFO];
+    _kitLogLevel = LOG_LEVEL_XXX == LOG_LEVEL_DEFAULT ? LOG_LEVEL_INFO : LOG_LEVEL_XXX;
 #else
-    [self setKitLogLevel:LOG_LEVEL_WARN];
+    _kitLogLevel = LOG_LEVEL_XXX == LOG_LEVEL_DEFAULT ? LOG_LEVEL_WARN : LOG_LEVEL_XXX;
 #endif
 }
 
-+ (void)setKitLogLevel:(int)LOG_LEVEL_XXX
-{
-    for (int i = 0; i < MAX_MODULES; i++)
-    {
-        _kitLogLevel[i] = LOG_LEVEL_XXX;
-    }
-}
-
-+ (void)setKitLogLevel:(int)LOG_LEVEL_XXX
-             forModule:(int)NBUKIT_MODULE_XXX
-{
-    _kitLogLevel[NBUKIT_MODULE_XXX] = LOG_LEVEL_XXX;
-}
-
-+ (int)kitLogLevelForModule:(int)NBUKIT_MODULE_XXX
-{
-    return _kitLogLevel[NBUKIT_MODULE_XXX];
-}
-
 @end
+
+#endif
 

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1072</int>
-		<string key="IBDocument.SystemVersion">12F37</string>
-		<string key="IBDocument.InterfaceBuilderVersion">4510</string>
-		<string key="IBDocument.AppKitVersion">1187.39</string>
-		<string key="IBDocument.HIToolboxVersion">626.00</string>
+		<int key="IBDocument.SystemTarget">1280</int>
+		<string key="IBDocument.SystemVersion">13A598</string>
+		<string key="IBDocument.InterfaceBuilderVersion">4511</string>
+		<string key="IBDocument.AppKitVersion">1265</string>
+		<string key="IBDocument.HIToolboxVersion">695.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">3742</string>
+			<string key="NS.object.0">3745</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBProxyObject</string>
@@ -48,7 +48,7 @@
 					<object class="IBUIViewController" id="476996327">
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="589639619">
 							<string key="IBUITitle">Tab 1</string>
-							<object class="NSCustomResource" key="IBUIImage">
+							<object class="NSCustomResource" key="IBUIImage" id="1047119722">
 								<string key="NSClassName">NSImage</string>
 								<string key="NSResourceName">second.png</string>
 							</object>
@@ -68,10 +68,7 @@
 					<object class="IBUIViewController" id="753790503">
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="415120148">
 							<string key="IBUITitle">Tab 2</string>
-							<object class="NSCustomResource" key="IBUIImage">
-								<string key="NSClassName">NSImage</string>
-								<string key="NSResourceName">second.png</string>
-							</object>
+							<reference key="IBUIImage" ref="1047119722"/>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							<string key="IBUIBadgeValue">2</string>
 						</object>
@@ -88,10 +85,7 @@
 					<object class="IBUIViewController" id="122860754">
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="718398967">
 							<string key="IBUITitle">Tab 3</string>
-							<object class="NSCustomResource" key="IBUIImage">
-								<string key="NSClassName">NSImage</string>
-								<string key="NSResourceName">second.png</string>
-							</object>
+							<reference key="IBUIImage" ref="1047119722"/>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							<string key="IBUIBadgeValue">3</string>
 						</object>
@@ -108,10 +102,7 @@
 					<object class="IBUIViewController" id="336287988">
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="400103997">
 							<string key="IBUITitle">Tab 4</string>
-							<object class="NSCustomResource" key="IBUIImage">
-								<string key="NSClassName">NSImage</string>
-								<string key="NSResourceName">second.png</string>
-							</object>
+							<reference key="IBUIImage" ref="1047119722"/>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							<string key="IBUIBadgeValue">4</string>
 						</object>
@@ -142,7 +133,7 @@
 				</object>
 			</object>
 			<object class="IBUIView" id="565857795">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">1322</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUILabel" id="137010668">
@@ -151,7 +142,6 @@
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{10, 6}, {71, 26}}</string>
 						<reference key="NSSuperview" ref="565857795"/>
-						<reference key="NSWindow"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -183,7 +173,6 @@
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{84, 6}, {33, 30}}</string>
 						<reference key="NSSuperview" ref="565857795"/>
-						<reference key="NSWindow"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -215,7 +204,6 @@
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{121, 0}, {48, 42}}</string>
 						<reference key="NSSuperview" ref="565857795"/>
-						<reference key="NSWindow"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
@@ -231,7 +219,6 @@
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{170, 0}, {48, 42}}</string>
 						<reference key="NSSuperview" ref="565857795"/>
-						<reference key="NSWindow"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
@@ -245,7 +232,6 @@
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{219, 0}, {48, 42}}</string>
 						<reference key="NSSuperview" ref="565857795"/>
-						<reference key="NSWindow"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
@@ -259,7 +245,6 @@
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{268, 0}, {48, 42}}</string>
 						<reference key="NSSuperview" ref="565857795"/>
-						<reference key="NSWindow"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
@@ -270,8 +255,6 @@
 				</array>
 				<object class="NSPSMatrix" key="NSFrameMatrix"/>
 				<string key="NSFrameSize">{320, 42}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MC4yOTgwMzkyMjc3IDAuMjk4MDM5MjI3NyAwLjI5ODAzOTIyNzcAA</bytes>
@@ -592,7 +575,7 @@
 		<bool key="IBDocument.previouslyAttemptedUpgradeToXcode5">YES</bool>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
-			<real value="1072" key="NS.object.0"/>
+			<integer value="1280" key="NS.object.0"/>
 		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.InterfaceBuilder3</string>
@@ -604,6 +587,6 @@
 			<string key="NS.key.0">second.png</string>
 			<string key="NS.object.0">{30, 30}</string>
 		</object>
-		<string key="IBCocoaTouchPluginVersion">3742</string>
+		<string key="IBCocoaTouchPluginVersion">3745</string>
 	</data>
 </archive>

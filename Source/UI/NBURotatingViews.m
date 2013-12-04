@@ -3,7 +3,7 @@
 //  NBUKit
 //
 //  Created by Ernesto Rivera on 2013/02/28.
-//  Copyright (c) 2013 CyberAgent Inc.
+//  Copyright (c) 2012-2013 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
 
 #import "NBURotatingViews.h"
 #import "NBUKitPrivate.h"
-#import "MotionOrientation.h"
+#import <MotionOrientation@PTEz/MotionOrientation.h>
 
 #define kAnimationDuration 0.3
 

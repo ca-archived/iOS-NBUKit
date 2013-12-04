@@ -2,8 +2,8 @@
 //  NBUKit.m
 //  NBUKit
 //
-//  Created by Ernesto Rivera on 12/07/11.
-//  Copyright (c) 2012 CyberAgent Inc.
+//  Created by Ernesto Rivera on 2012/07/11.
+//  Copyright (c) 2012-2013 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -24,23 +24,20 @@ static NSBundle * _resourcesBundle;
 
 @implementation NBUKit
 
-+ (void)initialize
-{
-    NBULogInfo(@"NBUKit %@ initialized...", [self version]);
-}
-
 + (NSString *)version
 {
-    return @"1.9.8";
+    return @"2.0.0";
 }
 
 + (NSBundle *)resourcesBundle
 {
-    if (!_resourcesBundle)
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^
     {
         NSString * resourcesPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"NBUKitResources.bundle"];
         _resourcesBundle = [NSBundle bundleWithPath:resourcesPath];
-    }
+    });
+    
     return _resourcesBundle;
 }
 

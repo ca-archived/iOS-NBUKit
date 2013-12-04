@@ -29,6 +29,8 @@ install_resource()
       echo "xcrun momc \"${PODS_ROOT}/$1\" \"${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename "$1" .xcdatamodeld`.momd\""
       xcrun momc "${PODS_ROOT}/$1" "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename "$1" .xcdatamodeld`.momd"
       ;;
+    *.xcassets)
+      ;;
     /*)
       echo "$1"
       echo "$1" >> "$RESOURCES_TO_COPY"
@@ -39,27 +41,10 @@ install_resource()
       ;;
   esac
 }
-install_resource "GPUImage/framework/Resources/lookup.png"
-install_resource "GPUImage/framework/Resources/lookup_amatorka.png"
-install_resource "GPUImage/framework/Resources/lookup_miss_etikate.png"
-install_resource "GPUImage/framework/Resources/lookup_soft_elegance_1.png"
-install_resource "GPUImage/framework/Resources/lookup_soft_elegance_2.png"
-install_resource "NBUCore/Source/Dashboard/NBUDashboard.xib"
+install_resource "LumberjackConsole/Source/Adjust Levels/PTEAdjustLevelsCell.xib"
+install_resource "LumberjackConsole/Source/PTEDashboard.xib"
 install_resource "../../NBUKitResources.bundle"
-install_resource "../../Source/Assets/NBUAssetsGroupView.xib"
-install_resource "../../Source/Assets/NBUAssetsGroupViewController.xib"
-install_resource "../../Source/Assets/NBUAssetsLibraryViewController.xib"
-install_resource "../../Source/Assets/NBUAssetThumbnailView.xib"
-install_resource "../../Source/Image/NBUCropViewController.xib"
-install_resource "../../Source/Image/NBUEditImageViewController.xib"
-install_resource "../../Source/Image/NBUFilterThumbnailView.xib"
-install_resource "../../Source/Image/NBUPresetFilterViewController.xib"
-install_resource "../../Source/Picker/NBUCameraViewController.xib"
-install_resource "../../Source/Picker/NBUImagePickerController.xib"
 install_resource "../../Source/UI/NBUBadgeView.xib"
-install_resource "../../Source/UI/NBUGalleryThumbnailView.xib"
-install_resource "../../Source/UI/NBUGalleryView.xib"
-install_resource "../../Source/UI/NBUGalleryViewController.xib"
 install_resource "../../Source/UI/NBURefreshControl.xib"
 install_resource "../../Source/UI/NBUSplashView.xib"
 install_resource "../../Source/UI/NBUTabBarControllerSample.xib"
@@ -69,3 +54,22 @@ if [[ "${ACTION}" == "install" ]]; then
   rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${INSTALL_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 fi
 rm -f "$RESOURCES_TO_COPY"
+
+if [[ -n "${WRAPPER_EXTENSION}" ]] && [ `xcrun --find actool` ] && [ `find . -name '*.xcassets' | wc -l` -ne 0 ]
+then
+  case "${TARGETED_DEVICE_FAMILY}" in 
+    1,2)
+      TARGET_DEVICE_ARGS="--target-device ipad --target-device iphone"
+      ;;
+    1)
+      TARGET_DEVICE_ARGS="--target-device iphone"
+      ;;
+    2)
+      TARGET_DEVICE_ARGS="--target-device ipad"
+      ;;
+    *)
+      TARGET_DEVICE_ARGS="--target-device mac"
+      ;;  
+  esac 
+  find "${PWD}" -name "*.xcassets" -print0 | xargs -0 actool --output-format human-readable-text --notices --warnings --platform "${PLATFORM_NAME}" --minimum-deployment-target "${IPHONEOS_DEPLOYMENT_TARGET}" ${TARGET_DEVICE_ARGS} --compress-pngs --compile "${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
+fi

@@ -1,1 +1,0 @@
-../../../../Source/Assets/NBUAssetThumbnailView.h

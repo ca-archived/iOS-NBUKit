@@ -1,73 +1,82 @@
 PODS:
-  - CocoaLumberjack (1.6)
-  - GPUImage (HEAD based on 0.1.1)
+  - CocoaLumberjack (1.6.5):
+    - CocoaLumberjack/Core
+    - CocoaLumberjack/Extensions
+  - CocoaLumberjack/Core (1.6.5)
+  - CocoaLumberjack/Extensions (1.6.5):
+    - CocoaLumberjack/Core
   - Lockbox (1.4.4)
-  - NBUCore (1.9.7):
-    - CocoaLumberjack (<= 1.6)
-    - Lockbox (~> 1.4.2)
-    - NBUCore/Additions
-    - NBUCore/Dashboard
-    - NBUCore/Helpers
-    - NBUCore/UI
-  - NBUCore/Additions (1.9.7):
-    - CocoaLumberjack (<= 1.6)
-    - Lockbox (~> 1.4.2)
-  - NBUCore/Dashboard (1.9.7):
-    - CocoaLumberjack (<= 1.6)
-    - Lockbox (~> 1.4.2)
-  - NBUCore/Helpers (1.9.7):
-    - CocoaLumberjack (<= 1.6)
-    - Lockbox (~> 1.4.2)
-  - NBUCore/UI (1.9.7):
-    - CocoaLumberjack (<= 1.6)
-    - Lockbox (~> 1.4.2)
-  - NBUKit (1.9.6):
-    - NBUCore (~> 1.9.6)
-    - NBUKit/Assets
-    - NBUKit/Image
+  - LumberjackConsole (1.0.1):
+    - CocoaLumberjack (>= 1.6.3)
+    - LumberjackConsole/AdjustLevels
+    - LumberjackConsole/Base
+    - LumberjackConsole/Base
+    - NBUCore (>= 2.0.0)
+  - LumberjackConsole/AdjustLevels (1.0.1):
+    - CocoaLumberjack (>= 1.6.3)
+    - LumberjackConsole/Base
+    - NBUCore (>= 2.0.0)
+  - LumberjackConsole/Base (1.0.1):
+    - CocoaLumberjack (>= 1.6.3)
+    - LumberjackConsole/Base
+    - NBUCore (>= 2.0.0)
+  - MotionOrientation@PTEz (1.0.0)
+  - NBUCore (2.0.0)
+  - NBUKit (2.0.0):
+    - Lockbox (>= 1.4.4)
+    - MotionOrientation@PTEz (>= 1.0.0)
+    - NBUCore (>= 2.0.0)
+    - NBUKit/Additions
     - NBUKit/Library
-    - NBUKit/Picker
     - NBUKit/Resources
     - NBUKit/UI
-  - NBUKit/Assets (1.9.6):
-    - NBUCore (~> 1.9.6)
-  - NBUKit/Image (1.9.6):
-    - GPUImage (>= 0.1.0)
-    - NBUCore (~> 1.9.6)
-  - NBUKit/Library (1.9.6):
-    - NBUCore (~> 1.9.6)
-    - NBUKit/Library/MotionOrientation
+  - NBUKit/Additions (2.0.0):
+    - Lockbox (>= 1.4.4)
+    - MotionOrientation@PTEz (>= 1.0.0)
+    - NBUCore (>= 2.0.0)
+  - NBUKit/Library (2.0.0):
+    - Lockbox (>= 1.4.4)
+    - MotionOrientation@PTEz (>= 1.0.0)
+    - NBUCore (>= 2.0.0)
     - NBUKit/Library/NBUCompatibility
-    - NBUKit/Library/RBVolumeButtons
     - NBUKit/Library/RestKit Support
-  - NBUKit/Library/MotionOrientation (1.9.6):
-    - NBUCore (~> 1.9.6)
-  - NBUKit/Library/NBUCompatibility (1.9.6):
-    - NBUCore (~> 1.9.6)
-  - NBUKit/Library/RBVolumeButtons (1.9.6):
-    - NBUCore (~> 1.9.6)
-  - NBUKit/Library/RestKit Support (1.9.6):
-    - NBUCore (~> 1.9.6)
-  - NBUKit/Picker (1.9.6):
-    - NBUCore (~> 1.9.6)
-  - NBUKit/Resources (1.9.6):
-    - NBUCore (~> 1.9.6)
-  - NBUKit/UI (1.9.6):
-    - NBUCore (~> 1.9.6)
+  - NBUKit/Library/NBUCompatibility (2.0.0):
+    - Lockbox (>= 1.4.4)
+    - MotionOrientation@PTEz (>= 1.0.0)
+    - NBUCore (>= 2.0.0)
+  - NBUKit/Library/RestKit Support (2.0.0):
+    - Lockbox (>= 1.4.4)
+    - MotionOrientation@PTEz (>= 1.0.0)
+    - NBUCore (>= 2.0.0)
+  - NBUKit/Resources (2.0.0):
+    - Lockbox (>= 1.4.4)
+    - MotionOrientation@PTEz (>= 1.0.0)
+    - NBUCore (>= 2.0.0)
+  - NBUKit/UI (2.0.0):
+    - Lockbox (>= 1.4.4)
+    - MotionOrientation@PTEz (>= 1.0.0)
+    - NBUCore (>= 2.0.0)
+    - NBUKit/Resources
+  - NBULog (1.0.3):
+    - CocoaLumberjack (>= 1.6.3)
+    - NBUCore (>= 2.0.0)
 
 DEPENDENCIES:
-  - GPUImage (HEAD)
+  - LumberjackConsole
   - NBUKit (from `../`)
+  - NBULog
 
 EXTERNAL SOURCES:
   NBUKit:
     :path: ../
 
 SPEC CHECKSUMS:
-  CocoaLumberjack: 0f2fa7090a23f13261072d882e017c688300efbe
-  GPUImage: b9840114a0ad0323801c2e0aa2752679057f808d
+  CocoaLumberjack: 810252c783cae9ab41c5b00687384f247d7e5a48
   Lockbox: 917945068ab8b0802e65527f225e6480937b2106
-  NBUCore: 63cb2455028c611a9b533fd94efe3dad668bd5cd
-  NBUKit: 1c3b28eaffeae63b86ead9b87568f873866b5574
+  LumberjackConsole: 98711fa522dec36439d729939308819a082d4c47
+  MotionOrientation@PTEz: 0b987d39639b13ce2769f6dc6f96f59783ca8786
+  NBUCore: 66e33f9426cbefb5ca88f3228cfc2dd36eac6e71
+  NBUKit: e3e9613e59584d80fdc4337cb1d5ca59d061c262
+  NBULog: a4e9cb7c0ee6c1e270b4fb4afbe66cbaca826146
 
-COCOAPODS: 0.25.0
+COCOAPODS: 0.28.0

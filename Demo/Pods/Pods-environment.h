@@ -10,13 +10,19 @@
 #define COCOAPODS_POD_AVAILABLE_CocoaLumberjack
 #define COCOAPODS_VERSION_MAJOR_CocoaLumberjack 1
 #define COCOAPODS_VERSION_MINOR_CocoaLumberjack 6
-#define COCOAPODS_VERSION_PATCH_CocoaLumberjack 0
+#define COCOAPODS_VERSION_PATCH_CocoaLumberjack 5
 
-// GPUImage
-#define COCOAPODS_POD_AVAILABLE_GPUImage
-#define COCOAPODS_VERSION_MAJOR_GPUImage 0
-#define COCOAPODS_VERSION_MINOR_GPUImage 1
-#define COCOAPODS_VERSION_PATCH_GPUImage 1
+// CocoaLumberjack/Core
+#define COCOAPODS_POD_AVAILABLE_CocoaLumberjack_Core
+#define COCOAPODS_VERSION_MAJOR_CocoaLumberjack_Core 1
+#define COCOAPODS_VERSION_MINOR_CocoaLumberjack_Core 6
+#define COCOAPODS_VERSION_PATCH_CocoaLumberjack_Core 5
+
+// CocoaLumberjack/Extensions
+#define COCOAPODS_POD_AVAILABLE_CocoaLumberjack_Extensions
+#define COCOAPODS_VERSION_MAJOR_CocoaLumberjack_Extensions 1
+#define COCOAPODS_VERSION_MINOR_CocoaLumberjack_Extensions 6
+#define COCOAPODS_VERSION_PATCH_CocoaLumberjack_Extensions 5
 
 // Lockbox
 #define COCOAPODS_POD_AVAILABLE_Lockbox
@@ -24,99 +30,81 @@
 #define COCOAPODS_VERSION_MINOR_Lockbox 4
 #define COCOAPODS_VERSION_PATCH_Lockbox 4
 
+// LumberjackConsole
+#define COCOAPODS_POD_AVAILABLE_LumberjackConsole
+#define COCOAPODS_VERSION_MAJOR_LumberjackConsole 1
+#define COCOAPODS_VERSION_MINOR_LumberjackConsole 0
+#define COCOAPODS_VERSION_PATCH_LumberjackConsole 1
+
+// LumberjackConsole/AdjustLevels
+#define COCOAPODS_POD_AVAILABLE_LumberjackConsole_AdjustLevels
+#define COCOAPODS_VERSION_MAJOR_LumberjackConsole_AdjustLevels 1
+#define COCOAPODS_VERSION_MINOR_LumberjackConsole_AdjustLevels 0
+#define COCOAPODS_VERSION_PATCH_LumberjackConsole_AdjustLevels 1
+
+// LumberjackConsole/Base
+#define COCOAPODS_POD_AVAILABLE_LumberjackConsole_Base
+#define COCOAPODS_VERSION_MAJOR_LumberjackConsole_Base 1
+#define COCOAPODS_VERSION_MINOR_LumberjackConsole_Base 0
+#define COCOAPODS_VERSION_PATCH_LumberjackConsole_Base 1
+
+// MotionOrientation@PTEz
+#define COCOAPODS_POD_AVAILABLE_MotionOrientation_PTEz
+#define COCOAPODS_VERSION_MAJOR_MotionOrientation_PTEz 1
+#define COCOAPODS_VERSION_MINOR_MotionOrientation_PTEz 0
+#define COCOAPODS_VERSION_PATCH_MotionOrientation_PTEz 0
+
 // NBUCore
 #define COCOAPODS_POD_AVAILABLE_NBUCore
-#define COCOAPODS_VERSION_MAJOR_NBUCore 1
-#define COCOAPODS_VERSION_MINOR_NBUCore 9
-#define COCOAPODS_VERSION_PATCH_NBUCore 7
-
-// NBUCore/Additions
-#define COCOAPODS_POD_AVAILABLE_NBUCore_Additions
-#define COCOAPODS_VERSION_MAJOR_NBUCore_Additions 1
-#define COCOAPODS_VERSION_MINOR_NBUCore_Additions 9
-#define COCOAPODS_VERSION_PATCH_NBUCore_Additions 7
-
-// NBUCore/Dashboard
-#define COCOAPODS_POD_AVAILABLE_NBUCore_Dashboard
-#define COCOAPODS_VERSION_MAJOR_NBUCore_Dashboard 1
-#define COCOAPODS_VERSION_MINOR_NBUCore_Dashboard 9
-#define COCOAPODS_VERSION_PATCH_NBUCore_Dashboard 7
-
-// NBUCore/Helpers
-#define COCOAPODS_POD_AVAILABLE_NBUCore_Helpers
-#define COCOAPODS_VERSION_MAJOR_NBUCore_Helpers 1
-#define COCOAPODS_VERSION_MINOR_NBUCore_Helpers 9
-#define COCOAPODS_VERSION_PATCH_NBUCore_Helpers 7
-
-// NBUCore/UI
-#define COCOAPODS_POD_AVAILABLE_NBUCore_UI
-#define COCOAPODS_VERSION_MAJOR_NBUCore_UI 1
-#define COCOAPODS_VERSION_MINOR_NBUCore_UI 9
-#define COCOAPODS_VERSION_PATCH_NBUCore_UI 7
+#define COCOAPODS_VERSION_MAJOR_NBUCore 2
+#define COCOAPODS_VERSION_MINOR_NBUCore 0
+#define COCOAPODS_VERSION_PATCH_NBUCore 0
 
 // NBUKit
 #define COCOAPODS_POD_AVAILABLE_NBUKit
-#define COCOAPODS_VERSION_MAJOR_NBUKit 1
-#define COCOAPODS_VERSION_MINOR_NBUKit 9
-#define COCOAPODS_VERSION_PATCH_NBUKit 6
+#define COCOAPODS_VERSION_MAJOR_NBUKit 2
+#define COCOAPODS_VERSION_MINOR_NBUKit 0
+#define COCOAPODS_VERSION_PATCH_NBUKit 0
 
-// NBUKit/Assets
-#define COCOAPODS_POD_AVAILABLE_NBUKit_Assets
-#define COCOAPODS_VERSION_MAJOR_NBUKit_Assets 1
-#define COCOAPODS_VERSION_MINOR_NBUKit_Assets 9
-#define COCOAPODS_VERSION_PATCH_NBUKit_Assets 6
-
-// NBUKit/Image
-#define COCOAPODS_POD_AVAILABLE_NBUKit_Image
-#define COCOAPODS_VERSION_MAJOR_NBUKit_Image 1
-#define COCOAPODS_VERSION_MINOR_NBUKit_Image 9
-#define COCOAPODS_VERSION_PATCH_NBUKit_Image 6
+// NBUKit/Additions
+#define COCOAPODS_POD_AVAILABLE_NBUKit_Additions
+#define COCOAPODS_VERSION_MAJOR_NBUKit_Additions 2
+#define COCOAPODS_VERSION_MINOR_NBUKit_Additions 0
+#define COCOAPODS_VERSION_PATCH_NBUKit_Additions 0
 
 // NBUKit/Library
 #define COCOAPODS_POD_AVAILABLE_NBUKit_Library
-#define COCOAPODS_VERSION_MAJOR_NBUKit_Library 1
-#define COCOAPODS_VERSION_MINOR_NBUKit_Library 9
-#define COCOAPODS_VERSION_PATCH_NBUKit_Library 6
-
-// NBUKit/Library/MotionOrientation
-#define COCOAPODS_POD_AVAILABLE_NBUKit_Library_MotionOrientation
-#define COCOAPODS_VERSION_MAJOR_NBUKit_Library_MotionOrientation 1
-#define COCOAPODS_VERSION_MINOR_NBUKit_Library_MotionOrientation 9
-#define COCOAPODS_VERSION_PATCH_NBUKit_Library_MotionOrientation 6
+#define COCOAPODS_VERSION_MAJOR_NBUKit_Library 2
+#define COCOAPODS_VERSION_MINOR_NBUKit_Library 0
+#define COCOAPODS_VERSION_PATCH_NBUKit_Library 0
 
 // NBUKit/Library/NBUCompatibility
 #define COCOAPODS_POD_AVAILABLE_NBUKit_Library_NBUCompatibility
-#define COCOAPODS_VERSION_MAJOR_NBUKit_Library_NBUCompatibility 1
-#define COCOAPODS_VERSION_MINOR_NBUKit_Library_NBUCompatibility 9
-#define COCOAPODS_VERSION_PATCH_NBUKit_Library_NBUCompatibility 6
-
-// NBUKit/Library/RBVolumeButtons
-#define COCOAPODS_POD_AVAILABLE_NBUKit_Library_RBVolumeButtons
-#define COCOAPODS_VERSION_MAJOR_NBUKit_Library_RBVolumeButtons 1
-#define COCOAPODS_VERSION_MINOR_NBUKit_Library_RBVolumeButtons 9
-#define COCOAPODS_VERSION_PATCH_NBUKit_Library_RBVolumeButtons 6
+#define COCOAPODS_VERSION_MAJOR_NBUKit_Library_NBUCompatibility 2
+#define COCOAPODS_VERSION_MINOR_NBUKit_Library_NBUCompatibility 0
+#define COCOAPODS_VERSION_PATCH_NBUKit_Library_NBUCompatibility 0
 
 // NBUKit/Library/RestKit Support
 #define COCOAPODS_POD_AVAILABLE_NBUKit_Library_RestKit_Support
-#define COCOAPODS_VERSION_MAJOR_NBUKit_Library_RestKit_Support 1
-#define COCOAPODS_VERSION_MINOR_NBUKit_Library_RestKit_Support 9
-#define COCOAPODS_VERSION_PATCH_NBUKit_Library_RestKit_Support 6
-
-// NBUKit/Picker
-#define COCOAPODS_POD_AVAILABLE_NBUKit_Picker
-#define COCOAPODS_VERSION_MAJOR_NBUKit_Picker 1
-#define COCOAPODS_VERSION_MINOR_NBUKit_Picker 9
-#define COCOAPODS_VERSION_PATCH_NBUKit_Picker 6
+#define COCOAPODS_VERSION_MAJOR_NBUKit_Library_RestKit_Support 2
+#define COCOAPODS_VERSION_MINOR_NBUKit_Library_RestKit_Support 0
+#define COCOAPODS_VERSION_PATCH_NBUKit_Library_RestKit_Support 0
 
 // NBUKit/Resources
 #define COCOAPODS_POD_AVAILABLE_NBUKit_Resources
-#define COCOAPODS_VERSION_MAJOR_NBUKit_Resources 1
-#define COCOAPODS_VERSION_MINOR_NBUKit_Resources 9
-#define COCOAPODS_VERSION_PATCH_NBUKit_Resources 6
+#define COCOAPODS_VERSION_MAJOR_NBUKit_Resources 2
+#define COCOAPODS_VERSION_MINOR_NBUKit_Resources 0
+#define COCOAPODS_VERSION_PATCH_NBUKit_Resources 0
 
 // NBUKit/UI
 #define COCOAPODS_POD_AVAILABLE_NBUKit_UI
-#define COCOAPODS_VERSION_MAJOR_NBUKit_UI 1
-#define COCOAPODS_VERSION_MINOR_NBUKit_UI 9
-#define COCOAPODS_VERSION_PATCH_NBUKit_UI 6
+#define COCOAPODS_VERSION_MAJOR_NBUKit_UI 2
+#define COCOAPODS_VERSION_MINOR_NBUKit_UI 0
+#define COCOAPODS_VERSION_PATCH_NBUKit_UI 0
+
+// NBULog
+#define COCOAPODS_POD_AVAILABLE_NBULog
+#define COCOAPODS_VERSION_MAJOR_NBULog 1
+#define COCOAPODS_VERSION_MINOR_NBULog 0
+#define COCOAPODS_VERSION_PATCH_NBULog 3
 

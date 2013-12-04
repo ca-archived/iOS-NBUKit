@@ -320,12 +320,12 @@
     }
     
     // e) MediaInfo objects
-    else if ([object isKindOfClass:[NBUMediaInfo class]])
-    {
-        view = [[UIImageView alloc] initWithImage:((NBUMediaInfo *)object).editedImage];
-        view.contentMode = UIViewContentModeScaleAspectFill;
-        view.clipsToBounds = YES;
-    }
+//    else if ([object isKindOfClass:[NBUMediaInfo class]])
+//    {
+//        view = [[UIImageView alloc] initWithImage:((NBUMediaInfo *)object).editedImage];
+//        view.contentMode = UIViewContentModeScaleAspectFill;
+//        view.clipsToBounds = YES;
+//    }
     
     // ?) Add support for more kinds of objects?
     
