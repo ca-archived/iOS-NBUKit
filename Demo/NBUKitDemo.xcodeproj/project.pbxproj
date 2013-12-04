@@ -19,9 +19,6 @@
 		34C4ADA615BE880000709E28 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4ADA515BE880000709E28 /* AppDelegate.m */; };
 		34C4ADBD15BE8E1F00709E28 /* MainController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34C4ADBC15BE8E1F00709E28 /* MainController.xib */; };
 		969D0504C0F445879CB97CA9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A8D7D81AEF4434C98230B87 /* libPods.a */; };
-		E52CAEE41665FEE100629D77 /* frame.png in Resources */ = {isa = PBXBuildFile; fileRef = E52CAEE11665FEE100629D77 /* frame.png */; };
-		E52CAEE51665FEE100629D77 /* photo_hires.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E52CAEE21665FEE100629D77 /* photo_hires.jpg */; };
-		E52CAEE61665FEE100629D77 /* photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E52CAEE31665FEE100629D77 /* photo.jpg */; };
 		E5332BDD16660CDF00B019DB /* BadgesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5332BCF16660CDF00B019DB /* BadgesViewController.xib */; };
 		E5332BE016660CDF00B019DB /* HideOnScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5332BD416660CDF00B019DB /* HideOnScrollViewController.m */; };
 		E5332BE116660CDF00B019DB /* HideOnScrollViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5332BD516660CDF00B019DB /* HideOnScrollViewController.xib */; };
@@ -35,26 +32,6 @@
 		E55984801610221800D0F2BF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E559847D1610221800D0F2BF /* Default.png */; };
 		E55984811610221800D0F2BF /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E559847E1610221800D0F2BF /* Default@2x.png */; };
 		E55984821610221800D0F2BF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E559847F1610221800D0F2BF /* Default-568h@2x.png */; };
-		E57C0AE3178BD039005CFFF3 /* Toy.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AE1178BD039005CFFF3 /* Toy.acv */; };
-		E57C0AE4178BD039005CFFF3 /* Old.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AE2178BD039005CFFF3 /* Old.acv */; };
-		E57C0AF7178BD7C2005CFFF3 /* RJ16.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AE5178BD7C1005CFFF3 /* RJ16.acv */; };
-		E57C0AF8178BD7C2005CFFF3 /* RJ17.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AE6178BD7C1005CFFF3 /* RJ17.acv */; };
-		E57C0AF9178BD7C2005CFFF3 /* RJ18.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AE7178BD7C1005CFFF3 /* RJ18.acv */; };
-		E57C0AFA178BD7C2005CFFF3 /* RJ19.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AE8178BD7C1005CFFF3 /* RJ19.acv */; };
-		E57C0AFB178BD7C2005CFFF3 /* RJ20.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AE9178BD7C1005CFFF3 /* RJ20.acv */; };
-		E57C0AFC178BD7C2005CFFF3 /* RJ21.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AEA178BD7C1005CFFF3 /* RJ21.acv */; };
-		E57C0AFD178BD7C2005CFFF3 /* RJ22.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AEB178BD7C1005CFFF3 /* RJ22.acv */; };
-		E57C0AFE178BD7C2005CFFF3 /* RJ23.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AEC178BD7C1005CFFF3 /* RJ23.acv */; };
-		E57C0AFF178BD7C2005CFFF3 /* RJ24.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AED178BD7C1005CFFF3 /* RJ24.acv */; };
-		E57C0B00178BD7C2005CFFF3 /* RJ25.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AEE178BD7C1005CFFF3 /* RJ25.acv */; };
-		E57C0B01178BD7C2005CFFF3 /* RJ26.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AEF178BD7C2005CFFF3 /* RJ26.acv */; };
-		E57C0B02178BD7C2005CFFF3 /* RJ27.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AF0178BD7C2005CFFF3 /* RJ27.acv */; };
-		E57C0B03178BD7C2005CFFF3 /* RJ28.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AF1178BD7C2005CFFF3 /* RJ28.acv */; };
-		E57C0B04178BD7C2005CFFF3 /* RJ29.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AF2178BD7C2005CFFF3 /* RJ29.acv */; };
-		E57C0B05178BD7C2005CFFF3 /* RJ30.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AF3178BD7C2005CFFF3 /* RJ30.acv */; };
-		E57C0B06178BD7C2005CFFF3 /* FA_Curves1.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AF4178BD7C2005CFFF3 /* FA_Curves1.acv */; };
-		E57C0B07178BD7C2005CFFF3 /* FA_Curves2.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AF5178BD7C2005CFFF3 /* FA_Curves2.acv */; };
-		E57C0B08178BD7C2005CFFF3 /* FA_Curves3.acv in Resources */ = {isa = PBXBuildFile; fileRef = E57C0AF6178BD7C2005CFFF3 /* FA_Curves3.acv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,9 +52,6 @@
 		34C4ADBC15BE8E1F00709E28 /* MainController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainController.xib; sourceTree = "<group>"; };
 		7C918EBE545141BB8B2D2448 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		8A8D7D81AEF4434C98230B87 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		E52CAEE11665FEE100629D77 /* frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = frame.png; path = Resources/frame.png; sourceTree = "<group>"; };
-		E52CAEE21665FEE100629D77 /* photo_hires.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = photo_hires.jpg; path = Resources/photo_hires.jpg; sourceTree = "<group>"; };
-		E52CAEE31665FEE100629D77 /* photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = photo.jpg; path = Resources/photo.jpg; sourceTree = "<group>"; };
 		E5332BCD16660CDF00B019DB /* BadgesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadgesViewController.h; sourceTree = "<group>"; };
 		E5332BCE16660CDF00B019DB /* BadgesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BadgesViewController.m; sourceTree = "<group>"; };
 		E5332BCF16660CDF00B019DB /* BadgesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BadgesViewController.xib; sourceTree = "<group>"; };
@@ -95,26 +69,6 @@
 		E559847D1610221800D0F2BF /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Default.png; sourceTree = "<group>"; };
 		E559847E1610221800D0F2BF /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/Default@2x.png"; sourceTree = "<group>"; };
 		E559847F1610221800D0F2BF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Default-568h@2x.png"; sourceTree = "<group>"; };
-		E57C0AE1178BD039005CFFF3 /* Toy.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = Toy.acv; path = Resources/Toy.acv; sourceTree = "<group>"; };
-		E57C0AE2178BD039005CFFF3 /* Old.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = Old.acv; path = Resources/Old.acv; sourceTree = "<group>"; };
-		E57C0AE5178BD7C1005CFFF3 /* RJ16.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ16.acv; path = Resources/RJ16.acv; sourceTree = "<group>"; };
-		E57C0AE6178BD7C1005CFFF3 /* RJ17.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ17.acv; path = Resources/RJ17.acv; sourceTree = "<group>"; };
-		E57C0AE7178BD7C1005CFFF3 /* RJ18.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ18.acv; path = Resources/RJ18.acv; sourceTree = "<group>"; };
-		E57C0AE8178BD7C1005CFFF3 /* RJ19.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ19.acv; path = Resources/RJ19.acv; sourceTree = "<group>"; };
-		E57C0AE9178BD7C1005CFFF3 /* RJ20.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ20.acv; path = Resources/RJ20.acv; sourceTree = "<group>"; };
-		E57C0AEA178BD7C1005CFFF3 /* RJ21.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ21.acv; path = Resources/RJ21.acv; sourceTree = "<group>"; };
-		E57C0AEB178BD7C1005CFFF3 /* RJ22.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ22.acv; path = Resources/RJ22.acv; sourceTree = "<group>"; };
-		E57C0AEC178BD7C1005CFFF3 /* RJ23.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ23.acv; path = Resources/RJ23.acv; sourceTree = "<group>"; };
-		E57C0AED178BD7C1005CFFF3 /* RJ24.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ24.acv; path = Resources/RJ24.acv; sourceTree = "<group>"; };
-		E57C0AEE178BD7C1005CFFF3 /* RJ25.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ25.acv; path = Resources/RJ25.acv; sourceTree = "<group>"; };
-		E57C0AEF178BD7C2005CFFF3 /* RJ26.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ26.acv; path = Resources/RJ26.acv; sourceTree = "<group>"; };
-		E57C0AF0178BD7C2005CFFF3 /* RJ27.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ27.acv; path = Resources/RJ27.acv; sourceTree = "<group>"; };
-		E57C0AF1178BD7C2005CFFF3 /* RJ28.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ28.acv; path = Resources/RJ28.acv; sourceTree = "<group>"; };
-		E57C0AF2178BD7C2005CFFF3 /* RJ29.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ29.acv; path = Resources/RJ29.acv; sourceTree = "<group>"; };
-		E57C0AF3178BD7C2005CFFF3 /* RJ30.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = RJ30.acv; path = Resources/RJ30.acv; sourceTree = "<group>"; };
-		E57C0AF4178BD7C2005CFFF3 /* FA_Curves1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = FA_Curves1.acv; path = Resources/FA_Curves1.acv; sourceTree = "<group>"; };
-		E57C0AF5178BD7C2005CFFF3 /* FA_Curves2.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = FA_Curves2.acv; path = Resources/FA_Curves2.acv; sourceTree = "<group>"; };
-		E57C0AF6178BD7C2005CFFF3 /* FA_Curves3.acv */ = {isa = PBXFileReference; lastKnownFileType = file; name = FA_Curves3.acv; path = Resources/FA_Curves3.acv; sourceTree = "<group>"; };
 		E5B06CDD1643591A0043F53F /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "Resources/Icon-Small-50.png"; sourceTree = "<group>"; };
 		E5B06CDE1643591A0043F53F /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = Resources/iTunesArtwork; sourceTree = "<group>"; };
 		E5B06CDF1643591A0043F53F /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "Resources/Icon-Small@2x.png"; sourceTree = "<group>"; };
@@ -156,29 +110,6 @@
 				3426B02B15BF769F00EAF6B8 /* first@2x.png */,
 				3426B02C15BF769F00EAF6B8 /* second.png */,
 				3426B02D15BF769F00EAF6B8 /* second@2x.png */,
-				E52CAEE11665FEE100629D77 /* frame.png */,
-				E52CAEE21665FEE100629D77 /* photo_hires.jpg */,
-				E52CAEE31665FEE100629D77 /* photo.jpg */,
-				E57C0AE1178BD039005CFFF3 /* Toy.acv */,
-				E57C0AE2178BD039005CFFF3 /* Old.acv */,
-				E57C0AE5178BD7C1005CFFF3 /* RJ16.acv */,
-				E57C0AE6178BD7C1005CFFF3 /* RJ17.acv */,
-				E57C0AE7178BD7C1005CFFF3 /* RJ18.acv */,
-				E57C0AE8178BD7C1005CFFF3 /* RJ19.acv */,
-				E57C0AE9178BD7C1005CFFF3 /* RJ20.acv */,
-				E57C0AEA178BD7C1005CFFF3 /* RJ21.acv */,
-				E57C0AEB178BD7C1005CFFF3 /* RJ22.acv */,
-				E57C0AEC178BD7C1005CFFF3 /* RJ23.acv */,
-				E57C0AED178BD7C1005CFFF3 /* RJ24.acv */,
-				E57C0AEE178BD7C1005CFFF3 /* RJ25.acv */,
-				E57C0AEF178BD7C2005CFFF3 /* RJ26.acv */,
-				E57C0AF0178BD7C2005CFFF3 /* RJ27.acv */,
-				E57C0AF1178BD7C2005CFFF3 /* RJ28.acv */,
-				E57C0AF2178BD7C2005CFFF3 /* RJ29.acv */,
-				E57C0AF3178BD7C2005CFFF3 /* RJ30.acv */,
-				E57C0AF4178BD7C2005CFFF3 /* FA_Curves1.acv */,
-				E57C0AF5178BD7C2005CFFF3 /* FA_Curves2.acv */,
-				E57C0AF6178BD7C2005CFFF3 /* FA_Curves3.acv */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -327,9 +258,6 @@
 			files = (
 				34C4ADBD15BE8E1F00709E28 /* MainController.xib in Resources */,
 				3426B02E15BF769F00EAF6B8 /* first.png in Resources */,
-				E52CAEE41665FEE100629D77 /* frame.png in Resources */,
-				E52CAEE51665FEE100629D77 /* photo_hires.jpg in Resources */,
-				E52CAEE61665FEE100629D77 /* photo.jpg in Resources */,
 				E5332BDD16660CDF00B019DB /* BadgesViewController.xib in Resources */,
 				E5332BE116660CDF00B019DB /* HideOnScrollViewController.xib in Resources */,
 				E5332BE516660CDF00B019DB /* PullToRefreshViewController.xib in Resources */,
@@ -344,26 +272,6 @@
 				E55984801610221800D0F2BF /* Default.png in Resources */,
 				E55984811610221800D0F2BF /* Default@2x.png in Resources */,
 				E55984821610221800D0F2BF /* Default-568h@2x.png in Resources */,
-				E57C0AE3178BD039005CFFF3 /* Toy.acv in Resources */,
-				E57C0AE4178BD039005CFFF3 /* Old.acv in Resources */,
-				E57C0AF7178BD7C2005CFFF3 /* RJ16.acv in Resources */,
-				E57C0AF8178BD7C2005CFFF3 /* RJ17.acv in Resources */,
-				E57C0AF9178BD7C2005CFFF3 /* RJ18.acv in Resources */,
-				E57C0AFA178BD7C2005CFFF3 /* RJ19.acv in Resources */,
-				E57C0AFB178BD7C2005CFFF3 /* RJ20.acv in Resources */,
-				E57C0AFC178BD7C2005CFFF3 /* RJ21.acv in Resources */,
-				E57C0AFD178BD7C2005CFFF3 /* RJ22.acv in Resources */,
-				E57C0AFE178BD7C2005CFFF3 /* RJ23.acv in Resources */,
-				E57C0AFF178BD7C2005CFFF3 /* RJ24.acv in Resources */,
-				E57C0B00178BD7C2005CFFF3 /* RJ25.acv in Resources */,
-				E57C0B01178BD7C2005CFFF3 /* RJ26.acv in Resources */,
-				E57C0B02178BD7C2005CFFF3 /* RJ27.acv in Resources */,
-				E57C0B03178BD7C2005CFFF3 /* RJ28.acv in Resources */,
-				E57C0B04178BD7C2005CFFF3 /* RJ29.acv in Resources */,
-				E57C0B05178BD7C2005CFFF3 /* RJ30.acv in Resources */,
-				E57C0B06178BD7C2005CFFF3 /* FA_Curves1.acv in Resources */,
-				E57C0B07178BD7C2005CFFF3 /* FA_Curves2.acv in Resources */,
-				E57C0B08178BD7C2005CFFF3 /* FA_Curves3.acv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
