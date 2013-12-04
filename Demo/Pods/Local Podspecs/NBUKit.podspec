@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
     
     s.name          = "NBUKit"
     s.version       = "2.0.0"
-    s.summary       = "Customizable image editing, filters, camera, picker and other UIKit subclasses."
+    s.summary       = "UIKit and NSFoundation convenience additions and subclasses."
     s.homepage      = "http://cyberagent.github.io/iOS-NBUKit/"
     s.license       = { :type => 'Apache License, Version 2.0', :file => 'LICENSE' }
     s.author        = { "CyberAgent Inc." => "", "Ernesto Rivera" => "rivera_ernesto@cyberagent.co.jp" }
@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
     end
 
     s.subspec 'Resources' do |sub|
-        sub.resources    = 'NBUKitResources.bundle'
+        sub.resources    = 'NBUResources.bundle'
     end
     
     s.subspec 'Library' do |sl|

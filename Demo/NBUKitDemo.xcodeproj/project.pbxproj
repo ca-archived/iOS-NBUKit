@@ -31,7 +31,6 @@
 		E53658FB15E384F4004A2F1A /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E53658F515E384F4004A2F1A /* Icon-72@2x.png */; };
 		E53658FC15E384F4004A2F1A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E53658F615E384F4004A2F1A /* Icon.png */; };
 		E53658FD15E384F4004A2F1A /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E53658F715E384F4004A2F1A /* Icon@2x.png */; };
-		E545740017057D22005E142B /* NBUKit.strings in Resources */ = {isa = PBXBuildFile; fileRef = E545740217057D22005E142B /* NBUKit.strings */; };
 		E555171B1839F51400E273F4 /* BadgesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5332BCE16660CDF00B019DB /* BadgesViewController.m */; };
 		E55984801610221800D0F2BF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E559847D1610221800D0F2BF /* Default.png */; };
 		E55984811610221800D0F2BF /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E559847E1610221800D0F2BF /* Default@2x.png */; };
@@ -93,8 +92,6 @@
 		E53658F615E384F4004A2F1A /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Resources/Icon.png; sourceTree = "<group>"; };
 		E53658F715E384F4004A2F1A /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Resources/Icon@2x.png"; sourceTree = "<group>"; };
 		E54573FE17057B32005E142B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		E545740117057D22005E142B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/NBUKit.strings; sourceTree = "<group>"; };
-		E545740317057D30005E142B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/NBUKit.strings; sourceTree = "<group>"; };
 		E559847D1610221800D0F2BF /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Default.png; sourceTree = "<group>"; };
 		E559847E1610221800D0F2BF /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/Default@2x.png"; sourceTree = "<group>"; };
 		E559847F1610221800D0F2BF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -191,7 +188,6 @@
 			children = (
 				E5F8090A17543706008120E4 /* README.md */,
 				E5F8090B1754384B008120E4 /* Podfile */,
-				E545740217057D22005E142B /* NBUKit.strings */,
 				34C4AD9B15BE880000709E28 /* NBUKitDemo */,
 				34C4AD9415BE880000709E28 /* Frameworks */,
 				34C4AD9215BE87FF00709E28 /* Products */,
@@ -337,7 +333,6 @@
 				E5332BDD16660CDF00B019DB /* BadgesViewController.xib in Resources */,
 				E5332BE116660CDF00B019DB /* HideOnScrollViewController.xib in Resources */,
 				E5332BE516660CDF00B019DB /* PullToRefreshViewController.xib in Resources */,
-				E545740017057D22005E142B /* NBUKit.strings in Resources */,
 				34C4ADA015BE880000709E28 /* InfoPlist.strings in Resources */,
 				3426B02F15BF769F00EAF6B8 /* first@2x.png in Resources */,
 				3426B03015BF769F00EAF6B8 /* second.png in Resources */,
@@ -442,15 +437,6 @@
 				E54573FE17057B32005E142B /* ja */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		E545740217057D22005E142B /* NBUKit.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E545740117057D22005E142B /* ja */,
-				E545740317057D30005E142B /* en */,
-			);
-			name = NBUKit.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -43,7 +43,7 @@ install_resource()
 }
 install_resource "LumberjackConsole/Source/Adjust Levels/PTEAdjustLevelsCell.xib"
 install_resource "LumberjackConsole/Source/PTEDashboard.xib"
-install_resource "../../NBUKitResources.bundle"
+install_resource "../../NBUResources.bundle"
 install_resource "../../Source/UI/NBUBadgeView.xib"
 install_resource "../../Source/UI/NBURefreshControl.xib"
 install_resource "../../Source/UI/NBUSplashView.xib"

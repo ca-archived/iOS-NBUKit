@@ -18,7 +18,7 @@
 //  limitations under the License.
 //
 
-#import <CocoaLumberjack/DispatchQueueLogFormatter.h>
+#import <CocoaLumberjack/DDDispatchQueueLogFormatter.h>
 
 /**
  Default NBULog formatter.
@@ -31,7 +31,7 @@
         2013-11-12 15:18:38:498 NBULogDemo[main] W LogTestsViewController:29 Warning message from a C function
         2013-11-12 15:18:38:498 NBULogDemo[main] E LogTestsViewController:30 Error message from a C function
  */
-@interface NBULogFormatter : DispatchQueueLogFormatter
+@interface NBULogFormatter : DDDispatchQueueLogFormatter
 
 @end
 

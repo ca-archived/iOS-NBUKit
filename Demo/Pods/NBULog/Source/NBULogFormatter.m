@@ -22,13 +22,6 @@
 
 static NSString * _processName;
 
-@interface DispatchQueueLogFormatter (PrivateMethods)
-
-- (NSString *)stringFromDate:(NSDate *)date;
-- (NSString *)queueThreadLabelForLogMessage:(DDLogMessage *)logMessage;
-
-@end
-
 @implementation NBULogFormatter
 
 + (void)initialize

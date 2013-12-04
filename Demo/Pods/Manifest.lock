@@ -57,14 +57,14 @@ PODS:
     - MotionOrientation@PTEz (>= 1.0.0)
     - NBUCore (>= 2.0.0)
     - NBUKit/Resources
-  - NBULog (1.0.3):
+  - NBULog (HEAD based on 1.0.3):
     - CocoaLumberjack (>= 1.6.3)
     - NBUCore (>= 2.0.0)
 
 DEPENDENCIES:
   - LumberjackConsole
   - NBUKit (from `../`)
-  - NBULog
+  - NBULog (HEAD)
 
 EXTERNAL SOURCES:
   NBUKit:
@@ -76,7 +76,7 @@ SPEC CHECKSUMS:
   LumberjackConsole: 98711fa522dec36439d729939308819a082d4c47
   MotionOrientation@PTEz: 0b987d39639b13ce2769f6dc6f96f59783ca8786
   NBUCore: 66e33f9426cbefb5ca88f3228cfc2dd36eac6e71
-  NBUKit: e3e9613e59584d80fdc4337cb1d5ca59d061c262
+  NBUKit: a628bc99a1f13bf1bb1c07259a251643393ce9ad
   NBULog: a4e9cb7c0ee6c1e270b4fb4afbe66cbaca826146
 
 COCOAPODS: 0.28.0
