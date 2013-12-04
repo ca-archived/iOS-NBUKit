@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
     end
 
     s.subspec 'Resources' do |sub|
-        sub.resources    = 'NBUKitResources.bundle'
+        sub.resources    = 'NBUResources.bundle'
     end
     
     s.subspec 'Library' do |sl|
