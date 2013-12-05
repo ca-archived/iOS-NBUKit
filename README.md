@@ -5,12 +5,9 @@ NBUKit
 [![Version 1.9.8](https://cocoapod-badges.herokuapp.com/v/NBUKit/badge.png)](http://cocoadocs.org/docsets/NBUKit/)
 [![Build Status](https://travis-ci.org/CyberAgent/iOS-NBUKit.png?branch=master)](https://travis-ci.org/CyberAgent/iOS-NBUKit)
 
-[Customizable](https://github.com/CyberAgent/iOS-NBUKit/wiki/NBUKit-Customization) camera, assets,
-image editing, gallery, picker and UIKit subclasses.
+UIKit and NSFoundation convenience additions and subclasses.
 
 _Uses [NBUCore](https://github.com/CyberAgent/iOS-NBUCore)._
-
-![NBUKit](https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/images/NBUKit.png)
 
 Components
 ----------
