@@ -25,8 +25,8 @@
 #define NSLocalizedString(key, comment) \
 [NSBundle localizedStringForKey:key value:nil table:@"NBUKit" backupBundle:NBUKit.resourcesBundle]
 #undef NSLocalizedStringWithDefaultValue
-#define NSLocalizedStringWithDefaultValue(key, tableName, bundle, defaultValue, comment) \
-[NSBundle localizedStringForKey:key value:defaultValue table:@"NBUKit" backupBundle:NBUKit.resourcesBundle]
+#define NSLocalizedStringWithDefaultValue(key, tableName, defaultBundle, defaultValue, comment) \
+[NSBundle localizedStringForKey:key value:defaultValue table:@"NBUKit" backupBundle:NBUKit.bundle]
 
 
 // a) Use NBULog for logging when available

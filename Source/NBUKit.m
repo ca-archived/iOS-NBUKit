@@ -29,13 +29,13 @@ static NSBundle * _resourcesBundle;
     return @"2.0.0";
 }
 
-+ (NSBundle *)resourcesBundle
++ (NSBundle *)bundle
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^
     {
-        NSString * resourcesPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"NBUResources.bundle"];
-        _resourcesBundle = [NSBundle bundleWithPath:resourcesPath];
+        NSString * bundlePath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"NBUKit.bundle"];
+        _resourcesBundle = [NSBundle bundleWithPath:bundlePath];
     });
     
     return _resourcesBundle;
