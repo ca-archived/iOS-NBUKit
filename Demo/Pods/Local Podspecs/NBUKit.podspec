@@ -15,23 +15,18 @@ Pod::Spec.new do |s|
     s.source_files  = 'Source/*.{h,m}'
     s.preserve_paths = "README.md", "NOTICE"
     
-    s.dependency 'NBUCore', '>= 2.0.0'
-    s.dependency 'Lockbox', '>= 1.4.4'
-    s.dependency 'MotionOrientation@PTEz', '>= 1.0.0'
-    
-    s.subspec 'UI' do |sub|
-        sub.source_files = 'Source/UI/*.{h,m}'
-        sub.resources    = 'Source/UI/*.{xib}'
-        sub.frameworks   = 'MessageUI'
-        sub.dependency 'NBUKit/Resources'
-    end
+    s.dependency 'NBUCore',                 '>= 2.0.0'
+    s.dependency 'Lockbox',                 '>= 1.4.4'
     
     s.subspec 'Additions' do |sub|
         sub.source_files = 'Source/Additions/*.{h,m}'
     end
 
-    s.subspec 'Resources' do |sub|
-        sub.resources    = 'NBUResources.bundle'
+    s.subspec 'UI' do |sub|
+        sub.source_files    = 'Source/UI/*.{h,m}'
+        sub.resource_bundle = { 'NBUKit' => ['Resources/*.{png,lproj}', 'Source/UI/*.{xib}'] }
+        sub.dependency 'MotionOrientation@PTEz', '>= 1.0.0'
+        sub.frameworks      = 'MessageUI'
     end
     
     s.subspec 'Library' do |sl|

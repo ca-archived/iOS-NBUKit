@@ -43,11 +43,7 @@ install_resource()
 }
 install_resource "LumberjackConsole/Source/Adjust Levels/PTEAdjustLevelsCell.xib"
 install_resource "LumberjackConsole/Source/PTEDashboard.xib"
-install_resource "../../NBUResources.bundle"
-install_resource "../../Source/UI/NBUBadgeView.xib"
-install_resource "../../Source/UI/NBURefreshControl.xib"
-install_resource "../../Source/UI/NBUSplashView.xib"
-install_resource "../../Source/UI/NBUTabBarControllerSample.xib"
+install_resource "${BUILT_PRODUCTS_DIR}/NBUKit.bundle"
 
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 if [[ "${ACTION}" == "install" ]]; then

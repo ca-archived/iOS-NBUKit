@@ -5,7 +5,7 @@ platform :ios, '5.0'
 #pod 'NBUKit'
 
 # Optional for better loggin (NBULog or CocoaLumberjack) and on-device console (LumberjackConsole)
-pod 'NBULog', :head
+pod 'NBULog'
 pod 'LumberjackConsole'
 
 # For development
