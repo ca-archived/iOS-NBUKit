@@ -34,7 +34,7 @@ static NSBundle * _resourcesBundle;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^
     {
-        NSString * resourcesPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"NBUKitResources.bundle"];
+        NSString * resourcesPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"NBUResources.bundle"];
         _resourcesBundle = [NSBundle bundleWithPath:resourcesPath];
     });
     

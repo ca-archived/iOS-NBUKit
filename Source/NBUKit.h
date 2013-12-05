@@ -77,7 +77,7 @@
 /// The current NBUKit library version.
 + (NSString *)version;
 
-/// The NBUKitResources NSBundle.
+/// The NBUResources NSBundle.
 + (NSBundle *)resourcesBundle;
 
 @end
