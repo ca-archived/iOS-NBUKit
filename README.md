@@ -1,103 +1,64 @@
+
 NBUKit
 ======
 
 [![Pod Platform](https://cocoapod-badges.herokuapp.com/p/NBUKit/badge.svg)](http://cocoadocs.org/docsets/NBUKit/)
-[![Version 1.9.8](https://cocoapod-badges.herokuapp.com/v/NBUKit/badge.png)](http://cocoadocs.org/docsets/NBUKit/)
+[![Version 2.0.0](https://cocoapod-badges.herokuapp.com/v/NBUKit/badge.png)](http://cocoadocs.org/docsets/NBUKit/)
 [![Build Status](https://travis-ci.org/CyberAgent/iOS-NBUKit.png?branch=master)](https://travis-ci.org/CyberAgent/iOS-NBUKit)
 
 UIKit and NSFoundation convenience additions and subclasses.
 
-_Uses [NBUCore](https://github.com/CyberAgent/iOS-NBUCore)._
+_Image Picker code is being migrated to [NBUImagePicker](https://github.com/CyberAgent/iOS-NBUImagePicker). Uses [NBUCore](https://github.com/CyberAgent/iOS-NBUCore), supports [NBULog](https://github.com/CyberAgent/iOS-NBULog)._
 
-Components
-----------
+## Features
 
-### NBUCameraView
+### Additions
 
-Customizable AVFoundation-based camera view.
+* Convenience methods to parse `NSArray` objets, support subbundles in `NSBundle` and handle file URLs with `NSFileManager`.
+* Check properties, retrieve common application directories and save/retrieve values from `NSUserDefaults` and `Keychanin` with `UIApplication`.
+* Programatically send a message through the responder chain with `UIResponder`.
+* Size/origin setter/getter shortcuts, read-only properties to retrieve a `UIView`'s view, navigation or tab controller.
+* `UIButton` protocol to freely switch between `UIButton` and `UIBarButtonItem` objects.
+* Adjust orientation, crop, resize, flatten, write and read `UIImage` objects.
+* Scroll a `UIScrollView` to any edge with/without animation.
+* Retrieve/change system UserAgent, fire JavaScript events and get the HTML title from `UIWebView` objects.
+* Navigation item IBOutlet and force refresh orientation method for `UIViewController`'s.
+* Show/hide `UITabBarController`'s tab bar.
+* Additional properties, dismiss and pop to view controller and to root controller methods for `UINavigationController` objects.
 
-Can be embeded in any superview, custom UIViewController or used along NBUCameraViewController and even takes
-mock pictures on the iOS simulator!
+### UIKit Subclasses
 
-![NBUCamera](https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Camera1.png)
-![NBUCamera](https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Camera2.png)
+* Block-based `NBUActionSheet` and `NBUAlertView`.
+* `NBUBadgeView` and `NBUBadgeSegmentedControl`.
+* Block-based `NBUMailComposeViewController` that can be initialized with a `mailto:` URL.
+* Interface Builder-focused `NBURefreshControl`.
+* `NBUTabBarController` with customizable position and `UITabBar`.
+* `NBUView` with commonInit, and view controller-like view will/did appear/disappear methods.
+* `NBUViewController` with commonInit and supportedInterfaceOrientations writable property.
+* More...
 
-### NBUAssets
+## Installation
 
-Multiple classes of all three MVC categories to ease access to AssetsLibrary listening to
-change notifications to stay always in valid.
-
-Also support for _local assets_: Images in folders that are handled just like regular library assets.
-
-![NBUAssets](https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Assets1.png)
-![NBUAssets](https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Assets2.png)
-
-### Cropping/Filters
-
-Customizable views and controllers to modify images (filters and cropping).
-
-Filters from CoreImage and [GPUImage](https://github.com/BradLarson/GPUImage) but could be extended to
-other libraries as well.
-
-![NBUEdit](https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Edit2.png)
-![NBUEdit](https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Edit3.png)
-
-### NBUGallery
-
-Image slideshow in development inspired by [FGallery](https://github.com/gdavis/FGallery-iPhone).
-
-![NBUGallery](https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Gallery1.png)
-
-### NBUImagePickerController
-
-Block-based image picker that combines all modules mentioned above.
-
-![NBUPicker](https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Picker1.png)
-
-Customization
--------------
-
-The main goal of NBUKit is to be fully [customizable](https://github.com/CyberAgent/iOS-NBUKit/wiki/NBUKit-Customization) and easy to extend.
-
-Installation
-------------
-
-### Cocoapods (1.9.x+)
-
-1. Install [Cocoapods](http://cocoapods.org) if not already done.
-2. For iOS 4 targets add add `pod 'GPUImage', '0.1.0'` to your Podfile.  
-iOS 5+ add `pod 'GPUImage'`, `pod 'GPUImage', :head` or specify a [commit](http://docs.cocoapods.org/podfile.html#pod).
-3. Add `pod 'NBUKit'` to your Podfile.
-
-Sample Podfile:
+For now add the following to your [CocoaPods](http://cocoapods.org)' [Podfile](http://docs.cocoapods.org/podfile.html):
 
 ```ruby
-platform :ios
+platform :ios, '5.0'
 
-pod 'NBUKit',   '~> 2.0.0'
+# Pre-release version
+pod 'NBUKit', :git => 'https://github.com/CyberAgent/iOS-NBUKit.git', :commit => 'xxx'
+
+# Optional nicer log messages
+pod 'NBULog'
+
+# Optional on-device console
+pod 'LumberjackConsole'
 ```
 
-_If you have a problem try `gem update cocoapods` first._
+## Documentation
 
-### Older versions (up to 1.8.x)
+http://cocoadocs.org/docsets/NBUKit/
 
-[NBUKit Installation](https://github.com/CyberAgent/iOS-NBUKit/wiki/NBUKit-Installation).
-
-Documentation
--------------
-
-NBUKit + NBUCore 
-
-* HTML: http://cyberagent.github.io/iOS-NBUKit/html/
-* Xcode DocSet: `http://cyberagent.github.io/iOS-NBUKit/publish/NBUKit.atom`
-
-NBUKit only
-
-* HTML: http://cocoadocs.org/docsets/NBUKit/
-* Xcode DocSet: `http://cocoadocs.org/docsets/NBUKit/xcode-docset.atom`
-
-License
--------
+##License
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License. 
