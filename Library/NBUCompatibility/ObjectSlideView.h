@@ -2,8 +2,8 @@
 //  ObjectSlideView.h
 //  NBUCompatibility
 //
-//  Created by Ernesto Rivera on 11/12/27.
-//  Copyright (c) 2011 CyberAgent Inc.
+//  Created by Ernesto Rivera on 2011/12/27.
+//  Copyright (c) 2011-2013 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
