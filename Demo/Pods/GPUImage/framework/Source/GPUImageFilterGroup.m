@@ -182,14 +182,9 @@
 
 - (void)endProcessing;
 {
-    if (!isEndProcessing)
+    for (GPUImageOutput<GPUImageInput> *currentFilter in _initialFilters)
     {
-        isEndProcessing = YES;
-        
-        for (id<GPUImageInput> currentTarget in targets)
-        {
-            [currentTarget endProcessing];
-        }
+        [currentFilter endProcessing];
     }
 }
 
