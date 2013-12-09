@@ -68,16 +68,16 @@ Installation
 ### Cocoapods (1.9.x+)
 
 1. Install [Cocoapods](http://cocoapods.org) if not already done.
-2. For iOS 4 targets add add `pod 'GPUImage', '0.1.0'` to your Podfile.  
-iOS 5+ add `pod 'GPUImage'`, `pod 'GPUImage', :head` or specify a [commit](http://docs.cocoapods.org/podfile.html#pod).
-3. Add `pod 'NBUKit'` to your Podfile.
+2. Add `pod 'NBUKit'` to your Podfile.
 
 Sample Podfile:
 
 ```ruby
 platform :ios
 
-pod 'GPUImage', :head # iOS 5+ only
+# Optional to use a pre-release version
+#pod 'GPUImage', :head
+
 pod 'NBUKit',   '~> 1.9.8' # iOS 4 use 1.9.6
 ```
 
