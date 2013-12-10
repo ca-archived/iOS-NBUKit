@@ -23,7 +23,7 @@
 // Localization
 #undef  NSLocalizedString
 #define NSLocalizedString(key, comment) \
-[NSBundle localizedStringForKey:key value:nil table:@"NBUKit" backupBundle:NBUKit.resourcesBundle]
+[NSBundle localizedStringForKey:key value:nil table:@"NBUKit" backupBundle:NBUKit.bundle]
 #undef NSLocalizedStringWithDefaultValue
 #define NSLocalizedStringWithDefaultValue(key, tableName, defaultBundle, defaultValue, comment) \
 [NSBundle localizedStringForKey:key value:defaultValue table:@"NBUKit" backupBundle:NBUKit.bundle]
