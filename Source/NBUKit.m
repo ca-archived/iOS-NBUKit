@@ -30,6 +30,7 @@
 + (NSBundle *)bundle
 {
     static NSBundle * _resourcesBundle;
+    
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^
     {

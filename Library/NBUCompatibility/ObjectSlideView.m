@@ -358,10 +358,6 @@
     if (self.isEmpty)
         return;
     
-    // Ignore on iOS4 if dragging
-    if (SYSTEM_VERSION_LESS_THAN(@"5.0") && _isDragging)
-        return;
-    
     [UIView animateWithDuration:self.isAnimated ? 0.3 : 0.0
                           delay:0.0 
                         options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionAllowUserInteraction

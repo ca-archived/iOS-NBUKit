@@ -72,15 +72,8 @@
 {
     NBULogTrace();
     
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
-    {
-        [self dismissViewControllerAnimated:YES
-                                 completion:NULL];
-    }
-    else
-    {
-        [self dismissModalViewControllerAnimated:YES];
-    }
+    [self dismissViewControllerAnimated:YES
+                             completion:NULL];
 }
 
 @end

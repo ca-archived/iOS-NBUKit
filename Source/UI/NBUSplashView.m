@@ -75,17 +75,8 @@
     // Finish progress
     _activityIndicatorView.hidden = YES;
     
-    // iOS 5+
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
-    {
-        [_progressView setProgress:1.0
-                          animated:animated];
-    }
-    // iOS 4.x
-    else
-    {
-        _progressView.progress = 1.0;
-    }
+    [_progressView setProgress:1.0
+                      animated:animated];
     
     // Disappear and remove from keyWindow
     [UIView animateWithDuration:animated ? 0.3 : 0.0
@@ -106,17 +97,8 @@
 {
     _statusLabel.text = status;
     
-    // iOS 5+
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
-    {
-        [_progressView setProgress:progress
-                          animated:YES];
-    }
-    // iOS 4.x
-    else
-    {
-        _progressView.progress = progress;
-    }
+    [_progressView setProgress:progress
+                      animated:YES];
 }
 
 @end
