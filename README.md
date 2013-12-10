@@ -47,10 +47,10 @@ platform :ios, '5.0'
 # Pre-release version
 pod 'NBUKit', :git => 'https://github.com/CyberAgent/iOS-NBUKit.git', :commit => 'xxx'
 
-# Optional nicer log messages
+# Optional for dynamic logging
 pod 'NBULog'
 
-# Optional on-device console
+# Optional for on-device log console
 pod 'LumberjackConsole'
 ```
 

@@ -2,7 +2,7 @@
 //  main.m
 //  NBUKitDemo
 //
-//  Created by Ernesto Rivera on 12/07/24.
+//  Created by Ernesto Rivera on 2012/07/24.
 //  Copyright (c) 2012-2013 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");

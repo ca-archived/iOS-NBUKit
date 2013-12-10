@@ -48,12 +48,12 @@
 #elif defined(COCOAPODS_POD_AVAILABLE_CocoaLumberjack)
 
 #ifdef DEBUG
-    #define NBUKitLogLevel LOG_LEVEL_VERBOSE
+    #define NBUKIT_LOG_LEVEL LOG_LEVEL_VERBOSE
 #else
-    #define NBUKitLogLevel LOG_LEVEL_WARN
+    #define NBUKIT_LOG_LEVEL LOG_LEVEL_WARN
 #endif
 
-#define LOG_LEVEL_DEF   NBUKitLogLevel
+#define LOG_LEVEL_DEF   NBUKIT_LOG_LEVEL
 #import <CocoaLumberjack/DDLog.h>
 
 #define NBULogError(frmt, ...)      DDLogError(frmt, ##__VA_ARGS__)
