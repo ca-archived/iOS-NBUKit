@@ -33,7 +33,6 @@ NSString * const NBUObjectUpdatedOldObjectKey   = @"NBUObjectUpdatedOldObject";
 @implementation NBUObjectView
 
 @dynamic object;
-@synthesize ignoresObjectUpdates = _ignoresObjectUpdates;
 
 #pragma mark - Handle object updates
 

@@ -47,13 +47,7 @@
 }
 
 @dynamic delegate;
-@synthesize headerView = _headerView;
-@synthesize footerView = _footerView;
 @dynamic loadMoreView;
-@synthesize tableView = _tableView;
-@synthesize objectArraySection = _objectArraySection;
-@synthesize loadMoreViewSection = _loadMoreViewSection;
-@synthesize doesNotResize;
 
 - (id)initWithCoder:(NSCoder *)coder
 {
@@ -116,9 +110,9 @@
     
     UITableViewCell *cell = [_tableView cellForRowAtIndexPath:path];
     
-    if ([[cell.contentView.subviews objectAtIndex:0] isKindOfClass:[UIView class]])
+    if ([(cell.contentView.subviews)[0] isKindOfClass:[UIView class]])
     {
-        return [cell.contentView.subviews objectAtIndex:0];
+        return (cell.contentView.subviews)[0];
         
     }
     
@@ -202,7 +196,7 @@
     
     [super addObject:object];
     
-    [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:(NSInteger)[self.objectArray count] - 1
+    [_tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:(NSInteger)[self.objectArray count] - 1
                                                                                    inSection:(NSInteger)_objectArraySection]]
                       withRowAnimation:self.animated ? UITableViewRowAnimationFade : UITableViewRowAnimationNone];
 }
@@ -216,7 +210,7 @@
     
     [super removeObject:object];
     [_tableView endEditing:YES]; // ToDo Only if editing this cell
-    [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:(NSInteger)index
+    [_tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:(NSInteger)index
                                                                                    inSection:(NSInteger)_objectArraySection]]
                       withRowAnimation:self.animated ? UITableViewRowAnimationFade : UITableViewRowAnimationNone];
 }
@@ -225,7 +219,7 @@
 {
     [super insertObject:object atIndex:index];
     
-    [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:(NSInteger)index
+    [_tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:(NSInteger)index
                                                                                    inSection:(NSInteger)_objectArraySection]]
                       withRowAnimation:self.animated ? UITableViewRowAnimationFade : UITableViewRowAnimationNone];
 }
@@ -235,7 +229,7 @@
     [super replaceObjectAtIndex:index withObject:object];
 
     [_tableView endEditing:YES]; // ToDo Only if editing this cell
-    [_tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:(NSInteger)index
+    [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:(NSInteger)index
                                                                                    inSection:(NSInteger)_objectArraySection]]
                       withRowAnimation:self.animated ? UITableViewRowAnimationFade : UITableViewRowAnimationNone];
 }
@@ -270,7 +264,7 @@
     // Object views
     if (indexPath.section == _objectArraySection)
     {
-        id object = [self.objectArray objectAtIndex:(NSUInteger)indexPath.row];
+        id object = (self.objectArray)[(NSUInteger)indexPath.row];
         
         NSString * identifier = self.nibNameForViews; // ? self.nibNameForViews : NSStringFromClass([object class]);
         
@@ -365,7 +359,7 @@
 {
     // ToDo Ignore when possible
     
-    [_rowHeights setValue:(height >= 0) ? [NSNumber numberWithFloat:height] : nil
+    [_rowHeights setValue:(height >= 0) ? @(height) : nil
                    forKey:[NSString stringWithFormat:@"%d", index]];
     
     [self postSizeThatFitsChangedNotification];
@@ -376,7 +370,7 @@
     NSString * key = [NSString stringWithFormat:@"%d", index];
     
     // Was already 0.0?
-    if ([_rowHeights objectForKey:key] &&
+    if (_rowHeights[key] &&
         [(NSNumber *)[_rowHeights valueForKey:key] floatValue] == 0.0)
     {
         // Reset
@@ -411,9 +405,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     {
         // a) Overriden height?
         NSString * key = [NSString stringWithFormat:@"%d", indexPath.row];
-        if ([_rowHeights objectForKey:key])
+        if (_rowHeights[key])
         {
-            NSNumber *num = [_rowHeights objectForKey:key];
+            NSNumber *num = _rowHeights[key];
             return [num floatValue];
             //                return [(NSNumber *)[_rowHeights valueForKey:key] floatValue];
         }
@@ -425,7 +419,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
         }
         
         // c) Objects already a view?
-        id object = [self.objectArray objectAtIndex:(NSUInteger)indexPath.row];
+        id object = (self.objectArray)[(NSUInteger)indexPath.row];
         UIView * view;
         if ([object isKindOfClass:[UIView class]])
         {
@@ -438,9 +432,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
             // Create a model?
             if (!_modelView)
             {
-                _modelView = [[NSBundle loadNibNamed:self.nibNameForViews
+                _modelView = [NSBundle loadNibNamed:self.nibNameForViews
                                                owner:self
-                                             options:nil] objectAtIndex:0];
+                                             options:nil][0];
             }
             
             // Configure the model
@@ -582,7 +576,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     self.hidden = NO;
 
     // Resize contentView's view if frame has height > 0
-    UIView * view = [self.contentView.subviews objectAtIndex:0];
+    UIView * view = (self.contentView.subviews)[0];
     if (frame.size.height > 0.0)
     {
         NBULogVerbose(@"%p xxx %@ (%d)", self, NSStringFromCGRect(frame), self.subviews.count);

@@ -30,9 +30,6 @@
     BOOL _shoudlAdjustViews;
 }
 
-@synthesize tabBarModel = _tabBarModel;
-@synthesize tabBarOnTop = _tabBarOnTop;
-
 - (void)awakeFromNib
 {
     [super awakeFromNib];
@@ -147,7 +144,6 @@
 
 @implementation NBUTabBarModel
 
-@synthesize itemPlaceholders = _itemPlaceholders;
 
 @end
 

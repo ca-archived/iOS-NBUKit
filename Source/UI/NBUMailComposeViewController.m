@@ -26,15 +26,13 @@
 #undef  NBUKIT_MODULE
 #define NBUKIT_MODULE   NBUKIT_MODULE_UI
 
-// Private category
-@interface NBUMailComposeViewController (Private) <MFMailComposeViewControllerDelegate>
+// Class extension
+@interface NBUMailComposeViewController () <MFMailComposeViewControllerDelegate>
 
 @end
 
 
 @implementation NBUMailComposeViewController
-
-@synthesize resultBlock = _resultBlock;
 
 - (id)initWithMailtoURL:(NSURL *)mailtoURL
 {

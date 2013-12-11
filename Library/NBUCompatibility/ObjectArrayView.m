@@ -31,13 +31,6 @@
 }
 
 @dynamic objectArray;
-@synthesize delegate = _delegate;
-@synthesize nibNameForViews = _nibNameForViews;
-@synthesize loadMoreView = _loadMoreView;
-@synthesize loadMoreViewOnTop = _loadMoreViewOnTop;
-@synthesize sizeToFitObjectViews = _sizeToFitObjectViews;
-@synthesize targetObjectViewSize = _targetObjectViewSize;
-@synthesize margin = _margin;
 
 - (Class)expectedClass
 {
@@ -177,8 +170,7 @@
         return;
     }
     
-    [(NSMutableArray *)self.objectArray replaceObjectAtIndex:index
-                                                  withObject:object];
+    ((NSMutableArray *)self.objectArray)[index] = object;
     
     // *** Update UI in subclass ***
 }
@@ -221,7 +213,7 @@
         return;
     }
     
-    [self setObject:[self.objectArray objectAtIndex:index]
+    [self setObject:self.objectArray[index]
              hidden:yesOrNo];
 }
 
@@ -251,9 +243,9 @@
 - (UIView *)dequeueOrLoadViewFromNib
 {
     // ** This class only loads from nib, implement dequeue in subclasses! **
-    return [[NSBundle loadNibNamed:_nibNameForViews
+    return [NSBundle loadNibNamed:_nibNameForViews
                              owner:self
-                           options:nil] objectAtIndex:0];
+                           options:nil][0];
 }
 
 - (UIView *)viewForObject:(id)object

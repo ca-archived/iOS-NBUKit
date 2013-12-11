@@ -27,17 +27,6 @@
 
 @implementation NBURefreshControl
 
-@synthesize heightToRefresh = _heightToRefresh;
-@synthesize status = _status;
-@synthesize visible = _visible;
-@synthesize lastUpdateDate = _lastUpdateDate;
-@synthesize dateFormatter = _dateFormatter;
-@synthesize scrollView = _scrollView;
-@synthesize statusLabel = _statusLabel;
-@synthesize lastUpdateLabel = _lastUpdateLabel;
-@synthesize idleView = _idleView;
-@synthesize loadingView = _loadingView;
-
 - (id)initWithCoder:(NSCoder *)coder
 {
     self = [super initWithCoder:coder];

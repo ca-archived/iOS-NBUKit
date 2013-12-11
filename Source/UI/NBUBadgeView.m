@@ -28,7 +28,6 @@
 @implementation NBUBadgeView
 
 @dynamic value;
-@synthesize label = _label;
 
 + (NBUBadgeView *)badge
 {

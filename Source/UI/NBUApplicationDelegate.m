@@ -27,8 +27,6 @@
 
 @implementation NBUApplicationDelegate
 
-@synthesize notificationsToken = _notificationsToken;
-
 #pragma mark - Remote notifications
 
 - (void)registerForRemoteNotifications

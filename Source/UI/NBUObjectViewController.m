@@ -31,9 +31,6 @@
     NSDictionary * _lastUserInfo;
 }
 
-@synthesize object = _object;
-@synthesize ignoresObjectUpdates = _ignoresObjectUpdates;
-
 #pragma mark - Handle object updates
 
 - (void)objectUpdated:(NSDictionary *)userInfo

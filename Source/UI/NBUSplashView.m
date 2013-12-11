@@ -27,12 +27,6 @@
 
 @implementation NBUSplashView
 
-@synthesize imageView = _imageView;
-@synthesize activityIndicatorView = _activityIndicatorView;
-@synthesize progressView = _progressView;
-@synthesize statusLabel = _statusLabel;
-@synthesize versionLabel = _versionLabel;
-
 #pragma mark - Methods
 
 - (void)startWithStatus:(NSString *)status

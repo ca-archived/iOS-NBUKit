@@ -45,9 +45,6 @@
 }
 
 @dynamic delegate;
-@synthesize equallySizedViews = _equallySizedViews;
-@synthesize forceDoNotReuseViews = _forceDoNotReuseViews;
-@synthesize forceLoadAllViews = _forceLoadAllViews;
 
 - (void)resetGridView
 {
@@ -361,7 +358,7 @@
     id object;
     for (NSUInteger index = 0; index < _visibleObjects.count; index++)
     {
-        object = [_visibleObjects objectAtIndex:index];
+        object = _visibleObjects[index];
 
         // Use model view if outside current area
         _useModelView = (!_forceLoadAllViews && !CGRectIntersectsRect(frame, _currentArea));
@@ -630,7 +627,7 @@
 
 - (BOOL)collectReusableViewAtIndex:(NSUInteger)index
 {
-    UIView * view = [_viewsOrFrames objectAtIndex:index];
+    UIView * view = _viewsOrFrames[index];
 //    NSAssert([view isKindOfClass:[UIView class]], @"%@ is not a view", view);
     if (![view isKindOfClass:[UIView class]])
     {
@@ -662,8 +659,7 @@
     }
     
     // Replace view for a frame
-    [_viewsOrFrames replaceObjectAtIndex:index
-                              withObject:[NSValue valueWithCGRect:view.frame]];
+    _viewsOrFrames[index] = [NSValue valueWithCGRect:view.frame];
 //    [_debug appendString:@"^"];
     return NO;
 }
@@ -676,7 +672,7 @@
 
 - (BOOL)checkIfFrameInArea:(NSUInteger)index
 {
-    id viewOrFrame = [_viewsOrFrames objectAtIndex:index];
+    id viewOrFrame = _viewsOrFrames[index];
     CGRect frame;
     
     if ([viewOrFrame isKindOfClass:[UIView class]])
@@ -695,7 +691,7 @@
 
 - (BOOL)populateFrameAtIndex:(NSUInteger)index
 {
-    id viewOrFrame = [_viewsOrFrames objectAtIndex:index];
+    id viewOrFrame = _viewsOrFrames[index];
     CGRect frame;
     
     // Skip non reusable views
@@ -717,14 +713,13 @@
     }
     
     // Add a view and replace the frame
-    UIView * view = [self viewForObject:[_visibleObjects objectAtIndex:index]];
+    UIView * view = [self viewForObject:_visibleObjects[index]];
     view.frame = frame;
     if (view.superview != self)
     {
         [self addSubview:view];
     }
-    [_viewsOrFrames replaceObjectAtIndex:index
-                              withObject:view];
+    _viewsOrFrames[index] = view;
     
     return YES;
 }
@@ -748,9 +743,9 @@
     
     // Load a new one as a last resort
     //[_debug appendString:@"*"];
-    return [[NSBundle loadNibNamed:self.nibNameForViews
+    return [NSBundle loadNibNamed:self.nibNameForViews
                              owner:self
-                           options:nil] objectAtIndex:0];
+                           options:nil][0];
 }
 
 @end

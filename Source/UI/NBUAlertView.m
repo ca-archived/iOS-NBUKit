@@ -21,16 +21,13 @@
 #import "NBUAlertView.h"
 #import "NBUKitPrivate.h"
 
-// Private category
-@interface NBUAlertView (Private) <UIAlertViewDelegate>
+// Class extension
+@interface NBUAlertView () <UIAlertViewDelegate>
 
 @end
 
 
 @implementation NBUAlertView
-
-@synthesize selectedButtonBlock = _selectedButtonBlock;
-@synthesize cancelButtonBlock = _cancelButtonBlock;
 
 - (id)initWithTitle:(NSString *)title
             message:(NSString *)message

@@ -43,11 +43,6 @@
     NSTimer * _randomTimer;
 }
 
-@synthesize changePagesRandomly = _changePagesRandomly;
-@synthesize centerViews = _centerViews;
-@synthesize scrollView = _scrollView;
-@synthesize pageControl = _pageControl;
-
 - (id)initWithCoder:(NSCoder *)coder
 {
     self = [super initWithCoder:coder];
@@ -116,10 +111,10 @@
     UIView * view;
     for (NSUInteger i = 0; i<[self.objectArray count]; i++)
     {
-        object = [self.objectArray objectAtIndex:i];
+        object = (self.objectArray)[i];
         if (![objectArray containsObject:object])
         {
-            view = [_views objectAtIndex:i];
+            view = _views[i];
             [view removeFromSuperview];
         }
     }
@@ -134,9 +129,9 @@
         // Update
         if (index != NSNotFound)
         {
-            [self updateView:[_views objectAtIndex:index] object:object]; // 更新を行う
+            [self updateView:_views[index] object:object]; // 更新を行う
             
-            [tmp addObject:[_views objectAtIndex:index]];
+            [tmp addObject:_views[index]];
         }
         // New
         else
@@ -193,7 +188,7 @@
     [super removeObject:object];
     
     // Remove object's view
-    UIView * view = [_views objectAtIndex:index];
+    UIView * view = _views[index];
     [_views removeObjectAtIndex:index];
     [view removeFromSuperview];
     
@@ -378,7 +373,7 @@
     for (id object in self.hiddenObjects)
     {
         index = [self.objectArray indexOfObject:object];
-        view = [_views objectAtIndex:index];
+        view = _views[index];
         view.hidden = YES;
         [visibleViews removeObject:view];
     }
