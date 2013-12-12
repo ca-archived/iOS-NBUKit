@@ -25,9 +25,6 @@
     NBUSplashView * _splashView;
 }
 
-@synthesize window = _window;
-@synthesize cameraButton = _cameraButton;
-
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

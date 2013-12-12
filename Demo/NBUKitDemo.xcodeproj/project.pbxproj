@@ -73,7 +73,6 @@
 		E5B06CDE1643591A0043F53F /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = Resources/iTunesArtwork; sourceTree = "<group>"; };
 		E5B06CDF1643591A0043F53F /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "Resources/Icon-Small@2x.png"; sourceTree = "<group>"; };
 		E5B06CE01643591A0043F53F /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "Resources/Icon-Small.png"; sourceTree = "<group>"; };
-		E5F8090A17543706008120E4 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		E5F8090B1754384B008120E4 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
@@ -117,7 +116,6 @@
 		34C4AD8615BE87FF00709E28 = {
 			isa = PBXGroup;
 			children = (
-				E5F8090A17543706008120E4 /* README.md */,
 				E5F8090B1754384B008120E4 /* Podfile */,
 				34C4AD9B15BE880000709E28 /* NBUKitDemo */,
 				34C4AD9415BE880000709E28 /* Frameworks */,

@@ -22,8 +22,6 @@
 
 @implementation PullToRefreshViewController
 
-@synthesize label = _label;
-
 - (IBAction)refresh:(id)sender
 {
     NBULogTrace();

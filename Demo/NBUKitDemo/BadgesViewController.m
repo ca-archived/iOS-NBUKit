@@ -22,9 +22,6 @@
 
 @implementation BadgesViewController
 
-@synthesize badgeView = _badgeView;
-@synthesize badgeSegmentedControl = _badgeSegmentedControl;
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
