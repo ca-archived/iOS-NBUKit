@@ -129,8 +129,9 @@ NSString * const NBULocalizedStringNotFound = @"NBULocalizedStringNotFound";
     // Still not found?
     if ([string isEqualToString:NBULocalizedStringNotFound])
     {
-        NBULogWarn(@"No localized string for '%@' in '%@'", key, tableName);
         string = value.length > 0 ? value : key;
+        
+        NBULogWarn(@"No localized string for '%@' in '%@', will use '%@'", key, tableName, string);
     }
     
     return string;
