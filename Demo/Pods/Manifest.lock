@@ -7,17 +7,17 @@ PODS:
     - CocoaLumberjack/Core
   - Lockbox (1.4.4)
   - LumberjackConsole (1.0.1):
-    - CocoaLumberjack (>= 1.6.3)
+    - CocoaLumberjack (>= 1.6.4)
     - LumberjackConsole/AdjustLevels
     - LumberjackConsole/Base
     - LumberjackConsole/Base
     - NBUCore (>= 2.0.0)
   - LumberjackConsole/AdjustLevels (1.0.1):
-    - CocoaLumberjack (>= 1.6.3)
+    - CocoaLumberjack (>= 1.6.4)
     - LumberjackConsole/Base
     - NBUCore (>= 2.0.0)
   - LumberjackConsole/Base (1.0.1):
-    - CocoaLumberjack (>= 1.6.3)
+    - CocoaLumberjack (>= 1.6.4)
     - LumberjackConsole/Base
     - NBUCore (>= 2.0.0)
   - MotionOrientation@PTEz (1.0.0)
@@ -62,10 +62,10 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   CocoaLumberjack: 17803afbade3126a377d32b8d23367264b44ced6
   Lockbox: 917945068ab8b0802e65527f225e6480937b2106
-  LumberjackConsole: 98711fa522dec36439d729939308819a082d4c47
+  LumberjackConsole: a48113cd630276db766686624fd09b0c1bc20ffa
   MotionOrientation@PTEz: 0b987d39639b13ce2769f6dc6f96f59783ca8786
   NBUCore: 66e33f9426cbefb5ca88f3228cfc2dd36eac6e71
-  NBUKit: 959cd6c5fa80a43488cddb76166263935051c464
+  NBUKit: 69841fe1d3c6c2cd16da0106f63230747d06a69a
   NBULog: 98bcc4805a07def3044970829e3f5c720a6017af
 
 COCOAPODS: 0.28.0

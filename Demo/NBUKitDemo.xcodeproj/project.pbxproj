@@ -19,6 +19,7 @@
 		34C4ADA615BE880000709E28 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4ADA515BE880000709E28 /* AppDelegate.m */; };
 		34C4ADBD15BE8E1F00709E28 /* MainController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34C4ADBC15BE8E1F00709E28 /* MainController.xib */; };
 		969D0504C0F445879CB97CA9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A8D7D81AEF4434C98230B87 /* libPods.a */; };
+		E515C147185AF22E004D6779 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E515C146185AF22E004D6779 /* Localizable.strings */; };
 		E5332BDD16660CDF00B019DB /* BadgesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5332BCF16660CDF00B019DB /* BadgesViewController.xib */; };
 		E5332BE016660CDF00B019DB /* HideOnScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5332BD416660CDF00B019DB /* HideOnScrollViewController.m */; };
 		E5332BE116660CDF00B019DB /* HideOnScrollViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5332BD516660CDF00B019DB /* HideOnScrollViewController.xib */; };
@@ -52,6 +53,7 @@
 		34C4ADBC15BE8E1F00709E28 /* MainController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainController.xib; sourceTree = "<group>"; };
 		7C918EBE545141BB8B2D2448 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		8A8D7D81AEF4434C98230B87 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E515C146185AF22E004D6779 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		E5332BCD16660CDF00B019DB /* BadgesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadgesViewController.h; sourceTree = "<group>"; };
 		E5332BCE16660CDF00B019DB /* BadgesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BadgesViewController.m; sourceTree = "<group>"; };
 		E5332BCF16660CDF00B019DB /* BadgesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BadgesViewController.xib; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 		34C4AD9B15BE880000709E28 /* NBUKitDemo */ = {
 			isa = PBXGroup;
 			children = (
+				E515C146185AF22E004D6779 /* Localizable.strings */,
 				34C4ADA415BE880000709E28 /* AppDelegate.h */,
 				34C4ADA515BE880000709E28 /* AppDelegate.m */,
 				34C4ADBC15BE8E1F00709E28 /* MainController.xib */,
@@ -254,6 +257,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E515C147185AF22E004D6779 /* Localizable.strings in Resources */,
 				34C4ADBD15BE8E1F00709E28 /* MainController.xib in Resources */,
 				3426B02E15BF769F00EAF6B8 /* first.png in Resources */,
 				E5332BDD16660CDF00B019DB /* BadgesViewController.xib in Resources */,
