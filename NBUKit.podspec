@@ -19,14 +19,15 @@ Pod::Spec.new do |s|
     s.dependency 'Lockbox', '>= 1.4.4'
     
     s.subspec 'Additions' do |sub|
-        sub.source_files = 'Source/Additions/*.{h,m}'
+        sub.source_files    = 'Source/Additions/*.{h,m}'
     end
 
     s.subspec 'UI' do |sub|
         sub.source_files    = 'Source/UI/*.{h,m}'
         sub.resource_bundle = { 'NBUKit' => ['Resources/*.{png,lproj}', 'Source/UI/*.{xib}'] }
-        sub.dependency 'MotionOrientation@PTEz', '>= 1.0.0'
         sub.frameworks      = 'MessageUI'
+        sub.dependency 'NBUKit/Additions'
+        sub.dependency 'MotionOrientation@PTEz', '>= 1.0.0'
     end
     
     s.subspec 'Library' do |sl|
