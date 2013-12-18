@@ -27,26 +27,32 @@
 #endif
 
 /// Additions
-#import "NBUAdditions.h"
+#ifdef COCOAPODS_POD_AVAILABLE_NBUKit_Additions
+    #import "NBUAdditions.h"
+#endif
 
 /// Compatibility
-#import "NBUCompatibility.h"
+#ifdef COCOAPODS_POD_AVAILABLE_NBUKit_Library_NBUCompatibility
+    #import "NBUCompatibility.h"
+#endif
 
 /// UI
-#import "NBUActionSheet.h"
-#import "NBUAlertView.h"
-#import "NBUApplicationDelegate.h"
-#import "NBUBadgeSegmentedControl.h"
-#import "NBUBadgeView.h"
-#import "NBUMailComposeViewController.h"
-#import "NBUObjectView.h"
-#import "NBUObjectViewController.h"
-#import "NBURefreshControl.h"
-#import "NBURotatingViews.h"
-#import "NBUSplashView.h"
-#import "NBUTabBarController.h"
-#import "NBUView.h"
-#import "NBUViewController.h"
+#ifdef COCOAPODS_POD_AVAILABLE_NBUKit_UI
+    #import "NBUActionSheet.h"
+    #import "NBUAlertView.h"
+    #import "NBUApplicationDelegate.h"
+    #import "NBUBadgeSegmentedControl.h"
+    #import "NBUBadgeView.h"
+    #import "NBUMailComposeViewController.h"
+    #import "NBUObjectView.h"
+    #import "NBUObjectViewController.h"
+    #import "NBURefreshControl.h"
+    #import "NBURotatingViews.h"
+    #import "NBUSplashView.h"
+    #import "NBUTabBarController.h"
+    #import "NBUView.h"
+    #import "NBUViewController.h"
+#endif
 
 /**
  NBUKit static library.
