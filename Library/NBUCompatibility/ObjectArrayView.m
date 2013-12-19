@@ -255,27 +255,12 @@
     // a) Ask delegate to create it
     if ([_delegate respondsToSelector:@selector(objectArrayView:viewForObject:)])
     {
-        view = [_delegate objectArrayView:self
-                            viewForObject:object];
-        
-        // Also ask delegate to configure it?
-        if (view && [_delegate respondsToSelector:@selector(objectArrayView:configureView:withObject:)])
-        {
-            [_delegate objectArrayView:self
-                         configureView:view
-                            withObject:object];
-        }
-        // Configure it if it's an ObjectView
-        else if ([view isKindOfClass:[ObjectView class]])
-        {
-            ((ObjectView *)view).object = object;
-        }
+        view = [self configuredViewForObject:object
+                                fromDelegate:_delegate];
         
         // Return if successful
         if (view)
-        {
             return view;
-        }
     }
     
     // b) Just use the object if it's a UIView
@@ -311,13 +296,13 @@
         view.clipsToBounds = YES;
     }
     
-    // e) MediaInfo objects
-//    else if ([object isKindOfClass:[NBUMediaInfo class]])
-//    {
-//        view = [[UIImageView alloc] initWithImage:((NBUMediaInfo *)object).editedImage];
-//        view.contentMode = UIViewContentModeScaleAspectFill;
-//        view.clipsToBounds = YES;
-//    }
+    // e) The object conforms to the delegate protocol?
+    else if ([object conformsToProtocol:@protocol(ObjectArrayViewDelegate)] &&
+             [object respondsToSelector:@selector(objectArrayView:viewForObject:)])
+    {
+        view = [self configuredViewForObject:object
+                                fromDelegate:object];
+    }
     
     // ?) Add support for more kinds of objects?
     
@@ -328,6 +313,28 @@
                                        reason:[NSString stringWithFormat:@"Couldn't create view for: %@",
                                                NSStringFromClass([object class])]
                                      userInfo:nil];
+    }
+    
+    return view;
+}
+
+- (UIView *)configuredViewForObject:(id)object
+                       fromDelegate:(id<ObjectArrayViewDelegate>)delegate
+{
+    UIView * view = [delegate objectArrayView:self
+                                viewForObject:object];
+    
+    // Also ask delegate to configure it?
+    if (view && [delegate respondsToSelector:@selector(objectArrayView:configureView:withObject:)])
+    {
+        [delegate objectArrayView:self
+                    configureView:view
+                       withObject:object];
+    }
+    // Configure it if it's an ObjectView
+    else if ([view isKindOfClass:[ObjectView class]])
+    {
+        ((ObjectView *)view).object = object;
     }
     
     return view;
