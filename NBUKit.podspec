@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
     s.preserve_paths = "README.md", "NOTICE"
     
     s.dependency 'NBUCore', '>= 2.0.0'
-    s.dependency 'Lockbox', '>= 1.4.4'
+    s.dependency 'Lockbox', '>= 1.4.6'
     
     s.subspec 'Additions' do |sub|
         sub.source_files    = 'Source/Additions/*.{h,m}'
