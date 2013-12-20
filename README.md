@@ -1,4 +1,3 @@
-
 NBUKit
 ======
 
@@ -6,9 +5,10 @@ NBUKit
 [![Version 2.0.0](https://cocoapod-badges.herokuapp.com/v/NBUKit/badge.png)](http://cocoadocs.org/docsets/NBUKit/)
 [![Build Status](https://travis-ci.org/CyberAgent/iOS-NBUKit.png?branch=master)](https://travis-ci.org/CyberAgent/iOS-NBUKit)
 
-UIKit and NSFoundation convenience additions and subclasses.
+UIKit and NSFoundation convenience categories and subclasses.
 
-_Image Picker code is being migrated to [NBUImagePicker](https://github.com/CyberAgent/iOS-NBUImagePicker). Uses [NBUCore](https://github.com/CyberAgent/iOS-NBUCore), supports [NBULog](https://github.com/CyberAgent/iOS-NBULog)._
+_Uses [NBUCore](https://github.com/CyberAgent/iOS-NBUCore), supports [NBULog](https://github.com/CyberAgent/iOS-NBULog).  
+Image Picker code moved to [NBUImagePicker](https://github.com/CyberAgent/iOS-NBUImagePicker)._
 
 ## Features
 
@@ -44,8 +44,7 @@ For now add the following to your [CocoaPods](http://cocoapods.org)' [Podfile](h
 ```ruby
 platform :ios, '5.0'
 
-# Pre-release version
-pod 'NBUKit', :git => 'https://github.com/CyberAgent/iOS-NBUKit.git', :commit => 'xxx'
+pod 'NBUKit'
 
 # Optional for dynamic logging
 pod 'NBULog'
