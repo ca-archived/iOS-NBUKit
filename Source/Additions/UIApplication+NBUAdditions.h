@@ -66,13 +66,13 @@
 /// @note For now limited to strings.
 /// @param key The associated key.
 /// @return An NSString object.
-+ (id)secureObjectForKey:(NSString *)key;
++ (NSString *)secureObjectForKey:(NSString *)key;
 
 /// Save an object in the device Keychain.
 /// @note For now limited to strings.
 /// @param object A NSString object.
 /// @param key The associated key.
-+ (void)setSecureObject:(id)object
++ (void)setSecureObject:(NSString *)object
                  forKey:(NSString *)key;
 
 @end

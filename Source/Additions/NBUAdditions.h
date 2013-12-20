@@ -19,7 +19,6 @@
 //
 
 /// NBUAdditions
-#import "Lockbox+NBUAdditions.h"
 #import "NSArray+NBUAdditions.h"
 #import "NSBundle+NBUAdditions.h"
 #import "NSFileManager+NBUAdditions.h"

@@ -117,7 +117,7 @@
 
 #pragma mark - Keychain
 
-+ (void)setSecureObject:(id)object
++ (void)setSecureObject:(NSString *)object
                  forKey:(NSString *)key
 {
     // TODO: make object a plist string
@@ -129,7 +129,7 @@
     }
 }
 
-+ (id)secureObjectForKey:(NSString *)key
++ (NSString *)secureObjectForKey:(NSString *)key
 {
     // TODO:    return [[Lockbox stringForKey:key] propertyList];
     return [Lockbox stringForKey:key];
