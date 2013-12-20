@@ -82,7 +82,7 @@ static NSString *_bundleId = nil;
             status = SecItemAdd((LOCKBOX_DICTREF) dict, NULL);
     }
     if (status != errSecSuccess)
-        NSLog(@"SecItemAdd failed for key %@: %ld", hierKey, status);
+        NSLog(@"SecItemAdd failed for key %@: %d", hierKey, (int)status);
     
     return (status == errSecSuccess);
 }
@@ -98,7 +98,7 @@ static NSString *_bundleId = nil;
     OSStatus status =
     SecItemCopyMatching ( (LOCKBOX_DICTREF) query, (CFTypeRef *) &data );
     if (status != errSecSuccess && status != errSecItemNotFound)
-        NSLog(@"SecItemCopyMatching failed for key %@: %ld", hierKey, status);
+        NSLog(@"SecItemCopyMatching failed for key %@: %d", hierKey, (int)status);
     
     if (!data)
         return nil;
@@ -176,6 +176,38 @@ static NSString *_bundleId = nil;
     return set;
 }
 
++ (BOOL)setDictionary:(NSDictionary *)value forKey:(NSString *)key
+{
+    return [self setDictionary:value forKey:key accessibility:DEFAULT_ACCESSIBILITY];
+}
+
++ (BOOL)setDictionary:(NSDictionary *)value forKey:(NSString *)key accessibility:(CFTypeRef)accessibility
+{
+    NSMutableArray * keysAndValues = [NSMutableArray arrayWithArray:value.allKeys];
+    [keysAndValues addObjectsFromArray:value.allValues];
+    
+    return [self setArray:keysAndValues forKey:key accessibility:accessibility];
+}
+
++ (NSDictionary *)dictionaryForKey:(NSString *)key
+{
+    NSArray * keysAndValues = [self arrayForKey:key];
+    
+    if (!keysAndValues || keysAndValues.count == 0)
+        return nil;
+    
+    if ((keysAndValues.count % 2) != 0)
+    {
+        NSLog(@"Dictionary for %@ was not saved properly to keychain", key);
+        return nil;
+    }
+    
+    NSUInteger half = keysAndValues.count / 2;
+    NSRange keys = NSMakeRange(0, half);
+    NSRange values = NSMakeRange(half, half);
+    return [NSDictionary dictionaryWithObjects:[keysAndValues subarrayWithRange:values]
+                                       forKeys:[keysAndValues subarrayWithRange:keys]];
+}
 
 +(BOOL)setDate:(NSDate *)value forKey:(NSString *)key
 {

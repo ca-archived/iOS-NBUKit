@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
     
     s.name          = "NBUKit"
     s.version       = "2.0.0"
-    s.summary       = "UIKit and NSFoundation convenience additions and subclasses."
+    s.summary       = "UIKit and NSFoundation convenience categories and subclasses."
     s.homepage      = "http://cyberagent.github.io/iOS-NBUKit/"
     s.license       = { :type => 'Apache License, Version 2.0', :file => 'LICENSE' }
     s.author        = { "CyberAgent Inc." => "", "Ernesto Rivera" => "rivera_ernesto@cyberagent.co.jp" }
@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
     s.preserve_paths = "README.md", "NOTICE"
     
     s.dependency 'NBUCore', '>= 2.0.0'
-    s.dependency 'Lockbox', '>= 1.4.4'
+    s.dependency 'Lockbox', '>= 1.4.6'
     
     s.subspec 'Additions' do |sub|
         sub.source_files    = 'Source/Additions/*.{h,m}'

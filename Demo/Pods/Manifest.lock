@@ -1,11 +1,11 @@
 PODS:
-  - CocoaLumberjack (1.6.5.1):
+  - CocoaLumberjack (1.7.0):
     - CocoaLumberjack/Core
     - CocoaLumberjack/Extensions
-  - CocoaLumberjack/Core (1.6.5.1)
-  - CocoaLumberjack/Extensions (1.6.5.1):
+  - CocoaLumberjack/Core (1.7.0)
+  - CocoaLumberjack/Extensions (1.7.0):
     - CocoaLumberjack/Core
-  - Lockbox (1.4.4)
+  - Lockbox (1.4.6)
   - LumberjackConsole (1.0.1):
     - CocoaLumberjack (>= 1.6.4)
     - LumberjackConsole/AdjustLevels
@@ -23,27 +23,27 @@ PODS:
   - MotionOrientation@PTEz (1.0.0)
   - NBUCore (2.0.0)
   - NBUKit (2.0.0):
-    - Lockbox (>= 1.4.4)
+    - Lockbox (>= 1.4.6)
     - NBUCore (>= 2.0.0)
     - NBUKit/Additions
     - NBUKit/Library
     - NBUKit/UI
   - NBUKit/Additions (2.0.0):
-    - Lockbox (>= 1.4.4)
+    - Lockbox (>= 1.4.6)
     - NBUCore (>= 2.0.0)
   - NBUKit/Library (2.0.0):
-    - Lockbox (>= 1.4.4)
+    - Lockbox (>= 1.4.6)
     - NBUCore (>= 2.0.0)
     - NBUKit/Library/NBUCompatibility
     - NBUKit/Library/RestKit Support
   - NBUKit/Library/NBUCompatibility (2.0.0):
-    - Lockbox (>= 1.4.4)
+    - Lockbox (>= 1.4.6)
     - NBUCore (>= 2.0.0)
   - NBUKit/Library/RestKit Support (2.0.0):
-    - Lockbox (>= 1.4.4)
+    - Lockbox (>= 1.4.6)
     - NBUCore (>= 2.0.0)
   - NBUKit/UI (2.0.0):
-    - Lockbox (>= 1.4.4)
+    - Lockbox (>= 1.4.6)
     - MotionOrientation@PTEz (>= 1.0.0)
     - NBUCore (>= 2.0.0)
     - NBUKit/Additions
@@ -61,12 +61,12 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  CocoaLumberjack: 17803afbade3126a377d32b8d23367264b44ced6
-  Lockbox: 917945068ab8b0802e65527f225e6480937b2106
+  CocoaLumberjack: be87113f649942f020a37c061c58009b6ee5ff68
+  Lockbox: 56ac5c11e51d46baa4408960a5a35b355a32840e
   LumberjackConsole: a48113cd630276db766686624fd09b0c1bc20ffa
   MotionOrientation@PTEz: 0b987d39639b13ce2769f6dc6f96f59783ca8786
   NBUCore: 66e33f9426cbefb5ca88f3228cfc2dd36eac6e71
-  NBUKit: ea429e0003ee4bf07a33c5256800f55eb9832055
+  NBUKit: 03e684f59d62b7edb5647b073be347df22fe4873
   NBULog: 98bcc4805a07def3044970829e3f5c720a6017af
 
 COCOAPODS: 0.28.0

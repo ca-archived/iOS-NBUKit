@@ -7,10 +7,10 @@
  * Welcome to Cocoa Lumberjack!
  * 
  * The project page has a wealth of documentation if you have any questions.
- * https://github.com/robbiehanson/CocoaLumberjack
+ * https://github.com/CocoaLumberjack/CocoaLumberjack
  * 
  * If you're new to the project you may wish to read the "Getting Started" wiki.
- * https://github.com/robbiehanson/CocoaLumberjack/wiki/GettingStarted
+ * https://github.com/CocoaLumberjack/CocoaLumberjack/wiki/GettingStarted
  * 
  * 
  * This class provides a logger to write log statements to a file.
@@ -28,12 +28,6 @@
 #define DEFAULT_LOG_MAX_FILE_SIZE     (1024 * 1024)   //  1 MB
 #define DEFAULT_LOG_ROLLING_FREQUENCY (60 * 60 * 24)  // 24 Hours
 #define DEFAULT_LOG_MAX_NUM_LOG_FILES (5)             //  5 Files
-
-// How should we produce unique file names? by UUID or timestamp?
-typedef enum {
-    DDLogFileNamingConventionUUID,
-    DDLogFileNamingConventionTimestamp
-} DDLogFileNamingConvention;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -124,8 +118,6 @@ typedef enum {
     NSUInteger maximumNumberOfLogFiles;
     NSString *_logsDirectory;
 }
-
-@property (readwrite, assign) DDLogFileNamingConvention fileNamingConvention;
 
 - (id)init;
 - (instancetype)initWithLogsDirectory:(NSString *)logsDirectory;
