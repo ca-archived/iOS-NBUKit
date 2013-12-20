@@ -1,72 +1,72 @@
 PODS:
-  - CocoaLumberjack (1.6)
-  - GPUImage (0.1.2)
-  - Lockbox (1.4.4)
-  - NBUCore (1.9.7):
-    - CocoaLumberjack (<= 1.6)
-    - Lockbox (~> 1.4.2)
-    - NBUCore/Additions
-    - NBUCore/Dashboard
-    - NBUCore/Helpers
-    - NBUCore/UI
-  - NBUCore/Additions (1.9.7):
-    - CocoaLumberjack (<= 1.6)
-    - Lockbox (~> 1.4.2)
-  - NBUCore/Dashboard (1.9.7):
-    - CocoaLumberjack (<= 1.6)
-    - Lockbox (~> 1.4.2)
-  - NBUCore/Helpers (1.9.7):
-    - CocoaLumberjack (<= 1.6)
-    - Lockbox (~> 1.4.2)
-  - NBUCore/UI (1.9.7):
-    - CocoaLumberjack (<= 1.6)
-    - Lockbox (~> 1.4.2)
-  - NBUKit (1.9.8):
-    - NBUCore (~> 1.9.6)
-    - NBUKit/Assets
-    - NBUKit/Image
+  - CocoaLumberjack (1.7.0):
+    - CocoaLumberjack/Core
+    - CocoaLumberjack/Extensions
+  - CocoaLumberjack/Core (1.7.0)
+  - CocoaLumberjack/Extensions (1.7.0):
+    - CocoaLumberjack/Core
+  - Lockbox (1.4.6)
+  - LumberjackConsole (1.0.1):
+    - CocoaLumberjack (>= 1.6.4)
+    - LumberjackConsole/AdjustLevels
+    - LumberjackConsole/Base
+    - LumberjackConsole/Base
+    - NBUCore (>= 2.0.0)
+  - LumberjackConsole/AdjustLevels (1.0.1):
+    - CocoaLumberjack (>= 1.6.4)
+    - LumberjackConsole/Base
+    - NBUCore (>= 2.0.0)
+  - LumberjackConsole/Base (1.0.1):
+    - CocoaLumberjack (>= 1.6.4)
+    - LumberjackConsole/Base
+    - NBUCore (>= 2.0.0)
+  - MotionOrientation@PTEz (1.0.0)
+  - NBUCore (2.0.0)
+  - NBUKit (2.0.0):
+    - Lockbox (>= 1.4.6)
+    - NBUCore (>= 2.0.0)
+    - NBUKit/Additions
     - NBUKit/Library
-    - NBUKit/Picker
-    - NBUKit/Resources
     - NBUKit/UI
-  - NBUKit/Assets (1.9.8):
-    - NBUCore (~> 1.9.6)
-  - NBUKit/Image (1.9.8):
-    - GPUImage (>= 0.1.2)
-    - NBUCore (~> 1.9.6)
-  - NBUKit/Library (1.9.8):
-    - NBUCore (~> 1.9.6)
-    - NBUKit/Library/MotionOrientation
+  - NBUKit/Additions (2.0.0):
+    - Lockbox (>= 1.4.6)
+    - NBUCore (>= 2.0.0)
+  - NBUKit/Library (2.0.0):
+    - Lockbox (>= 1.4.6)
+    - NBUCore (>= 2.0.0)
     - NBUKit/Library/NBUCompatibility
-    - NBUKit/Library/RBVolumeButtons
     - NBUKit/Library/RestKit Support
-  - NBUKit/Library/MotionOrientation (1.9.8):
-    - NBUCore (~> 1.9.6)
-  - NBUKit/Library/NBUCompatibility (1.9.8):
-    - NBUCore (~> 1.9.6)
-  - NBUKit/Library/RBVolumeButtons (1.9.8):
-    - NBUCore (~> 1.9.6)
-  - NBUKit/Library/RestKit Support (1.9.8):
-    - NBUCore (~> 1.9.6)
-  - NBUKit/Picker (1.9.8):
-    - NBUCore (~> 1.9.6)
-  - NBUKit/Resources (1.9.8):
-    - NBUCore (~> 1.9.6)
-  - NBUKit/UI (1.9.8):
-    - NBUCore (~> 1.9.6)
+  - NBUKit/Library/NBUCompatibility (2.0.0):
+    - Lockbox (>= 1.4.6)
+    - NBUCore (>= 2.0.0)
+  - NBUKit/Library/RestKit Support (2.0.0):
+    - Lockbox (>= 1.4.6)
+    - NBUCore (>= 2.0.0)
+  - NBUKit/UI (2.0.0):
+    - Lockbox (>= 1.4.6)
+    - MotionOrientation@PTEz (>= 1.0.0)
+    - NBUCore (>= 2.0.0)
+    - NBUKit/Additions
+  - NBULog (1.0.4):
+    - CocoaLumberjack (>= 1.6.5)
+    - NBUCore (>= 2.0.0)
 
 DEPENDENCIES:
+  - LumberjackConsole
   - NBUKit (from `../`)
+  - NBULog
 
 EXTERNAL SOURCES:
   NBUKit:
     :path: ../
 
 SPEC CHECKSUMS:
-  CocoaLumberjack: 934fb52cdd8e070ee954a3c02a4b6bbb538cac3a
-  GPUImage: 007145faa0e27f1ddbcab93e07f026c9776e2fa2
-  Lockbox: 917945068ab8b0802e65527f225e6480937b2106
-  NBUCore: 63cb2455028c611a9b533fd94efe3dad668bd5cd
-  NBUKit: 84cb892c95414cfc18e4b47ce0436be630fcf31d
+  CocoaLumberjack: be87113f649942f020a37c061c58009b6ee5ff68
+  Lockbox: 56ac5c11e51d46baa4408960a5a35b355a32840e
+  LumberjackConsole: a48113cd630276db766686624fd09b0c1bc20ffa
+  MotionOrientation@PTEz: 0b987d39639b13ce2769f6dc6f96f59783ca8786
+  NBUCore: 66e33f9426cbefb5ca88f3228cfc2dd36eac6e71
+  NBUKit: 03e684f59d62b7edb5647b073be347df22fe4873
+  NBULog: 98bcc4805a07def3044970829e3f5c720a6017af
 
 COCOAPODS: 0.28.0

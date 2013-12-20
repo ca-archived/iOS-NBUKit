@@ -2,8 +2,8 @@
 //  ObjectView.m
 //  NBUCompatibility
 //
-//  Created by Ernesto Rivera on 12/02/07.
-//  Copyright (c) 2012 CyberAgent Inc.
+//  Created by Ernesto Rivera on 2012/02/07.
+//  Copyright (c) 2012-2013 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -32,13 +32,6 @@ NSString * const ObjectDeletedNotification = @"ObjectDeletedNotification";
 @end
 
 @implementation ObjectView
-//{
-//    UIActionSheet * _deleteActionSheet;
-//    UIView * _mask;
-//    BOOL _isShowMask;
-//}
-
-@synthesize object = _object;
 
 // *** Override to avoid unexpected objects ***
 - (Class)expectedClass
@@ -123,9 +116,9 @@ NSString * const ObjectDeletedNotification = @"ObjectDeletedNotification";
         
         if (!_mask)
         {
-            _mask = [[NSBundle loadNibNamed:@"ObjectViewMask"
+            _mask = [NSBundle loadNibNamed:@"ObjectViewMask"
                                       owner:self
-                                    options:nil] objectAtIndex:0];
+                                    options:nil][0];
             _mask.frame = self.bounds;
             [self addSubview:_mask];
             

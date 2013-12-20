@@ -2,8 +2,8 @@
 //  ObjectArrayView.m
 //  NBUCompatibility
 //
-//  Created by Ernesto Rivera on 12/02/29.
-//  Copyright (c) 2012 CyberAgent Inc.
+//  Created by Ernesto Rivera on 2012/02/29.
+//  Copyright (c) 2012-2013 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -31,13 +31,6 @@
 }
 
 @dynamic objectArray;
-@synthesize delegate = _delegate;
-@synthesize nibNameForViews = _nibNameForViews;
-@synthesize loadMoreView = _loadMoreView;
-@synthesize loadMoreViewOnTop = _loadMoreViewOnTop;
-@synthesize sizeToFitObjectViews = _sizeToFitObjectViews;
-@synthesize targetObjectViewSize = _targetObjectViewSize;
-@synthesize margin = _margin;
 
 - (Class)expectedClass
 {
@@ -177,8 +170,7 @@
         return;
     }
     
-    [(NSMutableArray *)self.objectArray replaceObjectAtIndex:index
-                                                  withObject:object];
+    ((NSMutableArray *)self.objectArray)[index] = object;
     
     // *** Update UI in subclass ***
 }
@@ -221,7 +213,7 @@
         return;
     }
     
-    [self setObject:[self.objectArray objectAtIndex:index]
+    [self setObject:self.objectArray[index]
              hidden:yesOrNo];
 }
 
@@ -251,9 +243,9 @@
 - (UIView *)dequeueOrLoadViewFromNib
 {
     // ** This class only loads from nib, implement dequeue in subclasses! **
-    return [[NSBundle loadNibNamed:_nibNameForViews
+    return [NSBundle loadNibNamed:_nibNameForViews
                              owner:self
-                           options:nil] objectAtIndex:0];
+                           options:nil][0];
 }
 
 - (UIView *)viewForObject:(id)object
@@ -263,27 +255,12 @@
     // a) Ask delegate to create it
     if ([_delegate respondsToSelector:@selector(objectArrayView:viewForObject:)])
     {
-        view = [_delegate objectArrayView:self
-                            viewForObject:object];
-        
-        // Also ask delegate to configure it?
-        if (view && [_delegate respondsToSelector:@selector(objectArrayView:configureView:withObject:)])
-        {
-            [_delegate objectArrayView:self
-                         configureView:view
-                            withObject:object];
-        }
-        // Configure it if it's an ObjectView
-        else if ([view isKindOfClass:[ObjectView class]])
-        {
-            ((ObjectView *)view).object = object;
-        }
+        view = [self configuredViewForObject:object
+                                fromDelegate:_delegate];
         
         // Return if successful
         if (view)
-        {
             return view;
-        }
     }
     
     // b) Just use the object if it's a UIView
@@ -319,12 +296,12 @@
         view.clipsToBounds = YES;
     }
     
-    // e) MediaInfo objects
-    else if ([object isKindOfClass:[NBUMediaInfo class]])
+    // e) The object conforms to the delegate protocol?
+    else if ([object conformsToProtocol:@protocol(ObjectArrayViewDelegate)] &&
+             [object respondsToSelector:@selector(objectArrayView:viewForObject:)])
     {
-        view = [[UIImageView alloc] initWithImage:((NBUMediaInfo *)object).editedImage];
-        view.contentMode = UIViewContentModeScaleAspectFill;
-        view.clipsToBounds = YES;
+        view = [self configuredViewForObject:object
+                                fromDelegate:object];
     }
     
     // ?) Add support for more kinds of objects?
@@ -336,6 +313,28 @@
                                        reason:[NSString stringWithFormat:@"Couldn't create view for: %@",
                                                NSStringFromClass([object class])]
                                      userInfo:nil];
+    }
+    
+    return view;
+}
+
+- (UIView *)configuredViewForObject:(id)object
+                       fromDelegate:(id<ObjectArrayViewDelegate>)delegate
+{
+    UIView * view = [delegate objectArrayView:self
+                                viewForObject:object];
+    
+    // Also ask delegate to configure it?
+    if (view && [delegate respondsToSelector:@selector(objectArrayView:configureView:withObject:)])
+    {
+        [delegate objectArrayView:self
+                    configureView:view
+                       withObject:object];
+    }
+    // Configure it if it's an ObjectView
+    else if ([view isKindOfClass:[ObjectView class]])
+    {
+        ((ObjectView *)view).object = object;
     }
     
     return view;

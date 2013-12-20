@@ -3,7 +3,7 @@
 //  NBUKitDemo
 //
 //  Created by Ernesto Rivera on 2012/10/12.
-//  Copyright (c) 2012 CyberAgent Inc.
+//  Copyright (c) 2012-2013 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -23,8 +23,8 @@
 @interface BadgesViewController : ScrollViewController
 
 // Outlets
-@property (assign, nonatomic) IBOutlet NBUBadgeView * badgeView;
-@property (assign, nonatomic) IBOutlet NBUBadgeSegmentedControl * badgeSegmentedControl;
+@property (weak, nonatomic) IBOutlet NBUBadgeView * badgeView;
+@property (weak, nonatomic) IBOutlet NBUBadgeSegmentedControl * badgeSegmentedControl;
 
 // Actions
 - (IBAction)badgeTapped:(id)sender;

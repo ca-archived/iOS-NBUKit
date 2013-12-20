@@ -1,14 +1,15 @@
 
 platform :ios, '5.0'
 
-# For client projects just use:
+# For regular projects
 #pod 'NBUKit'
 
-# Pre-release versions:
-#pod 'GPUImage', :head
-#pod 'NBUKit',  :head
+# Optional for dynamic logging
+pod 'NBULog'
 
-# For NBUKit development only:
-#pod 'GPUImage', :podspec => '../Library/GPUImage.podspec' # iOS 5+ targets only
-pod 'NBUKit',   :path => '../'
+# Optional for on-device log console
+pod 'LumberjackConsole'
+
+# For development
+pod 'NBUKit', :path => '../'
 

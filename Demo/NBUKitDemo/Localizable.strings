@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  NBUKitDemo
+
+  Created by Ernesto Rivera on 2013/12/13.
+  Copyright (c) 2012-2013 CyberAgent Inc.
+ 
+  Override here any localization entries you want from NBUKit's Resources.
+  This file can be localized as well.
+*/
+
+// Custom localization
+"NBURefreshControl Drag to refresh" = "Pull to refresh";
+

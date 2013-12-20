@@ -3,7 +3,7 @@
 //  NBUKit
 //
 //  Created by Ernesto Rivera on 2012/08/07.
-//  Copyright (c) 2012 CyberAgent Inc.
+//  Copyright (c) 2012-2013 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -32,19 +32,19 @@
 /// @name Outlets
 
 /// The background UIImageView. Normally set to the apropiate `Default.png`.
-@property (assign, nonatomic) IBOutlet UIImageView * imageView;
+@property (weak, nonatomic) IBOutlet UIImageView * imageView;
 
 /// An optional activity indicator.
-@property (assign, nonatomic) IBOutlet UIActivityIndicatorView * activityIndicatorView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView * activityIndicatorView;
 
 /// An optional progress view.
-@property (assign, nonatomic) IBOutlet UIProgressView * progressView;
+@property (weak, nonatomic) IBOutlet UIProgressView * progressView;
 
 /// An optional status label.
-@property (assign, nonatomic) IBOutlet UILabel * statusLabel;
+@property (weak, nonatomic) IBOutlet UILabel * statusLabel;
 
 /// An optional application version label.
-@property (assign, nonatomic) IBOutlet UILabel * versionLabel;
+@property (weak, nonatomic) IBOutlet UILabel * versionLabel;
 
 /// @name Methods
 

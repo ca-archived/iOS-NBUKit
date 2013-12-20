@@ -2,8 +2,8 @@
 //  ObjectArrayView.h
 //  NBUCompatibility
 //
-//  Created by Ernesto Rivera on 12/02/29.
-//  Copyright (c) 2012 CyberAgent Inc.
+//  Created by Ernesto Rivera on 2012/02/29.
+//  Copyright (c) 2012-2013 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -95,7 +95,7 @@
 /// @name Managing Objects' Views
 
 /// A delegate to help load, configure and/or provide "load more objects" support.
-@property (nonatomic, assign)IBOutlet       id<ObjectArrayViewDelegate> delegate;
+@property (nonatomic, weak)IBOutlet         id<ObjectArrayViewDelegate> delegate;
 
 /// When set, a delegate is no longer needed to create views.
 @property (nonatomic, strong)               NSString * nibNameForViews;

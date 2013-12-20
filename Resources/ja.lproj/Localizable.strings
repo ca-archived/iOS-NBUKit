@@ -1,0 +1,18 @@
+/* NBURefreshControl Drag to refresh */
+"NBURefreshControl Drag to refresh" = "ドラッグして更新...";
+
+/* NBURefreshControl Error */
+"NBURefreshControl Error" = "更新エラー";
+
+/* NBURefreshControl last update unknown */
+"NBURefreshControl last update unknown" = "最終更新不明";
+
+/* NBURefreshControl last updated */
+"NBURefreshControl last updated" = "最終更新%@";
+
+/* NBURefreshControl Reloading */
+"NBURefreshControl Reloading" = "更新中...";
+
+/* NBURefreshControl Updated */
+"NBURefreshControl Updated" = "更新完了";
+

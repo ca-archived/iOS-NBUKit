@@ -2,8 +2,8 @@
 //  ScrollViewController.m
 //  NBUCompatibility
 //
-//  Created by Ernesto Rivera on 12/02/07.
-//  Copyright (c) 2012 CyberAgent Inc.
+//  Created by Ernesto Rivera on 2012/02/07.
+//  Copyright (c) 2012-2013 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -51,13 +51,6 @@ static NSString * customBackButtonTitle;
     BOOL _barsHidden;
 }
 
-@synthesize animated = _animated;
-@synthesize scrollView = _scrollView;
-@synthesize contentView = _contentView;
-@synthesize activeField = _activeField;
-@synthesize customBackButtonTitle = _customBackButtonTitle;
-@synthesize hidesBarsOnScroll = _hidesBarsOnScroll;
-
 + (void)setCustomBackButtonTitle:(NSString *)title
 {
     customBackButtonTitle = title;
@@ -93,9 +86,9 @@ static NSString * customBackButtonTitle;
                                                  options:nil];
         // Else set it to the first loaded object
         if (!self.isViewLoaded &&
-            [[loadedObjects objectAtIndex:0] isKindOfClass:[UIView class]])
+            [loadedObjects[0] isKindOfClass:[UIView class]])
         {
-            self.view = [loadedObjects objectAtIndex:0];
+            self.view = loadedObjects[0];
         }
     }
     
@@ -155,7 +148,7 @@ static NSString * customBackButtonTitle;
                                            reason:[NSString stringWithFormat:@"%@ A contentView couldn't be found", self]
                                          userInfo:nil];
         }
-        _contentView = [_scrollView.subviews objectAtIndex:0];
+        _contentView = (_scrollView.subviews)[0];
     }
     
     // Add contentView to scrollView if necessary
@@ -634,7 +627,7 @@ static NSString * customBackButtonTitle;
     
     // Calculate the rect that gets hidden by the keyboard
     NSDictionary * info = [notification userInfo];
-    CGRect rect = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGRect rect = [info[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     rect = [_scrollView convertRect:rect
                            fromView:nil];
     rect = CGRectIntersection(rect, _scrollView.bounds);
@@ -723,10 +716,10 @@ static NSString * customBackButtonTitle;
                NBUStringFromBOOL(_activeField.isFirstResponder), _activeField);
     
     // Restore accessoryView
-    if ([_activeField respondsToSelector:@selector(restoreAccessoryView)])
-    {
-        [_activeField performSelector:@selector(restoreAccessoryView)];
-    }
+//    if ([_activeField respondsToSelector:@selector(restoreAccessoryView)])
+//    {
+//        [_activeField performSelector:@selector(restoreAccessoryView)];
+//    }
 
     // 2012.08.08 modify start by Kubota
     // テキスト入力で、変換候補一覧を表示して元の画面に戻ると完了ボタンが効かない
@@ -768,7 +761,7 @@ static NSString * customBackButtonTitle;
                         change:(NSDictionary *)change
                        context:(void *)context
 {
-    CGPoint oldOffset = [(NSValue *)[change objectForKey:NSKeyValueChangeOldKey] CGPointValue];
+    CGPoint oldOffset = [(NSValue *)change[NSKeyValueChangeOldKey] CGPointValue];
     
     if (!_hidesBarsOnScroll || _scrollView.contentOffset.y == oldOffset.y)
         return;

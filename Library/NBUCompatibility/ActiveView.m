@@ -2,8 +2,8 @@
 //  ActiveView.m
 //  NBUCompatibility
 //
-//  Created by Ernesto Rivera on 12/03/05.
-//  Copyright (c) 2012 CyberAgent Inc.
+//  Created by Ernesto Rivera on 2012/03/05.
+//  Copyright (c) 2012-2013 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -51,19 +51,6 @@ NSString * const ActiveViewSwipedNotification = @"ActiveViewSwipedNotification";
     UISwipeGestureRecognizer * _swipeRecognizer;
     BOOL _shouldNotFlashHighlight;
 }
-
-@synthesize dynamicHeightSubviews = _dynamicHeightSubviews;
-@synthesize noContentsView = _noContentsView;
-@synthesize empty = _empty;
-@synthesize originalSize = _originalSize;
-@synthesize animated = _animated;
-@synthesize recognizeTap = _recognizeTap;
-@synthesize recognizeDoubleTap = _recognizeDoubleTap;
-@synthesize recognizeSwipe = _recognizeSwipe;
-@synthesize receiveSubviewTouches = _receiveSubviewTouches;
-@synthesize doNotHighlightOnTap = _doNotHighlightOnTap;
-@synthesize highlightColor = _highlightColor;
-@synthesize highlightCornerRadius = _highlightCornerRadius;
 
 - (void)commonInit
 {
@@ -460,8 +447,6 @@ NSString * const ActiveViewSwipedNotification = @"ActiveViewSwipedNotification";
 
 @implementation ActiveLabel
 
-@synthesize originalSize = _originalSize;
-@synthesize maxSize = _maxSize;
 
 - (id)initWithCoder:(NSCoder *)coder
 {
@@ -514,8 +499,6 @@ NSString * const ActiveViewSwipedNotification = @"ActiveViewSwipedNotification";
 
 @implementation HighlightMask
 
-@synthesize color = _color;
-@synthesize cornerRadius = _cornerRadius;
 
 - (id)initWithFrame:(CGRect)frame
 {

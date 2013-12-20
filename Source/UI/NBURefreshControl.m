@@ -3,7 +3,7 @@
 //  NBUKit
 //
 //  Created by Ernesto Rivera on 2012/09/11.
-//  Copyright (c) 2012 CyberAgent Inc.
+//  Copyright (c) 2012-2013 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -26,17 +26,6 @@
 #define NBUKIT_MODULE   NBUKIT_MODULE_UI
 
 @implementation NBURefreshControl
-
-@synthesize heightToRefresh = _heightToRefresh;
-@synthesize status = _status;
-@synthesize visible = _visible;
-@synthesize lastUpdateDate = _lastUpdateDate;
-@synthesize dateFormatter = _dateFormatter;
-@synthesize scrollView = _scrollView;
-@synthesize statusLabel = _statusLabel;
-@synthesize lastUpdateLabel = _lastUpdateLabel;
-@synthesize idleView = _idleView;
-@synthesize loadingView = _loadingView;
 
 - (id)initWithCoder:(NSCoder *)coder
 {
@@ -200,30 +189,21 @@
     {
         case NBURefreshStatusIdle:
         {
-            self.statusLabel.text = message ? message : NSLocalizedStringWithDefaultValue(@"NBURefreshControl Drag to refresh",
-                                                                                          nil, nil,
-                                                                                          @"Drag to refresh",
-                                                                                          @"NBURefreshControl Drag to refresh");
+            self.statusLabel.text = message ? message : NBULocalizedString(@"NBURefreshControl Drag to refresh", @"Drag to refresh");
             _idleView.hidden = NO;
             _loadingView.hidden = YES;
             break;
         }
         case NBURefreshStatusLoading:
         {
-            self.statusLabel.text = message ? message : NSLocalizedStringWithDefaultValue(@"NBURefreshControl Reloading",
-                                                                                          nil, nil,
-                                                                                          @"Reloading...",
-                                                                                          @"NBURefreshControl Reloading");
+            self.statusLabel.text = message ? message : NBULocalizedString(@"NBURefreshControl Reloading", @"Reloading...");
             _idleView.hidden = YES;
             _loadingView.hidden = NO;
             break;
         }
         case NBURefreshStatusUpdated:
         {
-            self.statusLabel.text = message ? message : NSLocalizedStringWithDefaultValue(@"NBURefreshControl Updated",
-                                                                                          nil, nil,
-                                                                                          @"Updated",
-                                                                                          @"NBURefreshControl Updated");
+            self.statusLabel.text = message ? message : NBULocalizedString(@"NBURefreshControl Updated", @"Updated");
             self.lastUpdateDate = [NSDate date];
             _idleView.hidden = YES;
             _loadingView.hidden = YES;
@@ -233,10 +213,7 @@
         default:
         {
             _status = NBURefreshStatusError;
-            self.statusLabel.text = message ? message : NSLocalizedStringWithDefaultValue(@"NBURefreshControl Error",
-                                                                                          nil, nil,
-                                                                                          @"Update error",
-                                                                                          @"NBURefreshControl Error");
+            self.statusLabel.text = message ? message : NBULocalizedString(@"NBURefreshControl Error", @"Update error");
             _idleView.hidden = YES;
             _loadingView.hidden = YES;
             [self hideAfterDelay:2.0];
@@ -281,18 +258,12 @@
     _lastUpdateDate = lastUpdateDate;
     if (lastUpdateDate)
     {
-        _lastUpdateLabel.text = [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"NBURefreshControl last updated",
-                                                                                             nil, nil,
-                                                                                             @"Last updated %@",
-                                                                                             @"NBURefreshControl last updated"),
+        _lastUpdateLabel.text = [NSString stringWithFormat:NBULocalizedString(@"NBURefreshControl last updated", @"Last updated %@"),
                                  [self.dateFormatter stringFromDate:lastUpdateDate]];
     }
     else
     {
-        _lastUpdateLabel.text = NSLocalizedStringWithDefaultValue(@"NBURefreshControl last update unknown",
-                                                                  nil, nil,
-                                                                  @"Last update date unknown",
-                                                                  @"NBURefreshControl last update unknown");
+        _lastUpdateLabel.text = NBULocalizedString(@"NBURefreshControl last update unknown", @"Last update date unknown");
     }
 }
 

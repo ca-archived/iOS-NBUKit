@@ -2,8 +2,8 @@
 //  AppDelegate.m
 //  NBUKitDemo
 //
-//  Created by Ernesto Rivera on 12/07/24.
-//  Copyright (c) 2012 CyberAgent Inc.
+//  Created by Ernesto Rivera on 2012/07/24.
+//  Copyright (c) 2012-2013 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -25,21 +25,13 @@
     NBUSplashView * _splashView;
 }
 
-@synthesize window = _window;
-@synthesize cameraButton = _cameraButton;
-
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Configure NBULog
-    [NBULog setAppLogLevel:LOG_LEVEL_INFO];     // Info, warning and errors only
-#ifdef DEBUG
-    [NBULog setAppLogLevel:LOG_LEVEL_VERBOSE];  // Also verbose for debug and testing builds
-    [NBULog setKitLogLevel:LOG_LEVEL_VERBOSE];
-#endif
-    
 #if defined (DEBUG) ||  defined (TESTING)
-    [NBULog addDashboardLogger];                // Add dashboard logger
+    // Add dashboard logger
+    [NBULog addDashboardLogger];
 #endif
 
     NBULogTrace();

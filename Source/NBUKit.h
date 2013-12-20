@@ -2,8 +2,8 @@
 //  NBUKit.h
 //  NBUKit
 //
-//  Created by Ernesto Rivera on 12/07/11.
-//  Copyright (c) 2012 CyberAgent Inc.
+//  Created by Ernesto Rivera on 2012/07/11.
+//  Copyright (c) 2012-2013 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -18,71 +18,55 @@
 //  limitations under the License.
 //
 
+/// Pods Environment
+#import "../Pods-environment.h"
+
 /// NBUCore
 #import <NBUCore/NBUCore.h>
 
-/// NBUCompatibility
-#import "ActiveView.h"
-#import "ObjectView.h"
-#import "ObjectArrayView.h"
-#import "ObjectSlideView.h"
-#import "ObjectGridView.h"
-#import "ObjectTableView.h"
-#import "ScrollViewController.h"
+/// NBULog
+#ifdef COCOAPODS_POD_AVAILABLE_NBULog
+    #import "NBULog+NBUKit.h"
+#endif
 
-/// NBUKit
-#import "NBULog+NBUKit.h"
-#import "NBUApplicationDelegate.h"
-#import "UIImageView+NBUAdditions.h"
-#import "NBUView.h"
-#import "NBUViewController.h"
-#import "NBUObjectView.h"
-#import "NBUObjectViewController.h"
-#import "NBUSplashView.h"
-#import "NBURefreshControl.h"
-#import "NBUTabBarController.h"
-#import "NBURotatingViews.h"
-#import "NBUBadgeView.h"
-#import "NBUBadgeSegmentedControl.h"
-#import "NBUAssetsLibrary.h"
-#import "NBUAssetsLibraryViewController.h"
-#import "NBUAsset.h"
-#import "NBUAssetView.h"
-#import "NBUAssetThumbnailView.h"
-#import "NBUAssetsGroup.h"
-#import "NBUAssetsGroupView.h"
-#import "NBUAssetsGroupViewController.h"
-#import "NBUCameraView.h"
-#import "NBUCameraViewController.h"
-#import "NBUFilter.h"
-#import "NBUFilterGroup.h"
-#import "NBUFilterProvider.h"
-#import "NBUGPUImageFilterProvider.h"
-#import "NBUCoreImageFilterProvider.h"
-#import "NBUPresetFilterView.h"
-#import "NBUFilterThumbnailView.h"
-#import "NBUCropView.h"
-#import "NBUEditImageViewController.h"
-#import "NBUEditMultiImageViewController.h"
-#import "NBUMediaInfo.h"
-#import "NBUImageLoader.h"
-#import "NBUGalleryView.h"
-#import "NBUGalleryThumbnailView.h"
-#import "NBUGalleryViewController.h"
-#import "NBUImagePickerController.h"
-#import "NBUMailComposeViewController.h"
+/// Additions
+#ifdef COCOAPODS_POD_AVAILABLE_NBUKit_Additions
+    #import "NBUAdditions.h"
+#endif
 
+/// Compatibility
+#ifdef COCOAPODS_POD_AVAILABLE_NBUKit_Library_NBUCompatibility
+    #import "NBUCompatibility.h"
+#endif
+
+/// UI
+#ifdef COCOAPODS_POD_AVAILABLE_NBUKit_UI
+    #import "NBUActionSheet.h"
+    #import "NBUAlertView.h"
+    #import "NBUApplicationDelegate.h"
+    #import "NBUBadgeSegmentedControl.h"
+    #import "NBUBadgeView.h"
+    #import "NBUMailComposeViewController.h"
+    #import "NBUObjectView.h"
+    #import "NBUObjectViewController.h"
+    #import "NBURefreshControl.h"
+    #import "NBURotatingViews.h"
+    #import "NBUSplashView.h"
+    #import "NBUTabBarController.h"
+    #import "NBUView.h"
+    #import "NBUViewController.h"
+#endif
 
 /**
- NBUKit static library
+ NBUKit static library.
  */
 @interface NBUKit : NSObject
 
 /// The current NBUKit library version.
 + (NSString *)version;
 
-/// The NBUKitResources NSBundle.
-+ (NSBundle *)resourcesBundle;
+/// The NBUKit NSBundle.
++ (NSBundle *)bundle;
 
 @end
 

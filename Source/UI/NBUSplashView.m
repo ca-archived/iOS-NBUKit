@@ -3,7 +3,7 @@
 //  NBUKit
 //
 //  Created by Ernesto Rivera on 2012/08/07.
-//  Copyright (c) 2012 CyberAgent Inc.
+//  Copyright (c) 2012-2013 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -26,12 +26,6 @@
 #define NBUKIT_MODULE   NBUKIT_MODULE_UI
 
 @implementation NBUSplashView
-
-@synthesize imageView = _imageView;
-@synthesize activityIndicatorView = _activityIndicatorView;
-@synthesize progressView = _progressView;
-@synthesize statusLabel = _statusLabel;
-@synthesize versionLabel = _versionLabel;
 
 #pragma mark - Methods
 
@@ -75,17 +69,8 @@
     // Finish progress
     _activityIndicatorView.hidden = YES;
     
-    // iOS 5+
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
-    {
-        [_progressView setProgress:1.0
-                          animated:animated];
-    }
-    // iOS 4.x
-    else
-    {
-        _progressView.progress = 1.0;
-    }
+    [_progressView setProgress:1.0
+                      animated:animated];
     
     // Disappear and remove from keyWindow
     [UIView animateWithDuration:animated ? 0.3 : 0.0
@@ -106,17 +91,8 @@
 {
     _statusLabel.text = status;
     
-    // iOS 5+
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
-    {
-        [_progressView setProgress:progress
-                          animated:YES];
-    }
-    // iOS 4.x
-    else
-    {
-        _progressView.progress = progress;
-    }
+    [_progressView setProgress:progress
+                      animated:YES];
 }
 
 @end

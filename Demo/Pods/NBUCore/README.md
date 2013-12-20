@@ -1,75 +1,41 @@
+
 NBUCore
 =======
 
 [![Platform: iOS](https://cocoapod-badges.herokuapp.com/p/NBUCore/badge.svg)](http://cocoadocs.org/docsets/NBUCore/)
-[![Version: 1.9.5](https://cocoapod-badges.herokuapp.com/v/NBUCore/badge.png)](http://cocoadocs.org/docsets/NBUCore/)
+[![Version: 2.0.0](https://cocoapod-badges.herokuapp.com/v/NBUCore/badge.png)](http://cocoadocs.org/docsets/NBUCore/)
 [![Build Status](https://travis-ci.org/CyberAgent/iOS-NBUCore.png?branch=master)](https://travis-ci.org/CyberAgent/iOS-NBUCore)
 
-Convenience extensions, macros and on-device console for iOS projects. [[日本語](README.jp.md)]
+Convenience macros, functions and API availability checks for iOS projects.
 
-![NBUCore](https://github.com/CyberAgent/iOS-NBUCore/wiki/images/NBUCore.png)
+_[NBULog](https://github.com/CyberAgent/iOS-NBULog) and [NBUKit](https://github.com/CyberAgent/iOS-NBUKit)'s UIKit Additions used to be part of NBUCore_
 
-Components
-----------
+### Macros and Functions
 
-### .xcconfig Files
+Macros to detect system versions, device idioms, widescreen devices, etc.
 
-Add these files to your target's build settings if you want to have some default settings
-to configure your Debug, Testing and Production configurations.
+Functions to handle/transform `UIInterfaceOrientation`s/`UIDeviceOrientation`s, etc.
 
-### NBUUtil
+### Availability
 
-Commonly needed macros, functions, etc.
+Temporarily make Xcode warn you when using new API calls that may crash on older devices.
 
-### NBULog
+```obj-c
+// E.g. check for API that may crash on iOS 5.x devices.
+#define __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED __IPHONE_5_0
+#import <NBUCore/NBUAvailability.h>
 
-A very useful replacement for NSLog wich is also bad for performance.  
-Easy to use and easy to extend. Based on [Cocoa Lumberjack](https://github.com/robbiehanson/CocoaLumberjack).
+```
 
-### NBUAdditions
+### Installation
 
-Many useful UIKit and NSFoundation categories that could be useful for many applications.
-Import them all or just the ones you need.
+Simply add `pod 'NBUCore'` to your [CocoaPods](http://cocoapods.org)' [Podfile](http://docs.cocoapods.org/podfile.html).
 
-### NBUDashboard
+### Documentation
 
-On-device log console that supports:
+http://cocoadocs.org/docsets/NBUCore/
 
-* Different colors for log levels.
-* Expands and collapses text on tap.
-* Can be filtered according to log levels or custom strings.
-* Can be minimized, maximized or used in any size in between.
-
-![Dashboard](https://raw.github.com/wiki/CyberAgent/iOS-NBUCore/images/Dashboard.png "On-device log console")
-![Dashboard minimized](https://raw.github.com/wiki/CyberAgent/iOS-NBUCore/images/Dashboard_filter.png "Filter log messages")
-
-Installation
-------------
-
-### Cocoapods (Recomended)
-
-1. Install [Cocoapods](http://cocoapods.org) if not already done.
-2. Add `pod 'NBUCore'` to your Podfile.
-
-_If you have a problem try `gem update cocoapods` first._
-
-### Manual
-
-1. Checkout `git@github.com:CyberAgent/iOS-NBUCore.git` or [download](https://github.com/CyberAgent/iOS-NBUCore/tags)
-the NBUCore sources to your project directory.
-2. Import `NBUCore.h` or only the files that you need.
-3. Optionally add the [configuration files](#nbucore_xcconfig-files) to your target.
-
-_Keychain access requires to link `Security.framework`._
-
-Documentation
--------------
-
-* HTML: http://cocoadocs.org/docsets/NBUCore/
-* Xcode DocSet: `http://cocoadocs.org/docsets/NBUCore/xcode-docset.atom`
-
-License
--------
+### License
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License. 

@@ -2,8 +2,8 @@
 //  ObjectSlideView.m
 //  NBUCompatibility
 //
-//  Created by Ernesto Rivera on 11/12/27.
-//  Copyright (c) 2011 CyberAgent Inc.
+//  Created by Ernesto Rivera on 2011/12/27.
+//  Copyright (c) 2011-2013 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -42,11 +42,6 @@
     BOOL _isDragging;
     NSTimer * _randomTimer;
 }
-
-@synthesize changePagesRandomly = _changePagesRandomly;
-@synthesize centerViews = _centerViews;
-@synthesize scrollView = _scrollView;
-@synthesize pageControl = _pageControl;
 
 - (id)initWithCoder:(NSCoder *)coder
 {
@@ -116,10 +111,10 @@
     UIView * view;
     for (NSUInteger i = 0; i<[self.objectArray count]; i++)
     {
-        object = [self.objectArray objectAtIndex:i];
+        object = (self.objectArray)[i];
         if (![objectArray containsObject:object])
         {
-            view = [_views objectAtIndex:i];
+            view = _views[i];
             [view removeFromSuperview];
         }
     }
@@ -134,9 +129,9 @@
         // Update
         if (index != NSNotFound)
         {
-            [self updateView:[_views objectAtIndex:index] object:object]; // 更新を行う
+            [self updateView:_views[index] object:object]; // 更新を行う
             
-            [tmp addObject:[_views objectAtIndex:index]];
+            [tmp addObject:_views[index]];
         }
         // New
         else
@@ -193,7 +188,7 @@
     [super removeObject:object];
     
     // Remove object's view
-    UIView * view = [_views objectAtIndex:index];
+    UIView * view = _views[index];
     [_views removeObjectAtIndex:index];
     [view removeFromSuperview];
     
@@ -358,10 +353,6 @@
     if (self.isEmpty)
         return;
     
-    // Ignore on iOS4 if dragging
-    if (SYSTEM_VERSION_LESS_THAN(@"5.0") && _isDragging)
-        return;
-    
     [UIView animateWithDuration:self.isAnimated ? 0.3 : 0.0
                           delay:0.0 
                         options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionAllowUserInteraction
@@ -382,7 +373,7 @@
     for (id object in self.hiddenObjects)
     {
         index = [self.objectArray indexOfObject:object];
-        view = [_views objectAtIndex:index];
+        view = _views[index];
         view.hidden = YES;
         [visibleViews removeObject:view];
     }

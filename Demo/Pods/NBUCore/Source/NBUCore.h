@@ -2,8 +2,8 @@
 //  NBUCore.h
 //  NBUCore
 //
-//  Created by Ernesto Rivera on 2012/12/20.
-//  Copyright (c) 2012 CyberAgent Inc.
+//  Created by Ernesto Rivera on 2012/12/07.
+//  Copyright (c) 2012-2013 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -18,30 +18,34 @@
 //  limitations under the License.
 //
 
-/// Utilities
-#import "NBUUtil.h"
+/// @name Macros
 
-/// Helpers
-#import "NBULog.h"
-#import "NBUConfigurationPicker.h"
+/// Detect system versions.
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
-/// UI
-#import "NBUAlertView.h"
-#import "NBUActionSheet.h"
+/// Detect device idioms
+#define DEVICE_IS_IPHONE_IDIOM  (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define DEVICE_IS_IPAD_IDIOM    (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 
-/// Additions
-#import "NSArray+NBUAdditions.h"
-#import "NSString+NBUAdditions.h"
-#import "NSBundle+NBUAdditions.h"
-#import "NSFileManager+NBUAdditions.h"
-#import "UIApplication+NBUAdditions.h"
-#import "UITabBarController+NBUAdditions.h"
-#import "UIViewController+NBUAdditions.h"
-#import "UINavigationController+NBUAdditions.h"
-#import "UIView+NBUAdditions.h"
-#import "UIScrollView+NBUAdditions.h"
-#import "UIButton+NBUAdditions.h"
-#import "UIWebView+NBUAdditions.h"
-#import "UIResponder+NBUAdditions.h"
-#import "UIImage+NBUAdditions.h"
+/// Detect "widescreen" devices (iPhone 5 or iPod Touch 4).
+#define DEVICE_IS_WIDESCREEN (fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON)
+
+/// @name Functions
+
+/// Convert valid UIDeviceOrientation to UIInterfaceOrientation.
+extern UIInterfaceOrientation UIInterfaceOrientationFromValidDeviceOrientation(UIDeviceOrientation orientation);
+
+/// Check if a given UIInterfaceOrientation is supported by a UIInterfaceOrientationMask.
+extern BOOL UIInterfaceOrientationIsSupportedByInterfaceOrientationMask(UIInterfaceOrientation orientation,
+                                                                        UIInterfaceOrientationMask mask);
+
+/// Print descriptive BOOL: stringWithFormat:@"View is hidden: %@", NBUStringFromBOOL(view.hidden).
+extern NSString * NBUStringFromBOOL(BOOL yesOrNo);
+
+/// Whether the application is being debugged.
+extern BOOL AmIBeingDebugged(void);
 
