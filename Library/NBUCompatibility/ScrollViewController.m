@@ -43,8 +43,6 @@ static NSString * customBackButtonTitle;
     NSDate * _lastPromptUpdate;
     NSTimer * _updatePromptTimer;
     UIBarButtonItem * _rightBarButtonItem;
-//    NSDate * _lastContentSizeCalculation;
-//    NSTimer * _fireSizeToFitTimer;
     NSDate * _lastContentOffsetNotification;
     NSTimer * _sendNotificationTimer;
     BOOL _rightButtonSaved;
@@ -64,13 +62,22 @@ static NSString * customBackButtonTitle;
     return _scrollView;
 }
 
-// Load a simple scrollview if needed
 - (void)loadView
 {
     // Try to load self.view
     
-    // From a Nib?
+    // Let a Storyboard load it
     NSString * nibName = self.nibName;
+    if (self.storyboard &&                  // Has a Storyboard
+        nibName &&                          // Has an assigned nibName
+        ![NSBundle pathForResource:nibName  // But the nibName is not really Nib file but a Storyboard ID
+                            ofType:@"nib"])
+    {
+        [super loadView];
+        return;
+    }
+    
+    // From a Nib
     if (!nibName || nibName.length == 0)
     {
         nibName = NSStringFromClass([self class]);
@@ -90,15 +97,14 @@ static NSString * customBackButtonTitle;
         {
             self.view = loadedObjects[0];
         }
+        
+        return;
     }
     
     // Else if still not set create an empty one
-    if (!self.isViewLoaded)
-    {
-        NBULogInfo(@"~~~ Nib for class %@ didn't set a view. An empty scrollView will be created",
-                  NSStringFromClass([self class]));
-        self.view = [self createScrollView];
-    }
+    NBULogInfo(@"~~~ Nib for class %@ didn't set a view. An empty scrollView will be created",
+               NSStringFromClass([self class]));
+    self.view = [self createScrollView];
 }
 
 - (void)viewDidLoad
