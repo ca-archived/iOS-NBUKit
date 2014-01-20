@@ -6,9 +6,12 @@ before_install:
     - pod --version
     - pod setup
     - pod repo update --silent
+    - export LANG=en_US.UTF-8
+    - env
+    - locale
 
 script:
-    #- pod lib lint
+    - pod lib lint
     - cd Demo
     - pod update
     - xctool -workspace NBUKitDemo.xcworkspace -scheme 'NBUKitDemo' -configuration Release -sdk iphonesimulator -arch i386 build
