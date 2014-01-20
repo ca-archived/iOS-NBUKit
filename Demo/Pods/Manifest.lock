@@ -22,27 +22,27 @@ PODS:
     - NBUCore (>= 2.0.0)
   - MotionOrientation@PTEz (1.0.0)
   - NBUCore (2.0.0)
-  - NBUKit (2.0.0):
+  - NBUKit (2.0.1):
     - Lockbox (>= 1.4.6)
     - NBUCore (>= 2.0.0)
     - NBUKit/Additions
     - NBUKit/Library
     - NBUKit/UI
-  - NBUKit/Additions (2.0.0):
+  - NBUKit/Additions (2.0.1):
     - Lockbox (>= 1.4.6)
     - NBUCore (>= 2.0.0)
-  - NBUKit/Library (2.0.0):
+  - NBUKit/Library (2.0.1):
     - Lockbox (>= 1.4.6)
     - NBUCore (>= 2.0.0)
     - NBUKit/Library/NBUCompatibility
     - NBUKit/Library/RestKit Support
-  - NBUKit/Library/NBUCompatibility (2.0.0):
+  - NBUKit/Library/NBUCompatibility (2.0.1):
     - Lockbox (>= 1.4.6)
     - NBUCore (>= 2.0.0)
-  - NBUKit/Library/RestKit Support (2.0.0):
+  - NBUKit/Library/RestKit Support (2.0.1):
     - Lockbox (>= 1.4.6)
     - NBUCore (>= 2.0.0)
-  - NBUKit/UI (2.0.0):
+  - NBUKit/UI (2.0.1):
     - Lockbox (>= 1.4.6)
     - MotionOrientation@PTEz (>= 1.0.0)
     - NBUCore (>= 2.0.0)
@@ -66,7 +66,7 @@ SPEC CHECKSUMS:
   LumberjackConsole: a48113cd630276db766686624fd09b0c1bc20ffa
   MotionOrientation@PTEz: 0b987d39639b13ce2769f6dc6f96f59783ca8786
   NBUCore: 66e33f9426cbefb5ca88f3228cfc2dd36eac6e71
-  NBUKit: 03e684f59d62b7edb5647b073be347df22fe4873
+  NBUKit: 6f912ffde0c44ebbc43c0334c25e2779d5919b28
   NBULog: 98bcc4805a07def3044970829e3f5c720a6017af
 
-COCOAPODS: 0.28.0
+COCOAPODS: 0.29.0
