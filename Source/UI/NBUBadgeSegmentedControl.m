@@ -30,7 +30,7 @@
     NSMutableArray * _badges;
 }
 
-- (id)initWithCoder:(NSCoder *)coder
+- (instancetype)initWithCoder:(NSCoder *)coder
 {
     self = [super initWithCoder:coder];
     if (self)
@@ -40,7 +40,7 @@
     return self;
 }
 
-- (id)initWithItems:(NSArray *)items
+- (instancetype)initWithItems:(NSArray *)items
 {
     self = [super initWithItems:items];
     if (self)
@@ -70,8 +70,8 @@ forSegmentAtIndex:(NSUInteger)index
     if (index >= self.numberOfSegments)
     {
         NBULogError(@"Tried to set a badge for segment %d in control with only %d segments",
-                   index,
-                   self.numberOfSegments);
+                    index,
+                    self.numberOfSegments);
         return;
     }
     

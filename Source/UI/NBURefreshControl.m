@@ -27,7 +27,7 @@
 
 @implementation NBURefreshControl
 
-- (id)initWithCoder:(NSCoder *)coder
+- (instancetype)initWithCoder:(NSCoder *)coder
 {
     self = [super initWithCoder:coder];
     if (self)
@@ -37,7 +37,7 @@
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self)
@@ -78,7 +78,7 @@
         return;
     
     _scrollView = scrollView;
-
+    
     // Adjust frame
     [self adjustFrame];
     
@@ -283,7 +283,7 @@
 - (void)show:(id)sender
 {
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
-
+    
     NBULogTrace();
     NBULogVerbose(@"subviews %@", _scrollView.subviews);
     

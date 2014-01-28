@@ -36,7 +36,7 @@
                           options:nil][0];
 }
 
-- (id)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame
 {
     // Even when created programatically we load from Nib!
     NBUBadgeView * badge = [NBUBadgeView badge];
@@ -104,11 +104,11 @@
     [super layoutSubviews];
     
     [UIView animateWithDuration:self.animated ? 0.2 : 0.0
-                         animations:^{
-                             
-                             self.alpha = self.isEmpty ? 0.0 : 1.0;
-                             
-                         }];
+                     animations:^{
+                         
+                         self.alpha = self.isEmpty ? 0.0 : 1.0;
+                         
+                     }];
 }
 
 @end

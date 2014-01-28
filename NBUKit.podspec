@@ -23,17 +23,17 @@ Pod::Spec.new do |s|
     
     s.subspec 'Additions' do |sub|
         sub.source_files    = 'Source/Additions/*.{h,m}'
-        sub.dependency 'NBUKit/Base'
+        sub.dependency      'NBUKit/Base'
     end
 
     s.subspec 'UI' do |sub|
         sub.source_files    = 'Source/UI/*.{h,m}'
         sub.resource_bundle = { 'NBUKit' => ['Resources/*.{png,lproj}', 'Source/UI/*.{xib}'] }
         sub.frameworks      = 'MessageUI'
-        sub.dependency 'NBUKit/Additions'
-        sub.dependency 'NBUKit/Library/NBUCompatibility'
-        sub.dependency 'NBUKit/Library/RestKit Support'
-        sub.dependency 'MotionOrientation@PTEz', '>= 1.0.0'
+        sub.dependency      'NBUKit/Additions'
+        sub.dependency      'NBUKit/Library/NBUCompatibility'
+        sub.dependency      'NBUKit/Library/RestKit Support'
+        sub.dependency      'MotionOrientation@PTEz', '>= 1.0.0'
     end
     
     s.subspec 'Library' do |sl|
@@ -42,7 +42,7 @@ Pod::Spec.new do |s|
         
         sl.subspec 'NBUCompatibility' do |sc|
             sc.source_files     = 'Library/NBUCompatibility/*.{h,m}'
-            sc.dependency 'NBUKit/UI'
+            sc.dependency       'NBUKit/UI'
         end
         
         sl.subspec 'RestKit Support' do |srk|

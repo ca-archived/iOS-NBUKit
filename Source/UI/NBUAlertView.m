@@ -29,12 +29,12 @@
 
 @implementation NBUAlertView
 
-- (id)initWithTitle:(NSString *)title
-            message:(NSString *)message
-  cancelButtonTitle:(NSString *)cancelButtonTitle
-  otherButtonTitles:(NSArray *)otherButtonTitles
-selectedButtonBlock:(NBUAlertSelectedButtonBlock)selectedButtonBlock
-  cancelButtonBlock:(NBUAlertCancelButtonBlock)cancelButtonBlock
+- (instancetype)initWithTitle:(NSString *)title
+                      message:(NSString *)message
+            cancelButtonTitle:(NSString *)cancelButtonTitle
+            otherButtonTitles:(NSArray *)otherButtonTitles
+          selectedButtonBlock:(NBUAlertSelectedButtonBlock)selectedButtonBlock
+            cancelButtonBlock:(NBUAlertCancelButtonBlock)cancelButtonBlock
 {
     self = [super initWithTitle:title
                         message:message
@@ -58,7 +58,7 @@ selectedButtonBlock:(NBUAlertSelectedButtonBlock)selectedButtonBlock
     if (delegate && delegate != self)
     {
         NBULogWarn(@"Delegate '%@' will be ignored. Set selectedButtonBlock and/or cancelButtonBlock instead.",
-                     delegate);
+                   delegate);
     }
     super.delegate = self;
 }

@@ -40,12 +40,12 @@ typedef void (^NBUAlertCancelButtonBlock)();
 /// a non-cancel button.
 /// @param cancelButtonBlock The optional block to be called if the user cancels the
 /// action sheet.
-- (id)initWithTitle:(NSString *)title
-            message:(NSString *)message
-  cancelButtonTitle:(NSString *)cancelButtonTitle
-  otherButtonTitles:(NSArray *)otherButtonTitles
-selectedButtonBlock:(NBUAlertSelectedButtonBlock)selectedButtonBlock
-  cancelButtonBlock:(NBUAlertCancelButtonBlock)cancelButtonBlock;
+- (instancetype)initWithTitle:(NSString *)title
+                      message:(NSString *)message
+            cancelButtonTitle:(NSString *)cancelButtonTitle
+            otherButtonTitles:(NSArray *)otherButtonTitles
+          selectedButtonBlock:(NBUAlertSelectedButtonBlock)selectedButtonBlock
+            cancelButtonBlock:(NBUAlertCancelButtonBlock)cancelButtonBlock;
 
 /// The optional block to be called if a non-cancel button is selected.
 /// @note The cancel button index is ignored.

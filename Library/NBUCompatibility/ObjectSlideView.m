@@ -43,7 +43,7 @@
     NSTimer * _randomTimer;
 }
 
-- (id)initWithCoder:(NSCoder *)coder
+- (instancetype)initWithCoder:(NSCoder *)coder
 {
     self = [super initWithCoder:coder];
     if (self)
@@ -212,7 +212,7 @@
         index = floor(([sender locationInView:self].x + _scrollView.contentOffset.x) /
                       (_scrollView.contentSize.width  / _nViews));
         NBULogVerbose(@"location %f offset %f viewWidth %f index %d",
-              [sender locationInView:self].x, _scrollView.contentOffset.x, (_scrollView.contentSize.width  / _nViews), index);
+                      [sender locationInView:self].x, _scrollView.contentOffset.x, (_scrollView.contentSize.width  / _nViews), index);
     }
     
     [self presentModalFromItemAtIndex:index];
@@ -236,7 +236,7 @@
                                                         animated:YES];
     
     NBULogVerbose(@"content width %f current page %d frame width %f",
-               _scrollView.contentSize.width, _pageControl.currentPage, _scrollView.frame.size.width);
+                  _scrollView.contentSize.width, _pageControl.currentPage, _scrollView.frame.size.width);
     
     controller.objectView.pageControl.numberOfPages = _nViews;
     controller.objectView.pageControl.currentPage = index;
@@ -316,7 +316,7 @@
     float offset = _scrollView.contentOffset.x;
     if (_scrollView.contentOffset.x > 0)
     {
-        if ((int)offset % (int)pageWidth != 0) 
+        if ((int)offset % (int)pageWidth != 0)
         {
             page = ceil(offset/pageWidth);
         }
@@ -326,7 +326,7 @@
         }
         
     }
-
+    
     NBULogVerbose(@"currentPage %d",page);
     _pageControl.currentPage = page;
 }
@@ -348,13 +348,13 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-
+    
     // Empty?
     if (self.isEmpty)
         return;
     
     [UIView animateWithDuration:self.isAnimated ? 0.3 : 0.0
-                          delay:0.0 
+                          delay:0.0
                         options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionAllowUserInteraction
                      animations:^{
                          
@@ -469,7 +469,7 @@
                                          frame.size.height);
     
     NBULogVerbose(@"content width %f current page %d frame width %f",
-               _scrollView.contentSize.width, _pageControl.currentPage, _scrollView.frame.size.width);
+                  _scrollView.contentSize.width, _pageControl.currentPage, _scrollView.frame.size.width);
     
     CGFloat offsetX = _scrollView.pagingEnabled ? _scrollView.frame.size.width * _pageControl.currentPage : _scrollView.contentOffset.x;
     if (offsetX > 0.0 &&

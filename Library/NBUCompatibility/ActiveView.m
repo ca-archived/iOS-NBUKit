@@ -164,9 +164,9 @@ NSString * const ActiveViewSwipedNotification = @"ActiveViewSwipedNotification";
 - (CGSize)sizeThatFits:(CGSize)size
 {
     NBULogVerbose(@">>> %@ sizeThatFits: %@ dynamicHeightViews: %@",
-               NSStringFromClass([self class]),
-               NSStringFromCGSize(size),
-               _dynamicHeightSubviews);
+                  NSStringFromClass([self class]),
+                  NSStringFromCGSize(size),
+                  _dynamicHeightSubviews);
     
     // Empty or no flexible subviews?
     if ((self.empty && _noContentsView) ||
@@ -174,8 +174,8 @@ NSString * const ActiveViewSwipedNotification = @"ActiveViewSwipedNotification";
         ([_dynamicHeightSubviews count] == 0))
     {
         NBULogVerbose(@"<<< %@ to %@ (originalSize)",
-                   NSStringFromCGSize(self.bounds.size),
-                   NSStringFromCGSize(CGSizeMake(size.width, _originalSize.height)));
+                      NSStringFromCGSize(self.bounds.size),
+                      NSStringFromCGSize(CGSizeMake(size.width, _originalSize.height)));
         return CGSizeMake(size.width,
                           _originalSize.height);
     }
@@ -194,8 +194,8 @@ NSString * const ActiveViewSwipedNotification = @"ActiveViewSwipedNotification";
     }
     
     NBULogVerbose(@"<<< %@ to %@",
-               NSStringFromCGSize(self.bounds.size),
-               NSStringFromCGSize(CGSizeMake(size.width, heightThatFits)));
+                  NSStringFromCGSize(self.bounds.size),
+                  NSStringFromCGSize(CGSizeMake(size.width, heightThatFits)));
     return CGSizeMake(size.width,
                       heightThatFits);
 }
@@ -211,7 +211,7 @@ NSString * const ActiveViewSwipedNotification = @"ActiveViewSwipedNotification";
         if (_noContentsView.superview != self)
         {
             _noContentsView.center = CGPointMake(CGRectGetMidX(self.bounds),
-                                                kMarginFromTop + (_noContentsView.frame.size.height / 2.0));
+                                                 kMarginFromTop + (_noContentsView.frame.size.height / 2.0));
             [self addSubview:_noContentsView];
         }
         [UIView animateWithDuration:self.animated ? kAnimationDuration : 0.0
@@ -274,7 +274,7 @@ NSString * const ActiveViewSwipedNotification = @"ActiveViewSwipedNotification";
     {
         if (!_tapRecognizer)
         {
-            _tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self 
+            _tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                      action:@selector(tapped:)];
             _tapRecognizer.delegate = self;
             [self addGestureRecognizer:_tapRecognizer];
@@ -323,7 +323,7 @@ NSString * const ActiveViewSwipedNotification = @"ActiveViewSwipedNotification";
     {
         if (!_swipeRecognizer)
         {
-            _swipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self 
+            _swipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self
                                                                          action:@selector(swiped:)];
             _swipeRecognizer.delegate = self;
             [self addGestureRecognizer:_swipeRecognizer];
@@ -437,8 +437,8 @@ NSString * const ActiveViewSwipedNotification = @"ActiveViewSwipedNotification";
     }
     
     NBULogVerbose(@"%@ shouldReceiveTouch: %@",
-               NSStringFromClass([self class]),
-               NBUStringFromBOOL(receive));
+                  NSStringFromClass([self class]),
+                  NBUStringFromBOOL(receive));
     return receive;
 }
 
@@ -448,7 +448,7 @@ NSString * const ActiveViewSwipedNotification = @"ActiveViewSwipedNotification";
 @implementation ActiveLabel
 
 
-- (id)initWithCoder:(NSCoder *)coder
+- (instancetype)initWithCoder:(NSCoder *)coder
 {
     self = [super initWithCoder:coder];
     if (self)
@@ -488,7 +488,7 @@ NSString * const ActiveViewSwipedNotification = @"ActiveViewSwipedNotification";
     }
     
     NBULogVerbose(@"<<< %@ to %@ (supper sizeThatFits %@: %@) (al: %@)",
-               NSStringFromCGSize(self.bounds.size), NSStringFromCGSize(sizeThatFits), NSStringFromCGSize(size), NSStringFromCGSize([super sizeThatFits:size]), self.text);
+                  NSStringFromCGSize(self.bounds.size), NSStringFromCGSize(sizeThatFits), NSStringFromCGSize(size), NSStringFromCGSize([super sizeThatFits:size]), self.text);
     
     return CGSizeMake(MIN(sizeThatFits.width, _maxSize.width),
                       MIN(sizeThatFits.height, _maxSize.height));
@@ -500,7 +500,7 @@ NSString * const ActiveViewSwipedNotification = @"ActiveViewSwipedNotification";
 @implementation HighlightMask
 
 
-- (id)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self)

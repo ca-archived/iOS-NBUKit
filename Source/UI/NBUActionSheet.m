@@ -29,12 +29,12 @@
 
 @implementation NBUActionSheet
 
-- (id)initWithTitle:(NSString *)title
-  cancelButtonTitle:(NSString *)cancelButtonTitle
-destructiveButtonTitle:(NSString *)destructiveButtonTitle
-  otherButtonTitles:(NSArray *)otherButtonTitles
-selectedButtonBlock:(NBUActionSheetSelectedButtonBlock)selectedButtonBlock
-  cancelButtonBlock:(NBUActionSheetCancelButtonBlock)cancelButtonBlock
+- (instancetype)initWithTitle:(NSString *)title
+            cancelButtonTitle:(NSString *)cancelButtonTitle
+       destructiveButtonTitle:(NSString *)destructiveButtonTitle
+            otherButtonTitles:(NSArray *)otherButtonTitles
+          selectedButtonBlock:(NBUActionSheetSelectedButtonBlock)selectedButtonBlock
+            cancelButtonBlock:(NBUActionSheetCancelButtonBlock)cancelButtonBlock
 {
     // Create an empty action sheet
     self = [super initWithTitle:title
@@ -115,7 +115,7 @@ selectedButtonBlock:(NBUActionSheetSelectedButtonBlock)selectedButtonBlock
     if (delegate && delegate != self)
     {
         NBULogWarn(@"Delegate '%@' will be ignored. Set selectedButtonBlock and/or cancelButtonBlock instead.",
-                     delegate);
+                   delegate);
     }
     super.delegate = self;
 }

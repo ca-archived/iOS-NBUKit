@@ -49,7 +49,7 @@
 @dynamic delegate;
 @dynamic loadMoreView;
 
-- (id)initWithCoder:(NSCoder *)coder
+- (instancetype)initWithCoder:(NSCoder *)coder
 {
     self = [super initWithCoder:coder];
     if (self)

@@ -34,7 +34,7 @@
 
 @implementation NBUMailComposeViewController
 
-- (id)initWithMailtoURL:(NSURL *)mailtoURL
+- (instancetype)initWithMailtoURL:(NSURL *)mailtoURL
 {
     self = [super init];
     if (self &&
@@ -69,7 +69,7 @@
             self.mailComposeDelegate != self)
         {
             NBULogWarn(@"Compose delegate '%@' will be ignored because resultBlock was set.",
-                         self.mailComposeDelegate);
+                       self.mailComposeDelegate);
         }
         self.mailComposeDelegate = self;
     }

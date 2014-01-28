@@ -170,7 +170,7 @@ NSString * const ObjectDeletedNotification = @"ObjectDeletedNotification";
 
 @implementation ObjectViewMask
 
-- (id)initWithCoder:(NSCoder *)coder
+- (instancetype)initWithCoder:(NSCoder *)coder
 {
     self = [super initWithCoder:coder];
     if (self)
