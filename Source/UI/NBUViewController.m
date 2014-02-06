@@ -27,6 +27,8 @@
 
 @implementation NBUViewController
 
+@synthesize supportedInterfaceOrientations = _supportedInterfaceOrientations;
+
 - (void)commonInit
 {
     // *** Override in subclasses and call [super commonInit] ***

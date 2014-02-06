@@ -26,6 +26,9 @@
 
 @implementation NBURotatingView
 
+@synthesize animated = _animated;
+@synthesize supportedInterfaceOrientations = _supportedInterfaceOrientations;
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -123,6 +126,9 @@
 
 @implementation NBURotatingImageView
 
+@synthesize animated = _animated;
+@synthesize supportedInterfaceOrientations = _supportedInterfaceOrientations;
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -219,6 +225,9 @@
 
 
 @implementation NBURotatingButton
+
+@synthesize animated = _animated;
+@synthesize supportedInterfaceOrientations = _supportedInterfaceOrientations;
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
