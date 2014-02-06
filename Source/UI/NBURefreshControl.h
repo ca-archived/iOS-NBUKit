@@ -22,14 +22,13 @@
  @enum NBURefreshStatus
  @abstract Possible refresh statuses.
  */
-enum
+typedef NS_ENUM(NSInteger, NBURefreshStatus)
 {
     NBURefreshStatusIdle                = 0,
     NBURefreshStatusLoading             = 1,
     NBURefreshStatusUpdated             = 2,
     NBURefreshStatusError               = -1,
 };
-typedef NSInteger NBURefreshStatus;
 
 
 /**
