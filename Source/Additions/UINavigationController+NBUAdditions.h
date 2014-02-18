@@ -46,9 +46,5 @@
 /// @param sender The sender object.
 - (IBAction)popToRootViewController:(id)sender;
 
-/// Dismiss the controller if it is being presented modally.
-/// @param sender The sender object.
-- (IBAction)dismiss:(id)sender;
-
 @end
 

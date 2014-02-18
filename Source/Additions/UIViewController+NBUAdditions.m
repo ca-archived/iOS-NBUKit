@@ -25,6 +25,14 @@
 
 @dynamic navigationItem;
 
+- (IBAction)dismiss:(id)sender
+{
+    NBULogTrace();
+    
+    [self dismissViewControllerAnimated:YES
+                             completion:NULL];
+}
+
 - (void)forceOrientationRefresh
 {
     // Force orientation refresh

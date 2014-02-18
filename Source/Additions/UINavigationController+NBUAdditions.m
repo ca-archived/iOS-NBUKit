@@ -68,13 +68,5 @@
     [self popToRootViewControllerAnimated:YES];
 }
 
-- (IBAction)dismiss:(id)sender
-{
-    NBULogTrace();
-    
-    [self dismissViewControllerAnimated:YES
-                             completion:NULL];
-}
-
 @end
 
