@@ -28,11 +28,11 @@
 
 /// @name Outlets
 
-/// Navigation item as an IB outlet.
+/// Navigation item as an IBOutlet.
 @property(nonatomic, readonly, strong) IBOutlet UINavigationItem * navigationItem;
 
 /// Force an orientation refresh.
-- (void)refreshOrientation;
+- (void)forceOrientationRefresh;
 
 @end
 

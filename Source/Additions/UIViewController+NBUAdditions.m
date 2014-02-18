@@ -25,7 +25,7 @@
 
 @dynamic navigationItem;
 
-- (void)refreshOrientation
+- (void)forceOrientationRefresh
 {
     // Force orientation refresh
     [self presentModalViewController:[UIViewController new]
