@@ -66,7 +66,7 @@ static NSString * customBackButtonTitle;
 {
     // Try to load self.view
     
-    // Let a Storyboard load it
+    // Let super load it
     NSString * nibName = self.nibName;
     if (self.storyboard &&                  // Has a Storyboard
         nibName &&                          // Has an assigned nibName
