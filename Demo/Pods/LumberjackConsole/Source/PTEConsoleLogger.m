@@ -282,8 +282,7 @@
     }
     
     // Selected cell?
-    if ((SYSTEM_VERSION_LESS_THAN(@"5.0") && tableView.indexPathForSelectedRow == indexPath) ||
-        [tableView.indexPathsForSelectedRows containsObject:indexPath])
+    if ([tableView.indexPathsForSelectedRows containsObject:indexPath])
     {
         return [NSString stringWithFormat:@" %@ %@", prefix, [self formatLogMessage:logMessage]];
     }
@@ -296,11 +295,6 @@
 heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Unselected cell?
-    if (SYSTEM_VERSION_LESS_THAN(@"5.0") &&
-        tableView.indexPathForSelectedRow != indexPath)
-    {
-        return 20.0;
-    }
     if (![tableView.indexPathsForSelectedRows containsObject:indexPath])
     {
         return 20.0;
