@@ -25,8 +25,9 @@
 typedef NS_ENUM(NSInteger, NBURefreshStatus)
 {
     NBURefreshStatusIdle                = 0,
-    NBURefreshStatusLoading             = 1,
-    NBURefreshStatusUpdated             = 2,
+    NBURefreshStatusReleaseToRefresh    = 1,
+    NBURefreshStatusLoading             = 2,
+    NBURefreshStatusUpdated             = 3,
     NBURefreshStatusError               = -1,
 };
 
