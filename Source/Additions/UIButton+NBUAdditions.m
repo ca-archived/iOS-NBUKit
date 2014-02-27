@@ -25,6 +25,7 @@
 
 @dynamic enabled;
 @dynamic hidden;
+@dynamic tintColor;
 
 - (void)setTitle:(NSString *)title
 {
@@ -45,6 +46,7 @@
 @dynamic title;
 @dynamic enabled;
 @dynamic hidden;
+@dynamic tintColor;
 
 @end
 

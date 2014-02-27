@@ -34,6 +34,9 @@
 /// Whether the button should be hidden.
 @property(nonatomic, getter=isHidden)   BOOL hidden;
 
+// The tint color to apply to the button.
+@property(nonatomic, retain)            UIColor * tintColor;
+
 @end
 
 
@@ -41,12 +44,6 @@
  Implementation of the UIButton protocol for UIButton objects.
  */
 @interface UIButton (NBUAdditions) <UIButton>
-
-///// The button title.
-//@property(nonatomic, copy)              NSString * title;
-//
-///// Whether the button should be enabled or not.
-//@property(nonatomic, getter=isEnabled)  BOOL enabled;
 
 @end
 
