@@ -36,7 +36,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>2.1.0</string>
 	<key>FacebookAppID</key>
 	<string>${FACEBOOK_APPID}</string>
 	<key>LSRequiresIPhoneOS</key>
