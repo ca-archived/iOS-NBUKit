@@ -3,7 +3,7 @@
 //  NBUKit
 //
 //  Created by Ernesto Rivera on 2012/09/11.
-//  Copyright (c) 2012-2013 CyberAgent Inc.
+//  Copyright (c) 2012-2014 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -33,9 +33,11 @@ typedef NS_ENUM(NSInteger, NBURefreshStatus)
 
 
 /**
- A fully configurable pull to refresh UIControl.
+ A fully configurable pull-to-refresh UIControl.
  
- To configure it, simply set its target from a Nib or programatically.
+ It gets added below the target scrollView to avoid appearing behind iOS 7's
+ translucent navigation bars.
+ To configure it, simply set its target scroll view.
  */
 @interface NBURefreshControl : UIControl
 

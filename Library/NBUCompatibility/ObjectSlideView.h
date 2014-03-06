@@ -3,7 +3,7 @@
 //  NBUCompatibility
 //
 //  Created by Ernesto Rivera on 2011/12/27.
-//  Copyright (c) 2011-2013 CyberAgent Inc.
+//  Copyright (c) 2011-2014 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
