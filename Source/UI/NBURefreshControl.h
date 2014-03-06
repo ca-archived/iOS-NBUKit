@@ -50,7 +50,8 @@ typedef NS_ENUM(NSInteger, NBURefreshStatus)
 /// @note Modifying the status modifies the view's UI.
 @property (nonatomic)                   NBURefreshStatus status;
 
-/// Whether or not the control should be visible in the UIScrollView;
+/// Whether or not the control should be visible in the UIScrollView.
+/// @note Doesn't trigger any status change.
 @property (nonatomic, getter=isVisible) BOOL visible;
 
 /// The last updated NSDate.
@@ -67,16 +68,16 @@ typedef NS_ENUM(NSInteger, NBURefreshStatus)
 @property (weak, nonatomic) IBOutlet    UIScrollView * scrollView;
 
 /// A configurable UILabel.
-@property (strong, nonatomic) IBOutlet  UILabel * statusLabel;
+@property (weak, nonatomic) IBOutlet    UILabel * statusLabel;
 
 /// A label to show the lastUpdateDate.
-@property (strong, nonatomic) IBOutlet  UILabel * lastUpdateLabel;
+@property (weak, nonatomic) IBOutlet    UILabel * lastUpdateLabel;
 
 /// A view shown/hidden on status changes to/from NBURefreshStatusIdle.
-@property (strong, nonatomic) IBOutlet  UIView * idleView;
+@property (weak, nonatomic) IBOutlet    UIView * idleView;
 
 /// A view shown/hidden on status changes to/from NBURefreshStatusLoading.
-@property (strong, nonatomic) IBOutlet  UIView * loadingView;
+@property (weak, nonatomic) IBOutlet    UIView * loadingView;
 
 /// @name Methods
 
@@ -88,21 +89,13 @@ typedef NS_ENUM(NSInteger, NBURefreshStatus)
 
 /// @name Actions
 
-/// Make the control visible, scroll to it and trigger a refresh.
+/// Make the control visible animated without changing it's status.
 /// @param sender The sender object.
 - (IBAction)show:(id)sender;
 
-/// Hide the control.
+/// Hide the control animated without changing it's status.
 /// @param sender The sender object.
 - (IBAction)hide:(id)sender;
-
-/// Set the control status as NBURefreshStatusUpdated.
-/// @param sender The sender object.
-- (IBAction)updated:(id)sender;
-
-/// Set the control status as NBURefreshStatusError.
-/// @param sender The sender object.
-- (IBAction)failedToUpdate:(id)sender;
 
 @end
 
