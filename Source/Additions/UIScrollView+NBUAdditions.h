@@ -23,7 +23,7 @@
  */
 @interface UIScrollView (NBUAdditions)
 
-/// @name Scroll to Edges
+/// @name Scrolling to Edges
 
 /// Scroll to the top.
 /// @param animated Whether to animate scrolling or not.
@@ -40,6 +40,11 @@
 /// Scroll to the right.
 /// @param animated Whether to animate scrolling or not.
 - (void)scrollToRightAnimated:(BOOL)animated;
+
+/// @name Adjusting Insets
+
+/// Adjust insets iOS 7-style and make sure to update the contentOffest if needed.
+- (void)autoAdjustInsets;
 
 @end
 

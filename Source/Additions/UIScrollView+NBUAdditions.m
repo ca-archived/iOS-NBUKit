@@ -61,5 +61,48 @@
                      animated:animated];
 }
 
+#pragma mark - Autoadjust insets
+
+- (void)autoAdjustInsets
+{
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0"))
+        return;
+    
+    // Calculate necessary insets
+    UIViewController * controller = self.viewController;
+    if (!controller)
+    {
+        NBULogWarn(@"%@ Too early to adjust insets!", THIS_METHOD);
+        return;
+    }
+    CGRect frame = [controller.view convertRect:self.bounds
+                                       fromView:self];
+    UIEdgeInsets insets = self.contentInset;
+    insets.top = MAX(controller.topLayoutGuide.length - frame.origin.y,
+                     0.0);
+    insets.bottom = MAX(controller.bottomLayoutGuide.length -
+                        (CGRectGetMaxY(controller.view.bounds) - CGRectGetMaxY(frame)),
+                        0.0);
+    
+    // Adjust
+    if (!UIEdgeInsetsEqualToEdgeInsets(self.contentInset, insets))
+    {
+        // Also adjust offset
+        CGPoint offset = self.contentOffset;
+        offset.y -= (insets.top - self.contentInset.top);
+        
+        NBULogDebug(@"%@ %@ -> %@ offset : %@ -> %@",
+                    THIS_METHOD,
+                    NSStringFromUIEdgeInsets(self.contentInset),
+                    NSStringFromUIEdgeInsets(insets),
+                    NSStringFromCGPoint(self.contentOffset),
+                    NSStringFromCGPoint(offset));
+        
+        self.contentInset = insets;
+        self.scrollIndicatorInsets = insets;
+        self.contentOffset = offset;
+    }
+}
+
 @end
 
