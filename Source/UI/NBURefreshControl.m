@@ -27,6 +27,22 @@
 
 @implementation NBURefreshControl
 
++ (instancetype)controlForScrollView:(UIScrollView *)scrollView
+                             fromNib:(NSString *)nibName
+                          withTarget:(id)target
+                              action:(SEL)action
+{
+    NBURefreshControl * control = [NSBundle loadNibNamed:nibName ? nibName : NSStringFromClass(self)
+                                                   owner:nil
+                                                 options:nil][0];
+    control.scrollView = scrollView;
+    [control addTarget:target
+                action:action
+      forControlEvents:UIControlEventValueChanged];
+    
+    return control;
+}
+
 - (void)awakeFromNib
 {
     [super awakeFromNib];

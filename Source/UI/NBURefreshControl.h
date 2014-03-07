@@ -41,6 +41,18 @@ typedef NS_ENUM(NSInteger, NBURefreshStatus)
  */
 @interface NBURefreshControl : UIControl
 
+/// @name Creating the Control
+
+/// Load a new control and configure its target and action for the `UIControlEventValueChanged` event.
+/// @param scrollView The view to which the control will be associated.
+/// @param nibName An optional Nib or `nil` to load the default Nib.
+/// @param target The target object.
+/// @param action A selector identifying an action message.
++ (instancetype)controlForScrollView:(UIScrollView *)scrollView
+                             fromNib:(NSString *)nibName
+                          withTarget:(id)target
+                              action:(SEL)action;
+
 /// @name Properties
 
 /// The necessary height to drag to trigger a refresh. By default this view's height.
