@@ -61,7 +61,20 @@
                      animated:animated];
 }
 
-#pragma mark - Autoadjust insets
+#pragma mark - Auto-adjusting
+
+- (void)autoAdjustContentSize
+{
+    // Make sure to make the origin CGPointZero
+    UIView * firstSubview = self.subviews[0];
+    CGRect requiredFrame = CGRectMake(0.0,
+                                      0.0,
+                                      CGRectGetMaxX(firstSubview.frame),
+                                      CGRectGetMaxY(firstSubview.frame));
+    
+    NBULogDebug(@"%@ -> %@", THIS_METHOD, NSStringFromCGSize(requiredFrame.size));
+    self.contentSize = requiredFrame.size;
+}
 
 - (void)autoAdjustInsets
 {

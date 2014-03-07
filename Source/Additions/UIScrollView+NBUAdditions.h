@@ -41,9 +41,13 @@
 /// @param animated Whether to animate scrolling or not.
 - (void)scrollToRightAnimated:(BOOL)animated;
 
-/// @name Adjusting Insets
+/// @name Auto-Adjusting
+
+/// Try to adjust the content size with the first subview as reference.
+- (void)autoAdjustContentSize;
 
 /// Adjust insets iOS 7-style and make sure to update the contentOffest if needed.
+/// @note You may have to call this method as late as `viewDidAppear:`.
 - (void)autoAdjustInsets;
 
 @end
