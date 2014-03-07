@@ -7,39 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3426B02E15BF769F00EAF6B8 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 3426B02A15BF769F00EAF6B8 /* first.png */; };
-		3426B02F15BF769F00EAF6B8 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3426B02B15BF769F00EAF6B8 /* first@2x.png */; };
-		3426B03015BF769F00EAF6B8 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 3426B02C15BF769F00EAF6B8 /* second.png */; };
-		3426B03115BF769F00EAF6B8 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3426B02D15BF769F00EAF6B8 /* second@2x.png */; };
 		34C4AD9615BE880000709E28 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C4AD9515BE880000709E28 /* UIKit.framework */; };
 		34C4AD9815BE880000709E28 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C4AD9715BE880000709E28 /* Foundation.framework */; };
 		34C4AD9A15BE880000709E28 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C4AD9915BE880000709E28 /* CoreGraphics.framework */; };
 		34C4ADA015BE880000709E28 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 34C4AD9E15BE880000709E28 /* InfoPlist.strings */; };
 		34C4ADA215BE880000709E28 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4ADA115BE880000709E28 /* main.m */; };
 		34C4ADA615BE880000709E28 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4ADA515BE880000709E28 /* AppDelegate.m */; };
-		34C4ADBD15BE8E1F00709E28 /* MainController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34C4ADBC15BE8E1F00709E28 /* MainController.xib */; };
 		969D0504C0F445879CB97CA9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A8D7D81AEF4434C98230B87 /* libPods.a */; };
 		E515C147185AF22E004D6779 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E515C146185AF22E004D6779 /* Localizable.strings */; };
 		E5332BDD16660CDF00B019DB /* BadgesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5332BCF16660CDF00B019DB /* BadgesViewController.xib */; };
 		E5332BE016660CDF00B019DB /* HideOnScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5332BD416660CDF00B019DB /* HideOnScrollViewController.m */; };
 		E5332BE116660CDF00B019DB /* HideOnScrollViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5332BD516660CDF00B019DB /* HideOnScrollViewController.xib */; };
 		E5332BE416660CDF00B019DB /* PullToRefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5332BDA16660CDF00B019DB /* PullToRefreshViewController.m */; };
-		E5332BE516660CDF00B019DB /* PullToRefreshViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5332BDB16660CDF00B019DB /* PullToRefreshViewController.xib */; };
-		E53658FA15E384F4004A2F1A /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = E53658F415E384F4004A2F1A /* Icon-72.png */; };
-		E53658FB15E384F4004A2F1A /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E53658F515E384F4004A2F1A /* Icon-72@2x.png */; };
-		E53658FC15E384F4004A2F1A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E53658F615E384F4004A2F1A /* Icon.png */; };
-		E53658FD15E384F4004A2F1A /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E53658F715E384F4004A2F1A /* Icon@2x.png */; };
+		E5332BE516660CDF00B019DB /* CustomRefreshControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5332BDB16660CDF00B019DB /* CustomRefreshControl.xib */; };
 		E555171B1839F51400E273F4 /* BadgesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5332BCE16660CDF00B019DB /* BadgesViewController.m */; };
-		E55984801610221800D0F2BF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E559847D1610221800D0F2BF /* Default.png */; };
-		E55984811610221800D0F2BF /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E559847E1610221800D0F2BF /* Default@2x.png */; };
-		E55984821610221800D0F2BF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E559847F1610221800D0F2BF /* Default-568h@2x.png */; };
+		E578D26E18C88C88005668C5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E578D26D18C88C88005668C5 /* Images.xcassets */; };
+		E57D4B9E18C9646500EE8DE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E57D4B9D18C9646500EE8DE1 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3426B02A15BF769F00EAF6B8 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = first.png; path = Resources/first.png; sourceTree = "<group>"; };
-		3426B02B15BF769F00EAF6B8 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "first@2x.png"; path = "Resources/first@2x.png"; sourceTree = "<group>"; };
-		3426B02C15BF769F00EAF6B8 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = second.png; path = Resources/second.png; sourceTree = "<group>"; };
-		3426B02D15BF769F00EAF6B8 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "second@2x.png"; path = "Resources/second@2x.png"; sourceTree = "<group>"; };
 		34C4AD9115BE87FF00709E28 /* NBUKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NBUKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34C4AD9515BE880000709E28 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		34C4AD9715BE880000709E28 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -50,7 +36,6 @@
 		34C4ADA315BE880000709E28 /* NBUKitDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NBUKitDemo-Prefix.pch"; sourceTree = "<group>"; };
 		34C4ADA415BE880000709E28 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		34C4ADA515BE880000709E28 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		34C4ADBC15BE8E1F00709E28 /* MainController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainController.xib; sourceTree = "<group>"; };
 		7C918EBE545141BB8B2D2448 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		8A8D7D81AEF4434C98230B87 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E515C146185AF22E004D6779 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -62,19 +47,10 @@
 		E5332BD516660CDF00B019DB /* HideOnScrollViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HideOnScrollViewController.xib; sourceTree = "<group>"; };
 		E5332BD916660CDF00B019DB /* PullToRefreshViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullToRefreshViewController.h; sourceTree = "<group>"; };
 		E5332BDA16660CDF00B019DB /* PullToRefreshViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullToRefreshViewController.m; sourceTree = "<group>"; };
-		E5332BDB16660CDF00B019DB /* PullToRefreshViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PullToRefreshViewController.xib; sourceTree = "<group>"; };
-		E53658F415E384F4004A2F1A /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "Resources/Icon-72.png"; sourceTree = "<group>"; };
-		E53658F515E384F4004A2F1A /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "Resources/Icon-72@2x.png"; sourceTree = "<group>"; };
-		E53658F615E384F4004A2F1A /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Resources/Icon.png; sourceTree = "<group>"; };
-		E53658F715E384F4004A2F1A /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Resources/Icon@2x.png"; sourceTree = "<group>"; };
+		E5332BDB16660CDF00B019DB /* CustomRefreshControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomRefreshControl.xib; sourceTree = "<group>"; };
 		E54573FE17057B32005E142B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		E559847D1610221800D0F2BF /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Default.png; sourceTree = "<group>"; };
-		E559847E1610221800D0F2BF /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/Default@2x.png"; sourceTree = "<group>"; };
-		E559847F1610221800D0F2BF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Default-568h@2x.png"; sourceTree = "<group>"; };
-		E5B06CDD1643591A0043F53F /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "Resources/Icon-Small-50.png"; sourceTree = "<group>"; };
-		E5B06CDE1643591A0043F53F /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = Resources/iTunesArtwork; sourceTree = "<group>"; };
-		E5B06CDF1643591A0043F53F /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "Resources/Icon-Small@2x.png"; sourceTree = "<group>"; };
-		E5B06CE01643591A0043F53F /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "Resources/Icon-Small.png"; sourceTree = "<group>"; };
+		E578D26D18C88C88005668C5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E57D4B9D18C9646500EE8DE1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E5F8090B1754384B008120E4 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
@@ -93,28 +69,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3473770D15BFEDB300EA8D88 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				E53658F615E384F4004A2F1A /* Icon.png */,
-				E53658F715E384F4004A2F1A /* Icon@2x.png */,
-				E53658F415E384F4004A2F1A /* Icon-72.png */,
-				E53658F515E384F4004A2F1A /* Icon-72@2x.png */,
-				E5B06CE01643591A0043F53F /* Icon-Small.png */,
-				E5B06CDF1643591A0043F53F /* Icon-Small@2x.png */,
-				E5B06CDD1643591A0043F53F /* Icon-Small-50.png */,
-				E5B06CDE1643591A0043F53F /* iTunesArtwork */,
-				E559847D1610221800D0F2BF /* Default.png */,
-				E559847E1610221800D0F2BF /* Default@2x.png */,
-				E559847F1610221800D0F2BF /* Default-568h@2x.png */,
-				3426B02A15BF769F00EAF6B8 /* first.png */,
-				3426B02B15BF769F00EAF6B8 /* first@2x.png */,
-				3426B02C15BF769F00EAF6B8 /* second.png */,
-				3426B02D15BF769F00EAF6B8 /* second@2x.png */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
 		34C4AD8615BE87FF00709E28 = {
 			isa = PBXGroup;
 			children = (
@@ -151,11 +105,11 @@
 				E515C146185AF22E004D6779 /* Localizable.strings */,
 				34C4ADA415BE880000709E28 /* AppDelegate.h */,
 				34C4ADA515BE880000709E28 /* AppDelegate.m */,
-				34C4ADBC15BE8E1F00709E28 /* MainController.xib */,
+				E57D4B9D18C9646500EE8DE1 /* Main.storyboard */,
 				E57F637F1666EBE000C36E85 /* Pull to Refresh */,
 				E57F637E1666EBC100C36E85 /* Hide on Scroll */,
 				E57F637C1666EA8E00C36E85 /* Badges */,
-				3473770D15BFEDB300EA8D88 /* Resources */,
+				E578D26D18C88C88005668C5 /* Images.xcassets */,
 				34C4AD9C15BE880000709E28 /* Supporting Files */,
 			);
 			path = NBUKitDemo;
@@ -197,7 +151,7 @@
 			children = (
 				E5332BD916660CDF00B019DB /* PullToRefreshViewController.h */,
 				E5332BDA16660CDF00B019DB /* PullToRefreshViewController.m */,
-				E5332BDB16660CDF00B019DB /* PullToRefreshViewController.xib */,
+				E5332BDB16660CDF00B019DB /* CustomRefreshControl.xib */,
 			);
 			name = "Pull to Refresh";
 			sourceTree = "<group>";
@@ -258,22 +212,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E515C147185AF22E004D6779 /* Localizable.strings in Resources */,
-				34C4ADBD15BE8E1F00709E28 /* MainController.xib in Resources */,
-				3426B02E15BF769F00EAF6B8 /* first.png in Resources */,
 				E5332BDD16660CDF00B019DB /* BadgesViewController.xib in Resources */,
 				E5332BE116660CDF00B019DB /* HideOnScrollViewController.xib in Resources */,
-				E5332BE516660CDF00B019DB /* PullToRefreshViewController.xib in Resources */,
+				E5332BE516660CDF00B019DB /* CustomRefreshControl.xib in Resources */,
 				34C4ADA015BE880000709E28 /* InfoPlist.strings in Resources */,
-				3426B02F15BF769F00EAF6B8 /* first@2x.png in Resources */,
-				3426B03015BF769F00EAF6B8 /* second.png in Resources */,
-				3426B03115BF769F00EAF6B8 /* second@2x.png in Resources */,
-				E53658FA15E384F4004A2F1A /* Icon-72.png in Resources */,
-				E53658FB15E384F4004A2F1A /* Icon-72@2x.png in Resources */,
-				E53658FC15E384F4004A2F1A /* Icon.png in Resources */,
-				E53658FD15E384F4004A2F1A /* Icon@2x.png in Resources */,
-				E55984801610221800D0F2BF /* Default.png in Resources */,
-				E55984811610221800D0F2BF /* Default@2x.png in Resources */,
-				E55984821610221800D0F2BF /* Default-568h@2x.png in Resources */,
+				E57D4B9E18C9646500EE8DE1 /* Main.storyboard in Resources */,
+				E578D26E18C88C88005668C5 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +359,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7C918EBE545141BB8B2D2448 /* Pods.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLEID = "jp.co.cyberagent.nbu.${PRODUCT_NAME:rfc1034identifier}-dev";
 				DISPLAYNAME = NBUKitDev;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -431,6 +377,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7C918EBE545141BB8B2D2448 /* Pods.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLEID = "jp.co.cyberagent.nbu.${PRODUCT_NAME:rfc1034identifier}-ota";
 				DISPLAYNAME = NBUKit;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

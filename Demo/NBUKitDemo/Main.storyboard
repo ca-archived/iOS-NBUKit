@@ -10,7 +10,7 @@
             <objects>
                 <tabBarController definesPresentationContext="YES" id="K9W-6x-EAd" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="2F5-DV-8CQ">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -24,81 +24,145 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DJs-rk-Irt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-419" y="612"/>
+            <point key="canvasLocation" x="-755" y="116"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation Controller - Pull To Refresh-->
         <scene sceneID="0f1-yJ-9rU">
             <objects>
                 <navigationController definesPresentationContext="YES" id="HwA-Ix-nbs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" id="cSo-x3-T47"/>
+                    <tabBarItem key="tabBarItem" title="Pull To Refresh" image="first" id="cSo-x3-T47"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IIj-fH-541">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <viewControllers>
-                        <viewController id="CDi-gq-K95">
-                            <navigationItem key="navigationItem" title="Pull To Refresh" id="uj1-nD-cZI"/>
-                            <nil key="simulatedStatusBarMetrics"/>
-                            <nil key="simulatedTopBarMetrics"/>
-                            <nil key="simulatedBottomBarMetrics"/>
-                            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                        </viewController>
-                    </viewControllers>
+                    <connections>
+                        <segue destination="CDi-gq-K95" kind="relationship" relationship="rootViewController" id="GtJ-bR-Rdh"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kMi-qQ-ObF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="122" y="46"/>
+            <point key="canvasLocation" x="-214" y="-450"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation Controller - Badges-->
         <scene sceneID="f2h-Gj-nji">
             <objects>
                 <navigationController definesPresentationContext="YES" id="qwN-qw-RaJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" id="Kj1-13-fmk"/>
+                    <tabBarItem key="tabBarItem" title="Badges" image="first" id="Kj1-13-fmk"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="f4T-EC-WO1">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <viewControllers>
-                        <viewController id="j0O-al-93e">
-                            <navigationItem key="navigationItem" title="Badges" id="y4X-KF-xH9"/>
-                            <nil key="simulatedStatusBarMetrics"/>
-                            <nil key="simulatedTopBarMetrics"/>
-                            <nil key="simulatedBottomBarMetrics"/>
-                            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                        </viewController>
-                    </viewControllers>
+                    <connections>
+                        <segue destination="j0O-al-93e" kind="relationship" relationship="rootViewController" id="kF9-cl-8G3"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xBg-IH-eny" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="122" y="1186"/>
+            <point key="canvasLocation" x="-214" y="690"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation Controller - Hide on Scroll-->
         <scene sceneID="X5e-cI-Sjl">
             <objects>
                 <navigationController definesPresentationContext="YES" id="sUg-ql-htm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" id="7Yv-pQ-Tf6"/>
+                    <tabBarItem key="tabBarItem" title="Hide on Scroll" image="second" id="7Yv-pQ-Tf6"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="x4W-KF-26r">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <viewControllers>
-                        <viewController id="F7B-xE-RtY">
-                            <navigationItem key="navigationItem" title="Hide on Scroll" id="tcF-ye-vBT"/>
-                            <nil key="simulatedStatusBarMetrics"/>
-                            <nil key="simulatedTopBarMetrics"/>
-                            <nil key="simulatedBottomBarMetrics"/>
-                            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                        </viewController>
-                    </viewControllers>
+                    <connections>
+                        <segue destination="F7B-xE-RtY" kind="relationship" relationship="rootViewController" id="5Z9-3L-8hP"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v6p-fr-X2o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="122" y="612"/>
+            <point key="canvasLocation" x="-214" y="116"/>
+        </scene>
+        <!--Pull To Refresh View Controller - Pull To Refresh-->
+        <scene sceneID="Aml-2x-Syz">
+            <objects>
+                <viewController id="CDi-gq-K95" customClass="PullToRefreshViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dQi-zp-x5H">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="r4l-uL-t1a">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="F1B-Ox-lZU">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="550"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bJF-9q-fev">
+                                                <rect key="frame" x="43" y="229" width="86" height="37"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Updated">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="testUpdated:" destination="CDi-gq-K95" eventType="touchUpInside" id="84k-gD-EMr"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YKY-EQ-D8f">
+                                                <rect key="frame" x="137" y="229" width="140" height="37"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Failed to update">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="testFailedToUpdate:" destination="CDi-gq-K95" eventType="touchUpInside" id="bKa-rr-dql"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Pull!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="4wi-Gu-ncA">
+                                                <rect key="frame" x="20" y="133" width="280" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Pull To Refresh" id="uj1-nD-cZI"/>
+                    <connections>
+                        <outlet property="label" destination="4wi-Gu-ncA" id="g22-DV-huY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fPK-3P-SDu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="221" y="-450"/>
+        </scene>
+        <!--View Controller - Hide on Scroll-->
+        <scene sceneID="Bm2-2M-egE">
+            <objects>
+                <viewController id="F7B-xE-RtY" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="Hide on Scroll" id="tcF-ye-vBT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J6m-rv-ZGu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="221" y="116"/>
+        </scene>
+        <!--View Controller - Badges-->
+        <scene sceneID="mXa-zv-jaz">
+            <objects>
+                <viewController id="j0O-al-93e" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="Badges" id="y4X-KF-xH9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N7n-7p-aOK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="221" y="690"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="first" width="30" height="30"/>
+        <image name="second" width="30" height="30"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

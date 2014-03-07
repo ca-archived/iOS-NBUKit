@@ -20,11 +20,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PullToRefreshViewController : ScrollViewController
+@interface PullToRefreshViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel * label;
+@property (weak, nonatomic) IBOutlet NBURefreshControl * refreshControl;
 
 - (IBAction)refresh:(id)sender;
+
+- (IBAction)testUpdated:(id)sender;
+- (IBAction)testFailedToUpdate:(id)sender;
 
 @end
 

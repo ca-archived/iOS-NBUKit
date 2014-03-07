@@ -30,23 +30,10 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Configure NBULog
 #if defined (DEBUG) ||  defined (TESTING)
-    // Add dashboard logger
     [NBULog addDashboardLogger];
 #endif
 
     NBULogTrace();
-    
-    // Prepare window
-    _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    UITabBarController * rootController = [[NSBundle mainBundle] loadNibNamed:@"MainController"
-                                                                        owner:self
-                                                                      options:nil][0];
-    rootController.customizableViewControllers = nil;
-    _cameraButton.center = CGPointMake(CGRectGetMidX(rootController.tabBar.bounds),
-                                       CGRectGetMidY(rootController.tabBar.bounds) - 10.0);
-    [rootController.tabBar addSubview:_cameraButton];
-    _window.rootViewController = rootController;
-    [_window makeKeyAndVisible];
     
     // Start splash screen
     _splashView = [NSBundle loadNibNamed:@"NBUSplashView"
@@ -55,38 +42,32 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     [_splashView startWithStatus:@"Launching..."
                           window:_window];
     
-    // Async launch tasks
+    // Async launch mock tasks
     dispatch_async(dispatch_get_main_queue(), ^
     {
-        [self mockLaunchTasks];
+        // Mock 10 tasks
+        for (NSUInteger i = 1; i <= 10; i++)
+        {
+            // Using GCD to mock updates
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, i * 0.10 * NSEC_PER_SEC);
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void)
+                           {
+                               // Update splash view
+                               [_splashView updateProgress:i * 0.1
+                                                withStatus:[NSString stringWithFormat:@"Mock task %d of 10", i]];
+                               
+                               // Finish splash view
+                               if (i == 10)
+                               {
+                                   [_splashView finishWithStatus:@"Done"
+                                                        animated:YES];
+                                   _splashView = nil;
+                               }
+                           });
+        }
     });
     
     return YES;
-}
-
-// *** Do some real work here ***
-- (void)mockLaunchTasks
-{
-    // Mock 10 tasks
-    for (NSUInteger i = 1; i <= 10; i++)
-    {
-        // Using GCD to mock updates
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, i * 0.10 * NSEC_PER_SEC);
-        dispatch_after(popTime, dispatch_get_main_queue(), ^(void)
-                       {
-                           // Update splash view
-                           [_splashView updateProgress:i * 0.1
-                                            withStatus:[NSString stringWithFormat:@"Mock task %d of 10", i]];
-                           
-                           // Finish splash view
-                           if (i == 10)
-                           {
-                               [_splashView finishWithStatus:@"Done"
-                                                    animated:YES];
-                               _splashView = nil;
-                           }
-                       });
-    }
 }
 
 @end

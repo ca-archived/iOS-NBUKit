@@ -9,6 +9,6 @@
   This file can be localized as well.
 */
 
-// Custom localization
-"NBURefreshControl Drag to refresh" = "Pull to refresh";
+// Custom localizations
+"NBURefreshControl Drag to refresh" = "Pull down to refresh!";
 

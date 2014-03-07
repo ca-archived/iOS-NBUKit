@@ -22,6 +22,27 @@
 
 @implementation PullToRefreshViewController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    // Configure the refresh control
+    self.refreshControl = [NBURefreshControl controlForScrollView:self.view.subviews[0]
+                                                          fromNib:@"CustomRefreshControl"
+                                                       withTarget:self
+                                                           action:@selector(refresh:)];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    // Adjust scrollview
+    UIScrollView * scrollView = self.view.subviews[1]; // Now the refresh control is at index 0
+    [scrollView autoAdjustContentSize];
+    [scrollView autoAdjustInsets];
+}
+
 - (IBAction)refresh:(id)sender
 {
     NBULogTrace();
@@ -33,7 +54,7 @@
     
     // *** ...and then notify the refresh control when finished ***
     
-    double delayInSeconds = 1.0 + (arc4random() % 5) * 1.0; // Between 1 and 5sec
+    double delayInSeconds = 5.0 + (arc4random() % 5) * 1.0; // Between 5 and 10sec
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         
@@ -63,10 +84,18 @@
     });
 }
 
-- (void)viewDidUnload
+- (void)testUpdated:(id)sender
 {
-    [self setLabel:nil];
-    [super viewDidUnload];
+    NBULogTrace();
+    
+    self.refreshControl.status = NBURefreshStatusUpdated;
+}
+
+- (void)testFailedToUpdate:(id)sender
+{
+    NBULogTrace();
+    
+    self.refreshControl.status = NBURefreshStatusError;
 }
 
 @end
