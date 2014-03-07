@@ -59,6 +59,23 @@
 - (void)setScrollView:(UIScrollView *)scrollView
 {
     _scrollView = scrollView;
+    
+    // Make sure we have a proper superview
+    if (!scrollView.superview)
+    {
+        NBULogError(@"%@ The scrollView should have a valid superview.", THIS_METHOD);
+        return;
+    }
+    
+    // Make sure the scrollView is transparent!
+    CGFloat alpha = CGColorGetAlpha(scrollView.backgroundColor.CGColor);
+    if (alpha != 0.0)
+    {
+        NBULogWarn(@"%@ The scrollView should have a clear color background.", THIS_METHOD);
+    }
+    
+    // Make sure the scrollView always bounces vertically
+    scrollView.alwaysBounceVertical = YES;
 
     // Add to scrollview's superview if needed
     [scrollView.superview insertSubview:self
@@ -146,6 +163,10 @@
     // Strech it but not too much
     frame.size.height = MIN((frame.size.height - frame.origin.y) / 2.0, // Half the scrollview's height
                             self.scrollView.contentSize.height / 2.0);  // ...or half the content's height
+    
+    // Not too short!
+    frame.size.height = MAX(frame.size.height,
+                            self.heightToRefresh);
     
     NBULogVerbose(@"%@ -> %@", THIS_METHOD, NSStringFromCGRect(frame));
     
