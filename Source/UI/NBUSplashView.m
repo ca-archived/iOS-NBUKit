@@ -58,7 +58,7 @@
     
     // Add on top of the window
     self.frame = [UIScreen mainScreen].bounds;
-    [window addSubview:self];
+    [window.rootViewController.view addSubview:self];
 }
 
 - (void)finishWithStatus:(NSString *)status
