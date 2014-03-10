@@ -78,9 +78,6 @@
 
 - (void)autoAdjustInsets
 {
-    if (SYSTEM_VERSION_LESS_THAN(@"7.0"))
-        return;
-    
     // Calculate necessary insets
     UIViewController * controller = self.viewController;
     if (!controller)
@@ -91,10 +88,11 @@
     CGRect frame = [controller.view convertRect:self.bounds
                                        fromView:self];
     UIEdgeInsets insets = self.contentInset;
-    insets.top = MAX(controller.topLayoutGuide.length - frame.origin.y,
+    CGFloat topLayoutGuide = SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") ? controller.topLayoutGuide.length : 0.0;
+    CGFloat bottomLayoutGuide = SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") ? controller.bottomLayoutGuide.length : 0.0;
+    insets.top = MAX(topLayoutGuide - frame.origin.y,
                      0.0);
-    insets.bottom = MAX(controller.bottomLayoutGuide.length -
-                        (CGRectGetMaxY(controller.view.bounds) - CGRectGetMaxY(frame)),
+    insets.bottom = MAX(bottomLayoutGuide - (CGRectGetMaxY(controller.view.bounds) - CGRectGetMaxY(frame)),
                         0.0);
     
     // Adjust
