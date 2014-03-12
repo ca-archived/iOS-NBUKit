@@ -54,7 +54,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
                            {
                                // Update splash view
                                [_splashView updateProgress:i * 0.1
-                                                withStatus:[NSString stringWithFormat:@"Mock task %d of 10", i]];
+                                                withStatus:[NSString stringWithFormat:@"Mock task %@ of 10", @(i)]];
                                
                                // Finish splash view
                                if (i == 10)

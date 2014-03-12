@@ -69,9 +69,9 @@ forSegmentAtIndex:(NSUInteger)index
 {
     if (index >= self.numberOfSegments)
     {
-        NBULogError(@"Tried to set a badge for segment %d in control with only %d segments",
-                    index,
-                    self.numberOfSegments);
+        NBULogError(@"Tried to set a badge for segment %@ in control with only %@ segments",
+                    @(index),
+                    @(self.numberOfSegments));
         return;
     }
     

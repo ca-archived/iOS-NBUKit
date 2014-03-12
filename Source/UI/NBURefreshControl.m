@@ -184,7 +184,7 @@
 - (void)setStatus:(NBURefreshStatus)status
       withMessage:(NSString *)message
 {
-    NBULogDebug(@"setStatus: %d withMessage: %@", status, message);
+    NBULogDebug(@"setStatus: %@ withMessage: %@", @(status), message);
     
     _status = status;
     

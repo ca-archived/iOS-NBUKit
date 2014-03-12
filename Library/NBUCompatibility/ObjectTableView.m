@@ -360,14 +360,14 @@
     // ToDo Ignore when possible
     
     [_rowHeights setValue:(height >= 0) ? @(height) : nil
-                   forKey:[NSString stringWithFormat:@"%d", index]];
+                   forKey:[NSString stringWithFormat:@"%@", @(index)]];
     
     [self postSizeThatFitsChangedNotification];
 }
 
 - (void)toggleObjectAtIndex:(NSUInteger)index
 {
-    NSString * key = [NSString stringWithFormat:@"%d", index];
+    NSString * key = [NSString stringWithFormat:@"%@", @(index)];
     
     // Was already 0.0?
     if (_rowHeights[key] &&
@@ -404,7 +404,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     if (indexPath.section == _objectArraySection)
     {
         // a) Overriden height?
-        NSString * key = [NSString stringWithFormat:@"%d", indexPath.row];
+        NSString * key = [NSString stringWithFormat:@"%@", @(indexPath.row)];
         if (_rowHeights[key])
         {
             NSNumber *num = _rowHeights[key];
@@ -482,7 +482,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CGFloat height = [self logTableView:tableView heightForRowAtIndexPath:indexPath];
-    NBULogVerbose(@"--- %d,%d: %f", indexPath.section, indexPath.row, height);
+    NBULogVerbose(@"--- %@,%@: %f", @(indexPath.section), @(indexPath.row), height);
     return height;
 }
 
@@ -579,13 +579,13 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     UIView * view = (self.contentView.subviews)[0];
     if (frame.size.height > 0.0)
     {
-        NBULogVerbose(@"%p xxx %@ (%d)", self, NSStringFromCGRect(frame), self.subviews.count);
+        NBULogVerbose(@"%p xxx %@ (%@)", self, NSStringFromCGRect(frame), @(self.subviews.count));
         view.hidden = NO;
         view.frame = self.bounds;
     }
     else
     {
-        NBULogVerbose(@"%p xxx skipped %@ (%d)", self, NSStringFromCGRect(frame), self.subviews.count);
+        NBULogVerbose(@"%p xxx skipped %@ (%@)", self, NSStringFromCGRect(frame), @(self.subviews.count));
         view.hidden = YES;
     }
 }

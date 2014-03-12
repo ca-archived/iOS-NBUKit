@@ -62,7 +62,7 @@
 {
     if (!UIDeviceOrientationIsValidInterfaceOrientation(supportedInterfaceOrientations))
     {
-        NBULogError(@"'%d' is not a valid interface orientation mask!", supportedInterfaceOrientations);
+        NBULogError(@"'%@' is not a valid interface orientation mask!", @(supportedInterfaceOrientations));
         return;
     }
     _supportedInterfaceOrientations = supportedInterfaceOrientations;
@@ -108,7 +108,7 @@
         }
     }
     
-    NBULogVerbose(@"%@ %@ %d", NSStringFromClass([self class]), THIS_METHOD, _supportedInterfaceOrientations);
+    NBULogVerbose(@"%@ %@ %@", NSStringFromClass([self class]), THIS_METHOD, @(_supportedInterfaceOrientations));
     return _supportedInterfaceOrientations;
 }
 

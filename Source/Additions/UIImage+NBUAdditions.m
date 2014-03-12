@@ -195,7 +195,7 @@
     NSUInteger i = 1;
     do
     {
-        path = [NSString stringWithFormat:@"%@/image%03d.jpg", directory, i++];
+        path = [NSString stringWithFormat:@"%@/image%03ld.jpg", directory, (long)i++];
     }
     while ([manager fileExistsAtPath:path]);
     

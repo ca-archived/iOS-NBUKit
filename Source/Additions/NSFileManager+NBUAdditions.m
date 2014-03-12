@@ -84,7 +84,7 @@
                     extensions.shortDescription, directories, errors);
     }
     
-    NBULogInfo(@"Found %d files with extensions %@", fileURLs.count, extensions.shortDescription);
+    NBULogInfo(@"Found %@ files with extensions %@", @(fileURLs.count), extensions.shortDescription);
     
     return fileURLs;
 }

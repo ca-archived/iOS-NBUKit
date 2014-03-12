@@ -166,7 +166,7 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet
 clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NBULogVerbose(@"%@ %d cancel: %d", THIS_METHOD, buttonIndex, self.cancelButtonIndex);
+    NBULogVerbose(@"%@ %@ cancel: %@", THIS_METHOD, @(buttonIndex), @(self.cancelButtonIndex));
     if (buttonIndex == self.cancelButtonIndex)
     {
         NBULogVerbose(@"Canceled");
@@ -177,7 +177,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     {
         NSInteger selectedIndex = self.cancelButtonIndex == 0 ? buttonIndex - 1 : buttonIndex;
         
-        NBULogVerbose(@"Selected button at index: %d", selectedIndex);
+        NBULogVerbose(@"Selected button at index: %@", @(selectedIndex));
         
         if (_selectedButtonBlock) _selectedButtonBlock(selectedIndex);
     }
