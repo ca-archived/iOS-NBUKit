@@ -88,8 +88,8 @@
     CGRect frame = [controller.view convertRect:self.bounds
                                        fromView:self];
     UIEdgeInsets insets = self.contentInset;
-    CGFloat topLayoutGuide = SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") ? controller.topLayoutGuide.length : 0.0;
-    CGFloat bottomLayoutGuide = SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") ? controller.bottomLayoutGuide.length : 0.0;
+    CGFloat topLayoutGuide = [controller respondsToSelector:@selector(topLayoutGuide)] ? controller.topLayoutGuide.length : 0.0;
+    CGFloat bottomLayoutGuide = [controller respondsToSelector:@selector(bottomLayoutGuide)] ? controller.bottomLayoutGuide.length : 0.0;
     insets.top = MAX(topLayoutGuide - frame.origin.y,
                      0.0);
     insets.bottom = MAX(bottomLayoutGuide - (CGRectGetMaxY(controller.view.bounds) - CGRectGetMaxY(frame)),
