@@ -60,11 +60,6 @@
 
 - (void)setSupportedInterfaceOrientations:(UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
-    if (!UIDeviceOrientationIsValidInterfaceOrientation(supportedInterfaceOrientations))
-    {
-        NBULogError(@"'%@' is not a valid interface orientation mask!", @(supportedInterfaceOrientations));
-        return;
-    }
     _supportedInterfaceOrientations = supportedInterfaceOrientations;
 }
 
