@@ -78,22 +78,27 @@
 
 - (void)autoAdjustInsets
 {
-    // Calculate necessary insets
-    UIViewController * controller = self.viewController;
-    if (!controller)
-    {
-        NBULogWarn(@"%@ Too early to adjust insets!", THIS_METHOD);
-        return;
-    }
-    CGRect frame = [controller.view convertRect:self.bounds
-                                       fromView:self];
     UIEdgeInsets insets = self.contentInset;
-    CGFloat topLayoutGuide = [controller respondsToSelector:@selector(topLayoutGuide)] ? controller.topLayoutGuide.length : 0.0;
-    CGFloat bottomLayoutGuide = [controller respondsToSelector:@selector(bottomLayoutGuide)] ? controller.bottomLayoutGuide.length : 0.0;
-    insets.top = MAX(topLayoutGuide - frame.origin.y,
-                     0.0);
-    insets.bottom = MAX(bottomLayoutGuide - (CGRectGetMaxY(controller.view.bounds) - CGRectGetMaxY(frame)),
-                        0.0);
+    
+    // Inside a controller?
+    UIViewController * controller = self.viewController;
+    if (controller)
+    {
+        CGRect frame = [controller.view convertRect:self.bounds
+                                           fromView:self];
+        CGFloat topLayoutGuide = [controller respondsToSelector:@selector(topLayoutGuide)] ? controller.topLayoutGuide.length : 0.0;
+        CGFloat bottomLayoutGuide = [controller respondsToSelector:@selector(bottomLayoutGuide)] ? controller.bottomLayoutGuide.length : 0.0;
+        insets.top = MAX(topLayoutGuide - frame.origin.y,
+                         0.0);
+        insets.bottom = MAX(bottomLayoutGuide - (CGRectGetMaxY(controller.view.bounds) - CGRectGetMaxY(frame)),
+                            0.0);
+    }
+    // Else just reset insets
+    else
+    {
+        insets.top = 0.0;
+        insets.bottom = 0.0;
+    }
     
     // Adjust
     if (!UIEdgeInsetsEqualToEdgeInsets(self.contentInset, insets))
