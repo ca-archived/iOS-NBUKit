@@ -30,10 +30,9 @@
 
 /// Initialize and configure parameters by parsing a `mailto:` URL.
 /// @param mailtoURL The `mailto:` URL.
-- (instancetype)initWithMailtoURL:(NSURL *)mailtoURL;
-
-/// An optional block to be called instead of a using the usual delegate methods.
-@property (nonatomic, copy) void (^resultBlock)(MFMailComposeResult result, NSError * error);
+/// @param resultBlock An optional block to be called instead of a using the usual delegate methods.
+- (instancetype)initWithMailtoURL:(NSURL *)mailtoURL
+                      resultBlock:(void (^)(MFMailComposeResult, NSError *))resultBlock;
 
 @end
 

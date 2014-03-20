@@ -33,12 +33,38 @@
 
 
 @implementation NBUMailComposeViewController
+{
+    void (^_resultBlock)(MFMailComposeResult result, NSError * error);
+}
 
 - (instancetype)initWithMailtoURL:(NSURL *)mailtoURL
+                      resultBlock:(void (^)(MFMailComposeResult, NSError *))resultBlock
 {
+    // Handle errors
+    NSInteger errorCode = 0;
+    NSString * errorMessage;
+    if (![mailtoURL.scheme isEqualToString:@"mailto"])
+    {
+        errorCode = -10;
+        errorMessage = [NSString stringWithFormat:@"Not a proper mailto URL: %@", mailtoURL];
+    }
+    if (!MFMailComposeViewController.canSendMail)
+    {
+        errorCode = -20;
+        errorMessage = @"No configured email account available.";
+    }
+    if (errorCode)
+    {
+        NSError * error = [NSError errorWithDomain:@"NBUMailComposeErrorDomain"
+                                              code:errorCode
+                                          userInfo:@{NSLocalizedDescriptionKey : errorMessage}];
+        NBULogError(@"%@", error);
+        if (resultBlock) resultBlock(MFMailComposeResultFailed, error);
+        return nil;
+    }
+    
     self = [super init];
-    if (self &&
-        [mailtoURL.scheme isEqualToString:@"mailto"])
+    if (self)
     {
         // Parsing
         NSArray * components = [[mailtoURL.absoluteString substringFromIndex:@"mailto:".length] componentsSeparatedByString:@"?"];
@@ -46,6 +72,9 @@
         NSDictionary * parameters = components.count == 2 ? [NSDictionary dictionaryWithURLEncodedString:components[1]] : nil;
         
         NBULogVerbose(@"Presenting email composer to: %@ with parameters: %@", recipients, parameters);
+        
+        // Set block
+        _resultBlock = resultBlock;
         
         // Configure self
         [self setToRecipients:recipients];
