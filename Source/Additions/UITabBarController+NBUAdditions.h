@@ -20,8 +20,16 @@
 
 /**
  UITabBarController category to provide tabBar show/hide functionality.
+ 
+ @discussion The tabBar is hidden by stretching the controller's view enough to bring
+ the bar outside the screen (or more precisely outside the originalViewFrame).
  */
 @interface UITabBarController (NBUAdditions)
+
+/// @name Showing/Hiding the Tab Bar
+
+/// The original controller's view frame, that will used for the non-hidden state.
+@property (nonatomic)                       CGRect originalViewFrame;
 
 /// Wheter the UITabBar is hidden. Modifying this value shows/hides the tabBar.
 @property(nonatomic,getter=isTabBarHidden) BOOL tabBarHidden;
