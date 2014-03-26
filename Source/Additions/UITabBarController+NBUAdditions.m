@@ -28,7 +28,7 @@
 
 - (BOOL)isTabBarHidden
 {
-    return CGRectGetMaxY([UIScreen mainScreen].applicationFrame) < CGRectGetMaxY(self.view.frame);
+    return CGRectGetMaxY(self.view.frame) > CGRectGetMaxY(self.originalViewFrame);
 }
 
 - (void)setTabBarHidden:(BOOL)hidden
@@ -38,6 +38,8 @@
     {
         frame.size.height += self.tabBar.size.height;
     }
+    
+    NBULogDebug(@"%@ %@ %@", THIS_METHOD, NBUStringFromBOOL(hidden), NSStringFromCGRect(frame));
     self.view.frame = frame;
 }
 
