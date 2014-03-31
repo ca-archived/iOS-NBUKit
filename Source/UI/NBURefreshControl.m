@@ -40,6 +40,11 @@
                 action:action
       forControlEvents:UIControlEventValueChanged];
     
+    if (target && ![target respondsToSelector:action])
+    {
+        NBULogWarn(@"Target '%@' does not respond to selector '%@'.", target, NSStringFromSelector(action));
+    }
+    
     return control;
 }
 
