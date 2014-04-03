@@ -3,7 +3,7 @@ NBUKit
 ======
 
 [![Pod Platform](https://cocoapod-badges.herokuapp.com/p/NBUKit/badge.svg)](http://cocoadocs.org/docsets/NBUKit/)
-[![Version 2.1.0](https://cocoapod-badges.herokuapp.com/v/NBUKit/badge.png)](http://cocoadocs.org/docsets/NBUKit/)
+[![Version 2.2.0](https://cocoapod-badges.herokuapp.com/v/NBUKit/badge.png)](http://cocoadocs.org/docsets/NBUKit/)
 [![Build Status](https://travis-ci.org/CyberAgent/iOS-NBUKit.png?branch=master)](https://travis-ci.org/CyberAgent/iOS-NBUKit)
 
 UIKit and NSFoundation convenience categories and subclasses.
