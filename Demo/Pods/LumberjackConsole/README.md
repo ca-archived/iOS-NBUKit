@@ -2,14 +2,18 @@ LumberjackConsole
 =================
 
 [![Platform: iOS](https://cocoapod-badges.herokuapp.com/p/LumberjackConsole/badge.svg)](http://cocoadocs.org/docsets/LumberjackConsole/)
-[![Version: 1.0.2](https://cocoapod-badges.herokuapp.com/v/LumberjackConsole/badge.png)](http://cocoadocs.org/docsets/LumberjackConsole/)
+[![Version: 1.0.3](https://cocoapod-badges.herokuapp.com/v/LumberjackConsole/badge.png)](http://cocoadocs.org/docsets/LumberjackConsole/)
 [![Build Status](https://travis-ci.org/PTEz/LumberjackConsole.png?branch=master)](https://travis-ci.org/PTEz/LumberjackConsole)
 
 On-device [CocoaLumberjack](https://github.com/robbiehanson/CocoaLumberjack) console with support for search, filters and more.
 
 ![Screenshot 1](http://ptez.github.io/LumberjackConsole/images/screenshot1.png)　![Screenshot 2](http://ptez.github.io/LumberjackConsole/images/screenshot2.png)
 
-### Installation
+## Demo
+
+There is a ConsoleDemo project included in the repository and can also be tried online [here](https://app.io/UQcR5R).
+
+## Installation
 
 Simply add `pod 'LumberjackConsole'` to your [CocoaPods](http://cocoapods.org)' [Podfile](http://docs.cocoapods.org/podfile.html).
 
@@ -23,9 +27,9 @@ pod 'LumberjackConsole'
 pod 'NBULog'
 ```
 
-### Usage
+## Usage
 
-#### a) Dashboard Logger
+### a) Dashboard Logger
 
 Import the dashboard header:
 ```obj-c
@@ -50,7 +54,7 @@ Add its logger for testing builds:
 }
 ```
 
-#### b) Embeded Console
+### b) Embeded Console
 
 You can also embed the console into your own `UITableView`:
 
@@ -63,7 +67,7 @@ You can also embed the console into your own `UITableView`:
     DDLogInfo(@"Added a custom console logger");
 ```
 
-### More
+## More
 
 When coupled with [NBULog](https://github.com/CyberAgent/iOS-NBULog) you can dynamically adjust log levels from within the dashboard!
 
@@ -71,11 +75,11 @@ When coupled with [NBULog](https://github.com/CyberAgent/iOS-NBULog) you can dyn
 
 You log level settings are saved to `NSUserDefaults`.
 
-### Documentation
+## Documentation
 
 http://cocoadocs.org/docsets/LumberjackConsole/
 
-### ToDo
+## ToDo
 
 * Clean up table view's data source.
 * Improve rotation support.
@@ -83,7 +87,7 @@ http://cocoadocs.org/docsets/LumberjackConsole/
 * Long tap to copy text.
 * Read crash reports.
 
-### License
+## License
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License. 

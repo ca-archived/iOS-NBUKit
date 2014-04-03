@@ -1,27 +1,18 @@
+
 NBULog
 ======
 
 [![Platform: iOS](https://cocoapod-badges.herokuapp.com/p/NBULog/badge.svg)](http://cocoadocs.org/docsets/NBULog/)
-[![Version: 1.0.4](https://cocoapod-badges.herokuapp.com/v/NBULog/badge.png)](http://cocoadocs.org/docsets/NBULog/)
+[![Version: 1.0.5](https://cocoapod-badges.herokuapp.com/v/NBULog/badge.png)](http://cocoadocs.org/docsets/NBULog/)
 [![Build Status](https://travis-ci.org/CyberAgent/iOS-NBULog.png?branch=master)](https://travis-ci.org/CyberAgent/iOS-NBULog)
 
 Log framework based on [CocoaLumberjack](https://github.com/robbiehanson/CocoaLumberjack). Adds dynamic log levels, modules' support and eases usage.
 
 _Was part of [NBUCore](https://github.com/CyberAgent/iOS-NBUCore) 1.9.x._
 
-## Installation
+## Demo
 
-Add `pod 'NBULog'` to your [CocoaPods](http://cocoapods.org)' [Podfile](http://docs.cocoapods.org/podfile.html):
-
-```ruby
-platform :ios, '5.0'
-
-pod 'NBULog'
-
-# Optional on-device console
-pod 'LumberjackConsole'
-```
-
+There is a NBULogDemo project included in the repository and can also be tried online [here](https://app.io/Yj1WIj).
 
 ## Features
 
@@ -80,7 +71,7 @@ Finally, you can also modify the log levels of individual modules.
 
 When installed, [XcodeColors](https://github.com/robbiehanson/XcodeColors) are automatically enabled for the Xcode console.
 
-#### On-Device Log Console and GUI to Ajust Levels
+### On-Device Log Console and GUI to Ajust Levels
 
 ![LumberjackConsole 1](http://ptez.github.io/LumberjackConsole/images/screenshot2.png)　![LumberjackConsole 2](http://ptez.github.io/LumberjackConsole/images/screenshot3.png)
 
@@ -97,6 +88,23 @@ When [LumberjackConsole](https://github.com/PTEz/LumberjackConsole) is present y
 #endif
 ```
 
+## Installation
+
+Add `pod 'NBULog'` to your [CocoaPods](http://cocoapods.org)' [Podfile](http://docs.cocoapods.org/podfile.html):
+
+```ruby
+platform :ios, '5.0'
+
+pod 'NBULog'
+
+# Optional on-device console
+pod 'LumberjackConsole'
+```
+
+## Documentation
+
+http://cocoadocs.org/docsets/NBULog/
+
 ## Usage in 3rd Party Libraries
 
 You can easily use NBULog in your library when available without making NBULog a requirement.
@@ -105,7 +113,7 @@ You can easily use NBULog in your library when available without making NBULog a
 
 ...and fallback to CocoaLumberjack or NSLog otherwise.
 
-E.g. from [NBUKit](https://github.com/CyberAgent/iOS-NBUKit):
+E.g. from [NBUKit](https://github.com/CyberAgent/iOS-NBUKit)'s [`NBUKitPrivate.h`](https://github.com/CyberAgent/iOS-NBUKit/blob/master/Source/NBUKitPrivate.h):
 
 ```obj-c
 //  NBUKitPrivate.h
@@ -230,10 +238,6 @@ Then register your context and modules if you want them to appear in [Lumberjack
 #endif
 
 ```
-
-## Documentation
-
-http://cocoadocs.org/docsets/NBULog/
 
 ## License
 

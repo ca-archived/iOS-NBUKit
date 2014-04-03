@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="K9W-6x-EAd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="K9W-6x-EAd">
     <dependencies>
         <deployment defaultVersion="1280" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -15,6 +15,8 @@
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.2997547901" green="0.075245209849999994" blue="0.53407276459999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" red="0.2997547901" green="0.075245209849999994" blue="0.53407276459999997" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="HwA-Ix-nbs" kind="relationship" relationship="viewControllers" id="XKm-rK-ddH"/>
@@ -26,11 +28,11 @@
             </objects>
             <point key="canvasLocation" x="-755" y="116"/>
         </scene>
-        <!--Navigation Controller - Pull To Refresh-->
+        <!--Navigation Controller - Refresh Control-->
         <scene sceneID="0f1-yJ-9rU">
             <objects>
                 <navigationController definesPresentationContext="YES" id="HwA-Ix-nbs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Pull To Refresh" image="first" id="cSo-x3-T47"/>
+                    <tabBarItem key="tabBarItem" title="Refresh Control" image="first" id="cSo-x3-T47"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IIj-fH-541">
                         <autoresizingMask key="autoresizingMask"/>
@@ -77,7 +79,7 @@
             </objects>
             <point key="canvasLocation" x="-214" y="116"/>
         </scene>
-        <!--Pull To Refresh View Controller - Pull To Refresh-->
+        <!--Pull To Refresh View Controller - Refresh Control-->
         <scene sceneID="Aml-2x-Syz">
             <objects>
                 <viewController id="CDi-gq-K95" customClass="PullToRefreshViewController" sceneMemberID="viewController">
@@ -117,19 +119,19 @@
                                                 <rect key="frame" x="20" y="133" width="280" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Pull To Refresh" id="uj1-nD-cZI"/>
+                    <navigationItem key="navigationItem" title="Refresh Control" id="uj1-nD-cZI"/>
                     <connections>
                         <outlet property="label" destination="4wi-Gu-ncA" id="g22-DV-huY"/>
                     </connections>
@@ -138,21 +140,123 @@
             </objects>
             <point key="canvasLocation" x="221" y="-450"/>
         </scene>
-        <!--View Controller - Hide on Scroll-->
+        <!--Hide On Scroll View Controller - Hide on Scroll-->
         <scene sceneID="Bm2-2M-egE">
             <objects>
-                <viewController id="F7B-xE-RtY" sceneMemberID="viewController">
+                <viewController id="F7B-xE-RtY" customClass="HideOnScrollViewController" sceneMemberID="viewController">
+                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="mDT-LJ-Jf0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="AYU-7m-DL4">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="enk-ag-gDB">
+                                        <rect key="frame" x="20" y="20" width="72" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Hide">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="hide:" destination="F7B-xE-RtY" eventType="touchUpInside" id="mYC-Xd-N2F"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xCO-IK-Zi2">
+                                        <rect key="frame" x="20" y="65" width="72" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Show">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="show:" destination="F7B-xE-RtY" eventType="touchUpInside" id="pzH-u3-N2q"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Vkd-3V-awd">
+                                        <rect key="frame" x="20" y="698" width="72" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <state key="normal" title="Hide">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="hide:" destination="F7B-xE-RtY" eventType="touchUpInside" id="FcT-RQ-FMI"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FXW-Vp-33Z">
+                                        <rect key="frame" x="20" y="743" width="72" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <state key="normal" title="Show">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="show:" destination="F7B-xE-RtY" eventType="touchUpInside" id="VXy-SB-RjY"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </scrollView>
                     <navigationItem key="navigationItem" title="Hide on Scroll" id="tcF-ye-vBT"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J6m-rv-ZGu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="221" y="116"/>
         </scene>
-        <!--View Controller - Badges-->
+        <!--Badges View Controller - Badges-->
         <scene sceneID="mXa-zv-jaz">
             <objects>
-                <viewController id="j0O-al-93e" sceneMemberID="viewController">
+                <viewController id="j0O-al-93e" customClass="BadgesViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7Ne-UB-F8O">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="sdi-PU-bj9" customClass="NBUBadgeView">
+                                <rect key="frame" x="20" y="130" width="24" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="first.png" id="Yhn-WV-T7i">
+                                        <rect key="frame" x="-2" y="-6" width="28" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <rect key="contentStretch" x="0.34999999999999998" y="0.0" width="0.29999999999999966" height="1"/>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="X" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="sac-RN-V1c">
+                                        <rect key="frame" x="0.0" y="1" width="24" height="16"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="label" destination="sac-RN-V1c" id="enS-9d-ilX"/>
+                                </connections>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" id="Fgh-qQ-jhg" customClass="NBUBadgeSegmentedControl">
+                                <rect key="frame" x="5" y="5" width="310" height="30"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                    <segment title="Third"/>
+                                </segments>
+                                <connections>
+                                    <action selector="badgeTapped:" destination="j0O-al-93e" eventType="valueChanged" id="hJk-C6-exl"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                        <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    </view>
                     <navigationItem key="navigationItem" title="Badges" id="y4X-KF-xH9"/>
+                    <connections>
+                        <outlet property="badgeSegmentedControl" destination="Fgh-qQ-jhg" id="6F9-ht-61i"/>
+                        <outlet property="badgeView" destination="sdi-PU-bj9" id="8nt-ET-sPk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N7n-7p-aOK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -161,8 +265,10 @@
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
+        <image name="first.png" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
+    <color key="tintColor" red="0.2997547901" green="0.075245209849999994" blue="0.53407276459999997" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

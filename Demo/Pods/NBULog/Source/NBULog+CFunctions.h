@@ -3,7 +3,7 @@
 //  NBULog
 //
 //  Created by Ernesto Rivera on 2013/02/06.
-//  Copyright (c) 2012-2013 CyberAgent Inc.
+//  Copyright (c) 2012-2014 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@
 #define NBULogCError(frmt, ...)   LOG_C_MAYBE(LOG_ASYNC_ERROR,   LOG_LEVEL, LOG_FLAG_ERROR,   LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
 #define NBULogCWarn(frmt, ...)    LOG_C_MAYBE(LOG_ASYNC_WARN,    LOG_LEVEL, LOG_FLAG_WARN,    LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
 #define NBULogCInfo(frmt, ...)    LOG_C_MAYBE(LOG_ASYNC_INFO,    LOG_LEVEL, LOG_FLAG_INFO,    LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
+#define NBULogCDebug(frmt, ...)   LOG_C_MAYBE(LOG_ASYNC_DEBUG,   LOG_LEVEL, LOG_FLAG_DEBUG,   LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
 #define NBULogCVerbose(frmt, ...) LOG_C_MAYBE(LOG_ASYNC_VERBOSE, LOG_LEVEL, LOG_FLAG_VERBOSE, LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
-#define NBULogCTrace()            NBULogCVerbose(@"%s", __FUNCTION__)
+#define NBULogCTrace()            NBULogCDebug(@"%s", __FUNCTION__)
 

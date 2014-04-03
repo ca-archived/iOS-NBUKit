@@ -3,12 +3,14 @@ NBUCore
 =======
 
 [![Platform: iOS](https://cocoapod-badges.herokuapp.com/p/NBUCore/badge.svg)](http://cocoadocs.org/docsets/NBUCore/)
-[![Version: 2.0.0](https://cocoapod-badges.herokuapp.com/v/NBUCore/badge.png)](http://cocoadocs.org/docsets/NBUCore/)
+[![Version: 2.0.2](https://cocoapod-badges.herokuapp.com/v/NBUCore/badge.png)](http://cocoadocs.org/docsets/NBUCore/)
 [![Build Status](https://travis-ci.org/CyberAgent/iOS-NBUCore.png?branch=master)](https://travis-ci.org/CyberAgent/iOS-NBUCore)
 
 Convenience macros, functions and API availability checks for iOS projects.
 
-_[NBULog](https://github.com/CyberAgent/iOS-NBULog) and [NBUKit](https://github.com/CyberAgent/iOS-NBUKit)'s UIKit Additions used to be part of NBUCore_
+_[NBULog](https://github.com/CyberAgent/iOS-NBULog) and [NBUKit](https://github.com/CyberAgent/iOS-NBUKit)'s Additions used to be part of NBUCore._
+
+## Features
 
 ### Macros and Functions
 
@@ -27,15 +29,15 @@ Temporarily make Xcode warn you when using new API calls that may crash on older
 
 ```
 
-### Installation
+## Installation
 
 Simply add `pod 'NBUCore'` to your [CocoaPods](http://cocoapods.org)' [Podfile](http://docs.cocoapods.org/podfile.html).
 
-### Documentation
+## Documentation
 
 http://cocoadocs.org/docsets/NBUCore/
 
-### License
+## License
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License. 

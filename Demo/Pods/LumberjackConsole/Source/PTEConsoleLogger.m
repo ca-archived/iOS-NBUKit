@@ -3,7 +3,7 @@
 //  LumberjackConsole
 //
 //  Created by Ernesto Rivera on 2013/05/23.
-//  Copyright (c) 2013.
+//  Copyright (c) 2013-2014 PTEz.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -38,7 +38,7 @@
     NSInteger _currentLogLevel;
 }
 
-- (id)init
+- (instancetype)init
 {
     self = [super init];
     if (self)
@@ -303,9 +303,30 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     // Selected cell
     NSString * string = [self textForCellFromTableView:tableView
                                            atIndexPath:indexPath];
-    CGSize size = [string sizeWithFont:_font
-                     constrainedToSize:CGSizeMake(tableView.bounds.size.width,
-                                                  tableView.bounds.size.height)];
+    CGSize size;
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
+    {
+        // Save a sample label reference
+        static UILabel * labelModel;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^
+                      {
+                          labelModel = [self labelForNewCell];
+                      });
+        
+        labelModel.text = string;
+        size = [labelModel textRectForBounds:CGRectMake(0.0, 0.0,
+                                                        tableView.bounds.size.width,
+                                                        CGFLOAT_MAX)
+                      limitedToNumberOfLines:0].size;
+    }
+    else
+    {
+        size = [string sizeWithFont:_font
+                  constrainedToSize:CGSizeMake(tableView.bounds.size.width,
+                                               CGFLOAT_MAX)];
+    }
+    
     return MAX(size.height, 20.0);
 }
 
@@ -329,6 +350,16 @@ didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
                                     atIndexPath:indexPath];
 }
 
+- (UILabel *)labelForNewCell
+{
+    UILabel * label = [UILabel new];
+    label.backgroundColor = [UIColor clearColor];
+    label.font = _font;
+    label.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    label.numberOfLines = 0;
+    return label;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -340,11 +371,7 @@ didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
                                       reuseIdentifier:@"logMessage"];
         cell.backgroundColor = [UIColor clearColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        label = [UILabel new];
-        label.backgroundColor = [UIColor clearColor];
-        label.font = _font;
-        label.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        label.numberOfLines = 0;
+        label = [self labelForNewCell];
         label.frame = cell.contentView.bounds;
         [cell.contentView addSubview:label];
     }

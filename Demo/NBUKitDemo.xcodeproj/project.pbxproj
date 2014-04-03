@@ -15,9 +15,7 @@
 		34C4ADA615BE880000709E28 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4ADA515BE880000709E28 /* AppDelegate.m */; };
 		969D0504C0F445879CB97CA9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A8D7D81AEF4434C98230B87 /* libPods.a */; };
 		E515C147185AF22E004D6779 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E515C146185AF22E004D6779 /* Localizable.strings */; };
-		E5332BDD16660CDF00B019DB /* BadgesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5332BCF16660CDF00B019DB /* BadgesViewController.xib */; };
 		E5332BE016660CDF00B019DB /* HideOnScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5332BD416660CDF00B019DB /* HideOnScrollViewController.m */; };
-		E5332BE116660CDF00B019DB /* HideOnScrollViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5332BD516660CDF00B019DB /* HideOnScrollViewController.xib */; };
 		E5332BE416660CDF00B019DB /* PullToRefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5332BDA16660CDF00B019DB /* PullToRefreshViewController.m */; };
 		E5332BE516660CDF00B019DB /* CustomRefreshControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5332BDB16660CDF00B019DB /* CustomRefreshControl.xib */; };
 		E555171B1839F51400E273F4 /* BadgesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5332BCE16660CDF00B019DB /* BadgesViewController.m */; };
@@ -41,10 +39,8 @@
 		E515C146185AF22E004D6779 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		E5332BCD16660CDF00B019DB /* BadgesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadgesViewController.h; sourceTree = "<group>"; };
 		E5332BCE16660CDF00B019DB /* BadgesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BadgesViewController.m; sourceTree = "<group>"; };
-		E5332BCF16660CDF00B019DB /* BadgesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BadgesViewController.xib; sourceTree = "<group>"; };
 		E5332BD316660CDF00B019DB /* HideOnScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HideOnScrollViewController.h; sourceTree = "<group>"; };
 		E5332BD416660CDF00B019DB /* HideOnScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HideOnScrollViewController.m; sourceTree = "<group>"; };
-		E5332BD516660CDF00B019DB /* HideOnScrollViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HideOnScrollViewController.xib; sourceTree = "<group>"; };
 		E5332BD916660CDF00B019DB /* PullToRefreshViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullToRefreshViewController.h; sourceTree = "<group>"; };
 		E5332BDA16660CDF00B019DB /* PullToRefreshViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullToRefreshViewController.m; sourceTree = "<group>"; };
 		E5332BDB16660CDF00B019DB /* CustomRefreshControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomRefreshControl.xib; sourceTree = "<group>"; };
@@ -131,7 +127,6 @@
 			children = (
 				E5332BCD16660CDF00B019DB /* BadgesViewController.h */,
 				E5332BCE16660CDF00B019DB /* BadgesViewController.m */,
-				E5332BCF16660CDF00B019DB /* BadgesViewController.xib */,
 			);
 			name = Badges;
 			sourceTree = "<group>";
@@ -141,7 +136,6 @@
 			children = (
 				E5332BD316660CDF00B019DB /* HideOnScrollViewController.h */,
 				E5332BD416660CDF00B019DB /* HideOnScrollViewController.m */,
-				E5332BD516660CDF00B019DB /* HideOnScrollViewController.xib */,
 			);
 			name = "Hide on Scroll";
 			sourceTree = "<group>";
@@ -212,8 +206,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E515C147185AF22E004D6779 /* Localizable.strings in Resources */,
-				E5332BDD16660CDF00B019DB /* BadgesViewController.xib in Resources */,
-				E5332BE116660CDF00B019DB /* HideOnScrollViewController.xib in Resources */,
 				E5332BE516660CDF00B019DB /* CustomRefreshControl.xib in Resources */,
 				34C4ADA015BE880000709E28 /* InfoPlist.strings in Resources */,
 				E57D4B9E18C9646500EE8DE1 /* Main.storyboard in Resources */,

@@ -3,7 +3,7 @@
 //  NBUCore
 //
 //  Created by Ernesto Rivera on 2013/10/01.
-//  Copyright (c) 2012-2013 CyberAgent Inc.
+//  Copyright (c) 2012-2014 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -181,6 +181,14 @@
     #define __NBU_APICHECK_7_0(_ios)            __NBU_AVAILABILITY_STARTING("7.0")
 #else
     #define __NBU_APICHECK_7_0(_ios)            CF_AVAILABLE_IOS(_ios)
+#endif
+
+#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_7_1
+    #undef  __AVAILABILITY_INTERNAL__IPHONE_7_1
+    #define __AVAILABILITY_INTERNAL__IPHONE_7_1 __NBU_AVAILABILITY_STARTING("7.1")
+    #define __NBU_APICHECK_7_1(_ios)            __NBU_AVAILABILITY_STARTING("7.1")
+#else
+    #define __NBU_APICHECK_7_1(_ios)            CF_AVAILABLE_IOS(_ios)
 #endif
 
 #undef  NS_AVAILABLE_IOS

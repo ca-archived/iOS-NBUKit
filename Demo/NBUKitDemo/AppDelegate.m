@@ -35,6 +35,25 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 
     NBULogTrace();
     
+    // Customize iOS 7 apperance
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
+    {
+        UIColor * tintColor = [UIColor colorWithRed:76.0/255.0
+                                              green:19.0/255.0
+                                               blue:136.0/255.0
+                                              alpha:1.0];
+        self.window.tintColor = tintColor;
+        [UIButton appearance].tintColor = tintColor;
+        [[UIButton appearance] setTitleColor:tintColor
+                                    forState:UIControlStateNormal];
+        [UISwitch appearance].tintColor = tintColor;
+        [UISwitch appearance].onTintColor = tintColor;
+        
+        // Configure appearance
+        //    [[UINavigationBar appearance] setBarTintColor:];
+        //    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    }
+    
     // Start splash screen
     _splashView = [NSBundle loadNibNamed:@"NBUSplashView"
                                    owner:nil
