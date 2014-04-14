@@ -33,7 +33,7 @@ Pod::Spec.new do |s|
         sub.dependency      'NBUKit/Additions'
         sub.dependency      'NBUKit/Library/NBUCompatibility'
         sub.dependency      'NBUKit/Library/RestKit Support'
-        sub.dependency      'MotionOrientation@PTEz', '>= 1.0.0'
+        sub.dependency      'MotionOrientation@PTEz', '>= 1.1.0'
     end
     
     s.subspec 'Library' do |sl|
