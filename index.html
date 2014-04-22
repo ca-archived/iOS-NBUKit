@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>iOS NBUKit by CyberAgent</title>
+    <title>NBUKit by CyberAgent</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
@@ -15,8 +15,8 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>iOS NBUKit</h1>
-        <p>Customizable image editing, filters, picker and UIKit subclasses</p>
+        <h1>NBUKit</h1>
+        <p>UIKit and NSFoundation convenience categories and subclasses.</p>
 
         <p class="view"><a href="https://github.com/CyberAgent/iOS-NBUKit">View the Project on GitHub <small>CyberAgent/iOS-NBUKit</small></a></p>
 
@@ -28,100 +28,70 @@
         </ul>
       </header>
       <section>
-        <p><a href="http://cocoadocs.org/docsets/NBUKit/"><img src="http://cocoapod-badges.herokuapp.com/p/NBUKit/badge.svg" alt="Pod Platform"></a>
-<a href="http://cocoadocs.org/docsets/NBUKit/"><img src="http://cocoapod-badges.herokuapp.com/v/NBUKit/badge.png" alt="Pod Version"></a>
+        <p><a href="http://cocoadocs.org/docsets/NBUKit/"><img src="https://cocoapod-badges.herokuapp.com/p/NBUKit/badge.svg" alt="Pod Platform"></a>
+<a href="http://cocoadocs.org/docsets/NBUKit/"><img src="https://cocoapod-badges.herokuapp.com/v/NBUKit/badge.png" alt="Version 2.2.0"></a>
 <a href="https://travis-ci.org/CyberAgent/iOS-NBUKit"><img src="https://travis-ci.org/CyberAgent/iOS-NBUKit.png?branch=master" alt="Build Status"></a></p>
 
-<p><em>Uses <a href="https://github.com/CyberAgent/iOS-NBUCore">NBUCore</a>.</em></p>
-
-<p><img src="https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/images/NBUKit.png" alt="NBUKit"></p>
-
-<h2>
-<a name="components" class="anchor" href="#components"><span class="octicon octicon-link"></span></a>Components</h2>
-
-<h3>
-<a name="nbucameraview" class="anchor" href="#nbucameraview"><span class="octicon octicon-link"></span></a>NBUCameraView</h3>
-
-<p>Customizable AVFoundation-based camera view.</p>
-
-<p>Can be embeded in any superview, custom UIViewController or used along NBUCameraViewController and even takes
-mock pictures on the iOS simulator!</p>
-
-<p><img src="https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Camera1.png" alt="NBUCamera"><img src="https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Camera2.png" alt="NBUCamera"></p>
-
-<h3>
-<a name="nbuassets" class="anchor" href="#nbuassets"><span class="octicon octicon-link"></span></a>NBUAssets</h3>
-
-<p>Multiple classes of all three MVC categories to ease access to AssetsLibrary listening to
-change notifications to stay always in valid.</p>
-
-<p>Also support for <em>local assets</em>: Images in folders that are handled just like regular library assets.</p>
-
-<p><img src="https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Assets1.png" alt="NBUAssets"><img src="https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Assets2.png" alt="NBUAssets"></p>
-
-<h3>
-<a name="croppingfilters" class="anchor" href="#croppingfilters"><span class="octicon octicon-link"></span></a>Cropping/Filters</h3>
-
-<p>Customizable views and controllers to modify images (filters and cropping).</p>
-
-<p>Filters from CoreImage and <a href="https://github.com/BradLarson/GPUImage">GPUImage</a> but could be extended to
-other libraries as well.</p>
-
-<p><img src="https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Edit2.png" alt="NBUEdit"><img src="https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Edit3.png" alt="NBUEdit"></p>
-
-<h3>
-<a name="nbugallery" class="anchor" href="#nbugallery"><span class="octicon octicon-link"></span></a>NBUGallery</h3>
-
-<p>Image slideshow in development inspired by <a href="https://github.com/gdavis/FGallery-iPhone">FGallery</a>.</p>
-
-<p><img src="https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Gallery1.png" alt="NBUGallery"></p>
-
-<h3>
-<a name="nbuimagepickercontroller" class="anchor" href="#nbuimagepickercontroller"><span class="octicon octicon-link"></span></a>NBUImagePickerController</h3>
-
-<p>Block-based image picker that combines all modules mentioned above.</p>
-
-<p><img src="https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Picker1.png" alt="NBUPicker"></p>
+<p><em>Uses <a href="https://github.com/CyberAgent/iOS-NBUCore">NBUCore</a>, supports <a href="https://github.com/CyberAgent/iOS-NBULog">NBULog</a>.<br>
+Image Picker code moved to <a href="https://github.com/CyberAgent/iOS-NBUImagePicker">NBUImagePicker</a>.</em></p>
 
 <h2>
-<a name="customization" class="anchor" href="#customization"><span class="octicon octicon-link"></span></a>Customization</h2>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h2>
 
-<p>The main goal of NBUKit is to be fully <a href="https://github.com/CyberAgent/iOS-NBUKit/wiki/NBUKit-Customization">customizable</a> and easy to extend.</p>
+<h3>
+<a name="additions" class="anchor" href="#additions"><span class="octicon octicon-link"></span></a>Additions</h3>
 
-<h2>
+<ul>
+<li>Convenience methods to parse <code>NSArray</code> objets, support subbundles in <code>NSBundle</code> and handle file URLs with <code>NSFileManager</code>.</li>
+<li>Check properties, retrieve common application directories and save/retrieve values from <code>NSUserDefaults</code> and <code>Keychanin</code> with <code>UIApplication</code>.</li>
+<li>Programatically send a message through the responder chain with <code>UIResponder</code>.</li>
+<li>Size/origin setter/getter shortcuts, read-only properties to retrieve a <code>UIView</code>'s view, navigation or tab controller.</li>
+<li>
+<code>UIButton</code> protocol to freely switch between <code>UIButton</code> and <code>UIBarButtonItem</code> objects.</li>
+<li>Adjust orientation, crop, resize, flatten, write and read <code>UIImage</code> objects.</li>
+<li>Scroll a <code>UIScrollView</code> to any edge with/without animation.</li>
+<li>Retrieve/change system UserAgent, fire JavaScript events and get the HTML title from <code>UIWebView</code> objects.</li>
+<li>Navigation item IBOutlet and force refresh orientation method for <code>UIViewController</code>'s.</li>
+<li>Show/hide <code>UITabBarController</code>'s tab bar.</li>
+<li>Additional properties, dismiss and pop to view controller and to root controller methods for <code>UINavigationController</code> objects.</li>
+</ul><h3>
+<a name="uikit-subclasses" class="anchor" href="#uikit-subclasses"><span class="octicon octicon-link"></span></a>UIKit Subclasses</h3>
+
+<ul>
+<li>Block-based <code>NBUActionSheet</code> and <code>NBUAlertView</code>.</li>
+<li>
+<code>NBUBadgeView</code> and <code>NBUBadgeSegmentedControl</code>.</li>
+<li>Block-based <code>NBUMailComposeViewController</code> that can be initialized with a <code>mailto:</code> URL.</li>
+<li>Interface Builder-focused <code>NBURefreshControl</code>.</li>
+<li>
+<code>NBUTabBarController</code> with customizable position and <code>UITabBar</code>.</li>
+<li>
+<code>NBUView</code> with commonInit, and view controller-like view will/did appear/disappear methods.</li>
+<li>
+<code>NBUViewController</code> with commonInit and supportedInterfaceOrientations writable property.</li>
+<li>More...</li>
+</ul><h2>
 <a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
 
-<h3>
-<a name="cocoapods-19x" class="anchor" href="#cocoapods-19x"><span class="octicon octicon-link"></span></a>Cocoapods (1.9.x+)</h3>
+<p>For now add the following to your <a href="http://cocoapods.org">CocoaPods</a>' <a href="http://docs.cocoapods.org/podfile.html">Podfile</a>:</p>
 
-<ol>
-<li>Install <a href="http://cocoapods.org">Cocoapods</a> if not already done.</li>
-<li>Add <code>pod 'NBUKit'</code> to your Podfile.</li>
-</ol><p><em>If you have a problem try <code>gem update cocoapods</code> first.</em></p>
+<div class="highlight highlight-ruby"><pre><span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s1">'5.0'</span>
 
-<h3>
-<a name="manual-up-to-18x" class="anchor" href="#manual-up-to-18x"><span class="octicon octicon-link"></span></a>Manual (up to 1.8.x)</h3>
+<span class="n">pod</span> <span class="s1">'NBUKit'</span>
 
-<p><a href="https://github.com/CyberAgent/iOS-NBUKit/wiki/NBUKit-Installation">NBUKit Installation</a>.</p>
+<span class="c1"># Optional for dynamic logging</span>
+<span class="n">pod</span> <span class="s1">'NBULog'</span>
+
+<span class="c1"># Optional for on-device log console</span>
+<span class="n">pod</span> <span class="s1">'LumberjackConsole'</span>
+</pre></div>
 
 <h2>
 <a name="documentation" class="anchor" href="#documentation"><span class="octicon octicon-link"></span></a>Documentation</h2>
 
-<p>NBUKit + NBUCore</p>
+<p><a href="http://cocoadocs.org/docsets/NBUKit/">http://cocoadocs.org/docsets/NBUKit/</a></p>
 
-<ul>
-<li>HTML: <a href="http://cyberagent.github.io/iOS-NBUKit/html/">http://cyberagent.github.io/iOS-NBUKit/html/</a>
-</li>
-<li>Xcode DocSet: <code>http://cyberagent.github.io/iOS-NBUKit/publish/NBUKit.atom</code>
-</li>
-</ul><p>NBUKit only</p>
-
-<ul>
-<li>HTML: <a href="http://cocoadocs.org/docsets/NBUKit/">http://cocoadocs.org/docsets/NBUKit/</a>
-</li>
-<li>Xcode DocSet: <code>http://cocoadocs.org/docsets/NBUKit/xcode-docset.atom</code>
-</li>
-</ul><h2>
+<h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
 
 <pre><code>Licensed under the Apache License, Version 2.0 (the "License");
