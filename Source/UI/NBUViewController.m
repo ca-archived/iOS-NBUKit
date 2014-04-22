@@ -58,11 +58,6 @@
 
 #pragma mark - Interface orientations
 
-- (void)setSupportedInterfaceOrientations:(UIInterfaceOrientationMask)supportedInterfaceOrientations
-{
-    _supportedInterfaceOrientations = supportedInterfaceOrientations;
-}
-
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
     if (_supportedInterfaceOrientations == 0)
