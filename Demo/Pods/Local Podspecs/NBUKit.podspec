@@ -3,7 +3,7 @@
 Pod::Spec.new do |s|
     
     s.name          = "NBUKit"
-    s.version       = "2.2.0"
+    s.version       = "2.2.1"
     s.summary       = "UIKit and NSFoundation convenience categories and subclasses."
     s.homepage      = "http://cyberagent.github.io/iOS-NBUKit/"
     s.license       = { :type => 'Apache License, Version 2.0', :file => 'LICENSE' }
@@ -33,7 +33,7 @@ Pod::Spec.new do |s|
         sub.dependency      'NBUKit/Additions'
         sub.dependency      'NBUKit/Library/NBUCompatibility'
         sub.dependency      'NBUKit/Library/RestKit Support'
-        sub.dependency      'MotionOrientation@PTEz', '>= 1.0.0'
+        sub.dependency      'MotionOrientation@PTEz', '>= 1.1.0'
     end
     
     s.subspec 'Library' do |sl|

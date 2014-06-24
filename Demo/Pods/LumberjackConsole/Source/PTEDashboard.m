@@ -19,7 +19,6 @@
 //
 
 #import "PTEDashboard.h"
-#import "PTEConsoleLogger.h"
 #import <QuartzCore/QuartzCore.h>
 #import <NBUCore/NBUCore.h>
 
@@ -31,6 +30,8 @@ static PTEDashboard * _sharedDashboard;
 {
     CGSize _screenSize;
     UIWindow * _keyWindow;
+    UITableView * _consoleTableView;
+    NSArray * _fullscreenOnlyViews;
 }
 
 + (PTEDashboard *)sharedDashboard
@@ -38,8 +39,8 @@ static PTEDashboard * _sharedDashboard;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^
                   {
-                      CGRect frame = [UIScreen mainScreen].bounds;
-                      _sharedDashboard = [[PTEDashboard alloc] initWithFrame:frame];
+                      CGRect frame = UIScreen.mainScreen.bounds;
+                      _sharedDashboard = [[self alloc] initWithFrame:frame];
                   });
     return _sharedDashboard;
 }
@@ -52,34 +53,26 @@ static PTEDashboard * _sharedDashboard;
         self.windowLevel = UIWindowLevelStatusBar + 1;
         _screenSize = [UIScreen mainScreen].bounds.size;
         
-        #if XCODE_VERSION_MAJOR >= 0500
-            if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
-            {
-                self.tintColor = [UIColor lightGrayColor];
-            }
-        #endif
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
+        {
+            self.tintColor = [UIColor lightGrayColor];
+        }
         
-        // Load other views and objects
-        [[NSBundle mainBundle] loadNibNamed:@"PTEDashboard"
-                                      owner:self
-                                    options:nil];
+        // Load Storyboard
+        self.rootViewController = [[UIStoryboard storyboardWithName:@"LumberjackConsole"
+                                                             bundle:nil] instantiateInitialViewController];
         
-        // Disable adjust levels if NBULog is not present
-        #ifndef COCOAPODS_POD_AVAILABLE_NBULog
-            UILabel * notice = [UILabel new];
-            notice.text = @"NBULog required";
-            notice.backgroundColor = [UIColor clearColor];
-            notice.textColor = [UIColor whiteColor];
-            [notice sizeToFit];
-            [_adjustLevelsView addSubview:notice];
-        #endif
+        // Save references
+        NSArray * subviews = self.rootViewController.view.subviews;
+        _consoleTableView = subviews[0];
+        _fullscreenOnlyViews = @[subviews[2], subviews[3], subviews[4]];
         
         // Add a pan gesture recognizer for the toggle button
         UIPanGestureRecognizer * panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self
                                                                                          action:@selector(handlePanGesture:)];
-        [_toggleButton addGestureRecognizer:panRecognizer];
+        [subviews[1] addGestureRecognizer:panRecognizer];
         
-        // Configure the window properties
+        // Configure other window properties
         //    self.layer.anchorPoint = CGPointZero;
         //    self.windowLevel = UIWindowLevelStatusBar + 1;
         //    self.origin = CGPointZero;
@@ -90,8 +83,6 @@ static PTEDashboard * _sharedDashboard;
         //                                             selector:@selector(handleStatusBarOrientationChange:)
         //                                                 name:UIApplicationWillChangeStatusBarOrientationNotification
         //                                               object:nil];
-        
-        [self show];
     }
     return self;
 }
@@ -100,6 +91,12 @@ static PTEDashboard * _sharedDashboard;
 {
     // Stop observing
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)show
+{
+    self.hidden = NO;
+    self.minimized = YES;
 }
 
 - (void)handleStatusBarOrientationChange:(NSNotification *)notification
@@ -154,20 +151,14 @@ static PTEDashboard * _sharedDashboard;
      }];
 }
 
-- (void)show
+- (IBAction)toggleFullscreen:(UIButton *)sender
 {
-    self.hidden = NO;
-    self.minimized = YES;
-}
-
-- (IBAction)toggleFullscreen:(id)sender
-{
-    _toggleButton.selected = !_toggleButton.selected;
+    sender.selected = !sender.selected;
     
     [UIView animateWithDuration:0.2
                      animations:^
      {
-         if (_toggleButton.selected)
+         if (sender.selected)
          {
              self.maximized = YES;
          }
@@ -178,18 +169,32 @@ static PTEDashboard * _sharedDashboard;
      }];
 }
 
-- (IBAction)toggleAdjustLevelsView:(id)sender
+- (IBAction)toggleAdjustLevelsController:(id)sender
 {
-    // Show adjust levels view?
-    if (self.rootViewController.view == _loggerView)
+    // Not available?
+    if (!NSClassFromString(@"PTEAdjustLevelsTableView"))
     {
-        self.rootViewController.view = _adjustLevelsView;
+        [[[UIAlertView alloc] initWithTitle:@"NBULog Required"
+                                    message:@"NBULog is required to dynamically adjust log levels."
+                                   delegate:nil
+                          cancelButtonTitle:@"Ok"
+                          otherButtonTitles:nil] show];
+        return;
     }
     
-    // Set back the logger view
+    // Hide adjust levels controller?
+    if (self.rootViewController.presentedViewController)
+    {
+        [self.rootViewController dismissViewControllerAnimated:NO
+                                                    completion:NULL];
+    }
+    // Present adjust levels controller
     else
     {
-        self.rootViewController.view = _loggerView;
+        UIViewController * controller = [self.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"adjustLevels"];
+        [self.rootViewController presentViewController:controller
+                                              animated:NO
+                                            completion:NULL];
     }
 }
 
@@ -232,8 +237,8 @@ static PTEDashboard * _sharedDashboard;
     if (height != kMinimumHeight)
     {
         // Not minimized
-        _logger.tableView.userInteractionEnabled = YES;
-        _logger.tableView.frame = _logger.tableView.superview.bounds;
+        _consoleTableView.userInteractionEnabled = YES;
+        _consoleTableView.frame = _consoleTableView.superview.bounds;
         self.frame = CGRectMake(self.frame.origin.x,
                                 self.frame.origin.y,
                                 _screenSize.width,
@@ -242,14 +247,14 @@ static PTEDashboard * _sharedDashboard;
     else
     {
         // Minimized
-        _logger.tableView.userInteractionEnabled = NO;
-        CGRect tableFrame = _logger.tableView.superview.bounds;
+        _consoleTableView.userInteractionEnabled = NO;
+        CGRect tableFrame = _consoleTableView.superview.bounds;
         tableFrame.origin.x += 20.0;
         tableFrame.size.width -= 20.0;
-        _logger.tableView.frame = tableFrame;
-        _logger.tableView.contentOffset = CGPointMake(0.0,
-                                                      MAX(_logger.tableView.contentOffset.y,
-                                                          _logger.tableView.tableHeaderView.bounds.size.height));
+        _consoleTableView.frame = tableFrame;
+        _consoleTableView.contentOffset = CGPointMake(0.0,
+                                                      MAX(_consoleTableView.contentOffset.y,
+                                                          _consoleTableView.tableHeaderView.bounds.size.height));
         self.frame = CGRectMake(self.frame.origin.x,
                                 self.frame.origin.y,
                                 _screenSize.width - 40.0,

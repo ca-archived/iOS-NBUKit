@@ -18,47 +18,22 @@
 //  limitations under the License.
 //
 
-#import "PTEConsoleLogger.h"
+@class PTEConsoleLogger;
 
 /**
  On-device Dashboard to display a PTEConsoleLogger.
  
- @note You don't need to use this class directly but instead use
- [DDLog addLogger:[PTEDashboard sharedDashboard].logger] or [NBULog addDashboardLogger].
+ @discussion Just call [PTEDashboard.sharedDashboard show] or [NBULog addDashboardLogger].
  */
 @interface PTEDashboard : UIWindow
+
+/// Showing the Dashboard
 
 /// The shared dashboard.
 + (PTEDashboard *)sharedDashboard;
 
 /// Add the dashboard to the screen.
-/// @discussion Called automatically by NBULog.
 - (void)show;
-
-/// @name Outlets
-
-/// The logger.
-@property (strong, nonatomic) IBOutlet      PTEConsoleLogger * logger;
-
-/// A button to toggle: the dashboard size.
-@property (weak, nonatomic) IBOutlet        UIButton * toggleButton;
-
-/// Views that should be hidden when not in fullscreen mode.
-@property (strong, nonatomic) IBOutletCollection(UIView) NSArray * fullscreenOnlyViews;
-
-/// The view that has the console.
-@property (strong, nonatomic) IBOutlet      UIView * loggerView;
-
-/// The view that has the adjust levels' controls.
-@property (strong, nonatomic) IBOutlet      UIView * adjustLevelsView;
-
-/// Maximize/minimize the log dashboard.
-/// @param sender The sender object.
-- (IBAction)toggleFullscreen:(id)sender;
-
-/// Toggle between the loggerView and the adjustLevelsView.
-/// @param sender The sender object.
-- (IBAction)toggleAdjustLevelsView:(id)sender;
 
 /// @name Properties
 
@@ -67,6 +42,16 @@
 
 /// Whether the dashboard is minimized.
 @property (nonatomic, getter=isMinimized)   BOOL minimized;
+
+/// @name First Responder Actions
+
+/// Maximize/minimize the log dashboard.
+/// @param sender The sender object.
+- (IBAction)toggleFullscreen:(UIButton *)sender;
+
+/// Toggle between the loggerView and the adjustLevelsView.
+/// @param sender The sender object.
+- (IBAction)toggleAdjustLevelsController:(id)sender;
 
 @end
 

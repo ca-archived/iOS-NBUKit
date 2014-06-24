@@ -20,6 +20,8 @@
 
 #import <CocoaLumberjack/DDLog.h>
 
+@class PTEConsoleTableView;
+
 /**
  A DDLogger that displays log messages with a searcheable UITableView.
  
@@ -28,25 +30,34 @@
  - Can be filtered according to log levels or text.
  - Can be minimized, maximized or used in any size in between.
  
- @note You don't need to use this class directly but instead use
- [DDLog addLogger:[PTEDashboard sharedDashboard].logger] or [NBULog addDashboardLogger].
+ Simply add a PTEConsoleTableView to your view hierarchy or use
+ [PTEDashboard.sharedDashboard show].
  */
-@interface PTEConsoleLogger : DDAbstractLogger <UITableViewDelegate,
+@interface PTEConsoleLogger : DDAbstractLogger <DDLogFormatter,
+                                                UITableViewDelegate,
                                                 UITableViewDataSource,
                                                 UISearchBarDelegate>
 
-/// @name Getting the Logger
+/// @name Properties
 
 /// Set the maximum number of messages to be displayed on the Dashboard. Default `100`.
 @property (nonatomic)                   NSUInteger maxMessages;
 
-/// @name Outlets
-
 /// The UITableView used to display log messages.
-@property (weak, nonatomic) IBOutlet    UITableView * tableView;
+@property (weak, nonatomic)             PTEConsoleTableView * tableView;
 
-/// The UISearchBar used to filter log messages.
-@property (weak, nonatomic) IBOutlet    UISearchBar * searchBar;
+/// @name Log Formatters
+
+/// An optional formatter to be used for shortened log messages.
+@property (atomic, strong)              id<DDLogFormatter> shortLogFormatter;
+
+/// @name Methods
+
+/// Clear all console messages.
+- (void)clearConsole;
+
+/// Add a marker object to the console.
+- (void)addMarker;
 
 @end
 

@@ -51,12 +51,14 @@ pod 'CocoaLumberjack'
 - [FAQ](https://github.com/CocoaLumberjack/CocoaLumberjack/wiki/FAQ)<br/>
 - [Analysis of performance with benchmarks](https://github.com/CocoaLumberjack/CocoaLumberjack/wiki/Performance)<br/>
 - [Common issues you may encounter and their solutions](https://github.com/CocoaLumberjack/CocoaLumberjack/wiki/ProblemSolution)<br/>
+- [AppCode support](https://github.com/CocoaLumberjack/CocoaLumberjack/wiki/AppCode-support)
 - **[full Lumberjack wiki](https://github.com/CocoaLumberjack/CocoaLumberjack/wiki)**<br/>
 
 ### Requirements 
 - Xcode 4.4 or later is required
 - iOS 5 or later
 - OS X 10.7 or later
+- for OS X < 10.7 support, use the 1.6.0 version
 
 ### Author
 - [Robbie Hanson](https://github.com/robbiehanson)
@@ -69,6 +71,3 @@ pod 'CocoaLumberjack'
 
 ### License
 - CocoaLumberjack is available under the BSD license. See the [LICENSE file](https://github.com/CocoaLumberjack/CocoaLumberjack/blob/master/LICENSE.txt).
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/CocoaLumberjack/cocoalumberjack/trend.png)](https://bitdeli.com/free "Bitdeli Badge")

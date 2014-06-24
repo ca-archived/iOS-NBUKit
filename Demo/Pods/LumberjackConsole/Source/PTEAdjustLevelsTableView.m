@@ -39,73 +39,11 @@
     
     // Init
     _orderedContexts = [NBULog orderedRegisteredContexts];
-    [self restoreLogLevels];
-    [self registerNib:[UINib nibWithNibName:@"PTEAdjustLevelsCell"
-                                     bundle:nil] forCellReuseIdentifier:@"PTEAdjustLevelsCell"];
+    [NBULog restoreLogLevels];
     self.dataSource = self;
 }
 
-#pragma mark - Save/load levels
 
-- (void)saveLogLevels
-{
-    NSMutableArray * contextLevels = [NSMutableArray array];
-    
-    // Save each context level
-    NSMutableDictionary * moduleLevels;
-    for (NBULogContextDescription * context in _orderedContexts)
-    {
-        // And each module level
-        moduleLevels = [NSMutableDictionary dictionary];
-        for (NSNumber * module in context.orderedModules)
-        {
-            moduleLevels[module.description] = @(context.contextLevelForModule(module.intValue));
-        }
-        
-        [contextLevels addObject:@{@"context"       : @(context.logContext),
-                                   @"contextLevel"  : @(context.contextLevel()),
-                                   @"modules"       : moduleLevels}];
-    }
-    
-    [[NSUserDefaults standardUserDefaults] setObject:contextLevels
-                                              forKey:@"PTEAdjustLevels"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (void)restoreLogLevels
-{
-    NSArray * contextLevels = [[NSUserDefaults standardUserDefaults] objectForKey:@"PTEAdjustLevels"];
-    
-    // Restore each context level
-    int logContext;
-    NBULogContextDescription * context;
-    NSDictionary * moduleLevels;
-    for (NSDictionary * contextDictionary in contextLevels)
-    {
-        logContext = ((NSNumber *)contextDictionary[@"context"]).intValue;
-        
-        // Get the context description, modules and levels
-        context = nil;
-        for (context  in _orderedContexts)
-        {
-            if (context.logContext == logContext)
-                break;
-        }
-        
-        if (!context)
-            continue;
-        
-        // Set the context level
-        context.setContextLevel(((NSNumber *)contextDictionary[@"contextLevel"]).intValue);
-        
-        // Set each module's level
-        moduleLevels = contextDictionary[@"modules"];
-        for (NSString * module in moduleLevels)
-        {
-            context.setContextLevelForModule(module.intValue, ((NSNumber *)moduleLevels[module]).intValue);
-        }
-    }
-}
 
 #pragma mark - Actions
 
@@ -154,7 +92,7 @@
     }
     
     [self reloadData];
-    [self saveLogLevels];
+    [NBULog saveLogLevels];
 }
 
 #pragma mark - Table view data source

@@ -142,5 +142,13 @@
 /// An ordered array of all registered contexts.
 + (NSArray *)orderedRegisteredContexts;
 
+/// @name Saving and Restoring Log Levels
+
+/// Save the current log leves configuration to NSUserDefaults.
++ (void)saveLogLevels;
+
+/// Restore log leves from NSUserDefaults.
++ (void)restoreLogLevels;
+
 @end
 

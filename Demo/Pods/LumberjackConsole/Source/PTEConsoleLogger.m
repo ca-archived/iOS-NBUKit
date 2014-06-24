@@ -19,23 +19,52 @@
 //
 
 #import "PTEConsoleLogger.h"
+#import "PTEConsoleTableView.h"
 #import "PTEDashboard.h"
 #import <NBUCore/NBUCore.h>
 
+#define LOG_LEVEL 2
+
+#define NSLogError(frmt, ...)    do{ if(LOG_LEVEL >= 1) NSLog((frmt), ##__VA_ARGS__); } while(0)
+#define NSLogWarn(frmt, ...)     do{ if(LOG_LEVEL >= 2) NSLog((frmt), ##__VA_ARGS__); } while(0)
+#define NSLogInfo(frmt, ...)     do{ if(LOG_LEVEL >= 3) NSLog((frmt), ##__VA_ARGS__); } while(0)
+#define NSLogDebug(frmt, ...)    do{ if(LOG_LEVEL >= 4) NSLog((frmt), ##__VA_ARGS__); } while(0)
+#define NSLogVerbose(frmt, ...)  do{ if(LOG_LEVEL >= 5) NSLog((frmt), ##__VA_ARGS__); } while(0)
+
+// Private marker message class
+@interface PTEMarkerLogMessage : DDLogMessage
+
+@end
+
+@implementation PTEMarkerLogMessage
+
+@end
+
+
 @implementation PTEConsoleLogger
 {
-    NSMutableArray * _messages;         // All messages
-    NSMutableArray * _filteredMessages; // Filtered messages
+    // Managing incoming messages
+    dispatch_queue_t _consoleQueue;
+    NSMutableArray * _messages;             // All currently displayed messages
+    NSMutableArray * _newMessagesBuffer;    // Messages not yet added to _messages
     
-    UIFont * _font;
-    CGFloat _fontSize;
-    NSArray * _messagesBuffer;
+    // Scheduling table view updates
     BOOL _updateScheduled;
     NSTimeInterval _minIntervalToUpdate;
     NSDate * _lastUpdate;
-    
+
+    // Filtering messages
+    BOOL _filteringEnabled;
     NSString * _currentSearchText;
     NSInteger _currentLogLevel;
+    NSMutableArray * _filteredMessages;
+    
+    // Managing expanding/collapsing messages
+    NSMutableSet * _expandedMessages;
+    
+    // UI
+    UIFont * _font;
+    CGFloat _fontSize;
 }
 
 - (instancetype)init
@@ -47,262 +76,266 @@
         _maxMessages = 1000;
         _fontSize = 13.0;
         _font = [UIFont systemFontOfSize:_fontSize];
-        _lastUpdate = [NSDate date];
-        _minIntervalToUpdate = 0.5;
+        _lastUpdate = NSDate.date;
+        _minIntervalToUpdate = 0.3;
         _currentLogLevel = LOG_LEVEL_VERBOSE;
         
-        // Init message arrays
+        // Init queue
+        _consoleQueue = dispatch_queue_create("console_queue", NULL);
+        
+        // Init message arrays and sets
         _messages = [NSMutableArray arrayWithCapacity:_maxMessages];
-        _filteredMessages = [NSMutableArray arrayWithCapacity:_maxMessages];
+        _newMessagesBuffer = NSMutableArray.array;
+        _expandedMessages = NSMutableSet.set;
+        
+        // Register logger
+        [DDLog addLogger:self];
     }
     return self;
 }
 
-- (void)setSearchBar:(UISearchBar *)searchBar
-{
-    _searchBar = searchBar;
-    
-    // Customize searchBar keyboard's return key
-    NSArray * subviewsToCheck = SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") ? ((UIView *)_searchBar.subviews[0]).subviews :
-    _searchBar.subviews;
-    for(UIView * view in subviewsToCheck)
-    {
-        if([view conformsToProtocol:@protocol(UITextInputTraits)])
-        {
-            ((UITextField *)view).returnKeyType = UIReturnKeyDone;
-            ((UITextField *)view).enablesReturnKeyAutomatically = NO;
-        }
-    }
-}
-
-#pragma mark - Loggin messages
+#pragma mark - Logger
 
 - (void)logMessage:(DDLogMessage *)logMessage
 {
-    @synchronized(self)
+    // The method is called from the logger queue
+    dispatch_async(_consoleQueue, ^
     {
-        // Remove last object if needed
-        BOOL removeObject = _messages.count == _maxMessages;
-        if (removeObject)
-        {
-            [_messages removeLastObject];
-        }
-        
-        // Insert new message
-        [_messages insertObject:logMessage
-                        atIndex:0];
-        
-        // Also update filterd messages if needed
-        if ([self isFilteringEnabled] &&
-            [self messagePassesFilter:logMessage])
-        {
-            [_filteredMessages insertObject:logMessage
-                                    atIndex:0];
-        }
-    }
-    
-    // Refresh table view
-    if (!_updateScheduled)
-    {
-        dispatch_async(dispatch_get_main_queue(), ^
-                       {
-                           [self setTableViewNeedsRefresh];
-                       });
-    }
+        // Add new message to buffer
+        [_newMessagesBuffer insertObject:logMessage
+                                 atIndex:0];
+
+        // Trigger update
+        [self updateOrScheduleTableViewUpdateInConsoleQueue];
+    });
 }
+
+#pragma mark - Log formatter
 
 - (NSString *)formatLogMessage:(DDLogMessage *)logMessage
 {
-    NSString * string;
     if (self->formatter)
     {
-        string = [self->formatter formatLogMessage:logMessage];
+        return [self->formatter formatLogMessage:logMessage];
     }
     else
     {
-        string = [NSString stringWithFormat:@"%@:%d %@",
-                  logMessage.fileName,
-                  logMessage->lineNumber,
-                  logMessage->logMsg];
+        return [NSString stringWithFormat:@"%@:%d %@",
+                logMessage.fileName,
+                logMessage->lineNumber,
+                logMessage->logMsg];
     }
-    return string;
 }
 
 - (NSString *)formatShortLogMessage:(DDLogMessage *)logMessage
 {
-    return [[logMessage->logMsg
-             stringByReplacingOccurrencesOfString:@"  " withString:@""]
-            stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-}
-
-#pragma mark - Handling the table view
-
-- (void)setTableView:(UITableView *)tableView
-{
-    _tableView = tableView;
-    
-    // Make sure we are the data source and delegate
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
-}
-
-- (void)setTableViewNeedsRefresh
-{
-    // Refresh table
-    if (_tableView)
+    if (self.shortLogFormatter)
     {
-        @synchronized(self)
-        {
-            // Already scheduled?
-            if (_updateScheduled)
-                return;
-            
-            // Too soon?
-            if ([_lastUpdate timeIntervalSinceNow] > -_minIntervalToUpdate)
-            {
-                // Schedule
-                _updateScheduled = YES;
-                dispatch_after(-[_lastUpdate timeIntervalSinceNow], dispatch_get_main_queue(), ^(void)
-                               {
-                                   _updateScheduled = NO;
-                                   [self refreshTableView];
-                               });
-            }
-            
-            // Update directly
-            else
-            {
-                [self refreshTableView];
-            }
-        }
+        return [self.shortLogFormatter formatLogMessage:logMessage];
+    }
+    else
+    {
+        return [[logMessage->logMsg
+                 stringByReplacingOccurrencesOfString:@"  " withString:@""]
+                stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
     }
 }
 
-- (void)refreshTableView
+#pragma mark - Methods
+
+- (void)clearConsole
 {
-    _lastUpdate = [NSDate date];
+    // The method is called from the main queue
+    dispatch_async(_consoleQueue, ^
+                   {
+                       // Clear all messages
+                       [_newMessagesBuffer removeAllObjects];
+                       [_messages removeAllObjects];
+                       [_filteredMessages removeAllObjects];
+                       [_expandedMessages removeAllObjects];
+                       
+                       [self updateTableViewInConsoleQueue];
+                   });
+}
+
+- (void)addMarker
+{
+    PTEMarkerLogMessage * marker = PTEMarkerLogMessage.new;
+    marker->logMsg = [NSString stringWithFormat:@"Marker %@", NSDate.date];
+    [self logMessage:marker];
+}
+
+#pragma mark - Handling new messages
+
+- (void)updateOrScheduleTableViewUpdateInConsoleQueue
+{
+    if (_updateScheduled)
+        return;
     
-    // Freeze messages in a buffer
-    NSArray * lastBuffer = _messagesBuffer;
+    // Schedule?
+    NSTimeInterval timeToWaitForNextUpdate = _minIntervalToUpdate + _lastUpdate.timeIntervalSinceNow;
+    NSLogVerbose(@"timeToWaitForNextUpdate: %@", @(timeToWaitForNextUpdate));
+    if (timeToWaitForNextUpdate > 0)
+    {
+        _updateScheduled = YES;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(timeToWaitForNextUpdate * NSEC_PER_SEC)), _consoleQueue, ^
+                       {
+                           [self updateTableViewInConsoleQueue];
+                           
+                           _updateScheduled = NO;
+                       });
+    }
+    // Update directly
+    else
+    {
+        [self updateTableViewInConsoleQueue];
+    }
+}
+
+- (void)updateTableViewInConsoleQueue
+{
+    _lastUpdate = NSDate.date;
+    
+    // Add and trim block
+    __block NSInteger itemsToRemoveCount;
+    __block NSInteger itemsToInsertCount;
+    __block NSInteger itemsToKeepCount;
+    void (^addAndTrimMessages)(NSMutableArray * messages, NSArray * newItems) = ^(NSMutableArray * messages, NSArray * newItems)
+    {
+        NSArray * tmp = [NSArray arrayWithArray:messages];
+        [messages removeAllObjects];
+        [messages addObjectsFromArray:newItems];
+        [messages addObjectsFromArray:tmp];
+        itemsToRemoveCount = MAX(0, (NSInteger)(messages.count - _maxMessages));
+        if (itemsToRemoveCount > 0)
+        {
+            [messages removeObjectsInRange:NSMakeRange(_maxMessages, itemsToRemoveCount)];
+        }
+        itemsToInsertCount = MIN(newItems.count, _maxMessages);
+        itemsToKeepCount = messages.count - itemsToInsertCount;
+    };
+    
+    // Update regular messages' array
+    addAndTrimMessages(_messages, _newMessagesBuffer);
+    NSLogDebug(@"Messages to add: %@ keep: %@ remove: %@", @(itemsToInsertCount), @(itemsToKeepCount), @(itemsToRemoveCount));
+    
+    // Handle filtering
+    BOOL forceReload = NO;
+    if (_filteringEnabled)
+    {
+        // Just swithed on filtering?
+        if (!_filteredMessages)
+        {
+            _filteredMessages = [self filterMessages:_messages];
+            forceReload = YES;
+        }
+        
+        // Update filtered messages' array
+        addAndTrimMessages(_filteredMessages, [self filterMessages:_newMessagesBuffer]);
+        NSLogDebug(@"Filtered messages to add: %@ keep: %@ remove: %@", @(itemsToInsertCount), @(itemsToKeepCount), @(itemsToRemoveCount));
+    }
+    else
+    {
+        // Just turned off filtering ?
+        if (_filteredMessages)
+        {
+            // Clear filtered messages and force table reload
+            _filteredMessages = nil;
+            forceReload = YES;
+        }
+    }
+    
+    // Empty buffer
+    [_newMessagesBuffer removeAllObjects];
+    
+    // Update table view (dispatch sync to ensure the messages' arrayt doesn't get modified)
+    dispatch_sync(dispatch_get_main_queue(), ^
+                  {
+                      // Completely update table view?
+                      if (itemsToKeepCount == 0 || forceReload)
+                      {
+                          [self.tableView reloadData];
+                          
+                      }
+                      // Partial only
+                      else
+                      {
+                          [self updateTableViewRowsRemoving:itemsToRemoveCount
+                                                  inserting:itemsToInsertCount];
+                      }
+                  });
+}
+
+- (void)updateTableViewRowsRemoving:(NSInteger)itemsToRemoveCount
+                          inserting:(NSInteger)itemsToInsertCount
+{
+    // Remove paths
+    NSMutableArray * removePaths = [NSMutableArray arrayWithCapacity:itemsToRemoveCount];
+    if(itemsToRemoveCount > 0)
+    {
+        NSUInteger tableCount = [self.tableView numberOfRowsInSection:0];
+        for (NSInteger i = tableCount - itemsToRemoveCount; i < tableCount; i++)
+        {
+            [removePaths addObject:[NSIndexPath indexPathForRow:i
+                                                     inSection:0]];
+        }
+    }
+    
+    // Insert paths
+    NSMutableArray * insertPaths = [NSMutableArray arrayWithCapacity:itemsToInsertCount];
+    for (NSInteger i = 0; i < itemsToInsertCount; i++)
+    {
+        [insertPaths addObject:[NSIndexPath indexPathForRow:i
+                                                 inSection:0]];
+    }
+    
+    // Update table view, we should never crash
     @try
     {
-        // FIXME: Crashing for some reason when maxMessages is reached
-        _messagesBuffer = [NSArray arrayWithArray:[self isFilteringEnabled] ? _filteredMessages : _messages];
+        [self.tableView beginUpdates];
+        if (itemsToRemoveCount > 0)
+        {
+            [self.tableView deleteRowsAtIndexPaths:removePaths
+                                  withRowAnimation:UITableViewRowAnimationFade];
+            NSLogVerbose(@"deleteRowsAtIndexPaths: %@", removePaths);
+        }
+        if (itemsToInsertCount > 0)
+        {
+            [self.tableView insertRowsAtIndexPaths:insertPaths
+                                  withRowAnimation:UITableViewRowAnimationFade];
+        }
+        NSLogVerbose(@"insertRowsAtIndexPaths: %@", insertPaths);
+        [self.tableView endUpdates];
     }
     @catch (NSException * exception)
     {
-        NSLog(@"EXCEPTION while updating Dashboard: %@", exception.reason);
-        [_tableView reloadData];
+        NSLogError(@"Exception when updating LumberjackConsole: %@", exception);
+        
+        [self.tableView reloadData];
     }
-    
-    //    NSLog(@"!!! %d", _messagesBuffer.count);
-    
-    // Calculate how much the buffer moved
-    NSUInteger offset = NSNotFound;
-    if (lastBuffer.count > 0)
-        offset = [_messagesBuffer indexOfObject:lastBuffer[0]];
-    
-    // Partial only
-    if (offset != NSNotFound)
-    {
-        @try
-        {
-            [_tableView beginUpdates];
-            
-            // Remove items?
-            NSUInteger tableCount = [_tableView numberOfRowsInSection:0];
-            //        NSLog(@"••• %d", tableCount);
-            NSInteger removeCount = tableCount + offset - _maxMessages;
-            if (removeCount > 0)
-            {
-                NSMutableArray * indexPaths = [NSMutableArray arrayWithCapacity:removeCount];
-                for (NSUInteger i = tableCount - removeCount; i < tableCount; i++)
-                {
-                    [indexPaths addObject:[NSIndexPath indexPathForRow:i
-                                                             inSection:0]];
-                }
-                [_tableView deleteRowsAtIndexPaths:indexPaths
-                                  withRowAnimation:UITableViewRowAnimationFade];
-                //            NSLog(@"--- %d", indexPaths.count);
-                //            NSLog(@"--- %@", indexPaths);
-            }
-            
-            // Insert items
-            NSMutableArray * indexPaths = [NSMutableArray arrayWithCapacity:offset];
-            for (NSUInteger i = 0; i < offset; i++)
-            {
-                [indexPaths addObject:[NSIndexPath indexPathForRow:i
-                                                         inSection:0]];
-            }
-            [_tableView insertRowsAtIndexPaths:indexPaths
-                              withRowAnimation:UITableViewRowAnimationFade];
-            //        NSLog(@"+++ %d", indexPaths.count);
-            //        NSLog(@"+++ %@", indexPaths);
-            
-            [_tableView endUpdates];
-            
-            return;
-        }
-        @catch (NSException * exception)
-        {
-            NSLog(@"EXCEPTION while updating Dashboard: %@", exception.reason);
-        }
-    }
-    
-    // Full refresh needed
-    [_tableView reloadData];
 }
 
 #pragma mark - Table's delegate/data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    return _messagesBuffer.count;
-}
-
-- (NSString *)textForCellFromTableView:(UITableView *)tableView
-                           atIndexPath:(NSIndexPath *)indexPath
-{
-    DDLogMessage * logMessage = _messagesBuffer[indexPath.row];
-    
-    NSString * prefix;
-    switch (logMessage->logFlag)
-    {
-        case LOG_FLAG_ERROR : prefix = @"Ⓔ"; break;
-        case LOG_FLAG_WARN  : prefix = @"Ⓦ"; break;
-        case LOG_FLAG_INFO  : prefix = @"Ⓘ"; break;
-        case LOG_FLAG_DEBUG : prefix = @"Ⓓ"; break;
-        default             : prefix = @"Ⓥ"; break;
-    }
-    
-    // Selected cell?
-    if ([tableView.indexPathsForSelectedRows containsObject:indexPath])
-    {
-        return [NSString stringWithFormat:@" %@ %@", prefix, [self formatLogMessage:logMessage]];
-    }
-    
-    // Unselected cell
-    return [NSString stringWithFormat:@" %@ %@", prefix, [self formatShortLogMessage:logMessage]];
+    NSLogInfo(@"numberOfRowsInSection: %@", @((_filteringEnabled ? _filteredMessages : _messages).count));
+    return (_filteringEnabled ? _filteredMessages : _messages).count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Unselected cell?
-    if (![tableView.indexPathsForSelectedRows containsObject:indexPath])
+    // Expanded cell?
+    DDLogMessage * logMessage = (_filteringEnabled ? _filteredMessages : _messages)[indexPath.row];
+    if (![_expandedMessages containsObject:logMessage])
     {
         return 20.0;
     }
     
-    // Selected cell
-    NSString * string = [self textForCellFromTableView:tableView
-                                           atIndexPath:indexPath];
+    // Collapsed cell
+    NSString * string = [self textForCellWithLogMessage:logMessage];
     CGSize size;
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
     {
@@ -327,27 +360,38 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
                                                CGFLOAT_MAX)];
     }
     
-    return MAX(size.height, 20.0);
+    return size.height + 20.0;
 }
 
-- (void)tableView:(UITableView *)tableView
-didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (NSIndexPath *)tableView:(UITableView *)tableView
+  willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView beginUpdates];
-    [tableView endUpdates];
+    NSLogInfo(@"willSelectRowAtIndexPath: %@ Expanded messages: %@", indexPath, _expandedMessages);
+    
+    // Remove/add row to expanded messages
+    DDLogMessage * logMessage = (_filteringEnabled ? _filteredMessages : _messages)[indexPath.row];
+    if ([_expandedMessages containsObject:logMessage])
+    {
+        [_expandedMessages removeObject:logMessage];
+    }
+    else
+    {
+        [_expandedMessages addObject:logMessage];
+    }
+    
+    // Update cell's text
     UILabel * label = (UILabel *)[tableView cellForRowAtIndexPath:indexPath].contentView.subviews[0];
-    label.text = [self textForCellFromTableView:tableView
-                                    atIndexPath:indexPath];
-}
-
-- (void)tableView:(UITableView *)tableView
-didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView beginUpdates];
-    [tableView endUpdates];
-    UILabel * label = (UILabel *)[tableView cellForRowAtIndexPath:indexPath].contentView.subviews[0];
-    label.text = [self textForCellFromTableView:tableView
-                                    atIndexPath:indexPath];
+    label.text = [self textForCellWithLogMessage:logMessage];
+    
+    // The method is called from the main queue
+    dispatch_async(_consoleQueue, ^
+                   {
+                       // Trigger row height update
+                       [self updateTableViewInConsoleQueue];
+                   });
+    
+    // Don't select the cell
+    return nil;
 }
 
 - (UILabel *)labelForNewCell
@@ -357,97 +401,165 @@ didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
     label.font = _font;
     label.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     label.numberOfLines = 0;
+    
     return label;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"logMessage"];
+    // A marker?
+    DDLogMessage * logMessage = (_filteringEnabled ? _filteredMessages : _messages)[indexPath.row];
+    BOOL marker = [logMessage isKindOfClass:[PTEMarkerLogMessage class]];
+    
+    // Load cell
+    NSString * identifier = marker ? @"marker" : @"logMessage";
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     UILabel * label;
     if (!cell)
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                      reuseIdentifier:@"logMessage"];
-        cell.backgroundColor = [UIColor clearColor];
+                                      reuseIdentifier:identifier];
+        cell.clipsToBounds = YES;
+        cell.backgroundColor = UIColor.clearColor;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         label = [self labelForNewCell];
         label.frame = cell.contentView.bounds;
         [cell.contentView addSubview:label];
+        
+        if (marker)
+        {
+            label.backgroundColor = [UIColor colorWithWhite:0.5 alpha:1.0];
+            label.textAlignment = NSTextAlignmentCenter;
+            cell.userInteractionEnabled = NO;
+        }
     }
     else
     {
         label = (UILabel *)cell.contentView.subviews[0];
     }
     
-    DDLogMessage * logMessage = _messagesBuffer[indexPath.row];
-    
     // Configure the label
-    switch (logMessage->logFlag)
+    if (marker)
     {
-        case LOG_FLAG_ERROR : label.textColor = [UIColor redColor];         break;
-        case LOG_FLAG_WARN  : label.textColor = [UIColor orangeColor];      break;
-        case LOG_FLAG_INFO  : label.textColor = [UIColor greenColor];       break;
-        case LOG_FLAG_DEBUG : label.textColor = [UIColor whiteColor];       break;
-        default             : label.textColor = [UIColor lightGrayColor];   break;
+        label.text = logMessage->logMsg;
     }
-    
-    label.text = [self textForCellFromTableView:tableView
-                                    atIndexPath:indexPath];
+    else
+    {
+        switch (logMessage->logFlag)
+        {
+            case LOG_FLAG_ERROR : label.textColor = [UIColor redColor];         break;
+            case LOG_FLAG_WARN  : label.textColor = [UIColor orangeColor];      break;
+            case LOG_FLAG_INFO  : label.textColor = [UIColor greenColor];       break;
+            case LOG_FLAG_DEBUG : label.textColor = [UIColor whiteColor];       break;
+            default             : label.textColor = [UIColor lightGrayColor];   break;
+        }
+        label.text = [self textForCellWithLogMessage:logMessage];
+    }
     
     return cell;
 }
 
-#pragma mark - Content filtering
-
-- (BOOL)isFilteringEnabled
+- (NSString *)textForCellWithLogMessage:(DDLogMessage *)logMessage
 {
-    return (_currentSearchText.length > 0 ||        // Some text input
-            _currentLogLevel != LOG_LEVEL_VERBOSE); // Or log level != verbose
+    NSString * prefix;
+    switch (logMessage->logFlag)
+    {
+        case LOG_FLAG_ERROR : prefix = @"Ⓔ"; break;
+        case LOG_FLAG_WARN  : prefix = @"Ⓦ"; break;
+        case LOG_FLAG_INFO  : prefix = @"Ⓘ"; break;
+        case LOG_FLAG_DEBUG : prefix = @"Ⓓ"; break;
+        default             : prefix = @"Ⓥ"; break;
+    }
+    
+    // Expanded message?
+    if ([_expandedMessages containsObject:logMessage])
+    {
+        return [NSString stringWithFormat:@" %@ %@", prefix, [self formatLogMessage:logMessage]];
+    }
+    
+    // Collapsed message
+    return [NSString stringWithFormat:@" %@ %@", prefix, [self formatShortLogMessage:logMessage]];
+}
+
+#pragma mark - Copying text
+
+- (BOOL)tableView:(UITableView *)tableView
+shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (BOOL)tableView:(UITableView *)tableView
+ canPerformAction:(SEL)action
+forRowAtIndexPath:(NSIndexPath *)indexPath
+       withSender:(id)sender
+{
+    return action == @selector(copy:);
+}
+
+- (void)tableView:(UITableView *)tableView
+    performAction:(SEL)action
+forRowAtIndexPath:(NSIndexPath *)indexPath
+       withSender:(id)sender
+{
+    if (action == @selector(copy:))
+    {
+        DDLogMessage * logMessage = (_filteringEnabled ? _filteredMessages : _messages)[indexPath.row];
+        NSString * textToCopy = [self formatLogMessage:logMessage];
+        UIPasteboard.generalPasteboard.string = textToCopy;
+        
+        NSLogInfo(@"Copied: %@", textToCopy);
+    }
+}
+
+#pragma mark - Message filtering
+
+- (NSMutableArray *)filterMessages:(NSArray *)messages
+{
+    NSMutableArray * filteredMessages = NSMutableArray.array;
+    for (DDLogMessage * message in messages)
+    {
+        if ([self messagePassesFilter:message])
+        {
+            [filteredMessages addObject:message];
+        }
+    }
+    return filteredMessages;
 }
 
 - (BOOL)messagePassesFilter:(DDLogMessage *)message
 {
-    // Check log level...
-    if (message->logFlag & _currentLogLevel)
-    {
-        // And text...
-        if (_currentSearchText.length == 0 ||
-            [[self formatLogMessage:message] rangeOfString:_currentSearchText
-                                                   options:(NSCaseInsensitiveSearch |
-                                                            NSDiacriticInsensitiveSearch |
-                                                            NSWidthInsensitiveSearch)].location != NSNotFound)
-        {
-            return YES;
-        }
-    }
-    
-    return NO;
+    // Message is a marker OR (Log flag matches AND (no search text OR contains search text))
+    return ([message isKindOfClass:[PTEMarkerLogMessage class]] ||
+            ((message->logFlag & _currentLogLevel) &&
+             (_currentSearchText.length == 0 ||
+              [[self formatLogMessage:message] rangeOfString:_currentSearchText
+                                                     options:(NSCaseInsensitiveSearch |
+                                                              NSDiacriticInsensitiveSearch |
+                                                              NSWidthInsensitiveSearch)].location != NSNotFound)));
 }
 
-- (void)updateFilteredMessages
+#pragma mark - Search bar delegate
+
+- (void)searchBarStateChanged
 {
-    // Refresh the filtered messages
-    [_filteredMessages removeAllObjects];
-    if ([self isFilteringEnabled])
+    // The method is called from the main queue
+    dispatch_async(_consoleQueue, ^
     {
-        // Check every message
-        for (DDLogMessage * message in _messages)
+        // Filtering enabled?
+        _filteringEnabled = (_currentSearchText.length > 0 ||        // Some text input
+                             _currentLogLevel != LOG_LEVEL_VERBOSE); // Or log level != verbose
+        
+        // Force reloading filtered messages
+        if (_filteringEnabled)
         {
-            if ([self messagePassesFilter:message])
-            {
-                [_filteredMessages addObject:message];
-            }
+            _filteredMessages = nil;
         }
         
-        _messagesBuffer = [NSArray arrayWithArray:_filteredMessages];
-    }
-    else
-    {
-        _messagesBuffer = [NSArray arrayWithArray:_messages];
-    }
-    
-    [_tableView reloadData];
+        // Update
+        [self updateTableViewInConsoleQueue];
+    });
 }
 
 - (void)searchBar:(UISearchBar *)searchBar
@@ -462,7 +574,7 @@ selectedScopeButtonIndexDidChange:(NSInteger)selectedScope
         default: _currentLogLevel = LOG_LEVEL_ERROR;    break;
     }
     
-    [self updateFilteredMessages];
+    [self searchBarStateChanged];
 }
 
 - (void)searchBar:(UISearchBar *)searchBar
@@ -471,8 +583,9 @@ selectedScopeButtonIndexDidChange:(NSInteger)selectedScope
     if ([_currentSearchText isEqualToString:searchText])
         return;
     
-    _currentSearchText = _searchBar.text;
-    [self updateFilteredMessages];
+    _currentSearchText = searchBar.text;
+    
+    [self searchBarStateChanged];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
@@ -483,8 +596,8 @@ selectedScopeButtonIndexDidChange:(NSInteger)selectedScope
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
     // Make dashboard fullscreen if needed
-    PTEDashboard * dashboard = [_tableView.window isKindOfClass:[PTEDashboard class]] ? (PTEDashboard *)_tableView.window : nil;
-    if (dashboard && !dashboard.isMaximized)
+    PTEDashboard * dashboard = (PTEDashboard *)self.tableView.window;
+    if ([dashboard isKindOfClass:[PTEDashboard class]])
     {
         dashboard.maximized = YES;
     }

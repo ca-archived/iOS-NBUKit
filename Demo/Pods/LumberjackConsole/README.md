@@ -1,13 +1,32 @@
+
 LumberjackConsole
 =================
 
 [![Platform: iOS](https://cocoapod-badges.herokuapp.com/p/LumberjackConsole/badge.svg)](http://cocoadocs.org/docsets/LumberjackConsole/)
-[![Version: 1.0.3](https://cocoapod-badges.herokuapp.com/v/LumberjackConsole/badge.png)](http://cocoadocs.org/docsets/LumberjackConsole/)
+[![Version: 2.0.2](https://cocoapod-badges.herokuapp.com/v/LumberjackConsole/badge.png)](http://cocoadocs.org/docsets/LumberjackConsole/)
 [![Build Status](https://travis-ci.org/PTEz/LumberjackConsole.png?branch=master)](https://travis-ci.org/PTEz/LumberjackConsole)
 
-On-device [CocoaLumberjack](https://github.com/robbiehanson/CocoaLumberjack) console with support for search, filters and more.
+On-device [CocoaLumberjack](https://github.com/robbiehanson/CocoaLumberjack) console with support for search, adjust levels, copying and more.
 
 ![Screenshot 1](http://ptez.github.io/LumberjackConsole/images/screenshot1.png)　![Screenshot 2](http://ptez.github.io/LumberjackConsole/images/screenshot2.png)
+
+## Features
+
+* Sypport dynamic log levels.
+* Support log modules.
+* Auto-enable [XcodeColors](https://github.com/robbiehanson/XcodeColors) when present.
+* No need to declare `ddLogLevel`.
+* Filter messages by level and text contents.
+* Expand/collapse long messages.
+* Long tap to copy log messages.
+* Insert markers.
+* Clear console.
+
+### ToDo
+
+* Improve rotation support.
+* Read crash reports.
+* Keep scrolled area when not at the top.
 
 ## Demo
 
@@ -40,32 +59,21 @@ Add its logger for testing builds:
 ```obj-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-#ifndef MY_PRODUCTION_MACRO
+#ifndef PRODUCTION
         // Add the console dashboard for testing builds
-        [DDLog addLogger:[PTEDashboard sharedDashboard].logger]; // <- If not using NBULog
-        // [NBULog addDashboardLogger];                          // <- If using NBULog
+        [PTEDashboard.sharedDashboard show];                // <- If not using NBULog
+        // [NBULog addDashboardLogger];                     // <- If using NBULog
         
         DDLogInfo(@"Added console dashboard");
 #endif
         
         // ...
-        
-        return YES;
 }
 ```
 
 ### b) Embeded Console
 
-You can also embed the console into your own `UITableView`:
-
-```obj-c
-    // Add a custom console
-    _customConsoleLogger = [PTEConsoleLogger new];
-    _customConsoleLogger.tableView = self.customConsoleTableView;
-    [DDLog addLogger:_customConsoleLogger];
-    
-    DDLogInfo(@"Added a custom console logger");
-```
+Simply add a `PTEConsoleTableView` instance to your view hierarchy.
 
 ## More
 
@@ -73,19 +81,11 @@ When coupled with [NBULog](https://github.com/CyberAgent/iOS-NBULog) you can dyn
 
 ![Screenshot 3](http://ptez.github.io/LumberjackConsole/images/screenshot3.png)
 
-You log level settings are saved to `NSUserDefaults`.
+Your log level settings are saved to `NSUserDefaults`.
 
 ## Documentation
 
 http://cocoadocs.org/docsets/LumberjackConsole/
-
-## ToDo
-
-* Clean up table view's data source.
-* Improve rotation support.
-* Clear log and message markers.
-* Long tap to copy text.
-* Read crash reports.
 
 ## License
 
