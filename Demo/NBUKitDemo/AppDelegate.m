@@ -58,6 +58,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     _splashView = [NSBundle loadNibNamed:@"NBUSplashView"
                                    owner:nil
                                  options:nil][0];
+    _splashView.imageView.image = [UIImage imageNamed:@"LaunchImage"];
     [_splashView startWithStatus:@"Launching..."
                           window:_window];
     
