@@ -111,6 +111,8 @@
                         change:(NSDictionary *)change
                        context:(void *)context
 {
+    NBULogVerbose(@"frame: %@ bounds: %@", NSStringFromCGRect(self.scrollView.frame), NSStringFromCGRect(self.scrollView.bounds));
+    
     // Offset changed
     if ([keyPath isEqualToString:@"contentOffset"])
     {
