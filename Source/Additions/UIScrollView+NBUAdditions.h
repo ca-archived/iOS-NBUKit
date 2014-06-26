@@ -29,6 +29,10 @@
 /// @param animated Whether to animate scrolling or not.
 - (void)scrollToTopAnimated:(BOOL)animated;
 
+/// Scroll to the top.
+/// @param sender The sender object.
+- (IBAction)scrollToTop:(id)sender;
+
 /// Scroll to the bottom.
 /// @param animated Whether to animate scrolling or not.
 - (void)scrollToBottomAnimated:(BOOL)animated;

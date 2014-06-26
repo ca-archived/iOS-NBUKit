@@ -34,6 +34,11 @@
                      animated:animated];
 }
 
+- (IBAction)scrollToTop:(id)sender
+{
+    [self scrollToTopAnimated:YES];
+}
+
 - (void)scrollToBottomAnimated:(BOOL)animated
 {
     [self scrollRectToVisible:CGRectMake(self.contentOffset.x,
