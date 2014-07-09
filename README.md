@@ -2,9 +2,10 @@
 NBUKit
 ======
 
-[![Pod Platform](https://cocoapod-badges.herokuapp.com/p/NBUKit/badge.svg)](http://cocoadocs.org/docsets/NBUKit/)
-[![Version 2.2.2](https://cocoapod-badges.herokuapp.com/v/NBUKit/badge.png)](http://cocoadocs.org/docsets/NBUKit/)
-[![Build Status](https://travis-ci.org/CyberAgent/iOS-NBUKit.png?branch=master)](https://travis-ci.org/CyberAgent/iOS-NBUKit)
+[![Platform: iOS](https://img.shields.io/cocoapods/p/NBUKit.svg?style=flat)](http://cocoadocs.org/docsets/NBUKit/)
+[![Version: 2.2.2](https://img.shields.io/cocoapods/v/NBUKit.svg?style=flat)](http://cocoadocs.org/docsets/NBUKit/)
+[![License: Apache 2.0](https://img.shields.io/cocoapods/l/NBUKit.svg?style=flat)](http://cocoadocs.org/docsets/NBUKit/)
+[![Build Status](http://img.shields.io/travis/CyberAgent/iOS-NBUKit/master.svg?style=flat)](https://travis-ci.org/CyberAgent/iOS-NBUKit)
 
 UIKit and NSFoundation convenience categories and subclasses.
 
