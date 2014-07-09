@@ -2,9 +2,10 @@
 NBULog
 ======
 
-[![Platform: iOS](https://cocoapod-badges.herokuapp.com/p/NBULog/badge.svg)](http://cocoadocs.org/docsets/NBULog/)
-[![Version: 1.0.7](https://cocoapod-badges.herokuapp.com/v/NBULog/badge.png)](http://cocoadocs.org/docsets/NBULog/)
-[![Build Status](https://travis-ci.org/CyberAgent/iOS-NBULog.png?branch=master)](https://travis-ci.org/CyberAgent/iOS-NBULog)
+[![Platform: iOS](https://img.shields.io/cocoapods/p/NBULog.svg?style=flat)](http://cocoadocs.org/docsets/NBULog/)
+[![Version: 1.0.8](https://img.shields.io/cocoapods/v/NBULog.svg?style=flat)](http://cocoadocs.org/docsets/NBULog/)
+[![License: Apache 2.0](https://img.shields.io/cocoapods/l/NBULog.svg?style=flat)](http://cocoadocs.org/docsets/NBULog/)
+[![Build Status](http://img.shields.io/travis/CyberAgent/iOS-NBULog/master.svg?style=flat)](https://travis-ci.org/CyberAgent/iOS-NBULog)
 
 Log framework based on [CocoaLumberjack](https://github.com/robbiehanson/CocoaLumberjack). Adds dynamic log levels, modules' support and eases usage.
 

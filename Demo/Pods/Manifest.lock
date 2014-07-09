@@ -1,8 +1,8 @@
 PODS:
-  - CocoaLumberjack (1.9.0):
+  - CocoaLumberjack (1.9.1):
     - CocoaLumberjack/Extensions
-  - CocoaLumberjack/Core (1.9.0)
-  - CocoaLumberjack/Extensions (1.9.0):
+  - CocoaLumberjack/Core (1.9.1)
+  - CocoaLumberjack/Extensions (1.9.1):
     - CocoaLumberjack/Core
   - Lockbox (1.4.9)
   - LumberjackConsole (2.0.2):
@@ -10,43 +10,43 @@ PODS:
     - NBUCore (>= 2.0.2)
   - MotionOrientation@PTEz (1.1.0)
   - NBUCore (2.0.2)
-  - NBUKit (2.2.1):
+  - NBUKit (2.2.2):
     - Lockbox (>= 1.4.6)
     - NBUCore (>= 2.0.2)
     - NBUKit/Additions
     - NBUKit/Base
     - NBUKit/Library
     - NBUKit/UI
-  - NBUKit/Additions (2.2.1):
+  - NBUKit/Additions (2.2.2):
     - Lockbox (>= 1.4.6)
     - NBUCore (>= 2.0.2)
     - NBUKit/Base
-  - NBUKit/Base (2.2.1):
+  - NBUKit/Base (2.2.2):
     - Lockbox (>= 1.4.6)
     - NBUCore (>= 2.0.2)
-  - NBUKit/Library (2.2.1):
+  - NBUKit/Library (2.2.2):
     - Lockbox (>= 1.4.6)
     - NBUCore (>= 2.0.2)
     - NBUKit/Base
     - NBUKit/Library/NBUCompatibility
     - NBUKit/Library/RestKit Support
-  - NBUKit/Library/NBUCompatibility (2.2.1):
+  - NBUKit/Library/NBUCompatibility (2.2.2):
     - Lockbox (>= 1.4.6)
     - NBUCore (>= 2.0.2)
     - NBUKit/Base
     - NBUKit/UI
-  - NBUKit/Library/RestKit Support (2.2.1):
+  - NBUKit/Library/RestKit Support (2.2.2):
     - Lockbox (>= 1.4.6)
     - NBUCore (>= 2.0.2)
     - NBUKit/Base
-  - NBUKit/UI (2.2.1):
+  - NBUKit/UI (2.2.2):
     - Lockbox (>= 1.4.6)
     - MotionOrientation@PTEz (>= 1.1.0)
     - NBUCore (>= 2.0.2)
     - NBUKit/Additions
     - NBUKit/Library/NBUCompatibility
     - NBUKit/Library/RestKit Support
-  - NBULog (1.0.7):
+  - NBULog (1.0.8):
     - CocoaLumberjack (>= 1.6.5)
     - NBUCore (>= 2.0.2)
 
@@ -60,12 +60,12 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  CocoaLumberjack: 5766cdd1d0a24bcf15a133c6023747346bf786dd
+  CocoaLumberjack: 94accd5749f5c5d15134c8d50f34a973aed8ef69
   Lockbox: cfe87dbbce6b5c6d7cfeefc3fe6594ef55919b11
   LumberjackConsole: 4b0fb07c89d292d91f01af21b1e973a8c52795b3
   MotionOrientation@PTEz: ec58ced639faa14d30e63db9ef5cba8ded38b3b5
   NBUCore: 040cd60a1407bffd3dd6141b2b467125fe1631fa
-  NBUKit: 01c6a0f89367782763b798a8fdccd23d22e4cd70
-  NBULog: 3492ba5640befaeb1af1d7a42296d5f38e2e2682
+  NBUKit: f6dbad389d4ee55e0287b760c960df10015f8d1d
+  NBULog: 477104d732bd28b36a6a1f39288c9e5f93473bb1
 
 COCOAPODS: 0.33.1
