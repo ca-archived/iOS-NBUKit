@@ -45,7 +45,7 @@ There is a NBUKitDemo project included in the repository and can also be tried o
 
 ## Installation
 
-For now add the following to your [CocoaPods](http://cocoapods.org)' [Podfile](http://docs.cocoapods.org/podfile.html):
+For now add the following to your [CocoaPods](http://cocoapods.org)' [Podfile](http://guides.cocoapods.org/syntax/podfile.html):
 
 ```ruby
 platform :ios, '5.0'
@@ -65,6 +65,8 @@ http://cocoadocs.org/docsets/NBUKit/
 
 ##License
 
+    Copyright 2012-2014 CyberAgent Inc.
+    
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License. 
     You may obtain a copy of the License at
