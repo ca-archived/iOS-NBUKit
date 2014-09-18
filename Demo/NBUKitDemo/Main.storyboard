@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="K9W-6x-EAd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A343f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="K9W-6x-EAd">
     <dependencies>
-        <deployment defaultVersion="1280" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <development version="5100" identifier="xcode"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -28,7 +28,7 @@
             </objects>
             <point key="canvasLocation" x="-755" y="116"/>
         </scene>
-        <!--Navigation Controller - Refresh Control-->
+        <!--Refresh Control-->
         <scene sceneID="0f1-yJ-9rU">
             <objects>
                 <navigationController definesPresentationContext="YES" id="HwA-Ix-nbs" sceneMemberID="viewController">
@@ -45,7 +45,7 @@
             </objects>
             <point key="canvasLocation" x="-214" y="-450"/>
         </scene>
-        <!--Navigation Controller - Badges-->
+        <!--Badges-->
         <scene sceneID="f2h-Gj-nji">
             <objects>
                 <navigationController definesPresentationContext="YES" id="qwN-qw-RaJ" sceneMemberID="viewController">
@@ -62,7 +62,7 @@
             </objects>
             <point key="canvasLocation" x="-214" y="690"/>
         </scene>
-        <!--Navigation Controller - Hide on Scroll-->
+        <!--Hide on Scroll-->
         <scene sceneID="X5e-cI-Sjl">
             <objects>
                 <navigationController definesPresentationContext="YES" id="sUg-ql-htm" sceneMemberID="viewController">
@@ -79,7 +79,7 @@
             </objects>
             <point key="canvasLocation" x="-214" y="116"/>
         </scene>
-        <!--Pull To Refresh View Controller - Refresh Control-->
+        <!--Refresh Control-->
         <scene sceneID="Aml-2x-Syz">
             <objects>
                 <viewController id="CDi-gq-K95" customClass="PullToRefreshViewController" sceneMemberID="viewController">
@@ -140,7 +140,7 @@
             </objects>
             <point key="canvasLocation" x="221" y="-450"/>
         </scene>
-        <!--Hide On Scroll View Controller - Hide on Scroll-->
+        <!--Hide on Scroll-->
         <scene sceneID="Bm2-2M-egE">
             <objects>
                 <viewController id="F7B-xE-RtY" customClass="HideOnScrollViewController" sceneMemberID="viewController">
@@ -194,7 +194,6 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -205,7 +204,7 @@
             </objects>
             <point key="canvasLocation" x="221" y="116"/>
         </scene>
-        <!--Badges View Controller - Badges-->
+        <!--Badges-->
         <scene sceneID="mXa-zv-jaz">
             <objects>
                 <viewController id="j0O-al-93e" customClass="BadgesViewController" sceneMemberID="viewController">
@@ -249,8 +248,6 @@
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                        <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     </view>
                     <navigationItem key="navigationItem" title="Badges" id="y4X-KF-xH9"/>
                     <connections>
@@ -268,10 +265,10 @@
         <image name="first.png" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
-    <color key="tintColor" red="0.2997547901" green="0.075245209849999994" blue="0.53407276459999997" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <color key="tintColor" red="0.2997547901" green="0.075245209849999994" blue="0.53407276459999997" alpha="1" colorSpace="calibratedRGB"/>
 </document>
