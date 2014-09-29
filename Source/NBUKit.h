@@ -18,29 +18,26 @@
 //  limitations under the License.
 //
 
-/// Pods Environment
-#import "../Pods-environment.h"
-
 /// NBUCore
 #import <NBUCore/NBUCore.h>
 
 /// NBULog
-#ifdef COCOAPODS_POD_AVAILABLE_NBULog
+#if __has_include("NBULog+NBUKit.h")
     #import "NBULog+NBUKit.h"
 #endif
 
 /// Additions
-#ifdef COCOAPODS_POD_AVAILABLE_NBUKit_Additions
+#if __has_include("NBUAdditions.h")
     #import "NBUAdditions.h"
 #endif
 
 /// Compatibility
-#ifdef COCOAPODS_POD_AVAILABLE_NBUKit_Library_NBUCompatibility
+#if __has_include("NBUCompatibility.h")
     #import "NBUCompatibility.h"
 #endif
 
 /// UI
-#ifdef COCOAPODS_POD_AVAILABLE_NBUKit_UI
+#if __has_include("NBUActionSheet.h")
     #import "NBUActionSheet.h"
     #import "NBUAlertView.h"
     #import "NBUApplicationDelegate.h"
