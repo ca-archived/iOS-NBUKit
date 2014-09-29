@@ -50,14 +50,9 @@ NSString *RKDescriptionForObject(NSObject *object, id locale, NSUInteger indent)
 
 @implementation RKOrderedDictionary
 
-- (id)init
-{
-    return [self initWithCapacity:0];
-}
-
 - (id)initWithCapacity:(NSUInteger)capacity
 {
-    self = [super init];
+    self = [super initWithCapacity:capacity];
     if (self != nil)
     {
         dictionary = [[NSMutableDictionary alloc] initWithCapacity:capacity];
