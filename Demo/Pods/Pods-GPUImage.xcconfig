@@ -1,1 +1,0 @@
-PODS_GPUIMAGE_OTHER_LDFLAGS = -framework AVFoundation -framework CoreMedia -framework CoreVideo -framework OpenGLES -framework QuartzCore

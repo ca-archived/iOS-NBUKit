@@ -1,0 +1,5 @@
+#include "Pods-Lockbox.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Build" "${PODS_ROOT}/Headers/Build/Lockbox" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/CocoaLumberjack" "${PODS_ROOT}/Headers/Public/Lockbox" "${PODS_ROOT}/Headers/Public/LumberjackConsole" "${PODS_ROOT}/Headers/Public/MotionOrientation@PTEz" "${PODS_ROOT}/Headers/Public/NBUCore" "${PODS_ROOT}/Headers/Public/NBUKit" "${PODS_ROOT}/Headers/Public/NBULog"
+OTHER_LDFLAGS = ${PODS_LOCKBOX_OTHER_LDFLAGS} -ObjC
+PODS_ROOT = ${SRCROOT}

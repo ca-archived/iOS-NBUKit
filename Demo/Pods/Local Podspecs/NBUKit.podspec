@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
     s.requires_arc  = true
     s.preserve_paths = "README.md", "NOTICE"
     
-    s.dependency 'NBUCore', '>= 2.0.2'
+    s.dependency 'NBUCore', '>= 2.0.3'
     s.dependency 'Lockbox', '>= 1.4.6'
     
     s.subspec 'Base' do |sub|
@@ -32,7 +32,7 @@ Pod::Spec.new do |s|
         sub.frameworks      = 'MessageUI'
         sub.dependency      'NBUKit/Additions'
         sub.dependency      'NBUKit/Library/NBUCompatibility'
-        sub.dependency      'NBUKit/Library/RestKit Support'
+        sub.dependency      'NBUKit/Library/RestKitSupport'
         sub.dependency      'MotionOrientation@PTEz', '>= 1.1.0'
     end
     
@@ -45,7 +45,7 @@ Pod::Spec.new do |s|
             sc.dependency       'NBUKit/UI'
         end
         
-        sl.subspec 'RestKit Support' do |srk|
+        sl.subspec 'RestKitSupport' do |srk|
             srk.requires_arc    = false
             srk.source_files    = 'Library/RestKit Support/*.{h,m}'
             srk.frameworks      = 'MobileCoreServices'

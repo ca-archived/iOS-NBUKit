@@ -51,20 +51,27 @@
     #define NSLog(...)
 #endif
 
+/// Async/sync logging
+#define NBULOG_ASYNC_ERROR    ( NO && LOG_ASYNC_ENABLED)
+#define NBULOG_ASYNC_WARN     (![NBULog forceSyncLogging] && LOG_ASYNC_ENABLED)
+#define NBULOG_ASYNC_INFO     (![NBULog forceSyncLogging] && LOG_ASYNC_ENABLED)
+#define NBULOG_ASYNC_DEBUG    (![NBULog forceSyncLogging] && LOG_ASYNC_ENABLED)
+#define NBULOG_ASYNC_VERBOSE  (![NBULog forceSyncLogging] && LOG_ASYNC_ENABLED)
+
 /// Log with the currently defined LOG_CONTEXT + LOG_MODULE
-#define NBULogError(frmt, ...)   LOG_OBJC_MAYBE(LOG_ASYNC_ERROR,   LOG_LEVEL, LOG_FLAG_ERROR,   LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
-#define NBULogWarn(frmt, ...)    LOG_OBJC_MAYBE(LOG_ASYNC_WARN,    LOG_LEVEL, LOG_FLAG_WARN,    LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
-#define NBULogInfo(frmt, ...)    LOG_OBJC_MAYBE(LOG_ASYNC_INFO,    LOG_LEVEL, LOG_FLAG_INFO,    LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
-#define NBULogDebug(frmt, ...)   LOG_OBJC_MAYBE(LOG_ASYNC_DEBUG,   LOG_LEVEL, LOG_FLAG_DEBUG,   LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
-#define NBULogVerbose(frmt, ...) LOG_OBJC_MAYBE(LOG_ASYNC_VERBOSE, LOG_LEVEL, LOG_FLAG_VERBOSE, LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
-#define NBULogTrace()            NBULogDebug(@"%@", THIS_METHOD)
+#define NBULogError(frmt, ...)   LOG_OBJC_MAYBE(NBULOG_ASYNC_ERROR,   LOG_LEVEL, LOG_FLAG_ERROR,   LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
+#define NBULogWarn(frmt, ...)    LOG_OBJC_MAYBE(NBULOG_ASYNC_WARN,    LOG_LEVEL, LOG_FLAG_WARN,    LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
+#define NBULogInfo(frmt, ...)    LOG_OBJC_MAYBE(NBULOG_ASYNC_INFO,    LOG_LEVEL, LOG_FLAG_INFO,    LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
+#define NBULogDebug(frmt, ...)   LOG_OBJC_MAYBE(NBULOG_ASYNC_DEBUG,   LOG_LEVEL, LOG_FLAG_DEBUG,   LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
+#define NBULogVerbose(frmt, ...) LOG_OBJC_MAYBE(NBULOG_ASYNC_VERBOSE, LOG_LEVEL, LOG_FLAG_VERBOSE, LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
+#define NBULogTrace()            NBULogDebug(@"%s", __PRETTY_FUNCTION__)
 
 /// Log with specific module that may be different from the currently defined LOG_MODULE
-#define NBULogErrorWithModule(mod, frmt, ...)   LOG_OBJC_MAYBE(LOG_ASYNC_ERROR,   LOG_LEVEL_FOR_MODULE(mod), LOG_FLAG_ERROR,   LOG_CONTEXT + mod, frmt, ##__VA_ARGS__)
-#define NBULogWarnWithModule(mod, frmt, ...)    LOG_OBJC_MAYBE(LOG_ASYNC_WARN,    LOG_LEVEL_FOR_MODULE(mod), LOG_FLAG_WARN,    LOG_CONTEXT + mod, frmt, ##__VA_ARGS__)
-#define NBULogInfoWithModule(mod, frmt, ...)    LOG_OBJC_MAYBE(LOG_ASYNC_INFO,    LOG_LEVEL_FOR_MODULE(mod), LOG_FLAG_INFO,    LOG_CONTEXT + mod, frmt, ##__VA_ARGS__)
-#define NBULogDebugWithModule(mod, frmt, ...)   LOG_OBJC_MAYBE(LOG_ASYNC_DEBUG,   LOG_LEVEL_FOR_MODULE(mod), LOG_FLAG_DEBUG,   LOG_CONTEXT + mod, frmt, ##__VA_ARGS__)
-#define NBULogVerboseWithModule(mod, frmt, ...) LOG_OBJC_MAYBE(LOG_ASYNC_VERBOSE, LOG_LEVEL_FOR_MODULE(mod), LOG_FLAG_VERBOSE, LOG_CONTEXT + mod, frmt, ##__VA_ARGS__)
+#define NBULogErrorWithModule(mod, frmt, ...)   LOG_OBJC_MAYBE(NBULOG_ASYNC_ERROR,   LOG_LEVEL_FOR_MODULE(mod), LOG_FLAG_ERROR,   LOG_CONTEXT + mod, frmt, ##__VA_ARGS__)
+#define NBULogWarnWithModule(mod, frmt, ...)    LOG_OBJC_MAYBE(NBULOG_ASYNC_WARN,    LOG_LEVEL_FOR_MODULE(mod), LOG_FLAG_WARN,    LOG_CONTEXT + mod, frmt, ##__VA_ARGS__)
+#define NBULogInfoWithModule(mod, frmt, ...)    LOG_OBJC_MAYBE(NBULOG_ASYNC_INFO,    LOG_LEVEL_FOR_MODULE(mod), LOG_FLAG_INFO,    LOG_CONTEXT + mod, frmt, ##__VA_ARGS__)
+#define NBULogDebugWithModule(mod, frmt, ...)   LOG_OBJC_MAYBE(NBULOG_ASYNC_DEBUG,   LOG_LEVEL_FOR_MODULE(mod), LOG_FLAG_DEBUG,   LOG_CONTEXT + mod, frmt, ##__VA_ARGS__)
+#define NBULogVerboseWithModule(mod, frmt, ...) LOG_OBJC_MAYBE(NBULOG_ASYNC_VERBOSE, LOG_LEVEL_FOR_MODULE(mod), LOG_FLAG_VERBOSE, LOG_CONTEXT + mod, frmt, ##__VA_ARGS__)
 #define NBULogTraceWithModule(mod)              NBULogDebugForModule(mod, @"%@", THIS_METHOD)
 
 // Assertions
@@ -89,6 +96,14 @@
  To register new modules just create a NBULog category.
  */
 @interface NBULog : DDLog
+
+/// @name Forcing Synchronous Logging
+
+/// Whether logging should be forced to be synchronous. Default `NO`.
++ (BOOL)forceSyncLogging;
+
+/// Set whether logging should be forced to be synchronous.
++ (void)setForceSyncLogging:(BOOL)yesOrNo;
 
 /// @name Adjusting App Log Levels
 

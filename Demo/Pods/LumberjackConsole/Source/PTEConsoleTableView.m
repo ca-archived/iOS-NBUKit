@@ -53,6 +53,14 @@
     self.rowHeight = 20.0;
 }
 
+- (void)willMoveToWindow:(UIWindow *)newWindow
+{
+    [super willMoveToWindow:newWindow];
+    
+    // Search bar fix (http://stackoverflow.com/a/25788774/1049134)
+    [_searchBar sizeToFit];
+}
+
 - (void)setLogger:(PTEConsoleLogger *)logger
 {
     _logger = logger;

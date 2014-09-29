@@ -29,6 +29,7 @@
  E.g.:
  
      #define __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED __IPHONE_5_0
+     #import <NBUCore/NBUAvailability.h>
  
  @note Only enable it temporarily to make sure you are properly guarding new APIs calls.
  
@@ -189,6 +190,14 @@
     #define __NBU_APICHECK_7_1(_ios)            __NBU_AVAILABILITY_STARTING("7.1")
 #else
     #define __NBU_APICHECK_7_1(_ios)            CF_AVAILABLE_IOS(_ios)
+#endif
+
+#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_8_0
+    #undef __AVAILABILITY_INTERNAL__IPHONE_8_0
+    #define __AVAILABILITY_INTERNAL__IPHONE_8_0 __NBU_AVAILABILITY_STARTING("8.0")
+    #define __NBU_APICHECK_8_0(_ios)            __NBU_AVAILABILITY_STARTING("8.0")
+#else
+    #define __NBU_APICHECK_8_0(_ios)            CF_AVAILABLE_IOS(_ios)
 #endif
 
 #undef  NS_AVAILABLE_IOS

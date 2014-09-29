@@ -3,8 +3,9 @@ NBULog
 ======
 
 [![Platform: iOS](https://img.shields.io/cocoapods/p/NBULog.svg?style=flat)](http://cocoadocs.org/docsets/NBULog/)
-[![Version: 1.0.8](https://img.shields.io/cocoapods/v/NBULog.svg?style=flat)](http://cocoadocs.org/docsets/NBULog/)
+[![Version: 1.1.1](https://img.shields.io/cocoapods/v/NBULog.svg?style=flat)](http://cocoadocs.org/docsets/NBULog/)
 [![License: Apache 2.0](https://img.shields.io/cocoapods/l/NBULog.svg?style=flat)](http://cocoadocs.org/docsets/NBULog/)
+[![Dependency Status](https://www.versioneye.com/objective-c/NBULog/badge.svg?style=flat)](https://www.versioneye.com/objective-c/NBULog)
 [![Build Status](http://img.shields.io/travis/CyberAgent/iOS-NBULog/master.svg?style=flat)](https://travis-ci.org/CyberAgent/iOS-NBULog)
 
 Log framework based on [CocoaLumberjack](https://github.com/robbiehanson/CocoaLumberjack). Adds dynamic log levels, modules' support and eases usage.
@@ -13,7 +14,7 @@ _Was part of [NBUCore](https://github.com/CyberAgent/iOS-NBUCore) 1.9.x._
 
 ## Demo
 
-There is a NBULogDemo project included in the repository and can also be tried online [here](https://app.io/Yj1WIj).
+A demo project is included in the repository and can also be tried online [here](https://app.io/Yj1WIj).
 
 ## Features
 
@@ -91,7 +92,7 @@ When [LumberjackConsole](https://github.com/PTEz/LumberjackConsole) is present y
 
 ## Installation
 
-Add `pod 'NBULog'` to your [CocoaPods](http://cocoapods.org)' [Podfile](http://docs.cocoapods.org/podfile.html):
+Add `pod 'NBULog'` to your [CocoaPods](http://cocoapods.org)' [Podfile](http://guides.cocoapods.org/syntax/podfile.html):
 
 ```ruby
 platform :ios, '5.0'
@@ -242,6 +243,8 @@ Then register your context and modules if you want them to appear in [Lumberjack
 
 ## License
 
+    Copyright 2012-2014 CyberAgent Inc.
+    
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License. 
     You may obtain a copy of the License at

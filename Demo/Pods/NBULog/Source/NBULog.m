@@ -33,6 +33,7 @@
 static NSMutableDictionary * _registeredContexts;
 static NSMutableArray * _orderedContexts;
 
+static BOOL _forceSyncLogging;
 static int _appLogLevel;
 static int _appModuleLogLevel[MAX_MODULES];
 
@@ -43,6 +44,9 @@ static id<DDLogFormatter> _nbuLogFormatter;
 // Configure a formatter, default levels and add default loggers
 + (void)initialize
 {
+    // By defeault do not foce sync logging
+    [self setForceSyncLogging:NO];
+    
     // Default log level
     [self setAppLogLevel:LOG_LEVEL_DEFAULT];
     
@@ -63,6 +67,16 @@ static id<DDLogFormatter> _nbuLogFormatter;
         _nbuLogFormatter = [NBULogFormatter new];
     });
     return _nbuLogFormatter;
+}
+
++ (BOOL)forceSyncLogging
+{
+    return _forceSyncLogging;
+}
+
++ (void)setForceSyncLogging:(BOOL)yesOrNo
+{
+    _forceSyncLogging = yesOrNo;
 }
 
 + (int)appLogLevel
@@ -283,6 +297,8 @@ static id<DDLogFormatter> _nbuLogFormatter;
         context.setContextLevel(((NSNumber *)contextDictionary[@"contextLevel"]).intValue);
         
         // Set each module's level
+        if (!context.setContextLevelForModule)
+            continue;
         moduleLevels = contextDictionary[@"modules"];
         for (NSString * module in moduleLevels)
         {

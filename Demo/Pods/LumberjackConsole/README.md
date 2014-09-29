@@ -2,11 +2,13 @@
 LumberjackConsole
 =================
 
-[![Platform: iOS](https://cocoapod-badges.herokuapp.com/p/LumberjackConsole/badge.svg)](http://cocoadocs.org/docsets/LumberjackConsole/)
-[![Version: 2.0.2](https://cocoapod-badges.herokuapp.com/v/LumberjackConsole/badge.png)](http://cocoadocs.org/docsets/LumberjackConsole/)
-[![Build Status](https://travis-ci.org/PTEz/LumberjackConsole.png?branch=master)](https://travis-ci.org/PTEz/LumberjackConsole)
+[![Platform: iOS](https://img.shields.io/cocoapods/p/LumberjackConsole.svg?style=flat)](http://cocoadocs.org/docsets/LumberjackConsole/)
+[![Version: 2.2.1](https://img.shields.io/cocoapods/v/LumberjackConsole.svg?style=flat)](http://cocoadocs.org/docsets/LumberjackConsole/)
+[![License: Apache 2.0](https://img.shields.io/cocoapods/l/LumberjackConsole.svg?style=flat)](http://cocoadocs.org/docsets/LumberjackConsole/)
+[![Dependency Status](https://www.versioneye.com/objective-c/LumberjackConsole/badge.svg?style=flat)](https://www.versioneye.com/objective-c/LumberjackConsole)
+[![Build Status](http://img.shields.io/travis/PTEz/LumberjackConsole/master.svg?style=flat)](https://travis-ci.org/PTEz/LumberjackConsole)
 
-On-device [CocoaLumberjack](https://github.com/robbiehanson/CocoaLumberjack) console with support for search, adjust levels, copying and more.
+On-device [CocoaLumberjack](https://github.com/CocoaLumberjack/CocoaLumberjack) console with support for search, adjust levels, copying and more.
 
 ![Screenshot 1](http://ptez.github.io/LumberjackConsole/images/screenshot1.png)　![Screenshot 2](http://ptez.github.io/LumberjackConsole/images/screenshot2.png)
 
@@ -34,7 +36,7 @@ There is a ConsoleDemo project included in the repository and can also be tried 
 
 ## Installation
 
-Simply add `pod 'LumberjackConsole'` to your [CocoaPods](http://cocoapods.org)' [Podfile](http://docs.cocoapods.org/podfile.html).
+Simply add `pod 'LumberjackConsole'` to your [CocoaPods](http://cocoapods.org)' [Podfile](http://guides.cocoapods.org/syntax/podfile.html).
 
 ```ruby
 platform :ios, '5.0'
@@ -45,6 +47,10 @@ pod 'LumberjackConsole'
 # Optional for dynamic log levels
 pod 'NBULog'
 ```
+
+## Documentation
+
+http://cocoadocs.org/docsets/LumberjackConsole/
 
 ## Usage
 
@@ -83,12 +89,10 @@ When coupled with [NBULog](https://github.com/CyberAgent/iOS-NBULog) you can dyn
 
 Your log level settings are saved to `NSUserDefaults`.
 
-## Documentation
-
-http://cocoadocs.org/docsets/LumberjackConsole/
-
 ## License
 
+    Copyright 2013-2014 Ernesto Rivera
+    
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License. 
     You may obtain a copy of the License at
