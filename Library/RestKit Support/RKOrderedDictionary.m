@@ -52,7 +52,7 @@ NSString *RKDescriptionForObject(NSObject *object, id locale, NSUInteger indent)
 
 - (id)initWithCapacity:(NSUInteger)capacity
 {
-    self = [super initWithCapacity:capacity];
+    self = (capacity > 0) ? [super initWithCapacity:capacity] : [super init];
     if (self != nil)
     {
         dictionary = [[NSMutableDictionary alloc] initWithCapacity:capacity];
