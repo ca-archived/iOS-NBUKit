@@ -355,9 +355,12 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     }
     else
     {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
         size = [string sizeWithFont:_font
                   constrainedToSize:CGSizeMake(tableView.bounds.size.width,
                                                CGFLOAT_MAX)];
+#pragma clang diagnostic pop
     }
     
     return size.height + 20.0;

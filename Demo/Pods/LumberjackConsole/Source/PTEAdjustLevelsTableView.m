@@ -18,7 +18,7 @@
 //  limitations under the License.
 //
 
-#ifdef COCOAPODS_POD_AVAILABLE_NBULog
+#if __has_include("NBULog.h")
 
 #import "PTEAdjustLevelsTableView.h"
 #import <NBULog/NBULogContextDescription.h>
