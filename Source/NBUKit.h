@@ -40,7 +40,6 @@
 #if __has_include("NBUActionSheet.h")
     #import "NBUActionSheet.h"
     #import "NBUAlertView.h"
-    #import "NBUApplicationDelegate.h"
     #import "NBUBadgeSegmentedControl.h"
     #import "NBUBadgeView.h"
     #import "NBUMailComposeViewController.h"
