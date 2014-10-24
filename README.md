@@ -10,7 +10,7 @@ NBUKit
 
 UIKit and NSFoundation convenience categories and subclasses.
 
-_Uses [NBUCore](https://github.com/CyberAgent/iOS-NBUCore), supports [NBULog](https://github.com/CyberAgent/iOS-NBULog).  
+_Uses [NBUCore](https://github.com/CyberAgent/iOS-NBUCore), supports [NBULog](https://github.com/CyberAgent/NBULog).  
 Image Picker code moved to [NBUImagePicker](https://github.com/CyberAgent/iOS-NBUImagePicker)._
 
 ## Demo

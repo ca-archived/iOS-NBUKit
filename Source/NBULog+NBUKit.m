@@ -23,7 +23,7 @@
 #import "NBULog+NBUKit.h"
 #import <NBULog/NBULogContextDescription.h>
 
-static int _kitLogLevel;
+static DDLogLevel _kitLogLevel;
 
 @implementation NBULog (NBUKit)
 
@@ -37,22 +37,22 @@ static int _kitLogLevel;
                                                                              context:NBUKIT_LOG_CONTEXT
                                                                      modulesAndNames:nil
                                                                    contextLevelBlock:^{ return [NBULog kitLogLevel]; }
-                                                                setContextLevelBlock:^(int level) { [NBULog setKitLogLevel:level]; }
+                                                                setContextLevelBlock:^(DDLogLevel level) { [NBULog setKitLogLevel:level]; }
                                                           contextLevelForModuleBlock:NULL
                                                        setContextLevelForModuleBlock:NULL]];
 }
 
-+ (int)kitLogLevel
++ (DDLogLevel)kitLogLevel
 {
     return _kitLogLevel;
 }
 
-+ (void)setKitLogLevel:(int)LOG_LEVEL_XXX
++ (void)setKitLogLevel:(DDLogLevel)logLevel
 {
 #ifdef DEBUG
-    _kitLogLevel = LOG_LEVEL_XXX == LOG_LEVEL_DEFAULT ? LOG_LEVEL_INFO : LOG_LEVEL_XXX;
+    _kitLogLevel = logLevel == LOG_LEVEL_DEFAULT ? DDLogLevelInfo : logLevel;
 #else
-    _kitLogLevel = LOG_LEVEL_XXX == LOG_LEVEL_DEFAULT ? LOG_LEVEL_WARN : LOG_LEVEL_XXX;
+    _kitLogLevel = logLevel == LOG_LEVEL_DEFAULT ? DDLogLevelWarning : logLevel;
 #endif
 }
 
