@@ -37,7 +37,6 @@ NSString * const ActiveViewSwipedNotification = @"ActiveViewSwipedNotification";
 // Private class
 @interface HighlightMask : UIView
 
-@property (strong, nonatomic) UIColor * color;
 @property (nonatomic) CGFloat cornerRadius;
 
 @end
@@ -261,7 +260,7 @@ NSString * const ActiveViewSwipedNotification = @"ActiveViewSwipedNotification";
     
     if (_highlightMask)
     {
-        _highlightMask.color = highlightColor;
+        _highlightMask.backgroundColor = highlightColor;
         [_highlightMask setNeedsDisplay];
     }
 }
@@ -344,7 +343,7 @@ NSString * const ActiveViewSwipedNotification = @"ActiveViewSwipedNotification";
     if (!_highlightMask)
     {
         _highlightMask = [[HighlightMask alloc] initWithFrame:self.bounds];
-        _highlightMask.color = _highlightColor;
+        _highlightMask.backgroundColor = _highlightColor;
         _highlightMask.cornerRadius = _highlightCornerRadius;
         [self addSubview:_highlightMask];
     }
@@ -497,8 +496,11 @@ NSString * const ActiveViewSwipedNotification = @"ActiveViewSwipedNotification";
 @end
 
 
+#import <QuartzCore/QuartzCore.h>
+
 @implementation HighlightMask
 
+@dynamic cornerRadius;
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -507,19 +509,21 @@ NSString * const ActiveViewSwipedNotification = @"ActiveViewSwipedNotification";
     {
         self.alpha = 0.0;
         self.opaque = NO;
-        self.contentStretch = CGRectMake(0.1, 0.1, 0.8, 0.8);
+        self.cornerRadius = 4.0;
         self.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
                                  UIViewAutoresizingFlexibleHeight);
     }
     return self;
 }
 
-- (void)drawRect:(CGRect)rect
+- (void)setCornerRadius:(CGFloat)cornerRadius
 {
-    UIBezierPath * roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect:rect
-                                                                     cornerRadius:_cornerRadius];
-    [_color setFill];
-    [roundedRectanglePath fill];
+    self.layer.cornerRadius = cornerRadius;
+}
+
+- (CGFloat)cornerRadius
+{
+    return self.layer.cornerRadius;
 }
 
 @end
