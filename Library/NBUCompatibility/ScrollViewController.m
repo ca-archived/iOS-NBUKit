@@ -258,7 +258,7 @@ static NSString * customBackButtonTitle;
         else
         {
             self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:customBackButtonTitle ? customBackButtonTitle : _customBackButtonTitle
-                                                                                     style:UIBarButtonItemStyleBordered
+                                                                                     style:UIBarButtonItemStylePlain
                                                                                     target:nil
                                                                                     action:nil];
         }

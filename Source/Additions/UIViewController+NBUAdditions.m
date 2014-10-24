@@ -36,9 +36,11 @@
 - (void)forceOrientationRefresh
 {
     // Force orientation refresh
-    [self presentModalViewController:[UIViewController new]
-                            animated:NO];
-    [self dismissModalViewControllerAnimated:NO];
+    [self presentViewController:[UIViewController new]
+                       animated:NO
+                     completion:NULL];
+    [self dismissViewControllerAnimated:NO
+                             completion:NULL];
 }
 
 @end
