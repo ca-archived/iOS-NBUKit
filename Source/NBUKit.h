@@ -58,9 +58,6 @@
  */
 @interface NBUKit : NSObject
 
-/// The current NBUKit library version.
-+ (NSString *)version;
-
 /// The NBUKit NSBundle.
 + (NSBundle *)bundle;
 
