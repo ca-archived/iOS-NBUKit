@@ -58,23 +58,23 @@
     switch ((int)sender.value)
     {
         case 5:
-            logLevel = LOG_LEVEL_VERBOSE;
+            logLevel = DDLogLevelVerbose;
             break;
         case 4:
-            logLevel = LOG_LEVEL_DEBUG;
+            logLevel = DDLogLevelDebug;
             break;
         case 3:
-            logLevel = LOG_LEVEL_INFO;
+            logLevel = DDLogLevelInfo;
             break;
         case 2:
-            logLevel = LOG_LEVEL_WARN;
+            logLevel = DDLogLevelWarning;
             break;
         case 1:
-            logLevel = LOG_LEVEL_ERROR;
+            logLevel = DDLogLevelError;
             break;
         case 0:
         default:
-            logLevel = LOG_LEVEL_OFF;
+            logLevel = DDLogLevelOff;
             break;
     }
     
@@ -150,46 +150,46 @@
 
 - (void)configureLevelLabel:(UILabel *)label
                  andStepper:(UIStepper *)stepper
-                   forLevel:(int)level
+                   forLevel:(DDLogLevel)level
 {
     switch (level)
     {
-        case LOG_LEVEL_ERROR:
+        case DDLogLevelError:
         {
             label.text = @"Error level";
             label.textColor = [UIColor redColor];
             stepper.value = 1;
             break;
         }
-        case LOG_LEVEL_WARN:
+        case DDLogLevelWarning:
         {
             label.text = @"Warning level";
             label.textColor = [UIColor orangeColor];
             stepper.value = 2;
             break;
         }
-        case LOG_LEVEL_INFO:
+        case DDLogLevelInfo:
         {
             label.text = @"Info level";
             label.textColor = [UIColor greenColor];
             stepper.value = 3;
             break;
         }
-        case LOG_LEVEL_DEBUG:
+        case DDLogLevelDebug:
         {
             label.text = @"Debug level";
             label.textColor = [UIColor whiteColor];
             stepper.value = 4;
             break;
         }
-        case LOG_LEVEL_VERBOSE:
+        case DDLogLevelVerbose:
         {
             label.text = @"Verbose level";
             label.textColor = [UIColor lightGrayColor];
             stepper.value = 5;
             break;
         }
-        case LOG_LEVEL_OFF:
+        case DDLogLevelOff:
         default:
         {
             label.text = @"Logging off";

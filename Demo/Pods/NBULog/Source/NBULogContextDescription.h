@@ -21,10 +21,10 @@
 #import "NBULog.h"
 
 /// NBULogContextDescription blocks.
-typedef int (^NBULogContextLevelBlock)();
-typedef void (^NBULogSetContextLevelBlock)(int level);
-typedef int (^NBULogContextLevelForModuleBlock)(int module);
-typedef void (^NBULogSetContextLevelForModuleBlock)(int module, int level);
+typedef DDLogLevel (^NBULogContextLevelBlock)();
+typedef void (^NBULogSetContextLevelBlock)(DDLogLevel level);
+typedef DDLogLevel (^NBULogContextLevelForModuleBlock)(int module);
+typedef void (^NBULogSetContextLevelForModuleBlock)(int module, DDLogLevel level);
 
 /**
  A log context description object used to describe its modules.

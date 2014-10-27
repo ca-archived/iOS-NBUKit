@@ -57,11 +57,31 @@
  * This means you can pass it multiple variables just like NSLog.
  **/
 
+#import <Foundation/Foundation.h>
+
+// Macros
 #import "DDLog.h"
 #import "DDLogMacros.h"
 #import "DDAssertMacros.h"
+#import "DDLog+LOGV.h"
 
 // Loggers
 #import "DDTTYLogger.h"
 #import "DDASLLogger.h"
 #import "DDFileLogger.h"
+#import "DDAbstractDatabaseLogger.h"
+
+// Capture
+#import "DDASLLogCapture.h"
+
+// Extensions
+#if __has_include("DDContextFilterLogFormatter.h")
+    #import "DDContextFilterLogFormatter.h"
+#endif
+#if __has_include("DDDispatchQueueLogFormatter.h")
+    #import "DDDispatchQueueLogFormatter.h"
+#endif
+#if __has_include("DDMultiFormatter.h")
+    #import "DDMultiFormatter.h"
+#endif
+

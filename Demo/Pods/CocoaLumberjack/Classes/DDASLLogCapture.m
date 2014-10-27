@@ -22,7 +22,7 @@
 #include <sys/time.h>
 
 static BOOL _cancel = YES;
-static int _captureLogLevel = LOG_LEVEL_VERBOSE;
+static DDLogLevel _captureLogLevel = DDLogLevelVerbose;
 
 @implementation DDASLLogCapture
 
@@ -43,11 +43,11 @@ static int _captureLogLevel = LOG_LEVEL_VERBOSE;
     _cancel = YES;
 }
 
-+ (int)captureLogLevel {
++ (DDLogLevel)captureLogLevel {
     return _captureLogLevel;
 }
 
-+ (void)setCaptureLogLevel:(int)LOG_LEVEL_XXX {
++ (void)setCaptureLogLevel:(DDLogLevel)LOG_LEVEL_XXX {
     _captureLogLevel = LOG_LEVEL_XXX;
 }
 
@@ -67,8 +67,12 @@ static int _captureLogLevel = LOG_LEVEL_VERBOSE;
 }
 
 + (void)aslMessageRecieved:(aslmsg)msg {
+    const char* messageCString = asl_get( msg, ASL_KEY_MSG );
+	if ( messageCString == NULL )
+	    return;
+	
     //  NSString * sender = [NSString stringWithCString:asl_get(msg, ASL_KEY_SENDER) encoding:NSUTF8StringEncoding];
-    NSString *message = [NSString stringWithCString:asl_get(msg, ASL_KEY_MSG) encoding:NSUTF8StringEncoding];
+    NSString *message = [NSString stringWithCString:messageCString encoding:NSUTF8StringEncoding];
     NSString *level = [NSString stringWithCString:asl_get(msg, ASL_KEY_LEVEL) encoding:NSUTF8StringEncoding];
     NSString *secondsStr = [NSString stringWithCString:asl_get(msg, ASL_KEY_TIME) encoding:NSUTF8StringEncoding];
     NSString *nanoStr = [NSString stringWithCString:asl_get(msg, ASL_KEY_TIME_NSEC) encoding:NSUTF8StringEncoding];
@@ -86,13 +90,13 @@ static int _captureLogLevel = LOG_LEVEL_VERBOSE;
         // By default all NSLog's with a ASL_LEVEL_WARNING level
         case ASL_LEVEL_EMERG    :
         case ASL_LEVEL_ALERT    :
-        case ASL_LEVEL_CRIT     : flag = LOG_FLAG_ERROR;    async = LOG_ASYNC_ERROR;    break;
-        case ASL_LEVEL_ERR      : flag = LOG_FLAG_WARN;     async = LOG_ASYNC_WARN;     break;
-        case ASL_LEVEL_WARNING  : flag = LOG_FLAG_INFO;     async = LOG_ASYNC_INFO;     break;
-        case ASL_LEVEL_NOTICE   : flag = LOG_FLAG_DEBUG;    async = LOG_ASYNC_DEBUG;    break;
+        case ASL_LEVEL_CRIT     : flag = DDLogFlagError;    async = LOG_ASYNC_ERROR;    break;
+        case ASL_LEVEL_ERR      : flag = DDLogFlagWarning;  async = LOG_ASYNC_WARN;     break;
+        case ASL_LEVEL_WARNING  : flag = DDLogFlagInfo;     async = LOG_ASYNC_INFO;     break;
+        case ASL_LEVEL_NOTICE   : flag = DDLogFlagDebug;    async = LOG_ASYNC_DEBUG;    break;
         case ASL_LEVEL_INFO     :
         case ASL_LEVEL_DEBUG    :
-        default                 : flag = LOG_FLAG_VERBOSE;  async = LOG_ASYNC_VERBOSE;  break;
+        default                 : flag = DDLogFlagVerbose;  async = LOG_ASYNC_VERBOSE;  break;
     }
 
     if (!(_captureLogLevel & flag)) {

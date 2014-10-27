@@ -24,7 +24,7 @@
 #import <CocoaLumberjack/DDTTYLogger.h>
 #import <CocoaLumberjack/DDFileLogger.h>
 #import <CocoaLumberjack/DDASLLogger.h>
-#ifdef COCOAPODS_POD_AVAILABLE_LumberjackConsole
+#if __has_include(<LumberjackConsole/PTEDashboard.h>)
     #import <LumberjackConsole/PTEDashboard.h>
 #endif
 
@@ -34,8 +34,8 @@ static NSMutableDictionary * _registeredContexts;
 static NSMutableArray * _orderedContexts;
 
 static BOOL _forceSyncLogging;
-static int _appLogLevel;
-static int _appModuleLogLevel[MAX_MODULES];
+static DDLogLevel _appLogLevel;
+static DDLogLevel _appModuleLogLevel[MAX_MODULES];
 
 @implementation NBULog
 
@@ -44,19 +44,22 @@ static id<DDLogFormatter> _nbuLogFormatter;
 // Configure a formatter, default levels and add default loggers
 + (void)initialize
 {
-    // By defeault do not foce sync logging
-    [self setForceSyncLogging:NO];
-    
-    // Default log level
-    [self setAppLogLevel:LOG_LEVEL_DEFAULT];
-    
-    // Register the App log context
-    [NBULog registerAppContextWithModulesAndNames:nil];
-    
-    // Default loggers
+    if (self == [NBULog class])
+    {
+        // By defeault do not foce sync logging
+        [self setForceSyncLogging:NO];
+        
+        // Default log level
+        [self setAppLogLevel:LOG_LEVEL_DEFAULT];
+        
+        // Register the App log context
+        [NBULog registerAppContextWithModulesAndNames:nil];
+        
+        // Default loggers
 #ifdef DEBUG
-    [self addTTYLogger];
+        [self addTTYLogger];
 #endif
+    }
 }
 
 + (id<DDLogFormatter>)nbuLogFormater
@@ -79,17 +82,17 @@ static id<DDLogFormatter> _nbuLogFormatter;
     _forceSyncLogging = yesOrNo;
 }
 
-+ (int)appLogLevel
++ (DDLogLevel)appLogLevel
 {
     return _appLogLevel;
 }
 
-+ (void)setAppLogLevel:(int)LOG_LEVEL_XXX
++ (void)setAppLogLevel:(DDLogLevel)logLevel
 {
 #ifdef DEBUG
-    _appLogLevel = LOG_LEVEL_XXX == LOG_LEVEL_DEFAULT ? LOG_LEVEL_VERBOSE : LOG_LEVEL_XXX;
+    _appLogLevel = logLevel == LOG_LEVEL_DEFAULT ? DDLogLevelVerbose : logLevel;
 #else
-    _appLogLevel = LOG_LEVEL_XXX == LOG_LEVEL_DEFAULT ? LOG_LEVEL_INFO : LOG_LEVEL_XXX;
+    _appLogLevel = logLevel == LOG_LEVEL_DEFAULT ? DDLogLevelInfo : logLevel;
 #endif
     
     // Reset all modules' levels
@@ -100,25 +103,25 @@ static id<DDLogFormatter> _nbuLogFormatter;
     }
 }
 
-+ (int)appLogLevelForModule:(int)APP_MODULE_XXX
++ (DDLogLevel)appLogLevelForModule:(int)APP_MODULE_XXX
 {
-    int logLevel = _appModuleLogLevel[APP_MODULE_XXX];
+    DDLogLevel logLevel = _appModuleLogLevel[APP_MODULE_XXX];
     
     // Fallback to the default log level if necessary
     return logLevel == LOG_LEVEL_DEFAULT ? _appLogLevel : logLevel;
 }
 
-+ (void)setAppLogLevel:(int)LOG_LEVEL_XXX
++ (void)setAppLogLevel:(DDLogLevel)logLevel
              forModule:(int)APP_MODULE_XXX
 {
-    _appModuleLogLevel[APP_MODULE_XXX] = LOG_LEVEL_XXX;
+    _appModuleLogLevel[APP_MODULE_XXX] = logLevel;
 }
 
 #pragma mark - Adding loggers
 
 + (void)addDashboardLogger
 {
-#ifdef COCOAPODS_POD_AVAILABLE_LumberjackConsole
+#if __has_include(<LumberjackConsole/PTEDashboard.h>)
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^
                   {
@@ -155,33 +158,33 @@ static id<DDLogFormatter> _nbuLogFormatter;
                       if (xcode_colors && (strcmp(xcode_colors, "YES") == 0))
                       {
                           // Set default colors
-                          [ttyLogger setForegroundColor:[UIColor colorWithRed:0.65
+                          [ttyLogger setForegroundColor:[DDColor colorWithRed:0.65
                                                                         green:0.65
                                                                          blue:0.65
                                                                         alpha:1.0]
                                         backgroundColor:nil
-                                                forFlag:LOG_FLAG_VERBOSE];
-                          [ttyLogger setForegroundColor:[UIColor colorWithRed:0.4
+                                                forFlag:DDLogFlagVerbose];
+                          [ttyLogger setForegroundColor:[DDColor colorWithRed:0.4
                                                                         green:0.4
                                                                          blue:0.4
                                                                         alpha:1.0]
                                         backgroundColor:nil
-                                                forFlag:LOG_FLAG_DEBUG];
-                          [ttyLogger setForegroundColor:[UIColor colorWithRed:26.0/255.0
+                                                forFlag:DDLogFlagDebug];
+                          [ttyLogger setForegroundColor:[DDColor colorWithRed:26.0/255.0
                                                                         green:158.0/255.0
                                                                          blue:4.0/255.0
                                                                         alpha:1.0]
                                         backgroundColor:nil
-                                                forFlag:LOG_FLAG_INFO];
-                          [ttyLogger setForegroundColor:[UIColor colorWithRed:244.0/255.0
+                                                forFlag:DDLogFlagInfo];
+                          [ttyLogger setForegroundColor:[DDColor colorWithRed:244.0/255.0
                                                                         green:103.0/255.0
                                                                          blue:8.0/255.0
                                                                         alpha:1.0]
                                         backgroundColor:nil
-                                                forFlag:LOG_FLAG_WARN];
-                          [ttyLogger setForegroundColor:[UIColor redColor]
+                                                forFlag:DDLogFlagWarning];
+                          [ttyLogger setForegroundColor:[DDColor redColor]
                                         backgroundColor:nil
-                                                forFlag:LOG_FLAG_ERROR];
+                                                forFlag:DDLogFlagError];
                           
                           // Enable colors
                           [ttyLogger setColorsEnabled:YES];
@@ -209,9 +212,9 @@ static id<DDLogFormatter> _nbuLogFormatter;
                                                                            context:APP_LOG_CONTEXT
                                                                    modulesAndNames:appContextModulesAndNames
                                                                  contextLevelBlock:^{ return [NBULog appLogLevel]; }
-                                                              setContextLevelBlock:^(int level) { [NBULog setAppLogLevel:level]; }
+                                                              setContextLevelBlock:^(DDLogLevel level) { [NBULog setAppLogLevel:level]; }
                                                         contextLevelForModuleBlock:^(int module) { return [NBULog appLogLevelForModule:module]; }
-                                                     setContextLevelForModuleBlock:^(int module, int level) { [NBULog setAppLogLevel:level forModule:module]; }]];
+                                                     setContextLevelForModuleBlock:^(int module, DDLogLevel level) { [NBULog setAppLogLevel:level forModule:module]; }]];
 }
 
 + (void)registerContextDescription:(NBULogContextDescription *)contextDescription

@@ -3,7 +3,7 @@ LumberjackConsole
 =================
 
 [![Platform: iOS](https://img.shields.io/cocoapods/p/LumberjackConsole.svg?style=flat)](http://cocoadocs.org/docsets/LumberjackConsole/)
-[![Version: 2.3.0](https://img.shields.io/cocoapods/v/LumberjackConsole.svg?style=flat)](http://cocoadocs.org/docsets/LumberjackConsole/)
+[![Version: 2.4.0](https://img.shields.io/cocoapods/v/LumberjackConsole.svg?style=flat)](http://cocoadocs.org/docsets/LumberjackConsole/)
 [![License: Apache 2.0](https://img.shields.io/cocoapods/l/LumberjackConsole.svg?style=flat)](http://cocoadocs.org/docsets/LumberjackConsole/)
 [![Dependency Status](https://www.versioneye.com/objective-c/LumberjackConsole/badge.svg?style=flat)](https://www.versioneye.com/objective-c/LumberjackConsole)
 [![Build Status](http://img.shields.io/travis/PTEz/LumberjackConsole/master.svg?style=flat)](https://travis-ci.org/PTEz/LumberjackConsole)
@@ -83,7 +83,7 @@ Simply add a `PTEConsoleTableView` instance to your view hierarchy.
 
 ## More
 
-When coupled with [NBULog](https://github.com/CyberAgent/iOS-NBULog) you can dynamically adjust log levels from within the dashboard!
+When coupled with [NBULog](https://github.com/CyberAgent/NBULog) you can dynamically adjust log levels from within the dashboard!
 
 ![Screenshot 3](http://ptez.github.io/LumberjackConsole/images/screenshot3.png)
 

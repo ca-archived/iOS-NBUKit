@@ -12,17 +12,17 @@
 #define COCOAPODS_VERSION_MINOR_CocoaLumberjack 0
 #define COCOAPODS_VERSION_PATCH_CocoaLumberjack 0
 
-// CocoaLumberjack/CLI
-#define COCOAPODS_POD_AVAILABLE_CocoaLumberjack_CLI
-#define COCOAPODS_VERSION_MAJOR_CocoaLumberjack_CLI 2
-#define COCOAPODS_VERSION_MINOR_CocoaLumberjack_CLI 0
-#define COCOAPODS_VERSION_PATCH_CocoaLumberjack_CLI 0
-
 // CocoaLumberjack/Core
 #define COCOAPODS_POD_AVAILABLE_CocoaLumberjack_Core
 #define COCOAPODS_VERSION_MAJOR_CocoaLumberjack_Core 2
 #define COCOAPODS_VERSION_MINOR_CocoaLumberjack_Core 0
 #define COCOAPODS_VERSION_PATCH_CocoaLumberjack_Core 0
+
+// CocoaLumberjack/Default
+#define COCOAPODS_POD_AVAILABLE_CocoaLumberjack_Default
+#define COCOAPODS_VERSION_MAJOR_CocoaLumberjack_Default 2
+#define COCOAPODS_VERSION_MINOR_CocoaLumberjack_Default 0
+#define COCOAPODS_VERSION_PATCH_CocoaLumberjack_Default 0
 
 // CocoaLumberjack/Extensions
 #define COCOAPODS_POD_AVAILABLE_CocoaLumberjack_Extensions
@@ -32,14 +32,14 @@
 
 // Lockbox
 #define COCOAPODS_POD_AVAILABLE_Lockbox
-#define COCOAPODS_VERSION_MAJOR_Lockbox 1
-#define COCOAPODS_VERSION_MINOR_Lockbox 4
-#define COCOAPODS_VERSION_PATCH_Lockbox 9
+#define COCOAPODS_VERSION_MAJOR_Lockbox 2
+#define COCOAPODS_VERSION_MINOR_Lockbox 0
+#define COCOAPODS_VERSION_PATCH_Lockbox 0
 
 // LumberjackConsole
 #define COCOAPODS_POD_AVAILABLE_LumberjackConsole
 #define COCOAPODS_VERSION_MAJOR_LumberjackConsole 2
-#define COCOAPODS_VERSION_MINOR_LumberjackConsole 3
+#define COCOAPODS_VERSION_MINOR_LumberjackConsole 4
 #define COCOAPODS_VERSION_PATCH_LumberjackConsole 0
 
 // MotionOrientation@PTEz
@@ -57,48 +57,48 @@
 // NBUKit
 #define COCOAPODS_POD_AVAILABLE_NBUKit
 #define COCOAPODS_VERSION_MAJOR_NBUKit 2
-#define COCOAPODS_VERSION_MINOR_NBUKit 3
-#define COCOAPODS_VERSION_PATCH_NBUKit 1
+#define COCOAPODS_VERSION_MINOR_NBUKit 4
+#define COCOAPODS_VERSION_PATCH_NBUKit 0
 
 // NBUKit/Additions
 #define COCOAPODS_POD_AVAILABLE_NBUKit_Additions
 #define COCOAPODS_VERSION_MAJOR_NBUKit_Additions 2
-#define COCOAPODS_VERSION_MINOR_NBUKit_Additions 3
-#define COCOAPODS_VERSION_PATCH_NBUKit_Additions 1
+#define COCOAPODS_VERSION_MINOR_NBUKit_Additions 4
+#define COCOAPODS_VERSION_PATCH_NBUKit_Additions 0
 
 // NBUKit/Base
 #define COCOAPODS_POD_AVAILABLE_NBUKit_Base
 #define COCOAPODS_VERSION_MAJOR_NBUKit_Base 2
-#define COCOAPODS_VERSION_MINOR_NBUKit_Base 3
-#define COCOAPODS_VERSION_PATCH_NBUKit_Base 1
+#define COCOAPODS_VERSION_MINOR_NBUKit_Base 4
+#define COCOAPODS_VERSION_PATCH_NBUKit_Base 0
 
 // NBUKit/Library
 #define COCOAPODS_POD_AVAILABLE_NBUKit_Library
 #define COCOAPODS_VERSION_MAJOR_NBUKit_Library 2
-#define COCOAPODS_VERSION_MINOR_NBUKit_Library 3
-#define COCOAPODS_VERSION_PATCH_NBUKit_Library 1
+#define COCOAPODS_VERSION_MINOR_NBUKit_Library 4
+#define COCOAPODS_VERSION_PATCH_NBUKit_Library 0
 
 // NBUKit/Library/NBUCompatibility
 #define COCOAPODS_POD_AVAILABLE_NBUKit_Library_NBUCompatibility
 #define COCOAPODS_VERSION_MAJOR_NBUKit_Library_NBUCompatibility 2
-#define COCOAPODS_VERSION_MINOR_NBUKit_Library_NBUCompatibility 3
-#define COCOAPODS_VERSION_PATCH_NBUKit_Library_NBUCompatibility 1
+#define COCOAPODS_VERSION_MINOR_NBUKit_Library_NBUCompatibility 4
+#define COCOAPODS_VERSION_PATCH_NBUKit_Library_NBUCompatibility 0
 
 // NBUKit/Library/RestKitSupport
 #define COCOAPODS_POD_AVAILABLE_NBUKit_Library_RestKitSupport
 #define COCOAPODS_VERSION_MAJOR_NBUKit_Library_RestKitSupport 2
-#define COCOAPODS_VERSION_MINOR_NBUKit_Library_RestKitSupport 3
-#define COCOAPODS_VERSION_PATCH_NBUKit_Library_RestKitSupport 1
+#define COCOAPODS_VERSION_MINOR_NBUKit_Library_RestKitSupport 4
+#define COCOAPODS_VERSION_PATCH_NBUKit_Library_RestKitSupport 0
 
 // NBUKit/UI
 #define COCOAPODS_POD_AVAILABLE_NBUKit_UI
 #define COCOAPODS_VERSION_MAJOR_NBUKit_UI 2
-#define COCOAPODS_VERSION_MINOR_NBUKit_UI 3
-#define COCOAPODS_VERSION_PATCH_NBUKit_UI 1
+#define COCOAPODS_VERSION_MINOR_NBUKit_UI 4
+#define COCOAPODS_VERSION_PATCH_NBUKit_UI 0
 
 // NBULog
 #define COCOAPODS_POD_AVAILABLE_NBULog
 #define COCOAPODS_VERSION_MAJOR_NBULog 1
-#define COCOAPODS_VERSION_MINOR_NBULog 1
+#define COCOAPODS_VERSION_MINOR_NBULog 2
 #define COCOAPODS_VERSION_PATCH_NBULog 1
 

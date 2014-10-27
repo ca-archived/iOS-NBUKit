@@ -44,7 +44,7 @@
 #define LOG_LEVEL_FOR_MODULE(mod)   [NBULog appLogLevelForModule:mod]
 
 /// Log level used to clear modules' log levels
-#define LOG_LEVEL_DEFAULT   -1
+#define LOG_LEVEL_DEFAULT   NSUIntegerMax
 
 /// Remove NSLog from non DEBUG builds
 #ifndef DEBUG
@@ -59,19 +59,19 @@
 #define NBULOG_ASYNC_VERBOSE  (![NBULog forceSyncLogging] && LOG_ASYNC_ENABLED)
 
 /// Log with the currently defined LOG_CONTEXT + LOG_MODULE
-#define NBULogError(frmt, ...)   LOG_OBJC_MAYBE(NBULOG_ASYNC_ERROR,   LOG_LEVEL, LOG_FLAG_ERROR,   LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
-#define NBULogWarn(frmt, ...)    LOG_OBJC_MAYBE(NBULOG_ASYNC_WARN,    LOG_LEVEL, LOG_FLAG_WARN,    LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
-#define NBULogInfo(frmt, ...)    LOG_OBJC_MAYBE(NBULOG_ASYNC_INFO,    LOG_LEVEL, LOG_FLAG_INFO,    LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
-#define NBULogDebug(frmt, ...)   LOG_OBJC_MAYBE(NBULOG_ASYNC_DEBUG,   LOG_LEVEL, LOG_FLAG_DEBUG,   LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
-#define NBULogVerbose(frmt, ...) LOG_OBJC_MAYBE(NBULOG_ASYNC_VERBOSE, LOG_LEVEL, LOG_FLAG_VERBOSE, LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
+#define NBULogError(frmt, ...)   LOG_OBJC_MAYBE(NBULOG_ASYNC_ERROR,   LOG_LEVEL, DDLogFlagError,   LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
+#define NBULogWarn(frmt, ...)    LOG_OBJC_MAYBE(NBULOG_ASYNC_WARN,    LOG_LEVEL, DDLogFlagWarning,    LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
+#define NBULogInfo(frmt, ...)    LOG_OBJC_MAYBE(NBULOG_ASYNC_INFO,    LOG_LEVEL, DDLogFlagInfo,    LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
+#define NBULogDebug(frmt, ...)   LOG_OBJC_MAYBE(NBULOG_ASYNC_DEBUG,   LOG_LEVEL, DDLogFlagDebug,   LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
+#define NBULogVerbose(frmt, ...) LOG_OBJC_MAYBE(NBULOG_ASYNC_VERBOSE, LOG_LEVEL, DDLogFlagVerbose, LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
 #define NBULogTrace()            NBULogDebug(@"%s", __PRETTY_FUNCTION__)
 
 /// Log with specific module that may be different from the currently defined LOG_MODULE
-#define NBULogErrorWithModule(mod, frmt, ...)   LOG_OBJC_MAYBE(NBULOG_ASYNC_ERROR,   LOG_LEVEL_FOR_MODULE(mod), LOG_FLAG_ERROR,   LOG_CONTEXT + mod, frmt, ##__VA_ARGS__)
-#define NBULogWarnWithModule(mod, frmt, ...)    LOG_OBJC_MAYBE(NBULOG_ASYNC_WARN,    LOG_LEVEL_FOR_MODULE(mod), LOG_FLAG_WARN,    LOG_CONTEXT + mod, frmt, ##__VA_ARGS__)
-#define NBULogInfoWithModule(mod, frmt, ...)    LOG_OBJC_MAYBE(NBULOG_ASYNC_INFO,    LOG_LEVEL_FOR_MODULE(mod), LOG_FLAG_INFO,    LOG_CONTEXT + mod, frmt, ##__VA_ARGS__)
-#define NBULogDebugWithModule(mod, frmt, ...)   LOG_OBJC_MAYBE(NBULOG_ASYNC_DEBUG,   LOG_LEVEL_FOR_MODULE(mod), LOG_FLAG_DEBUG,   LOG_CONTEXT + mod, frmt, ##__VA_ARGS__)
-#define NBULogVerboseWithModule(mod, frmt, ...) LOG_OBJC_MAYBE(NBULOG_ASYNC_VERBOSE, LOG_LEVEL_FOR_MODULE(mod), LOG_FLAG_VERBOSE, LOG_CONTEXT + mod, frmt, ##__VA_ARGS__)
+#define NBULogErrorWithModule(mod, frmt, ...)   LOG_OBJC_MAYBE(NBULOG_ASYNC_ERROR,   LOG_LEVEL_FOR_MODULE(mod), DDLogFlagError,   LOG_CONTEXT + mod, frmt, ##__VA_ARGS__)
+#define NBULogWarnWithModule(mod, frmt, ...)    LOG_OBJC_MAYBE(NBULOG_ASYNC_WARN,    LOG_LEVEL_FOR_MODULE(mod), DDLogFlagWarning,    LOG_CONTEXT + mod, frmt, ##__VA_ARGS__)
+#define NBULogInfoWithModule(mod, frmt, ...)    LOG_OBJC_MAYBE(NBULOG_ASYNC_INFO,    LOG_LEVEL_FOR_MODULE(mod), DDLogFlagInfo,    LOG_CONTEXT + mod, frmt, ##__VA_ARGS__)
+#define NBULogDebugWithModule(mod, frmt, ...)   LOG_OBJC_MAYBE(NBULOG_ASYNC_DEBUG,   LOG_LEVEL_FOR_MODULE(mod), DDLogFlagDebug,   LOG_CONTEXT + mod, frmt, ##__VA_ARGS__)
+#define NBULogVerboseWithModule(mod, frmt, ...) LOG_OBJC_MAYBE(NBULOG_ASYNC_VERBOSE, LOG_LEVEL_FOR_MODULE(mod), DDLogFlagVerbose, LOG_CONTEXT + mod, frmt, ##__VA_ARGS__)
 #define NBULogTraceWithModule(mod)              NBULogDebugForModule(mod, @"%@", THIS_METHOD)
 
 // Assertions
@@ -88,7 +88,7 @@
  
  Default configuration (can be dynamically changed):
  
- - AppLogLevel: `LOG_LEVEL_VERBOSE` for `DEBUG`, `LOG_LEVEL_INFO` otherwise.
+ - AppLogLevel: `DDLogLevelVerbose` for `DEBUG`, `DDLogLevelInfo` otherwise.
  - Loggers: DDTTYLogger for `DEBUG`, DDFileLogger otherwise.
  
  Manually add NBUDashboard, DDTTYLogger, DDASLLogger or DDFileLogger if desired.
@@ -108,21 +108,21 @@
 /// @name Adjusting App Log Levels
 
 /// Get the current App log level.
-+ (int)appLogLevel;
++ (DDLogLevel)appLogLevel;
 
 /// Dynamically set the App log level for all modules at once.
-/// @param LOG_LEVEL_XXX The desired log level.
+/// @param logLevel The desired log level.
 /// @note Setting this value clears all modules' levels.
-+ (void)setAppLogLevel:(int)LOG_LEVEL_XXX;
++ (void)setAppLogLevel:(DDLogLevel)logLevel;
 
 /// Get the current App log level for a given module.
 /// @param APP_MODULE_XXX The target module.
-+ (int)appLogLevelForModule:(int)APP_MODULE_XXX;
++ (DDLogLevel)appLogLevelForModule:(int)APP_MODULE_XXX;
 
 /// Dynamically set the App log level for a given module.
-/// @param LOG_LEVEL_XXX The desired log level.
+/// @param logLevel The desired log level.
 /// @param APP_MODULE_XXX The target module.
-+ (void)setAppLogLevel:(int)LOG_LEVEL_XXX
++ (void)setAppLogLevel:(DDLogLevel)logLevel
              forModule:(int)APP_MODULE_XXX;
 
 /// @name Adding Loggers

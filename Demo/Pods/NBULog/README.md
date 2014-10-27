@@ -2,11 +2,11 @@
 NBULog
 ======
 
-[![Platform: iOS](https://img.shields.io/cocoapods/p/NBULog.svg?style=flat)](http://cocoadocs.org/docsets/NBULog/)
-[![Version: 1.1.1](https://img.shields.io/cocoapods/v/NBULog.svg?style=flat)](http://cocoadocs.org/docsets/NBULog/)
+[![Platform: iOS/OSX](https://img.shields.io/cocoapods/p/NBULog.svg?style=flat)](http://cocoadocs.org/docsets/NBULog/)
+[![Version: 1.2.1](https://img.shields.io/cocoapods/v/NBULog.svg?style=flat)](http://cocoadocs.org/docsets/NBULog/)
 [![License: Apache 2.0](https://img.shields.io/cocoapods/l/NBULog.svg?style=flat)](http://cocoadocs.org/docsets/NBULog/)
 [![Dependency Status](https://www.versioneye.com/objective-c/NBULog/badge.svg?style=flat)](https://www.versioneye.com/objective-c/NBULog)
-[![Build Status](http://img.shields.io/travis/CyberAgent/iOS-NBULog/master.svg?style=flat)](https://travis-ci.org/CyberAgent/iOS-NBULog)
+[![Build Status](http://img.shields.io/travis/CyberAgent/NBULog/master.svg?style=flat)](https://travis-ci.org/CyberAgent/NBULog)
 
 Log framework based on [CocoaLumberjack](https://github.com/robbiehanson/CocoaLumberjack). Adds dynamic log levels, modules' support and eases usage.
 
@@ -14,7 +14,7 @@ _Was part of [NBUCore](https://github.com/CyberAgent/iOS-NBUCore) 1.9.x._
 
 ## Demo
 
-A demo project is included in the repository and can also be tried online [here](https://app.io/Yj1WIj).
+iOS and OS X demo projects are [included](Demo) in the repository.
 
 ## Features
 
@@ -23,8 +23,8 @@ A demo project is included in the repository and can also be tried online [here]
 Instead of handling a `ddLogLevel` variable set you app log level dynamically. Also works with third party libraries that support NBULog.
 
 ```obj-c
-[NBULog setAppLogLevel:LOG_LEVEL_INFO];
-[NBULog setKitLogLevel:LOG_LEVEL_WARN]; // When using NBUKit
+[NBULog setAppLogLevel:DDLogLevelInfo];
+[NBULog setKitLogLevel:DDLogLevelWarning]; // When using NBUKit
 ```
 
 ### Modules
@@ -58,18 +58,18 @@ Finally, you can also modify the log levels of individual modules.
 
 ```obj-c
 // Only log messages from the custom APP_MODULE_NETWORK
-[NBULog setAppLogLevel:LOG_LEVEL_OFF];
-[NBULog setAppLogLevel:LOG_LEVEL_INFO
-                 forModule:APP_MODULE_NETWORK];
+[NBULog setAppLogLevel:DDLogLevelOff];
+[NBULog setAppLogLevel:DDLogLevelInfo
+             forModule:APP_MODULE_NETWORK];
 
-[NBULog setKitLogLevel:LOG_LEVEL_WARN
+[NBULog setKitLogLevel:DDLogLevelWarning
              forModule:NBUKIT_MODULE_ADDITIONS]; // When using NBUKit
 
 ```
 
 ### XcodeColors
 
-![XcodeColors](http://cyberagent.github.io/iOS-NBULog/images/xcodecolors.png)
+![XcodeColors](http://cyberagent.github.io/NBULog/images/xcodecolors.png)
 
 When installed, [XcodeColors](https://github.com/robbiehanson/XcodeColors) are automatically enabled for the Xcode console.
 
@@ -123,7 +123,7 @@ E.g. from [NBUKit](https://github.com/CyberAgent/iOS-NBUKit)'s [`NBUKitPrivate.h
 // ...
 
 // a) Use NBULog for logging when available
-#ifdef COCOAPODS_POD_AVAILABLE_NBULog
+#if __has_include("NBULog.h")
 
 #import "NBULog+NBUKit.h"
 
@@ -137,12 +137,12 @@ E.g. from [NBUKit](https://github.com/CyberAgent/iOS-NBUKit)'s [`NBUKitPrivate.h
 #define LOG_LEVEL   [NBULog kitLogLevel]
 
 // b) Else try CocoaLumberjack
-#elif defined(COCOAPODS_POD_AVAILABLE_CocoaLumberjack)
+#elif __has_include("DDLog.h")
 
 #ifdef DEBUG
-    #define NBUKitLogLevel LOG_LEVEL_VERBOSE
+    #define NBUKitLogLevel DDLogLevelVerbose
 #else
-    #define NBUKitLogLevel LOG_LEVEL_WARN
+    #define NBUKitLogLevel DDLogLevelWarning
 #endif
 
 #define LOG_LEVEL_DEF   NBUKitLogLevel
@@ -180,7 +180,7 @@ E.g. from [NBUKit](https://github.com/CyberAgent/iOS-NBUKit)'s [`NBUKitPrivate.h
 ```obj-c
 //  NBULog+NBUKit.h
 
-#ifdef COCOAPODS_POD_AVAILABLE_NBULog
+#if __has_include("NBULog.h")
 
 #import <NBULog/NBULog.h>
 
@@ -193,8 +193,8 @@ E.g. from [NBUKit](https://github.com/CyberAgent/iOS-NBUKit)'s [`NBUKitPrivate.h
 @interface NBULog (NBUKit)
 
 // Allow to set and read the current levels.
-+ (int)kitLogLevel;
-+ (void)setKitLogLevel:(int)LOG_LEVEL_XXX;
++ (DDLogLevel)kitLogLevel;
++ (void)setKitLogLevel:(DDLogLevel)logLevel;
 
 @end
 
@@ -206,7 +206,7 @@ Then register your context and modules if you want them to appear in [Lumberjack
 ```obj-c
 //  NBULog+NBUKit.m
 
-#ifdef COCOAPODS_POD_AVAILABLE_NBULog
+#if __has_include("NBULog.h")
 
 #import "NBULog+NBUKit.h"
 #import <NBULog/NBULogContextDescription.h>
@@ -225,12 +225,12 @@ Then register your context and modules if you want them to appear in [Lumberjack
                                                        setContextLevelForModuleBlock:NULL]];
 }
 
-+ (int)kitLogLevel
++ (DDLogLevel)kitLogLevel
 {
     // ...
 }
 
-+ (void)setKitLogLevel:(int)LOG_LEVEL_XXX
++ (void)setKitLogLevel:(DDLogLevel)logLevel
 {
     // ...
 }
