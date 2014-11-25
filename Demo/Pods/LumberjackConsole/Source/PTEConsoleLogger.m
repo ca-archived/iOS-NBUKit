@@ -114,16 +114,16 @@
 
 - (NSString *)formatLogMessage:(DDLogMessage *)logMessage
 {
-    if (self->formatter)
+    if (_logFormatter)
     {
-        return [self->formatter formatLogMessage:logMessage];
+        return [_logFormatter formatLogMessage:logMessage];
     }
     else
     {
-        return [NSString stringWithFormat:@"%@:%d %@",
+        return [NSString stringWithFormat:@"%@:%@ %@",
                 logMessage.fileName,
-                logMessage->lineNumber,
-                logMessage->logMsg];
+                @(logMessage->_line),
+                logMessage->_message];
     }
 }
 
@@ -135,7 +135,7 @@
     }
     else
     {
-        return [[logMessage->logMsg
+        return [[logMessage->_message
                  stringByReplacingOccurrencesOfString:@"  " withString:@""]
                 stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
     }
@@ -161,7 +161,7 @@
 - (void)addMarker
 {
     PTEMarkerLogMessage * marker = PTEMarkerLogMessage.new;
-    marker->logMsg = [NSString stringWithFormat:@"Marker %@", NSDate.date];
+    marker->_message = [NSString stringWithFormat:@"Marker %@", NSDate.date];
     [self logMessage:marker];
 }
 
@@ -445,11 +445,11 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     // Configure the label
     if (marker)
     {
-        label.text = logMessage->logMsg;
+        label.text = logMessage->_message;
     }
     else
     {
-        switch (logMessage->logFlag)
+        switch (logMessage->_flag)
         {
             case DDLogFlagError   : label.textColor = [UIColor redColor];       break;
             case DDLogFlagWarning : label.textColor = [UIColor orangeColor];    break;
@@ -466,7 +466,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (NSString *)textForCellWithLogMessage:(DDLogMessage *)logMessage
 {
     NSString * prefix;
-    switch (logMessage->logFlag)
+    switch (logMessage->_flag)
     {
         case DDLogFlagError   : prefix = @"Ⓔ"; break;
         case DDLogFlagWarning : prefix = @"Ⓦ"; break;
@@ -535,7 +535,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Message is a marker OR (Log flag matches AND (no search text OR contains search text))
     return ([message isKindOfClass:[PTEMarkerLogMessage class]] ||
-            ((message->logFlag & _currentLogLevel) &&
+            ((message->_flag & _currentLogLevel) &&
              (_currentSearchText.length == 0 ||
               [[self formatLogMessage:message] rangeOfString:_currentSearchText
                                                      options:(NSCaseInsensitiveSearch |

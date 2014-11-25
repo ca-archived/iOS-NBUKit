@@ -36,23 +36,23 @@ static NSString * _processName;
 {
     // One-charecter log level
     NSString * logLevel;
-    switch (logMessage->logFlag)
+    switch (logMessage->_flag)
     {
-        case DDLogFlagError : logLevel = @"E"; break;
-        case DDLogFlagWarning  : logLevel = @"W"; break;
-        case DDLogFlagInfo  : logLevel = @"I"; break;
-        case DDLogFlagDebug : logLevel = @"D"; break;
-        default             : logLevel = @"V"; break;
+        case DDLogFlagError   : logLevel = @"E"; break;
+        case DDLogFlagWarning : logLevel = @"W"; break;
+        case DDLogFlagInfo    : logLevel = @"I"; break;
+        case DDLogFlagDebug   : logLevel = @"D"; break;
+        default               : logLevel = @"V"; break;
     }
     
-    return [NSString stringWithFormat:@"%@ %@[%@] %@ %@:%d %@",
-            [self stringFromDate:(logMessage->timestamp)],
+    return [NSString stringWithFormat:@"%@ %@[%@] %@ %@:%@ %@",
+            [self stringFromDate:(logMessage->_timestamp)],
             _processName,
             [self queueThreadLabelForLogMessage:logMessage],
             logLevel,
-            logMessage.fileName,
-            logMessage->lineNumber,
-            logMessage->logMsg];
+            logMessage->_fileName,
+            @(logMessage->_line),
+            logMessage->_message];
 }
 
 @end

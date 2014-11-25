@@ -200,6 +200,14 @@
     #define __NBU_APICHECK_8_0(_ios)            CF_AVAILABLE_IOS(_ios)
 #endif
 
+#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_8_1
+    #undef __AVAILABILITY_INTERNAL__IPHONE_8_1
+    #define __AVAILABILITY_INTERNAL__IPHONE_8_1 __NBU_AVAILABILITY_STARTING("8.1")
+    #define __NBU_APICHECK_8_1(_ios)            __NBU_AVAILABILITY_STARTING("8.1")
+#else
+    #define __NBU_APICHECK_8_1(_ios)            CF_AVAILABLE_IOS(_ios)
+#endif
+
 #undef  NS_AVAILABLE_IOS
 #define NS_AVAILABLE_IOS(_ios)                  __NBU_APICHECK_##_ios( _ios )
 

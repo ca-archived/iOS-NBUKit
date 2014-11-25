@@ -15,93 +15,13 @@
 
 #import <Foundation/Foundation.h>
 
-@class DDLogMessage;
+#if !defined(DDLEGACY) || DDLEGACY
+    #import "DDLegacy.h"
+#endif
 
+@class DDLogMessage;
 @protocol DDLogger;
 @protocol DDLogFormatter;
-
-/**
- * This is the single macro that all other macros below compile into.
- * This big multiline macro makes all the other macros easier to read.
- **/
-
-#define LOG_MACRO(isAsynchronous, lvl, flg, ctx, atag, fnct, frmt, ...) \
-    [DDLog log : isAsynchronous                                         \
-         level : lvl                                                    \
-          flag : flg                                                    \
-       context : ctx                                                    \
-          file : __FILE__                                               \
-      function : fnct                                                   \
-          line : __LINE__                                               \
-           tag : atag                                                   \
-        format : (frmt), ## __VA_ARGS__]
-
-/**
- * Define the Objective-C and C versions of the macro.
- * These automatically inject the proper function name for either an objective-c method or c function.
- *
- * We also define shorthand versions for asynchronous and synchronous logging.
- **/
-
-#define LOG_OBJC_MACRO(async, lvl, flg, ctx, frmt, ...) \
-             LOG_MACRO(async, lvl, flg, ctx, nil, __PRETTY_FUNCTION__, frmt, ## __VA_ARGS__)
-
-#define SYNC_LOG_OBJC_MACRO(lvl, flg, ctx, frmt, ...) \
-         LOG_OBJC_MACRO(NO, lvl, flg, ctx, frmt, ## __VA_ARGS__)
-
-#define ASYNC_LOG_OBJC_MACRO(lvl, flg, ctx, frmt, ...) \
-         LOG_OBJC_MACRO(YES, lvl, flg, ctx, frmt, ## __VA_ARGS__)
-
-/**
- * Define version of the macro that only execute if the logLevel is above the threshold.
- * The compiled versions essentially look like this:
- *
- * if (logFlagForThisLogMsg & ddLogLevel) { execute log message }
- *
- * When LOG_LEVEL_DEF is defined as ddLogLevel.
- *
- * As shown further below, Lumberjack actually uses a bitmask as opposed to primitive log levels.
- * This allows for a great amount of flexibility and some pretty advanced fine grained logging techniques.
- *
- * Note that when compiler optimizations are enabled (as they are for your release builds),
- * the log messages above your logging threshold will automatically be compiled out.
- *
- * (If the compiler sees LOG_LEVEL_DEF/ddLogLevel declared as a constant, the compiler simply checks to see
- *  if the 'if' statement would execute, and if not it strips it from the binary.)
- *
- * We also define shorthand versions for asynchronous and synchronous logging.
- **/
-
-#define LOG_MAYBE(async, lvl, flg, ctx, fnct, frmt, ...)                       \
-    do { if(lvl & flg) LOG_MACRO(async, lvl, flg, ctx, nil, fnct, frmt, ##__VA_ARGS__); } while(0)
-
-#define LOG_OBJC_MAYBE(async, lvl, flg, ctx, frmt, ...) \
-             LOG_MAYBE(async, lvl, flg, ctx, __PRETTY_FUNCTION__, frmt, ## __VA_ARGS__)
-
-#define SYNC_LOG_OBJC_MAYBE(lvl, flg, ctx, frmt, ...) \
-         LOG_OBJC_MAYBE(NO, lvl, flg, ctx, frmt, ## __VA_ARGS__)
-
-#define ASYNC_LOG_OBJC_MAYBE(lvl, flg, ctx, frmt, ...) \
-         LOG_OBJC_MAYBE(YES, lvl, flg, ctx, frmt, ## __VA_ARGS__)
-
-/**
- * Define versions of the macros that also accept tags.
- *
- * The DDLogMessage object includes a 'tag' ivar that may be used for a variety of purposes.
- * It may be used to pass custom information to loggers or formatters.
- * Or it may be used by 3rd party extensions to the framework.
- *
- * Thes macros just make it a little easier to extend logging functionality.
- **/
-
-#define LOG_OBJC_TAG_MACRO(async, lvl, flg, ctx, tag, frmt, ...) \
-                 LOG_MACRO(async, lvl, flg, ctx, tag, __PRETTY_FUNCTION__, frmt, ## __VA_ARGS__)
-
-#define LOG_TAG_MAYBE(async, lvl, flg, ctx, tag, fnct, frmt, ...)              \
-    do { if(lvl & flg) LOG_MACRO(async, lvl, flg, ctx, tag, fnct, frmt, ##__VA_ARGS__); } while(0)
-
-#define LOG_OBJC_TAG_MAYBE(async, lvl, flg, ctx, tag, frmt, ...) \
-             LOG_TAG_MAYBE(async, lvl, flg, ctx, tag, __PRETTY_FUNCTION__, frmt, ## __VA_ARGS__)
 
 /**
  * Define the standard options.
@@ -124,7 +44,7 @@
  * However, you still needed to see your error and info log messages.
  * You could accomplish that with the following:
  *
- * static const int ddLogLevel = LOG_FLAG_ERROR | LOG_FLAG_INFO;
+ * static const DDLogLevel ddLogLevel = DDLogFlagError | DDLogFlagInfo;
  *
  * When LOG_LEVEL_DEF is defined as ddLogLevel.
  *
@@ -168,52 +88,22 @@
  **/
 
 typedef NS_OPTIONS(NSUInteger, DDLogFlag) {
-    DDLogFlagError      = (1 << 0),  // 0...00001
-    DDLogFlagWarning    = (1 << 1),  // 0...00010
-    DDLogFlagInfo       = (1 << 2),  // 0...00100
-    DDLogFlagDebug      = (1 << 3),  // 0...01000
-    DDLogFlagVerbose    = (1 << 4)   // 0...10000
+    DDLogFlagError      = (1 << 0), // 0...00001
+    DDLogFlagWarning    = (1 << 1), // 0...00010
+    DDLogFlagInfo       = (1 << 2), // 0...00100
+    DDLogFlagDebug      = (1 << 3), // 0...01000
+    DDLogFlagVerbose    = (1 << 4)  // 0...10000
 };
 
 typedef NS_ENUM(NSUInteger, DDLogLevel) {
     DDLogLevelOff       = 0,
-    DDLogLevelError     = (DDLogFlagError),                             // 0...00001
-    DDLogLevelWarning   = (DDLogLevelError | DDLogFlagWarning),         // 0...00011
-    DDLogLevelInfo      = (DDLogLevelWarning | DDLogFlagInfo),          // 0...00111
-    DDLogLevelDebug     = (DDLogLevelInfo | DDLogFlagDebug),            // 0...01111
-    DDLogLevelVerbose   = (DDLogLevelDebug | DDLogFlagVerbose),         // 0...11111
-    DDLogLevelAll       = NSUIntegerMax                                 // 1111....11111 (LOG_LEVEL_VERBOSE plus any other flags)
+    DDLogLevelError     = (DDLogFlagError),                       // 0...00001
+    DDLogLevelWarning   = (DDLogLevelError   | DDLogFlagWarning), // 0...00011
+    DDLogLevelInfo      = (DDLogLevelWarning | DDLogFlagInfo),    // 0...00111
+    DDLogLevelDebug     = (DDLogLevelInfo    | DDLogFlagDebug),   // 0...01111
+    DDLogLevelVerbose   = (DDLogLevelDebug   | DDLogFlagVerbose), // 0...11111
+    DDLogLevelAll       = NSUIntegerMax                           // 1111....11111 (DDLogLevelVerbose plus any other flags)
 };
-
-// Most preprocessor variables aren't available under Swift.
-
-#define LOG_FLAG_ERROR    DDLogFlagError
-#define LOG_FLAG_WARN     DDLogFlagWarning
-#define LOG_FLAG_INFO     DDLogFlagInfo
-#define LOG_FLAG_DEBUG    DDLogFlagDebug
-#define LOG_FLAG_VERBOSE  DDLogFlagVerbose
-
-#define LOG_LEVEL_OFF     DDLogLevelOff
-#define LOG_LEVEL_ERROR   DDLogLevelError
-#define LOG_LEVEL_WARN    DDLogLevelWarning
-#define LOG_LEVEL_INFO    DDLogLevelInfo
-#define LOG_LEVEL_DEBUG   DDLogLevelDebug
-#define LOG_LEVEL_VERBOSE DDLogLevelVerbose
-#define LOG_LEVEL_ALL     DDLogLevelAll
-
-#define LOG_ERROR         (LOG_LEVEL_DEF & DDLogFlagError)
-#define LOG_WARN          (LOG_LEVEL_DEF & DDLogFlagWarning)
-#define LOG_INFO          (LOG_LEVEL_DEF & DDLogFlagInfo)
-#define LOG_DEBUG         (LOG_LEVEL_DEF & DDLogFlagDebug)
-#define LOG_VERBOSE       (LOG_LEVEL_DEF & DDLogFlagVerbose)
-
-#define LOG_ASYNC_ENABLED YES
-
-#define LOG_ASYNC_ERROR   ( NO && LOG_ASYNC_ENABLED)
-#define LOG_ASYNC_WARN    (YES && LOG_ASYNC_ENABLED)
-#define LOG_ASYNC_INFO    (YES && LOG_ASYNC_ENABLED)
-#define LOG_ASYNC_DEBUG   (YES && LOG_ASYNC_ENABLED)
-#define LOG_ASYNC_VERBOSE (YES && LOG_ASYNC_ENABLED)
 
 /**
  * The THIS_FILE macro gives you an NSString of the file name.
@@ -287,6 +177,19 @@ NSString * DDExtractFileNameWithoutExtension(const char *filePath, BOOL copy);
 
 /**
  * Logging Primitive.
+ **/
++ (void)log:(BOOL)asynchronous
+    message:(NSString *)message
+      level:(DDLogLevel)level
+       flag:(DDLogFlag)flag
+    context:(int)context
+       file:(const char *)file
+   function:(const char *)function
+       line:(int)line
+        tag:(id)tag;
+
+/**
+ * Logging Primitive.
  *
  * This method can be used if you manualy prepared DDLogMessage.
  **/
@@ -314,25 +217,26 @@ NSString * DDExtractFileNameWithoutExtension(const char *filePath, BOOL copy);
 /**
  * Adds the logger to the system.
  *
- * This is equivalent to invoking [DDLog addLogger:logger withLogLevel:LOG_LEVEL_ALL].
+ * This is equivalent to invoking [DDLog addLogger:logger withLogLevel:DDLogLevelAll].
  **/
 + (void)addLogger:(id <DDLogger>)logger;
 
 /**
  * Adds the logger to the system.
  *
- * The logLevel that you provide here is a preemptive filter (for performance).
- * That is, the logLevel specified here will be used to filter out logMessages so that
+ * The level that you provide here is a preemptive filter (for performance).
+ * That is, the level specified here will be used to filter out logMessages so that
  * the logger is never even invoked for the messages.
  *
  * More information:
  * When you issue a log statement, the logging framework iterates over each logger,
  * and checks to see if it should forward the logMessage to the logger.
- * This check is done using the logLevel parameter passed to this method.
+ * This check is done using the level parameter passed to this method.
  *
  * For example:
- * [DDLog addLogger:consoleLogger withLogLevel:LOG_LEVEL_VERBOSE];
- * [DDLog addLogger:fileLogger    withLogLevel:LOG_LEVEL_WARN];
+ *
+ * [DDLog addLogger:consoleLogger withLogLevel:DDLogLevelVerbose];
+ * [DDLog addLogger:fileLogger    withLogLevel:DDLogLevelWarning];
  *
  * DDLogError(@"oh no"); => gets forwarded to consoleLogger & fileLogger
  * DDLogInfo(@"hi");     => gets forwarded to consoleLogger only
@@ -343,17 +247,17 @@ NSString * DDExtractFileNameWithoutExtension(const char *filePath, BOOL copy);
  *
  * #define SOME_FRAMEWORK_LOG_FLAG_TRACE (1 << 6) // 0...1000000
  *
- * So if you specify LOG_LEVEL_VERBOSE to this method, you won't see the framework's trace messages.
+ * So if you specify DDLogLevelVerbose to this method, you won't see the framework's trace messages.
  *
- * (SOME_FRAMEWORK_LOG_FLAG_TRACE & LOG_LEVEL_VERBOSE) => (01000000 & 00011111) => NO
+ * (SOME_FRAMEWORK_LOG_FLAG_TRACE & DDLogLevelVerbose) => (01000000 & 00011111) => NO
  *
- * Consider passing LOG_LEVEL_ALL to this method, which has all bits set.
+ * Consider passing DDLogLevelAll to this method, which has all bits set.
  * You can also use the exclusive-or bitwise operator to get a bitmask that has all flags set,
  * except the ones you explicitly don't want. For example, if you wanted everything except verbose & debug:
  *
- * ((LOG_LEVEL_ALL ^ LOG_LEVEL_VERBOSE) | LOG_LEVEL_INFO)
+ * ((DDLogLevelAll ^ DDLogLevelVerbose) | DDLogLevelInfo)
  **/
-+ (void)addLogger:(id <DDLogger>)logger withLogLevel:(DDLogLevel)logLevel;
++ (void)addLogger:(id <DDLogger>)logger withLevel:(DDLogLevel)level;
 
 + (void)removeLogger:(id <DDLogger>)logger;
 + (void)removeAllLoggers;
@@ -370,11 +274,11 @@ NSString * DDExtractFileNameWithoutExtension(const char *filePath, BOOL copy);
 + (NSArray *)registeredClasses;
 + (NSArray *)registeredClassNames;
 
-+ (DDLogLevel)logLevelForClass:(Class)aClass;
-+ (DDLogLevel)logLevelForClassWithName:(NSString *)aClassName;
++ (DDLogLevel)levelForClass:(Class)aClass;
++ (DDLogLevel)levelForClassWithName:(NSString *)aClassName;
 
-+ (void)setLogLevel:(DDLogLevel)logLevel forClass:(Class)aClass;
-+ (void)setLogLevel:(DDLogLevel)logLevel forClassWithName:(NSString *)aClassName;
++ (void)setLevel:(DDLogLevel)level forClass:(Class)aClass;
++ (void)setLevel:(DDLogLevel)level forClassWithName:(NSString *)aClassName;
 
 @end
 
@@ -383,7 +287,6 @@ NSString * DDExtractFileNameWithoutExtension(const char *filePath, BOOL copy);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 @protocol DDLogger <NSObject>
-@required
 
 - (void)logMessage:(DDLogMessage *)logMessage;
 
@@ -393,7 +296,7 @@ NSString * DDExtractFileNameWithoutExtension(const char *filePath, BOOL copy);
  * If no formatter is set, the logger simply logs the message as it is given in logMessage,
  * or it may use its own built in formatting style.
  **/
-@property id <DDLogFormatter> logFormatter;
+@property (nonatomic, strong) id <DDLogFormatter> logFormatter;
 
 @optional
 
@@ -428,7 +331,7 @@ NSString * DDExtractFileNameWithoutExtension(const char *filePath, BOOL copy);
  * Thus, a dedicated dispatch queue is used for each logger.
  * Logger implementations may optionally choose to provide their own dispatch queue.
  **/
-- (dispatch_queue_t)loggerQueue;
+@property (nonatomic, readonly) dispatch_queue_t loggerQueue;
 
 /**
  * If the logger implementation does not choose to provide its own queue,
@@ -436,7 +339,7 @@ NSString * DDExtractFileNameWithoutExtension(const char *filePath, BOOL copy);
  * The created queue will receive its name from this method.
  * This may be helpful for debugging or profiling reasons.
  **/
-- (NSString *)loggerName;
+@property (nonatomic, readonly) NSString *loggerName;
 
 @end
 
@@ -498,14 +401,14 @@ NSString * DDExtractFileNameWithoutExtension(const char *filePath, BOOL copy);
  *     return ddLogLevel;
  * }
  *
- * + (void)ddSetLogLevel:(int)logLevel
+ * + (void)ddSetLogLevel:(DDLogLevel)level
  * {
- *     ddLogLevel = logLevel;
+ *     ddLogLevel = level;
  * }
  **/
 
 + (DDLogLevel)ddLogLevel;
-+ (void)ddSetLogLevel:(DDLogLevel)logLevel;
++ (void)ddSetLogLevel:(DDLogLevel)level;
 
 @end
 
@@ -513,40 +416,38 @@ NSString * DDExtractFileNameWithoutExtension(const char *filePath, BOOL copy);
 #pragma mark -
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#ifndef NS_DESIGNATED_INITIALIZER
+    #define NS_DESIGNATED_INITIALIZER
+#endif
+
 /**
  * The DDLogMessage class encapsulates information about the log message.
  * If you write custom loggers or formatters, you will be dealing with objects of this class.
  **/
 
-enum {
+typedef NS_OPTIONS(NSInteger, DDLogMessageOptions) {
     DDLogMessageCopyFile     = 1 << 0,
     DDLogMessageCopyFunction = 1 << 1
 };
-typedef int   DDLogMessageOptions;
 
 @interface DDLogMessage : NSObject <NSCopying>
 {
-// The public variables below can be accessed directly (for speed).
-// For example: logMessage->logLevel
-
+    // Direct accessors to be used only for performance
     @public
-    DDLogLevel logLevel;
-    DDLogFlag logFlag;
-    int logContext;
-    NSString *logMsg;
-    NSDate *timestamp;
-    char *file;
-    char *function;
-    int lineNumber;
-    mach_port_t machThreadID;
-    char *queueLabel;
-    NSString *threadName;
-
-    // For 3rd party extensions to the framework, where flags and contexts aren't enough.
-    id tag;
-
-    // For 3rd party extensions that manually create DDLogMessage instances.
-    DDLogMessageOptions options;
+    NSString *_message;
+    DDLogLevel _level;
+    DDLogFlag _flag;
+    NSUInteger _context;
+    NSString *_file;
+    NSString *_fileName;
+    NSString *_function;
+    NSUInteger _line;
+    id _tag;
+    DDLogMessageOptions _options;
+    NSDate *_timestamp;
+    NSString *_threadID;
+    NSString *_threadName;
+    NSString *_queueLabel;
 }
 
 /**
@@ -564,42 +465,34 @@ typedef int   DDLogMessageOptions;
  * However, if you need them to be copied you may use the options parameter to specify this.
  * Options is a bitmask which supports DDLogMessageCopyFile and DDLogMessageCopyFunction.
  **/
-- (instancetype)initWithLogMsg:(NSString *)logMsg
-                         level:(DDLogLevel)logLevel
-                          flag:(DDLogFlag)logFlag
-                       context:(int)logContext
-                          file:(const char *)file
-                      function:(const char *)function
-                          line:(int)line
-                           tag:(id)tag
-                       options:(DDLogMessageOptions)optionsMask;
-- (instancetype)initWithLogMsg:(NSString *)logMsg
-                         level:(DDLogLevel)logLevel
-                          flag:(DDLogFlag)logFlag
-                       context:(int)logContext
-                          file:(const char *)file
-                      function:(const char *)function
-                          line:(int)line
-                           tag:(id)tag
-                       options:(DDLogMessageOptions)optionsMask
-                     timestamp:(NSDate *)aTimestamp;
+- (instancetype)initWithMessage:(NSString *)message
+                          level:(DDLogLevel)level
+                           flag:(DDLogFlag)flag
+                        context:(NSUInteger)context
+                           file:(NSString *)file
+                       function:(NSString *)function
+                           line:(NSUInteger)line
+                            tag:(id)tag
+                        options:(DDLogMessageOptions)options
+                      timestamp:(NSDate *)timestamp NS_DESIGNATED_INITIALIZER;
 
 /**
- * Returns the threadID as it appears in NSLog.
- * That is, it is a hexadecimal value which is calculated from the machThreadID.
+ * Read-only properties
  **/
-- (NSString *)threadID;
-
-/**
- * Convenience property to get just the file name, as the file variable is generally the full file path.
- * This method does not include the file extension, which is generally unwanted for logging purposes.
- **/
-- (NSString *)fileName;
-
-/**
- * Returns the function variable in NSString form.
- **/
-- (NSString *)methodName;
+@property (readonly, nonatomic) NSString *message;
+@property (readonly, nonatomic) DDLogLevel level;
+@property (readonly, nonatomic) DDLogFlag flag;
+@property (readonly, nonatomic) NSUInteger context;
+@property (readonly, nonatomic) NSString *file;
+@property (readonly, nonatomic) NSString *fileName;
+@property (readonly, nonatomic) NSString *function;
+@property (readonly, nonatomic) NSUInteger line;
+@property (readonly, nonatomic) id tag;
+@property (readonly, nonatomic) DDLogMessageOptions options;
+@property (readonly, nonatomic) NSDate *timestamp;
+@property (readonly, nonatomic) NSString *threadID; // ID as it appears in NSLog calculated from the machThreadID
+@property (readonly, nonatomic) NSString *threadName;
+@property (readonly, nonatomic) NSString *queueLabel;
 
 @end
 
@@ -626,14 +519,18 @@ typedef int   DDLogMessageOptions;
 
 @interface DDAbstractLogger : NSObject <DDLogger>
 {
-    id <DDLogFormatter> formatter;
-
-    dispatch_queue_t loggerQueue;
+    // Direct accessors to be used only for performance
+    @public
+    id <DDLogFormatter> _logFormatter;
+    dispatch_queue_t _loggerQueue;
 }
-@property (strong) id <DDLogFormatter> logFormatter;
+
+@property (nonatomic, strong)    id <DDLogFormatter> logFormatter;
+@property (nonatomic, readwrite) dispatch_queue_t loggerQueue;
 
 // For thread-safety assertions
-- (BOOL)isOnGlobalLoggingQueue;
-- (BOOL)isOnInternalLoggerQueue;
+@property (nonatomic, readonly, getter=isOnGlobalLoggingQueue)  BOOL onGlobalLoggingQueue;
+@property (nonatomic, readonly, getter=isOnInternalLoggerQueue) BOOL onInternalLoggerQueue;
 
 @end
+

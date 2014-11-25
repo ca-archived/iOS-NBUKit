@@ -10,7 +10,7 @@ NBUCore
 
 Convenience macros, functions and API availability checks for iOS projects.
 
-_[NBULog](https://github.com/CyberAgent/iOS-NBULog) and [NBUKit](https://github.com/CyberAgent/iOS-NBUKit)'s Additions used to be part of NBUCore._
+_[NBULog](https://github.com/CyberAgent/NBULog) and [NBUKit](https://github.com/CyberAgent/iOS-NBUKit)'s Additions used to be part of NBUCore._
 
 ## Features
 

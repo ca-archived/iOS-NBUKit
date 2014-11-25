@@ -3,7 +3,7 @@
 Pod::Spec.new do |s|
     
     s.name          = "NBUKit"
-    s.version       = "2.4.0"
+    s.version       = "2.4.1"
     s.summary       = "UIKit and NSFoundation convenience categories and subclasses."
     s.homepage      = "http://cyberagent.github.io/iOS-NBUKit/"
     s.license       = { :type => 'Apache License, Version 2.0', :file => 'LICENSE' }
@@ -27,23 +27,17 @@ Pod::Spec.new do |s|
     end
 
     s.subspec 'UI' do |sub|
-        sub.source_files    = 'Source/UI/*.{h,m}'
+        sub.source_files    = 'Source/UI/*.{h,m}', 'Library/NBUCompatibility/*.{h,m}'
         sub.resource_bundle = { 'NBUKit' => ['Resources/*.{png,lproj}', 'Source/UI/*.{xib}'] }
         sub.frameworks      = 'MessageUI'
         sub.dependency      'NBUKit/Additions'
-        sub.dependency      'NBUKit/Library/NBUCompatibility'
         sub.dependency      'NBUKit/Library/RestKitSupport'
         sub.dependency      'MotionOrientation@PTEz', '>= 1.1.0'
     end
-    
+
     s.subspec 'Library' do |sl|
         
         sl.dependency 'NBUKit/Base'
-        
-        sl.subspec 'NBUCompatibility' do |sc|
-            sc.source_files     = 'Library/NBUCompatibility/*.{h,m}'
-            sc.dependency       'NBUKit/UI'
-        end
         
         sl.subspec 'RestKitSupport' do |srk|
             srk.requires_arc    = false

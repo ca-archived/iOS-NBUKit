@@ -299,3 +299,17 @@ static PTEDashboard * _sharedDashboard;
 
 @end
 
+
+@interface PTERootController : UIViewController
+
+@end
+
+@implementation PTERootController
+
+- (BOOL)prefersStatusBarHidden
+{
+    // Fixes missing status bar.
+    return NO;
+}
+
+@end
