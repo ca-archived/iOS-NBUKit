@@ -121,8 +121,8 @@
                  forKey:(NSString *)key
 {
     // TODO: make object a plist string
-    if (![Lockbox setString:[object description]
-                     forKey:key])
+    if (![Lockbox archiveObject:[object description]
+                         forKey:key])
     {
         NBULogError(@"Couldn't set secure object '%@' for key '%@'",
                    object, key);
@@ -132,7 +132,7 @@
 + (NSString *)secureObjectForKey:(NSString *)key
 {
     // TODO:    return [[Lockbox stringForKey:key] propertyList];
-    return [Lockbox stringForKey:key];
+    return [Lockbox unarchiveObjectForKey:key];
 }
 
 @end
