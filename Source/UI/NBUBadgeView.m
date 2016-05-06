@@ -38,10 +38,13 @@
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
-    // Even when created programatically we load from Nib!
-    NBUBadgeView * badge = [NBUBadgeView badge];
-    badge.origin = frame.origin;
-    return badge;
+    self = [super initWithFrame:frame];
+    if (self)
+    {
+        self = [NBUBadgeView badge];
+        self.origin = frame.origin;
+    }
+    return self;
 }
 
 - (void)commonInit
