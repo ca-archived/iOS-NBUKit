@@ -58,7 +58,6 @@
                                        UIInterfaceOrientationMaskPortraitUpsideDown);
     
     // First rotation
-    [MotionOrientation initialize];
     [self setDeviceOrientation:[MotionOrientation sharedInstance].deviceOrientation
                       animated:NO];
     
@@ -158,7 +157,6 @@
                                        UIInterfaceOrientationMaskPortraitUpsideDown);
     
     // First rotation
-    [MotionOrientation initialize];
     [self setDeviceOrientation:[MotionOrientation sharedInstance].deviceOrientation
                       animated:NO];
     
@@ -258,7 +256,6 @@
                                        UIInterfaceOrientationMaskPortraitUpsideDown);
     
     // First rotation
-    [MotionOrientation initialize];
     [self setDeviceOrientation:[MotionOrientation sharedInstance].deviceOrientation
                       animated:NO];
     
