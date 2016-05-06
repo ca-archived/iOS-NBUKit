@@ -3,7 +3,7 @@
 //  NBUCore
 //
 //  Created by Ernesto Rivera on 2013/10/01.
-//  Copyright (c) 2012-2014 CyberAgent Inc.
+//  Copyright (c) 2012-2016 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -206,6 +206,62 @@
     #define __NBU_APICHECK_8_1(_ios)            __NBU_AVAILABILITY_STARTING("8.1")
 #else
     #define __NBU_APICHECK_8_1(_ios)            CF_AVAILABLE_IOS(_ios)
+#endif
+
+#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_8_2
+    #undef __AVAILABILITY_INTERNAL__IPHONE_8_2
+    #define __AVAILABILITY_INTERNAL__IPHONE_8_2 __NBU_AVAILABILITY_STARTING("8.2")
+    #define __NBU_APICHECK_8_2(_ios)            __NBU_AVAILABILITY_STARTING("8.2")
+#else
+    #define __NBU_APICHECK_8_2(_ios)            CF_AVAILABLE_IOS(_ios)
+#endif
+
+#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_8_3
+    #undef __AVAILABILITY_INTERNAL__IPHONE_8_3
+    #define __AVAILABILITY_INTERNAL__IPHONE_8_3 __NBU_AVAILABILITY_STARTING("8.3")
+    #define __NBU_APICHECK_8_3(_ios)            __NBU_AVAILABILITY_STARTING("8.3")
+#else
+    #define __NBU_APICHECK_8_3(_ios)            CF_AVAILABLE_IOS(_ios)
+#endif
+
+#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_8_4
+    #undef __AVAILABILITY_INTERNAL__IPHONE_8_4
+    #define __AVAILABILITY_INTERNAL__IPHONE_8_4 __NBU_AVAILABILITY_STARTING("8.4")
+    #define __NBU_APICHECK_8_4(_ios)            __NBU_AVAILABILITY_STARTING("8.4")
+#else
+    #define __NBU_APICHECK_8_4(_ios)            CF_AVAILABLE_IOS(_ios)
+#endif
+
+#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_9_0
+    #undef __AVAILABILITY_INTERNAL__IPHONE_9_0
+    #define __AVAILABILITY_INTERNAL__IPHONE_9_0 __NBU_AVAILABILITY_STARTING("9.0")
+    #define __NBU_APICHECK_9_0(_ios)            __NBU_AVAILABILITY_STARTING("9.0")
+#else
+    #define __NBU_APICHECK_9_0(_ios)            CF_AVAILABLE_IOS(_ios)
+#endif
+
+#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_9_1
+    #undef __AVAILABILITY_INTERNAL__IPHONE_9_1
+    #define __AVAILABILITY_INTERNAL__IPHONE_9_1 __NBU_AVAILABILITY_STARTING("9.1")
+    #define __NBU_APICHECK_9_1(_ios)            __NBU_AVAILABILITY_STARTING("9.1")
+#else
+    #define __NBU_APICHECK_9_1(_ios)            CF_AVAILABLE_IOS(_ios)
+#endif
+
+#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_9_2
+    #undef __AVAILABILITY_INTERNAL__IPHONE_9_2
+    #define __AVAILABILITY_INTERNAL__IPHONE_9_2 __NBU_AVAILABILITY_STARTING("9.2")
+    #define __NBU_APICHECK_9_2(_ios)            __NBU_AVAILABILITY_STARTING("9.2")
+#else
+    #define __NBU_APICHECK_9_2(_ios)            CF_AVAILABLE_IOS(_ios)
+#endif
+
+#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_9_3
+    #undef __AVAILABILITY_INTERNAL__IPHONE_9_3
+    #define __AVAILABILITY_INTERNAL__IPHONE_9_3 __NBU_AVAILABILITY_STARTING("9.3")
+    #define __NBU_APICHECK_9_3(_ios)            __NBU_AVAILABILITY_STARTING("9.3")
+#else
+    #define __NBU_APICHECK_9_3(_ios)            CF_AVAILABLE_IOS(_ios)
 #endif
 
 #undef  NS_AVAILABLE_IOS

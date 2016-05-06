@@ -3,7 +3,7 @@ NBULog
 ======
 
 [![Platform: iOS/OSX](https://img.shields.io/cocoapods/p/NBULog.svg?style=flat)](http://cocoadocs.org/docsets/NBULog/)
-[![Version: 1.2.2](https://img.shields.io/cocoapods/v/NBULog.svg?style=flat)](http://cocoadocs.org/docsets/NBULog/)
+[![Version: 1.2.4](https://img.shields.io/cocoapods/v/NBULog.svg?style=flat)](http://cocoadocs.org/docsets/NBULog/)
 [![License: Apache 2.0](https://img.shields.io/cocoapods/l/NBULog.svg?style=flat)](http://cocoadocs.org/docsets/NBULog/)
 [![Dependency Status](https://www.versioneye.com/objective-c/NBULog/badge.svg?style=flat)](https://www.versioneye.com/objective-c/NBULog)
 [![Build Status](http://img.shields.io/travis/CyberAgent/NBULog/master.svg?style=flat)](https://travis-ci.org/CyberAgent/NBULog)
@@ -243,7 +243,7 @@ Then register your context and modules if you want them to appear in [Lumberjack
 
 ## License
 
-    Copyright 2012-2014 CyberAgent Inc.
+    Copyright 2012-2015 CyberAgent Inc.
     
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License. 

@@ -3,7 +3,7 @@ NBUCore
 =======
 
 [![Platform: iOS](https://img.shields.io/cocoapods/p/NBUCore.svg?style=flat)](http://cocoadocs.org/docsets/NBUCore/)
-[![Version: 2.0.3](https://img.shields.io/cocoapods/v/NBUCore.svg?style=flat)](http://cocoadocs.org/docsets/NBUCore/)
+[![Version: 2.0.5](https://img.shields.io/cocoapods/v/NBUCore.svg?style=flat)](http://cocoadocs.org/docsets/NBUCore/)
 [![License: Apache 2.0](https://img.shields.io/cocoapods/l/NBUCore.svg?style=flat)](http://cocoadocs.org/docsets/NBUCore/)
 [![Dependency Status](https://www.versioneye.com/objective-c/NBUCore/badge.svg?style=flat)](https://www.versioneye.com/objective-c/NBUCore)
 [![Build Status](http://img.shields.io/travis/CyberAgent/iOS-NBUCore/master.svg?style=flat)](https://travis-ci.org/CyberAgent/iOS-NBUCore)
@@ -41,7 +41,7 @@ http://cocoadocs.org/docsets/NBUCore/
 
 ## License
 
-    Copyright 2012-2014 CyberAgent Inc.
+    Copyright (c) 2012-2016 CyberAgent Inc.
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License. 

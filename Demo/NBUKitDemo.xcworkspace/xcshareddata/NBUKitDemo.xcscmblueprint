@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "AEF8F3FE0C0E13E533A5B61261DE75AE9A0CC4C6",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "AEF8F3FE0C0E13E533A5B61261DE75AE9A0CC4C6" : 0,
+    "1CE69B63641D4BDEE596AA3BE34F2C59B2C2B1C4" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "F4AAEC25-A0F8-45FD-8A40-378E570139CF",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "AEF8F3FE0C0E13E533A5B61261DE75AE9A0CC4C6" : "NBUKit",
+    "1CE69B63641D4BDEE596AA3BE34F2C59B2C2B1C4" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "NBUKitDemo",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Demo\/NBUKitDemo.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ghe.amb.ca.local:ameba-smartphone\/iOS-NBUBase.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1CE69B63641D4BDEE596AA3BE34F2C59B2C2B1C4"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/github.com\/CyberAgent\/iOS-NBUKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "AEF8F3FE0C0E13E533A5B61261DE75AE9A0CC4C6"
+    }
+  ]
+}

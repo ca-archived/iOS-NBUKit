@@ -1,0 +1,4 @@
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/LumberjackConsole" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/CocoaLumberjack" "${PODS_ROOT}/Headers/Public/Lockbox" "${PODS_ROOT}/Headers/Public/LumberjackConsole" "${PODS_ROOT}/Headers/Public/MotionOrientation@PTEz" "${PODS_ROOT}/Headers/Public/NBUCore" "${PODS_ROOT}/Headers/Public/NBUKit" "${PODS_ROOT}/Headers/Public/NBULog"
+PODS_ROOT = ${SRCROOT}
+SKIP_INSTALL = YES

@@ -172,6 +172,7 @@
 				34C4AD8E15BE87FF00709E28 /* Frameworks */,
 				34C4AD8F15BE87FF00709E28 /* Resources */,
 				0AB02F6FD4994421B6F59FBA /* Copy Pods Resources */,
+				8C9BCA3F52D143566F55DD60 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -188,7 +189,7 @@
 		34C4AD8815BE87FF00709E28 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "CyberAgent Inc.";
 			};
 			buildConfigurationList = 34C4AD8B15BE87FF00709E28 /* Build configuration list for PBXProject "NBUKitDemo" */;
@@ -238,6 +239,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+		};
+		8C9BCA3F52D143566F55DD60 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		9215BCA2073E4DDBA6F68A7B /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -297,6 +313,8 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -330,6 +348,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = "TESTING=1";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -353,6 +372,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NBUKitDemo/NBUKitDemo-Prefix.pch";
 				INFOPLIST_FILE = "NBUKitDemo/NBUKitDemo-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.cyberagent.nbu.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = NBUKitDemo;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -368,6 +388,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NBUKitDemo/NBUKitDemo-Prefix.pch";
 				INFOPLIST_FILE = "NBUKitDemo/NBUKitDemo-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.cyberagent.nbu.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = NBUKitDemo;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;

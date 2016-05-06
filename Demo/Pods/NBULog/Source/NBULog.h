@@ -3,7 +3,7 @@
 //  NBULog
 //
 //  Created by Ernesto Rivera on 2012/12/06.
-//  Copyright (c) 2012-2014 CyberAgent Inc.
+//  Copyright (c) 2012-2015 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@
 //  limitations under the License.
 //
 
-#import <CocoaLumberjack/DDLog.h>
+#import <CocoaLumberjack/CocoaLumberjack.h>
 
 /// Extensible default contexts
 #define APP_LOG_CONTEXT     0
@@ -59,19 +59,19 @@
 #define NBULOG_ASYNC_VERBOSE  (![NBULog forceSyncLogging] && LOG_ASYNC_ENABLED)
 
 /// Log with the currently defined LOG_CONTEXT + LOG_MODULE
-#define NBULogError(frmt, ...)   LOG_OBJC_MAYBE(NBULOG_ASYNC_ERROR,   LOG_LEVEL, DDLogFlagError,   LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
-#define NBULogWarn(frmt, ...)    LOG_OBJC_MAYBE(NBULOG_ASYNC_WARN,    LOG_LEVEL, DDLogFlagWarning,    LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
-#define NBULogInfo(frmt, ...)    LOG_OBJC_MAYBE(NBULOG_ASYNC_INFO,    LOG_LEVEL, DDLogFlagInfo,    LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
-#define NBULogDebug(frmt, ...)   LOG_OBJC_MAYBE(NBULOG_ASYNC_DEBUG,   LOG_LEVEL, DDLogFlagDebug,   LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
-#define NBULogVerbose(frmt, ...) LOG_OBJC_MAYBE(NBULOG_ASYNC_VERBOSE, LOG_LEVEL, DDLogFlagVerbose, LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
+#define NBULogError(frmt, ...)   LOG_MAYBE(NBULOG_ASYNC_ERROR,   LOG_LEVEL, DDLogFlagError,   LOG_CONTEXT + LOG_MODULE, nil, __PRETTY_FUNCTION__, frmt, ##__VA_ARGS__)
+#define NBULogWarn(frmt, ...)    LOG_MAYBE(NBULOG_ASYNC_WARN,    LOG_LEVEL, DDLogFlagWarning, LOG_CONTEXT + LOG_MODULE, nil, __PRETTY_FUNCTION__, frmt, ##__VA_ARGS__)
+#define NBULogInfo(frmt, ...)    LOG_MAYBE(NBULOG_ASYNC_INFO,    LOG_LEVEL, DDLogFlagInfo,    LOG_CONTEXT + LOG_MODULE, nil, __PRETTY_FUNCTION__, frmt, ##__VA_ARGS__)
+#define NBULogDebug(frmt, ...)   LOG_MAYBE(NBULOG_ASYNC_DEBUG,   LOG_LEVEL, DDLogFlagDebug,   LOG_CONTEXT + LOG_MODULE, nil, __PRETTY_FUNCTION__, frmt, ##__VA_ARGS__)
+#define NBULogVerbose(frmt, ...) LOG_MAYBE(NBULOG_ASYNC_VERBOSE, LOG_LEVEL, DDLogFlagVerbose, LOG_CONTEXT + LOG_MODULE, nil, __PRETTY_FUNCTION__, frmt, ##__VA_ARGS__)
 #define NBULogTrace()            NBULogDebug(@"%s", __PRETTY_FUNCTION__)
 
 /// Log with specific module that may be different from the currently defined LOG_MODULE
-#define NBULogErrorWithModule(mod, frmt, ...)   LOG_OBJC_MAYBE(NBULOG_ASYNC_ERROR,   LOG_LEVEL_FOR_MODULE(mod), DDLogFlagError,   LOG_CONTEXT + mod, frmt, ##__VA_ARGS__)
-#define NBULogWarnWithModule(mod, frmt, ...)    LOG_OBJC_MAYBE(NBULOG_ASYNC_WARN,    LOG_LEVEL_FOR_MODULE(mod), DDLogFlagWarning,    LOG_CONTEXT + mod, frmt, ##__VA_ARGS__)
-#define NBULogInfoWithModule(mod, frmt, ...)    LOG_OBJC_MAYBE(NBULOG_ASYNC_INFO,    LOG_LEVEL_FOR_MODULE(mod), DDLogFlagInfo,    LOG_CONTEXT + mod, frmt, ##__VA_ARGS__)
-#define NBULogDebugWithModule(mod, frmt, ...)   LOG_OBJC_MAYBE(NBULOG_ASYNC_DEBUG,   LOG_LEVEL_FOR_MODULE(mod), DDLogFlagDebug,   LOG_CONTEXT + mod, frmt, ##__VA_ARGS__)
-#define NBULogVerboseWithModule(mod, frmt, ...) LOG_OBJC_MAYBE(NBULOG_ASYNC_VERBOSE, LOG_LEVEL_FOR_MODULE(mod), DDLogFlagVerbose, LOG_CONTEXT + mod, frmt, ##__VA_ARGS__)
+#define NBULogErrorWithModule(mod, frmt, ...)   LOG_MAYBE(NBULOG_ASYNC_ERROR,   LOG_LEVEL_FOR_MODULE(mod), DDLogFlagError,   LOG_CONTEXT + mod, nil, __PRETTY_FUNCTION__, frmt, ##__VA_ARGS__)
+#define NBULogWarnWithModule(mod, frmt, ...)    LOG_MAYBE(NBULOG_ASYNC_WARN,    LOG_LEVEL_FOR_MODULE(mod), DDLogFlagWarning, LOG_CONTEXT + mod, nil, __PRETTY_FUNCTION__, frmt, ##__VA_ARGS__)
+#define NBULogInfoWithModule(mod, frmt, ...)    LOG_MAYBE(NBULOG_ASYNC_INFO,    LOG_LEVEL_FOR_MODULE(mod), DDLogFlagInfo,    LOG_CONTEXT + mod, nil, __PRETTY_FUNCTION__, frmt, ##__VA_ARGS__)
+#define NBULogDebugWithModule(mod, frmt, ...)   LOG_MAYBE(NBULOG_ASYNC_DEBUG,   LOG_LEVEL_FOR_MODULE(mod), DDLogFlagDebug,   LOG_CONTEXT + mod, nil, __PRETTY_FUNCTION__, frmt, ##__VA_ARGS__)
+#define NBULogVerboseWithModule(mod, frmt, ...) LOG_MAYBE(NBULOG_ASYNC_VERBOSE, LOG_LEVEL_FOR_MODULE(mod), DDLogFlagVerbose, LOG_CONTEXT + mod, nil, __PRETTY_FUNCTION__, frmt, ##__VA_ARGS__)
 #define NBULogTraceWithModule(mod)              NBULogDebugForModule(mod, @"%@", THIS_METHOD)
 
 // Assertions

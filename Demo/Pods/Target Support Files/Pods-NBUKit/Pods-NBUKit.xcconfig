@@ -1,1 +1,0 @@
-PODS_NBUKIT_OTHER_LDFLAGS = -framework "MessageUI" -framework "MobileCoreServices"
