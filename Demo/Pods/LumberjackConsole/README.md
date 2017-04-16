@@ -58,20 +58,20 @@ http://cocoadocs.org/docsets/LumberjackConsole/
 
 Import the dashboard header:
 ```obj-c
-#import <LumberjackConsole/PTEDashboard.h>
+# import <LumberjackConsole/PTEDashboard.h>
 ```
 
 Add its logger for testing builds:
 ```obj-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-#ifndef PRODUCTION
+# ifndef PRODUCTION
         // Add the console dashboard for testing builds
         [PTEDashboard.sharedDashboard show];                // <- If not using NBULog
         // [NBULog addDashboardLogger];                     // <- If using NBULog
         
         DDLogInfo(@"Added console dashboard");
-#endif
+# endif
         
         // ...
 }
