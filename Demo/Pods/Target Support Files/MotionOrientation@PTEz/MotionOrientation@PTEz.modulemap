@@ -1,0 +1,6 @@
+framework module MotionOrientation_PTEz {
+  umbrella header "MotionOrientation@PTEz-umbrella.h"
+
+  export *
+  module * { export * }
+}

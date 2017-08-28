@@ -7,6 +7,8 @@
 
 Lockbox is an Objective-C utility class for storing data securely in the keychain. Use it to store small, sensitive bits of data securely.
 
+Looking for a Swift version? Check out [Strongbox](https://github.com/granoff/Strongbox).
+
 ## Overview
 
 There are some bits of data that an app sometimes needs to store that are sensitive:
@@ -50,6 +52,8 @@ NSDate *theDate = [Lockbox unarchiveObjectForKey:@"theDate"];
 
 See below for notes on the `accessibility` argument.
 
+See below for information about migrating from Lockbox v2.x APIs to Lockbox v3 APIs.
+
 Lockbox 2.x and older include the following deprecated methods, shown here as class methods. The same methods (as instance methods) may be called on your own Lockbox instances.
 
 ### NSString (deprecated)
@@ -88,23 +92,30 @@ The `setXxx` methods will overwrite values for keys that already exist in the ke
 
 In all the methods you can use a simple key name, like "MyKey", but know that under the hood Lockbox is prefixing that key with your app's bundle id (if you are using the Class methods, your own key if you are using a Lockbox instance). So the actual key used to store and retrieve the data looks more like "com.mycompany.myapp.MyKey" or "my.custom.key.MyKey". This ensures that your app, and only your app, has access to your data.
 
-The methods with an `accessibility` argument take a [Keychain Item
-Accessibility
-Constant](http://developer.apple.com/library/ios/#DOCUMENTATION/Security/Reference/keychainservices/Reference/reference.html#//apple_ref/doc/uid/TP30000898-CH4g-SW318). You
-can use this to control when your keychain item should be readable. For
+The methods with an `accessibility` argument take a [Keychain Item Accessibility
+Constant](http://developer.apple.com/library/ios/#DOCUMENTATION/Security/Reference/keychainservices/Reference/reference.html#//apple_ref/doc/uid/TP30000898-CH4g-SW318). You can use this to control when your keychain item should be readable. For
 example, passing `kSecAttrAccessibleWhenUnlockedThisDeviceOnly` will make
 it accessible only while the device is unlocked, and will not migrate this
 item to a new device or installation. The methods without a specific
 `accessibility` argument will use `kSecAttrAccessibleWhenUnlocked`, the default in recent iOS versions.
 
+## Migrating to Lockbox v3 APIs
+
+There is no automatic migration from the old `setXxx` methods to the new archive/unarchive methods. In fact, that would be nearly impossible as there is no way to know what you stored for any given key to be able to retrieve the data correctly. The v3 APIs are incompatible with the v2.x APIs.
+
+Manual migration is required. You'll need to fetch your data using the now deprecated type-specific v2.x methods, and then store the data again using the new `archiveObjectForKey:` method.
+
+You might do this at launch, one time, for all your Lockbox data stored using the old methods. Then make a note by storing another key, either via Lockbox or in User Defaults or somewhere else, that you've done this migration in your app. So on subsequent launches, you wouldn't have to do the migration again. In fact, that would be redundant and probably mess up your data.
+
 ## ARC Support
 
 As of v2.0, Lockbox is ARC-only. For non-ARC support, use v1.4.9.
 
-
 ## Requirements & Limitations
 
 To use this class you will need to add the `Security` framework to your project.
+
+Your project will have to have Keychain Sharing enabled for Lockbox to access the keychain, but you can remove any Keychain Groups that Xcode adds. The entititlement is apparently required for any keychain access, not just sharing.
 
 This class was written for use under Cocoa Touch and iOS. The code and tests run fine in the iOS simulator under Mac OS. But there are some issues using this class under Cocoa and Mac OS. There are some keychain API differences between the 2 platforms, as it happens. Feel free to fork this repo to make it work for both Cocoa and Cocoa Touch and I'll be happy to consider your pull request!
 

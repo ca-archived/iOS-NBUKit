@@ -3,7 +3,7 @@
 //  LumberjackConsole
 //
 //  Created by Ernesto Rivera on 2014/04/09.
-//  Copyright (c) 2013-2015 PTEz.
+//  Copyright (c) 2013-2017 PTEz.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -51,6 +51,7 @@
     // Default settings
     self.allowsMultipleSelection = YES;
     self.rowHeight = 20.0;
+    self.logger = [PTEConsoleLogger new];
 }
 
 - (void)willMoveToWindow:(UIWindow *)newWindow
@@ -71,14 +72,14 @@
     // Make sure the logger is also our data source and delegate
     self.dataSource = logger;
     self.delegate = logger;
-    
-    // And our search bar's delegate too
-    self.searchBar.delegate = logger;
 }
 
 - (void)setSearchBar:(UISearchBar *)searchBar
 {
     _searchBar = searchBar;
+    
+    // Set our search bar's delegate
+    searchBar.delegate = self.logger;
     
     // Customize searchBar keyboard's return key
     NSArray * subviewsToCheck = SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") ? ((UIView *)_searchBar.subviews[0]).subviews :
@@ -91,19 +92,6 @@
             ((UITextField *)view).enablesReturnKeyAutomatically = NO;
         }
     }
-}
-
-- (id<UITableViewDataSource>)dataSource
-{
-    // Create a logger if needed
-    PTEConsoleLogger * logger = self.logger;
-    if (!logger)
-    {
-        logger = [PTEConsoleLogger new];
-        self.logger = logger;
-    }
-    
-    return logger;
 }
 
 - (IBAction)clearConsole:(id)sender

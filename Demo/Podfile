@@ -1,6 +1,8 @@
 
-platform :ios, '5.0'
-source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+use_frameworks!
+
+target 'NBUKitDemo' do
 
 # For regular projects
 #pod 'NBUKit'
@@ -14,3 +16,4 @@ pod 'LumberjackConsole'
 # For development
 pod 'NBUKit', :path => '../'
 
+end

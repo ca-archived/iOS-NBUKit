@@ -1,0 +1,9 @@
+FRAMEWORK_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/CocoaLumberjack" "$PODS_CONFIGURATION_BUILD_DIR/Lockbox" "$PODS_CONFIGURATION_BUILD_DIR/LumberjackConsole" "$PODS_CONFIGURATION_BUILD_DIR/MotionOrientation@PTEz" "$PODS_CONFIGURATION_BUILD_DIR/NBUCore" "$PODS_CONFIGURATION_BUILD_DIR/NBUKit" "$PODS_CONFIGURATION_BUILD_DIR/NBULog"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
+OTHER_CFLAGS = $(inherited) -iquote "$PODS_CONFIGURATION_BUILD_DIR/CocoaLumberjack/CocoaLumberjack.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/Lockbox/Lockbox.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/LumberjackConsole/LumberjackConsole.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/MotionOrientation@PTEz/MotionOrientation_PTEz.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/NBUCore/NBUCore.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/NBUKit/NBUKit.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/NBULog/NBULog.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -framework "CocoaLumberjack" -framework "Lockbox" -framework "LumberjackConsole" -framework "MotionOrientation_PTEz" -framework "NBUCore" -framework "NBUKit" -framework "NBULog"
+PODS_BUILD_DIR = $BUILD_DIR
+PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
+PODS_ROOT = ${SRCROOT}/Pods

@@ -3,7 +3,7 @@
 //  NBULog
 //
 //  Created by Ernesto Rivera on 2012/12/06.
-//  Copyright (c) 2012-2015 CyberAgent Inc.
+//  Copyright (c) 2012-2016 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@
 #import <CocoaLumberjack/DDTTYLogger.h>
 #import <CocoaLumberjack/DDFileLogger.h>
 #import <CocoaLumberjack/DDASLLogger.h>
-#if __has_include(<LumberjackConsole/PTEDashboard.h>)
+#if defined(NBU_SHOW_DASHBOARD)
     #import <LumberjackConsole/PTEDashboard.h>
 #endif
 
@@ -121,7 +121,7 @@ static id<DDLogFormatter> _nbuLogFormatter;
 
 + (void)addDashboardLogger
 {
-#if __has_include(<LumberjackConsole/PTEDashboard.h>)
+#if defined(NBU_SHOW_DASHBOARD)
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^
                   {

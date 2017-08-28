@@ -1,0 +1,6 @@
+framework module LumberjackConsole {
+  umbrella header "LumberjackConsole-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -3,7 +3,7 @@
 //  LumberjackConsole
 //
 //  Created by Ernesto Rivera on 2014/04/09.
-//  Copyright (c) 2013-2015 PTEz.
+//  Copyright (c) 2013-2017 PTEz.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.

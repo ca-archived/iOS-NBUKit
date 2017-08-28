@@ -1,0 +1,6 @@
+framework module NBUCore {
+  umbrella header "NBUCore-umbrella.h"
+
+  export *
+  module * { export * }
+}

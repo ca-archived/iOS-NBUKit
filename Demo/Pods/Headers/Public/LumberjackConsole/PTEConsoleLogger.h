@@ -1,1 +1,0 @@
-../../../LumberjackConsole/Source/PTEConsoleLogger.h

@@ -1,0 +1,6 @@
+framework module NBULog {
+  umbrella header "NBULog-umbrella.h"
+
+  export *
+  module * { export * }
+}

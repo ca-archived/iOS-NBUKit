@@ -1,0 +1,6 @@
+framework module Lockbox {
+  umbrella header "Lockbox-umbrella.h"
+
+  export *
+  module * { export * }
+}

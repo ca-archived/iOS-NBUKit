@@ -3,7 +3,7 @@
 //  LumberjackConsole
 //
 //  Created by Ernesto Rivera on 2012/12/17.
-//  Copyright (c) 2013-2015 PTEz.
+//  Copyright (c) 2013-2017 PTEz.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -59,9 +59,9 @@ static PTEDashboard * _sharedDashboard;
         }
         
         // Load Storyboard
-        self.rootViewController = [[UIStoryboard storyboardWithName:@"LumberjackConsole"
-                                                             bundle:nil] instantiateInitialViewController];
-        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"LumberjackConsole" bundle:[NSBundle bundleForClass:[self class]]];
+        self.rootViewController = [storyboard instantiateInitialViewController];
+			
         // Save references
         NSArray * subviews = self.rootViewController.view.subviews;
         _consoleTableView = subviews[0];
@@ -98,6 +98,11 @@ static PTEDashboard * _sharedDashboard;
     self.hidden = NO;
     self.minimized = YES;
 }
+- (void)hide
+{
+    self.hidden = YES;
+    self.minimized = YES;
+}
 
 - (void)handleStatusBarOrientationChange:(NSNotification *)notification
 {
@@ -107,21 +112,16 @@ static PTEDashboard * _sharedDashboard;
     
     // Flip the window's height and width?
     CGRect frame = self.frame;
-    if ((UIDeviceOrientationIsLandscape(currentOrientation) && UIDeviceOrientationIsPortrait(nextOrientation)) ||
-        (UIDeviceOrientationIsPortrait(currentOrientation) && UIDeviceOrientationIsLandscape(nextOrientation)))
+    if ((UIInterfaceOrientationIsLandscape(currentOrientation) && UIInterfaceOrientationIsPortrait(nextOrientation)) ||
+        (UIInterfaceOrientationIsPortrait(currentOrientation) && UIInterfaceOrientationIsLandscape(nextOrientation)))
     {
-        frame.size = CGSizeMake(frame.size.height,
-                                frame.size.width);
+        frame.size = CGSizeMake(frame.size.height,frame.size.width);
     }
-    
+	
     // Calculate the transform and origin
     CGAffineTransform transform;
     switch (nextOrientation)
     {
-        case UIInterfaceOrientationPortrait:
-            frame.origin = CGPointZero;
-            transform = CGAffineTransformIdentity;
-            break;
         case UIInterfaceOrientationLandscapeLeft:
             frame.origin = CGPointMake(0.0, _screenSize.height);
             transform = CGAffineTransformMakeRotation(- M_PI / 2.0);
@@ -135,6 +135,8 @@ static PTEDashboard * _sharedDashboard;
             transform = CGAffineTransformMakeRotation(M_PI);
             break;
         default:
+            frame.origin = CGPointZero;
+            transform = CGAffineTransformIdentity;
             break;
     }
     
@@ -301,7 +303,7 @@ static PTEDashboard * _sharedDashboard;
 
 
 @interface PTERootController : UIViewController
-
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
 @end
 
 @implementation PTERootController
@@ -310,6 +312,11 @@ static PTEDashboard * _sharedDashboard;
 {
     // Fixes missing status bar.
     return NO;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self.tableView dataSource];
 }
 
 @end
