@@ -40,10 +40,10 @@ By default all your sources to `APP_MODULE_DEFAULT` but you can define your own 
 Then just redefine `LOG_MODULE` for the files that belong to one of your custom modules.
 
 ```obj-c
-#import "MockNetworkModule.h"
+# import "MockNetworkModule.h"
 
 // Define log module for this file
-#undef  LOG_MODULE
+# undef  LOG_MODULE
 #define LOG_MODULE APP_MODULE_NETWORK
 ```
 
@@ -80,14 +80,14 @@ When installed, [XcodeColors](https://github.com/robbiehanson/XcodeColors) are a
 When [LumberjackConsole](https://github.com/PTEz/LumberjackConsole) is present you can add am on-device dashboard logger and adjust log levels from the UI.
 
 ```obj-c
-#ifndef MY_PRODUCTION_MACRO
+# ifndef MY_PRODUCTION_MACRO
     // Register custom modules before adding the dashboard
     [NBULog registerAppContextWithModulesAndNames:@{@(APP_MODULE_NETWORK)   : @"Network",
                                                     @(APP_MODULE_OTHER)     : @"Other"}];
     
     // Add dashboard only for testing builds
     [NBULog addDashboardLogger];
-#endif
+# endif
 ```
 
 ## Installation
@@ -123,30 +123,30 @@ E.g. from [NBUKit](https://github.com/CyberAgent/iOS-NBUKit)'s [`NBUKitPrivate.h
 // ...
 
 // a) Use NBULog for logging when available
-#if __has_include("NBULog.h")
+# if __has_include("NBULog.h")
 
-#import "NBULog+NBUKit.h"
+# import "NBULog+NBUKit.h"
 
-#undef  LOG_CONTEXT
+# undef  LOG_CONTEXT
 #define LOG_CONTEXT NBUKIT_LOG_CONTEXT
 
-#undef  LOG_MODULE
+# undef  LOG_MODULE
 #define LOG_MODULE  NBUKIT_MODULE_DEFAULT
 
-#undef  LOG_LEVEL
+# undef  LOG_LEVEL
 #define LOG_LEVEL   [NBULog kitLogLevel]
 
 // b) Else try CocoaLumberjack
-#elif __has_include("DDLog.h")
+# elif __has_include("DDLog.h")
 
-#ifdef DEBUG
+# ifdef DEBUG
     #define NBUKitLogLevel DDLogLevelVerbose
-#else
+# else
     #define NBUKitLogLevel DDLogLevelWarning
-#endif
+# endif
 
 #define LOG_LEVEL_DEF   NBUKitLogLevel
-#import <CocoaLumberjack/DDLog.h>
+# import <CocoaLumberjack/DDLog.h>
 
 #define NBULogError(frmt, ...)      DDLogError(frmt, ##__VA_ARGS__)
 #define NBULogWarn(frmt, ...)       DDLogWarn(frmt, ##__VA_ARGS__)
@@ -156,13 +156,13 @@ E.g. from [NBUKit](https://github.com/CyberAgent/iOS-NBUKit)'s [`NBUKitPrivate.h
 #define NBULogTrace()               NBULogDebug(@"%@", THIS_METHOD)
 
 // c) Else fallback to NSLog
-#else
+# else
 
-#ifdef DEBUG
+# ifdef DEBUG
     #define LOG_LEVEL 3
-#else
+# else
     #define LOG_LEVEL 2
-#endif
+# endif
 
 #define THIS_METHOD                 NSStringFromSelector(_cmd)
 #define NBULogError(frmt, ...)      do{ if(LOG_LEVEL >= 1) NSLog((frmt), ##__VA_ARGS__); } while(0)
@@ -172,7 +172,7 @@ E.g. from [NBUKit](https://github.com/CyberAgent/iOS-NBUKit)'s [`NBUKitPrivate.h
 #define NBULogVerbose(frmt, ...)    do{ if(LOG_LEVEL >= 5) NSLog((frmt), ##__VA_ARGS__); } while(0)
 #define NBULogTrace()               NBULogDebug(@"%@", THIS_METHOD)
 
-#endif
+# endif
 ```
 
 ### 2. Register a Log Context and Optional Modules
@@ -180,9 +180,9 @@ E.g. from [NBUKit](https://github.com/CyberAgent/iOS-NBUKit)'s [`NBUKitPrivate.h
 ```obj-c
 //  NBULog+NBUKit.h
 
-#if __has_include("NBULog.h")
+# if __has_include("NBULog.h")
 
-#import <NBULog/NBULog.h>
+# import <NBULog/NBULog.h>
 
 // NBUKit log context
 #define NBUKIT_LOG_CONTEXT          110
@@ -198,7 +198,7 @@ E.g. from [NBUKit](https://github.com/CyberAgent/iOS-NBUKit)'s [`NBUKitPrivate.h
 
 @end
 
-#endif
+# endif
 ```
 
 Then register your context and modules if you want them to appear in [LumberjackConsole](https://github.com/PTEz/LumberjackConsole).
@@ -206,10 +206,10 @@ Then register your context and modules if you want them to appear in [Lumberjack
 ```obj-c
 //  NBULog+NBUKit.m
 
-#if __has_include("NBULog.h")
+# if __has_include("NBULog.h")
 
-#import "NBULog+NBUKit.h"
-#import <NBULog/NBULogContextDescription.h>
+# import "NBULog+NBUKit.h"
+# import <NBULog/NBULogContextDescription.h>
 
 @implementation NBULog (NBUKit)
 
@@ -237,7 +237,7 @@ Then register your context and modules if you want them to appear in [Lumberjack
 
 @end
 
-#endif
+# endif
 
 ```
 

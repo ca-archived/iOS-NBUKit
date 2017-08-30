@@ -27,7 +27,7 @@ Temporarily make Xcode warn you when using new API calls that may crash on older
 ```obj-c
 // E.g. check for API that may crash on iOS 5.x devices.
 #define __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED __IPHONE_5_0
-#import <NBUCore/NBUAvailability.h>
+# import <NBUCore/NBUAvailability.h>
 
 ```
 

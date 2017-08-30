@@ -64,7 +64,7 @@ pod 'LumberjackConsole'
 
 http://cocoadocs.org/docsets/NBUKit/
 
-##License
+## License
 
     Copyright (c) 2012-2017 CyberAgent Inc.
     
