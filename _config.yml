@@ -1,0 +1,8 @@
+title: NBUKit
+description: UIKit and NSFoundation convenience categories and subclasses.
+google_analytics: UA-40888254-1
+show_downloads: true
+theme: jekyll-theme-minimal
+
+gems:
+  - jekyll-mentions
