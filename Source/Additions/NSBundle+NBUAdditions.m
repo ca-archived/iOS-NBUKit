@@ -104,6 +104,26 @@ NSString * const NBULocalizedStringNotFound = @"NBULocalizedStringNotFound";
         }
     }
     
+    // Or check in the Frameworks directory
+    for (NSString * frameworkPath in [mainBundle pathsForResourcesOfType:@"framework"
+                                                             inDirectory:@"Frameworks"])
+    {
+        NSString * directory = [frameworkPath stringByReplacingOccurrencesOfString:mainBundle.bundlePath withString:@""];
+        for (NSString * bundlePath in [mainBundle pathsForResourcesOfType:@"bundle"
+                                                              inDirectory:directory])
+        {
+            bundle = [NSBundle bundleWithPath:bundlePath];
+            if ([bundle pathForResource:name
+                                 ofType:@"nib"])
+            {
+                NBULogVerbose(@"Loading Nib named: '%@' from bundle: '%@'...", name, bundle.bundleIdentifier);
+                return [bundle loadNibNamed:name
+                                      owner:owner
+                                    options:options];
+            }
+        }
+    }
+    
     NBULogError(@"Couldn't load Nib named: %@", name);
     return nil;
 }
