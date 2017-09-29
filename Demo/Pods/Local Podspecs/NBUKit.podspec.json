@@ -1,6 +1,6 @@
 {
   "name": "NBUKit",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "summary": "UIKit and NSFoundation convenience categories and subclasses.",
   "homepage": "http://cyberagent.github.io/iOS-NBUKit/",
   "license": {
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/CyberAgent/iOS-NBUKit.git",
-    "tag": "2.5.0"
+    "tag": "2.5.1"
   },
   "platforms": {
     "ios": "5.0"
