@@ -49,7 +49,7 @@
     
     // *** Refresh your data here ***
     
-    _label.text = @"Refreshing...";
+    _label.text = NSLocalizedString(@"Refreshing...", nil);
     
     
     // *** ...and then notify the refresh control when finished ***
@@ -61,7 +61,7 @@
         // Fail randomly
         if (arc4random() % 2)
         {
-            _label.text = @"Failed to update (mock)";
+            _label.text = NSLocalizedString(@"Failed to update (mock)", nil);
             
             // Default message
             //[(NBURefreshControl *)sender failedToUpdate:self];
@@ -72,7 +72,7 @@
         }
         else
         {
-            _label.text = @"Successful update (mock)";
+            _label.text = NSLocalizedString(@"Successful update (mock)", nil);
             
             // Default message
             //[(NBURefreshControl *)sender updated:self];

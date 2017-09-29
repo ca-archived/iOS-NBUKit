@@ -24,8 +24,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		08AA2B7A2974361CAE94C223 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		2D410CC8AE8423087D717E3A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		34C4AD9115BE87FF00709E28 /* NBUKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NBUKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34C4AD9515BE880000709E28 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		34C4AD9715BE880000709E28 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -130,8 +128,6 @@
 		50F4C503B8E01D58448E0C37 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2D410CC8AE8423087D717E3A /* Pods.debug.xcconfig */,
-				08AA2B7A2974361CAE94C223 /* Pods.release.xcconfig */,
 				EF6557CBBAE3A7AD351DA392 /* Pods-NBUKitDemo.debug.xcconfig */,
 				B598948FCD9FCC016B8076E4 /* Pods-NBUKitDemo.release.xcconfig */,
 			);

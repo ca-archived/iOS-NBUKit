@@ -3,7 +3,7 @@
 //  NBUCore
 //
 //  Created by Ernesto Rivera on 2013/10/01.
-//  Copyright (c) 2012-2016 CyberAgent Inc.
+//  Copyright (c) 2012-2017 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@
  
  E.g.:
  
-     #define __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED __IPHONE_5_0
+     #define __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED __IPHONE_9_0
      #import <NBUCore/NBUAvailability.h>
  
  @note Only enable it temporarily to make sure you are properly guarding new APIs calls.
@@ -262,6 +262,46 @@
     #define __NBU_APICHECK_9_3(_ios)            __NBU_AVAILABILITY_STARTING("9.3")
 #else
     #define __NBU_APICHECK_9_3(_ios)            CF_AVAILABLE_IOS(_ios)
+#endif
+
+#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_10_0
+    #undef __AVAILABILITY_INTERNAL__IPHONE_10_0
+    #define __AVAILABILITY_INTERNAL__IPHONE_10_0 __NBU_AVAILABILITY_STARTING("10.0")
+    #define __NBU_APICHECK_10_0(_ios)            __NBU_AVAILABILITY_STARTING("10.0")
+#else
+    #define __NBU_APICHECK_10_0(_ios)            CF_AVAILABLE_IOS(_ios)
+#endif
+
+#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_10_1
+    #undef __AVAILABILITY_INTERNAL__IPHONE_10_1
+    #define __AVAILABILITY_INTERNAL__IPHONE_10_1 __NBU_AVAILABILITY_STARTING("10.1")
+    #define __NBU_APICHECK_10_1(_ios)            __NBU_AVAILABILITY_STARTING("10.1")
+#else
+    #define __NBU_APICHECK_10_1(_ios)            CF_AVAILABLE_IOS(_ios)
+#endif
+
+#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_10_2
+    #undef __AVAILABILITY_INTERNAL__IPHONE_10_2
+    #define __AVAILABILITY_INTERNAL__IPHONE_10_2 __NBU_AVAILABILITY_STARTING("10.2")
+    #define __NBU_APICHECK_10_2(_ios)            __NBU_AVAILABILITY_STARTING("10.2")
+#else
+    #define __NBU_APICHECK_10_2(_ios)            CF_AVAILABLE_IOS(_ios)
+#endif
+
+#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_10_3
+    #undef __AVAILABILITY_INTERNAL__IPHONE_10_3
+    #define __AVAILABILITY_INTERNAL__IPHONE_10_3 __NBU_AVAILABILITY_STARTING("10.3")
+    #define __NBU_APICHECK_10_3(_ios)            __NBU_AVAILABILITY_STARTING("10.3")
+#else
+    #define __NBU_APICHECK_10_3(_ios)            CF_AVAILABLE_IOS(_ios)
+#endif
+
+#if __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED < __IPHONE_11_0
+    #undef __AVAILABILITY_INTERNAL__IPHONE_11_0
+    #define __AVAILABILITY_INTERNAL__IPHONE_11_0 __NBU_AVAILABILITY_STARTING("11.0")
+    #define __NBU_APICHECK_11_0(_ios)            __NBU_AVAILABILITY_STARTING("11.0")
+#else
+    #define __NBU_APICHECK_11_0(_ios)            CF_AVAILABLE_IOS(_ios)
 #endif
 
 #undef  NS_AVAILABLE_IOS

@@ -7,7 +7,7 @@
 #ifdef __OBJC__
 
 //    // Check for new API calls
-//    #define __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED __IPHONE_5_0
+//    #define __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED __IPHONE_8_0
 //    #import <NBUCore/NBUAvailavility.h>
 
     #import <UIKit/UIKit.h>
