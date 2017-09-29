@@ -31,6 +31,12 @@
     {
         NSString * bundlePath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"NBUKit.bundle"];
         _resourcesBundle = [NSBundle bundleWithPath:bundlePath];
+        
+        if (!_resourcesBundle)
+        {
+            bundlePath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"Frameworks/NBUKit.framework/NBUKit.bundle"];
+            _resourcesBundle = [NSBundle bundleWithPath:bundlePath];
+        }
     });
     
     return _resourcesBundle;
