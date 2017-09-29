@@ -108,7 +108,7 @@
           didFinishWithResult:(MFMailComposeResult)result
                         error:(NSError *)error
 {
-    NBULogVerbose(@"Mail composer result: %ld", (long)result);
+    NBULogVerbose(@"Mail composer result: %d", result);
     if (error)
     {
         NBULogError(@"Mail composer error: %@", error);

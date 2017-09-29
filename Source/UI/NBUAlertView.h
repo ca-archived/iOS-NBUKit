@@ -20,7 +20,7 @@
 
 /// Result blocks.
 typedef void (^NBUAlertSelectedButtonBlock)(NSInteger buttonIndex);
-typedef void (^NBUAlertCancelButtonBlock)(void);
+typedef void (^NBUAlertCancelButtonBlock)();
 
 /**
  Block-based UIAlertView subclass.

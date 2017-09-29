@@ -20,7 +20,7 @@
 
 /// Result blocks.
 typedef void (^NBUActionSheetSelectedButtonBlock)(NSInteger buttonIndex);
-typedef void (^NBUActionSheetCancelButtonBlock)(void);
+typedef void (^NBUActionSheetCancelButtonBlock)();
 
 /**
  Block-based UIActionSheet subclass.
