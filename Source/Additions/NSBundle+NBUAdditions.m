@@ -119,7 +119,7 @@ NSString * const NBULocalizedStringNotFound = @"NBULocalizedStringNotFound";
                                                                table:tableName];
     
     // Then try the backup bundle
-    if ([string isEqualToString:NBULocalizedStringNotFound])
+    if (bundle && [string isEqualToString:NBULocalizedStringNotFound])
     {
         string = [bundle localizedStringForKey:key
                                          value:NBULocalizedStringNotFound
@@ -131,7 +131,7 @@ NSString * const NBULocalizedStringNotFound = @"NBULocalizedStringNotFound";
     {
         string = value.length > 0 ? value : key;
         
-        NBULogWarn(@"No localized string for '%@' in '%@', will use '%@'", key, tableName, string);
+        NBULogDebug(@"No localized string for '%@' in '%@', will use '%@'", key, tableName, string);
     }
     
     return string;
